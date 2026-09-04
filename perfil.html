@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Bebas+Neue&display=swap">
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="./neat-effects.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: #1b1e27; color: #ececec; font-family: Montserrat, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: #ececec; text-decoration: none; }
+    a:hover { color: #8bde5f; }
+    ::selection { background: rgba(139,222,95,0.3); }
+  </style>
+</helmet>
+
+
+<div style="position: relative; width: 100%; background: #1b1e27; overflow-x: clip;">
+
+  <div data-veil style="position: fixed; inset: 0; z-index: 9998; background: #1b1e27; opacity: 1; pointer-events: none; transition: opacity 0.5s ease;"></div>
+
+  <div style="position: fixed; top: 0; left: 0; right: 0; z-index: 50; display: flex; justify-content: center; padding: clamp(12px, 2vw, 24px) 16px; pointer-events: none;">
+    <div style="pointer-events: auto; display: inline-flex; align-items: center; gap: 2px; flex-wrap: wrap; justify-content: center; border-radius: 999px; border: 1px solid rgba(236,236,236,0.09); background: rgba(35,39,51,0.72); backdrop-filter: blur(14px); padding: 6px; box-shadow: 0 8px 30px rgba(0,0,0,0.35);">
+      <a href="index.html" style="display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; border-radius: 999px; background: linear-gradient(120deg, #8bde5f, #4a44f2); flex-shrink: 0;">
+        <span style="display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 999px; background: #1b1e27; font-family: Montserrat, system-ui, sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.04em; line-height: 1; color: #ececec;">VM</span>
+      </a>
+      <span style="width: 1px; height: 20px; background: #2c3140; margin: 0 4px;"></span>
+      <a href="index.html" style="border-radius: 999px; padding: 8px 15px; font-size: 13px; color: #878787;" style-hover="color: #ececec; background: rgba(44,49,64,0.6);" data-roll>Inicio</a>
+      <a href="index.html#trabajo" style="border-radius: 999px; padding: 8px 15px; font-size: 13px; color: #878787;" style-hover="color: #ececec; background: rgba(44,49,64,0.6);" data-roll>Trabajos</a>
+      <a href="perfil.html" style="border-radius: 999px; padding: 8px 15px; font-size: 13px; color: #ececec; background: rgba(44,49,64,0.6);" data-roll>Sobre mí</a>
+      <span style="width: 1px; height: 20px; background: #2c3140; margin: 0 4px;"></span>
+      <x-import component-from-global-scope="starfield-button" from="./starfield-button.js" label="Escríbeme ↗" href="#contacto" accent="#8bde5f" fill="rgba(35,39,51,0.55)" text-color="#ececec" border-color="#343a4a" padding="8px 16px" font-size="13" light-size="58" light-thickness="2" speed="55" pixel-size="4" pixel-density="46" glow-size="14" hint-size="126px,36px"></x-import>
+    </div>
+  </div>
+
+  <div data-screen-label="Cabecera" data-no-reveal style="padding: clamp(130px, 16vh, 190px) clamp(20px, 4vw, 64px) clamp(48px, 6vw, 80px);">
+    <div style="width: 100%; max-width: 1200px; margin: 0 auto;">
+      <p class="fade" style="margin: 0 0 26px; font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: #8bde5f;">Perfil · Product Designer (UX/UI)</p>
+      <h1 data-lines style="margin: 0; font-family: 'Bebas Neue', Impact, sans-serif; font-weight: 400; font-size: clamp(42px, 8vw, 112px); line-height: 0.94; letter-spacing: -0.02em;">Diseño sistemas,<br>no pantallas</h1>
+      <div class="fade" style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px;">
+        <x-import component-from-global-scope="starfield-button" from="./starfield-button.js" label="Escríbeme ↗" href="#contacto" accent="#8bde5f" fill="rgba(35,39,51,0.6)" text-color="#ececec" border-color="#343a4a" rounded="100" padding="14px 28px" font-size="14" light-size="86" light-thickness="2" speed="55" pixel-size="4" pixel-density="48" glow-size="16" hint-size="164px,50px"></x-import>
+        <a href="index.html#trabajo" style="border-radius: 999px; padding: 14px 28px; font-size: 14px; font-weight: 600; color: #ececec; border: 1px solid #343a4a; background: transparent;" style-hover="border-color: #8bde5f;" data-roll>Ver casos</a>
+      </div>
+      <a class="fade" href="#quien" style="display: inline-flex; align-items: center; gap: 10px; margin-top: clamp(40px, 6vw, 72px); font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase; color: #878787;" style-hover="color: #8bde5f;"><span data-scroll-cue style="display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border: 1px solid #343a4a; border-radius: 999px;"><i class="ri-arrow-down-line" style="font-size: 13px; color: #8bde5f;"></i></span><span data-roll>Baja y te cuento</span></a>
+    </div>
+  </div>
+
+  <div id="quien" data-screen-label="Quién soy" style="padding: clamp(48px, 6vw, 80px) clamp(20px, 4vw, 64px); border-top: 1px solid #232733;">
+    <div style="{{whoGridStyle}}">
+      <div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="width: 32px; height: 1px; background: #343a4a;"></span>
+          <span style="font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase; color: #878787;">Quién soy</span>
+          <span style="font-size: 10.5px; letter-spacing: 0.06em; color: #4d4d4d;">(01)</span>
+        </div>
+        <div data-zoom style="width: 100%; max-width: 220px; aspect-ratio: 1; margin-top: 24px; border-radius: 999px; overflow: hidden; border: 1px solid #2c3140; background: #232733;">
+          <img src="assets/victor.jpg" alt="Víctor Maza" width="400" height="400" loading="lazy" decoding="async" style="display: block; width: 100%; height: 100%; object-fit: cover; filter: grayscale(1) contrast(1.06) brightness(0.94);">
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 22px; max-width: 220px;">
+          <a href="https://linkedin.com/in/victor-maza47" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 10px; border: 1px solid #2c3140; border-radius: 999px; padding: 10px 16px; font-size: 13px; color: #c9c9c9;" style-hover="border-color: #8bde5f; color: #ececec;"><i class="ri-linkedin-fill" style="font-size: 16px; color: #8bde5f;"></i>LinkedIn</a>
+          <a href="https://behance.net/mazdesign" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 10px; border: 1px solid #2c3140; border-radius: 999px; padding: 10px 16px; font-size: 13px; color: #c9c9c9;" style-hover="border-color: #8bde5f; color: #ececec;"><i class="ri-behance-fill" style="font-size: 16px; color: #8bde5f;"></i>Behance</a>
+          <a href="https://instagram.com/mazdesign" target="_blank" rel="noopener" style="display: flex; align-items: center; gap: 10px; border: 1px solid #2c3140; border-radius: 999px; padding: 10px 16px; font-size: 13px; color: #c9c9c9;" style-hover="border-color: #8bde5f; color: #ececec;"><i class="ri-instagram-line" style="font-size: 16px; color: #8bde5f;"></i>Instagram</a>
+        </div>
+      </div>
+      <div style="min-width: 0;">
+        <sc-for list="{{bio}}" as="para" hint-placeholder-count="4">
+          <p style="margin: 0 0 22px; font-size: clamp(15px, 1.3vw, 17.5px); line-height: 1.72; color: #949494; text-wrap: pretty;"><sc-for list="{{para.parts}}" as="s" hint-placeholder-count="3"><span style="{{s.style}}">{{s.t}}</span></sc-for></p>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div data-screen-label="Fuerte" style="padding: clamp(48px, 6vw, 80px) clamp(20px, 4vw, 64px); border-top: 1px solid #232733;">
+    <div style="width: 100%; max-width: 1200px; margin: 0 auto;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="width: 32px; height: 1px; background: #343a4a;"></span>
+        <span style="font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase; color: #878787;">En qué soy fuerte</span>
+          <span style="font-size: 10.5px; letter-spacing: 0.06em; color: #4d4d4d;">(02)</span>
+      </div>
+      <h2 data-words style="margin: 20px 0 0; font-size: clamp(28px, 4.2vw, 52px); font-weight: 400; letter-spacing: -0.02em;">Lo que aporto a un <span style="font-family: 'Bebas Neue', Impact, sans-serif; letter-spacing: 0.01em;">equipo de producto</span></h2>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: clamp(14px, 1.8vw, 22px); margin-top: clamp(28px, 3.4vw, 44px);">
+        <sc-for list="{{skills}}" as="k" hint-placeholder-count="8">
+          <div style="display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; border: 1px solid #2c3140; border-radius: 18px; padding: 20px; background: rgba(35,39,51,0.45);" style-hover="border-color: #343a4a; background: #232733;">
+            <span style="font-family: 'Bebas Neue', Impact, sans-serif; font-size: 20px; color: #8bde5f;">{{k.n}}</span>
+            <span style="font-size: 14.5px; line-height: 1.55; color: #d6d6d6;">{{k.t}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div data-screen-label="Forma de trabajo" style="padding: clamp(48px, 6vw, 80px) clamp(20px, 4vw, 64px); border-top: 1px solid #232733;">
+    <div style="width: 100%; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(28px, 4vw, 64px);">
+      <div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="width: 32px; height: 1px; background: #343a4a;"></span>
+          <span style="font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase; color: #878787;">Forma de trabajo</span>
+          <span style="font-size: 10.5px; letter-spacing: 0.06em; color: #4d4d4d;">(03)</span>
+        </div>
+        <p style="margin: 22px 0 0; font-size: clamp(15px, 1.3vw, 17.5px); line-height: 1.72; color: #949494; text-wrap: pretty;">Mi proceso es <strong style="color: #ececec; font-weight: 500;">iterativo y se adapta a la madurez del producto</strong>. Arranco en <strong style="color: #ececec; font-weight: 500;">discovery con Product Owners y stakeholders</strong> para separar el problema real de la solución que ya traen pensada. Según el caso, la estrategia cambia: <strong style="color: #ececec; font-weight: 500;">benchmark e investigación a fondo</strong> cuando la funcionalidad es nueva, <strong style="color: #ececec; font-weight: 500;">prototipado rápido sobre el design system</strong> cuando el terreno ya está construido. Diseño la <strong style="color: #ececec; font-weight: 500;">arquitectura de la solución antes de dibujar pantallas</strong>, <strong style="color: #ececec; font-weight: 500;">valido en ciclos cortos</strong> y cierro con un <strong style="color: #ececec; font-weight: 500;">handoff que el equipo puede construir sin interpretar nada</strong>: estados, reglas, casos límite y componentes existentes. Tres criterios no negociables por debajo de todo: <strong style="color: #ececec; font-weight: 500;">KISS</strong>, la solución más simple que resuelve el caso completo, porque en producto denso cada elemento de más es carga cognitiva y deuda de mantenimiento; <strong style="color: #ececec; font-weight: 500;">mobile first</strong>, que obliga a jerarquizar lo esencial antes de disponer de espacio y hace que el escalado a escritorio sea una ampliación, no un rediseño; y la <strong style="color: #ececec; font-weight: 500;">regla 60-30-10</strong> para repartir el color, con el neutro dominante sosteniendo la lectura, el secundario estructurando superficies y el acento reservado a la acción, de modo que lo importante se distinga sin recurrir a más saturación. Y lo cuento en <strong style="color: #ececec; font-weight: 500;">lenguaje de negocio</strong>, porque un diseño que no se sabe defender no se aprueba. Por encima del método, lo que busco es <strong style="color: #ececec; font-weight: 500;">crear atmósfera</strong>: que cada pantalla, cada estado y cada palabra hagan que <strong style="color: #ececec; font-weight: 500;">la marca respire el mismo aire</strong> de un extremo a otro del producto.</p>
+      </div>
+      <div>
+        <div style="display: flex; align-items: center; gap: 12px;">
+          <span style="width: 32px; height: 1px; background: #343a4a;"></span>
+          <span style="font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase; color: #878787;">Herramientas</span>
+        </div>
+        <div data-tool-stage style="display: flex; flex-direction: column; gap: 22px; margin-top: 22px;">
+          <sc-for list="{{toolGroups}}" as="g" hint-placeholder-count="5">
+            <div>
+              <p style="margin: 0 0 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #8bde5f;">{{g.name}}</p>
+              <div style="display: flex; flex-wrap: wrap; gap: 11px 10px;">
+                <sc-for list="{{g.items}}" as="t" hint-placeholder-count="4">
+                  <span data-tool style="position: relative; border: 1px solid #262626; border-radius: 999px; padding: 8px 14px; font-size: 12.5px; line-height: 1.2; white-space: nowrap; color: #d6d6d6; background: #232733; will-change: transform;">{{t}}</span>
+                </sc-for>
+              </div>
+            </div>
+          </sc-for>
+        </div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-top: 40px;">
+          <span style="width: 32px; height: 1px; background: #343a4a;"></span>
+          <span style="font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase; color: #878787;">Idiomas</span>
+        </div>
+        <p style="margin: 18px 0 0; font-size: 15px; line-height: 1.6; color: #949494;">Español nativo · Inglés B1, en formación activa hacia B2</p>
+      </div>
+    </div>
+  </div>
+
+  <div data-screen-label="Competencias" style="padding: clamp(48px, 6vw, 80px) clamp(20px, 4vw, 64px); border-top: 1px solid #232733;">
+    <div style="width: 100%; max-width: 1200px; margin: 0 auto;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="width: 32px; height: 1px; background: #343a4a;"></span>
+        <span style="font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase; color: #878787;">Competencias clave</span>
+          <span style="font-size: 10.5px; letter-spacing: 0.06em; color: #4d4d4d;">(04)</span>
+      </div>
+      <h2 data-words style="margin: 20px 0 0; font-size: clamp(26px, 3.8vw, 46px); font-weight: 400; letter-spacing: -0.02em;">Lo que sé <span style="font-family: 'Bebas Neue', Impact, sans-serif; letter-spacing: 0.01em;">hacer</span></h2>
+
+      <div data-comp-stage style="position: relative; margin-top: clamp(14px, 2vw, 26px);">
+        <sc-for list="{{comps}}" as="c" hint-placeholder-count="4">
+          <div style="{{c.slotStyle}}">
+            <div data-comp-card style="{{c.cardStyle}}">
+              <div onClick="{{c.toggle}}" style="cursor: pointer; display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 12px; padding-bottom: 18px; border-bottom: 1px solid #262626;">
+                <p style="margin: 0; font-family: 'Bebas Neue', Impact, sans-serif; font-size: clamp(24px, 2.8vw, 36px); line-height: 1.1;">{{c.name}}</p>
+                <div style="display: flex; align-items: center; gap: 14px;">
+                  <p style="margin: 0; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: #8bde5f;">{{c.count}}</p>
+                  <i class="{{c.icon}}" style="{{c.iconStyle}}"></i>
+                </div>
+              </div>
+              <div style="{{c.listStyle}}">
+                <sc-for list="{{c.items}}" as="it" hint-placeholder-count="5">
+                  <div data-comp-item style="display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 12px; align-items: baseline;">
+                    <span style="font-size: 11px; color: #4d4d4d;">{{it.n}}</span>
+                    <p style="margin: 0; font-size: clamp(13.5px, 1.1vw, 15px); line-height: 1.58; color: #949494; text-wrap: pretty;"><span style="color: #ececec;">{{it.lead}}</span>{{it.rest}}</p>
+                  </div>
+                </sc-for>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
+  <div id="contacto" data-screen-label="Contacto" data-no-reveal style="position: relative; padding: clamp(56px, 7vw, 96px) 0 0; overflow: hidden; border-top: 1px solid #232733; background: #15181f;">
+    <div style="padding: 0 clamp(20px, 6vw, 100px);">
+      <div style="display: grid; grid-template-columns: {{footCols}}; gap: clamp(24px, 3.4vw, 56px); align-items: center; padding: 0;">
+        <p style="margin: 0; max-width: 260px; font-size: 14px; line-height: 1.6; color: #878787;">Diseño producto B2B donde un error operativo cuesta dinero.</p>
+
+        <div style="display: flex; flex-direction: column; align-items: center; gap: 14px;">
+          <p style="margin: 0; font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase; color: #6d6d6d;">Ponte en contacto</p>
+          <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
+            <div onClick="{{copyMail}}" title="Copiar correo" style="display: inline-flex;">
+              <x-import component-from-global-scope="starfield-button" from="./starfield-button.js" label="vctrmz47@gmail.com" accent="#8bde5f" fill="rgba(35,39,51,0.6)" text-color="#ececec" border-color="#343a4a" padding="14px 24px" font-size="16" light-size="110" light-thickness="2" speed="50" pixel-size="4" pixel-density="50" glow-size="16" hint-size="268px,52px"></x-import>
+            </div>
+            <x-import component-from-global-scope="starfield-button" from="./starfield-button.js" label="LinkedIn ↗" href="https://linkedin.com/in/victor-maza47" new-tab="1" accent="#8bde5f" fill="rgba(35,39,51,0.6)" text-color="#ececec" border-color="#343a4a" padding="14px 24px" font-size="16" light-size="110" light-thickness="2" speed="50" pixel-size="4" pixel-density="50" glow-size="16" hint-size="150px,52px"></x-import>
+          </div>
+          <p style="{{copyMsgStyle}}">Correo copiado</p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 14px; {{footAlign}}">
+          <a href="https://behance.net/mazdesign" target="_blank" rel="noopener" style="color: #949494;" style-hover="color: #8bde5f;" data-roll>Behance ↗</a>
+          <a href="https://instagram.com/mazdesign" target="_blank" rel="noopener" style="color: #949494;" style-hover="color: #8bde5f;" data-roll>Instagram ↗</a>
+          <a href="index.html" style="color: #949494;" style-hover="color: #8bde5f;" data-roll>Portada ↗</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="margin-top: clamp(36px, 4.6vw, 64px); padding: 14px clamp(20px, 6vw, 100px); background: #3a34e8;">
+      <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 14px; font-size: 12.5px; color: #d6e2ff;">
+        <span style="display: inline-flex; align-items: center; gap: 10px; color: #ececec;">
+          <span style="width: 8px; height: 8px; border-radius: 999px; background: #8bde5f; box-shadow: 0 0 10px rgba(139,222,95,0.6);"></span>
+          Disponible para proyectos
+        </span>
+        <span>© 2026 Víctor Maza · Málaga, España · Trabajo en remoto</span>
+      </div>
+    </div>
+  </div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 1440}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    const mob = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(max-width: 820px)').matches;
+    this.state = { copied: false, mobile: !!mob, compShut: [] };
+  }
+
+  componentDidMount() {
+    const veil = document.querySelector('[data-veil]');
+    if (veil) requestAnimationFrame(() => { veil.style.opacity = '0'; });
+    this.onNav = (ev) => {
+      const a = ev.target && ev.target.closest ? ev.target.closest('a[href]') : null;
+      if (!a) return;
+      const href = a.getAttribute('href') || '';
+      if (!/\.dc\.html/.test(href) || a.target === '_blank') return;
+      ev.preventDefault();
+      if (veil) veil.style.opacity = '1';
+      setTimeout(() => { window.location.href = href; }, 320);
+    };
+    document.addEventListener('click', this.onNav);
+
+    const g = window.gsap;
+    if (!g) return;
+    const light = this.state.mobile || window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (light) g.from('.fade', { opacity: 0, y: 12, duration: 0.5, stagger: 0.05, ease: 'power2.out' });
+    else g.from('.fade', { opacity: 0, y: 24, filter: 'blur(8px)', duration: 1, stagger: 0.1, ease: 'power3.out' });
+    const shine = light ? [] : document.querySelectorAll('[data-shine]');
+    if (shine.length) {
+      g.to(shine, { backgroundPosition: '0% 0', duration: 2.2, ease: 'power2.inOut', repeat: -1, repeatDelay: 2.4 });
+      shine.forEach(s => s.addEventListener('pointerenter', () =>
+        g.fromTo(s, { backgroundPosition: '100% 0' }, { backgroundPosition: '0% 0', duration: 0.9, ease: 'power2.out', overwrite: true })));
+    }
+    if (window.NeatFX) window.NeatFX.init(g, light);
+    this.wireProximity(g, light);
+    this.wireComps(g, light);
+  }
+
+  wireComps(g, light) {
+    const cards = Array.prototype.slice.call(document.querySelectorAll('[data-comp-card]'));
+    if (!cards.length) return;
+    const ST = g.ScrollTrigger || window.ScrollTrigger;
+    if (light || !ST) return;
+    g.registerPlugin(ST);
+    cards.forEach((card, i) => {
+      g.set(card.querySelectorAll('[data-comp-item]'), { opacity: 1, y: 0 });
+      if (i === cards.length - 1) return;
+      const next = cards[i + 1];
+      g.fromTo(card, { scale: 1, filter: 'brightness(1)' },
+        { scale: 0.94, filter: 'brightness(0.62)', ease: 'none',
+          scrollTrigger: { trigger: next, start: 'top 85%', end: 'top 30%', scrub: true } });
+    });
+  }
+
+  wireProximity(g, light) {
+    const stage = document.querySelector('[data-tool-stage]');
+    if (!stage || light) return;
+    const radius = 150, maxScale = 1.13;
+    const chips = () => Array.prototype.slice.call(stage.querySelectorAll('[data-tool]'));
+    this.onToolMove = (e) => {
+      const list = chips();
+      let best = null, bestD = Infinity;
+      const data = list.map(chip => {
+        const r = chip.getBoundingClientRect();
+        const d = Math.hypot(e.clientX - (r.left + r.width / 2), e.clientY - (r.top + r.height / 2));
+        if (d < bestD) { bestD = d; best = chip; }
+        return { chip, d };
+      });
+      data.forEach(({ chip, d }) => {
+        const pr = g.utils.clamp(0, 1, g.utils.mapRange(0, radius, 1, 0, d));
+        const near = chip === best && bestD < 90;
+        chip.style.zIndex = near ? '3' : '1';
+        g.to(chip, {
+          scale: 1 + (maxScale - 1) * pr,
+          y: -4 * pr,
+          borderColor: near ? '#8bde5f' : (pr > 0.5 ? '#3a3a3a' : '#262626'),
+          color: pr > 0.4 ? '#ececec' : '#a8a8a8',
+          backgroundColor: near ? '#1d1409' : '#232733',
+          duration: 0.4, overwrite: true, ease: 'power2.out'
+        });
+      });
+    };
+    this.onToolLeave = () => {
+      chips().forEach(c => { c.style.zIndex = '1'; });
+      g.to(chips(), { scale: 1, y: 0, borderColor: '#262626', color: '#a8a8a8', backgroundColor: '#232733', duration: 0.6, overwrite: true, ease: 'power2.out' });
+    };
+    stage.addEventListener('mousemove', this.onToolMove);
+    stage.addEventListener('mouseleave', this.onToolLeave);
+    this.toolStage = stage;
+  }
+
+  componentWillUnmount() {
+    if (this.toolStage) {
+      this.toolStage.removeEventListener('mousemove', this.onToolMove);
+      this.toolStage.removeEventListener('mouseleave', this.onToolLeave);
+    }
+    clearTimeout(this.copyTimer);
+    if (this.onNav) document.removeEventListener('click', this.onNav);
+  }
+
+  renderVals() {
+    const bio = [
+      'Diseño producto B2B donde un error operativo cuesta dinero.',
+      '*Informático de formación, Product Designer de oficio. Nueve años.* Esa base no está para escribir código de producción: está para cómo pienso el producto, *en sistemas, en estructura y en cómo se va a construir esto de verdad*. Diseño, *planteo la arquitectura de la solución* y la llevo hasta algo que funciona: *modelo el dominio antes que la pantalla*, *defino estados, reglas y casos límite*, y cierro con un *handoff que el equipo puede construir sin interpretar nada*. Trabajo con *patrones validados y criterios de usabilidad*, no con invenciones, y respetando cómo se construye realmente en *React, Chakra UI o Tailwind*. Saber cómo piensa el framework es lo que hace que un diseño llegue a producción tal como se diseñó. Esta web es un ejemplo: el diseño es mío, la implementación *la generé con IA y la dirigí hasta el detalle*. Generar es la parte fácil; lo que aporto es *saber qué hay que pedir y reconocer cuándo lo que devuelve no sirve*.',
+      'Entre 2022 y 2026 fui *el único diseñador de un holding con cinco productos*. El principal, un *ERP SaaS multi-tenant para aseguradoras, reaseguradoras, MGAs y brokers*: suscripción, pólizas, recibos, facturación y siniestros. Con él, *el módulo administrador que gobierna todo el grupo*: tenants, planes, permisos y configuración por cliente.',
+      'Alrededor de ese núcleo diseñé el resto de la cartera. *Facturación electrónica* con dos audiencias opuestas: el asesor que factura a diario y necesita velocidad, y el cliente final que entra una vez al mes y necesita contexto. Un *sistema de pólizas 360* donde una sola vista sostiene equipo, pólizas, recibos y los pagos a cada interesado. La *gestión de usuarios y permisos* que cruza los cinco productos. Y un *e-commerce* como línea alternativa. *Cinco productos, un solo lenguaje de diseño.*',
+      'Es *producto B2B denso*: *tablas de alta densidad*, *wizards de varios pasos*, *formularios generados por esquema*, *white-labeling por tenant* y *reglas de negocio que cambian según el contrato*. Nada de eso se resuelve pantalla a pantalla.',
+      'Al entrar, cada módulo se había construido con criterios distintos. La respuesta obvia era imponer un sistema único; propuse otra: *el nivel de sistema que cada producto se puede permitir*. *Design system completo* para el ERP y el administrador: componentes, tokens, jerarquía tipográfica y, sobre todo, *las reglas de decisión: cuándo se usa cada patrón y por qué*. En los productos ligeros, *brandsheet y UI kit*, lo suficiente para sostener la coherencia sin cargarlos con una gobernanza que no necesitan. El punto de partida fue una *auditoría del monorepo*: *267 valores de color reducidos a 24 tokens* con un rol asignado cada uno, *adoptados por los cuatro desarrolladores front*. Sin esa base compartida, reutilizar componentes entre productos no ahorra nada. Es lo que hace que cinco negocios distintos no se sientan como cinco empresas distintas.',
+      'Cada semana me senté con *los Product Owners de las aseguradoras*: *discovery antes de diseñar*, y defender cada propuesta antes de pasarla a desarrollo. Se aprende rápido a *explicar una decisión de diseño en lenguaje de negocio*.',
+      'Antes, *banca digital en entorno regulado*. Allí el sistema ya existía y mi trabajo era otro: *aplicarlo con criterio* y *validar cada pantalla antes de que llegara a desarrollo*. *Tests de usabilidad no moderados con Maze* y *entrevistas propias* para entender el porqué detrás de la métrica, no solo el dónde. También *sesiones con Marketing para testear los emails transaccionales* y las piezas de marca fuera de la app, porque la experiencia no termina en la pantalla del producto. Nada pasaba a desarrollo sin haberse probado. Antes de eso, una *plataforma de movilidad multimodal*: *design system y flujos operativos levantados desde cero*.',
+      'Me interesan *los flujos completos, no las pantallas sueltas*. *Sistemas que hagan que el siguiente diseño y el siguiente desarrollo cuesten menos que el anterior.*'
+    ];
+
+    const skills = [
+      'Arquitectura de información y flujos críticos',
+      'Design systems escalables con gobernanza y criterios de uso',
+      'Producto B2B denso: tablas, wizards, formularios por esquema',
+      'White-labeling y producto multi-tenant',
+      'Accesibilidad WCAG 2.2 AAA como requisito de entrada',
+      'Discovery y defensa de propuestas ante cliente',
+      'Handoff acompañado y diálogo técnico con Desarrollo',
+      'Prototipado interactivo y validación con datos de uso real',
+      'Liderazgo de diseño en varios productos a la vez, con un solo lenguaje',
+      'Research por observación indirecta cuando no hay acceso a usuarios',
+      'Modelado de dominio: reglas de negocio declaradas como dato, no cableadas',
+      'Auditoría de código y tokens semánticos adoptados por varios equipos front',
+      'IA aplicada al proceso: dirigir la implementación, no solo generarla',
+      'Marca fuera del producto: emails transaccionales y piezas con Marketing',
+      'Decisiones técnicas acordadas con el front lead, no impuestas',
+      'Adopción: guías de uso y formación para que un patrón nuevo se entienda'
+    ];
+    const compData = [
+      ['Estrategia y diseño de producto', [
+        ['Diseño de producto end-to-end.', ' Definición del problema, investigación, arquitectura de información, user flows, prototipado, validación, entrega e iteración después del lanzamiento.'],
+        ['Pensamiento de producto y negocio.', ' Traducir necesidades de usuario y objetivos de negocio en soluciones viables, escalables y alineadas con la estrategia.'],
+        ['Diseño basado en evidencia.', ' Analítica de producto, feedback de usuarios, pruebas de usabilidad e hipótesis para priorizar mejoras y fundamentar decisiones.'],
+        ['Experiencias complejas en B2B SaaS.', ' Entornos con reglas de negocio, múltiples roles, flujos críticos y alta densidad de información.'],
+        ['Arquitectura de información y flujos.', ' Simplificar procesos complejos para mejorar comprensión, eficiencia y finalización de tareas.'],
+        ['Diseño accesible e inclusivo.', ' Aplicación práctica de WCAG 2.1 y 2.2 en componentes, contenido, contraste, foco, navegación por teclado y estados de error.']
+      ]],
+      ['Liderazgo e influencia', [
+        ['Comunicación estratégica.', ' Presentar propuestas, racionales de diseño y hallazgos para alinear a Product, Engineering, Product Owners y stakeholders.'],
+        ['Facilitación de dinámicas de producto.', ' Workshops, sesiones de co-creación, design critiques, definición de flujos y decisiones tomadas en grupo.'],
+        ['Influencia transversal.', ' Equilibrio entre experiencia de usuario, objetivos de negocio, prioridades de roadmap y restricciones técnicas.'],
+        ['Evangelización de producto y diseño.', ' Explicar la propuesta de valor y las decisiones de diseño ante equipos internos, clientes o audiencias externas.'],
+        ['Gestión del conocimiento.', ' Documentación, guías, onboarding y estándares de trabajo que dan autonomía y consistencia al equipo.'],
+        ['Autonomía y adaptación.', ' Ownership de iniciativas desde la exploración hasta la implementación, en contextos dinámicos y de alta ambigüedad.']
+      ]],
+      ['Design systems y calidad', [
+        ['Pensamiento sistémico.', ' Creación, evolución y mantenimiento de design systems para plataformas digitales complejas.'],
+        ['Gobernanza del sistema.', ' Principios, foundations, tokens, componentes, patrones, documentación, contribución y adopción entre equipos.'],
+        ['Interfaces escalables.', ' UI consistente, responsive, accesible y preparada para múltiples casos de uso, estados y dispositivos.'],
+        ['Calidad de experiencia.', ' Interacción, jerarquía visual, microcopy, estados vacíos, errores, carga, feedback y escenarios límite.'],
+        ['Coherencia entre marca y producto.', ' Identidad visual, tono y principios de marca aplicados al producto, junto a Brand y Marketing.']
+      ]],
+      ['Colaboración técnica y entrega', [
+        ['Colaboración estrecha con desarrollo.', ' Especificaciones claras, handoff estructurado, revisión de implementación y dudas resueltas juntos para preservar la intención de diseño.'],
+        ['Front-end aplicado al diseño.', ' Componentes, responsive, design tokens y límites de implementación en entornos React, TypeScript y Chakra UI.'],
+        ['Diseño orientado a viabilidad técnica.', ' Soluciones que equilibran calidad UX/UI, esfuerzo de desarrollo, mantenimiento y escalabilidad.'],
+        ['Trabajo ágil y delivery.', ' Scrum y Kanban con Jira: prioridades, refinamiento y seguimiento de iniciativas.'],
+        ['Herramientas de diseño y documentación.', ' Figma, prototipado, bibliotecas de componentes, documentación de patrones y handoff con equipos técnicos.']
+      ]]
+    ];
+
+    return {
+      comps: compData.map(([name, items], gi) => ({
+        name,
+        count: String(items.length).padStart(2, '0') + ' competencias',
+        slotStyle: 'position: relative; z-index: ' + (gi + 1) + '; padding-top: ' + (this.state.mobile ? '18px' : '26px') + ';',
+        cardStyle: 'position: ' + (this.state.mobile ? 'relative' : 'sticky') + '; top: ' + (this.state.mobile ? '0' : 'calc(88px + ' + (gi * 22) + 'px)') +
+          '; border: 1px solid #262626; border-radius: 24px; padding: clamp(22px, 2.6vw, 34px); background: #121212; box-shadow: 0 -18px 40px rgba(21,24,31,0.5); transform-origin: center top; will-change: transform;',
+        icon: (this.state.compShut || []).indexOf(gi) >= 0 ? 'ri-add-line' : 'ri-subtract-line',
+        iconStyle: 'font-size: 18px; color: ' + ((this.state.compShut || []).indexOf(gi) >= 0 ? '#4d4d4d' : '#8bde5f') + '; transition: color 0.3s ease;',
+        toggle: () => {
+          const shut = this.state.compShut || [];
+          this.setState({ compShut: shut.indexOf(gi) >= 0 ? shut.filter(x => x !== gi) : shut.concat(gi) },
+            () => { const ST = window.ScrollTrigger || (window.gsap && window.gsap.ScrollTrigger); if (ST) ST.refresh(); });
+        },
+        listStyle: 'display: grid; grid-template-columns: ' + (this.state.mobile ? 'minmax(0, 1fr)' : 'repeat(auto-fit, minmax(280px, 1fr))') +
+          '; gap: clamp(14px, 1.8vw, 22px); overflow: hidden; max-height: ' + ((this.state.compShut || []).indexOf(gi) >= 0 ? '0px' : '1400px') +
+          '; opacity: ' + ((this.state.compShut || []).indexOf(gi) >= 0 ? '0' : '1') +
+          '; margin-top: ' + ((this.state.compShut || []).indexOf(gi) >= 0 ? '0px' : 'clamp(18px, 2.2vw, 26px)') +
+          '; transition: max-height 0.6s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.4s ease, margin-top 0.4s ease;',
+        items: items.map(([lead, rest], i) => ({ n: String(gi + 1) + '.' + String(i + 1), lead, rest }))
+      })),
+      whoGridStyle: 'width: 100%; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: ' +
+        (this.state.mobile ? 'minmax(0, 1fr)' : 'minmax(200px, 260px) minmax(0, 1fr)') + '; gap: clamp(28px, 4vw, 64px); align-items: start;',
+      copyIcon: this.state.copied ? 'ri-check-line' : 'ri-file-copy-line',
+      footCols: this.state.mobile ? 'minmax(0, 1fr)' : 'minmax(0, 0.7fr) minmax(0, auto) minmax(0, 0.7fr)',
+      footAlign: this.state.mobile ? '' : 'align-items: flex-end;',
+      copyMsgStyle: 'margin: 12px 0 0; font-size: 12.5px; letter-spacing: 0.1em; color: #8bde5f; opacity: ' + (this.state.copied ? '1' : '0') + '; transition: opacity 0.3s ease;',
+      copyMail: () => {
+        const write = navigator.clipboard && navigator.clipboard.writeText
+          ? navigator.clipboard.writeText('vctrmz47@gmail.com')
+          : Promise.reject();
+        write.catch(() => {
+          const ta = document.createElement('textarea');
+          ta.value = 'vctrmz47@gmail.com';
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); } catch (e) {}
+          ta.remove();
+        }).finally(() => {
+          this.setState({ copied: true });
+          clearTimeout(this.copyTimer);
+          this.copyTimer = setTimeout(() => this.setState({ copied: false }), 1800);
+        });
+      },
+      bio: bio.map(t => ({
+        parts: String(t).split('*').map((seg, k) => ({
+          t: seg,
+          style: k % 2 ? 'color: #ececec; font-weight: 600;' : 'color: inherit;'
+        })).filter(s => s.t)
+      })),
+      skills: skills.map((t, i) => ({ n: String(i + 1).padStart(2, '0'), t })),
+      toolGroups: [
+        { name: 'Diseño y multimedia', items: ['Figma (avanzado)', 'FigJam', 'Prototipos interactivos', 'Photoshop', 'Illustrator', 'Premiere', 'Canva', 'CapCut', 'Pincel'] },
+        { name: 'Desarrollo y despliegue', items: ['HTML · CSS', 'Chakra UI', 'Tailwind', 'Material UI', 'React', 'GitHub', 'Vercel', 'WordPress'] },
+        { name: 'Analítica y comportamiento', items: ['Microsoft Clarity', 'Google Analytics', 'HubSpot', 'Maze', 'Mobbin'] },
+        { name: 'Inteligencia artificial', items: ['Claude', 'Gemini', 'Google Stitch', 'Perplexity'] },
+        { name: 'Mensajería y correo', items: ['SendGrid'] }
+      ]
+    };
+  }
+}
+
+</script>
+</body>
+</html>
