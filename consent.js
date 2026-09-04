@@ -97,8 +97,24 @@
     });
   }
 
-  // La portada arranca con una animación de carga; no interrumpirla.
-  function schedule() { setTimeout(build, 1200); }
+  // La portada arranca con una animación de carga que marca sessionStorage
+  // 'vm-loader' al terminar. Esperamos a que acabe para no solaparnos con ella,
+  // con un tope por si esa pantalla no llega a mostrarse (p. ej. en perfil.html).
+  //
+  // El tope se mide con reloj de pared, no sumando los retardos pedidos: con las
+  // animaciones en marcha el hilo principal va tan cargado que un setTimeout de
+  // 250 ms tarda segundos en disparar, y contar los retardos previstos dejaba el
+  // banner sin aparecer nunca.
+  function schedule() {
+    var t0 = Date.now();
+    var MAX = 6000;
+    (function poll() {
+      var done = false;
+      try { done = sessionStorage.getItem('vm-loader') === '1'; } catch (e) { done = true; }
+      if (done || Date.now() - t0 >= MAX) { setTimeout(build, 400); return; }
+      setTimeout(poll, 250);
+    })();
+  }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', schedule);
   } else {
