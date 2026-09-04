@@ -195,6 +195,22 @@
     </div>
   </div>
 
+  <div data-screen-label="Sistemas" style="padding: clamp(56px, 7vw, 96px) clamp(20px, 4vw, 64px); border-top: 1px solid #232733;">
+    <div style="width: 100%; max-width: 1200px; margin: 0 auto;">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <span style="width: 32px; height: 1px; background: #343a4a;"></span>
+        <span style="font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase; color: #878787;">Sistemas en los que he trabajado</span>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: clamp(20px, 2.6vw, 36px); margin-top: clamp(24px, 3vw, 36px);">
+        <sc-for list="{{logos}}" as="l" hint-placeholder-count="8">
+          <a href="{{l.href}}" target="{{l.target}}" rel="noopener" title="{{l.name}}" style="height: 96px; display: flex; align-items: center; justify-content: center; overflow: hidden; opacity: 0.42; filter: grayscale(1); transition: opacity 0.3s ease, filter 0.3s ease;" style-hover="opacity: 1; filter: grayscale(0);">
+            {{l.mark}}
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+
   <div id="sectores" data-screen-label="Sectores" style="padding: clamp(56px, 7vw, 96px) clamp(20px, 4vw, 64px);">
     <div style="width: 100%; max-width: 1200px; margin: 0 auto;">
       <div style="display: flex; align-items: center; gap: 12px;">
@@ -558,14 +574,14 @@ class Component extends DCLogic {
      para arrastrar. El enlace solo se activa cuando hay web que abrir. */
   logos() {
     return [
-      { id: 'v2-logo-hermes', name: 'HERMES · Atrinium' },
+      { id: 'v2-logo-hermes', name: 'HERMES · Atrinium', href: 'https://atrinium.com/' },
       { id: 'v2-logo-wakari', name: 'Wakari Solutions', src: 'assets/logos/wakari.webp', href: 'https://wakarisolutions.com/' },
       { id: 'v2-logo-linikit', name: 'Linikit', src: 'assets/logos/linikit.png', href: 'https://linikit.com/' },
       { id: 'v2-logo-mercantil', name: 'Mercantil Panamá' },
       { id: 'v2-logo-mony', name: 'Mony' },
       { id: 'v2-logo-flesip', name: 'Flesip', href: 'https://flesip.com/' },
       { id: 'v2-logo-montsaint', name: 'Montsaint', href: 'https://montsaint.es/' },
-      { id: 'v2-logo-ayax', name: 'Ayax' }
+      { id: 'v2-logo-ayax', name: 'Ayax', href: 'https://www.ayaxsuscripcion.com/es/home' }
     ].map(l => ({
       name: l.name,
       href: l.href || 'javascript:void(0)',

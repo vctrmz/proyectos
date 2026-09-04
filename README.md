@@ -38,6 +38,19 @@ No hay paso de build.
 Vercel — proyecto `proyectos`, preset `Other`, sin build command, root `./`.
 Cada push a `main` genera un despliegue.
 
+## Franja de clientes
+
+La sección «Sistemas en los que he trabajado» (8 logos enlazados, justo encima de
+«Sectores») venía de `Portada v2`. Al generar `Portada v3` en Claude Design se
+borró el marcado de plantilla y solo sobrevivió la función de datos `logos()`,
+que quedó huérfana. Se ha vuelto a portar el bloque `<sc-for list="{{logos}}">`
+adaptándolo a la paleta de v3.
+
+Seis logos se pintan desde `.image-slots.state.json` (webp incrustados) mediante
+`<image-slot>`; Wakari y Linikit son archivos de `assets/logos/`. Con enlace:
+Atrinium, Wakari, Linikit, Flesip, Montsaint y Ayax. Sin enlace: Mercantil Panamá
+y Mony.
+
 ## Metadatos y compartir
 
 Cada página lleva `<title>`, `<meta name="description">`, `canonical`, Open Graph

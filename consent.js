@@ -97,22 +97,42 @@
     });
   }
 
-  // La portada arranca con una animación de carga que marca sessionStorage
-  // 'vm-loader' al terminar. Esperamos a que acabe para no solaparnos con ella,
-  // con un tope por si esa pantalla no llega a mostrarse (p. ej. en perfil.html).
+  // La portada abre con una pantalla de carga: un velo fijo [data-veil] que se
+  // desvanece al terminar y, en ese momento, marca sessionStorage 'vm-loader'.
+  // Esperamos a que acabe para no taparla.
   //
-  // El tope se mide con reloj de pared, no sumando los retardos pedidos: con las
-  // animaciones en marcha el hilo principal va tan cargado que un setTimeout de
-  // 250 ms tarda segundos en disparar, y contar los retardos previstos dejaba el
-  // banner sin aparecer nunca.
+  // No sirve contar tiempo: si la pestaña esta en segundo plano el navegador
+  // estrangula requestAnimationFrame, la intro se queda parada y cualquier tope
+  // por reloj saltaria encima de ella. Por eso miramos el velo, y el tope de
+  // tope de 60 s es solo una red de seguridad. Preferimos que en un caso raro
+  // el banner tarde a que llegue a taparla: si el velo nunca se fuera, no habria
+  // banner, no habria consentimiento y Clarity sencillamente no arrancaria.
+  function introTerminada() {
+    try { if (sessionStorage.getItem('vm-loader') === '1') return true; } catch (e) {}
+    var velo = document.querySelector('[data-veil]');
+    if (!velo) return false;
+    var c = getComputedStyle(velo);
+    return c.display === 'none' || c.visibility === 'hidden' || parseFloat(c.opacity) < 0.02;
+  }
+
+  function veloVisible() {
+    var velo = document.querySelector('[data-veil]');
+    if (!velo) return false;
+    var c = getComputedStyle(velo);
+    return c.display !== 'none' && c.visibility !== 'hidden' && parseFloat(c.opacity) > 0.02;
+  }
+
   function schedule() {
     var t0 = Date.now();
-    var MAX = 6000;
+    var MAX = 60000;
+    var SIN_VELO = 2000; // margen para que la pantalla de carga llegue a montarse
+    var visto = false;
     (function poll() {
-      var done = false;
-      try { done = sessionStorage.getItem('vm-loader') === '1'; } catch (e) { done = true; }
-      if (done || Date.now() - t0 >= MAX) { setTimeout(build, 400); return; }
-      setTimeout(poll, 250);
+      var transcurrido = Date.now() - t0;
+      if (veloVisible()) { visto = true; }
+      var listo = visto ? introTerminada() : (introTerminada() && transcurrido >= SIN_VELO);
+      if (listo || transcurrido >= MAX) { setTimeout(build, 400); return; }
+      setTimeout(poll, 200);
     })();
   }
   if (document.readyState === 'loading') {
