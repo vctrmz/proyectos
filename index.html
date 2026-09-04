@@ -201,7 +201,7 @@
         <span style="width: 32px; height: 1px; background: #343a4a;"></span>
         <span style="font-size: 10.5px; letter-spacing: 0.3em; text-transform: uppercase; color: #878787;">Sistemas en los que he trabajado</span>
       </div>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: clamp(20px, 2.6vw, 36px); margin-top: clamp(24px, 3vw, 36px);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(clamp(140px, 18vw, 180px), 1fr)); gap: clamp(20px, 2.6vw, 36px); margin-top: clamp(24px, 3vw, 36px);">
         <sc-for list="{{logos}}" as="l" hint-placeholder-count="8">
           <a href="{{l.href}}" target="{{l.target}}" rel="noopener" title="{{l.name}}" style="height: 96px; display: flex; align-items: center; justify-content: center; overflow: hidden; opacity: 0.42; filter: grayscale(1); transition: opacity 0.3s ease, filter 0.3s ease;" style-hover="opacity: 1; filter: grayscale(0);">
             {{l.mark}}
