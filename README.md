@@ -38,29 +38,36 @@ No hay paso de build.
 Vercel — proyecto `proyectos`, preset `Other`, sin build command, root `./`.
 Cada push a `main` genera un despliegue.
 
+## Metadatos y compartir
+
+Cada página lleva `<title>`, `<meta name="description">`, `canonical`, Open Graph
+y `twitter:card`. El favicon es `favicon.svg` (monograma VM sobre el degradado de
+marca) y la imagen de previsualización es `assets/og.png` (1200×630).
+
+`og.png` se genera desde `_og-source.html` (no versionado): se sirve el sitio en
+local, se abre esa página y se ejecuta `renderOg()` en la consola, que rasteriza
+la tarjeta con html2canvas y la guarda vía el endpoint `POST /_save-og` de
+`_serve.js`. Solo hace falta rehacerla si cambian el retrato o el titular.
+
 ## Analítica
 
-Microsoft Clarity (mapas de calor y grabaciones de sesión), proyecto `portafolio`,
-ID `yd4g6685po`. Se carga con el paquete oficial `@microsoft/clarity` importado
-por CDN como módulo ES, sin paso de build:
+Microsoft Clarity (mapas de calor y grabación de sesión), proyecto `portafolio`,
+ID `yd4g6685po`. Panel: https://clarity.microsoft.com/projects/view/yd4g6685po
 
-```html
-<script type="module">
-  import Clarity from 'https://cdn.jsdelivr.net/npm/@microsoft/clarity@1.0.2/index.js';
-  Clarity.init('yd4g6685po');
-</script>
+**Clarity no arranca hasta que el visitante lo acepta.** `consent.js` muestra un
+banner, guarda la decisión en `localStorage` bajo la clave `vm-consent`
+(`granted` / `denied`) y solo entonces importa el paquete oficial
+`@microsoft/clarity@1.0.2` por CDN como módulo ES:
+
+```js
+import(PKG).then(m => m.default.init('yd4g6685po'));
 ```
 
-Está en el `<head>` de `index.html` y `perfil.html`, justo antes de `support.js`.
+Si se rechaza no se carga nada de `clarity.ms`. Para volver a ver el banner:
+`vmConsentReset()` desde la consola — útil si algún día quieres enlazarlo desde
+un pie de página tipo «gestionar cookies».
 
-**Al reexportar desde Claude Design este snippet se pierde** — hay que volver a
-añadirlo a mano en las dos páginas.
+`consent.js` va en el `<head>` de `index.html` y `perfil.html` con `defer`.
 
-Panel: https://clarity.microsoft.com/projects/view/yd4g6685po
-
-### Pendiente: consentimiento
-
-Clarity graba sesiones y usa cookies. En España eso normalmente exige banner de
-consentimiento antes de arrancar la grabación. Hoy arranca sin pedirlo. El paquete
-expone `Clarity.consent(false)` para diferir la grabación hasta que el visitante
-acepte.
+**Al reexportar desde Claude Design se pierden el `<script>`, los metadatos y el
+favicon** — los artboards no los llevan. Hay que volver a añadirlos a mano.
