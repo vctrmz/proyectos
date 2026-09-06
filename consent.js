@@ -1,13 +1,14 @@
 /*
  * Banner de consentimiento y arranque condicional de la analitica.
  *
- * Dos servicios, los dos detras del mismo consentimiento:
+ * Tres servicios, los tres detras del mismo consentimiento:
+ *   - Google Analytics 4: metricas de audiencia.
  *   - Microsoft Clarity: mapas de calor y grabacion de sesion.
  *   - HubSpot: seguimiento de visitas y formularios recogidos (portal EU).
  *
- * Ambos usan cookies, asi que no se cargan hasta que el visitante acepta. La
+ * Los tres usan cookies, asi que no se cargan hasta que el visitante acepta. La
  * decision se guarda en localStorage; si la rechaza no se pide ni un solo
- * recurso a clarity.ms ni a hs-scripts.com.
+ * recurso a googletagmanager.com, clarity.ms ni hs-scripts.com.
  */
 (function () {
   var KEY = 'vm-consent';
@@ -17,6 +18,9 @@
   var HS_PORTAL = '148496979';
   var HS_SRC = 'https://js-eu1.hs-scripts.com/' + HS_PORTAL + '.js';
   var HS_ID = 'hs-script-loader';
+  var GA_ID = 'G-HZYDMMSVG5';
+  var GA_SRC = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
+  var GA_TAG = 'ga-gtag-loader';
 
   function read() {
     try { return localStorage.getItem(KEY); } catch (e) { return null; }
@@ -40,7 +44,27 @@
     document.head.appendChild(sc);
   }
 
+  function startGA() {
+    if (document.getElementById(GA_TAG)) { return; }
+
+    // La cola se crea antes de cargar gtag.js: lo que se encole ahora se
+    // procesa en cuanto llegue. Y tiene que empujar el objeto `arguments` tal
+    // cual, que es lo que gtag.js espera leer.
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag('js', new Date());
+    gtag('config', GA_ID);
+
+    var sc = document.createElement('script');
+    sc.id = GA_TAG;
+    sc.async = true;
+    sc.src = GA_SRC;
+    document.head.appendChild(sc);
+  }
+
   function startAnalytics() {
+    startGA();
     startClarity();
     startHubSpot();
   }
@@ -72,7 +96,7 @@
 
     var text = document.createElement('p');
     text.style.cssText = 'margin:0;flex:1 1 260px;font-size:13px;line-height:1.5;color:#b4b4b4';
-    text.textContent = 'Uso Microsoft Clarity y HubSpot para ver cómo se navega esta web y para atender lo que me escribes. Ambos usan cookies y solo se activan si lo aceptas.';
+    text.textContent = 'Uso Google Analytics, Microsoft Clarity y HubSpot para ver cómo se navega esta web y para atender lo que me escribes. Usan cookies y solo se activan si lo aceptas.';
 
     var actions = document.createElement('div');
     actions.style.cssText = 'display:flex;gap:8px;flex:0 0 auto';

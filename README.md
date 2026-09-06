@@ -64,15 +64,23 @@ la tarjeta con html2canvas y la guarda vía el endpoint `POST /_save-og` de
 
 ## Analítica
 
-Dos servicios, los dos detrás del mismo consentimiento:
+Tres servicios, los tres detrás del mismo consentimiento:
 
 | Servicio | Para qué | Identificador |
 |---|---|---|
+| Google Analytics 4 | Métricas de audiencia | propiedad `G-HZYDMMSVG5` |
 | Microsoft Clarity | Mapas de calor y grabación de sesión | proyecto `portafolio`, ID `yd4g6685po` |
 | HubSpot | Seguimiento de visitas y formularios recogidos | portal `148496979`, región **EU** |
 
-Paneles: https://clarity.microsoft.com/projects/view/yd4g6685po y
-https://app-eu1.hubspot.com/
+Paneles: https://analytics.google.com/,
+https://clarity.microsoft.com/projects/view/yd4g6685po y https://app-eu1.hubspot.com/
+
+GA4 no va como el snippet suelto de `<head>` que da Google, sino inyectado desde
+`consent.js` al aceptar. La cola `dataLayer` y `gtag()` se crean **antes** de
+pedir `gtag.js`, así que `gtag('js')` y `gtag('config')` quedan encolados y se
+procesan en cuanto el script llega. `window.gtag` queda expuesto por si más
+adelante quieres enviar eventos propios. Deja las cookies `_ga` y
+`_ga_HZYDMMSVG5`, y los hits van a `region1.google-analytics.com/g/collect`.
 
 HubSpot se carga con su script loader oficial, inyectado desde `consent.js`:
 
@@ -86,7 +94,7 @@ conviene apuntar directo al de la región. El loader arrastra `collectedforms.js
 `hs-analytics` y el beacon `track-eu1.hubspot.com/__ptq.gif`, y deja las cookies
 `__hstc`, `hubspotutk`, `__hssrc` y `__hssc`.
 
-**Ninguno de los dos arranca hasta que el visitante lo acepta.** `consent.js` muestra un
+**Ninguno de los tres arranca hasta que el visitante lo acepta.** `consent.js` muestra un
 banner, guarda la decisión en `localStorage` bajo la clave `vm-consent`
 (`granted` / `denied`) y solo entonces importa el paquete oficial
 `@microsoft/clarity@1.0.2` por CDN como módulo ES:
@@ -95,8 +103,8 @@ banner, guarda la decisión en `localStorage` bajo la clave `vm-consent`
 import(PKG).then(m => m.default.init('yd4g6685po'));
 ```
 
-Si se rechaza no se pide ni un solo recurso a `clarity.ms` ni a `hs-scripts.com`.
-Para volver a ver el banner:
+Si se rechaza no se pide ni un solo recurso a `googletagmanager.com`, `clarity.ms`
+ni `hs-scripts.com`, y no se pone ninguna cookie. Para volver a ver el banner:
 `vmConsentReset()` desde la consola — útil si algún día quieres enlazarlo desde
 un pie de página tipo «gestionar cookies».
 
