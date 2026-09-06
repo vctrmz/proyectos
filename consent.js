@@ -1,14 +1,22 @@
 /*
- * Banner de consentimiento y arranque condicional de Microsoft Clarity.
+ * Banner de consentimiento y arranque condicional de la analitica.
  *
- * Clarity graba sesiones y usa cookies, así que no se inicializa hasta que el
- * visitante acepta. La decisión se guarda en localStorage; si la rechaza no se
- * carga nada de clarity.ms.
+ * Dos servicios, los dos detras del mismo consentimiento:
+ *   - Microsoft Clarity: mapas de calor y grabacion de sesion.
+ *   - HubSpot: seguimiento de visitas y formularios recogidos (portal EU).
+ *
+ * Ambos usan cookies, asi que no se cargan hasta que el visitante acepta. La
+ * decision se guarda en localStorage; si la rechaza no se pide ni un solo
+ * recurso a clarity.ms ni a hs-scripts.com.
  */
 (function () {
   var KEY = 'vm-consent';
   var PROJECT = 'yd4g6685po';
   var PKG = 'https://cdn.jsdelivr.net/npm/@microsoft/clarity@1.0.2/index.js';
+  // Portal 148496979, cuenta europea: el loader vive en js-eu1, no en js.
+  var HS_PORTAL = '148496979';
+  var HS_SRC = 'https://js-eu1.hs-scripts.com/' + HS_PORTAL + '.js';
+  var HS_ID = 'hs-script-loader';
 
   function read() {
     try { return localStorage.getItem(KEY); } catch (e) { return null; }
@@ -21,6 +29,22 @@
     import(PKG).then(function (m) { m.default.init(PROJECT); }).catch(function () {});
   }
 
+  function startHubSpot() {
+    if (document.getElementById(HS_ID)) { return; }
+    var sc = document.createElement('script');
+    sc.id = HS_ID;
+    sc.type = 'text/javascript';
+    sc.async = true;
+    sc.defer = true;
+    sc.src = HS_SRC;
+    document.head.appendChild(sc);
+  }
+
+  function startAnalytics() {
+    startClarity();
+    startHubSpot();
+  }
+
   // Permite reabrir el banner desde la consola o un enlace de "gestionar cookies".
   window.vmConsentReset = function () {
     try { localStorage.removeItem(KEY); } catch (e) {}
@@ -28,7 +52,7 @@
   };
 
   var decision = read();
-  if (decision === 'granted') { startClarity(); return; }
+  if (decision === 'granted') { startAnalytics(); return; }
   if (decision === 'denied') { return; }
 
   function build() {
@@ -48,7 +72,7 @@
 
     var text = document.createElement('p');
     text.style.cssText = 'margin:0;flex:1 1 260px;font-size:13px;line-height:1.5;color:#b4b4b4';
-    text.textContent = 'Uso Microsoft Clarity para ver cómo se navega esta web: mapas de calor y grabación de sesión. Solo se activa si lo aceptas.';
+    text.textContent = 'Uso Microsoft Clarity y HubSpot para ver cómo se navega esta web y para atender lo que me escribes. Ambos usan cookies y solo se activan si lo aceptas.';
 
     var actions = document.createElement('div');
     actions.style.cssText = 'display:flex;gap:8px;flex:0 0 auto';
@@ -83,7 +107,7 @@
       wrap.style.transform = 'translateY(12px)';
       setTimeout(function () { wrap.remove(); }, 350);
     }
-    accept.addEventListener('click', function () { write('granted'); startClarity(); close(); });
+    accept.addEventListener('click', function () { write('granted'); startAnalytics(); close(); });
     reject.addEventListener('click', function () { write('denied'); close(); });
 
     actions.appendChild(reject);

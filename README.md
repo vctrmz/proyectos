@@ -64,10 +64,29 @@ la tarjeta con html2canvas y la guarda vía el endpoint `POST /_save-og` de
 
 ## Analítica
 
-Microsoft Clarity (mapas de calor y grabación de sesión), proyecto `portafolio`,
-ID `yd4g6685po`. Panel: https://clarity.microsoft.com/projects/view/yd4g6685po
+Dos servicios, los dos detrás del mismo consentimiento:
 
-**Clarity no arranca hasta que el visitante lo acepta.** `consent.js` muestra un
+| Servicio | Para qué | Identificador |
+|---|---|---|
+| Microsoft Clarity | Mapas de calor y grabación de sesión | proyecto `portafolio`, ID `yd4g6685po` |
+| HubSpot | Seguimiento de visitas y formularios recogidos | portal `148496979`, región **EU** |
+
+Paneles: https://clarity.microsoft.com/projects/view/yd4g6685po y
+https://app-eu1.hubspot.com/
+
+HubSpot se carga con su script loader oficial, inyectado desde `consent.js`:
+
+```html
+<script id="hs-script-loader" async defer src="https://js-eu1.hs-scripts.com/148496979.js"></script>
+```
+
+Ojo con la región: al ser cuenta europea el loader vive en `js-eu1.hs-scripts.com`.
+El dominio genérico `js.hs-scripts.com` responde 307 a ese mismo portal, pero
+conviene apuntar directo al de la región. El loader arrastra `collectedforms.js`,
+`hs-analytics` y el beacon `track-eu1.hubspot.com/__ptq.gif`, y deja las cookies
+`__hstc`, `hubspotutk`, `__hssrc` y `__hssc`.
+
+**Ninguno de los dos arranca hasta que el visitante lo acepta.** `consent.js` muestra un
 banner, guarda la decisión en `localStorage` bajo la clave `vm-consent`
 (`granted` / `denied`) y solo entonces importa el paquete oficial
 `@microsoft/clarity@1.0.2` por CDN como módulo ES:
@@ -76,7 +95,8 @@ banner, guarda la decisión en `localStorage` bajo la clave `vm-consent`
 import(PKG).then(m => m.default.init('yd4g6685po'));
 ```
 
-Si se rechaza no se carga nada de `clarity.ms`. Para volver a ver el banner:
+Si se rechaza no se pide ni un solo recurso a `clarity.ms` ni a `hs-scripts.com`.
+Para volver a ver el banner:
 `vmConsentReset()` desde la consola — útil si algún día quieres enlazarlo desde
 un pie de página tipo «gestionar cookies».
 
