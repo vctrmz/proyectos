@@ -215,7 +215,7 @@
           <span style="width: 8px; height: 8px; border-radius: 999px; background: #8bde5f; box-shadow: 0 0 10px rgba(139,222,95,0.6);"></span>
           Disponible para proyectos
         </span>
-        <span>© 2026 Víctor Maza · Málaga, España · Trabajo en remoto</span>
+        <span>© 2026 Víctor Maza · Málaga, España · Trabajo en remoto · <a href="privacidad.html" style="color: #d6e2ff; text-decoration: underline; text-underline-offset: 3px;" style-hover="color: #ffffff;">Privacidad</a> · <a href="privacidad.html#cookies" onClick="{{openCookies}}" style="color: #d6e2ff; text-decoration: underline; text-underline-offset: 3px;" style-hover="color: #ffffff;">Cookies</a></span>
       </div>
     </div>
   </div>
@@ -442,7 +442,14 @@ class Component extends DCLogic {
         { name: 'Analítica y comportamiento', items: ['Microsoft Clarity', 'Google Analytics', 'HubSpot', 'Maze', 'Mobbin'] },
         { name: 'Inteligencia artificial', items: ['Claude', 'Gemini', 'Google Stitch', 'Perplexity'] },
         { name: 'Mensajería y correo', items: ['SendGrid'] }
-      ]
+      ],
+      /* Retirar el consentimiento tiene que costar lo mismo que darlo: un clic
+         en el pie reabre el banner. El href a la politica es el fallback. */
+      openCookies: (ev) => {
+        if (typeof window.vmConsentReset !== 'function') return;
+        ev.preventDefault();
+        window.vmConsentReset();
+      }
     };
   }
 }

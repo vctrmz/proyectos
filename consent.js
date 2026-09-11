@@ -115,7 +115,14 @@
 
     var text = document.createElement('p');
     text.style.cssText = 'margin:0;flex:1 1 260px;font-size:13px;line-height:1.5;color:#b4b4b4';
-    text.textContent = 'Uso Google Analytics, Microsoft Clarity y HubSpot para ver cómo se navega esta web y para atender lo que me escribes. Usan cookies y solo se activan si lo aceptas.';
+    text.textContent = 'Uso Google Analytics, Microsoft Clarity y HubSpot para ver cómo se navega esta web y para atender lo que me escribes. Usan cookies y solo se activan si lo aceptas. ';
+    // La segunda capa informativa: el enlace a la politica es obligatorio en el
+    // propio banner, no vale con tenerlo solo en el pie.
+    var more = document.createElement('a');
+    more.href = 'privacidad.html';
+    more.textContent = 'Más información';
+    more.style.cssText = 'color:#ececec;text-decoration:underline;text-underline-offset:3px;white-space:nowrap';
+    text.appendChild(more);
 
     var actions = document.createElement('div');
     actions.style.cssText = 'display:flex;gap:8px;flex:0 0 auto';
