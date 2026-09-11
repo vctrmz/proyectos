@@ -64,7 +64,6 @@
       </a>
       <span style="width: 1px; height: 20px; background: #2c3140; margin: 0 4px;"></span>
       <a href="#inicio" style="border-radius: 999px; padding: 8px 15px; font-size: 13px; color: #ececec; background: rgba(44,49,64,0.6);" data-roll>Inicio</a>
-      <a href="#trabajo" style="border-radius: 999px; padding: 8px 15px; font-size: 13px; color: #878787;" style-hover="color: #ececec; background: rgba(44,49,64,0.6);" data-roll>Trabajos</a>
       <a href="perfil.html" style="border-radius: 999px; padding: 8px 15px; font-size: 13px; color: #878787;" style-hover="color: #ececec; background: rgba(44,49,64,0.6);" data-roll>Sobre mí</a>
       <span style="width: 1px; height: 20px; background: #2c3140; margin: 0 4px;"></span>
       <x-import component-from-global-scope="starfield-button" from="./starfield-button.js" label="Escríbeme ↗" href="#contacto" accent="#8bde5f" fill="rgba(35,39,51,0.55)" text-color="#ececec" border-color="#343a4a" padding="8px 16px" font-size="13" light-size="58" light-thickness="2" speed="55" pixel-size="4" pixel-density="46" glow-size="14" hint-size="126px,36px"></x-import>
@@ -223,11 +222,12 @@
         <sc-for list="{{sectors}}" as="s" hint-placeholder-count="5">
           <div>
           <p style="{{s.headStyle}}">{{s.head}}</p>
-          <div style="{{s.rowStyle}}" style-hover="background: #232733; border-color: #343a4a;">
+          <div style="{{s.rowStyle}}">
             <span style="display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid #343a4a; font-size: 12px; color: {{s.color}};">{{s.n}}</span>
             <div>
               <p style="margin: 0; font-size: clamp(17px, 1.8vw, 22px);">{{s.name}}</p>
               <p style="margin: 8px 0 0; font-size: 14.5px; line-height: 1.6; color: #878787; text-wrap: pretty;">{{s.body}}</p>
+              <a href="{{s.href}}" target="{{s.target}}" rel="noopener" onClick="{{s.go}}" style="{{s.ctaStyle}}" style-hover="border-color: #8bde5f; color: #ececec;">{{s.cta}}</a>
             </div>
             <span style="{{s.yearStyle}}">{{s.years}}</span>
           </div>
@@ -327,7 +327,7 @@
           <div role="img" aria-label="{{boxAlt}}" style="{{boxImgStyle}}"></div>
           <div style="{{railStyle}}">
             <sc-for list="{{boxGallery}}" as="g" hint-placeholder-count="4">
-              <div onClick="{{g.pick}}" title="{{g.alt}}" style="{{g.style}}"></div>
+              <div onClick="{{g.pick}}" onKeyDown="{{g.key}}" role="button" tabindex="0" aria-label="{{g.aria}}" aria-pressed="{{g.active}}" title="{{g.alt}}" style="{{g.style}}"></div>
             </sc-for>
           </div>
           <p style="margin: 12px 0 0; font-size: 12px; letter-spacing: 0.1em; color: #6d6d6d;">{{boxShotAlt}}</p>
@@ -349,6 +349,11 @@
           </div>
         </div>
         </div>
+
+      <div style="{{boxFootStyle}}">
+        <a href="#trabajo" onClick="{{goNext}}" style="{{boxNextStyle}}" style-hover="border-color: #8bde5f;"><span style="font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; color: #878787;">Siguiente caso</span><span style="font-size: 15px; line-height: 1.3; color: #ececec;">{{boxNextTitle}} →</span></a>
+        <a href="#contacto" onClick="{{goContact}}" style="{{boxContactStyle}}" style-hover="background: rgba(139,222,95,0.16);">Escríbeme ↗</a>
+      </div>
       </div>
     </div>
   </div>
@@ -634,21 +639,45 @@ class Component extends DCLogic {
     const rowStyle = this.state.mobile
       ? 'display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: start; border: 1px solid #2c3140; border-radius: 24px; padding: 16px 18px; background: rgba(35,39,51,0.4);'
       : 'display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: clamp(16px, 2.4vw, 32px); align-items: center; border: 1px solid #2c3140; border-radius: 40px; padding: clamp(16px, 2vw, 22px) clamp(20px, 2.4vw, 30px); background: rgba(35,39,51,0.4);';
+    /* La fila ya no tiene :hover. Antes cambiaba de fondo al pasar el raton
+       sin ser un enlace, y el mapa de calor recogia clics muertos sobre el
+       bloque entero. Ahora el destino, cuando existe, es un enlace visible con
+       texto propio: la afordancia coincide con lo que hace, y Clarity puede
+       nombrar el elemento en vez de registrar un DIV anonimo. */
+    const ctaStyle = 'display: inline-flex; align-items: center; gap: 6px; margin: 14px 0 0; border: 1px solid #343a4a; border-radius: 999px; padding: 7px 15px; font-size: 12.5px; color: #c9c9c9; text-decoration: none; transition: border-color 0.25s ease, color 0.25s ease;';
     /* La etiqueta solo se pinta en la primera fila de cada grupo: repetirla en
        todas convertiría el agrupamiento en ruido. */
     let last = null;
     return this._sectors.map(s => {
       const head = s.group !== last ? s.group : '';
       last = s.group;
-      return Object.assign({ rowStyle: rowStyle, yearStyle: yearStyle, head: head, headStyle: head ? headStyle : 'display: none;' }, s);
+      const hasCase = typeof s.caseIdx === 'number';
+      const linked = hasCase || !!s.site;
+      return Object.assign({
+        rowStyle: rowStyle,
+        yearStyle: yearStyle,
+        head: head,
+        headStyle: head ? headStyle : 'display: none;',
+        cta: hasCase ? 'Ver el caso ↗' : 'Ver el producto ↗',
+        href: hasCase ? '#trabajo' : (s.site || ''),
+        target: hasCase || !s.site ? '' : '_blank',
+        ctaStyle: linked ? ctaStyle : 'display: none;',
+        go: (ev) => {
+          if (!hasCase) return;
+          ev.preventDefault();
+          this.setState({ box: s.caseIdx, shot: 0 });
+        }
+      }, s);
     });
   }
 
+  /* `caseIdx` apunta a workData(); `site` al producto en produccion. Los
+     sectores sin ninguno de los dos no pintan enlace: no hay nada que abrir. */
   sectorData() {
     return [
-      { group: 'Atrinium', n: '01', color: '#8bde5f', name: 'Insurtech · HERMES', years: '2022 a 2026', body: 'Suscripción, contratación y facturación de seguros. Estados, permisos y documentos legales que condicionan cada pantalla.' },
-      { group: 'Atrinium', n: '02', color: '#a9a4f8', name: 'Facturación y ERP · Flesip', years: '2024 a 2025', body: 'Facturación electrónica para pymes: hacer que el camino que cumple la norma sea también el más corto.' },
-      { group: 'Atrinium', n: '03', color: '#8bde5f', name: 'E-commerce · Montsaint', years: '2023 a 2025', body: 'Catálogo y checkout de marca: ficha de producto, tallas y pago sin fricción innecesaria.' },
+      { group: 'Atrinium', n: '01', color: '#8bde5f', name: 'Insurtech · HERMES', years: '2022 a 2026', caseIdx: 0, body: 'Suscripción, contratación y facturación de seguros. Estados, permisos y documentos legales que condicionan cada pantalla.' },
+      { group: 'Atrinium', n: '02', color: '#a9a4f8', name: 'Facturación y ERP · Flesip', years: '2024 a 2025', site: 'https://flesip.com/', body: 'Facturación electrónica para pymes: hacer que el camino que cumple la norma sea también el más corto.' },
+      { group: 'Atrinium', n: '03', color: '#8bde5f', name: 'E-commerce · Montsaint', years: '2023 a 2025', site: 'https://montsaint.es/', body: 'Catálogo y checkout de marca: ficha de producto, tallas y pago sin fricción innecesaria.' },
       { group: 'Proyectos anteriores', n: '04', color: '#a9a4f8', name: 'Banca · Mercantil Panamá', years: '2020 a 2022', body: 'Pasivos, activos y tarjeta Next Gem, más la app Mony: onboarding y autenticación reforzada en entorno regulado.' },
       { group: 'Proyectos anteriores', n: '05', color: '#8bde5f', name: 'Transporte · Taksio', years: '2018 a 2019', body: 'Plataforma multimodal desde cero: design system primero, flujos de conductor y pasajero después.' }
     ];
@@ -948,6 +977,10 @@ class Component extends DCLogic {
     const isGroup = typeof box === 'string' && box.indexOf('g:') === 0;
     const gp = isGroup ? box.slice(2).split('|') : null;
     const gn = gp ? Math.max(1, parseInt(gp[2], 10) || 1) : 0;
+    /* Salida del modal: el siguiente caso, dando la vuelta al llegar al final. */
+    const allWorks = this.workData();
+    const nextIdx = isWork && allWorks.length > 1 ? (box + 1) % allWorks.length : null;
+    const nextW = nextIdx === null ? null : allWorks[nextIdx];
     return {
       loaderStyle: 'position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; background: #1b1e27; opacity: ' +
         (this.state.loading ? '1' : '0') + '; pointer-events: ' + (this.state.loading ? 'auto' : 'none') + '; transition: opacity 0.6s ease;',
@@ -1009,9 +1042,20 @@ class Component extends DCLogic {
         : 'width: 100%; height: clamp(320px, 62vh, 720px); border-radius: 24px; border: 1px solid #2c3140; background-color: #0d0d0d; background-image: url(' +
           (shot ? card(shot[0]) : (w ? card(w.img) : card(ex.img))) + '); background-size: contain; background-position: center; background-repeat: no-repeat;',
       railStyle: 'display: ' + (gal.length ? 'grid' : 'none') + '; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; margin-top: 12px;',
+      /* Las miniaturas eran divs vacios: sin texto ni etiqueta, Clarity solo
+         podia registrarlas como `DIV.sc-host[1]>DIV[1]>DIV[10]>...`, y un
+         lector de pantalla no las anunciaba. `aria-label` les da nombre y
+         `role`/`tabindex`/Enter las hace operables con teclado. */
       boxGallery: gal.map((g, i) => ({
         alt: g[1],
+        aria: 'Captura ' + (i + 1) + ' de ' + gal.length + ': ' + g[1],
+        active: this.state.shot === i ? 'true' : 'false',
         pick: () => this.setState({ shot: i }),
+        key: (ev) => {
+          if (ev.key !== 'Enter' && ev.key !== ' ') return;
+          ev.preventDefault();
+          this.setState({ shot: i });
+        },
         style: 'cursor: pointer; height: 62px; border-radius: 14px; border: 1px solid ' + (this.state.shot === i ? '#8bde5f' : '#2c3140') +
           '; background-color: #232733; background-image: url(' + thumb(g[0]) + '); background-size: cover; background-position: top left; opacity: ' +
           (this.state.shot === i ? '1' : '0.55') + '; transition: opacity 0.25s ease, border-color 0.25s ease;'
@@ -1040,6 +1084,40 @@ class Component extends DCLogic {
       boxTeam: w ? w.team.map(([icon, name, body]) => ({ icon, name, body })) : [],
       boxSkills: w ? w.skills : [],
       boxFacts: w ? w.facts.map(([v, k]) => ({ v, k })) : [],
+      /* El clic mas repetido de toda la web era el aspa de este modal: se abria
+         un caso y la unica salida era cerrarlo. El pie ofrece dos
+         continuaciones —el otro caso y el contacto— para que leer un caso no
+         termine en un callejon sin salida. */
+      boxFootStyle: 'display: ' + (shown ? 'flex' : 'none') +
+        '; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; margin: 0 clamp(20px, 2.6vw, 34px) clamp(24px, 3vw, 40px); border-top: 1px solid #2c3140; padding-top: 20px;',
+      boxNextStyle: 'display: ' + (nextW ? 'inline-flex' : 'none') +
+        '; flex-direction: column; gap: 4px; border: 1px solid #343a4a; border-radius: 20px; padding: 12px 20px; text-decoration: none; transition: border-color 0.25s ease;',
+      boxNextTitle: nextW ? nextW.title : '',
+      goNext: (ev) => {
+        ev.preventDefault();
+        if (nextIdx === null) return;
+        this.setState({ box: nextIdx, shot: 0 });
+        const panel = document.querySelector('[data-box-panel]');
+        if (panel) panel.scrollTop = 0;
+      },
+      boxContactStyle: 'display: inline-flex; align-items: center; border: 1px solid #8bde5f; border-radius: 999px; padding: 12px 24px; font-size: 14px; color: #ececec; text-decoration: none; background: rgba(139,222,95,0.08); transition: background 0.25s ease;',
+      /* Salto instantaneo a proposito. En esta pagina el scroll suave no
+         funciona por nada: ni `scrollIntoView`, ni `behavior: 'smooth'`, ni el
+         `scroll-behavior: smooth` del documento — ScrollTrigger cancela la
+         animacion en el primer frame, y las anclas del propio menu tienen el
+         mismo problema. Lo unico que mueve la pagina es el salto instantaneo.
+         El href queda como fallback si el JS fallara. */
+      goContact: (ev) => {
+        ev.preventDefault();
+        this.setState({ box: null });
+        /* El salto espera un tick a que el modal se apague antes de medir. */
+        setTimeout(() => {
+          const target = document.getElementById('contacto');
+          if (!target) return;
+          const top = target.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({ top: top, behavior: 'instant' });
+        }, 0);
+      },
       closeBox: () => this.setState({ box: null })
     };
   }
