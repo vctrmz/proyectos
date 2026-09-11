@@ -29,7 +29,26 @@
     try { localStorage.setItem(KEY, v); } catch (e) {}
   }
 
+  /* Clarity no arranca en local. Sin esta guarda, cada sesion de desarrollo
+     entra en el proyecto como trafico real: en los ultimos 30 dias localhost
+     sumaba 12 paginas vistas frente a 17 del dominio publico, asi que los
+     mapas de calor estaban midiendo mis propias pruebas. */
+  function isLocalHost() {
+    var h = location.hostname;
+    return h === '' ||
+      h === 'localhost' ||
+      h === '127.0.0.1' ||
+      h === '::1' ||
+      h === '[::1]' ||
+      /\.local$/.test(h) ||
+      /^127\./.test(h) ||
+      /^10\./.test(h) ||
+      /^192\.168\./.test(h) ||
+      /^172\.(1[6-9]|2[0-9]|3[01])\./.test(h);
+  }
+
   function startClarity() {
+    if (isLocalHost()) { return; }
     import(PKG).then(function (m) { m.default.init(PROJECT); }).catch(function () {});
   }
 
