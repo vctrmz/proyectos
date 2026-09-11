@@ -28,10 +28,6 @@
   var HJ_SV = 6;
   var HJ_SRC = 'https://static.hotjar.com/c/hotjar-' + HJ_ID + '.js?sv=' + HJ_SV;
   var HJ_TAG = 'hj-loader';
-  var PL_HASH = '81690a1951e6290b7119405fec614b5d';
-  var PL_SUID = 81035;
-  var PL_SRC = 'https://a.plerdy.com/public/js/click/main.js';
-  var PL_TAG = 'plerdy-loader';
 
   function read() {
     try { return localStorage.getItem(KEY); } catch (e) { return null; }
@@ -77,22 +73,11 @@
     document.head.appendChild(sc);
   }
 
-  // Mismo snippet oficial de Plerdy, inyectado aqui para que respete el
-  // consentimiento. El original lleva `?v=Math.random()` para saltarse la
-  // cache; se mantiene. Como Clarity y Hotjar, tampoco arranca en local.
+  // El snippet de Plerdy vive antes de </body> en cada pagina, donde ellos
+  // piden ponerlo, con sus propias guardas de consentimiento y de local. Aqui
+  // solo se le da la orden de arrancar cuando el visitante acepta.
   function startPlerdy() {
-    if (isLocalHost()) { return; }
-    if (window.__plerdyCode || document.getElementById(PL_TAG)) { return; }
-    window.__plerdyCode = 1;
-    window._protocol = location.protocol === 'https:' ? 'https://' : 'http://';
-    window._site_hash_code = PL_HASH;
-    window._suid = PL_SUID;
-    var sc = document.createElement('script');
-    sc.id = PL_TAG;
-    sc.async = true;
-    sc.referrerPolicy = 'strict-origin-when-cross-origin';
-    sc.src = PL_SRC + '?v=' + Math.random();
-    document.head.appendChild(sc);
+    if (typeof window.__plerdyStart === 'function') { window.__plerdyStart(); }
   }
 
   function startHubSpot() {

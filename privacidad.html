@@ -231,5 +231,32 @@
     }
   })();
 </script>
+<!-- BEGIN PLERDY CODE -->
+<!-- Snippet oficial de Plerdy, donde ellos piden ponerlo, con dos guardas:
+     no carga sin consentimiento (consent.js llama a __plerdyStart al aceptar)
+     y no carga en local. Las globales de configuracion se definen siempre;
+     la peticion a plerdy.com, solo con permiso. -->
+<script data-plerdy_code='1'>
+(function(w,d){
+  w._protocol=w.location.protocol=="https:"?"https://":"http://";
+  w._site_hash_code="81690a1951e6290b7119405fec614b5d";
+  w._suid=81035;
+  w.__plerdyStart=function(){
+    if(w.__plerdyCode)return;
+    var h=w.location.hostname;
+    if(h===""||/^(localhost|127\.|10\.|192\.168\.|172\.(1[6-9]|2\d|3[01])\.)/.test(h)||/^\[?::1\]?$/.test(h)||/\.local$/.test(h))return;
+    w.__plerdyCode=1;
+    var s=d.createElement("script");
+    s.id="plerdy-loader";
+    s.async=true;
+    s.referrerPolicy="strict-origin-when-cross-origin";
+    s.src="https://a.plerdy.com/public/js/click/main.js?v="+Math.random();
+    d.head.appendChild(s);
+  };
+  var ok=false;try{ok=localStorage.getItem("vm-consent")==="granted";}catch(e){}
+  if(ok)w.__plerdyStart();
+})(window,document);
+</script>
+<!-- END PLERDY CODE -->
 </body>
 </html>
