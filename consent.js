@@ -1,14 +1,17 @@
 /*
  * Banner de consentimiento y arranque condicional de la analitica.
  *
- * Tres servicios, los tres detras del mismo consentimiento:
+ * Cinco servicios, los cinco detras del mismo consentimiento:
  *   - Google Analytics 4: metricas de audiencia.
  *   - Microsoft Clarity: mapas de calor y grabacion de sesion.
+ *   - Hotjar: mapas de calor y grabacion de sesion.
+ *   - Plerdy: mapas de calor y grabacion de sesion.
  *   - HubSpot: seguimiento de visitas y formularios recogidos (portal EU).
  *
- * Los tres usan cookies, asi que no se cargan hasta que el visitante acepta. La
- * decision se guarda en localStorage; si la rechaza no se pide ni un solo
- * recurso a googletagmanager.com, clarity.ms ni hs-scripts.com.
+ * Todos identifican al visitante (cookies o localStorage), asi que no se
+ * cargan hasta que acepta. La decision se guarda en localStorage; si la
+ * rechaza no se pide ni un solo recurso a googletagmanager.com, clarity.ms,
+ * hotjar.com, plerdy.com ni hs-scripts.com.
  */
 (function () {
   var KEY = 'vm-consent';
@@ -21,6 +24,14 @@
   var GA_ID = 'G-HZYDMMSVG5';
   var GA_SRC = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
   var GA_TAG = 'ga-gtag-loader';
+  var HJ_ID = 6776849;
+  var HJ_SV = 6;
+  var HJ_SRC = 'https://static.hotjar.com/c/hotjar-' + HJ_ID + '.js?sv=' + HJ_SV;
+  var HJ_TAG = 'hj-loader';
+  var PL_HASH = '81690a1951e6290b7119405fec614b5d';
+  var PL_SUID = 81035;
+  var PL_SRC = 'https://a.plerdy.com/public/js/click/main.js';
+  var PL_TAG = 'plerdy-loader';
 
   function read() {
     try { return localStorage.getItem(KEY); } catch (e) { return null; }
@@ -29,7 +40,7 @@
     try { localStorage.setItem(KEY, v); } catch (e) {}
   }
 
-  /* Clarity no arranca en local. Sin esta guarda, cada sesion de desarrollo
+  /* Clarity y Hotjar no arrancan en local. Sin esta guarda, cada sesion de desarrollo
      entra en el proyecto como trafico real: en los ultimos 30 dias localhost
      sumaba 12 paginas vistas frente a 17 del dominio publico, asi que los
      mapas de calor estaban midiendo mis propias pruebas. */
@@ -50,6 +61,38 @@
   function startClarity() {
     if (isLocalHost()) { return; }
     import(PKG).then(function (m) { m.default.init(PROJECT); }).catch(function () {});
+  }
+
+  // Mismo snippet oficial de Hotjar, pero inyectado aqui en vez de en el <head>
+  // para que respete el consentimiento. Como Clarity, tampoco arranca en local.
+  function startHotjar() {
+    if (isLocalHost()) { return; }
+    if (document.getElementById(HJ_TAG)) { return; }
+    window.hj = window.hj || function () { (window.hj.q = window.hj.q || []).push(arguments); };
+    window._hjSettings = { hjid: HJ_ID, hjsv: HJ_SV };
+    var sc = document.createElement('script');
+    sc.id = HJ_TAG;
+    sc.async = true;
+    sc.src = HJ_SRC;
+    document.head.appendChild(sc);
+  }
+
+  // Mismo snippet oficial de Plerdy, inyectado aqui para que respete el
+  // consentimiento. El original lleva `?v=Math.random()` para saltarse la
+  // cache; se mantiene. Como Clarity y Hotjar, tampoco arranca en local.
+  function startPlerdy() {
+    if (isLocalHost()) { return; }
+    if (window.__plerdyCode || document.getElementById(PL_TAG)) { return; }
+    window.__plerdyCode = 1;
+    window._protocol = location.protocol === 'https:' ? 'https://' : 'http://';
+    window._site_hash_code = PL_HASH;
+    window._suid = PL_SUID;
+    var sc = document.createElement('script');
+    sc.id = PL_TAG;
+    sc.async = true;
+    sc.referrerPolicy = 'strict-origin-when-cross-origin';
+    sc.src = PL_SRC + '?v=' + Math.random();
+    document.head.appendChild(sc);
   }
 
   function startHubSpot() {
@@ -85,6 +128,8 @@
   function startAnalytics() {
     startGA();
     startClarity();
+    startHotjar();
+    startPlerdy();
     startHubSpot();
   }
 
@@ -115,7 +160,7 @@
 
     var text = document.createElement('p');
     text.style.cssText = 'margin:0;flex:1 1 260px;font-size:13px;line-height:1.5;color:#b4b4b4';
-    text.textContent = 'Uso Google Analytics, Microsoft Clarity y HubSpot para ver cómo se navega esta web y para atender lo que me escribes. Usan cookies y solo se activan si lo aceptas. ';
+    text.textContent = 'Uso Google Analytics, Microsoft Clarity, Hotjar, Plerdy y HubSpot para ver cómo se navega esta web y para atender lo que me escribes. Usan cookies y solo se activan si lo aceptas. ';
     // La segunda capa informativa: el enlace a la politica es obligatorio en el
     // propio banner, no vale con tenerlo solo en el pie.
     var more = document.createElement('a');

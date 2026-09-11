@@ -10,7 +10,7 @@
 <link rel="canonical" href="https://proyectos-theta-hazel.vercel.app/privacidad.html">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Bebas+Neue&display=swap">
-<!-- Analitica: consent.js decide si arranca Microsoft Clarity -->
+<!-- Analitica: consent.js decide si arrancan GA4, Clarity, Hotjar, Plerdy y HubSpot -->
 <script src="./consent.js" defer></script>
 <style>
   * { box-sizing: border-box; }
@@ -84,7 +84,6 @@
     <span class="nav-sep"></span>
     <a href="index.html" class="nav-link">Inicio</a>
     <a href="perfil.html" class="nav-link">Sobre mí</a>
-    <a href="privacidad.html" class="nav-link is-active">Privacidad</a>
   </div>
 </div>
 
@@ -101,7 +100,7 @@
 
   <section id="datos">
     <h2>Qué datos se recogen y <b>para qué</b></h2>
-    <p>Nada de lo que sigue se activa hasta que aceptas el aviso de cookies, salvo lo estrictamente técnico del alojamiento. Si lo rechazas, no se carga ni una sola petición a Google, Microsoft ni HubSpot.</p>
+    <p>Nada de lo que sigue se activa hasta que aceptas el aviso de cookies, salvo lo estrictamente técnico del alojamiento. Si lo rechazas, no se carga ni una sola petición a Google, Microsoft, Hotjar, Plerdy ni HubSpot.</p>
     <div class="tools">
       <div class="tool">
         <span class="who">Alojamiento · Vercel Inc.</span>
@@ -117,6 +116,16 @@
         <span class="who">Comportamiento · Microsoft Ireland Operations Ltd.</span>
         <h3>Microsoft Clarity</h3>
         <p>Genera mapas de calor y grabaciones anónimas de la navegación: dónde se hace clic, hasta dónde se baja, qué se ignora. Lo que se teclea en cualquier campo se enmascara antes de enviarse. Solo se activa con tu consentimiento.</p>
+      </div>
+      <div class="tool">
+        <span class="who">Comportamiento · Hotjar Ltd. (Malta, UE)</span>
+        <h3>Hotjar</h3>
+        <p>Como Clarity: mapas de calor y grabaciones anónimas de la navegación para ver qué funciona y qué no. Enmascara por defecto lo que se teclea en los campos. Solo se activa con tu consentimiento.</p>
+      </div>
+      <div class="tool">
+        <span class="who">Comportamiento · Plerdy (sede en Ucrania)</span>
+        <h3>Plerdy</h3>
+        <p>Mapas de clics y grabaciones anónimas de la navegación. Según su política, no usa cookies sino almacenamiento local del navegador para distinguir sesiones y canales de entrada. Solo se activa con tu consentimiento.</p>
       </div>
       <div class="tool">
         <span class="who">Contacto · HubSpot Inc. (centro de datos en la UE)</span>
@@ -143,6 +152,9 @@
           <tr><td><code>_clck</code></td><td>Microsoft Clarity</td><td>Identificador anónimo de visitante.</td><td>1 año</td></tr>
           <tr><td><code>_clsk</code></td><td>Microsoft Clarity</td><td>Unir las páginas de una misma sesión.</td><td>1 día</td></tr>
           <tr><td><code>CLID</code>, <code>MUID</code></td><td>Microsoft</td><td>Identificador del visitante en el dominio de Clarity.</td><td>1 año</td></tr>
+          <tr><td><code>_hjSessionUser_*</code></td><td>Hotjar</td><td>Identificador anónimo de visitante.</td><td>1 año</td></tr>
+          <tr><td><code>_hjSession_*</code></td><td>Hotjar</td><td>Unir las páginas de una misma sesión.</td><td>30 min</td></tr>
+          <tr><td>Almacenamiento local</td><td>Plerdy</td><td>Sesión, canal de entrada y estado de la visita. No es una cookie, pero cumple la misma función y por eso pide el mismo consentimiento.</td><td>Hasta que lo borres</td></tr>
           <tr><td><code>hubspotutk</code>, <code>__hstc</code></td><td>HubSpot</td><td>Reconocer al visitante entre visitas.</td><td>6 meses</td></tr>
           <tr><td><code>__hssc</code>, <code>__hssrc</code></td><td>HubSpot</td><td>Contar la sesión actual.</td><td>30 min / sesión</td></tr>
         </tbody>
@@ -158,10 +170,12 @@
 
   <section id="terceros">
     <h2>Con quién se <b>comparten</b></h2>
-    <p>Con nadie más que los proveedores citados, que actúan como encargados del tratamiento. Google y Microsoft pueden procesar datos en Estados Unidos: ambos están adheridos al <strong>Marco de Privacidad de Datos UE-EE. UU.</strong> y aplican cláusulas contractuales tipo. HubSpot está configurado para usar su centro de datos europeo. Vercel aplica cláusulas contractuales tipo.</p>
+    <p>Con nadie más que los proveedores citados, que actúan como encargados del tratamiento. Google y Microsoft pueden procesar datos en Estados Unidos: ambos están adheridos al <strong>Marco de Privacidad de Datos UE-EE. UU.</strong> y aplican cláusulas contractuales tipo. Hotjar es una empresa europea y aloja los datos en la UE. HubSpot está configurado para usar su centro de datos europeo. Vercel aplica cláusulas contractuales tipo. Plerdy tiene sede en Ucrania, un país sin decisión de adecuación de la UE; sus datos son anónimos y se rigen por su política de privacidad.</p>
     <ul>
       <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad de Google ↗</a></li>
       <li><a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">Declaración de privacidad de Microsoft ↗</a></li>
+      <li><a href="https://www.hotjar.com/legal/policies/privacy/" target="_blank" rel="noopener">Política de privacidad de Hotjar ↗</a></li>
+      <li><a href="https://www.plerdy.com/privacy-policy/" target="_blank" rel="noopener">Política de privacidad de Plerdy ↗</a></li>
       <li><a href="https://legal.hubspot.com/privacy-policy" target="_blank" rel="noopener">Política de privacidad de HubSpot ↗</a></li>
       <li><a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Política de privacidad de Vercel ↗</a></li>
     </ul>
@@ -172,6 +186,8 @@
     <ul>
       <li><strong>Google Analytics:</strong> los datos de eventos, 2 meses; los informes agregados no identifican a nadie.</li>
       <li><strong>Microsoft Clarity:</strong> las grabaciones, 30 días; los mapas de calor agregados, hasta 13 meses.</li>
+      <li><strong>Hotjar:</strong> grabaciones y mapas de calor, hasta 365 días.</li>
+      <li><strong>Plerdy:</strong> no publica un plazo concreto para los datos de navegación; los borro desde su panel si dejo de usarlo.</li>
       <li><strong>HubSpot:</strong> mientras dure la conversación o la relación profesional, o hasta que pidas que lo borre.</li>
       <li><strong>Correo:</strong> mientras dure la conversación o la relación profesional, o hasta que pidas que lo borre.</li>
     </ul>
