@@ -1,6 +1,9 @@
 import type { Metadata } from 'next';
+import Script from 'next/script';
 import { Montserrat, Bebas_Neue } from 'next/font/google';
+import 'remixicon/fonts/remixicon.css';
 import './globals.css';
+import Nav from '@/components/Nav';
 
 const montserrat = Montserrat({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'], variable: '--font-montserrat', display: 'swap' });
 const bebas = Bebas_Neue({ subsets: ['latin'], weight: '400', variable: '--font-bebas', display: 'swap' });
@@ -15,7 +18,12 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es" className={`${montserrat.variable} ${bebas.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Nav />
+        {children}
+        <Script src="/effects/starfield-button.js" strategy="afterInteractive" />
+        <Script src="/effects/cursor-ring-field.js" strategy="afterInteractive" />
+      </body>
     </html>
   );
 }
