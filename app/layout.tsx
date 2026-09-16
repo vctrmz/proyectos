@@ -4,6 +4,8 @@ import { Montserrat, Bebas_Neue } from 'next/font/google';
 import 'remixicon/fonts/remixicon.css';
 import './globals.css';
 import Nav from '@/components/Nav';
+import ConsentBanner from '@/components/ConsentBanner';
+import AnalyticsPageView from '@/components/AnalyticsPageView';
 
 const montserrat = Montserrat({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'], variable: '--font-montserrat', display: 'swap' });
 const bebas = Bebas_Neue({ subsets: ['latin'], weight: '400', variable: '--font-bebas', display: 'swap' });
@@ -21,6 +23,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Nav />
         {children}
+        <ConsentBanner />
+        <AnalyticsPageView />
         <Script src="/effects/starfield-button.js" strategy="afterInteractive" />
         <Script src="/effects/cursor-ring-field.js" strategy="afterInteractive" />
       </body>
