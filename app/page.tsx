@@ -1,14 +1,12 @@
 import type { Metadata } from 'next';
 import Home from '@/components/home/Home';
+import { pageMetadata } from '@/lib/seo';
 
-const description = 'Diseño producto complejo desde Málaga. Nueve años en SaaS B2B e Insurtech: ordeno dominios densos y construyo design systems con reglas de decisión.';
-
-export const metadata: Metadata = {
-  title: 'Víctor Maza — Product Designer (UX/UI)',
-  description,
-  alternates: { canonical: '/' },
-  openGraph: { title: 'Víctor Maza — Product Designer (UX/UI)', description, url: '/' },
-};
+export const metadata: Metadata = pageMetadata(
+  'Víctor Maza — Product Designer (UX/UI)',
+  'Diseño producto complejo desde Málaga. Nueve años en SaaS B2B e Insurtech: ordeno dominios densos y construyo design systems con reglas de decisión.',
+  '/'
+);
 
 export default function Page() {
   return <Home />;

@@ -13,8 +13,6 @@ const bebas = Bebas_Neue({ subsets: ['latin'], weight: '400', variable: '--font-
 export const metadata: Metadata = {
   metadataBase: new URL('https://proyectos-theta-hazel.vercel.app'),
   icons: { icon: '/favicon.svg' },
-  openGraph: { type: 'website', siteName: 'Víctor Maza', images: [{ url: '/assets/og.png', width: 1200, height: 630 }] },
-  twitter: { card: 'summary_large_image' },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
