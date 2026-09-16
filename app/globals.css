@@ -24,11 +24,12 @@ a:hover { color: #8bde5f; }
 .nav-link { border-radius: 999px; padding: 8px 15px; font-size: 13px; color: #878787; transition: color .2s ease, background .2s ease; }
 .nav-link:hover, .nav-link.is-active { color: #ececec; background: rgba(44,49,64,0.6); }
 
-/* Roll: dos copias apiladas, al pasar el cursor el par sube medio bloque */
-.roll { display: inline-block; overflow: hidden; vertical-align: bottom; }
+/* Roll: dos copias apiladas, al pasar el cursor el par sube una línea */
+.roll { position: relative; display: inline-block; overflow: hidden; vertical-align: bottom; white-space: nowrap; }
 .roll-inner { display: block; will-change: transform; transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1); }
 .roll-inner > span { display: block; }
-a:hover .roll-inner, a:focus-visible .roll-inner { transform: translateY(-50%); }
+.roll-inner > span:last-child { position: absolute; left: 0; top: 100%; }
+a:hover .roll-inner, a:focus-visible .roll-inner { transform: translateY(-100%); }
 
 /* Enlaces y botones con hover (antes style-hover) */
 .btn-ghost { border-radius: 999px; padding: 14px 28px; font-size: 14px; font-weight: 600; color: #ececec; border: 1px solid #343a4a; background: transparent; transition: border-color .25s ease; }

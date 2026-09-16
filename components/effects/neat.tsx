@@ -1,6 +1,6 @@
 'use client';
 
-import { Children, useEffect, useLayoutEffect, useRef, type CSSProperties, type ReactNode } from 'react';
+import { Children, useEffect, useRef, type CSSProperties, type ReactNode } from 'react';
 import { gsap } from '@/lib/gsap';
 import { isLight } from '@/lib/motion';
 import { needsLoader, onLoaderDone } from '@/lib/loader';
@@ -29,21 +29,15 @@ function onEnter(el: Element, fn: () => void, margin = '0px 0px -12% 0px') {
   return () => io.disconnect();
 }
 
-/* Dos copias apiladas en una caja de una línea de alto; el :hover del enlace
-   que lo contiene desplaza el par medio bloque (CSS .roll). La altura se
-   mide, no se calcula: el line-height heredado puede venir de cualquier sitio. */
+/* Dos copias apiladas; el :hover del enlace que lo contiene desplaza el par
+   una línea hacia arriba (CSS .roll). Layout puro: sin medir alturas, la
+   primera copia fija la altura del recorte y la segunda se posiciona en
+   absoluto justo debajo. */
 export function RollText({ children }: { children: string }) {
-  const clip = useRef<HTMLSpanElement>(null);
-  const first = useRef<HTMLSpanElement>(null);
-  useLayoutEffect(() => {
-    const fit = () => { if (clip.current && first.current) clip.current.style.height = first.current.offsetHeight + 'px'; };
-    fit();
-    document.fonts?.ready.then(fit);
-  }, [children]);
   return (
-    <span className="roll" ref={clip}>
+    <span className="roll">
       <span className="roll-inner">
-        <span ref={first}>{children}</span>
+        <span>{children}</span>
         <span aria-hidden="true">{children}</span>
       </span>
     </span>
