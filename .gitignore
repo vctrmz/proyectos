@@ -3,3 +3,7 @@ _serve.js
 .vercel/
 node_modules/
 _og-source.html
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts

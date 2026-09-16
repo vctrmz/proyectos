@@ -1,0 +1,7 @@
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: #1b1e27; color: #ececec; font-family: var(--font-montserrat), system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+a { color: #ececec; text-decoration: none; }
+a:hover { color: #8bde5f; }
+::selection { background: rgba(139,222,95,0.3); }
+.bebas { font-family: var(--font-bebas), Impact, sans-serif; }
