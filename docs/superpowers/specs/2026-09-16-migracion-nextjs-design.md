@@ -33,8 +33,10 @@ copys. Rediseñar cualquier sección. Añadir páginas nuevas.
 - **Claude Design deja de ser la fuente.** A partir de aquí se edita el código.
   `index.html`, `perfil.html`, `privacidad.html`, `support.js`, `image-slot.js`
   y `.image-slots.state.json` se eliminan del repo una vez migrados.
-- **Mismo repo, misma rama, mismo proyecto Vercel.** Se cambia el Framework
-  Preset de Vercel de `Other` a `Next.js` (acción manual del propietario).
+- **Mismo repo, misma rama, mismo proyecto Vercel.** `vercel.json` declara
+  `"framework": "nextjs"`, que tiene prioridad sobre el preset `Other` del
+  dashboard. Si el despliegue no arranca, el propietario cambia el preset a
+  Next.js a mano.
 - **Loader:** 1,6 s en total, solo en la primera visita de la sesión
   (`sessionStorage['vm-loader']`) y solo en escritorio (`max-width: 820px`
   lo desactiva), como hoy.
@@ -99,6 +101,16 @@ next.config.ts          redirects: /index.html→/, /perfil.html→/perfil,
                         avif+webp.
 ```
 
+## Responsive
+
+Hoy el layout móvil depende de `state.mobile` (JS). Con generación estática
+el HTML inicial no sabe el ancho de pantalla, así que todo estilo que hoy
+cambia con `mobile` pasa a clases CSS con `@media (max-width: 820px)` en
+`globals.css`. JS solo decide `light` (animaciones), que no afecta al marcado.
+
+Los `style-hover` del runtime pasan a clases CSS con `:hover`, porque un
+estilo inline gana a cualquier regla `a:hover`.
+
 ## Flujo de navegación
 
 1. `layout.tsx` monta una vez: Nav, fondo, efectos, banner.
@@ -116,11 +128,12 @@ next.config.ts          redirects: /index.html→/, /perfil.html→/perfil,
 
 ## Imágenes
 
-- Capturas de HERMES (`assets/hermes/*.png`, 20 MB): se sirven con
-  `next/image` (`sizes` según el ancho del modal, `quality` 80). Next genera
-  AVIF/WebP redimensionado bajo demanda en Vercel. Los originales se quedan
-  en `public/assets/hermes/`.
-- Cards y miniaturas (`h-card/`, `h-thumb/`): `next/image` con `loading="lazy"`.
+- El modal de caso pinta `assets/h-card/*.jpg` (1000 px, ≤ 170 KB) y el carril
+  `assets/h-thumb/*.jpg` (400 px). Ya están optimizadas: se sirven con
+  `<img loading="lazy" decoding="async">` desde `public/assets/`. No se usa
+  `next/image`.
+- `assets/hermes/*.png` (20 MB) no se referencia desde ninguna página. Se
+  conserva en `public/assets/hermes/` sin uso.
 - Los seis logos incrustados como webp base64 en `.image-slots.state.json`
   se extraen a `public/assets/logos/<nombre>.webp` en un paso de la migración
   y se referencian como ficheros normales. `image-slot.js` desaparece.
@@ -147,12 +160,17 @@ sobre `usePathname()` cuando el consentimiento es `granted`.
 
 ## Efectos
 
-`cursor-ring-field.js`, `starfield-button.js` y `neat-effects.js` son
-scripts vanilla que registran custom elements o se enganchan al DOM. Se
-copian a `public/effects/` sin cambios y cada uno tiene un wrapper React en
-`components/effects/` que los carga con `import()` dentro de `useEffect`
-(solo cliente) y renderiza el elemento correspondiente. Si alguno resulta
-depender de `support.js` (DCLogic), se reescribe en React solo ese.
+- `cursor-ring-field.js` y `starfield-button.js` registran custom elements
+  (`customElements.define`). Se copian a `public/effects/` sin cambios, se
+  cargan una vez con `next/script` desde `layout.tsx`, y se usan desde JSX
+  como `<cursor-ring-field>` / `<starfield-button>` con sus atributos.
+- `neat-effects.js` muta el DOM (reemplaza el texto de los enlaces por
+  spans, parte titulares en palabras): incompatible con React. Se porta a
+  `components/effects/neat.tsx`: `RollText`, `Words`, `Lines`, `ZoomBox` y el
+  hook `useSectionReveal`, con el mismo comportamiento visual.
+- Código muerto que no se migra: `archive()`, `explor()`, `captions()`,
+  `archFilters()`, el modal "bento" de grupos (`g:`) y `x:`, `data-px-item`,
+  `data-shine`. Ninguno aparece en la plantilla actual.
 
 ## Errores y casos límite
 
@@ -186,9 +204,9 @@ depender de `support.js` (DCLogic), se reescribe en React solo ese.
 
 ## Despliegue
 
-1. Push de `main`.
-2. El propietario cambia en Vercel → Settings → Build & Development →
-   Framework Preset a **Next.js**, Root Directory `./`, y redespliega.
+1. Push de `main`. `vercel.json` fuerza el framework Next.js.
+2. Si el despliegue falla por preset, el propietario cambia en Vercel →
+   Settings → Build & Development → Framework Preset a **Next.js**.
 3. Comprobar en el dominio real la lista de verificación anterior.
 
 ## Ficheros que se eliminan del repo tras la migración
