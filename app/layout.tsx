@@ -24,7 +24,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <ConsentBanner />
         <AnalyticsPageView />
         <Script src="/effects/starfield-button.js" strategy="afterInteractive" />
-        <Script src="/effects/cursor-ring-field.js" strategy="afterInteractive" />
+        {/* Decorativo: carga en idle para no bloquear la hidratación */}
+        <Script src="/effects/cursor-ring-field.js" strategy="lazyOnload" />
       </body>
     </html>
   );
