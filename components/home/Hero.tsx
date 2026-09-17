@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Script from 'next/script';
 import { gsap } from '@/lib/gsap';
 import { isLight } from '@/lib/motion';
 import { isMobileViewport } from '@/lib/loader';
@@ -60,6 +61,8 @@ export default function Hero() {
           <span style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, transparent, #4a44f2, transparent)', animation: 'scrollDown 1.5s ease-in-out infinite' }} />
         </span>
       </div>
+      {/* Decorativo: carga en idle para no bloquear la hidratación */}
+      <Script src="/effects/cursor-ring-field.js" strategy="lazyOnload" />
     </div>
   );
 }

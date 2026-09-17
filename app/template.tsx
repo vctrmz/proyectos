@@ -6,5 +6,5 @@ import { useState } from 'react';
    position: fixed de dentro (modal, loader, peek) en relativos a la página. */
 export default function Template({ children }: { children: React.ReactNode }) {
   const [done, setDone] = useState(false);
-  return <div className={done ? undefined : 'page-enter'} onAnimationEnd={() => setDone(true)}>{children}</div>;
+  return <div className={done ? undefined : 'page-enter'} onAnimationEnd={(e) => { if (e.target === e.currentTarget) setDone(true); }}>{children}</div>;
 }

@@ -12,6 +12,10 @@ a:hover { color: #8bde5f; }
 .page-enter { animation: pageIn 0.35s ease-out both; }
 @media (prefers-reduced-motion: reduce) { .page-enter { animation: none; } }
 
+/* En móvil el loader nunca corre (needsLoader() es false): el velo no debe
+   tapar la página hasta que hidrata. */
+@media (max-width: 820px) { [data-loader] { display: none !important; } }
+
 @keyframes scrollDown { 0% { transform: translateY(-100%); } 100% { transform: translateY(200%); } }
 @keyframes roleFade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 

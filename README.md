@@ -37,7 +37,7 @@ muestra en la primera visita de la sesión (`sessionStorage['vm-loader']`) en
 escritorio.
 
 Las rutas antiguas `/index.html`, `/perfil.html` y `/privacidad.html` redirigen
-(301) a las nuevas.
+(308, `permanent: true` en `next.config.ts`) a las nuevas.
 
 ## Despliegue
 
@@ -58,8 +58,10 @@ no se pide ningún recurso externo. Clarity, Hotjar y Plerdy no arrancan en loca
 | Plerdy | `_suid` `81035` |
 | HubSpot (EU) | portal `148496979` |
 
-Al navegar sin recarga, `AnalyticsPageView` envía `page_view` a GA4 en cada
-cambio de ruta. `window.vmConsentReset()` reabre el banner.
+Con navegación sin recarga, GA4 registra los cambios de página mediante la
+medición mejorada ("Cambios de página según eventos del historial del
+navegador", activada por defecto en la propiedad); no se envía `page_view` a
+mano. `window.vmConsentReset()` reabre el banner.
 
 ## Metadatos
 

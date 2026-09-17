@@ -19,7 +19,7 @@ export default function Competencias() {
       if (i === cards.length - 1) return null;
       return gsap.fromTo(card, { scale: 1, filter: 'brightness(1)' }, { scale: 0.94, filter: 'brightness(0.62)', ease: 'none', scrollTrigger: { trigger: cards[i + 1], start: 'top 85%', end: 'top 30%', scrub: true } });
     });
-    return () => tweens.forEach((t) => t?.scrollTrigger?.kill());
+    return () => tweens.forEach((t) => t?.kill());
   }, []);
 
   const toggle = (gi: number) => {

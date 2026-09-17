@@ -5,7 +5,6 @@ import 'remixicon/fonts/remixicon.css';
 import './globals.css';
 import Nav from '@/components/Nav';
 import ConsentBanner from '@/components/ConsentBanner';
-import AnalyticsPageView from '@/components/AnalyticsPageView';
 
 const montserrat = Montserrat({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'], variable: '--font-montserrat', display: 'swap' });
 const bebas = Bebas_Neue({ subsets: ['latin'], weight: '400', variable: '--font-bebas', display: 'swap' });
@@ -22,10 +21,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Nav />
         {children}
         <ConsentBanner />
-        <AnalyticsPageView />
         <Script src="/effects/starfield-button.js" strategy="afterInteractive" />
-        {/* Decorativo: carga en idle para no bloquear la hidratación */}
-        <Script src="/effects/cursor-ring-field.js" strategy="lazyOnload" />
       </body>
     </html>
   );

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { readConsent, writeConsent, startAnalytics, installConsentGlobals } from '@/lib/consent';
-import { loaderSeen, onLoaderDone } from '@/lib/loader';
+import { loaderSeen, needsLoader, onLoaderDone } from '@/lib/loader';
 
 /* Esperamos a que acabe la intro para no taparla. Si en la página no hay
    loader (perfil, privacidad) damos 2 s de margen, como consent.js. */
@@ -20,7 +20,7 @@ export default function ConsentBanner() {
     const show = (ms: number) => { t = setTimeout(() => setOpen(true), ms); };
     let off = () => {};
     if (loaderSeen()) show(400);
-    else if (document.querySelector('[data-loader]')) off = onLoaderDone(() => show(400));
+    else if (needsLoader()) off = onLoaderDone(() => show(400));
     else show(2000);
     return () => { off(); if (t) clearTimeout(t); };
   }, []);

@@ -10,12 +10,21 @@ beforeEach(() => { vi.useFakeTimers(); document.head.innerHTML = ''; });
 afterEach(() => vi.useRealTimers());
 
 describe('ConsentBanner', () => {
-  it('sin decisión y sin loader, aparece a los 2 s', () => {
+  it('sin decisión y sin loader (escritorio), espera al evento y aparece a los 400 ms', () => {
+    render(<ConsentBanner />);
+    expect(screen.queryByRole('dialog')).toBeNull();
+    act(() => { window.dispatchEvent(new Event('vm-loader-done')); });
+    act(() => { vi.advanceTimersByTime(450); });
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: 'Más información' })).toHaveAttribute('href', '/privacidad');
+  });
+  it('sin decisión, sin loader y en móvil, aparece a los 2 s', () => {
+    const mm = vi.spyOn(window, 'matchMedia').mockImplementation((q) => ({ matches: q === '(max-width: 820px)', media: q } as MediaQueryList));
     render(<ConsentBanner />);
     expect(screen.queryByRole('dialog')).toBeNull();
     act(() => { vi.advanceTimersByTime(2100); });
     expect(screen.getByRole('dialog')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Más información' })).toHaveAttribute('href', '/privacidad');
+    mm.mockRestore();
   });
   it('si el loader ya se vio, aparece a los 400 ms', () => {
     sessionStorage.setItem(LOADER_KEY, '1');

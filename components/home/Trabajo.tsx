@@ -12,7 +12,6 @@ const BLANK = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAA
    texto y la prueba visual aparece solo donde apunta la atención. */
 export default function Trabajo({ onOpen }: { onOpen: (i: number) => void }) {
   const rows = workRows();
-  const list = useRef<HTMLDivElement>(null);
   const peek = useRef<HTMLDivElement>(null);
   const [src, setSrc] = useState(BLANK);
   const move = useRef<{ x: (v: number) => void; y: (v: number) => void; placed: boolean } | null>(null);
@@ -71,7 +70,7 @@ export default function Trabajo({ onOpen }: { onOpen: (i: number) => void }) {
           <Words style={{ margin: 0, fontSize: 'clamp(34px, 6vw, 78px)', fontWeight: 400, letterSpacing: '-0.03em', lineHeight: 1 }}>Producto <span className="bebas" style={{ letterSpacing: '0.01em' }}>en producción</span></Words>
           <a href="#sectores" className="link-dim"><RollText>[ Todos los sectores ]</RollText></a>
         </div>
-        <div ref={list} onPointerMove={(e) => put(e, false)} style={{ position: 'relative', marginTop: 'clamp(32px, 4vw, 56px)', borderTop: '1px solid #2c3140' }}>
+        <div onPointerMove={(e) => put(e, false)} style={{ position: 'relative', marginTop: 'clamp(32px, 4vw, 56px)', borderTop: '1px solid #2c3140' }}>
           {rows.map((row) => (
             <div key={row.n} className="work-row" onClick={() => act(row)} onPointerEnter={(e) => enter(row, e)} onPointerLeave={leave}>
               <span style={{ fontSize: 11, color: '#8bde5f', paddingTop: 8 }}>{row.n}</span>
