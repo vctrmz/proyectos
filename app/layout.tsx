@@ -1,13 +1,10 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
-import { Montserrat, Bebas_Neue } from 'next/font/google';
-import 'remixicon/fonts/remixicon.css';
+import { Geist } from 'next/font/google';
 import './globals.css';
-import Nav from '@/components/Nav';
+import SkipLink from '@/components/layout/SkipLink';
 import ConsentBanner from '@/components/ConsentBanner';
 
-const montserrat = Montserrat({ subsets: ['latin'], weight: ['300', '400', '500', '600', '700'], variable: '--font-montserrat', display: 'swap' });
-const bebas = Bebas_Neue({ subsets: ['latin'], weight: '400', variable: '--font-bebas', display: 'swap' });
+const geist = Geist({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-geist', display: 'swap' });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://proyectos-theta-hazel.vercel.app'),
@@ -16,12 +13,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" className={`${montserrat.variable} ${bebas.variable}`}>
+    <html lang="es" className={geist.variable}>
       <body>
-        <Nav />
+        <SkipLink />
         {children}
         <ConsentBanner />
-        <Script src="/effects/starfield-button.js" strategy="afterInteractive" />
       </body>
     </html>
   );
