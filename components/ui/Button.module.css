@@ -1,0 +1,12 @@
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 22px; border-radius: var(--r-pill); font-size: var(--fs-200); font-weight: 500; line-height: 1; border: 1px solid transparent; transition: background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease), transform .2s var(--ease); white-space: nowrap; }
+.btn:active { transform: scale(.98); }
+.lg { min-height: 52px; padding: 0 28px; font-size: var(--fs-300); }
+.solid { background: var(--ink); color: #fff; border-color: var(--ink); }
+.solid:hover { background: #2a2c33; }
+.outline { background: transparent; color: var(--ink); border-color: var(--ink); }
+.outline:hover { background: var(--surface); }
+.ghost { background: transparent; color: var(--ink-2); padding-inline: 12px; }
+.ghost:hover { color: var(--ink); background: var(--surface); }
+:global(.inset) .solid { background: var(--accent); color: #12151c; border-color: var(--accent); }
+:global(.inset) .outline { color: var(--inset-ink); border-color: rgba(236,236,236,.35); }
+:global(.inset) .outline:hover { background: rgba(255,255,255,.06); }

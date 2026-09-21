@@ -1,0 +1,4 @@
+.strip { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--sp-24); padding-block: var(--sp-24); border-block: 1px solid var(--line); margin: 0; }
+.strip > div { margin: 0; }
+.v { font-size: var(--fs-700); font-variation-settings: 'wght' 450; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.l { font-size: var(--fs-200); color: var(--ink-2); margin: 0; }

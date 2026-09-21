@@ -1,0 +1,6 @@
+.d { border-top: 1px solid var(--line); }
+.s { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; min-height: 56px; font-size: var(--fs-500); font-weight: 500; }
+.s::-webkit-details-marker { display: none; }
+.s::after { content: "+"; font-size: var(--fs-600); color: var(--ink-3); }
+.d[open] .s::after { content: "–"; }
+.body { padding-bottom: var(--sp-24); }

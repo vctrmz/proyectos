@@ -1,0 +1,2 @@
+.fig { margin: 0; } .img { border-radius: var(--r-card); border: 1px solid var(--line); width: 100%; height: auto; }
+.cap { margin-top: var(--sp-12); font-size: var(--fs-200); color: var(--ink-2); }

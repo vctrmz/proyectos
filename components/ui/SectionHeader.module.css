@@ -1,0 +1,1 @@
+.head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--sp-16) var(--sp-24); margin-bottom: var(--sp-48); }

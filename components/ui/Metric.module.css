@@ -1,0 +1,5 @@
+.m { display: grid; gap: 6px; padding-top: var(--sp-16); border-top: 1px solid var(--line); }
+.v { font-size: var(--fs-900); letter-spacing: -0.03em; line-height: 1; font-variation-settings: 'wght' 450; font-variant-numeric: tabular-nums; }
+.l { font-size: var(--fs-200); color: var(--ink); }
+.mean { font-size: var(--fs-200); color: var(--ink-2); }
+.dark { border-top-color: rgba(255,255,255,.14); } .dark .l { color: var(--inset-ink); } .dark .mean { color: var(--inset-ink-2); }

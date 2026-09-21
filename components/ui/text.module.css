@@ -1,0 +1,4 @@
+.kicker { font-size: var(--fs-100); letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+.display { font-size: var(--fs-1000); letter-spacing: -0.03em; line-height: 1.05; font-variation-settings: 'wght' 450; }
+.xl { font-size: var(--fs-900); letter-spacing: -0.025em; line-height: 1.1; }
+.lg { font-size: var(--fs-800); }

@@ -1,0 +1,5 @@
+.chip { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 14px; border-radius: var(--r-pill); background: var(--surface); color: var(--ink-2); font-size: var(--fs-200); box-shadow: var(--shadow-chip); transition: background .2s var(--ease), color .2s var(--ease); }
+.chip:hover { color: var(--ink); }
+.chip[aria-checked="true"] { background: var(--ink); color: #fff; }
+.count { font-size: var(--fs-100); padding: 1px 7px; border-radius: var(--r-pill); background: rgba(18,19,23,.06); }
+.chip[aria-checked="true"] .count { background: rgba(255,255,255,.18); }
