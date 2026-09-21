@@ -40,7 +40,7 @@ export default function ConsentBanner() {
   return (
     <div role="dialog" aria-label="Consentimiento de analítica" className={'consent' + (shown ? ' is-in' : '')}>
       <p>
-        Uso Google Analytics, Microsoft Clarity, Hotjar, Plerdy y HubSpot para ver cómo se navega esta web y para atender lo que me escribes. Usan cookies y solo se activan si lo aceptas.{' '}
+        Uso Google Analytics y Microsoft Clarity para ver cómo se navega esta web. Usan cookies y solo se activan si lo aceptas.{' '}
         <Link href="/privacidad">Más información</Link>
       </p>
       <div className="consent-actions">

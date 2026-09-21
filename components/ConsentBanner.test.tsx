@@ -39,7 +39,6 @@ describe('ConsentBanner', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Aceptar' }));
     expect(localStorage.getItem(CONSENT_KEY)).toBe('granted');
     expect(document.getElementById('ga-gtag-loader')).not.toBeNull();
-    expect(document.getElementById('hs-script-loader')).not.toBeNull();
   });
   it('rechazar guarda denied y no pide nada', () => {
     sessionStorage.setItem(LOADER_KEY, '1');

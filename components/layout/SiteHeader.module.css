@@ -1,0 +1,9 @@
+.header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; transition: transform .35s var(--ease); background: rgba(255,255,255,.82); backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+.hidden { transform: translateY(-100%); }
+.bar { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-16); min-height: 60px; }
+.brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 500; min-height: 44px; }
+.mark { width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: #fff; display: inline-grid; place-items: center; font-size: 11px; letter-spacing: .04em; }
+.links { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
+.link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: var(--r-pill); color: var(--ink-2); font-size: var(--fs-200); }
+.link:hover, .link[aria-current="page"] { color: var(--ink); background: var(--surface); }
+@media (max-width: 480px) { .brand span:last-child { display: none; } }

@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { isLocalHost, readConsent, writeConsent, startGA, startHubSpot, startHotjar, startClarity, startPlerdy, startAnalytics, CONSENT_KEY } from './consent';
+import { isLocalHost, readConsent, writeConsent, startGA, startClarity, startAnalytics, CONSENT_KEY } from './consent';
 
 beforeEach(() => { document.head.innerHTML = ''; });
 
@@ -36,15 +36,6 @@ describe('arranque de servicios', () => {
     expect(s).toHaveLength(1);
     expect(s[0].getAttribute('src')).toBe('https://www.googletagmanager.com/gtag/js?id=G-HZYDMMSVG5');
   });
-  it('HubSpot usa el loader de la región EU', () => {
-    startHubSpot();
-    expect(document.getElementById('hs-script-loader')?.getAttribute('src')).toBe('https://js-eu1.hs-scripts.com/148496979.js');
-  });
-  it('Hotjar define settings e inyecta el script (host público)', () => {
-    startHotjar();
-    expect((window as unknown as { _hjSettings: unknown })._hjSettings).toEqual({ hjid: 6776849, hjsv: 6 });
-    expect(document.getElementById('hj-loader')?.getAttribute('src')).toBe('https://static.hotjar.com/c/hotjar-6776849.js?sv=6');
-  });
   it('Clarity se importa como módulo con el id del proyecto', () => {
     startClarity();
     const s = document.getElementById('clarity-loader');
@@ -52,19 +43,9 @@ describe('arranque de servicios', () => {
     expect(s?.textContent).toContain('@microsoft/clarity@1.0.2');
     expect(s?.textContent).toContain("init('yd4g6685po')");
   });
-  it('Plerdy define las globales e inyecta el script una vez', () => {
-    startPlerdy();
-    startPlerdy();
-    const w = window as unknown as { _site_hash_code: string; _suid: number };
-    expect(w._site_hash_code).toBe('81690a1951e6290b7119405fec614b5d');
-    expect(w._suid).toBe(81035);
-    expect(document.querySelectorAll('#plerdy-loader')).toHaveLength(1);
-    expect(document.getElementById('plerdy-loader')?.getAttribute('src')).toMatch(/^https:\/\/a\.plerdy\.com\/public\/js\/click\/main\.js\?v=/);
-  });
-  it('startAnalytics arranca los cinco', () => {
+  it('startAnalytics arranca GA4 y Clarity, y nada más', () => {
     startAnalytics();
-    for (const id of ['ga-gtag-loader', 'clarity-loader', 'hj-loader', 'plerdy-loader', 'hs-script-loader']) {
-      expect(document.getElementById(id), id).not.toBeNull();
-    }
+    for (const id of ['ga-gtag-loader', 'clarity-loader']) expect(document.getElementById(id), id).not.toBeNull();
+    for (const id of ['hj-loader', 'plerdy-loader', 'hs-script-loader']) expect(document.getElementById(id), id).toBeNull();
   });
 });
