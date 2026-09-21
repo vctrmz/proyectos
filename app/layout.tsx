@@ -3,6 +3,8 @@ import { Geist } from 'next/font/google';
 import './globals.css';
 import SkipLink from '@/components/layout/SkipLink';
 import ConsentBanner from '@/components/ConsentBanner';
+import MotionProvider from '@/components/motion/MotionProvider';
+import SmoothScroll from '@/components/motion/SmoothScroll';
 
 const geist = Geist({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-geist', display: 'swap' });
 
@@ -16,7 +18,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es" className={geist.variable}>
       <body>
         <SkipLink />
-        {children}
+        <MotionProvider>{children}</MotionProvider>
+        <SmoothScroll />
         <ConsentBanner />
       </body>
     </html>
