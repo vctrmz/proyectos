@@ -1,0 +1,110 @@
+{
+  "01-contratos-revision": {
+    "width": 1600,
+    "height": 1459
+  },
+  "02-contratos-firmados": {
+    "width": 1600,
+    "height": 1919
+  },
+  "03-delivery-documents": {
+    "width": 1600,
+    "height": 961
+  },
+  "04-detalle-documento": {
+    "width": 1600,
+    "height": 966
+  },
+  "05-presupuesto-versiones": {
+    "width": 1600,
+    "height": 990
+  },
+  "06-preparar-producto": {
+    "width": 1600,
+    "height": 1217
+  },
+  "07-seleccionar-moneda": {
+    "width": 1600,
+    "height": 1494
+  },
+  "08-planes-servicios": {
+    "width": 1600,
+    "height": 1166
+  },
+  "09-metodo-pago": {
+    "width": 1600,
+    "height": 1047
+  },
+  "10-logs-firmantes": {
+    "width": 1600,
+    "height": 1114
+  },
+  "11-resumen-comercial": {
+    "width": 1600,
+    "height": 1064
+  },
+  "12-editor-variables": {
+    "width": 1600,
+    "height": 1966
+  },
+  "13-historial-comentarios": {
+    "width": 1600,
+    "height": 1061
+  },
+  "14-document-model": {
+    "width": 1600,
+    "height": 2056
+  },
+  "15-notas-comite": {
+    "width": 1600,
+    "height": 2538
+  },
+  "16-datos-contacto": {
+    "width": 1600,
+    "height": 1114
+  },
+  "17-agenda-reuniones": {
+    "width": 1600,
+    "height": 1186
+  },
+  "18-agregar-participantes": {
+    "width": 1600,
+    "height": 1064
+  },
+  "19-reservar-agenda": {
+    "width": 1600,
+    "height": 1064
+  },
+  "20-drawer-contrato": {
+    "width": 1600,
+    "height": 1178
+  },
+  "21-notas-alternativa": {
+    "width": 1600,
+    "height": 1543
+  },
+  "01-datos-del-contacto": {
+    "width": 1000,
+    "height": 912
+  },
+  "02-notas-y-comite": {
+    "width": 1000,
+    "height": 965
+  },
+  "03-metodo-de-pago": {
+    "width": 1000,
+    "height": 1586
+  },
+  "04-preparar-producto": {
+    "width": 1000,
+    "height": 1228
+  },
+  "05-contratos": {
+    "width": 1000,
+    "height": 728
+  },
+  "06-agenda-participantes": {
+    "width": 1000,
+    "height": 601
+  }
+}
