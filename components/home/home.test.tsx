@@ -50,10 +50,15 @@ describe('portada', () => {
     // solo logos: ningún nombre visible junto a la imagen
     expect(list.textContent!.trim()).toBe('');
   });
-  it('el cierre pregunta por el producto complejo y ofrece contacto', () => {
+  it('el cierre pregunta por el producto complejo y abre las competencias', () => {
     render(<Closing />);
     expect(screen.getByRole('heading', { level: 2 }).textContent).toMatch(/producto complejo/i);
-    expect(screen.getByRole('button', { name: /copiar/i })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /LinkedIn/ })).toHaveAttribute('target', '_blank');
+    // las cuatro filas son botones de acordeón: la primera abierta, el resto cerradas
+    const rows = screen.getAllByRole('button', { expanded: false });
+    expect(rows.length).toBe(3);
+    const first = screen.getByRole('button', { expanded: true });
+    expect(first.textContent).toMatch(/Estrategia y diseño de producto/);
+    expect(first.textContent).toMatch(/06 competencias/);
+    expect(screen.getByText(/Diseño de producto end-to-end/)).toBeInTheDocument();
   });
 });

@@ -4,5 +4,3 @@
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--sp-24); }
 .k { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
 .v { font-size: var(--fs-300); color: var(--inset-ink); }
-.ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
-.copied { font-size: var(--fs-200); color: var(--accent); min-height: 1.5em; }

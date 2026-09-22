@@ -1,0 +1,29 @@
+/* Filas oscuras sobre el inset, cada una desplazada al lado contrario: la
+   escalera del portfolio anterior, con nuestros tokens. */
+.stack { display: grid; gap: 14px; }
+.lead { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--inset-ink-2); }
+.lead span { color: var(--accent); margin-left: 6px; }
+.row { background: rgba(9,10,14,.72); border: 1px solid rgba(236,236,236,.07); border-radius: 20px; padding: 6px clamp(16px, 2.6vw, 28px) 10px; will-change: transform; }
+.left { margin-right: clamp(0px, 3vw, 40px); }
+.right { margin-left: clamp(0px, 3vw, 40px); }
+.row:hover { border-color: rgba(139,222,95,.28); }
+.isOpen { background: rgba(9,10,14,.9); border-color: rgba(139,222,95,.22); }
+.head { margin: 0; }
+.btn { display: flex; align-items: center; gap: var(--sp-16); width: 100%; min-height: 64px; text-align: left; border-bottom: 1px solid rgba(236,236,236,.08); }
+.name { flex: 1 1 auto; font-size: var(--fs-500); font-weight: 600; letter-spacing: .01em; text-transform: uppercase; color: var(--inset-ink); }
+.count { flex: 0 0 auto; font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.sign { flex: 0 0 auto; width: 20px; text-align: center; font-size: var(--fs-500); color: var(--inset-ink-2); }
+.btn:hover .sign { color: var(--accent); }
+.panel { padding-block: var(--sp-24) var(--sp-16); }
+.items { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-24) var(--sp-48); }
+.items li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; font-size: var(--fs-200); line-height: 1.6; color: var(--inset-ink-2); }
+.num { font-size: var(--fs-100); color: var(--accent); padding-top: 2px; }
+.items strong { color: var(--inset-ink); font-weight: 500; }
+@media (max-width: 900px) {
+  .items { grid-template-columns: minmax(0, 1fr); }
+  .left, .right { margin-inline: 0; }
+  .btn { flex-wrap: wrap; gap: 8px; padding-block: 12px; }
+  .name { flex: 1 1 100%; font-size: var(--fs-400); }
+  .count { order: 2; }
+  .sign { order: 3; margin-left: auto; }
+}

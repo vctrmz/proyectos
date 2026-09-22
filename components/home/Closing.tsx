@@ -1,17 +1,13 @@
-'use client';
-import { useState } from 'react';
 import Inset from '@/components/ui/Inset';
-import Button from '@/components/ui/Button';
 import TwoToneHeading from '@/components/ui/TwoToneHeading';
 import Starfield from './Starfield';
-import { SITE } from '@/lib/content/site';
+import Competencies from './Competencies';
 import s from './Closing.module.css';
 
+/* El bloque de cierre: el inset oscuro con el campo de estrellas y el titular
+   a dos tonos, y debajo las competencias en filas desplegables. El contacto
+   vive en el footer, así que aquí no hay botones. */
 export default function Closing() {
-  const [copied, setCopied] = useState(false);
-  const copy = async () => {
-    try { await navigator.clipboard.writeText(SITE.email); setCopied(true); setTimeout(() => setCopied(false), 1800); } catch { window.location.href = `mailto:${SITE.email}`; }
-  };
   return (
     <section id="contacto" className={`container ${s.wrap}`} aria-labelledby="closing-title">
       <Inset className={s.inset}>
@@ -24,11 +20,7 @@ export default function Closing() {
             <div><p className={s.k}>Evidencia</p><p className={s.v}>Nueve años · SaaS asegurador en producción</p></div>
             <div><p className={s.k}>Acción</p><p className={s.v}>Un correo</p></div>
           </div>
-          <div className={s.ctas}>
-            <Button onClick={copy} aria-label="Copiar correo">{SITE.email}</Button>
-            <Button href={SITE.linkedin} external variant="outline">LinkedIn</Button>
-            <span className={s.copied} role="status">{copied ? 'Correo copiado' : ''}</span>
-          </div>
+          <Competencies />
         </div>
       </Inset>
     </section>
