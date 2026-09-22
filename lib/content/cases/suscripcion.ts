@@ -24,15 +24,7 @@ export const suscripcion: CaseStudy = {
       'Partí de los componentes de Hermes Tenant en lugar de inventar patrones: el equipo ensambla en vez de construir y quien ya opera el producto no tiene curva de aprendizaje.',
       'El panel de contexto, el editor con comentarios y el agendador se diseñaron para reincorporarse al catálogo: el sistema alimenta el módulo y el módulo devuelve componentes al sistema.',
     ],
-    code: { title: 'Una fase como objeto, no como pantalla', lang: 'ts', code: `const fases = [
-  { id: 'cualificacion', audiencia: ['closer', 'cliente'], salida: ['contacto', 'perfil', 'comite:aprobado'] },
-  { id: 'negociacion',   audiencia: ['closer', 'legal', 'cliente'], salida: ['propuesta:firmada'] },
-  { id: 'cerrado',       audiencia: ['finanzas', 'onboarding'], salida: ['pago:validado', 'producto:preparado'] },
-] as const;
-
-// la UI no decide el siguiente paso: lo decide la salida cumplida
-const siguiente = (f: typeof fases[number], hechos: string[]) =>
-  f.salida.every((s) => hechos.includes(s)) ? fases[fases.indexOf(f) + 1] : f;` },
+    code: { title: "Tokens del módulo: estados, tipografía y esquinas", lang: 'json', code: "{\n  \"estado\": {\n    \"pendiente\": { \"color\": \"#6a6a71\", \"bg\": \"#f1f2f6\" },\n    \"en-curso\":  { \"color\": \"#2f5bea\", \"bg\": \"#e8eefc\" },\n    \"aprobado\":  { \"color\": \"#1f9d55\", \"bg\": \"#e6f6ec\" },\n    \"bloqueado\": { \"color\": \"#c0392b\", \"bg\": \"#fbeaea\" }\n  },\n  \"font\": {\n    \"size\":   { \"label\": 12, \"body\": 14, \"title\": 20 },\n    \"weight\": { \"regular\": 400, \"medium\": 500 }\n  },\n  \"radius\": { \"chip\": 999, \"card\": 12, \"panel\": 16 },\n  \"space\":  { \"campo\": 12, \"bloque\": 24, \"seccion\": 40 }\n}" },
   },
   design: [
     shot('01-datos-del-contacto', 'Datos del contacto', 'Fase 1 · Cualificación: contacto principal, perfil del cliente y resumen vivo de la empresa'),

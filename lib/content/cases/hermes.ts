@@ -24,18 +24,7 @@ export const hermes: CaseStudy = {
       'Auditoría del monorepo con IA para extraer todos los valores de color en uso: 267 dispersos reducidos a 24 tokens con un rol cada uno, adoptados por los cuatro front. Los tokens se exportaron para evolucionar el design system anterior, no para tirarlo.',
       'Componentes con contrato y accesibilidad forzada por el linter: cuándo se usa cada patrón y por qué queda documentado antes de llegar a desarrollo.',
     ],
-    code: { title: 'Un cuestionario de ramo declarado como dato', lang: 'json', code: `{
-  "ramo": "hogar",
-  "paso": "riesgo",
-  "campos": [
-    { "id": "superficie", "tipo": "numero", "unidad": "m²", "requerido": true },
-    { "id": "anio_construccion", "tipo": "anio", "min": 1900 },
-    { "id": "alarma", "tipo": "booleano", "muestra": ["descuento_alarma"] }
-  ],
-  "reglas": [
-    { "si": { "superficie": { ">": 300 } }, "entonces": { "requiere": ["tasacion"] } }
-  ]
-}` },
+    code: { title: "Tokens semánticos del sistema", lang: 'json', code: "{\n  \"color\": {\n    \"brand\":      \"#1f2a5a\",\n    \"action\":     \"#2f5bea\",\n    \"success\":    \"#1f9d55\",\n    \"warning\":    \"#d97706\",\n    \"danger\":     \"#c0392b\",\n    \"surface\":    \"#f6f7fb\",\n    \"ink\":        \"#121317\",\n    \"ink-muted\":  \"#6a6a71\"\n  },\n  \"font\": {\n    \"family\": \"Inter\",\n    \"size\":   { \"xs\": 12, \"sm\": 14, \"md\": 16, \"lg\": 20, \"xl\": 28 },\n    \"weight\": { \"regular\": 400, \"medium\": 500 }\n  },\n  \"radius\": { \"sm\": 6, \"md\": 10, \"lg\": 16, \"pill\": 999 },\n  \"space\":  [4, 8, 12, 16, 24, 32]\n}" },
   },
   design: [
     shot('08-planes-servicios', 'Planes y servicios por compañía', 'Planes y servicios: catálogo de producto compuesto por negocio, sin desarrollo a medida'),

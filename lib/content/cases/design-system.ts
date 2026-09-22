@@ -20,15 +20,7 @@ export const designSystem: CaseStudy = {
   ],
   system: {
     body: ['Tokens semánticos con marca e idioma como variables: la paleta de cada cliente se resuelve al iniciar sesión sin duplicar componentes.'],
-    code: { title: 'Un token semántico resuelto por tenant', lang: 'ts', code: `// el componente solo conoce el rol
-const Boton = () => <button className="btn" />;   // .btn { background: var(--color-action) }
-
-// el tenant decide el valor al iniciar sesión
-const temas = {
-  compania_a: { '--color-action': '#1f2a5a' },
-  compania_b: { '--color-action': '#0f3d3e' },
-};
-for (const [k, v] of Object.entries(temas[tenant])) document.documentElement.style.setProperty(k, v);` },
+    code: { title: "De 267 valores a 24 tokens con rol (extracto)", lang: 'json', code: "{\n  \"color\": {\n    \"bg\":         \"#ffffff\",\n    \"surface\":    \"#f6f7fb\",\n    \"line\":       \"#e3e6ef\",\n    \"ink\":        \"#121317\",\n    \"ink-muted\":  \"#6a6a71\",\n    \"action\":     \"#2f5bea\",\n    \"action-ink\": \"#ffffff\",\n    \"success\":    \"#1f9d55\",\n    \"warning\":    \"#d97706\",\n    \"danger\":     \"#c0392b\",\n    \"focus\":      \"#4a44f2\",\n    \"brand\":      \"var(--tenant-brand)\"\n  },\n  \"font\": {\n    \"family\": \"Inter\",\n    \"size\":   { \"xs\": 12, \"sm\": 14, \"md\": 16, \"lg\": 20, \"xl\": 28, \"xxl\": 40 },\n    \"line\":   { \"tight\": 1.2, \"body\": 1.5 }\n  },\n  \"radius\": { \"sm\": 6, \"md\": 10, \"lg\": 16, \"pill\": 999 },\n  \"shadow\": { \"card\": \"0 2px 8px rgba(18,19,23,.06)\" }\n}" },
   },
   design: [
     shot('07-seleccionar-moneda', 'Selector de moneda', 'Selector de moneda'),
