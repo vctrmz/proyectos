@@ -61,5 +61,21 @@ export const ABOUT = {
   'Antes, *banca digital en entorno regulado*. Allí el sistema ya existía y mi trabajo era otro: *aplicarlo con criterio* y *validar cada pantalla antes de que llegara a desarrollo*. *Tests de usabilidad no moderados con Maze* y *entrevistas propias* para entender el porqué detrás de la métrica, no solo el dónde. También *sesiones con Marketing para testear los emails transaccionales* y las piezas de marca fuera de la app, porque la experiencia no termina en la pantalla del producto. Nada pasaba a desarrollo sin haberse probado. Antes de eso, una *plataforma de movilidad multimodal*: *design system y flujos operativos levantados desde cero*.',
   'Me interesan *los flujos completos, no las pantallas sueltas*. *Sistemas que hagan que el siguiente diseño y el siguiente desarrollo cuesten menos que el anterior.*',
   ],
+  process: {
+    intro: 'Mi proceso es *iterativo y se adapta a la madurez del producto*.',
+    steps: [
+      { id: 'discovery', name: 'Discovery', body: 'Arranco en *discovery con Product Owners y stakeholders* para separar el problema real de la solución que ya traen pensada.' },
+      { id: 'estrategia', name: 'Estrategia', body: 'Según el caso, la estrategia cambia: *benchmark e investigación a fondo* cuando la funcionalidad es nueva, *prototipado rápido sobre el design system* cuando el terreno ya está construido.' },
+      { id: 'arquitectura', name: 'Arquitectura', body: 'Diseño la *arquitectura de la solución antes de dibujar pantallas*: modelo el dominio, los estados y las reglas antes que la interfaz.' },
+      { id: 'validacion', name: 'Validación', body: '*Valido en ciclos cortos* y lo cuento en *lenguaje de negocio*, porque un diseño que no se sabe defender no se aprueba.' },
+      { id: 'handoff', name: 'Handoff', body: 'Cierro con un *handoff que el equipo puede construir sin interpretar nada*: estados, reglas, casos límite y componentes existentes.' },
+    ],
+    principles: [
+      { name: 'KISS', body: 'La *solución más simple que resuelve el caso completo*: en producto denso cada elemento de más es carga cognitiva y deuda de mantenimiento.' },
+      { name: 'Mobile first', body: 'Obliga a *jerarquizar lo esencial* antes de disponer de espacio; el escalado a escritorio es una ampliación, no un rediseño.' },
+      { name: '60 · 30 · 10', body: 'El *neutro dominante* sostiene la lectura, el *secundario* estructura superficies y el *acento* queda reservado a la acción: lo importante se distingue sin más saturación.', bar: [60, 30, 10] as [number, number, number] },
+    ],
+    outro: 'Por encima del método, lo que busco es *crear atmósfera*: que cada pantalla, cada estado y cada palabra hagan que *la marca respire el mismo aire* de un extremo a otro del producto.',
+  },
   tools: ['Figma', 'FigJam', 'Prototipado interactivo', 'Chakra UI', 'Tailwind', 'React', 'GitHub', 'Vercel', 'Microsoft Clarity', 'Google Analytics', 'Maze', 'Mobbin', 'Claude'],
 };

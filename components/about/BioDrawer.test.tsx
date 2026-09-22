@@ -21,3 +21,27 @@ describe('BioDrawer', () => {
     expect(document.activeElement).toBe(cta);
   });
 });
+
+describe('BioDrawer · forma de trabajo', () => {
+  it('el drawer bloquea Lenis, su cuerpo hace scroll propio y trae la infografía del proceso', async () => {
+    const { setLenis } = await import('@/lib/motion/lenisStore');
+    const lenis = { stop: vi.fn(), start: vi.fn() };
+    setLenis(lenis);
+    render(<BioDrawer />);
+    await userEvent.click(screen.getByRole('button', { name: /recorrido completo/i }));
+    expect(lenis.stop).toHaveBeenCalledOnce();
+    const dialog = screen.getByRole('dialog');
+    expect(dialog.querySelector('[data-lenis-prevent]')).not.toBeNull();
+    expect(screen.getByRole('heading', { name: /forma de trabajo/i })).toBeInTheDocument();
+    const tabs = screen.getAllByRole('tab');
+    expect(tabs).toHaveLength(5);
+    expect(tabs[0]).toHaveAttribute('aria-selected', 'true');
+    await userEvent.click(screen.getByRole('tab', { name: /Estrategia/ }));
+    expect(screen.getByRole('tabpanel').textContent).toMatch(/benchmark e investigación a fondo/);
+    expect(screen.getByRole('tabpanel').querySelectorAll('strong').length).toBeGreaterThan(0);
+    expect(screen.getByText(/60 · 30 · 10/)).toBeInTheDocument();
+    await userEvent.keyboard('{Escape}');
+    expect(lenis.start).toHaveBeenCalledOnce();
+    setLenis(null);
+  });
+});

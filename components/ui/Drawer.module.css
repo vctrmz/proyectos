@@ -1,5 +1,5 @@
 .veil { position: fixed; inset: 0; z-index: 180; background: rgba(18,19,23,.35); backdrop-filter: blur(2px); }
-.panel { position: fixed; top: 0; right: 0; bottom: 0; z-index: 190; width: min(640px, 100vw); background: var(--bg); box-shadow: -24px 0 60px rgba(18,19,23,.18); display: grid; grid-template-rows: auto 1fr; outline: none; }
+.panel { position: fixed; top: 0; right: 0; bottom: 0; z-index: 190; width: min(920px, 100vw); background: var(--bg); box-shadow: -24px 0 60px rgba(18,19,23,.18); display: grid; grid-template-rows: auto 1fr; outline: none; }
 .head { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-16); padding: var(--sp-16) var(--sp-24); border-bottom: 1px solid var(--line); }
 .title { font-size: var(--fs-500); font-weight: 500; }
 .close { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--surface); color: var(--ink); }
