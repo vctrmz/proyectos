@@ -1,3 +1,13 @@
-.host { display: inline; }
-/* tabular-nums y el mismo ancho por glifo evitan que la mezcla mueva el texto */
-.fx { font-variant-numeric: tabular-nums; }
+/* El hueco lo reserva .ghost, que lleva el texto real (transparente, pero
+   legible para lectores de pantalla, buscadores y al copiar). La mezcla se
+   pinta encima en absoluto: cambiar de glifos no mueve ni la línea ni las
+   secciones de abajo. */
+.host { position: relative; display: inline-block; vertical-align: top; }
+.ghost { color: transparent; }
+.fx { position: absolute; left: 0; top: 0; width: 100%; user-select: none; font-variant-numeric: tabular-nums; }
+/* En modo de contraste forzado el color transparente no se respeta: se muestra
+   solo el texto real. */
+@media (forced-colors: active) {
+  .ghost { color: CanvasText; }
+  .fx { display: none; }
+}

@@ -8,7 +8,7 @@ afterEach(() => vi.useRealTimers());
 describe('GlitchText', () => {
   it('el texto real queda accesible y la capa animada es decorativa', () => {
     const { container } = render(<GlitchText text="Diseñé reglas en lugar de casos." />);
-    const sr = container.querySelector('.visually-hidden')!;
+    const sr = container.querySelector('[data-real]')!;
     expect(sr.textContent).toBe('Diseñé reglas en lugar de casos.');
     const fx = container.querySelector('[aria-hidden="true"]');
     expect(fx).not.toBeNull();

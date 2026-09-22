@@ -1,5 +1,0 @@
-.hands { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
-.left, .right { position: absolute; bottom: -4%; width: clamp(180px, 26vw, 360px); height: clamp(220px, 34vw, 440px); opacity: .85; }
-.left { left: -2%; }
-.right { right: -2%; }
-@media (max-width: 767px) { .left, .right { width: 46vw; height: 54vw; opacity: .6; } }

@@ -4,7 +4,9 @@ import { addFrame, removeFrame } from '@/lib/motion/raf';
 import { motionAllowed } from '@/lib/motion/prefs';
 import s from './GlitchText.module.css';
 
-const CHARS = '.,·-─~+:;=*≡┐┌┘┴┬║░▒▓█▄▀▌▐■!?&#$@0123456789';
+/* Glifos estrechos y de ancho parecido: los bloques (█▓▒░) eran los que más
+   ensanchaban la línea al entrar. */
+const CHARS = '!<>-_/\\[]{}=+*^?#~:;·';
 const WAVE_MS = 1200;     // lo que tarda una onda en recorrer el texto
 const WAVE_EVERY = 340;   // cada cuánto nace una onda mientras el cursor está encima
 const FRONT = 2;          // ancho del frente de la onda, en caracteres
@@ -80,9 +82,13 @@ export default function GlitchText({ text, className = '' }: Props) {
     };
   }, [text]);
 
+  /* El texto real va en flujo pero transparente: es el que ocupa sitio, el que
+     leen buscadores y lectores de pantalla, y el que se copia. La mezcla se
+     pinta encima en absoluto, así que ningún glifo ancho puede reflotar la
+     línea ni empujar lo que viene debajo. */
   return (
     <span ref={host} className={`${s.host} ${className}`}>
-      <span className="visually-hidden">{text}</span>
+      <span data-real className={s.ghost}>{text}</span>
       <span ref={fx} aria-hidden="true" className={s.fx}>{text}</span>
     </span>
   );

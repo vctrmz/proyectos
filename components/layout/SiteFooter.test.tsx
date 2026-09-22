@@ -3,17 +3,17 @@ import { render, screen } from '@testing-library/react';
 import SiteFooter from './SiteFooter';
 
 describe('SiteFooter', () => {
-  it('es oscuro, muestra el nombre en grande y los enlaces', () => {
+  it('es oscuro, con el claim, los enlaces y el aviso legal', () => {
     const { container } = render(<SiteFooter />);
     const foot = container.querySelector('footer')!;
     expect(foot.className).toMatch(/foot/);
-    expect(screen.getByText('Víctor Maza')).toBeInTheDocument();
+    expect(foot.textContent).toMatch(/error operativo cuesta dinero/);
     expect(screen.getByRole('link', { name: /LinkedIn/ })).toHaveAttribute('target', '_blank');
     expect(screen.getByRole('link', { name: /Privacidad/ })).toHaveAttribute('href', '/privacidad');
     expect(foot.textContent).toMatch(/Málaga/);
   });
-  it('las manos son decorativas', () => {
+  it('no monta decoración de fondo', () => {
     const { container } = render(<SiteFooter />);
-    for (const c of container.querySelectorAll('canvas')) expect(c.getAttribute('aria-hidden')).toBe('true');
+    expect(container.querySelectorAll('canvas')).toHaveLength(0);
   });
 });

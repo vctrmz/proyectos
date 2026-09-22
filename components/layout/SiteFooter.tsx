@@ -1,12 +1,10 @@
 import Link from 'next/link';
 import { SITE } from '@/lib/content/site';
-import AsciiHands from './AsciiHands';
 import s from './SiteFooter.module.css';
 
 export default function SiteFooter() {
   return (
     <footer className={s.foot}>
-      <AsciiHands />
       <div className={`container ${s.inner}`}>
         <div className={s.top}>
           <p className={s.claim}>Diseño producto B2B donde un error operativo cuesta dinero.</p>
@@ -17,7 +15,6 @@ export default function SiteFooter() {
             <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
           </ul>
         </div>
-        <p className={s.name}>Víctor Maza</p>
         <div className={s.meta}>
           <span className={s.dot}><span aria-hidden="true" />Disponible para proyectos</span>
           <span>© 2026 Víctor Maza · {SITE.city}, España · Trabajo en remoto</span>
