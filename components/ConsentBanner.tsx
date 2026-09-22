@@ -3,10 +3,8 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { readConsent, writeConsent, startAnalytics, installConsentGlobals } from '@/lib/consent';
-import { loaderSeen, needsLoader, onLoaderDone } from '@/lib/loader';
 
-/* Esperamos a que acabe la intro para no taparla. Si en la página no hay
-   loader (perfil, privacidad) damos 2 s de margen, como consent.js. */
+/* Aparece a los 400 ms de montar, salvo que ya haya decisión guardada. */
 export default function ConsentBanner() {
   const [open, setOpen] = useState(false);
   const [shown, setShown] = useState(false);
@@ -16,13 +14,8 @@ export default function ConsentBanner() {
     const decision = readConsent();
     if (decision === 'granted') { startAnalytics(); return; }
     if (decision === 'denied') return;
-    let t: ReturnType<typeof setTimeout> | undefined;
-    const show = (ms: number) => { t = setTimeout(() => setOpen(true), ms); };
-    let off = () => {};
-    if (loaderSeen()) show(400);
-    else if (needsLoader()) off = onLoaderDone(() => show(400));
-    else show(2000);
-    return () => { off(); if (t) clearTimeout(t); };
+    const t = setTimeout(() => setOpen(true), 400);
+    return () => clearTimeout(t);
   }, []);
 
   useEffect(() => {

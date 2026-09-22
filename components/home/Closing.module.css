@@ -1,0 +1,8 @@
+.wrap { padding-block: var(--sp-64) var(--sp-96); }
+.inset { position: relative; padding: clamp(40px, 6vw, 96px) clamp(24px, 5vw, 80px); }
+.content { position: relative; z-index: 1; display: grid; gap: var(--sp-48); }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--sp-24); }
+.k { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+.v { font-size: var(--fs-300); color: var(--inset-ink); }
+.ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.copied { font-size: var(--fs-200); color: var(--accent); min-height: 1.5em; }

@@ -2,7 +2,6 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, act, fireEvent } from '@testing-library/react';
 import ConsentBanner from './ConsentBanner';
 import { CONSENT_KEY } from '@/lib/consent';
-import { LOADER_KEY } from '@/lib/loader';
 
 vi.mock('next/link', () => ({ default: ({ href, children, ...rest }: { href: string; children: React.ReactNode }) => <a href={href} {...rest}>{children}</a> }));
 
@@ -10,30 +9,15 @@ beforeEach(() => { vi.useFakeTimers(); document.head.innerHTML = ''; });
 afterEach(() => vi.useRealTimers());
 
 describe('ConsentBanner', () => {
-  it('sin decisión y sin loader (escritorio), espera al evento y aparece a los 400 ms', () => {
+  it('sin decisión aparece a los 400 ms con enlace a privacidad', () => {
     render(<ConsentBanner />);
     expect(screen.queryByRole('dialog')).toBeNull();
-    act(() => { window.dispatchEvent(new Event('vm-loader-done')); });
     act(() => { vi.advanceTimersByTime(450); });
     expect(screen.getByRole('dialog')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Más información' })).toHaveAttribute('href', '/privacidad');
-  });
-  it('sin decisión, sin loader y en móvil, aparece a los 2 s', () => {
-    const mm = vi.spyOn(window, 'matchMedia').mockImplementation((q) => ({ matches: q === '(max-width: 820px)', media: q } as MediaQueryList));
-    render(<ConsentBanner />);
-    expect(screen.queryByRole('dialog')).toBeNull();
-    act(() => { vi.advanceTimersByTime(2100); });
-    expect(screen.getByRole('dialog')).toBeInTheDocument();
-    mm.mockRestore();
-  });
-  it('si el loader ya se vio, aparece a los 400 ms', () => {
-    sessionStorage.setItem(LOADER_KEY, '1');
-    render(<ConsentBanner />);
-    act(() => { vi.advanceTimersByTime(450); });
-    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    expect(screen.getByRole('dialog').textContent).toMatch(/Google Analytics y Microsoft Clarity/);
   });
   it('aceptar guarda granted y arranca la analítica', () => {
-    sessionStorage.setItem(LOADER_KEY, '1');
     render(<ConsentBanner />);
     act(() => { vi.advanceTimersByTime(450); });
     fireEvent.click(screen.getByRole('button', { name: 'Aceptar' }));
@@ -41,7 +25,6 @@ describe('ConsentBanner', () => {
     expect(document.getElementById('ga-gtag-loader')).not.toBeNull();
   });
   it('rechazar guarda denied y no pide nada', () => {
-    sessionStorage.setItem(LOADER_KEY, '1');
     render(<ConsentBanner />);
     act(() => { vi.advanceTimersByTime(450); });
     fireEvent.click(screen.getByRole('button', { name: 'Rechazar' }));

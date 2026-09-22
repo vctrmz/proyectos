@@ -1,15 +1,17 @@
 'use client';
 import { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { AnimatePresence, LayoutGroup } from 'motion/react';
-import { filterProjects, filterCounts, type FilterId } from '@/lib/content/projects';
+import { filterProjects, filterCounts, parseFilter, type FilterId } from '@/lib/content/projects';
 import FilterChips from './FilterChips';
 import ProjectCard from './ProjectCard';
 import s from './catalog.module.css';
 
 /* El filtro vive en la URL (?f=) para poder compartirlo; replaceState evita
    añadir historial por cada chip. */
-export default function Catalog({ initialFilter }: { initialFilter: FilterId }) {
-  const [filter, setFilter] = useState<FilterId>(initialFilter);
+export default function Catalog({ initialFilter }: { initialFilter?: FilterId }) {
+  const params = useSearchParams();
+  const [filter, setFilter] = useState<FilterId>(initialFilter ?? parseFilter(params.get('f')));
   const counts = filterCounts();
   const items = filterProjects(filter);
   const change = (f: FilterId) => {

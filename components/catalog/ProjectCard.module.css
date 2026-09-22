@@ -6,6 +6,6 @@
 .tags span + span::before { content: " · "; }
 .sum { font-size: var(--fs-200); color: var(--ink-2); max-width: 56ch; }
 .media { position: relative; }
-.media img { width: 100%; height: auto; }
+
 .cta { position: absolute; top: 12px; right: 12px; z-index: 2; }
 .link::after { content: ""; position: absolute; inset: 0; }
