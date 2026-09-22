@@ -10,7 +10,8 @@ export default function SiteFooter() {
   return (
     <footer className={s.foot}>
       <div className={`container ${s.inner}`}>
-        <p className={s.claim}>Diseño producto B2B donde un error operativo cuesta dinero.</p>
+        {/* Firma, no discurso: el claim va una sola vez, en el manifiesto de la home. */}
+        <p className={s.claim}><strong>{SITE.name}</strong>Product Designer · B2B SaaS e Insurtech</p>
         <div className={s.contact}>
           <p className={s.kicker}>Ponte en contacto</p>
           <div className={s.ctas}>

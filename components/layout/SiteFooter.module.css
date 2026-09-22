@@ -1,6 +1,7 @@
 .foot { background: var(--inset-bg); color: var(--inset-ink); }
 .inner { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; gap: var(--sp-32); padding-block: clamp(48px, 6vw, 80px); }
-.claim { font-size: var(--fs-300); color: var(--inset-ink-2); max-width: 34ch; }
+.claim { display: grid; gap: 2px; font-size: var(--fs-200); color: var(--inset-ink-2); max-width: 34ch; }
+.claim strong { font-size: var(--fs-400); font-weight: 500; color: var(--inset-ink); }
 .contact { display: grid; justify-items: center; gap: 14px; }
 .kicker { font-size: var(--fs-100); letter-spacing: .14em; text-transform: uppercase; color: var(--inset-ink-2); }
 .ctas { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; }

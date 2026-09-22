@@ -1,8 +1,10 @@
 export const ABOUT = {
+  /* El claim "un error operativo cuesta dinero" vive solo en el manifiesto de
+     la home, y "informático de formación" solo en Formación: aquí no se
+     repiten. */
   intro: [
     'Soy Víctor, Product Designer.',
-    'Diseño producto B2B donde un error operativo cuesta dinero.',
-    'Informático de formación, Product Designer de oficio. Nueve años.',
+    'Nueve años en producto B2B denso: SaaS asegurador, banca digital y movilidad.',
   ],
   cities: [
     { name: 'Cumaná', country: 'VE' as const },
