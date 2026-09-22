@@ -23,6 +23,7 @@ export const editorPropuesta: CaseStudy = {
       'Variables con @ y componentes con /: un patrón de comandos que se explica en una guía de uso y una demo en vivo antes del despliegue, porque asumir que se entiende es donde se pierden los editores.',
       'Usé IA generativa para redactar variantes de microcopy legal y descartarlas rápido con Legal delante.',
     ],
+    code: { title: 'Tokens del editor: variables, bloques y esquinas', lang: 'json', code: "{\n  \"color\": {\n    \"variable\":  { \"ink\": \"#ffffff\", \"bg\": \"#121317\" },\n    \"componente\": { \"ink\": \"#ffffff\", \"bg\": \"#4a44f2\" },\n    \"opcional\":  { \"ink\": \"#6a6a71\", \"border\": \"#6a6a71\", \"style\": \"dashed\" },\n    \"bloqueado\": { \"ink\": \"#6a6a71\", \"bg\": \"#f1f2f6\" }\n  },\n  \"font\": {\n    \"family\": { \"texto\": \"Inter\", \"codigo\": \"ui-monospace\" },\n    \"size\":   { \"variable\": 13, \"body\": 15, \"titulo\": 22 }\n  },\n  \"radius\": { \"variable\": 999, \"bloque\": 12, \"documento\": 16 },\n  \"space\":  { \"linea\": 8, \"parrafo\": 16, \"seccion\": 32 }\n}" },
   },
   design: [
     shot('12-editor-variables', 'Editor con variables', 'Editor con variables'),

@@ -18,7 +18,10 @@ export const vista360: CaseStudy = {
     { title: 'Doce exploraciones antes de decidir.', why: 'El método de las tres alternativas se queda corto cuando el coste de equivocarse es una pantalla que se usa cien veces al día.', changed: 'Doce composiciones reducidas a cuatro direcciones comparables.', figure: { diagram: 'grid-12-4-1' } },
     { title: 'Jerarquía por decisión.', why: 'Lo primero que se mira es lo que cambia una acción, no lo que hay más de.', changed: 'Riesgo y actividad arriba; histórico abajo.', figure: { shot: shot('11-resumen-comercial', 'Resumen comercial', 'Resumen comercial') } },
   ],
-  system: { body: ['La pantalla se compone con los componentes del catálogo; el descarte documentado es lo que evita volver a discutir la misma decisión seis meses después.'] },
+  system: {
+    body: ['La pantalla se compone con los componentes del catálogo; el descarte documentado es lo que evita volver a discutir la misma decisión seis meses después.'],
+    code: { title: 'Tokens de la vista: jerarquía por decisión', lang: 'json', code: "{\n  \"color\": {\n    \"riesgo\":    { \"alto\": \"#c0392b\", \"medio\": \"#d97706\", \"bajo\": \"#1f9d55\" },\n    \"actividad\": { \"reciente\": \"#2f5bea\", \"inactiva\": \"#6a6a71\" },\n    \"surface\":   \"#f6f7fb\",\n    \"ink\":       \"#121317\"\n  },\n  \"font\": {\n    \"size\":   { \"dato\": 14, \"cifra\": 28, \"identidad\": 22 },\n    \"weight\": { \"regular\": 400, \"medium\": 500 }\n  },\n  \"radius\": { \"card\": 12, \"avatar\": 999 },\n  \"grid\":   { \"columnas\": 12, \"gutter\": 16, \"cabecera\": \"persistente\" }\n}" },
+  },
   design: [
     shot('11-resumen-comercial', 'Resumen comercial', 'Resumen comercial'),
     shot('17-agenda-reuniones', 'Agenda de reuniones', 'Agenda de reuniones del cliente'),
