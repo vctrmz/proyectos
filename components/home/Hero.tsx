@@ -29,7 +29,6 @@ export default function Hero() {
         <ul className={s.social} aria-label="Redes">
           {SOCIAL.map((x) => <li key={x.name}><a href={x.href} target="_blank" rel="noopener" aria-label={`${x.name} (abre en pestaña nueva)`}><svg viewBox="0 0 24 24" aria-hidden="true"><path d={x.d} /></svg></a></li>)}
         </ul>
-        <p className={s.meta}>{SITE.available}</p>
       </div>
     </section>
   );

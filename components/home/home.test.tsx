@@ -17,6 +17,7 @@ describe('portada', () => {
     expect(screen.getByRole('link', { name: /Ver el caso HERMES/ })).toHaveAttribute('href', '/casos/hermes');
     expect(screen.getByRole('link', { name: /Contactar/ })).toHaveAttribute('href', '#contacto');
     expect(screen.getByText(/Insurtech/)).toBeInTheDocument();
+    expect(screen.queryByText(/Disponible desde/)).toBeNull();
   });
   it('el hero presenta a la persona y sus redes', () => {
     render(<Hero />);
