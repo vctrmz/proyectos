@@ -72,5 +72,11 @@ export const ABOUT = {
     ],
     outro: 'Por encima del método, lo que busco es *crear atmósfera*: que cada pantalla, cada estado y cada palabra hagan que *la marca respire el mismo aire* de un extremo a otro del producto.',
   },
-  tools: ['Figma', 'FigJam', 'Prototipado interactivo', 'Chakra UI', 'Tailwind', 'React', 'GitHub', 'Vercel', 'Microsoft Clarity', 'Google Analytics', 'Maze', 'Mobbin', 'Claude'],
+  toolGroups: [
+    { name: 'Diseño y multimedia', items: ['Figma (avanzado)', 'FigJam', 'Prototipos interactivos', 'Photoshop', 'Illustrator', 'Premiere', 'CapCut'] },
+    { name: 'Desarrollo y despliegue', items: ['HTML · CSS', 'React', 'Chakra UI', 'Tailwind', 'Material UI', 'GitHub', 'Vercel', 'WordPress'] },
+    { name: 'Analítica y comportamiento', items: ['Microsoft Clarity', 'Google Analytics', 'HubSpot', 'Maze', 'Mobbin'] },
+    { name: 'Inteligencia artificial', items: ['Claude', 'Gemini', 'Google Stitch', 'Perplexity'] },
+    { name: 'Mensajería y correo', items: ['SendGrid'] },
+  ],
 };

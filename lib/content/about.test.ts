@@ -13,8 +13,10 @@ describe('sobre mí', () => {
   });
   it('competencias recortadas y herramientas de producto', () => {
     expect(ABOUT.skills.length).toBeLessThanOrEqual(10);
-    expect(ABOUT.tools).not.toContain('Canva');
-    expect(ABOUT.tools).toContain('Figma');
+    const all = ABOUT.toolGroups.flatMap((g) => g.items);
+    expect(ABOUT.toolGroups.length).toBeGreaterThanOrEqual(4);
+    expect(all).not.toContain('Canva');
+    expect(all.some((t) => /^Figma/.test(t))).toBe(true);
   });
   it('el bloque de lugares no tiene fotos todavía', () => {
     expect(ABOUT.places).toEqual([]);

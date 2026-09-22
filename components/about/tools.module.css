@@ -1,0 +1,5 @@
+.stage { display: grid; gap: var(--sp-24); }
+.group { display: grid; gap: 10px; }
+.name { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+.chips { position: relative; list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { position: relative; z-index: 1; padding: 7px 14px; border-radius: var(--r-pill); border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); font-size: var(--fs-200); line-height: 1.2; white-space: nowrap; will-change: transform; }

@@ -9,6 +9,7 @@ import Polaroid from './Polaroid';
 import CityChips from './CityChips';
 import IkigaiDiagram from './IkigaiDiagram';
 import CompanyTabs from './CompanyTabs';
+import ToolGroups from './ToolGroups';
 import BioDrawer from './BioDrawer';
 import SocialLinks from './SocialLinks';
 import s from './about.module.css';
@@ -45,7 +46,7 @@ export default function AboutPage() {
             {ABOUT.vision.paragraphs.map((p) => <p key={p.slice(0, 30)}>{p}</p>)}
             <div className={s.two}>
               <ul className={s.list}>{ABOUT.skills.map((k) => <li key={k}>{k}</li>)}</ul>
-              <div className={s.tools}>{ABOUT.tools.map((t) => <span key={t}>{t}</span>)}</div>
+              <ToolGroups />
             </div>
           </section>
           <section id="contacto" className={s.sec} aria-labelledby="a-contacto"><h2 id="a-contacto">Contacto</h2>
