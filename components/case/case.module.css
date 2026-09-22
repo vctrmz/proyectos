@@ -1,10 +1,10 @@
 .top { padding-top: calc(60px + var(--sp-48)); }
 .back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--ink-2); font-size: var(--fs-200); }
 .back:hover { color: var(--ink); }
-.head { display: grid; gap: var(--sp-16); max-width: 900px; margin-block: var(--sp-24) var(--sp-48); }
+.head { display: grid; gap: var(--sp-16); margin-block: var(--sp-24) var(--sp-48); }
 .title { display: flex; align-items: center; gap: 14px; font-size: var(--fs-1000); letter-spacing: -0.03em; line-height: 1.05; font-variation-settings: 'wght' 450; }
 .icon { width: 44px; height: 44px; border-radius: 12px; background: var(--surface); padding: 6px; object-fit: contain; flex-shrink: 0; }
-.tagline { font-size: var(--fs-500); color: var(--ink-2); max-width: 60ch; text-wrap: pretty; }
+.tagline { font-size: var(--fs-500); color: var(--ink-2); max-width: var(--measure-mid); text-wrap: pretty; }
 .tags { font-size: var(--fs-200); color: var(--ink-3); } .tags span + span::before { content: " · "; }
 .heroInset { padding: clamp(16px, 3vw, 40px); }
 .heroImg { border-radius: 16px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.35); } .heroImg img { width: 100%; height: auto; }
@@ -13,23 +13,26 @@
 .cols h2 { margin-bottom: var(--sp-12); }
 .cols p { font-size: var(--fs-200); color: var(--ink-2); }
 .sec { padding-block: var(--sp-64); border-bottom: 1px solid var(--line); }
-.problem p { font-size: var(--fs-800); line-height: 1.25; letter-spacing: -0.02em; color: var(--ink-2); max-width: 30ch; }
-.problem p:first-of-type { color: var(--ink); margin-bottom: var(--sp-16); }
+.problem p { font-size: var(--fs-800); line-height: 1.25; letter-spacing: -0.02em; color: var(--ink-2); max-width: 34ch; }
+/* Los dos párrafos del problema van a la par: ocupan el ancho y bajan la mitad de alto. */
+.problem { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--sp-48); row-gap: var(--sp-24); align-items: start; }
+.problem > h2 { grid-column: 1 / -1; }
+.problem p:first-of-type { color: var(--ink); }
 .decision { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: var(--sp-48); align-items: center; padding-block: var(--sp-32); }
 .decision + .decision { border-top: 1px solid var(--line); }
 .decision h3 { font-size: var(--fs-600); margin-bottom: var(--sp-12); }
 .decision p { font-size: var(--fs-200); color: var(--ink-2); margin-bottom: var(--sp-8); }
 .decision p strong { color: var(--ink); font-weight: 500; }
-.body p { font-size: var(--fs-300); color: var(--ink-2); max-width: 66ch; margin-bottom: var(--sp-16); }
+.body p { font-size: var(--fs-400); line-height: 1.7; color: var(--ink-2); max-width: var(--measure); text-wrap: pretty; margin-bottom: var(--sp-16); }
 .gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-32); }
 .result { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-32); }
 .result h3 { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin-bottom: var(--sp-16); }
 .metrics { display: grid; gap: var(--sp-24); }
 .na { font-size: var(--fs-500); color: var(--ink-2); }
 .measure { font-size: var(--fs-200); color: var(--ink-2); }
-.learn { display: grid; gap: var(--sp-12); max-width: 66ch; font-size: var(--fs-400); }
+.learn { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-48); font-size: var(--fs-400); }
 .next { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--sp-24); padding-block: var(--sp-64); }
 .nextLink { display: grid; gap: 4px; min-height: 44px; }
 .nextLink span:first-child { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
 .nextLink span:last-child { font-size: var(--fs-500); font-weight: 500; }
-@media (max-width: 900px) { .cols, .result { grid-template-columns: minmax(0, 1fr); } .decision, .gallery { grid-template-columns: minmax(0, 1fr); } .title { font-size: var(--fs-900); } .icon { width: 32px; height: 32px; } }
+@media (max-width: 900px) { .cols, .result { grid-template-columns: minmax(0, 1fr); } .decision, .gallery, .problem, .learn { grid-template-columns: minmax(0, 1fr); } .problem { row-gap: var(--sp-16); } .learn { row-gap: var(--sp-12); } .title { font-size: var(--fs-900); } .icon { width: 32px; height: 32px; } }

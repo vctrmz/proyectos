@@ -13,18 +13,19 @@
 .chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; border-radius: var(--r-pill); background: var(--surface); color: var(--ink); font-size: var(--fs-300); margin: 0 4px 4px 0; vertical-align: middle; }
 .chip small { color: var(--ink-3); font-size: var(--fs-100); }
 .chipNow { background: var(--ink); color: #fff; } .chipNow small { color: rgba(255,255,255,.7); }
-.edu { display: grid; gap: 6px; max-width: 60ch; } .edu p { color: var(--ink-2); } .edu strong { color: var(--ink); font-weight: 500; }
+.edu { display: grid; gap: 6px; max-width: var(--measure); } .edu p { color: var(--ink-2); } .edu strong { color: var(--ink); font-weight: 500; }
 .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--sp-24); }
 .tab { min-height: 44px; padding: 0 16px; border-radius: var(--r-pill); background: var(--surface); color: var(--ink-2); font-size: var(--fs-200); }
 .tab[aria-selected="true"] { background: var(--ink); color: #fff; } .tab small { color: var(--ink-3); margin-left: 6px; } .tab[aria-selected="true"] small { color: rgba(255,255,255,.82); }
-.panel p { font-size: var(--fs-300); color: var(--ink-2); max-width: 66ch; margin-bottom: var(--sp-16); }
+.panel p { font-size: var(--fs-400); line-height: 1.7; color: var(--ink-2); max-width: var(--measure); text-wrap: pretty; margin-bottom: var(--sp-16); }
 .more { display: inline-flex; align-items: center; min-height: 44px; font-weight: 500; }
 .timeline { margin-top: var(--sp-16); }
 .vision h2 { font-size: var(--fs-900); text-transform: none; letter-spacing: -0.025em; color: var(--ink); }
-.vision p { font-size: var(--fs-300); color: var(--ink-2); max-width: 66ch; margin-bottom: var(--sp-16); }
+.vision p { font-size: var(--fs-400); line-height: 1.7; color: var(--ink-2); max-width: var(--measure); text-wrap: pretty; margin-bottom: var(--sp-16); }
 .skillBox { margin-top: var(--sp-32); padding: var(--sp-24); border: 1px solid var(--line); border-radius: var(--r-card); background: var(--surface); display: grid; gap: var(--sp-16); }
 .skillHead { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
-.skillBox .list { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px var(--sp-32); }
+.skillBox .list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px var(--sp-32); }
+@media (max-width: 900px) { .skillBox .list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 @media (max-width: 640px) { .skillBox .list { grid-template-columns: minmax(0, 1fr); } }
 .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; align-content: start; } .list li { font-size: var(--fs-200); color: var(--ink-2); padding-left: 14px; position: relative; }
 .list li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--ink); }
