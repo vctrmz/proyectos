@@ -8,6 +8,8 @@ import Polaroid from './Polaroid';
 import CityChips from './CityChips';
 import IkigaiDiagram from './IkigaiDiagram';
 import CompanyTabs from './CompanyTabs';
+import BioDrawer from './BioDrawer';
+import SocialLinks from './SocialLinks';
 import s from './about.module.css';
 
 export default function AboutPage() {
@@ -24,13 +26,17 @@ export default function AboutPage() {
                 {ABOUT.intro.map((l) => <p key={l}>{l}</p>)}
                 <p>Vivo en <CityChips country="ES" only="current" /></p>
                 <p>Antes, en <CityChips country="ES" only="past" /></p>
-                <p>Nací en Venezuela: <CityChips country="VE" /></p>
+                <p>Nací en Venezuela.</p>
               </div>
             </div>
-            <Polaroid src="/assets/victor.jpg" alt="Víctor Maza" caption="Víctor Maza · Málaga" />
+            <div className={s.aside}>
+              <Polaroid src="/assets/victor.jpg" alt="Víctor Maza" caption="Víctor Maza · Málaga" />
+              <SocialLinks />
+            </div>
           </section>
           <section className={s.sec} aria-labelledby="a-formacion"><h2 id="a-formacion">Formación</h2>
             <div className={s.edu}>{ABOUT.education.map((e) => <p key={e.degree}><strong>{e.degree}</strong> · {e.school} · {e.place} · {e.years}</p>)}<p>Informático de formación, Product Designer de oficio.</p></div>
+            <div className={s.eduCta}><BioDrawer /></div>
           </section>
           <section className={s.sec} aria-labelledby="a-ikigai"><h2 id="a-ikigai">Ikigai</h2><IkigaiDiagram /></section>
           <section className={s.sec} aria-labelledby="a-empresas"><h2 id="a-empresas">Empresas</h2><CompanyTabs /><div className={s.timeline}><Diagram id="timeline" /></div></section>

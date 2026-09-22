@@ -1,7 +1,8 @@
 .intro { padding-top: calc(60px + var(--sp-64)); padding-bottom: var(--sp-64); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--sp-48); align-items: center; }
 .intro h2 { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: var(--sp-24); }
+.aside { justify-self: end; display: grid; justify-items: center; }
 .intro figure { justify-self: end; }
-@media (max-width: 767px) { .intro { grid-template-columns: minmax(0, 1fr); } .intro figure { justify-self: center; order: -1; } }
+@media (max-width: 767px) { .intro { grid-template-columns: minmax(0, 1fr); } .aside { justify-self: center; order: -1; } }
 .polaroid { margin: 0; background: #fff; padding: 12px 12px 40px; border-radius: 6px; box-shadow: 0 12px 40px rgba(18,19,23,.14); transform: rotate(2deg); width: min(320px, 80vw); }
 .polaroid img { width: 100%; height: auto; border-radius: 3px; }
 .polaroid figcaption { margin-top: 10px; font-style: italic; color: var(--ink-2); font-size: var(--fs-200); }
@@ -27,3 +28,12 @@
 .tools { display: flex; flex-wrap: wrap; gap: 8px; align-content: start; } .tools span { padding: 4px 12px; border-radius: var(--r-pill); background: var(--surface); font-size: var(--fs-200); color: var(--ink-2); }
 .contact { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 @media (max-width: 767px) { .two { grid-template-columns: minmax(0, 1fr); } }
+.bio { display: grid; gap: var(--sp-16); }
+.bio p { font-size: var(--fs-300); line-height: 1.7; color: var(--ink-2); }
+.bio p:first-child { font-size: var(--fs-500); color: var(--ink); }
+.bio strong { color: var(--ink); font-weight: 500; }
+.social { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: var(--sp-24) 0 0; padding: 0; }
+.social a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: var(--r-pill); background: var(--surface); color: var(--ink); font-size: var(--fs-200); }
+.social a:hover { background: #eef0f6; }
+.social svg { width: 16px; height: 16px; fill: currentColor; }
+.eduCta { margin-top: var(--sp-24); }
