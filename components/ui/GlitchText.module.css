@@ -1,0 +1,3 @@
+.host { display: inline; }
+/* tabular-nums y el mismo ancho por glifo evitan que la mezcla mueva el texto */
+.fx { font-variant-numeric: tabular-nums; }

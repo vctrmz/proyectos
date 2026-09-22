@@ -2,6 +2,7 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from '@/lib/gsap';
 import { scrollEffectsAllowed } from '@/lib/motion/prefs';
+import GlitchText from '@/components/ui/GlitchText';
 import s from './Manifesto.module.css';
 
 const LINES = ['Diseño producto B2B donde un error operativo cuesta dinero.', 'Diseñé reglas en lugar de casos.'];
@@ -21,7 +22,7 @@ export default function Manifesto() {
     <section className={`container ${s.wrap}`} aria-label="Manifiesto">
       <p ref={ref} className={s.text}>
         {LINES.map((line, li) => (
-          <span key={li}>{line.split(' ').map((w, i) => <span key={i} className={s.w}>{w}&nbsp;</span>)}{li === 0 && <br />}</span>
+          <span key={li}>{line.split(' ').map((w, i) => <span key={i} className={s.w}><GlitchText text={w} />&nbsp;</span>)}{li === 0 && <br />}</span>
         ))}
       </p>
     </section>

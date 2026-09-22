@@ -30,7 +30,9 @@ const chain = () => {
   tl.kill = () => {};
   return tl;
 };
+const tickers = new Set<() => void>();
 const fakeGsap = {
+  ticker: { add: (f: () => void) => tickers.add(f), remove: (f: () => void) => tickers.delete(f), wake: () => {}, lagSmoothing: () => {}, tick: () => tickers.forEach((f) => f()) },
   to: vi.fn(), from: vi.fn(), fromTo: vi.fn(), set: vi.fn(), killTweensOf: vi.fn(), registerPlugin: vi.fn(),
   timeline: () => chain(),
   quickTo: () => vi.fn(),

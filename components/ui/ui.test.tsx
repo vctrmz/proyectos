@@ -39,7 +39,9 @@ describe('TwoToneHeading', () => {
     render(<TwoToneHeading as="h1" lines={['Uno', 'Dos']} />);
     const h = screen.getByRole('heading', { level: 1 });
     expect(h).toHaveClass('two-tone');
-    expect(h.querySelectorAll('span')).toHaveLength(2);
+    expect(h.children).toHaveLength(3); // span, br, span
+    expect(h.textContent).toContain('Uno');
+    expect(h.textContent).toContain('Dos');
   });
 });
 

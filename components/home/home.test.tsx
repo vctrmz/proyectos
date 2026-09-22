@@ -36,7 +36,8 @@ describe('portada', () => {
   });
   it('el manifiesto está completo en el HTML (sin depender de JS)', () => {
     const { container } = render(<Manifesto />);
-    const text = container.textContent!.replace(/ /g, ' ');
+    // GlitchText duplica cada palabra (accesible + decorativa): se compara la capa accesible
+    const text = [...container.querySelectorAll('.visually-hidden')].map((n) => n.textContent).join(' ');
     expect(text).toContain('Diseñé reglas en lugar de casos');
     expect(text).toContain('un error operativo cuesta dinero');
   });
