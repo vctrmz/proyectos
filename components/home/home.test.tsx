@@ -29,6 +29,8 @@ describe('portada', () => {
     expect(items).toHaveLength(5);
     expect(items[0].textContent).toMatch(/Insurtech/);
     expect(items[0].textContent).toMatch(/2022/);
+    // descripciones de una línea
+    for (const li of items) { const body = li.querySelector('[class*="body"]')!; expect(body.textContent!.length, body.textContent!).toBeLessThanOrEqual(95); }
     expect(screen.getByRole('link', { name: /Ver el caso/ })).toHaveAttribute('href', '/casos/hermes');
   });
   it('el manifiesto está completo en el HTML (sin depender de JS)', () => {
@@ -40,8 +42,11 @@ describe('portada', () => {
   it('los logos son monocromos, discretos y accesibles', () => {
     render(<LogoMarquee />);
     const list = screen.getByRole('list', { name: /empresas/i });
-    expect(list.querySelectorAll('img').length).toBeGreaterThanOrEqual(8);
-    expect(list.querySelector('img')).toHaveAttribute('alt');
+    const imgs = list.querySelectorAll('img');
+    expect(imgs.length).toBeGreaterThanOrEqual(8);
+    expect(imgs[0]).toHaveAttribute('alt');
+    // solo logos: ningún nombre visible junto a la imagen
+    expect(list.textContent!.trim()).toBe('');
   });
   it('el cierre pregunta por el producto complejo y ofrece contacto', () => {
     render(<Closing />);
