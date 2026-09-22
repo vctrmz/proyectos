@@ -38,8 +38,8 @@ describe('portada', () => {
     const { container } = render(<Manifesto />);
     // GlitchText duplica cada palabra (texto real + capa decorativa): se compara el texto real
     const text = [...container.querySelectorAll('[data-real]')].map((n) => n.textContent).join(' ');
-    expect(text).toContain('Diseñé reglas en lugar de casos');
     expect(text).toContain('un error operativo cuesta dinero');
+    expect(text).toContain('reglas escalables en lugar de resolver casos uno a uno');
   });
   it('los logos son monocromos, discretos y accesibles', () => {
     render(<LogoMarquee />);

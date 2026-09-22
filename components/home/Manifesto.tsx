@@ -5,7 +5,8 @@ import { scrollEffectsAllowed } from '@/lib/motion/prefs';
 import GlitchText from '@/components/ui/GlitchText';
 import s from './Manifesto.module.css';
 
-const LINES = ['Diseño producto B2B donde un error operativo cuesta dinero.', 'Diseñé reglas en lugar de casos.'];
+/* Una sola frase en dos tramos: el primero en tinta, el segundo atenuado. */
+const LINES = ['Diseño productos B2B donde un error operativo cuesta dinero,', 'por eso creo reglas escalables en lugar de resolver casos uno a uno.'];
 
 /* El texto completo va en el HTML. Con permiso de motion, las palabras
    arrancan atenuadas y se "escriben" al ritmo del scroll (scrub). */
