@@ -8,7 +8,8 @@ describe('AboutPage', () => {
   it('sigue la estructura: personal, formación, ikigai, empresas, visión, contacto', () => {
     render(<AboutPage />);
     const h2 = screen.getAllByRole('heading', { level: 2 }).map((h) => h.textContent);
-    expect(h2).toEqual(expect.arrayContaining(['Personal', 'Formación', 'Ikigai', 'Empresas']));
+    expect(h2).toEqual(expect.arrayContaining(['Personal', 'Formación', 'Ikigai', 'Empresas', 'Herramientas']));
+    expect(h2.indexOf('Herramientas')).toBeGreaterThan(h2.findIndex((x) => /Diseño sistemas/.test(x!)));
     expect(screen.getByText(/Universidad de Oriente/)).toBeInTheDocument();
     expect(screen.getByText('Málaga')).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: /Diseño sistemas, no pantallas/ })).toBeInTheDocument();

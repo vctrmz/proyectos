@@ -1,5 +1,16 @@
-.stage { display: grid; gap: var(--sp-24); }
+.stage { display: grid; gap: var(--sp-32); }
 .group { display: grid; gap: 10px; }
 .name { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
 .chips { position: relative; list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .chip { position: relative; z-index: 1; padding: 7px 14px; border-radius: var(--r-pill); border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); font-size: var(--fs-200); line-height: 1.2; white-space: nowrap; will-change: transform; }
+
+/* Galería del grupo destacado: rejilla desfasada, más visual que una lista */
+.featured { display: grid; gap: var(--sp-16); }
+.tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.tile { display: grid; align-content: end; min-height: 92px; padding: 12px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); overflow: hidden; position: relative; }
+.tile::before { content: ""; position: absolute; inset: 0; opacity: .5; background: var(--glow); }
+.tile:nth-child(odd) { margin-top: 14px; }
+.tileName { position: relative; font-size: var(--fs-200); font-weight: 500; color: var(--ink); letter-spacing: -0.01em; }
+.t0 { min-height: 108px; } .t1 { min-height: 92px; } .t2 { min-height: 124px; } .t3 { min-height: 96px; }
+@media (max-width: 900px) { .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } .tile { min-height: 84px !important; } }

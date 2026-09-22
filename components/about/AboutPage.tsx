@@ -44,10 +44,13 @@ export default function AboutPage() {
           <section className={s.sec} aria-labelledby="a-empresas"><h2 id="a-empresas">Empresas</h2><CompanyTabs /><div className={s.timeline}><Diagram id="timeline" /></div></section>
           <section className={`${s.sec} ${s.vision}`} aria-labelledby="a-vision"><h2 id="a-vision">{ABOUT.vision.title}</h2>
             {ABOUT.vision.paragraphs.map((p) => <p key={p.slice(0, 30)}>{p}</p>)}
-            <div className={s.two}>
+            <div className={s.skillBox}>
+              <p className={s.skillHead}>Lo que aporto</p>
               <ul className={s.list}>{ABOUT.skills.map((k) => <li key={k}>{k}</li>)}</ul>
-              <ToolGroups />
             </div>
+          </section>
+          <section className={s.sec} aria-labelledby="a-tools"><h2 id="a-tools">Herramientas</h2>
+            <ToolGroups />
           </section>
           <section id="contacto" className={s.sec} aria-labelledby="a-contacto"><h2 id="a-contacto">Contacto</h2>
             <div className={s.contact}><StarfieldButton label={SITE.email} href={`mailto:${SITE.email}`} /><Button href={SITE.linkedin} external variant="outline">LinkedIn</Button></div>

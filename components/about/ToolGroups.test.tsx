@@ -14,9 +14,16 @@ describe('ToolGroups', () => {
     const design = screen.getByRole('list', { name: /Diseño y multimedia/ });
     expect(within(design).getByText(/Figma/)).toBeInTheDocument();
   });
+  it('el primer grupo, Diseño y multimedia, se muestra destacado como galería', () => {
+    const { container } = render(<ToolGroups />);
+    const featured = container.querySelector('[data-featured]')!;
+    expect(featured).not.toBeNull();
+    expect(featured.textContent).toMatch(/Diseño y multimedia/);
+    expect(featured.querySelectorAll('[data-tile]').length).toBeGreaterThanOrEqual(6);
+  });
   it('cada chip queda marcado para el efecto de proximidad', () => {
     const { container } = render(<ToolGroups />);
     const chips = container.querySelectorAll('[data-tool]');
-    expect(chips.length).toBeGreaterThanOrEqual(20);
+    expect(chips.length).toBeGreaterThanOrEqual(15);
   });
 });
