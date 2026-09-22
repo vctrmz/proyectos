@@ -1,0 +1,9 @@
+.fig { margin: 0; }
+.svg { width: 100%; height: auto; color: var(--ink); font-family: inherit; font-size: 14px; }
+.box { fill: var(--surface); stroke: var(--line); stroke-width: 1.5; }
+.boxInk { fill: var(--ink); stroke: none; }
+.line { fill: none; stroke: var(--ink-3); stroke-width: 1.5; }
+.acc { stroke: var(--focus); }
+.t { fill: var(--ink); } .t2 { fill: var(--ink-2); } .tw { fill: #fff; } .t3 { fill: var(--ink-3); font-size: 12px; }
+.big { font-size: 56px; font-weight: 500; letter-spacing: -0.03em; }
+.cap { margin-top: var(--sp-12); font-size: var(--fs-200); color: var(--ink-2); }
