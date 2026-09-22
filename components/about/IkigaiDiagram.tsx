@@ -7,10 +7,12 @@ import s from './ikigai.module.css';
 
 type K = 'design' | 'tech' | 'business';
 const R = 130;
+/* Las etiquetas van centradas en la zona exclusiva de cada círculo: arriba
+   para design, abajo a los lados para tech y business. */
 const C: { k: K; cx: number; cy: number; lx: number; ly: number }[] = [
-  { k: 'design', cx: 280, cy: 170, lx: 280, ly: 70 },
-  { k: 'tech', cx: 200, cy: 300, lx: 100, ly: 410 },
-  { k: 'business', cx: 360, cy: 300, lx: 462, ly: 410 },
+  { k: 'design', cx: 280, cy: 170, lx: 280, ly: 105 },
+  { k: 'tech', cx: 200, cy: 300, lx: 152, ly: 360 },
+  { k: 'business', cx: 360, cy: 300, lx: 408, ly: 360 },
 ];
 const LEN = 2 * Math.PI * R;
 
@@ -35,7 +37,7 @@ export default function IkigaiDiagram() {
   const toggle = (k: K) => setActive((a) => (a === k ? null : k));
   return (
     <div className={s.wrap}>
-      <svg ref={ref} viewBox="0 0 560 480" className={s.svg} role="group" aria-label="Diagrama: diseño, tecnología y negocio se cruzan en product design">
+      <svg ref={ref} viewBox="55 25 450 420" className={s.svg} role="group" aria-label="Diagrama: diseño, tecnología y negocio se cruzan en product design">
         <defs>
           <linearGradient id="ik-line" x1="0" y1="0" x2="1" y2="1">
             <stop offset="0%" stopColor="#4a44f2" />
