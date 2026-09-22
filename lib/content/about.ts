@@ -35,9 +35,9 @@ export const ABOUT = {
   vision: {
     title: 'Diseño sistemas, no pantallas.',
     paragraphs: [
-      'Mi base en informática no está para escribir código de producción: está para pensar el producto en sistemas, en estructura y en cómo se va a construir de verdad. Modelo el dominio antes que la pantalla, defino estados, reglas y casos límite, y cierro con un handoff que el equipo puede construir sin interpretar nada.',
-      'Trabajo con patrones validados y criterios de usabilidad, no con invenciones, y respetando cómo se construye realmente en React, Chakra UI o Tailwind. Esta web es un ejemplo: el diseño es mío y dirigí la implementación con IA hasta el detalle. Generar es la parte fácil; lo que aporto es saber qué hay que pedir y reconocer cuándo lo que devuelve no sirve.',
-      'Me interesan los flujos completos, no las pantallas sueltas. Sistemas que hagan que el siguiente diseño y el siguiente desarrollo cuesten menos que el anterior.',
+      'Mi base en informática no está para escribir código de producción: está para *pensar el producto en sistemas, en estructura y en cómo se va a construir de verdad*. *Modelo el dominio antes que la pantalla*, *defino estados, reglas y casos límite*, y cierro con un *handoff que el equipo puede construir sin interpretar nada*.',
+      'Trabajo con *patrones validados y criterios de usabilidad*, no con invenciones, y respetando cómo se construye realmente en *React, Chakra UI o Tailwind*. Esta web es un ejemplo: el diseño es mío y *dirigí la implementación con IA hasta el detalle*. Generar es la parte fácil; lo que aporto es *saber qué hay que pedir y reconocer cuándo lo que devuelve no sirve*.',
+      'Me interesan *los flujos completos, no las pantallas sueltas*. *Sistemas que hagan que el siguiente diseño y el siguiente desarrollo cuesten menos que el anterior.*',
     ],
   },
   skills: [

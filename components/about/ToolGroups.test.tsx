@@ -19,7 +19,16 @@ describe('ToolGroups', () => {
     const featured = container.querySelector('[data-featured]')!;
     expect(featured).not.toBeNull();
     expect(featured.textContent).toMatch(/Diseño y multimedia/);
-    expect(featured.querySelectorAll('[data-tile]').length).toBeGreaterThanOrEqual(6);
+    const tiles = featured.querySelectorAll('[data-tile]');
+    expect(tiles.length).toBeGreaterThanOrEqual(6);
+    // cada mosaico lleva un glifo decorativo y el nombre legible
+    for (const tile of tiles) {
+      const glyph = tile.querySelector('svg')!;
+      expect(glyph).not.toBeNull();
+      expect(glyph.getAttribute('aria-hidden')).toBe('true');
+      expect(glyph.querySelectorAll('path, rect, circle').length).toBeGreaterThanOrEqual(2);
+      expect(tile.textContent!.trim().length).toBeGreaterThan(2);
+    }
   });
   it('cada chip queda marcado para el efecto de proximidad', () => {
     const { container } = render(<ToolGroups />);

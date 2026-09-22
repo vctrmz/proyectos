@@ -4,6 +4,7 @@ import Button from '@/components/ui/Button';
 import StarfieldButton from '@/components/ui/StarfieldButton';
 import Diagram from '@/components/diagrams/Diagram';
 import { ABOUT } from '@/lib/content/about';
+import { splitBold } from '@/lib/content/text';
 import { SITE } from '@/lib/content/site';
 import Polaroid from './Polaroid';
 import CityChips from './CityChips';
@@ -43,7 +44,7 @@ export default function AboutPage() {
           <section className={s.sec} aria-labelledby="a-ikigai"><h2 id="a-ikigai">Ikigai</h2><IkigaiDiagram /></section>
           <section className={s.sec} aria-labelledby="a-empresas"><h2 id="a-empresas">Empresas</h2><CompanyTabs /><div className={s.timeline}><Diagram id="timeline" /></div></section>
           <section className={`${s.sec} ${s.vision}`} aria-labelledby="a-vision"><h2 id="a-vision">{ABOUT.vision.title}</h2>
-            {ABOUT.vision.paragraphs.map((p) => <p key={p.slice(0, 30)}>{p}</p>)}
+            {ABOUT.vision.paragraphs.map((para) => <p key={para.slice(0, 30)}>{splitBold(para).map((x, i) => (x.strong ? <strong key={i}>{x.text}</strong> : <span key={i}>{x.text}</span>))}</p>)}
             <div className={s.skillBox}>
               <p className={s.skillHead}>Lo que aporto</p>
               <ul className={s.list}>{ABOUT.skills.map((k) => <li key={k}>{k}</li>)}</ul>

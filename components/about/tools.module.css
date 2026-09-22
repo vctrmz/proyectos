@@ -4,13 +4,22 @@
 .chips { position: relative; list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
 .chip { position: relative; z-index: 1; padding: 7px 14px; border-radius: var(--r-pill); border: 1px solid var(--line); background: var(--surface); color: var(--ink-2); font-size: var(--fs-200); line-height: 1.2; white-space: nowrap; will-change: transform; }
 
-/* Galería del grupo destacado: rejilla desfasada, más visual que una lista */
+/* Galería del grupo destacado: mosaicos con un glifo dibujado, desfasados en
+   dos alturas; el scroll los abre desde el centro. */
 .featured { display: grid; gap: var(--sp-16); }
 .tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
-.tile { display: grid; align-content: end; min-height: 92px; padding: 12px; border-radius: 14px; border: 1px solid var(--line); background: var(--surface); overflow: hidden; position: relative; }
-.tile::before { content: ""; position: absolute; inset: 0; opacity: .5; background: var(--glow); }
-.tile:nth-child(odd) { margin-top: 14px; }
-.tileName { position: relative; font-size: var(--fs-200); font-weight: 500; color: var(--ink); letter-spacing: -0.01em; }
-.t0 { min-height: 108px; } .t1 { min-height: 92px; } .t2 { min-height: 124px; } .t3 { min-height: 96px; }
+.tile { position: relative; display: grid; align-content: end; min-height: 140px; padding: 14px; border-radius: 16px; border: 1px solid var(--line); background: var(--surface); overflow: hidden; will-change: transform; }
+.tile::after { content: ""; position: absolute; inset: auto -30% -60% auto; width: 120%; aspect-ratio: 1; border-radius: 50%; background: var(--glow); opacity: .7; }
+.tile:first-child { grid-column: span 2; }
+.tile:nth-child(even) { margin-top: 22px; }
+.tile:nth-child(4n) { min-height: 164px; }
+.glyph { position: absolute; z-index: 0; right: 12px; top: 14px; width: clamp(52px, 5.4vw, 72px); height: auto; color: rgba(18,19,23,.17); pointer-events: none; }
+.tile:first-child .glyph { width: clamp(64px, 7vw, 92px); }
+.tileName { position: relative; z-index: 1; font-size: var(--fs-300); font-weight: 500; color: var(--ink); letter-spacing: -0.015em; line-height: 1.25; }
 @media (max-width: 900px) { .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } .tile { min-height: 84px !important; } }
+@media (max-width: 560px) {
+  .tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tile { min-height: 110px !important; }
+  .tile:nth-child(even) { margin-top: 14px; }
+  .glyph { width: 46px; }
+}

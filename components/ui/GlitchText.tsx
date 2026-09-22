@@ -5,9 +5,10 @@ import { motionAllowed } from '@/lib/motion/prefs';
 import s from './GlitchText.module.css';
 
 const CHARS = '.,·-─~+:;=*≡┐┌┘┴┬║░▒▓█▄▀▌▐■!?&#$@0123456789';
-const WAVE_MS = 900;      // lo que tarda una onda en recorrer el texto
-const WAVE_EVERY = 110;   // cada cuánto nace una onda mientras el cursor está encima
-const FRONT = 3;          // ancho del frente de la onda, en caracteres
+const WAVE_MS = 1200;     // lo que tarda una onda en recorrer el texto
+const WAVE_EVERY = 340;   // cada cuánto nace una onda mientras el cursor está encima
+const FRONT = 2;          // ancho del frente de la onda, en caracteres
+const STEP_MS = 45;       // cada cuánto se repinta: a 60 fps el cambio se vuelve ruido
 
 type Props = { text: string; className?: string };
 
@@ -30,7 +31,7 @@ export default function GlitchText({ text, className = '' }: Props) {
 
     const chars = [...text];
     let waves: { pos: number; t0: number }[] = [];
-    let hover = false, lastSpawn = -Infinity, ticking = false, dirty = false;
+    let hover = false, lastSpawn = -Infinity, ticking = false, dirty = false, lastPaint = 0;
 
     const tick = (now: number) => {
       waves = waves.filter((w) => now - w.t0 < WAVE_MS);
@@ -39,6 +40,8 @@ export default function GlitchText({ text, className = '' }: Props) {
         if (!hover) { removeFrame(tick); ticking = false; }
         return;
       }
+      if (now - lastPaint < STEP_MS) return;
+      lastPaint = now;
       out.textContent = chars.map((ch, i) => {
         if (ch === ' ') return ch;
         for (const w of waves) {
