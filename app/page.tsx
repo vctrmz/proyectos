@@ -4,7 +4,7 @@ import { pageMetadata } from '@/lib/seo';
 import SiteHeader from '@/components/layout/SiteHeader';
 import SiteFooter from '@/components/layout/SiteFooter';
 import Hero from '@/components/home/Hero';
-import HeroInset from '@/components/home/HeroInset';
+import Sectores from '@/components/home/Sectores';
 import FactStrip from '@/components/ui/FactStrip';
 import LogoMarquee from '@/components/home/LogoMarquee';
 import Manifesto from '@/components/home/Manifesto';
@@ -29,8 +29,8 @@ export default function Page() {
       <SiteHeader />
       <main id="contenido">
         <Hero />
-        <HeroInset />
         <div className="container"><FactStrip facts={FACTS} /></div>
+        <Sectores />
         <LogoMarquee />
         <Manifesto />
         <section id="trabajo" className="container section" aria-labelledby="trabajo-title">

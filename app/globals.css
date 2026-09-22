@@ -31,6 +31,8 @@ img, svg, video { display: block; max-width: 100%; }
 .visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .two-tone > span:last-child { color: var(--ink-2); }
 .inset .two-tone > span:last-child { color: var(--inset-ink-2); }
+/* Fundido entre rutas (View Transitions) */
+::view-transition-old(root), ::view-transition-new(root) { animation-duration: .32s; animation-timing-function: var(--ease); }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
 }

@@ -1,5 +1,0 @@
-.wrap { padding-block: 0 var(--sp-48); }
-.inset { padding: clamp(16px, 3vw, 40px); }
-.img { border-radius: 16px; overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,.35); }
-.img img { width: 100%; height: auto; display: block; }
-.cap { margin-top: var(--sp-16); font-size: var(--fs-200); color: var(--inset-ink-2); text-align: center; }

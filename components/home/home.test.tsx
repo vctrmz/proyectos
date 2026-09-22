@@ -6,16 +6,30 @@ import Hero from './Hero';
 import Manifesto from './Manifesto';
 import LogoMarquee from './LogoMarquee';
 import Closing from './Closing';
+import Sectores from './Sectores';
 
 describe('portada', () => {
   it('el hero responde quién, qué y para quién con dos CTA', () => {
     render(<Hero />);
     const h1 = screen.getByRole('heading', { level: 1 });
-    expect(h1.textContent).toMatch(/reglas de negocio/i);
+    expect(h1.textContent).toMatch(/producto B2B complejo/i);
     expect(h1.textContent).toMatch(/producción/i);
     expect(screen.getByRole('link', { name: /Ver el caso HERMES/ })).toHaveAttribute('href', '/casos/hermes');
     expect(screen.getByRole('link', { name: /Contactar/ })).toHaveAttribute('href', '#contacto');
     expect(screen.getByText(/Insurtech/)).toBeInTheDocument();
+  });
+  it('el hero presenta a la persona y sus redes', () => {
+    render(<Hero />);
+    expect(screen.getByText(/Víctor Maza/)).toBeInTheDocument();
+    for (const n of ['LinkedIn', 'Behance', 'Instagram']) expect(screen.getByRole('link', { name: new RegExp(n) })).toHaveAttribute('target', '_blank');
+  });
+  it('sectores: cinco con años y enlace', () => {
+    render(<Sectores />);
+    const items = screen.getAllByRole('listitem');
+    expect(items).toHaveLength(5);
+    expect(items[0].textContent).toMatch(/Insurtech/);
+    expect(items[0].textContent).toMatch(/2022/);
+    expect(screen.getByRole('link', { name: /Ver el caso/ })).toHaveAttribute('href', '/casos/hermes');
   });
   it('el manifiesto está completo en el HTML (sin depender de JS)', () => {
     const { container } = render(<Manifesto />);

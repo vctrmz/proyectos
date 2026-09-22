@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { ViewTransition } from 'react';
 import { Geist } from 'next/font/google';
 import './globals.css';
 import SkipLink from '@/components/layout/SkipLink';
@@ -22,7 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <noscript><style>{`[data-reveal],svg[role=img] g{opacity:1 !important;transform:none !important}`}</style></noscript>
         <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Person', name: SITE.name, jobTitle: 'Product Designer', url: SITE.url, email: SITE.email, address: { '@type': 'PostalAddress', addressLocality: 'Málaga', addressCountry: 'ES' }, sameAs: [SITE.linkedin, SITE.behance] }} />
         <SkipLink />
-        <MotionProvider>{children}</MotionProvider>
+        <MotionProvider><ViewTransition>{children}</ViewTransition></MotionProvider>
         <SmoothScroll />
         <ConsentBanner />
       </body>
