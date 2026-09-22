@@ -14,6 +14,7 @@ import CaseHero from './CaseHero';
 import DecisionBlock from './DecisionBlock';
 import ResultBlock from './ResultBlock';
 import NextCase from './NextCase';
+import UiKit from './UiKit';
 import s from './case.module.css';
 
 export default function CasePage({ c }: { c: CaseStudy }) {
@@ -41,6 +42,7 @@ export default function CasePage({ c }: { c: CaseStudy }) {
             <Disclosure title="Tokens, componentes y reglas" defaultOpen>
               <div className={s.body}>{c.system.body.map((b) => <p key={b.slice(0, 30)}>{b}</p>)}</div>
               {c.system.code && <CodeDemo {...c.system.code} />}
+              <UiKit brand={c.brand} />
             </Disclosure>
           </section>
           <section className={s.sec} aria-labelledby="c-diseno"><h2 id="c-diseno">Diseño</h2>

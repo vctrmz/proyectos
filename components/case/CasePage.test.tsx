@@ -20,5 +20,6 @@ describe('CasePage', () => {
   it('pinta un CodeDemo cuando el caso lo trae', () => {
     render(<CasePage c={getCase('hermes')!} />);
     expect(screen.getByText(/ejemplo ilustrativo/i)).toBeInTheDocument();
+    expect(screen.getByRole('list', { name: /kit/i })).toBeInTheDocument();
   });
 });
