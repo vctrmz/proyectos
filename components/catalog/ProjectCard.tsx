@@ -16,7 +16,7 @@ export default function ProjectCard({ project: p }: { project: Project }) {
     ? <Image src={p.image.src} alt={p.image.alt} width={size.width} height={size.height} sizes="(max-width: 768px) 100vw, 580px" />
     : <BrandTile project={p} />;
   return (
-    <motion.li layout layoutId={`card-${p.slug}`} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.98 }} className={s.card}>
+    <motion.li data-reveal layout layoutId={`card-${p.slug}`} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.98 }} className={s.card}>
       <div className={s.top}>
         <h3 className={s.title}><img src={p.logo} alt="" className={s.icon} loading="lazy" decoding="async" />{p.title} · {p.company} · {p.years}</h3>
         <p className={s.tags}>{projectTags(p).map((t) => <span key={t}>{t}</span>)}</p>

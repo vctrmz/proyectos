@@ -17,7 +17,7 @@ export default function SiteHeader() {
         <nav aria-label="Principal">
           <ul className={s.links}>
             {NAV.map((n) => <li key={n.href}><Link href={n.href} className={s.link} aria-current={isActive(n.href) ? 'page' : undefined}>{n.label}</Link></li>)}
-            <li><Button href="#contacto" size="md">Contactar</Button></li>
+            <li><Button href="/#contacto" size="md">Contactar</Button></li>
           </ul>
         </nav>
       </div>
