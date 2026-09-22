@@ -42,7 +42,7 @@ export default function CasePage({ c }: { c: CaseStudy }) {
             <Disclosure title="Tokens, componentes y reglas" defaultOpen>
               <div className={s.body}>{c.system.body.map((b) => <p key={b.slice(0, 30)}>{b}</p>)}</div>
               {c.system.code && <CodeDemo {...c.system.code} />}
-              <UiKit brand={c.brand} />
+              {c.system.uiKit && <UiKit brand={c.brand} pieces={c.system.uiKit} />}
             </Disclosure>
           </section>
           <section className={s.sec} aria-labelledby="c-diseno"><h2 id="c-diseno">Diseño</h2>

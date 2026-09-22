@@ -11,19 +11,23 @@ const WAVE_MS = 1200;     // lo que tarda una onda en recorrer el texto
 const FRONT = 2;          // ancho del frente de la onda, en caracteres
 const STEP_MS = 45;       // cada cuánto se repinta: a 60 fps el cambio se vuelve ruido
 
-type Props = { text: string; className?: string };
+type Props = { text: string; className?: string; trigger?: 'hover' | 'scroll' };
 
-/* Una onda de caracteres recorre el texto al entrar el cursor: nace en la
-   letra señalada y se abre a los lados, mezclando glifos y devolviendo cada
-   letra a su sitio al pasar. Una por pasada, no en bucle: el bucle de
-   animación se apaga en cuanto la onda termina.
-   Sirve para fijar la mirada en una frase: el texto
-   real vive en un span propio para lectores y buscadores, y la capa mezclada
-   es decorativa. Sin permiso de motion no se monta nada.
+/* Una onda de caracteres recorre el texto: nace en un punto, se abre a los
+   lados mezclando glifos y devuelve cada letra a su sitio al pasar. Siempre
+   una sola onda; el bucle de animación se apaga en cuanto termina.
 
-   El reloj es el bucle compartido de lib/motion/raf: una sola fuente de tiempo
-   para todas las frases, en lugar de un rAF por instancia. */
-export default function GlitchText({ text, className = '' }: Props) {
+   Dos disparadores:
+   - 'hover' (frases largas, el manifiesto): nace donde entra el cursor y se
+     puede repetir saliendo y volviendo a entrar.
+   - 'scroll' (por defecto, titulares): nace una vez, cuando el titular entra
+     en pantalla, y no vuelve a ocurrir en esa visita. Así el gesto no persigue
+     al cursor por toda la web.
+
+   El texto real vive en su propio span para lectores y buscadores; la capa
+   mezclada es decorativa. Sin permiso de motion no se monta nada. El reloj es
+   el bucle compartido de lib/motion/raf: una sola fuente de tiempo. */
+export default function GlitchText({ text, className = '', trigger = 'scroll' }: Props) {
   const host = useRef<HTMLSpanElement>(null);
   const fx = useRef<HTMLSpanElement>(null);
 
@@ -57,25 +61,43 @@ export default function GlitchText({ text, className = '' }: Props) {
       dirty = true;
     };
 
-    /* Una onda por pasada: nace donde entra el cursor, recorre el texto y el
-       bucle se apaga. Mientras el cursor sigue encima no se lanza otra, así
-       que nada queda repintando en segundo plano al navegar. */
-    const enter = (e: PointerEvent) => {
+    /* Lanza la única onda desde una posición relativa (0 = primera letra). */
+    const spawn = (rel: number) => {
       if (waves.length) return;
       const now = performance.now();
-      const box = el.getBoundingClientRect();
-      const rel = box.width ? (e.clientX - box.left) / box.width : 0.5;
       waves.push({ pos: Math.max(0, Math.min(chars.length - 1, Math.round(rel * chars.length))), t0: now });
       if (!ticking) { addFrame(tick); ticking = true; }
       tick(now);
     };
-    el.addEventListener('pointerenter', enter);
+
+    if (trigger === 'hover') {
+      const enter = (e: PointerEvent) => {
+        const box = el.getBoundingClientRect();
+        spawn(box.width ? (e.clientX - box.left) / box.width : 0.5);
+      };
+      el.addEventListener('pointerenter', enter);
+      return () => {
+        el.removeEventListener('pointerenter', enter);
+        if (ticking) removeFrame(tick);
+        out.textContent = text;
+      };
+    }
+
+    /* Una vez al entrar en pantalla: el observador se desconecta al disparar,
+       así que no hay nada escuchando el resto de la visita. */
+    if (typeof IntersectionObserver === 'undefined') return;
+    const io = new IntersectionObserver((entries) => {
+      if (!entries.some((x) => x.isIntersecting)) return;
+      io.disconnect();
+      spawn(0);
+    }, { threshold: 0.6 });
+    io.observe(el);
     return () => {
-      el.removeEventListener('pointerenter', enter);
+      io.disconnect();
       if (ticking) removeFrame(tick);
       out.textContent = text;
     };
-  }, [text]);
+  }, [text, trigger]);
 
   /* El texto real va en flujo pero transparente: es el que ocupa sitio, el que
      leen buscadores y lectores de pantalla, y el que se copia. La mezcla se

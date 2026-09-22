@@ -24,6 +24,12 @@ export const editorPropuesta: CaseStudy = {
       'Usé IA generativa para redactar variantes de microcopy legal y descartarlas rápido con Legal delante.',
     ],
     code: { title: 'Tokens del editor: variables, bloques y esquinas', lang: 'json', code: "{\n  \"color\": {\n    \"variable\":  { \"ink\": \"#ffffff\", \"bg\": \"#121317\" },\n    \"componente\": { \"ink\": \"#ffffff\", \"bg\": \"#4a44f2\" },\n    \"opcional\":  { \"ink\": \"#6a6a71\", \"border\": \"#6a6a71\", \"style\": \"dashed\" },\n    \"bloqueado\": { \"ink\": \"#6a6a71\", \"bg\": \"#f1f2f6\" }\n  },\n  \"font\": {\n    \"family\": { \"texto\": \"Inter\", \"codigo\": \"ui-monospace\" },\n    \"size\":   { \"variable\": 13, \"body\": 15, \"titulo\": 22 }\n  },\n  \"radius\": { \"variable\": 999, \"bloque\": 12, \"documento\": 16 },\n  \"space\":  { \"linea\": 8, \"parrafo\": 16, \"seccion\": 32 }\n}" },
+    uiKit: [
+      { kind: 'slots', title: 'Plantilla con huecos', body: 'Variables con @ y componentes con /: la restricción vive en el dato, no en la disciplina de quien escribe. Lo bloqueado no se puede tocar.', wide: true },
+      { kind: 'thread', title: 'Historial de comentarios', body: 'Las dos partes discuten sobre el mismo documento y cada cambio queda auditado mientras se escribe.', wide: true, label: 'trazado sobre el párrafo, no en un correo aparte' },
+      { kind: 'actions', title: 'Jerarquía de acción', body: 'Firmar cierra la fase y va en color de marca; guardar borrador es reversible; salir no pesa.', wide: true, label: 'Firmar propuesta' },
+      { kind: 'scale', title: 'Esquinas del documento', body: 'Variable, bloque y documento tienen su radio propio: la jerarquía se lee antes de leer el texto.', wide: true },
+    ],
   },
   design: [
     shot('12-editor-variables', 'Editor con variables', 'Editor con variables'),

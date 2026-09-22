@@ -21,6 +21,12 @@ export const vista360: CaseStudy = {
   system: {
     body: ['La pantalla se compone con los componentes del catálogo; el descarte documentado es lo que evita volver a discutir la misma decisión seis meses después.'],
     code: { title: 'Tokens de la vista: jerarquía por decisión', lang: 'json', code: "{\n  \"color\": {\n    \"riesgo\":    { \"alto\": \"#c0392b\", \"medio\": \"#d97706\", \"bajo\": \"#1f9d55\" },\n    \"actividad\": { \"reciente\": \"#2f5bea\", \"inactiva\": \"#6a6a71\" },\n    \"surface\":   \"#f6f7fb\",\n    \"ink\":       \"#121317\"\n  },\n  \"font\": {\n    \"size\":   { \"dato\": 14, \"cifra\": 28, \"identidad\": 22 },\n    \"weight\": { \"regular\": 400, \"medium\": 500 }\n  },\n  \"radius\": { \"card\": 12, \"avatar\": 999 },\n  \"grid\":   { \"columnas\": 12, \"gutter\": 16, \"cabecera\": \"persistente\" }\n}" },
+    uiKit: [
+      { kind: 'identity', title: 'Cabecera de identidad', body: 'Persistente: quién es el cliente y su nivel de riesgo no se pierden al recorrer la pantalla.', wide: true, label: 'riesgo alto' },
+      { kind: 'table', title: 'Pólizas, recibos y pagos', body: 'Una sola vista sostiene equipo, pólizas, recibos y los pagos a cada interesado, sin saltar de módulo.', wide: true },
+      { kind: 'states', title: 'Riesgo y actividad', body: 'Alto, medio y bajo con color y fondo propios; la actividad reciente se distingue de la inactiva de un vistazo.', wide: true },
+      { kind: 'scale', title: 'Tarjeta y avatar', body: 'Dos radios para toda la vista: tarjeta y avatar. Con doce columnas y una cabecera fija, basta.', wide: true },
+    ],
   },
   design: [
     shot('11-resumen-comercial', 'Resumen comercial', 'Resumen comercial'),

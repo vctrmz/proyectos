@@ -14,10 +14,10 @@ describe('GlitchText', () => {
     expect(fx).not.toBeNull();
     expect(fx!.textContent).toBe('Diseñé reglas en lugar de casos.');
   });
-  it('al pasar el cursor mezcla caracteres sin cambiar la longitud, y al salir restaura', () => {
+  it('con trigger hover mezcla caracteres sin cambiar la longitud, y luego restaura', () => {
     vi.useFakeTimers({ toFake: ['requestAnimationFrame', 'cancelAnimationFrame', 'performance', 'setTimeout', 'clearTimeout'] });
     const text = 'Diseño producto B2B donde un error operativo cuesta dinero.';
-    const { container } = render(<GlitchText text={text} />);
+    const { container } = render(<GlitchText text={text} trigger="hover" />);
     const fx = container.querySelector('[aria-hidden="true"]') as HTMLElement;
     const host = container.firstElementChild as HTMLElement;
     host.getBoundingClientRect = () => ({ left: 0, width: 590, top: 0, height: 20, right: 590, bottom: 20, x: 0, y: 0, toJSON: () => ({}) });
@@ -27,6 +27,16 @@ describe('GlitchText', () => {
     expect(fx.textContent).not.toBe(text);
     act(() => { fireEvent.pointerLeave(host); });
     act(() => { vi.advanceTimersByTime(1400); });
+    expect(fx.textContent).toBe(text);
+  });
+  it('por defecto no reacciona al cursor: espera el scroll', () => {
+    vi.useFakeTimers({ toFake: ['requestAnimationFrame', 'cancelAnimationFrame', 'performance', 'setTimeout', 'clearTimeout'] });
+    const text = 'Casos y productos en producción.';
+    const { container } = render(<GlitchText text={text} />);
+    const fx = container.querySelector('[aria-hidden="true"]') as HTMLElement;
+    const host = container.firstElementChild as HTMLElement;
+    act(() => { fireEvent.pointerEnter(host, { clientX: 10, clientY: 10 }); });
+    act(() => { vi.advanceTimersByTime(400); });
     expect(fx.textContent).toBe(text);
   });
 });

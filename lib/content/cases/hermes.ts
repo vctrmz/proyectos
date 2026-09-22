@@ -25,6 +25,13 @@ export const hermes: CaseStudy = {
       'Componentes con contrato y accesibilidad forzada por el linter: cuándo se usa cada patrón y por qué queda documentado antes de llegar a desarrollo.',
     ],
     code: { title: "Tokens semánticos del sistema", lang: 'json', code: "{\n  \"color\": {\n    \"brand\":      \"#1f2a5a\",\n    \"action\":     \"#2f5bea\",\n    \"success\":    \"#1f9d55\",\n    \"warning\":    \"#d97706\",\n    \"danger\":     \"#c0392b\",\n    \"surface\":    \"#f6f7fb\",\n    \"ink\":        \"#121317\",\n    \"ink-muted\":  \"#6a6a71\"\n  },\n  \"font\": {\n    \"family\": \"Inter\",\n    \"size\":   { \"xs\": 12, \"sm\": 14, \"md\": 16, \"lg\": 20, \"xl\": 28 },\n    \"weight\": { \"regular\": 400, \"medium\": 500 }\n  },\n  \"radius\": { \"sm\": 6, \"md\": 10, \"lg\": 16, \"pill\": 999 },\n  \"space\":  [4, 8, 12, 16, 24, 32]\n}" },
+    uiKit: [
+      { kind: 'tokens', title: 'Tokens con rol', body: '267 valores de color en uso reducidos a 24 tokens, cada uno con un rol declarado: la marca de cada compañía se resuelve al iniciar sesión, sin duplicar componentes.', wide: true },
+      { kind: 'form', title: 'Formulario por esquema', body: 'El cuestionario de cada ramo se declara como dato y la interfaz lo renderiza con su validación: un ramo nuevo no pide pantallas nuevas.', wide: true },
+      { kind: 'table', title: 'Tabla de alta densidad', body: 'La tabla es el espacio de trabajo: filas compactas, estado a la derecha y acciones que aparecen en la fila activa.' },
+      { kind: 'states', title: 'Estados', body: 'Color y fondo propios, nunca solo color: el mismo lenguaje de estado en tabla, panel y documento.' },
+      { kind: 'actions', title: 'Jerarquía de acción', body: 'La acción que cierra el paso en color de marca, la reversible en contorno, la de salida sin peso.', label: 'Emitir póliza' },
+    ],
   },
   design: [
     shot('08-planes-servicios', 'Planes y servicios por compañía', 'Planes y servicios: catálogo de producto compuesto por negocio, sin desarrollo a medida'),

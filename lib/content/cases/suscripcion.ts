@@ -25,6 +25,12 @@ export const suscripcion: CaseStudy = {
       'El panel de contexto, el editor con comentarios y el agendador se diseñaron para reincorporarse al catálogo: el sistema alimenta el módulo y el módulo devuelve componentes al sistema.',
     ],
     code: { title: "Tokens del módulo: estados, tipografía y esquinas", lang: 'json', code: "{\n  \"estado\": {\n    \"pendiente\": { \"color\": \"#6a6a71\", \"bg\": \"#f1f2f6\" },\n    \"en-curso\":  { \"color\": \"#2f5bea\", \"bg\": \"#e8eefc\" },\n    \"aprobado\":  { \"color\": \"#1f9d55\", \"bg\": \"#e6f6ec\" },\n    \"bloqueado\": { \"color\": \"#c0392b\", \"bg\": \"#fbeaea\" }\n  },\n  \"font\": {\n    \"size\":   { \"label\": 12, \"body\": 14, \"title\": 20 },\n    \"weight\": { \"regular\": 400, \"medium\": 500 }\n  },\n  \"radius\": { \"chip\": 999, \"card\": 12, \"panel\": 16 },\n  \"space\":  { \"campo\": 12, \"bloque\": 24, \"seccion\": 40 }\n}" },
+    uiKit: [
+      { kind: 'phases', title: 'Fases con criterio de salida', body: 'No un asistente lineal: cada fase declara su audiencia, sus permisos y qué tiene que cumplirse para avanzar.', wide: true, label: 'Fase 2 de 3 · salida: propuesta firmada' },
+      { kind: 'states', title: 'Estados del acuerdo', body: 'Los cuatro estados del módulo con color y fondo propios: los mismos en la tabla, en el panel de contexto y en el comité.', wide: true },
+      { kind: 'thread', title: 'Panel de contexto con comentarios', body: 'La conversación queda trazada sobre el punto que se discute, no en un correo aparte, y el panel viaja con el acuerdo.', wide: true },
+      { kind: 'agenda', title: 'Agenda con participantes', body: 'El tipo de reunión sugiere quién debe asistir de cada lado, en lugar de dejarlo a la memoria del closer.', wide: true, label: 'el tipo de reunión sugiere quién asiste' },
+    ],
   },
   design: [
     shot('01-datos-del-contacto', 'Datos del contacto', 'Fase 1 · Cualificación: contacto principal, perfil del cliente y resumen vivo de la empresa'),

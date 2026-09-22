@@ -23,7 +23,7 @@ export default function Manifesto() {
     <section className={`container ${s.wrap}`} aria-label="Manifiesto">
       <p ref={ref} className={s.text}>
         {LINES.map((line, li) => (
-          <span key={li}>{line.split(' ').map((w, i) => <span key={i} className={s.w}><GlitchText text={w} />&nbsp;</span>)}{li === 0 && <br />}</span>
+          <span key={li}>{line.split(' ').map((w, i) => <span key={i} className={s.w}><GlitchText text={w} trigger="hover" />&nbsp;</span>)}{li === 0 && <br />}</span>
         ))}
       </p>
     </section>

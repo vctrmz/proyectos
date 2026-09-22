@@ -1,73 +1,127 @@
 'use client';
 import { motion } from 'motion/react';
+import type { UiKitKind, UiKitPiece } from '@/lib/content/cases/types';
 import s from './uikit.module.css';
 
-/* El kit del sistema en formato bento: cinco piezas con una maqueta real
-   construida con los mismos tokens del caso. Las maquetas son decorativas;
-   lo que se lee es el título y para qué sirve la pieza. */
+/* El kit del sistema en formato bento. Cada caso declara sus propias piezas
+   —solo las que existen en ese producto— y la maqueta se dibuja con el color
+   de marca del caso. Las maquetas son decorativas; lo que se lee es el título
+   y para qué sirve la pieza. */
 
-type Props = { brand: string };
+type Props = { brand: string; pieces: UiKitPiece[] };
 
 const V = { hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } };
 
-export default function UiKit({ brand }: Props) {
+function Mock({ kind, brand, label }: { kind: UiKitKind; brand: string; label?: string }) {
+  switch (kind) {
+    case 'actions': return (
+      <>
+        <span className={s.btnSolid} style={{ background: brand }}>{label ?? 'Confirmar'}</span>
+        <span className={s.btnOutline}>Guardar borrador</span>
+        <span className={s.btnGhost}>Cancelar</span>
+      </>
+    );
+    case 'states': return (
+      <>
+        <span className={`${s.chip} ${s.cPend}`}>Pendiente</span>
+        <span className={`${s.chip} ${s.cCurso}`}>En curso</span>
+        <span className={`${s.chip} ${s.cOk}`}>Aprobado</span>
+        <span className={`${s.chip} ${s.cBad}`}>Bloqueado</span>
+      </>
+    );
+    case 'table': return (
+      <>
+        <span className={s.row}><i /><i className={s.w40} /><span className={`${s.chip} ${s.cOk} ${s.tiny}`}>OK</span></span>
+        <span className={s.row}><i /><i className={s.w60} /><span className={`${s.chip} ${s.cCurso} ${s.tiny}`}>···</span></span>
+        <span className={s.row}><i /><i className={s.w30} /><span className={`${s.chip} ${s.cBad} ${s.tiny}`}>!</span></span>
+        <span className={s.row}><i /><i className={s.w50} /><span className={`${s.chip} ${s.cPend} ${s.tiny}`}>—</span></span>
+      </>
+    );
+    case 'form': return (
+      <>
+        <span className={s.field}><i className={s.label} /><i className={s.input} /></span>
+        <span className={s.field}><i className={s.label} /><i className={s.input} /></span>
+        <span className={`${s.field} ${s.cond}`}><i className={s.label} /><i className={s.input} /><em>condicionado por regla</em></span>
+      </>
+    );
+    case 'phases': return (
+      <>
+        <span className={s.steps}>
+          <i className={s.done} style={{ background: brand }} /><b />
+          <i className={s.done} style={{ background: brand }} /><b />
+          <i className={s.now} style={{ borderColor: brand }} /><b className={s.rest} />
+          <i />
+        </span>
+        <span className={s.hint}>{label ?? 'Fase 2 de 3 · salida: propuesta firmada'}</span>
+      </>
+    );
+    case 'tokens': return (
+      <>
+        {[['brand', brand], ['action', '#2f5bea'], ['success', '#1f9d55'], ['warning', '#d97706'], ['danger', '#c0392b'], ['surface', '#f6f7fb']].map(([role, hex]) => (
+          <span key={role} className={s.token}><i style={{ background: hex, borderColor: role === 'surface' ? '#e3e6ef' : hex }} />{role}</span>
+        ))}
+      </>
+    );
+    case 'slots': return (
+      <>
+        <span className={s.doc}>
+          <i className={s.w60} />
+          <span className={s.varPill} style={{ background: '#121317' }}>@tomador</span>
+          <i className={s.w30} />
+          <span className={s.varPill} style={{ background: 'var(--focus)' }}>/tabla-primas</span>
+        </span>
+        <span className={s.optional}>cláusula opcional · se activa</span>
+        <span className={s.locked}>bloque bloqueado</span>
+      </>
+    );
+    case 'thread': return (
+      <>
+        <span className={s.msg}><i className={s.avatar} style={{ background: brand }} /><span><i className={s.w60} /><i className={s.w40} /></span></span>
+        <span className={`${s.msg} ${s.reply}`}><i className={s.avatar} /><span><i className={s.w50} /></span></span>
+        <span className={s.hint}>{label ?? 'trazado sobre el párrafo, no en un correo aparte'}</span>
+      </>
+    );
+    case 'identity': return (
+      <>
+        <span className={s.ident}><i className={s.avatar} style={{ background: brand }} /><span><i className={s.w60} /><i className={s.w30} /></span><span className={`${s.chip} ${s.cBad} ${s.tiny}`}>{label ?? 'riesgo alto'}</span></span>
+        <span className={s.figs}><b>12</b><small>pólizas</small><b>3</b><small>recibos</small><b>1</b><small>siniestro</small></span>
+      </>
+    );
+    case 'brands': return (
+      <>
+        {[brand, '#2f5bea', '#1f9d55', '#d97706'].map((hex) => (
+          <span key={hex} className={s.brandCard}><i style={{ background: hex }} /><i className={s.w60} /></span>
+        ))}
+      </>
+    );
+    case 'scale': return (
+      <>
+        {[6, 10, 16, 999].map((r, i) => (
+          <span key={r} className={s.radius} style={{ borderRadius: r }}>{['sm', 'md', 'lg', 'pill'][i]}</span>
+        ))}
+      </>
+    );
+    case 'agenda': return (
+      <>
+        <span className={s.meet}><i className={s.w40} /><span className={s.who}><i style={{ background: brand }} /><i /><i /></span></span>
+        <span className={s.meet}><i className={s.w60} /><span className={s.who}><i style={{ background: brand }} /><i /></span></span>
+        <span className={s.hint}>{label ?? 'el tipo de reunión sugiere quién asiste'}</span>
+      </>
+    );
+  }
+}
+
+export default function UiKit({ brand, pieces }: Props) {
+  if (!pieces.length) return null;
   return (
     <motion.ul className={s.grid} aria-label="Kit del sistema" initial="hidden" whileInView="show" viewport={{ once: true, margin: '0px 0px -10% 0px' }} transition={{ staggerChildren: 0.07 }}>
-      <motion.li className={`${s.card} ${s.wide}`} variants={V}>
-        <div data-mock aria-hidden="true" className={s.mock}>
-          <span className={s.btnSolid} style={{ background: brand }}>Emitir póliza</span>
-          <span className={s.btnOutline}>Guardar borrador</span>
-          <span className={s.btnGhost}>Cancelar</span>
-        </div>
-        <h4>Acciones</h4>
-        <p>Una sola jerarquía: la acción que cierra el paso en color de marca, la reversible en contorno, la de salida sin peso.</p>
-      </motion.li>
-
-      <motion.li className={s.card} variants={V}>
-        <div data-mock aria-hidden="true" className={s.mock}>
-          <span className={`${s.chip} ${s.cPend}`}>Pendiente</span>
-          <span className={`${s.chip} ${s.cCurso}`}>En curso</span>
-          <span className={`${s.chip} ${s.cOk}`}>Aprobado</span>
-          <span className={`${s.chip} ${s.cBad}`}>Bloqueado</span>
-        </div>
-        <h4>Estados</h4>
-        <p>Cuatro estados con color y fondo propios, nunca solo color: el mismo lenguaje en tabla, panel y documento.</p>
-      </motion.li>
-
-      <motion.li className={s.card} variants={V}>
-        <div data-mock aria-hidden="true" className={s.mock}>
-          <span className={s.row}><i /><i className={s.w40} /><span className={`${s.chip} ${s.cOk} ${s.tiny}`}>OK</span></span>
-          <span className={s.row}><i /><i className={s.w60} /><span className={`${s.chip} ${s.cCurso} ${s.tiny}`}>···</span></span>
-          <span className={s.row}><i /><i className={s.w30} /><span className={`${s.chip} ${s.cBad} ${s.tiny}`}>!</span></span>
-          <span className={s.row}><i /><i className={s.w50} /><span className={`${s.chip} ${s.cPend} ${s.tiny}`}>—</span></span>
-        </div>
-        <h4>Tabla de alta densidad</h4>
-        <p>La tabla es el espacio de trabajo: filas compactas, estado a la derecha y acciones que aparecen en la fila activa.</p>
-      </motion.li>
-
-      <motion.li className={s.card} variants={V}>
-        <div data-mock aria-hidden="true" className={s.mock}>
-          <span className={s.steps}>
-            <i className={s.done} style={{ background: brand }} /><b />
-            <i className={s.done} style={{ background: brand }} /><b />
-            <i className={s.now} style={{ borderColor: brand }} /><b className={s.rest} />
-            <i />
-          </span>
-          <span className={s.hint}>Fase 2 de 3 · salida: propuesta firmada</span>
-        </div>
-        <h4>Fases con criterio de salida</h4>
-        <p>No un asistente lineal: cada fase declara su audiencia, sus permisos y qué tiene que cumplirse para avanzar.</p>
-      </motion.li>
-
-      <motion.li className={`${s.card} ${s.wide}`} variants={V}>
-        <div data-mock aria-hidden="true" className={s.mock}>
-          <span className={s.field}><i className={s.label} /><i className={s.input} /></span>
-          <span className={s.field}><i className={s.label} /><i className={s.input} /></span>
-          <span className={`${s.field} ${s.cond}`}><i className={s.label} /><i className={s.input} /><em>condicionado por regla</em></span>
-        </div>
-        <h4>Formulario por esquema</h4>
-        <p>Los campos se declaran como dato y la interfaz los renderiza con su validación: un ramo nuevo no pide pantallas nuevas.</p>
-      </motion.li>
+      {pieces.map((p) => (
+        <motion.li key={p.title} className={`${s.card} ${p.wide ? s.wide : ''}`} variants={V}>
+          <div data-mock aria-hidden="true" className={s.mock}><Mock kind={p.kind} brand={brand} label={p.label} /></div>
+          <h4>{p.title}</h4>
+          <p>{p.body}</p>
+        </motion.li>
+      ))}
     </motion.ul>
   );
 }
