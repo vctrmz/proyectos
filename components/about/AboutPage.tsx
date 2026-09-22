@@ -1,6 +1,7 @@
 import SiteHeader from '@/components/layout/SiteHeader';
 import SiteFooter from '@/components/layout/SiteFooter';
 import Button from '@/components/ui/Button';
+import StarfieldButton from '@/components/ui/StarfieldButton';
 import Diagram from '@/components/diagrams/Diagram';
 import { ABOUT } from '@/lib/content/about';
 import { SITE } from '@/lib/content/site';
@@ -48,7 +49,7 @@ export default function AboutPage() {
             </div>
           </section>
           <section id="contacto" className={s.sec} aria-labelledby="a-contacto"><h2 id="a-contacto">Contacto</h2>
-            <div className={s.contact}><Button href={`mailto:${SITE.email}`}>{SITE.email}</Button><Button href={SITE.linkedin} external variant="outline">LinkedIn</Button></div>
+            <div className={s.contact}><StarfieldButton label={SITE.email} href={`mailto:${SITE.email}`} /><Button href={SITE.linkedin} external variant="outline">LinkedIn</Button></div>
           </section>
         </div>
       </main>

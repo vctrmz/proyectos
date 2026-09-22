@@ -13,9 +13,9 @@ export default function BioDrawer() {
   return (
     <>
       <span ref={(el) => { cta.current = el?.querySelector('button') ?? null; }}>
-        <Button onClick={() => setOpen(true)}>Leer mi recorrido completo</Button>
+        <Button onClick={() => setOpen(true)}>Ver el detalle</Button>
       </span>
-      <Drawer open={open} onClose={() => setOpen(false)} title="Mi recorrido" returnFocusTo={cta}>
+      <Drawer open={open} onClose={() => setOpen(false)} title="El detalle" returnFocusTo={cta}>
         <div className={s.bio}>
           {ABOUT.bio.map((para) => <p key={para.slice(0, 40)}>{splitBold(para).map((x, i) => (x.strong ? <strong key={i}>{x.text}</strong> : <span key={i}>{x.text}</span>))}</p>)}
         </div>

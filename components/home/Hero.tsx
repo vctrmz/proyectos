@@ -1,6 +1,7 @@
 import Kicker from '@/components/ui/Kicker';
 import TwoToneHeading from '@/components/ui/TwoToneHeading';
 import Button from '@/components/ui/Button';
+import StarfieldButton from '@/components/ui/StarfieldButton';
 import { SITE } from '@/lib/content/site';
 import HeroField from './HeroField';
 import s from './Hero.module.css';
@@ -22,7 +23,7 @@ export default function Hero() {
         <TwoToneHeading as="h1" id="hero-title" size="display" lines={['Diseño producto B2B complejo', 'y lo llevo a producción.']} />
         <p className={s.sub}>Nueve años en SaaS asegurador, ERP y banca, casi siempre como único diseñador. Entiendo el dominio, lo convierto en reglas y componentes, y acompaño la implementación hasta que el diseño llega entero.</p>
         <div className={s.ctas}>
-          <Button href="/casos/hermes" size="lg">Ver el caso HERMES</Button>
+          <StarfieldButton label="Ver el caso HERMES" href="/casos/hermes" size="lg" />
           <Button href="#contacto" variant="outline" size="lg">Contactar</Button>
         </div>
         <ul className={s.social} aria-label="Redes">

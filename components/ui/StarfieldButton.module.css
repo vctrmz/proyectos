@@ -1,0 +1,11 @@
+.wrap { position: relative; display: inline-grid; place-items: stretch; }
+.link { position: relative; z-index: 2; display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 22px; border-radius: var(--r-pill); background: var(--ink); color: #fff; font-size: var(--fs-200); font-weight: 500; line-height: 1; white-space: nowrap; transition: background .2s var(--ease); }
+.link:hover { background: #2a2c33; }
+.lg .link { min-height: 52px; padding: 0 28px; font-size: var(--fs-300); }
+/* Con el efecto montado, el enlace queda invisible pero sigue siendo el que
+   recibe clic y foco; el custom element pinta la cara. */
+.hasFx .link { background: transparent; color: transparent; }
+.hasFx .link:hover { background: transparent; }
+.hasFx .link:focus-visible { outline-offset: 5px; }
+.fx { position: absolute; inset: 0; z-index: 1; pointer-events: none; display: grid; place-items: stretch; }
+.fx > * { width: 100%; height: 100%; }

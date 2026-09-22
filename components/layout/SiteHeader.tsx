@@ -2,7 +2,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { NAV } from '@/lib/content/site';
-import Button from '@/components/ui/Button';
+import StarfieldButton from '@/components/ui/StarfieldButton';
 import { useScrollDirection } from '@/lib/motion/useScrollDirection';
 import s from './SiteHeader.module.css';
 
@@ -17,7 +17,7 @@ export default function SiteHeader() {
         <nav aria-label="Principal">
           <ul className={s.links}>
             {NAV.map((n) => <li key={n.href}><Link href={n.href} className={s.link} aria-current={isActive(n.href) ? 'page' : undefined}>{n.label}</Link></li>)}
-            <li><Button href="/#contacto" size="md">Contactar</Button></li>
+            <li><StarfieldButton label="Contactar" href="/#contacto" /></li>
           </ul>
         </nav>
       </div>

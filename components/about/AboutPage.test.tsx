@@ -16,7 +16,7 @@ describe('AboutPage', () => {
     expect(document.querySelector('#contacto')).not.toBeNull();
     expect(screen.getByText('Nací en Venezuela.')).toBeInTheDocument();
     expect(screen.queryByText('Cumaná')).toBeNull();
-    expect(screen.getByRole('button', { name: /recorrido completo/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /ver el detalle/i })).toBeInTheDocument();
     const redes = screen.getByRole('list', { name: /redes/i });
     expect(within(redes).getAllByRole('link')).toHaveLength(3);
     expect(within(redes).getByRole('link', { name: /LinkedIn/ })).toHaveAttribute('href', 'https://linkedin.com/in/victor-maza47');

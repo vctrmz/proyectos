@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Button from '@/components/ui/Button';
+import StarfieldButton from '@/components/ui/StarfieldButton';
 import { getCase } from '@/lib/content/cases';
 import s from './case.module.css';
 export default function NextCase({ slug }: { slug: string }) {
@@ -7,7 +7,7 @@ export default function NextCase({ slug }: { slug: string }) {
   return (
     <div className={s.next}>
       <Link href={`/casos/${n.slug}`} className={s.nextLink} aria-label={`Siguiente caso: ${n.title}`}><span>Siguiente caso</span><span>{n.title} →</span></Link>
-      <Button href="/#contacto">Contactar</Button>
+      <StarfieldButton label="Contactar" href="/#contacto" />
     </div>
   );
 }

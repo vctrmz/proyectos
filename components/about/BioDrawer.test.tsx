@@ -7,14 +7,16 @@ import BioDrawer from './BioDrawer';
 describe('BioDrawer', () => {
   it('el CTA abre un drawer accesible con el recorrido completo, Esc lo cierra y devuelve el foco', async () => {
     render(<BioDrawer />);
-    const cta = screen.getByRole('button', { name: /recorrido completo/i });
+    const cta = screen.getByRole('button', { name: /ver el detalle/i });
     expect(screen.queryByRole('dialog')).toBeNull();
     await userEvent.click(cta);
-    const dialog = screen.getByRole('dialog', { name: /recorrido/i });
+    const dialog = screen.getByRole('dialog', { name: /detalle/i });
     expect(dialog).toHaveAttribute('aria-modal', 'true');
-    expect(dialog.textContent).toMatch(/Informático de formación, Product Designer de oficio/);
-    expect(dialog.textContent).toMatch(/Me interesan los flujos completos/);
-    expect(dialog.querySelectorAll('strong').length).toBeGreaterThan(10);
+    expect(dialog.textContent).toMatch(/Cinco productos, un solo lenguaje/);
+    expect(dialog.textContent).toMatch(/267 valores de color/);
+    for (const dup of ['Informático de formación', 'Me interesan los flujos completos', 'Único diseñador de un holding', 'banca digital en entorno regulado']) expect(dialog.textContent, dup).not.toMatch(new RegExp(dup, 'i'));
+    expect(dialog.querySelectorAll('.bio p').length).toBeLessThanOrEqual(4);
+    expect(dialog.querySelectorAll('strong').length).toBeGreaterThan(5);
     expect(document.activeElement).not.toBe(cta);
     await userEvent.keyboard('{Escape}');
     expect(screen.queryByRole('dialog')).toBeNull();
@@ -28,7 +30,7 @@ describe('BioDrawer · forma de trabajo', () => {
     const lenis = { stop: vi.fn(), start: vi.fn() };
     setLenis(lenis);
     render(<BioDrawer />);
-    await userEvent.click(screen.getByRole('button', { name: /recorrido completo/i }));
+    await userEvent.click(screen.getByRole('button', { name: /ver el detalle/i }));
     expect(lenis.stop).toHaveBeenCalledOnce();
     const dialog = screen.getByRole('dialog');
     expect(dialog.querySelector('[data-lenis-prevent]')).not.toBeNull();
