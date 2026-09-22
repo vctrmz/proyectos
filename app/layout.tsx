@@ -5,6 +5,8 @@ import SkipLink from '@/components/layout/SkipLink';
 import ConsentBanner from '@/components/ConsentBanner';
 import MotionProvider from '@/components/motion/MotionProvider';
 import SmoothScroll from '@/components/motion/SmoothScroll';
+import JsonLd from '@/components/seo/JsonLd';
+import { SITE } from '@/lib/content/site';
 
 const geist = Geist({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-geist', display: 'swap' });
 
@@ -17,6 +19,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es" className={geist.variable}>
       <body>
+        <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Person', name: SITE.name, jobTitle: 'Product Designer', url: SITE.url, email: SITE.email, address: { '@type': 'PostalAddress', addressLocality: 'Málaga', addressCountry: 'ES' }, sameAs: [SITE.linkedin, SITE.behance] }} />
         <SkipLink />
         <MotionProvider>{children}</MotionProvider>
         <SmoothScroll />

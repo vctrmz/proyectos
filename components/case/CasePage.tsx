@@ -5,6 +5,8 @@ import Diagram from '@/components/diagrams/Diagram';
 import CodeDemo from '@/components/ui/CodeDemo';
 import Disclosure from '@/components/ui/Disclosure';
 import Figure from '@/components/ui/Figure';
+import JsonLd from '@/components/seo/JsonLd';
+import { SITE } from '@/lib/content/site';
 import { getProject } from '@/lib/content/projects';
 import { shotSize } from '@/lib/content/shots';
 import type { CaseStudy } from '@/lib/content/cases';
@@ -18,6 +20,7 @@ export default function CasePage({ c }: { c: CaseStudy }) {
   const p = getProject(c.slug)!;
   return (
     <>
+      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'CreativeWork', name: c.title, description: c.tagline, author: { '@type': 'Person', name: SITE.name }, url: `${SITE.url}/casos/${c.slug}`, dateCreated: c.years.slice(0, 4) }} />
       <SiteHeader />
       <main id="contenido">
         <div className={`container ${s.top}`}>
