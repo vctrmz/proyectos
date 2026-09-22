@@ -12,7 +12,7 @@
 .edu { display: grid; gap: 6px; max-width: 60ch; } .edu p { color: var(--ink-2); } .edu strong { color: var(--ink); font-weight: 500; }
 .tabs { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--sp-24); }
 .tab { min-height: 44px; padding: 0 16px; border-radius: var(--r-pill); background: var(--surface); color: var(--ink-2); font-size: var(--fs-200); }
-.tab[aria-selected="true"] { background: var(--ink); color: #fff; } .tab small { opacity: .7; margin-left: 6px; }
+.tab[aria-selected="true"] { background: var(--ink); color: #fff; } .tab small { color: var(--ink-3); margin-left: 6px; } .tab[aria-selected="true"] small { color: rgba(255,255,255,.82); }
 .panel p { font-size: var(--fs-300); color: var(--ink-2); max-width: 66ch; margin-bottom: var(--sp-16); }
 .more { display: inline-flex; align-items: center; min-height: 44px; font-weight: 500; }
 .timeline { margin-top: var(--sp-32); }

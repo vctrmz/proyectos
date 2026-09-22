@@ -1,5 +1,5 @@
-.hero { padding: calc(60px + var(--sp-96)) 0 var(--sp-48); text-align: center; }
-.inner { display: grid; justify-items: center; gap: var(--sp-24); max-width: 880px; margin-inline: auto; }
+.hero { padding: calc(60px + var(--sp-64)) 0 var(--sp-32); text-align: center; }
+.inner { display: grid; justify-items: center; gap: var(--sp-24); max-width: 1040px; margin-inline: auto; }
 .sub { font-size: var(--fs-400); color: var(--ink-2); max-width: 60ch; text-wrap: pretty; }
 .meta { font-size: var(--fs-200); color: var(--ink-3); }
 .ctas { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }

@@ -3,7 +3,7 @@ export default function CodeDemo({ title, lang, code }: { title: string; lang: '
   return (
     <div className={s.wrap}>
       <div className={s.head}><span>{title}</span><span className={s.tag}>{lang} · ejemplo ilustrativo</span></div>
-      <pre className={s.pre}><code>{code}</code></pre>
+      <pre className={s.pre} tabIndex={0}><code>{code}</code></pre>
     </div>
   );
 }

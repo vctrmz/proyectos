@@ -25,11 +25,11 @@ export default function CasePage({ c }: { c: CaseStudy }) {
       <main id="contenido">
         <div className={`container ${s.top}`}>
           <Link href="/#trabajo" className={s.back}>← Trabajo</Link>
-          <header className={s.head}>
+          <div className={s.head}>
             <h1 className={s.title}><img src={p.logo} alt="" className={s.icon} />{c.title} · {c.company}</h1>
             <p className={s.tagline}>{c.tagline}</p>
             <p className={s.tags}>{c.tags.map((t) => <span key={t}>{t}</span>)}<span>{c.years}</span></p>
-          </header>
+          </div>
         </div>
         <CaseHero slug={c.slug} hero={c.hero} />
         <div className="container">

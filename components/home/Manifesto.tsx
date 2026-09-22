@@ -14,7 +14,7 @@ export default function Manifesto() {
     const el = ref.current;
     if (!el || !scrollEffectsAllowed()) return;
     const words = el.querySelectorAll(`.${s.w}`);
-    const tween = gsap.fromTo(words, { opacity: 0.18 }, { opacity: 1, stagger: 0.04, ease: 'none', scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 45%', scrub: 0.4 } });
+    const tween = gsap.fromTo(words, { opacity: 0.5 }, { opacity: 1, stagger: 0.04, ease: 'none', scrollTrigger: { trigger: el, start: 'top 80%', end: 'bottom 45%', scrub: 0.4 } });
     return () => { tween?.scrollTrigger?.kill(); tween?.kill(); };
   }, []);
   return (
