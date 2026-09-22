@@ -15,18 +15,19 @@ export default function AboutPage() {
     <>
       <SiteHeader />
       <main id="contenido">
-        <div className={`container ${s.top}`}>
-          <Polaroid src="/assets/victor.jpg" alt="Víctor Maza" caption="Víctor Maza · Málaga" />
-          <h1 className="visually-hidden">Sobre mí</h1>
-        </div>
         <div className="container">
-          <section className={s.sec} aria-labelledby="a-personal"><h2 id="a-personal">Personal</h2>
-            <div className={s.lines}>
-              {ABOUT.intro.map((l) => <p key={l}>{l}</p>)}
-              <p>Vivo en <CityChips country="ES" only="current" /></p>
-              <p>Antes, en <CityChips country="ES" only="past" /></p>
-              <p>Nací en Venezuela: <CityChips country="VE" /></p>
+          <h1 className="visually-hidden">Sobre mí</h1>
+          <section className={s.intro} aria-labelledby="a-personal">
+            <div>
+              <h2 id="a-personal">Personal</h2>
+              <div className={s.lines}>
+                {ABOUT.intro.map((l) => <p key={l}>{l}</p>)}
+                <p>Vivo en <CityChips country="ES" only="current" /></p>
+                <p>Antes, en <CityChips country="ES" only="past" /></p>
+                <p>Nací en Venezuela: <CityChips country="VE" /></p>
+              </div>
             </div>
+            <Polaroid src="/assets/victor.jpg" alt="Víctor Maza" caption="Víctor Maza · Málaga" />
           </section>
           <section className={s.sec} aria-labelledby="a-formacion"><h2 id="a-formacion">Formación</h2>
             <div className={s.edu}>{ABOUT.education.map((e) => <p key={e.degree}><strong>{e.degree}</strong> · {e.school} · {e.place} · {e.years}</p>)}<p>Informático de formación, Product Designer de oficio.</p></div>

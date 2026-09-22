@@ -1,43 +1,55 @@
 'use client';
-import { useEffect, useState } from 'react';
-import { motion } from 'motion/react';
+import { useEffect, useRef, useState } from 'react';
+import { gsap } from '@/lib/gsap';
+import { motionAllowed } from '@/lib/motion/prefs';
 import { ABOUT } from '@/lib/content/about';
-import { prefersReducedMotion } from '@/lib/motion/prefs';
 import s from './ikigai.module.css';
 
 type K = 'design' | 'tech' | 'business';
-const C: { k: K; cx: number; cy: number; from: string; to: string; lx: number; ly: number }[] = [
-  { k: 'design', cx: 280, cy: 170, from: '#4a44f2', to: '#8bde5f', lx: 280, ly: 80 },
-  { k: 'tech', cx: 200, cy: 300, from: '#8bde5f', to: '#4a44f2', lx: 110, ly: 400 },
-  { k: 'business', cx: 360, cy: 300, from: '#ffb547', to: '#4a44f2', lx: 450, ly: 400 },
+const R = 130;
+const C: { k: K; cx: number; cy: number; lx: number; ly: number }[] = [
+  { k: 'design', cx: 280, cy: 170, lx: 280, ly: 70 },
+  { k: 'tech', cx: 200, cy: 300, lx: 100, ly: 410 },
+  { k: 'business', cx: 360, cy: 300, lx: 462, ly: 410 },
 ];
+const LEN = 2 * Math.PI * R;
 
-/* Tres círculos con degradado que gira (SMIL) y respiran (motion). Clic o
-   foco en uno: los otros se atenúan y su frase aparece en el status. Con
-   reduced-motion no se monta el SMIL y MotionConfig deja la respiración quieta. */
+/* Tres anillos de trazo fino con degradado (violeta → verde → aire). Con
+   motion permitido, GSAP los dibuja al entrar y hace girar cada anillo muy
+   despacio: al girar, el degradado recorre la línea. Clic o foco en un anillo
+   atenúa los otros y muestra su frase en el status. */
 export default function IkigaiDiagram() {
   const [active, setActive] = useState<K | null>(null);
-  const [animate, setAnimate] = useState(false);
-  useEffect(() => { setAnimate(!prefersReducedMotion()); }, []);
+  const ref = useRef<SVGSVGElement>(null);
+
+  useEffect(() => {
+    const svg = ref.current;
+    if (!svg || !motionAllowed()) return;
+    const rings = svg.querySelectorAll<SVGCircleElement>('[data-ring]');
+    const tl = gsap.timeline();
+    tl.fromTo(rings, { strokeDashoffset: LEN }, { strokeDashoffset: 0, duration: 1.6, stagger: 0.18, ease: 'power3.out' });
+    const spins = Array.from(rings).map((r, i) => gsap.to(r, { rotation: i % 2 ? -360 : 360, transformOrigin: '50% 50%', duration: 40 + i * 8, repeat: -1, ease: 'none' }));
+    return () => { tl.kill(); spins.forEach((t) => t?.kill()); };
+  }, []);
+
   const toggle = (k: K) => setActive((a) => (a === k ? null : k));
   return (
     <div className={s.wrap}>
-      <svg viewBox="0 0 560 480" className={s.svg} role="group" aria-label="Diagrama: diseño, tecnología y negocio se cruzan en product design">
+      <svg ref={ref} viewBox="0 0 560 480" className={s.svg} role="group" aria-label="Diagrama: diseño, tecnología y negocio se cruzan en product design">
         <defs>
-          {C.map((c) => (
-            <linearGradient key={c.k} id={`g-${c.k}`} x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor={c.from} stopOpacity="0.55" /><stop offset="100%" stopColor={c.to} stopOpacity="0.35" />
-              {animate && <animateTransform attributeName="gradientTransform" type="rotate" from="0 .5 .5" to="360 .5 .5" dur="18s" repeatCount="indefinite" />}
-            </linearGradient>
-          ))}
+          <linearGradient id="ik-line" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stopColor="#4a44f2" />
+            <stop offset="55%" stopColor="#8bde5f" />
+            <stop offset="100%" stopColor="#4a44f2" stopOpacity="0.15" />
+          </linearGradient>
         </defs>
-        {C.map((c, i) => (
-          <motion.g key={c.k} role="button" tabIndex={0} aria-label={c.k} aria-pressed={active === c.k}
-            className={`${s.circle} ${active && active !== c.k ? s.dim : ''}`}
-            onClick={() => toggle(c.k)} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(c.k); } }}
-            animate={{ scale: [1, 1.03, 1] }} transition={{ duration: 6 + i, repeat: Infinity, ease: 'easeInOut' }} style={{ transformOrigin: `${c.cx}px ${c.cy}px` }}>
-            <circle cx={c.cx} cy={c.cy} r={130} fill={`url(#g-${c.k})`} stroke="rgba(18,19,23,.12)" />
-          </motion.g>
+        {C.map((c) => (
+          <g key={c.k} role="button" tabIndex={0} aria-label={c.k} aria-pressed={active === c.k}
+            className={`${s.ring} ${active && active !== c.k ? s.dim : ''} ${active === c.k ? s.on : ''}`}
+            onClick={() => toggle(c.k)} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(c.k); } }}>
+            <circle cx={c.cx} cy={c.cy} r={R + 14} fill="transparent" stroke="none" />
+            <circle data-ring cx={c.cx} cy={c.cy} r={R} fill="none" stroke="url(#ik-line)" strokeWidth={1.5} strokeDasharray={LEN} strokeDashoffset={0} />
+          </g>
         ))}
         {C.map((c) => <text key={c.k} x={c.lx} y={c.ly} textAnchor="middle" className={s.label}>{c.k}</text>)}
         <text x={280} y={262} textAnchor="middle" className={s.center}>{ABOUT.ikigai.center}</text>
