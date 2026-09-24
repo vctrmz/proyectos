@@ -11,7 +11,15 @@ export default function DecisionBlock({ d, brand }: { d: Decision; brand: string
   else if (d.figure && 'diagram' in d.figure) media = <Diagram id={d.figure.diagram} />;
   return (
     <Reveal className={s.decision}>
-      <div><h3>{d.title}</h3><p><strong>Por qué.</strong> {d.why}</p><p><strong>Qué cambió.</strong> {d.changed}</p></div>
+      <div>
+        <h3>{d.title}</h3>
+        <p><strong>Por qué.</strong> {d.why}</p>
+        <p><strong>Qué cambió.</strong> {d.changed}</p>
+        {/* Las dos honestidades: lo que costó la decisión y lo que hoy haría
+            distinto. Van aparte porque es lo que un lead busca leer. */}
+        {d.tradeoff && <p className={s.tradeoff}><span>Contrapartida asumida</span>{d.tradeoff}</p>}
+        {d.wouldFix && <p className={s.wouldFix}><span>Lo que corregiría</span>{d.wouldFix}</p>}
+      </div>
       {media}
     </Reveal>
   );

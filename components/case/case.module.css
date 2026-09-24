@@ -30,10 +30,34 @@
 .metrics { display: grid; gap: var(--sp-24); }
 .na { font-size: var(--fs-500); color: var(--ink-2); }
 .measure { font-size: var(--fs-200); color: var(--ink-2); }
-.learn { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-48); font-size: var(--fs-400); }
+/* Aprendizajes numerados: se leen como conclusiones, no como dos párrafos. */
+.learn { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-32) var(--sp-48); font-size: var(--fs-400); }
+.learn li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; align-items: baseline; color: var(--ink-2); line-height: 1.5; }
+.learnN { font-size: var(--fs-100); letter-spacing: .08em; color: var(--focus); }
 .next { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--sp-24); padding-block: var(--sp-64); }
 .nextLink { display: grid; gap: 4px; min-height: 44px; }
 .nextLink span:first-child { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
 .nextLink span:last-child { font-size: var(--fs-500); font-weight: 500; }
 @media (max-width: 900px) { .cols, .result { grid-template-columns: minmax(0, 1fr); } .decision, .gallery, .problem, .learn { grid-template-columns: minmax(0, 1fr); } .problem { row-gap: var(--sp-16); } .learn { row-gap: var(--sp-12); } .title { font-size: var(--fs-900); } .icon { width: 32px; height: 32px; } }
 .live { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; font-size: var(--fs-200); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; }
+
+/* El documento del caso: índice pegajoso a la izquierda y las secciones en
+   una sola columna de lectura a la derecha. */
+.doc { display: grid; grid-template-columns: minmax(0, 1fr); }
+/* La columna se declara con minmax(0,1fr): sin eso, una tabla ancha dentro
+   estira la rejilla a su max-content y desborda la página en móvil. */
+.stream { display: grid; grid-template-columns: minmax(0, 1fr); min-width: 0; }
+.secN { display: inline-block; min-width: 30px; color: var(--focus); }
+.lead { font-size: var(--fs-400); color: var(--ink-2); max-width: var(--measure-mid); margin-bottom: var(--sp-24); text-wrap: pretty; }
+@media (min-width: 1180px) {
+  .doc { grid-template-columns: 176px minmax(0, 1fr); gap: var(--sp-48); align-items: start; }
+}
+
+/* Llamadas de la decisión: la contrapartida y la corrección pendiente. */
+.tradeoff, .wouldFix { display: grid; gap: 4px; margin-top: var(--sp-16); padding: 12px 14px; border-radius: 12px; font-size: var(--fs-200); line-height: 1.6; }
+.tradeoff { background: var(--surface); border-left: 2px solid var(--ink-3); }
+.wouldFix { background: #fdf6ec; border-left: 2px solid #d97706; }
+.tradeoff span, .wouldFix span { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.wouldFix span { color: #9a5300; }
+/* Al llegar por ancla, el titular no se esconde bajo la cabecera. */
+.sec h2 { scroll-margin-top: 96px; }

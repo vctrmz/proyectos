@@ -1,0 +1,13 @@
+/* Odómetro: una ventana de 1em por dígito y una tira que se desplaza dentro.
+   Cifras tabulares para que rodar no cambie el ancho. */
+.wrap { display: inline-block; font-variant-numeric: tabular-nums; }
+/* Sin seleccionar: la tira lleva los diez dígitos, así que al copiar la cifra
+   lo que se copia es el valor real del span accesible, no el odómetro. */
+.reelRow { display: inline-flex; align-items: flex-start; user-select: none; }
+.static { display: inline-block; }
+.col { display: inline-block; height: 1em; overflow: hidden; line-height: 1; }
+.reel { display: block; will-change: transform; transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1); }
+.digit { display: block; height: 1em; line-height: 1; }
+@media (prefers-reduced-motion: reduce) {
+  .reel { transition: none; }
+}

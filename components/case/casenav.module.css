@@ -1,0 +1,14 @@
+/* Rail pegajoso con el índice del caso. Solo aparece cuando hay hueco real a
+   la izquierda del contenido: por debajo de 1180 px se oculta y el caso se lee
+   de corrido. */
+.nav { display: none; }
+@media (min-width: 1180px) {
+  .nav { display: block; position: sticky; top: 96px; align-self: start; width: 176px; }
+  .head { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin-bottom: var(--sp-16); }
+  .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; counter-reset: none; }
+  .link { display: grid; grid-template-columns: 26px minmax(0, 1fr); gap: 8px; align-items: baseline; padding: 7px 0; font-size: var(--fs-200); color: var(--ink-3); border-top: 1px solid transparent; }
+  .link:hover { color: var(--ink); }
+  .link[aria-current="true"] { color: var(--ink); font-weight: 500; }
+  .link[aria-current="true"] .n { color: var(--focus); }
+  .n { font-size: var(--fs-100); letter-spacing: .06em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+}

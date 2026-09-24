@@ -14,12 +14,12 @@ export const hermes: CaseStudy = {
   ],
   complexity: { diagram: 'clients-to-system', caption: 'Tres compañías con reglas incompatibles sobre un sistema configurable: la diferencia vive en el dato, no en una rama del producto.' },
   decisions: [
-    { title: 'Diseñé reglas en lugar de casos.', why: 'Cada ramo de seguro tiene su cuestionario; diseñar una pantalla por ramo y por cliente no escala y deja el criterio en la cabeza del diseñador.', changed: 'El cuestionario de cada ramo se declara como dato y la interfaz lo renderiza con su validación. Dar de alta una compañía nueva deja de exigir diseño a medida.', figure: { diagram: 'before-after' } },
+    { title: 'Diseñé reglas en lugar de casos.', why: 'Cada ramo de seguro tiene su cuestionario; diseñar una pantalla por ramo y por cliente no escala y deja el criterio en la cabeza del diseñador.', changed: 'El cuestionario de cada ramo se declara como dato y la interfaz lo renderiza con su validación. Dar de alta una compañía nueva deja de exigir diseño a medida.', tradeoff: 'La regla se vuelve el artefacto crítico: un esquema mal declarado rompe una pantalla que nadie diseñó, así que la validación tiene que vivir con el dato.', figure: { diagram: 'before-after' } },
     { title: 'El nivel de sistema que cada producto se puede permitir.', why: 'La respuesta obvia era imponer un sistema único a los cinco productos del holding. Los productos ligeros no necesitan esa gobernanza.', changed: 'Design system completo para el ERP y el administrador; brandsheet y UI kit para los productos ligeros. Cinco negocios que no se sienten como cinco empresas distintas.', figure: { shot: shot('07-seleccionar-moneda', 'Componente de selección de moneda', 'Componentes con contrato: el mismo selector en los cuatro front') } },
     { title: 'Marca e idioma como variables, no como versiones.', why: 'White-labeling por tenant con cinco idiomas base y siete locales de terminología aseguradora.', changed: 'Paleta por cliente al iniciar sesión y terminología por locale, propagadas por tokens semánticos y catálogos de idioma, sin duplicar componentes.', figure: { shot: shot('04-preparar-producto', 'Preparación de producto: módulos, plugins e idiomas por cliente', 'Módulos, plugins e idiomas del sistema configurados por cliente') } },
     { title: 'El CRM sigue el recorrido del agente, no el organigrama del producto.', why: 'Leads, contactos, pipeline y tickets existían como módulos sueltos, y el agente no trabaja por módulos: trabaja por preguntas del día.', changed: 'Cinco pasos encadenados —captar, conocer, negociar, atender y medir—, donde cada módulo alimenta al siguiente: el lead se convierte en contacto, en oportunidad y en cliente atendido sin cambiar de pestaña.', figure: { shot: shot('hx-pipeline', 'Pipeline de ventas en kanban por etapa con el valor de cada una', 'Pipeline: valor por etapa y probabilidad de cierre en la tarjeta, con el mismo código de color que el panel') } },
     { title: 'Una landing que explica el producto con el propio producto.', why: 'Un SaaS asegurador no se vende con ilustraciones: quien compra quiere ver la pantalla que va a operar su equipo.', changed: 'Cada bloque de funcionalidad va acompañado de su pantalla real en un marco de marca, alternando lados para marcar el ritmo de lectura, y cierra con contacto directo por WhatsApp, llamada o email.', figure: { shot: shot('hx-l_multi', 'Bloque de personalización y multilenguaje de la landing sobre fondo navy', 'El bloque que vende lo que más cuesta explicar: personalización, multi-idioma y multi-moneda') } },
-    { title: 'Migración módulo a módulo, consistencia completa antes que mejoras repartidas.', why: 'Con dos generaciones de interfaz conviviendo, mejorar un poco todo mantiene la inconsistencia para siempre.', changed: 'Cada módulo migrado sale entero con el sistema nuevo; el criterio queda escrito y no depende de que yo esté en la reunión.', figure: { diagram: 'areas-map' } },
+    { title: 'Migración módulo a módulo, consistencia completa antes que mejoras repartidas.', why: 'Con dos generaciones de interfaz conviviendo, mejorar un poco todo mantiene la inconsistencia para siempre.', changed: 'Cada módulo migrado sale entero con el sistema nuevo; el criterio queda escrito y no depende de que yo esté en la reunión.', tradeoff: 'Durante meses conviven dos generaciones de interfaz a la vista del usuario. Se asumió a cambio de no dejar la inconsistencia instalada para siempre.', figure: { diagram: 'areas-map' } },
   ],
   system: {
     body: [
@@ -34,6 +34,19 @@ export const hermes: CaseStudy = {
       { kind: 'table', title: 'Tabla de alta densidad', body: 'La tabla es el espacio de trabajo: filas compactas, estado a la derecha y acciones que aparecen en la fila activa.' },
       { kind: 'states', title: 'Estados', body: 'Color y fondo propios, nunca solo color: el mismo lenguaje de estado en tabla, panel y documento.' },
       { kind: 'actions', title: 'Jerarquía de acción', body: 'La acción que cierra el paso en color de marca, la reversible en contorno, la de salida sin peso.', label: 'Emitir póliza' },
+    ],
+  },
+  flows: {
+    title: 'Flujos',
+    caption: 'El CRM no está ordenado por módulos sino por las preguntas del día de un agente: cada paso alimenta al siguiente.',
+    list: [
+      { title: 'Del lead a la póliza', side: 'sin cambiar de pestaña', steps: [
+        { n: '01', t: 'Captar', d: 'Leads con su fuente, su estado y su agente, y la agenda del día al lado.' },
+        { n: '02', t: 'Conocer', d: 'Ficha de contacto con historial por canal, comentarios internos y empresa vinculada.' },
+        { n: '03', t: 'Negociar', d: 'Pipeline en kanban por etapa, con valor y probabilidad de cierre en la tarjeta.' },
+        { n: '04', t: 'Atender', d: 'Tickets con vistas guardadas y prioridad visible por color.' },
+        { n: '05', t: 'Medir', d: 'Panel con los indicadores de la red y los avisos de lo que requiere acción.' },
+      ] },
     ],
   },
   design: [
@@ -61,6 +74,8 @@ export const hermes: CaseStudy = {
   learnings: [
     'Las discusiones pasaron de gustos a criterios porque las reglas están escritas y se pueden consultar.',
     'El sistema se mantiene solo cuando cada módulo nuevo se construye con lo que existe y devuelve lo que le falta.',
+    'Un producto que se vende con su propia pantalla necesita que esa pantalla aguante la mirada: la landing obligó a subir el nivel del panel.',
+    'Instrumenté el sistema y no el producto: hoy pediría analítica de uso desde el primer módulo migrado.',
   ],
   next: 'flesip',
 };

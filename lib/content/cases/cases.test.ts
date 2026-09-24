@@ -15,7 +15,8 @@ describe('casos', () => {
       expect(c.implementation.length, c.slug).toBeGreaterThanOrEqual(1);
       expect(c.result.output.length, c.slug).toBeGreaterThanOrEqual(1);
       expect(c.result.measure.length, c.slug).toBeGreaterThan(20);
-      expect(c.learnings, c.slug).toHaveLength(2);
+      expect(c.learnings.length, c.slug).toBeGreaterThanOrEqual(2);
+      expect(c.learnings.length, c.slug).toBeLessThanOrEqual(5);
       expect(CASE_SLUGS, c.slug).toContain(c.next);
       expect(c.next, c.slug).not.toBe(c.slug);
       for (const m of c.result.output) expect(m.meaning.length, m.label).toBeGreaterThan(20);
@@ -35,6 +36,14 @@ describe('casos', () => {
     }
     const firmas = CASES.map((c) => c.system.uiKit!.map((p) => p.kind).join('+'));
     expect(new Set(firmas).size).toBe(firmas.length);
+  });
+  it('los bloques opcionales, si existen, vienen completos', () => {
+    for (const c of CASES) {
+      if (c.challenge) for (const t of c.challenge.items) expect(t.body.length, c.slug).toBeGreaterThan(30);
+      if (c.audiences) for (const a of c.audiences.items) { expect(a.question.length, c.slug).toBeGreaterThan(10); expect(a.exit.length, c.slug).toBeGreaterThan(3); }
+      if (c.flows) for (const f of c.flows.list) expect(f.steps.length, c.slug).toBeGreaterThanOrEqual(3);
+      if (c.findings) for (const f of c.findings.items) expect(['crítica', 'alta', 'media', 'baja'], c.slug).toContain(f.severity);
+    }
   });
   it('getCase devuelve undefined para slugs desconocidos', () => {
     expect(getCase('nada')).toBeUndefined();

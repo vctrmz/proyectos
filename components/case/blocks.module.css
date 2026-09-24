@@ -1,0 +1,52 @@
+/* Bloques estructurales del caso. Todos comparten la misma retícula del
+   contenedor y se derrumban a una columna por debajo de 900px. */
+
+/* El reto, en tensiones numeradas. */
+.challenge { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-16); }
+.tension { display: grid; align-content: start; gap: 8px; padding: var(--sp-24); border: 1px solid var(--line); border-radius: var(--r-card); background: var(--surface); }
+.tension .n, .n { font-size: var(--fs-100); letter-spacing: .08em; color: var(--ink-3); }
+.tension h3 { font-size: var(--fs-400); letter-spacing: -0.01em; }
+.tension p { font-size: var(--fs-200); color: var(--ink-2); line-height: 1.6; }
+
+/* Audiencias: pregunta, entrada y salida. */
+.aud { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-16); }
+.audCard { display: grid; align-content: start; gap: 6px; padding: var(--sp-24); border: 1px solid var(--line); border-radius: var(--r-card); }
+.audCard h3 { font-size: var(--fs-300); font-weight: 500; }
+.q { font-size: var(--fs-400); color: var(--ink); letter-spacing: -0.015em; line-height: 1.35; }
+.entry { font-size: var(--fs-200); color: var(--ink-2); }
+.exit { font-size: var(--fs-200); color: var(--ink); font-weight: 500; margin-top: 4px; }
+
+/* Flujos numerados. */
+.flows { display: grid; gap: var(--sp-32); }
+.flow { display: grid; gap: var(--sp-16); }
+.flowHead { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.side { text-transform: none; letter-spacing: 0; color: var(--ink-2); font-size: var(--fs-200); }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: var(--sp-16); }
+.step { position: relative; display: grid; align-content: start; gap: 6px; padding: var(--sp-16); border: 1px solid var(--line); border-radius: var(--r-card); background: var(--bg); }
+.step + .step::before { content: "→"; position: absolute; left: calc(var(--sp-16) / -2 - 7px); top: calc(50% - 10px); color: var(--ink-3); font-size: 13px; }
+.stepN { font-size: var(--fs-100); letter-spacing: .08em; color: var(--focus); }
+.stepT { font-size: var(--fs-300); font-weight: 500; letter-spacing: -0.01em; }
+.stepD { font-size: var(--fs-200); color: var(--ink-2); line-height: 1.55; }
+
+/* Tabla de hallazgos. */
+.tableWrap { overflow-x: auto; }
+.table { width: 100%; border-collapse: collapse; font-size: var(--fs-200); }
+.table th { text-align: left; font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; padding: 0 var(--sp-16) 10px 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+.table td { padding: 14px var(--sp-16) 14px 0; border-bottom: 1px solid var(--line); color: var(--ink-2); vertical-align: top; line-height: 1.55; }
+.table strong { color: var(--ink); font-weight: 500; }
+.fn { color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.rule { color: var(--ink-3); }
+.sev { display: inline-block; padding: 3px 10px; border-radius: var(--r-pill); font-size: var(--fs-100); font-weight: 500; white-space: nowrap; }
+.sevCrit { background: #fbeaea; color: #a3281c; }
+.sevHigh { background: #fdeee0; color: #9a5300; }
+.sevMed { background: #eef0fb; color: #2f3fa0; }
+.sevLow { background: #f1f2f6; color: #5c5c63; }
+
+@media (max-width: 900px) {
+  .challenge, .aud { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .steps { grid-auto-flow: row; }
+  .step + .step::before { content: "↓"; left: var(--sp-24); top: calc(var(--sp-16) / -2 - 8px); }
+}
+@media (max-width: 620px) {
+  .challenge, .aud { grid-template-columns: minmax(0, 1fr); }
+}
