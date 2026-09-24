@@ -10,6 +10,10 @@ import TemplateSlots from './TemplateSlots';
 import Grid12to4to1 from './Grid12to4to1';
 import SystemCycle from './SystemCycle';
 import Timeline from './Timeline';
+import ValueChain from './ValueChain';
+import PendingInvoice from './PendingInvoice';
+import TwoSided from './TwoSided';
+import HandoffChain from './HandoffChain';
 
 const MAP: Record<DiagramId, { label: string; C: (p: { s: Record<string, string> }) => React.ReactElement; box?: string }> = {
   'clients-to-system': { label: 'Tres clientes con reglas distintas convergen en un sistema configurable', C: ClientsToSystem },
@@ -20,6 +24,10 @@ const MAP: Record<DiagramId, { label: string; C: (p: { s: Record<string, string>
   'grid-12-4-1': { label: 'Doce composiciones, cuatro finalistas, una en producción', C: Grid12to4to1 },
   'system-cycle': { label: 'El design system alimenta el módulo y el módulo devuelve componentes', C: SystemCycle },
   'timeline': { label: 'Recorrido profesional de 2017 a 2026', C: Timeline, box: '0 130 800 140' },
+  'value-chain': { label: 'Cadena del seguro delegado: la aseguradora delega, Ayax suscribe, el partner distribuye y el cliente compra', C: ValueChain, box: '0 100 800 200' },
+  'pending-invoice': { label: 'Una factura pendiente se completa cuando el cliente final rellena sus datos desde el QR o el correo', C: PendingInvoice, box: '0 70 800 270' },
+  'two-sided': { label: 'Una marca con dos negocios: tienda para el cliente final y red de ópticas para el canal profesional', C: TwoSided, box: '0 10 800 330' },
+  'handoff-chain': { label: 'Del Product Owner que define la oferta al mercado, pasando por diseño y validación', C: HandoffChain, box: '0 110 800 210' },
 };
 
 export default function Diagram({ id, caption }: { id: DiagramId; caption?: string }) {

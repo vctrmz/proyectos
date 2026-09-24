@@ -106,5 +106,445 @@
   "06-agenda-participantes": {
     "width": 1000,
     "height": 601
+  },
+  "ayax-campaign": {
+    "width": 505,
+    "height": 336
+  },
+  "ayax-contacto": {
+    "width": 461,
+    "height": 763
+  },
+  "ayax-cover": {
+    "width": 505,
+    "height": 369
+  },
+  "ayax-guidelines": {
+    "width": 505,
+    "height": 370
+  },
+  "ayax-home": {
+    "width": 462,
+    "height": 1338
+  },
+  "ayax-malaga": {
+    "width": 720,
+    "height": 390
+  },
+  "ayax-merch1": {
+    "width": 505,
+    "height": 336
+  },
+  "ayax-merch2": {
+    "width": 505,
+    "height": 336
+  },
+  "ayax-merch3": {
+    "width": 505,
+    "height": 345
+  },
+  "ayax-noticias": {
+    "width": 463,
+    "height": 1171
+  },
+  "ayax-pack_ayax_a": {
+    "width": 499,
+    "height": 700
+  },
+  "ayax-pack_ayax_b": {
+    "width": 499,
+    "height": 702
+  },
+  "ayax-p_accidente": {
+    "width": 515,
+    "height": 376
+  },
+  "ayax-p_caucion": {
+    "width": 515,
+    "height": 376
+  },
+  "ayax-p_concursos": {
+    "width": 516,
+    "height": 376
+  },
+  "ayax-p_motor": {
+    "width": 516,
+    "height": 376
+  },
+  "ayax-p_taxi": {
+    "width": 515,
+    "height": 376
+  },
+  "ayax-p_viaje": {
+    "width": 515,
+    "height": 376
+  },
+  "ayax-servicios": {
+    "width": 462,
+    "height": 1041
+  },
+  "ayax-sobre": {
+    "width": 462,
+    "height": 1568
+  },
+  "ayax-x_catalog": {
+    "width": 1600,
+    "height": 1294
+  },
+  "ayax-x_contact": {
+    "width": 1600,
+    "height": 888
+  },
+  "ayax-x_hero": {
+    "width": 1600,
+    "height": 817
+  },
+  "ayax-x_mobile": {
+    "width": 1600,
+    "height": 1643
+  },
+  "ayax-x_mosaic": {
+    "width": 1600,
+    "height": 1056
+  },
+  "ayax-x_taxi": {
+    "width": 1600,
+    "height": 605
+  },
+  "ayax-x_taxi_tiers": {
+    "width": 1600,
+    "height": 695
+  },
+  "hx-contacts": {
+    "width": 521,
+    "height": 314
+  },
+  "hx-dashboard": {
+    "width": 519,
+    "height": 361
+  },
+  "hx-landing": {
+    "width": 526,
+    "height": 3923
+  },
+  "hx-landing_contact": {
+    "width": 526,
+    "height": 1084
+  },
+  "hx-leads": {
+    "width": 521,
+    "height": 284
+  },
+  "hx-login": {
+    "width": 521,
+    "height": 260
+  },
+  "hx-l_cta": {
+    "width": 526,
+    "height": 235
+  },
+  "hx-l_multi": {
+    "width": 526,
+    "height": 358
+  },
+  "hx-notif": {
+    "width": 522,
+    "height": 351
+  },
+  "hx-pipeline": {
+    "width": 521,
+    "height": 383
+  },
+  "hx-ticket": {
+    "width": 522,
+    "height": 352
+  },
+  "hx-tickets": {
+    "width": 521,
+    "height": 352
+  },
+  "flesip-auditoria": {
+    "width": 676,
+    "height": 430
+  },
+  "flesip-bancos": {
+    "width": 523,
+    "height": 428
+  },
+  "flesip-componentes": {
+    "width": 522,
+    "height": 433
+  },
+  "flesip-cuenta": {
+    "width": 525,
+    "height": 470
+  },
+  "flesip-facturacion": {
+    "width": 522,
+    "height": 470
+  },
+  "flesip-fx_board": {
+    "width": 1600,
+    "height": 1131
+  },
+  "flesip-fx_c1": {
+    "width": 363,
+    "height": 711
+  },
+  "flesip-fx_c2": {
+    "width": 364,
+    "height": 930
+  },
+  "flesip-fx_c3": {
+    "width": 364,
+    "height": 775
+  },
+  "flesip-fx_correo": {
+    "width": 325,
+    "height": 675
+  },
+  "flesip-fx_detalles": {
+    "width": 318,
+    "height": 680
+  },
+  "flesip-fx_gestionar": {
+    "width": 319,
+    "height": 680
+  },
+  "flesip-fx_ingresos": {
+    "width": 318,
+    "height": 680
+  },
+  "flesip-fx_qr": {
+    "width": 318,
+    "height": 680
+  },
+  "flesip-general": {
+    "width": 526,
+    "height": 522
+  },
+  "flesip-impuestos": {
+    "width": 523,
+    "height": 497
+  },
+  "flesip-mail_revocado": {
+    "width": 222,
+    "height": 326
+  },
+  "flesip-mail_vencido": {
+    "width": 219,
+    "height": 326
+  },
+  "flesip-pack_atrinium_a": {
+    "width": 500,
+    "height": 700
+  },
+  "flesip-pack_atrinium_b": {
+    "width": 500,
+    "height": 702
+  },
+  "flesip-pack_flesip_a": {
+    "width": 500,
+    "height": 700
+  },
+  "flesip-pack_flesip_b": {
+    "width": 500,
+    "height": 702
+  },
+  "flesip-pagos": {
+    "width": 520,
+    "height": 428
+  },
+  "flesip-pago_modal": {
+    "width": 520,
+    "height": 429
+  },
+  "flesip-personalizacion": {
+    "width": 525,
+    "height": 433
+  },
+  "flesip-plantillas": {
+    "width": 526,
+    "height": 433
+  },
+  "flesip-plantilla_modal": {
+    "width": 526,
+    "height": 433
+  },
+  "flesip-skmap_1": {
+    "width": 1536,
+    "height": 864
+  },
+  "flesip-sk_1": {
+    "width": 1536,
+    "height": 864
+  },
+  "flesip-sk_2": {
+    "width": 1536,
+    "height": 864
+  },
+  "flesip-sk_3": {
+    "width": 1536,
+    "height": 864
+  },
+  "flesip-sk_4": {
+    "width": 1536,
+    "height": 864
+  },
+  "flesip-sk_5": {
+    "width": 1536,
+    "height": 864
+  },
+  "flesip-sk_6": {
+    "width": 1536,
+    "height": 864
+  },
+  "flesip-stand": {
+    "width": 1600,
+    "height": 1600
+  },
+  "flesip-usuarios": {
+    "width": 523,
+    "height": 428
+  },
+  "flesip-verifactu": {
+    "width": 525,
+    "height": 433
+  },
+  "flesip-verifactu_activar": {
+    "width": 525,
+    "height": 433
+  },
+  "ms-desktop": {
+    "width": 522,
+    "height": 1847
+  },
+  "ms-mobile": {
+    "width": 142,
+    "height": 2134
+  },
+  "ms-m_carmen": {
+    "width": 494,
+    "height": 260
+  },
+  "ms-m_eco": {
+    "width": 519,
+    "height": 153
+  },
+  "ms-m_hero": {
+    "width": 519,
+    "height": 226
+  },
+  "ms-partners": {
+    "width": 522,
+    "height": 1669
+  },
+  "ms-p_box": {
+    "width": 275,
+    "height": 191
+  },
+  "ms-p_grid": {
+    "width": 480,
+    "height": 287
+  },
+  "ms-p_portrait": {
+    "width": 519,
+    "height": 215
+  },
+  "ms-p_top": {
+    "width": 277,
+    "height": 169
+  },
+  "ms-retouch": {
+    "width": 694,
+    "height": 393
+  },
+  "mb-adl_03": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-adl_04": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-adl_05": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-adl_06": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-adl_07": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-ng_01": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-ng_05": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-ng_07": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-ng_09": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-ng_12": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-pay_01": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-pay_04": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-pay_05": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-pay_06": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-pay_07": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-pay_10": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-pay_11": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-pay_15": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-pay_16": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-pay_18": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-pay_19": {
+    "width": 1584,
+    "height": 891
+  },
+  "mb-pay_20": {
+    "width": 1584,
+    "height": 891
   }
 }

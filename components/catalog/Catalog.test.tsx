@@ -22,15 +22,15 @@ describe('Catalog', () => {
     await userEvent.click(screen.getByRole('radio', { name: /^Todo/ }));
     expect(window.location.search).toBe('');
   });
-  it('las cards con caso enlazan a /casos/<slug>; las externas abren fuera; sin captura pintan un tile de marca', () => {
+  it('las cards con caso enlazan a /casos/<slug> y las que no tienen captura pintan un tile de marca', () => {
     render(<Catalog />);
     const items = screen.getAllByRole('listitem');
-    expect(within(items[0]).getByRole('link', { name: /Ver caso/ })).toHaveAttribute('href', '/casos/hermes');
-    const ayax = items.find((li) => li.textContent?.includes('Ayax'))!;
-    expect(within(ayax).getByRole('link')).toHaveAttribute('target', '_blank');
-    const merc = items.find((li) => li.textContent?.includes('Mercantil'))!;
-    expect(within(merc).queryByRole('img')).toBeNull();
-    expect(within(merc).getByTestId('brand-tile')).toBeInTheDocument();
+    expect(within(items[0]).getByRole('link', { name: /Ver caso/ })).toHaveAttribute('href', '/casos/ayax');
+    const flesip = items.find((li) => li.textContent?.includes('Flesip'))!;
+    expect(within(flesip).getByRole('link', { name: /Ver caso/ })).toHaveAttribute('href', '/casos/flesip');
+    const taksio = items.find((li) => li.textContent?.includes('Taksio'))!;
+    expect(within(taksio).queryByRole('img')).toBeNull();
+    expect(within(taksio).getByTestId('brand-tile')).toBeInTheDocument();
   });
   it('lee ?f= de la URL al montar y cae a todo si es desconocido', () => {
     window.history.replaceState(null, '', '/?f=erp');

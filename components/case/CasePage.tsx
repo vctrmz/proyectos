@@ -30,6 +30,8 @@ export default function CasePage({ c }: { c: CaseStudy }) {
             <h1 className={s.title}><img src={p.logo} alt="" className={s.icon} />{c.title} · {c.company}</h1>
             <p className={s.tagline}>{c.tagline}</p>
             <p className={s.tags}>{c.tags.map((t) => <span key={t}>{t}</span>)}<span>{c.years}</span></p>
+            {/* Si el producto está en línea, el enlace es la evidencia más corta. */}
+            {p.url && <p><a href={p.url} target="_blank" rel="noopener" className={s.live}>Ver en producción <span aria-hidden="true">↗</span></a></p>}
           </div>
         </div>
         <CaseHero slug={c.slug} hero={c.hero} />

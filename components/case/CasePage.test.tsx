@@ -14,7 +14,7 @@ describe('CasePage', () => {
     expect(h2.indexOf('Problema')).toBeLessThan(h2.indexOf('Decisiones'));
     expect(h2.indexOf('Decisiones')).toBeLessThan(h2.indexOf('Resultado'));
     expect(screen.getByText('Dato no disponible')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Siguiente caso/ })).toHaveAttribute('href', '/casos/suscripcion');
+    expect(screen.getByRole('link', { name: /Siguiente caso/ })).toHaveAttribute('href', '/casos/flesip');
     expect(screen.getByRole('link', { name: /← Trabajo/ })).toHaveAttribute('href', '/#trabajo');
   });
   it('pinta un CodeDemo cuando el caso lo trae', () => {

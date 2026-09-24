@@ -1,6 +1,6 @@
 # Víctor Maza — Portfolio
 
-Portada con catálogo de proyectos, cinco casos de estudio, "sobre mí" y política
+Portada con catálogo de proyectos, nueve casos de estudio, "sobre mí" y política
 de privacidad de Víctor Maza (Product Designer B2B SaaS e Insurtech, Málaga).
 Next.js 16 (App Router) desplegado en Vercel. Sistema visual claro con tokens
 propios; estructura tipo catálogo con filtros y páginas de caso.
@@ -8,7 +8,7 @@ propios; estructura tipo catálogo con filtros y páginas de caso.
 ## Estructura
 
 ```
-app/                 Rutas: / (portada), /casos/[slug] (cinco casos estáticos), /sobre-mi,
+app/                 Rutas: / (portada), /casos/[slug] (nueve casos estáticos), /sobre-mi,
                      /privacidad, robots.ts y sitemap.ts. layout.tsx: Geist, skip link,
                      MotionProvider, SmoothScroll (Lenis), banner de consentimiento, JSON-LD.
 lib/content/         Todo el contenido: site.ts (nav, email, redes), projects.ts (catálogo
@@ -40,7 +40,7 @@ npm run dev      # http://localhost:3000
 npm test         # vitest
 npm run build
 npm run images   # regenera public/assets/shots desde las fuentes
-npm run audit    # axe + métricas en /, /casos/hermes y /sobre-mi (con el servidor arrancado)
+npm run audit    # axe + métricas en /, /casos/ayax, /casos/hermes y /sobre-mi (con el servidor arrancado)
 ```
 
 ## Navegación

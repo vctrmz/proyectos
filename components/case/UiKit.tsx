@@ -12,7 +12,8 @@ type Props = { brand: string; pieces: UiKitPiece[] };
 
 const V = { hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } };
 
-function Mock({ kind, brand, label }: { kind: UiKitKind; brand: string; label?: string }) {
+function Mock({ kind, brand, label, labels }: { kind: UiKitKind; brand: string; label?: string; labels?: string[] }) {
+  const L = (fallback: string[]) => (labels && labels.length ? labels : fallback);
   switch (kind) {
     case 'actions': return (
       <>
@@ -23,10 +24,9 @@ function Mock({ kind, brand, label }: { kind: UiKitKind; brand: string; label?: 
     );
     case 'states': return (
       <>
-        <span className={`${s.chip} ${s.cPend}`}>Pendiente</span>
-        <span className={`${s.chip} ${s.cCurso}`}>En curso</span>
-        <span className={`${s.chip} ${s.cOk}`}>Aprobado</span>
-        <span className={`${s.chip} ${s.cBad}`}>Bloqueado</span>
+        {L(['Pendiente', 'En curso', 'Aprobado', 'Bloqueado']).slice(0, 4).map((t, i) => (
+          <span key={t} className={`${s.chip} ${[s.cPend, s.cCurso, s.cOk, s.cBad][i]}`}>{t}</span>
+        ))}
       </>
     );
     case 'table': return (
@@ -57,9 +57,10 @@ function Mock({ kind, brand, label }: { kind: UiKitKind; brand: string; label?: 
     );
     case 'tokens': return (
       <>
-        {[['brand', brand], ['action', '#2f5bea'], ['success', '#1f9d55'], ['warning', '#d97706'], ['danger', '#c0392b'], ['surface', '#f6f7fb']].map(([role, hex]) => (
-          <span key={role} className={s.token}><i style={{ background: hex, borderColor: role === 'surface' ? '#e3e6ef' : hex }} />{role}</span>
-        ))}
+        {L(['brand', 'action', 'success', 'warning', 'danger', 'surface']).slice(0, 6).map((role, i) => {
+          const hex = [brand, '#2f5bea', '#1f9d55', '#d97706', '#c0392b', '#f6f7fb'][i];
+          return <span key={role} className={s.token}><i style={{ background: hex, borderColor: i === 5 ? '#e3e6ef' : hex }} />{role}</span>;
+        })}
       </>
     );
     case 'slots': return (
@@ -101,6 +102,29 @@ function Mock({ kind, brand, label }: { kind: UiKitKind; brand: string; label?: 
         ))}
       </>
     );
+    case 'product': return (
+      <>
+        {L(['Ocean', 'Radiant', 'Horizon']).slice(0, 3).map((t) => (
+          <span key={t} className={s.prod}><i /><b>{t}</b><em>{label ?? 'Ver más'}</em></span>
+        ))}
+      </>
+    );
+    case 'trust': return (
+      <>
+        {L(['Envío gratis', '14 días', 'Pago seguro', 'WhatsApp']).slice(0, 4).map((t) => (
+          <span key={t} className={s.trust}><i style={{ background: brand }} />{t}</span>
+        ))}
+      </>
+    );
+    case 'tiers': return (
+      <>
+        <span className={s.tierHead}>{L(['Standard', 'Advanced', 'Ultimate']).slice(0, 3).map((t, i) => (
+          <b key={t} className={i === 1 ? s.tierOn : undefined} style={i === 1 ? { background: brand } : undefined}>{t}</b>
+        ))}</span>
+        <span className={s.tierRow}><i className={s.w40} /><em>{label ?? 'Incluido'}</em></span>
+        <span className={s.tierRow}><i className={s.w60} /><em className={s.tierOpt}>Opcional</em></span>
+      </>
+    );
     case 'agenda': return (
       <>
         <span className={s.meet}><i className={s.w40} /><span className={s.who}><i style={{ background: brand }} /><i /><i /></span></span>
@@ -117,7 +141,7 @@ export default function UiKit({ brand, pieces }: Props) {
     <motion.ul className={s.grid} aria-label="Kit del sistema" initial="hidden" whileInView="show" viewport={{ once: true, margin: '0px 0px -10% 0px' }} transition={{ staggerChildren: 0.07 }}>
       {pieces.map((p) => (
         <motion.li key={p.title} className={`${s.card} ${p.wide ? s.wide : ''}`} variants={V}>
-          <div data-mock aria-hidden="true" className={s.mock}><Mock kind={p.kind} brand={brand} label={p.label} /></div>
+          <div data-mock aria-hidden="true" className={s.mock}><Mock kind={p.kind} brand={brand} label={p.label} labels={p.labels} /></div>
           <h4>{p.title}</h4>
           <p>{p.body}</p>
         </motion.li>

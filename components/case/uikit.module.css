@@ -71,3 +71,18 @@
 .meet > i { height: 7px; border-radius: 4px; background: rgba(18,19,23,.14); display: block; }
 .who { display: flex; gap: 4px; margin-left: auto; }
 .who i { width: 14px; height: 14px; border-radius: 50%; background: rgba(18,19,23,.18); display: block; }
+
+/* Comercio y comparativa de niveles. */
+.prod { display: grid; gap: 5px; width: 30%; }
+.prod i { display: block; height: 34px; border-radius: 8px; background: rgba(18,19,23,.1); }
+.prod b { font-size: 11.5px; font-weight: 500; color: var(--ink); }
+.prod em { font-size: 10.5px; font-style: normal; color: var(--ink-3); }
+.trust { display: inline-flex; align-items: center; gap: 6px; width: 46%; font-size: 11px; color: var(--ink-2); }
+.trust i { width: 10px; height: 10px; border-radius: 50%; display: block; flex: 0 0 auto; }
+.tierHead { display: flex; gap: 6px; width: 100%; }
+.tierHead b { flex: 1 1 0; padding: 5px 0; border-radius: 8px; text-align: center; font-size: 10.5px; font-weight: 500; color: var(--ink-2); background: rgba(18,19,23,.06); }
+.tierOn { color: #fff !important; }
+.tierRow { display: flex; align-items: center; gap: 8px; width: 100%; }
+.tierRow i { height: 7px; border-radius: 4px; background: rgba(18,19,23,.14); display: block; }
+.tierRow em { margin-left: auto; font-size: 10.5px; font-style: normal; color: #1f9d55; }
+.tierOpt { color: var(--ink-3) !important; }

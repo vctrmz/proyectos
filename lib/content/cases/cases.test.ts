@@ -10,7 +10,7 @@ describe('casos', () => {
     for (const c of CASES) {
       expect(c.problem, c.slug).toHaveLength(2);
       expect(c.decisions.length, c.slug).toBeGreaterThanOrEqual(3);
-      expect(c.decisions.length, c.slug).toBeLessThanOrEqual(5);
+      expect(c.decisions.length, c.slug).toBeLessThanOrEqual(6);
       expect(c.design.length, c.slug).toBeGreaterThanOrEqual(1);
       expect(c.implementation.length, c.slug).toBeGreaterThanOrEqual(1);
       expect(c.result.output.length, c.slug).toBeGreaterThanOrEqual(1);
@@ -27,6 +27,14 @@ describe('casos', () => {
   it('no publica cifras del CV pendientes de confirmar', () => {
     const all = JSON.stringify(CASES);
     for (const bad of ['347', '5 a 2 días', '−60', '-60%', 'tickets diarios', '70 %']) expect(all).not.toContain(bad);
+  });
+  it('cada caso trae su propio kit del sistema', () => {
+    for (const c of CASES) {
+      expect(c.system.uiKit, c.slug).toBeDefined();
+      expect(c.system.uiKit!.length, c.slug).toBeGreaterThanOrEqual(3);
+    }
+    const firmas = CASES.map((c) => c.system.uiKit!.map((p) => p.kind).join('+'));
+    expect(new Set(firmas).size).toBe(firmas.length);
   });
   it('getCase devuelve undefined para slugs desconocidos', () => {
     expect(getCase('nada')).toBeUndefined();
