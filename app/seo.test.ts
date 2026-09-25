@@ -10,10 +10,10 @@ describe('seo', () => {
   });
   it('sitemap lista las dos lenguas: el español completo y el inglés que existe', () => {
     const urls = sitemap().map((u) => u.url);
-    expect(urls).toContain('https://proyectos-theta-hazel.vercel.app/');
-    expect(urls).toContain('https://proyectos-theta-hazel.vercel.app/sobre-mi');
-    expect(urls).toContain('https://proyectos-theta-hazel.vercel.app/casos/hermes');
-    expect(urls).toContain('https://proyectos-theta-hazel.vercel.app/casos/ayax');
+    expect(urls).toContain('https://proyectos-theta-hazel.vercel.app/es');
+    expect(urls).toContain('https://proyectos-theta-hazel.vercel.app/es/about');
+    expect(urls).toContain('https://proyectos-theta-hazel.vercel.app/es/cases/hermes');
+    expect(urls).toContain('https://proyectos-theta-hazel.vercel.app/es/cases/ayax');
     expect(urls).toContain('https://proyectos-theta-hazel.vercel.app/en');
     expect(urls).toContain('https://proyectos-theta-hazel.vercel.app/en/about');
     expect(urls).toContain('https://proyectos-theta-hazel.vercel.app/en/cases/hermes');

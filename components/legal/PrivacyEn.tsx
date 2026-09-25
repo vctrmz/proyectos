@@ -1,22 +1,9 @@
-import type { Metadata } from 'next';
 import Link from 'next/link';
-import SiteHeader from '@/components/layout/SiteHeader';
-import SiteFooter from '@/components/layout/SiteFooter';
 import ConsentState from '@/components/ConsentState';
 
-export const metadata: Metadata = {
-  title: 'Privacy and cookies — Víctor Maza',
-  description: 'What this site collects, with which tools, what for, and how to change your mind about cookies.',
-  robots: { index: false, follow: true },
-  alternates: { canonical: '/en/privacy', languages: { es: '/privacidad', en: '/en/privacy', 'x-default': '/privacidad' } },
-};
-
-/* Versión corta y honesta en inglés: el detalle completo, con la tabla de
-   herramientas y los plazos, vive en la página en español, que es la que rige
-   legalmente. Se dice aquí y se enlaza. */
-export default function Page() {
+export default function PrivacyEn() {
   return (
-    <><SiteHeader /><div className="legal">
+    <div className="legal">
       <main id="contenido">
         <p className="kicker"><span>Legal</span></p>
         <h1>Privacy and cookies</h1>
@@ -45,6 +32,6 @@ export default function Page() {
 
         <p className="lead">The full version, with the table of tools, retention periods and legal bases, is on the <Link href="/privacidad">Spanish page</Link>, which is the one that governs.</p>
       </main>
-    </div><SiteFooter locale="en" /></>
+    </div>
   );
 }

@@ -13,34 +13,30 @@ export const LOCALE_LABEL: Record<Locale, { name: string; short: string; aria: s
   en: { name: 'English', short: 'EN', aria: 'View this page in English' },
 };
 
-/* Segmentos traducidos: /sobre-mi ↔ /en/about. */
-const SEGMENTS: Record<string, string> = { 'sobre-mi': 'about', casos: 'cases', privacidad: 'privacy' };
-const BACK = Object.fromEntries(Object.entries(SEGMENTS).map(([es, en]) => [en, es]));
-
 export function localeOf(pathname: string): Locale {
-  return pathname === '/en' || pathname.startsWith('/en/') ? 'en' : 'es';
+  const seg = pathname.split('/').filter(Boolean)[0];
+  return seg === 'en' ? 'en' : 'es';
 }
 
-/* La misma página en el otro idioma. Devuelve null si no existe equivalente:
-   el interruptor no manda a una página que no está traducida. */
+/* La misma página en el otro idioma: solo cambia el primer segmento, que es lo
+   que permite que el cambio de idioma sea una transición de cliente y no una
+   recarga. Devuelve null si esa página no existe en el idioma pedido. */
 export function altPath(pathname: string, to: Locale, hasEnCase: (slug: string) => boolean): string | null {
-  const from = localeOf(pathname);
-  if (from === to) return pathname;
-  const parts = pathname.replace(/^\/(en)(?=\/|$)/, '').split('/').filter(Boolean);
-  if (to === 'en') {
-    if (!parts.length) return '/en';
-    if (parts[0] === 'casos') return parts[1] && hasEnCase(parts[1]) ? `/en/cases/${parts[1]}` : null;
-    const seg = SEGMENTS[parts[0]];
-    return seg ? `/en/${seg}` : null;
-  }
-  if (!parts.length) return '/';
-  if (parts[0] === 'cases') return parts[1] ? `/casos/${parts[1]}` : null;
-  const seg = BACK[parts[0]];
-  return seg ? `/${seg}` : null;
+  const parts = pathname.split('/').filter(Boolean);
+  const rest = parts.slice(1);
+  if (to === 'en' && rest[0] === 'cases' && rest[1] && !hasEnCase(rest[1])) return null;
+  return `/${[to, ...rest].join('/')}`;
 }
 
-/* Rutas del sitio por idioma, para navegación y enlaces internos. */
-export const ROUTES = {
-  es: { home: '/', work: '/#trabajo', about: '/sobre-mi', privacy: '/privacidad', cookies: '/privacidad#cookies', caseOf: (s: string) => `/casos/${s}` },
-  en: { home: '/en', work: '/en#work', about: '/en/about', privacy: '/en/privacy', cookies: '/en/privacy#cookies', caseOf: (s: string) => `/en/cases/${s}` },
-} as const;
+/* Rutas del sitio por idioma. Mismos segmentos en los dos: el idioma va
+   delante y el resto del camino no cambia. */
+const routes = (l: Locale) => ({
+  home: `/${l}`,
+  work: `/${l}#trabajo`,
+  contact: `/${l}#contacto`,
+  about: `/${l}/about`,
+  privacy: `/${l}/privacy`,
+  cookies: `/${l}/privacy#cookies`,
+  caseOf: (s: string) => `/${l}/cases/${s}`,
+});
+export const ROUTES = { es: routes('es'), en: routes('en') } as const;

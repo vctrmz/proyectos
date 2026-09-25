@@ -3,9 +3,13 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { readConsent, writeConsent, startAnalytics, installConsentGlobals } from '@/lib/consent';
+import { useLocale, useUi } from '@/lib/i18n/LocaleContext';
+import { ROUTES } from '@/lib/i18n/config';
 
 /* Aparece a los 400 ms de montar, salvo que ya haya decisión guardada. */
 export default function ConsentBanner() {
+  const locale = useLocale();
+  const ui = useUi();
   const [open, setOpen] = useState(false);
   const [shown, setShown] = useState(false);
 
@@ -31,14 +35,14 @@ export default function ConsentBanner() {
   const reject = () => { writeConsent('denied'); close(); };
 
   return (
-    <div role="dialog" aria-label="Consentimiento de analítica" className={'consent' + (shown ? ' is-in' : '')}>
+    <div role="dialog" aria-label={locale === "es" ? "Consentimiento de analítica" : "Analytics consent"} className={'consent' + (shown ? ' is-in' : '')}>
       <p>
         Uso Google Analytics y Microsoft Clarity para ver cómo se navega esta web. Usan cookies y solo se activan si lo aceptas.{' '}
-        <Link href="/privacidad">Más información</Link>
+        <Link href={ROUTES[locale].privacy}>{ui.about.more}</Link>
       </p>
       <div className="consent-actions">
-        <button type="button" className="consent-btn" onClick={reject}>Rechazar</button>
-        <button type="button" className="consent-btn is-primary" onClick={accept}>Aceptar</button>
+        <button type="button" className="consent-btn" onClick={reject}>{ui.consent.reject}</button>
+        <button type="button" className="consent-btn is-primary" onClick={accept}>{ui.consent.accept}</button>
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ describe('ConsentBanner', () => {
     expect(screen.queryByRole('dialog')).toBeNull();
     act(() => { vi.advanceTimersByTime(450); });
     expect(screen.getByRole('dialog')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: 'Más información' })).toHaveAttribute('href', '/privacidad');
+    expect(screen.getByRole('link', { name: 'Más información' })).toHaveAttribute('href', '/es/privacy');
     expect(screen.getByRole('dialog').textContent).toMatch(/Google Analytics y Microsoft Clarity/);
   });
   it('aceptar guarda granted y arranca la analítica', () => {

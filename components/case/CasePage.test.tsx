@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, within } from '@testing-library/react';
-vi.mock('next/navigation', () => ({ usePathname: () => '/casos/hermes', useSearchParams: () => new URLSearchParams('') }));
+vi.mock('next/navigation', () => ({ usePathname: () => '/es/cases/hermes', useSearchParams: () => new URLSearchParams('') }));
 vi.mock('motion/react', () => import('@/test/motion-mock'));
 import CasePage from './CasePage';
 import { getCase } from '@/lib/content/cases';
@@ -15,8 +15,8 @@ describe('CasePage', () => {
     expect(h2.indexOf('Problema')).toBeLessThan(h2.indexOf('Decisiones'));
     expect(h2.indexOf('Decisiones')).toBeLessThan(h2.indexOf('Resultado'));
     expect(screen.getByText('Dato no disponible')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Siguiente caso/ })).toHaveAttribute('href', '/casos/flesip');
-    expect(screen.getByRole('link', { name: /← Trabajo/ })).toHaveAttribute('href', '/#trabajo');
+    expect(screen.getByRole('link', { name: /Siguiente caso/ })).toHaveAttribute('href', '/es/cases/flesip');
+    expect(screen.getByRole('link', { name: /← Trabajo/ })).toHaveAttribute('href', '/es#trabajo');
   });
   it('trae el índice del caso con una entrada por sección', () => {
     render(<CasePage c={getCase('hermes')!} />);

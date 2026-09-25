@@ -8,10 +8,10 @@ import { EN_CASE_SLUGS } from '@/lib/content/en';
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
   return [
-    { url: `${SITE.url}/`, lastModified: now, priority: 1 },
-    { url: `${SITE.url}/sobre-mi`, lastModified: now, priority: 0.8 },
-    { url: `${SITE.url}/privacidad`, lastModified: now, priority: 0.2 },
-    ...CASE_SLUGS.map((s) => ({ url: `${SITE.url}/casos/${s}`, lastModified: now, priority: 0.9 })),
+    { url: `${SITE.url}/es`, lastModified: now, priority: 1 },
+    { url: `${SITE.url}/es/about`, lastModified: now, priority: 0.8 },
+    { url: `${SITE.url}/es/privacy`, lastModified: now, priority: 0.2 },
+    ...CASE_SLUGS.map((s) => ({ url: `${SITE.url}/es/cases/${s}`, lastModified: now, priority: 0.9 })),
     { url: `${SITE.url}/en`, lastModified: now, priority: 0.9 },
     { url: `${SITE.url}/en/about`, lastModified: now, priority: 0.7 },
     { url: `${SITE.url}/en/privacy`, lastModified: now, priority: 0.2 },

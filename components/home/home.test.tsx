@@ -14,7 +14,7 @@ describe('portada', () => {
     const h1 = screen.getByRole('heading', { level: 1 });
     expect(h1.textContent).toMatch(/producto B2B complejo/i);
     expect(h1.textContent).toMatch(/producción/i);
-    expect(screen.getByRole('link', { name: /Ver el caso HERMES/ })).toHaveAttribute('href', '/casos/hermes');
+    expect(screen.getByRole('link', { name: /Ver el caso HERMES/ })).toHaveAttribute('href', '/es/cases/hermes');
     expect(screen.getByRole('link', { name: /Contactar/ })).toHaveAttribute('href', '#contacto');
     expect(screen.getByText(/Insurtech/)).toBeInTheDocument();
     expect(screen.queryByText(/Disponible desde/)).toBeNull();
@@ -32,7 +32,7 @@ describe('portada', () => {
     expect(items[0].textContent).toMatch(/2022/);
     // descripciones de una línea
     for (const li of items) { const body = li.querySelector('[class*="body"]')!; expect(body.textContent!.length, body.textContent!).toBeLessThanOrEqual(95); }
-    expect(screen.getByRole('link', { name: /Ver el caso/ })).toHaveAttribute('href', '/casos/hermes');
+    expect(screen.getByRole('link', { name: /Ver el caso/ })).toHaveAttribute('href', '/es/cases/hermes');
   });
   it('el manifiesto está completo en el HTML (sin depender de JS)', () => {
     const { container } = render(<Manifesto />);

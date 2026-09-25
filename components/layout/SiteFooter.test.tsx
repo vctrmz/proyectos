@@ -13,8 +13,8 @@ describe('SiteFooter', () => {
     expect(screen.getByRole('link', { name: /vctrmz47@gmail.com/ })).toHaveAttribute('href', 'mailto:vctrmz47@gmail.com');
     expect(screen.getByRole('link', { name: /LinkedIn/ })).toHaveAttribute('target', '_blank');
     expect(screen.getByRole('link', { name: /Behance/ })).toHaveAttribute('target', '_blank');
-    expect(screen.getByRole('link', { name: /Sobre mí/ })).toHaveAttribute('href', '/sobre-mi');
-    expect(screen.getByRole('link', { name: /Privacidad/ })).toHaveAttribute('href', '/privacidad');
+    expect(screen.getByRole('link', { name: /Sobre mí/ })).toHaveAttribute('href', '/es/about');
+    expect(screen.getByRole('link', { name: /Privacidad/ })).toHaveAttribute('href', '/es/privacy');
     expect(foot.textContent).toMatch(/Málaga/);
   });
   it('la barra inferior anuncia disponibilidad', () => {

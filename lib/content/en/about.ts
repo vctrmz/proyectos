@@ -20,7 +20,7 @@ export const ABOUT_EN: typeof ABOUT = {
   },
   companies: ABOUT.companies.map((c) => ({
     ...c,
-    href: c.href.startsWith('/casos/hermes') ? '/en/cases/hermes' : c.href.replace('/?f=', '/en?f=').replace('#trabajo', '#work'),
+    href: c.href.replace('/es', '/en'),
     body: {
       atrinium: 'Sole designer of a group with five products. The main one, HERMES: a multi-tenant SaaS ERP for insurers, reinsurers, MGAs and brokers, with the admin module that governs the whole group. Around it, electronic invoicing, a 360 policy system, user and permission management and an e-commerce line. Five products, one design language.',
       mercantil: 'Digital banking in a regulated market. The system already existed and my job was to apply it with judgement and validate every screen before development: unmoderated tests with Maze, my own interviews and sessions with Marketing for the transactional emails. Nothing went to development untested.',

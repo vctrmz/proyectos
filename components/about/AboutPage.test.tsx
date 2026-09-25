@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { render, screen, within } from '@testing-library/react';
-vi.mock('next/navigation', () => ({ usePathname: () => '/sobre-mi', useSearchParams: () => new URLSearchParams('') }));
+vi.mock('next/navigation', () => ({ usePathname: () => '/es/about', useSearchParams: () => new URLSearchParams('') }));
 vi.mock('motion/react', () => import('@/test/motion-mock'));
 import AboutPage from './AboutPage';
 
