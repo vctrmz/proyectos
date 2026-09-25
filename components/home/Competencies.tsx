@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { gsap, ScrollTrigger } from '@/lib/gsap';
 import { scrollEffectsAllowed } from '@/lib/motion/prefs';
 import { COMPETENCIES } from '@/lib/content/competencies';
+import { EN_COMPETENCIES } from '@/lib/content/en/competencies';
+import { useLocale, useUi } from '@/lib/i18n/LocaleContext';
 import s from './competencies.module.css';
 
 /* Las filas entran escalonadas con el scroll, todas desde abajo y alineadas:
@@ -25,14 +27,17 @@ function useStairs(root: React.RefObject<HTMLDivElement | null>) {
    cada una, numerado. La frase larga vive en el CV y en la entrevista; aquí lo
    que importa es que se lea de un vistazo. */
 export default function Competencies() {
+  const locale = useLocale();
+  const ui = useUi();
+  const GROUPS = locale === 'en' ? EN_COMPETENCIES : COMPETENCIES;
   const root = useRef<HTMLDivElement>(null);
-  const [open, setOpen] = useState<string | null>(COMPETENCIES[0].name);
+  const [open, setOpen] = useState<string | null>(GROUPS[0].name);
   useStairs(root);
-  const total = COMPETENCIES.reduce((n, g) => n + g.items.length, 0);
+  const total = GROUPS.reduce((n, g) => n + g.items.length, 0);
   return (
     <div ref={root} className={s.stack}>
-      <p className={s.lead}>Competencias clave <span aria-hidden="true">({total})</span></p>
-      {COMPETENCIES.map((g) => {
+      <p className={s.lead}>{ui.home.competencies} <span aria-hidden="true">({total})</span></p>
+      {GROUPS.map((g) => {
         const isOpen = open === g.name;
         const panelId = `comp-${g.n}`;
         return (
@@ -41,7 +46,7 @@ export default function Competencies() {
               <button type="button" className={s.btn} aria-expanded={isOpen} aria-controls={panelId} onClick={() => setOpen(isOpen ? null : g.name)}>
                 <span className={s.n} aria-hidden="true">{g.n}</span>
                 <span className={s.name}>{g.name}</span>
-                <span className={s.count}>{String(g.items.length).padStart(2, '0')} competencias</span>
+                <span className={s.count}>{String(g.items.length).padStart(2, '0')} {ui.home.competenciesUnit}</span>
                 <span className={s.sign} aria-hidden="true">{isOpen ? '−' : '+'}</span>
               </button>
             </h3>

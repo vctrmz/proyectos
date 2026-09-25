@@ -9,7 +9,7 @@ import s from './casenav.module.css';
 
    La sección activa se decide con IntersectionObserver —no con scroll—, y los
    enlaces son anclas reales: sin JS, el índice sigue navegando. */
-export default function CaseNav({ items }: { items: { id: string; label: string }[] }) {
+export default function CaseNav({ items, label, heading }: { items: { id: string; label: string }[]; label: string; heading: string }) {
   const [active, setActive] = useState(items[0]?.id);
 
   useEffect(() => {
@@ -30,8 +30,8 @@ export default function CaseNav({ items }: { items: { id: string; label: string 
   }, [items]);
 
   return (
-    <nav className={s.nav} aria-label="Índice del caso">
-      <p className={s.head}>{String(items.length).padStart(2, '0')} partes</p>
+    <nav className={s.nav} aria-label={label}>
+      <p className={s.head}>{heading}</p>
       <ol className={s.list}>
         {items.map((i, n) => (
           <li key={i.id}>

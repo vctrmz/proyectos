@@ -2,7 +2,9 @@
 import { useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { AnimatePresence, LayoutGroup } from 'motion/react';
-import { filterProjects, filterCounts, parseFilter, type FilterId } from '@/lib/content/projects';
+import { matches, FILTERS, parseFilter, type FilterId } from '@/lib/content/projects';
+import { projectsIn } from '@/lib/content/en';
+import { useLocale, useUi } from '@/lib/i18n/LocaleContext';
 import FilterChips from './FilterChips';
 import ProjectCard from './ProjectCard';
 import s from './catalog.module.css';
@@ -11,9 +13,14 @@ import s from './catalog.module.css';
    añadir historial por cada chip. */
 export default function Catalog({ initialFilter }: { initialFilter?: FilterId }) {
   const params = useSearchParams();
+  const locale = useLocale();
+  const ui = useUi();
   const [filter, setFilter] = useState<FilterId>(initialFilter ?? parseFilter(params.get('f')));
-  const counts = filterCounts();
-  const items = filterProjects(filter);
+  /* Los proyectos se resuelven en el idioma activo y se filtran igual: el
+     filtro mira el dato (tipo, estado, sector), no el texto. */
+  const all = projectsIn(locale);
+  const counts = Object.fromEntries(FILTERS.map((f) => [f.id, all.filter((p) => matches(p, f.id)).length])) as Record<FilterId, number>;
+  const items = all.filter((p) => matches(p, filter));
   const change = (f: FilterId) => {
     setFilter(f);
     const url = f === 'todo' ? window.location.pathname : `${window.location.pathname}?f=${f}`;
@@ -22,7 +29,7 @@ export default function Catalog({ initialFilter }: { initialFilter?: FilterId })
   return (
     <div>
       <FilterChips value={filter} counts={counts} onChange={change} />
-      <p role="status" aria-live="polite" className={s.status}>{items.length} {items.length === 1 ? 'proyecto' : 'proyectos'}</p>
+      <p role="status" aria-live="polite" className={s.status}>{ui.catalog.count(items.length)}</p>
       <LayoutGroup>
         <ul className={s.grid}>
           <AnimatePresence mode="popLayout" initial={false}>

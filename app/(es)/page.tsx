@@ -10,36 +10,34 @@ import LogoMarquee from '@/components/home/LogoMarquee';
 import Manifesto from '@/components/home/Manifesto';
 import SectionHeader from '@/components/ui/SectionHeader';
 import Catalog from '@/components/catalog/Catalog';
+import { getUi } from '@/lib/i18n/ui';
 import Closing from '@/components/home/Closing';
 
 export const metadata: Metadata = pageMetadata(
   'Víctor Maza — Product Designer B2B SaaS e Insurtech',
   'Convierto reglas de negocio en producto que llega a producción. Nueve años en SaaS asegurador, ERP y banca. Casos de estudio de HERMES y design systems.',
-  '/'
+  '/',
+  { es: '/', en: '/en' }
 );
 
-const FACTS = [
-  { value: '165', label: 'pantallas en producción' }, { value: '8', label: 'áreas de producto' },
-  { value: '5', label: 'productos, un lenguaje' }, { value: '2022–2026', label: 'único diseñador del holding' },
-];
-
 export default function Page() {
+  const ui = getUi('es');
   return (
     <>
       <SiteHeader />
       <main id="contenido">
-        <Hero />
-        <div className="container"><FactStrip facts={FACTS} /></div>
-        <Sectores />
-        <LogoMarquee />
+        <Hero locale="es" />
+        <div className="container"><FactStrip facts={ui.home.facts} /></div>
+        <Sectores locale="es" />
+        <LogoMarquee locale="es" />
         <Manifesto />
         <section id="trabajo" className="container section" aria-labelledby="trabajo-title">
-          <SectionHeader id="trabajo-title" kicker="Trabajo" title={['Casos y productos', 'en producción.']} />
+          <SectionHeader id="trabajo-title" kicker={ui.home.workKicker} title={ui.home.workTitle} />
           <Suspense><Catalog /></Suspense>
         </section>
-        <Closing />
+        <Closing locale="es" />
       </main>
-      <SiteFooter />
+      <SiteFooter locale="es" />
     </>
   );
 }

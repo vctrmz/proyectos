@@ -1,9 +1,12 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { ABOUT } from '@/lib/content/about';
+import { aboutIn } from '@/lib/content/en';
+import { useLocale } from '@/lib/i18n/LocaleContext';
 import s from './about.module.css';
 export default function CompanyTabs() {
+  const locale = useLocale();
+  const ABOUT = aboutIn(locale);
   const [i, setI] = useState(0);
   const c = ABOUT.companies[i];
   const n = ABOUT.companies.length;
@@ -19,7 +22,7 @@ export default function CompanyTabs() {
       </div>
       <div role="tabpanel" id={`panel-${c.id}`} aria-labelledby={`tab-${c.id}`} className={s.panel}>
         <p>{c.body}</p>
-        <Link href={c.href} className={s.more}>{c.href.startsWith('/casos') ? 'Ver el caso →' : 'Ver en el catálogo →'}</Link>
+        <Link href={c.href} className={s.more}>{locale === 'en' ? (c.href.includes('/cases/') ? 'Read the case →' : 'See it in the catalogue →') : (c.href.startsWith('/casos') ? 'Ver el caso →' : 'Ver en el catálogo →')}</Link>
       </div>
     </div>
   );

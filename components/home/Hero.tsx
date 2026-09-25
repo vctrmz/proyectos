@@ -3,6 +3,8 @@ import TwoToneHeading from '@/components/ui/TwoToneHeading';
 import Button from '@/components/ui/Button';
 import StarfieldButton from '@/components/ui/StarfieldButton';
 import { SITE } from '@/lib/content/site';
+import { getUi } from '@/lib/i18n/ui';
+import { ROUTES, DEFAULT_LOCALE, type Locale } from '@/lib/i18n/config';
 import HeroField from './HeroField';
 import s from './Hero.module.css';
 
@@ -12,22 +14,24 @@ const SOCIAL = [
   { name: 'Instagram', href: SITE.instagram, d: 'M12 7.3a4.7 4.7 0 1 0 0 9.4 4.7 4.7 0 0 0 0-9.4zm0 7.7a3 3 0 1 1 0-6 3 3 0 0 1 0 6zm6-7.9a1.1 1.1 0 1 1-2.2 0 1.1 1.1 0 0 1 2.2 0zM21.9 8.3c-.1-1.5-.4-2.8-1.5-3.9S18 3 16.6 2.9C15 2.8 9 2.8 7.4 2.9 5.9 3 4.6 3.3 3.5 4.4S2.1 6.8 2 8.3c-.1 1.5-.1 6.1 0 7.7.1 1.5.4 2.8 1.5 3.9s2.4 1.4 3.9 1.5c1.5.1 6.1.1 7.7 0 1.5-.1 2.8-.4 3.9-1.5s1.4-2.4 1.5-3.9c.1-1.5.1-6.1 0-7.7zm-2 9.4c-.3.8-1 1.5-1.8 1.8-1.3.5-4.3.4-5.7.4s-4.4.1-5.7-.4c-.8-.3-1.5-1-1.8-1.8-.5-1.3-.4-4.3-.4-5.7s-.1-4.4.4-5.7c.3-.8 1-1.5 1.8-1.8 1.3-.5 4.3-.4 5.7-.4s4.4-.1 5.7.4c.8.3 1.5 1 1.8 1.8.5 1.3.4 4.3.4 5.7s.1 4.4-.4 5.7z' },
 ];
 
-export default function Hero() {
+export default function Hero({ locale = DEFAULT_LOCALE }: { locale?: Locale }) {
+  const ui = getUi(locale);
+  const r = ROUTES[locale];
   return (
     <section className={s.hero} aria-labelledby="hero-title">
       <HeroField />
       <div className={s.veil} aria-hidden="true" />
       <div className={s.inner}>
         <p className={s.name}><span className={s.mark} aria-hidden="true">VM</span>{SITE.name}</p>
-        <Kicker>Product Designer · B2B SaaS · Insurtech · {SITE.city}</Kicker>
-        <TwoToneHeading as="h1" id="hero-title" size="display" lines={['Diseño producto B2B complejo', 'y lo llevo a producción.']} />
-        <p className={s.sub}>Nueve años en SaaS asegurador, ERP y banca, casi siempre como único diseñador. Entiendo el dominio, lo convierto en reglas y componentes, y acompaño la implementación hasta que el diseño llega entero.</p>
+        <Kicker>{ui.home.kicker} · {SITE.city}</Kicker>
+        <TwoToneHeading as="h1" id="hero-title" size="display" lines={ui.home.heroLines} />
+        <p className={s.sub}>{ui.home.heroSub}</p>
         <div className={s.ctas}>
-          <StarfieldButton label="Ver el caso HERMES" href="/casos/hermes" size="lg" />
-          <Button href="#contacto" variant="outline" size="lg">Contactar</Button>
+          <StarfieldButton label={locale === 'es' ? 'Ver el caso HERMES' : 'Read the HERMES case'} href={r.caseOf('hermes')} size="lg" />
+          <Button href="#contacto" variant="outline" size="lg">{ui.nav.contact}</Button>
         </div>
-        <ul className={s.social} aria-label="Redes">
-          {SOCIAL.map((x) => <li key={x.name}><a href={x.href} target="_blank" rel="noopener" aria-label={`${x.name} (abre en pestaña nueva)`}><svg viewBox="0 0 24 24" aria-hidden="true"><path d={x.d} /></svg></a></li>)}
+        <ul className={s.social} aria-label={ui.about.socialLabel}>
+          {SOCIAL.map((x) => <li key={x.name}><a href={x.href} target="_blank" rel="noopener" aria-label={`${x.name} ${locale === 'es' ? '(abre en pestaña nueva)' : '(opens in a new tab)'}`}><svg viewBox="0 0 24 24" aria-hidden="true"><path d={x.d} /></svg></a></li>)}
         </ul>
       </div>
     </section>

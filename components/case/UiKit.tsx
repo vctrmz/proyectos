@@ -8,7 +8,7 @@ import s from './uikit.module.css';
    de marca del caso. Las maquetas son decorativas; lo que se lee es el título
    y para qué sirve la pieza. */
 
-type Props = { brand: string; pieces: UiKitPiece[] };
+type Props = { brand: string; pieces: UiKitPiece[]; label?: string };
 
 const V = { hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } };
 
@@ -135,10 +135,10 @@ function Mock({ kind, brand, label, labels }: { kind: UiKitKind; brand: string; 
   }
 }
 
-export default function UiKit({ brand, pieces }: Props) {
+export default function UiKit({ brand, pieces, label = 'Kit del sistema' }: Props) {
   if (!pieces.length) return null;
   return (
-    <motion.ul className={s.grid} aria-label="Kit del sistema" initial="hidden" whileInView="show" viewport={{ once: true, margin: '0px 0px -10% 0px' }} transition={{ staggerChildren: 0.07 }}>
+    <motion.ul className={s.grid} aria-label={label} initial="hidden" whileInView="show" viewport={{ once: true, margin: '0px 0px -10% 0px' }} transition={{ staggerChildren: 0.07 }}>
       {pieces.map((p) => (
         <motion.li key={p.title} className={`${s.card} ${p.wide ? s.wide : ''}`} variants={V}>
           <div data-mock aria-hidden="true" className={s.mock}><Mock kind={p.kind} brand={brand} label={p.label} labels={p.labels} /></div>

@@ -68,13 +68,18 @@ export function FlowList({ list }: { list: Flow[] }) {
 
 const SEV: Record<Severity, string> = { 'crítica': s.sevCrit, alta: s.sevHigh, media: s.sevMed, baja: s.sevLow };
 
-export function FindingsTable({ items }: { items: Finding[] }) {
+type FindingsUi = { n: string; finding: string; rule: string; severity: string; where: string; caption: string };
+const ES_FINDINGS: FindingsUi = { n: '#', finding: 'Hallazgo', rule: 'Regla', severity: 'Severidad', where: 'Dónde', caption: 'Hallazgos ordenados por severidad, con la regla que incumplen y la pantalla donde ocurren' };
+
+export function FindingsTable({ items, ui = ES_FINDINGS }: { items: Finding[]; ui?: { findings: FindingsUi; severity: Record<string, string> } | FindingsUi }) {
+  const t: FindingsUi = 'findings' in (ui as object) ? (ui as { findings: FindingsUi }).findings : (ui as FindingsUi);
+  const sev = 'severity' in (ui as object) ? (ui as { severity: Record<string, string> }).severity : null;
   return (
     <div className={s.tableWrap}>
       <table className={s.table}>
-        <caption className="visually-hidden">Hallazgos ordenados por severidad, con la regla que incumplen y la pantalla donde ocurren</caption>
+        <caption className="visually-hidden">{t.caption}</caption>
         <thead>
-          <tr><th scope="col">#</th><th scope="col">Hallazgo</th><th scope="col">Regla</th><th scope="col">Severidad</th><th scope="col">Dónde</th></tr>
+          <tr><th scope="col">{t.n}</th><th scope="col">{t.finding}</th><th scope="col">{t.rule}</th><th scope="col">{t.severity}</th><th scope="col">{t.where}</th></tr>
         </thead>
         <tbody>
           {items.map((f) => (
@@ -82,7 +87,7 @@ export function FindingsTable({ items }: { items: Finding[] }) {
               <td className={s.fn}>{f.n}</td>
               <td><strong>{f.title}</strong> {f.body}</td>
               <td className={s.rule}>{f.rule}</td>
-              <td><span className={`${s.sev} ${SEV[f.severity]}`}>{f.severity}</span></td>
+              <td><span className={`${s.sev} ${SEV[f.severity]}`}>{sev?.[f.severity] ?? f.severity}</span></td>
               <td className={s.rule}>{f.where}</td>
             </tr>
           ))}

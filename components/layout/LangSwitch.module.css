@@ -1,0 +1,10 @@
+/* Dos piezas pequeñas junto a la navegación: bandera y código de idioma. El
+   activo lleva fondo; el que no tiene traducción se queda apagado. */
+.wrap { display: inline-flex; align-items: center; gap: 2px; padding: 3px; border-radius: var(--r-pill); background: var(--surface); }
+.item { display: inline-flex; align-items: center; gap: 6px; min-height: 34px; padding: 0 10px; border-radius: var(--r-pill); font-size: var(--fs-100); font-weight: 500; letter-spacing: .06em; color: var(--ink-3); }
+.item:hover { color: var(--ink); }
+.on { background: var(--bg); color: var(--ink); box-shadow: var(--shadow-chip); }
+.off { opacity: .45; cursor: not-allowed; }
+.flag { width: 18px; height: 12px; border-radius: 2px; display: block; }
+.code { line-height: 1; }
+@media (max-width: 560px) { .code { display: none; } .item { padding: 0 8px; } }

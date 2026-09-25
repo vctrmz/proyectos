@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { CASES, getCase, CASE_SLUGS } from './index';
+import { EN_CASE_SLUGS, getCaseIn } from '../en';
 import { PROJECTS } from '../projects';
 
 describe('casos', () => {
@@ -43,6 +44,19 @@ describe('casos', () => {
       if (c.audiences) for (const a of c.audiences.items) { expect(a.question.length, c.slug).toBeGreaterThan(10); expect(a.exit.length, c.slug).toBeGreaterThan(3); }
       if (c.flows) for (const f of c.flows.list) expect(f.steps.length, c.slug).toBeGreaterThanOrEqual(3);
       if (c.findings) for (const f of c.findings.items) expect(['crítica', 'alta', 'media', 'baja'], c.slug).toContain(f.severity);
+    }
+  });
+  it('los casos traducidos al inglés están completos y no se enlazan a sí mismos', () => {
+    for (const slug of EN_CASE_SLUGS) {
+      const c = getCaseIn('en', slug)!;
+      expect(c, slug).toBeDefined();
+      expect(c.next, slug).not.toBe(c.slug);
+      expect(c.problem, slug).toHaveLength(2);
+      expect(c.decisions.length, slug).toBeGreaterThanOrEqual(3);
+      expect(c.result.outcome, slug).toBe('unavailable');
+      /* nada de español suelto en la versión inglesa */
+      const texto = JSON.stringify({ ...c, hero: c.hero.alt, design: c.design.map((d) => d.caption) });
+      for (const palabra of [' el ', ' la ', ' que ', ' para ', ' con ']) expect(texto, `${slug}: ${palabra}`).not.toContain(palabra);
     }
   });
   it('getCase devuelve undefined para slugs desconocidos', () => {

@@ -8,12 +8,18 @@ describe('seo', () => {
     expect(r.rules).toEqual({ userAgent: '*', allow: '/' });
     expect(r.sitemap).toBe('https://proyectos-theta-hazel.vercel.app/sitemap.xml');
   });
-  it('sitemap incluye portada, sobre mí, privacidad y los nueve casos', () => {
+  it('sitemap lista las dos lenguas: el español completo y el inglés que existe', () => {
     const urls = sitemap().map((u) => u.url);
     expect(urls).toContain('https://proyectos-theta-hazel.vercel.app/');
     expect(urls).toContain('https://proyectos-theta-hazel.vercel.app/sobre-mi');
     expect(urls).toContain('https://proyectos-theta-hazel.vercel.app/casos/hermes');
     expect(urls).toContain('https://proyectos-theta-hazel.vercel.app/casos/ayax');
-    expect(urls).toHaveLength(12);
+    expect(urls).toContain('https://proyectos-theta-hazel.vercel.app/en');
+    expect(urls).toContain('https://proyectos-theta-hazel.vercel.app/en/about');
+    expect(urls).toContain('https://proyectos-theta-hazel.vercel.app/en/cases/hermes');
+    // 12 en español + 3 páginas en inglés + un caso traducido
+    expect(urls).toHaveLength(16);
+    // ningún caso sin traducir se lista en inglés
+    expect(urls).not.toContain('https://proyectos-theta-hazel.vercel.app/en/cases/flesip');
   });
 });

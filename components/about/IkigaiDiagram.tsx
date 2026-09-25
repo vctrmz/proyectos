@@ -2,7 +2,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { gsap } from '@/lib/gsap';
 import { motionAllowed } from '@/lib/motion/prefs';
-import { ABOUT } from '@/lib/content/about';
+import { aboutIn } from '@/lib/content/en';
+import { useLocale, useUi } from '@/lib/i18n/LocaleContext';
 import s from './ikigai.module.css';
 
 type K = 'design' | 'tech' | 'business';
@@ -21,6 +22,8 @@ const LEN = 2 * Math.PI * R;
    despacio: al girar, el degradado recorre la línea. Clic o foco en un anillo
    atenúa los otros y muestra su frase en el status. */
 export default function IkigaiDiagram() {
+  const locale = useLocale();
+  const ABOUT = aboutIn(locale);
   const [active, setActive] = useState<K | null>(null);
   const ref = useRef<SVGSVGElement>(null);
 
@@ -56,7 +59,7 @@ export default function IkigaiDiagram() {
         {C.map((c) => <text key={c.k} x={c.lx} y={c.ly} textAnchor="middle" className={s.label}>{c.k}</text>)}
         <text x={280} y={262} textAnchor="middle" className={s.center}>{ABOUT.ikigai.center}</text>
       </svg>
-      <p role="status" aria-live="polite" className={s.status}>{active ? ABOUT.ikigai[active] : 'Toca un círculo.'}</p>
+      <p role="status" aria-live="polite" className={s.status}>{active ? ABOUT.ikigai[active] : locale === 'es' ? 'Toca un círculo.' : 'Tap a circle.'}</p>
     </div>
   );
 }

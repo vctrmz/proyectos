@@ -2,7 +2,8 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from '@/lib/gsap';
 import { scrollEffectsAllowed } from '@/lib/motion/prefs';
-import { ABOUT } from '@/lib/content/about';
+import { aboutIn } from '@/lib/content/en';
+import { useLocale } from '@/lib/i18n/LocaleContext';
 import s from './tools.module.css';
 
 /* Los chips se inclinan hacia el cursor: escala y tono según la distancia, y
@@ -40,6 +41,7 @@ function useProximity(stage: React.RefObject<HTMLDivElement | null>) {
 }
 
 export default function ToolGroups() {
+  const ABOUT = aboutIn(useLocale());
   const stage = useRef<HTMLDivElement>(null);
   useProximity(stage);
   return (

@@ -1,7 +1,8 @@
 'use client';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { ABOUT } from '@/lib/content/about';
+import { aboutIn } from '@/lib/content/en';
+import { useLocale } from '@/lib/i18n/LocaleContext';
 import { splitBold } from '@/lib/content/text';
 import s from './process.module.css';
 
@@ -11,6 +12,7 @@ const Rich = ({ text }: { text: string }) => <>{splitBold(text).map((x, i) => (x
    uno activo cada vez; debajo, los tres criterios no negociables, con la
    regla 60·30·10 dibujada como barra. */
 export default function ProcessInfographic() {
+  const ABOUT = aboutIn(useLocale());
   const { intro, steps, principles, outro } = ABOUT.process;
   const [i, setI] = useState(0);
   const go = (n: number) => setI((n + steps.length) % steps.length);

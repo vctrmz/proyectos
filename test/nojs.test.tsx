@@ -6,7 +6,7 @@ import Hero from '@/components/home/Hero';
 import Reveal from '@/components/motion/Reveal';
 import ProjectCard from '@/components/catalog/ProjectCard';
 import { PROJECTS } from '@/lib/content/projects';
-import RootLayout from '@/app/layout';
+import RootShell from '@/components/layout/RootShell';
 
 /* Sin JavaScript el HTML servido debe ser legible: nada above-the-fold con
    opacity 0, y un <noscript> que neutralice los estados iniciales de motion. */
@@ -19,8 +19,8 @@ describe('sin JS', () => {
     expect(renderToString(<Reveal>x</Reveal>)).toContain('data-reveal');
     expect(renderToString(<ul><ProjectCard project={PROJECTS[0]} /></ul>)).toContain('data-reveal');
   });
-  it('el layout incluye la regla noscript', () => {
-    const html = renderToString(<RootLayout><p>x</p></RootLayout>);
+  it('el chasis incluye la regla noscript', () => {
+    const html = renderToString(<RootShell locale="es"><p>x</p></RootShell>);
     expect(html).toMatch(/<noscript>[^]*\[data-reveal\][^]*opacity:\s*1\s*!important/);
   });
 });
