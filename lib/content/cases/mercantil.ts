@@ -48,11 +48,11 @@ export const mercantil: CaseStudy = {
   audiences: {
     title: 'Audiencias',
     items: [
-      { who: 'Ana · comercio de barrio', question: '¿Puedo vender a gente que no pasa por mi tienda?', entry: 'Hoy: cuarenta ventas al día, clientes fijos, efectivo.', exit: 'Link de pago, página de pago y Mony' },
-      { who: 'Carlos · desarrollador', question: '¿API, SDK o plugin? ¿Qué me cuesta integrarlo?', entry: 'Hoy: tienda en WooCommerce y poco tiempo.', exit: 'Plugin, API token y SDK' },
-      { who: 'Lucía · colaboradora con nómina', question: 'Me falta dinero antes de cobrar, ¿cuánto me cuesta?', entry: 'Hoy: cobra quincenal y usa la banca en línea.', exit: 'Tadelanto' },
-      { who: 'Diego · estudiante', question: '¿Cómo empiezo mi historial sin papeleo?', entry: 'Hoy: paga en efectivo en el campus.', exit: 'Primera tarjeta y pagos con QR' },
-      { who: 'Marta · agente inmobiliaria', question: '¿Qué gana mi cliente si lo refiero a este banco?', entry: 'Hoy: trabaja con varios bancos a la vez.', exit: 'Hipotecas por referidos' },
+      { name: 'Ana', role: 'Dueña de un comercio de barrio', question: '¿Puedo vender a gente que no pasa por mi tienda?', entry: 'Hoy: cuarenta ventas al día, clientes fijos, efectivo.', exit: 'Link de pago, página de pago y Mony' },
+      { name: 'Carlos', role: 'Desarrollador del comercio', question: '¿API, SDK o plugin? ¿Qué me cuesta integrarlo?', entry: 'Hoy: tienda en WooCommerce y poco tiempo.', exit: 'Plugin, API token y SDK' },
+      { name: 'Lucía', role: 'Colaboradora con nómina', question: 'Me falta dinero antes de cobrar, ¿cuánto me cuesta?', entry: 'Hoy: cobra quincenal y usa la banca en línea.', exit: 'Tadelanto' },
+      { name: 'Diego', role: 'Estudiante universitario', question: '¿Cómo empiezo mi historial sin papeleo?', entry: 'Hoy: paga en efectivo en el campus.', exit: 'Primera tarjeta y pagos con QR' },
+      { name: 'Marta', role: 'Agente inmobiliaria', question: '¿Qué gana mi cliente si lo refiero a este banco?', entry: 'Hoy: trabaja con varios bancos a la vez.', exit: 'Hipotecas por referidos' },
     ],
   },
   flows: {

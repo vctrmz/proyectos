@@ -48,11 +48,11 @@ export const ayax: CaseStudy = {
   audiences: {
     title: 'Audiencias',
     items: [
-      { who: 'Profesional del taxi', question: '¿Me cubre bien y a qué precio?', entry: 'Entra por la landing de seguros de taxi, desde búsqueda o campaña.', exit: 'Formulario de taxi o asistencia' },
-      { who: 'Corredor o mediador', question: '¿Qué me aporta frente a lo que ya distribuyo?', entry: 'Sección Partners y bloque propio en portada, por encima del catálogo.', exit: 'Alta como partner' },
-      { who: 'Aseguradora', question: '¿Tienen capacidad técnica para suscribir por mí?', entry: 'Partners: especialización, ramos y coberturas.', exit: 'Contacto comercial cualificado' },
-      { who: 'Empresa o particular', question: '¿Este seguro existe y quién responde?', entry: 'Catálogo de productos y ficha del ramo.', exit: 'Formulario general' },
-      { who: 'Candidato o sector', question: '¿Quién está detrás?', entry: 'Sobre Ayax: valores, equipo con nombre y cara, y evento anual.', exit: 'Credibilidad de marca' },
+      { name: 'Profesional del taxi', question: '¿Me cubre bien y a qué precio?', entry: 'Entra por la landing de seguros de taxi, desde búsqueda o campaña.', exit: 'Formulario de taxi o asistencia' },
+      { name: 'Corredor o mediador', question: '¿Qué me aporta frente a lo que ya distribuyo?', entry: 'Sección Partners y bloque propio en portada, por encima del catálogo.', exit: 'Alta como partner' },
+      { name: 'Aseguradora', question: '¿Tienen capacidad técnica para suscribir por mí?', entry: 'Partners: especialización, ramos y coberturas.', exit: 'Contacto comercial cualificado' },
+      { name: 'Empresa o particular', question: '¿Este seguro existe y quién responde?', entry: 'Catálogo de productos y ficha del ramo.', exit: 'Formulario general' },
+      { name: 'Candidato o sector', question: '¿Quién está detrás?', entry: 'Sobre Ayax: valores, equipo con nombre y cara, y evento anual.', exit: 'Credibilidad de marca' },
     ],
   },
   flows: {

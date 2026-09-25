@@ -21,12 +21,21 @@ export function ChallengeGrid({ items }: { items: Challenge[] }) {
   );
 }
 
+/* La identidad va arriba y separada de la pregunta por una línea: el nombre no
+   es parte de la frase. Si la audiencia es una persona (trae `role`) lleva su
+   monograma; si es un segmento, el nombre se lee como etiqueta. */
 export function AudienceGrid({ items }: { items: Audience[] }) {
   return (
     <ul className={s.aud}>
       {items.map((a, i) => (
-        <Reveal key={a.who} as="li" delay={i * 0.04} className={s.audCard}>
-          <h3>{a.who}</h3>
+        <Reveal key={a.name} as="li" delay={i * 0.04} className={s.audCard}>
+          <div className={s.audHead}>
+            {a.role && <span className={s.mono} aria-hidden="true">{a.name.trim().charAt(0)}</span>}
+            <h3 className={a.role ? s.name : s.segment}>
+              {a.name}
+              {a.role && <span className={s.role}>{a.role}</span>}
+            </h3>
+          </div>
           <p className={s.q}>«{a.question}»</p>
           <p className={s.entry}>{a.entry}</p>
           <p className={s.exit}><span aria-hidden="true">→ </span>{a.exit}</p>

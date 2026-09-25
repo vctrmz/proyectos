@@ -6,8 +6,10 @@ export interface Shot { src: string; alt: string; caption: string }
 export interface Decision { title: string; why: string; changed: string; tradeoff?: string; wouldFix?: string; figure?: { shot: Shot } | { diagram: DiagramId } }
 /* El reto, en tarjetas: cada tensión del proyecto con su nombre. */
 export interface Challenge { title: string; body: string }
-/* Una audiencia: qué se pregunta, por dónde entra y a qué sale. */
-export interface Audience { who: string; question: string; entry: string; exit: string }
+/* Una audiencia: quién es, qué se pregunta, por dónde entra y a qué sale.
+   `role` distingue a una persona de un segmento: si viene, la tarjeta la trata
+   como proto-persona y le pone su monograma. */
+export interface Audience { name: string; role?: string; question: string; entry: string; exit: string }
 /* Un flujo numerado, con los pasos en orden y de quién es cada tramo. */
 export interface Flow { title: string; side?: string; steps: { n: string; t: string; d: string }[] }
 /* Un hallazgo de auditoría, con su severidad declarada. */
