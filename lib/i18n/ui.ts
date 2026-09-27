@@ -48,7 +48,7 @@ const es: Ui = {
     heroLines: ['Diseño producto B2B complejo', 'y lo llevo a producción.'],
     heroSub: 'Nueve años en SaaS asegurador, ERP y banca, casi siempre como único diseñador. Entiendo el dominio, lo convierto en reglas y componentes, y acompaño la implementación hasta que el diseño llega entero.',
     facts: [
-      { value: '165', label: 'pantallas en producción' }, { value: '8', label: 'áreas de producto' },
+      { value: '267 → 24', label: 'valores de color a tokens' }, { value: '8', label: 'áreas de producto' },
       { value: '5', label: 'productos, un lenguaje' }, { value: '2022–2026', label: 'único diseñador del holding' },
     ],
     sectorsKicker: 'Sectores',
@@ -98,7 +98,7 @@ const en: Ui = {
     heroLines: ['I design complex B2B products', 'and take them to production.'],
     heroSub: 'Nine years in insurance SaaS, ERP and banking, almost always as the only designer. I learn the domain, turn it into rules and components, and stay with implementation until the design ships whole.',
     facts: [
-      { value: '165', label: 'screens in production' }, { value: '8', label: 'product areas' },
+      { value: '267 → 24', label: 'colour values to tokens' }, { value: '8', label: 'product areas' },
       { value: '5', label: 'products, one language' }, { value: '2022–2026', label: 'sole designer of the group' },
     ],
     sectorsKicker: 'Sectors',
