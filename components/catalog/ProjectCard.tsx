@@ -1,5 +1,4 @@
 'use client';
-import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'motion/react';
 import { ViewTransition } from 'react';
@@ -8,7 +7,6 @@ import { projectTags } from '@/lib/content/projects';
 import { EN_CASE_SLUGS, tagIn, typeLabelIn, sectorLabelIn } from '@/lib/content/en';
 import { useLocale, useUi } from '@/lib/i18n/LocaleContext';
 import { ROUTES } from '@/lib/i18n/config';
-import { shotSize } from '@/lib/content/shots';
 import Frame from '@/components/ui/Frame';
 import BrandTile from './BrandTile';
 import s from './ProjectCard.module.css';
@@ -34,25 +32,27 @@ export default function ProjectCard({ project: p }: { project: Project }) {
   const tags = locale === 'en'
     ? [typeLabelIn(locale, p.type, p.type), 'In production', ...(p.sector && p.sector !== 'multi' ? [sectorLabelIn(locale, p.sector)] : [])]
     : projectTags(p);
-  const size = p.image ? shotSize(p.image.src) : null;
-  const media = p.image && size
-    ? <Image src={p.image.src} alt={p.image.alt} width={size.width} height={size.height} sizes="(max-width: 768px) 100vw, 580px" />
-    : <BrandTile project={p} />;
+  /* La portada la firma el logo del producto sobre su color, igual en las diez
+     piezas: un muro de marcas se lee de un vistazo y ninguna captura pequeña
+     se amplía para rellenar el hueco. Las pantallas reales viven dentro del
+     caso, que es donde se pueden mirar a su tamaño. */
   return (
     <motion.li data-reveal layout layoutId={`card-${p.slug}`} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.98 }} className={s.card}>
       {external
         ? <a href={href} target="_blank" rel="noopener" className={s.hit} aria-label={label} />
         : <Link href={href} className={s.hit} aria-label={label} />}
-      <div className={s.top}>
-        <h3 className={s.title}>{p.logo && <img src={p.logo} alt="" className={s.icon} loading="lazy" decoding="async" />}{p.title} · {p.company} · {p.years}</h3>
-        <p className={s.tags}>{tags.map((t) => <span key={t}>{tagIn(locale, t)}</span>)}</p>
-        <p className={s.sum}>{p.summary}</p>
-        <p className={s.go} aria-hidden="true">{action} <span>{external ? '↗' : '→'}</span></p>
-      </div>
+      {/* La portada va primero: en una rejilla de tres, la marca es lo que
+          orienta y el texto la explica debajo. */}
       <div className={s.media}>
         <ViewTransition name={`case-${p.slug}`}>
-          <Frame brand={p.brand} ratio="4/3">{media}</Frame>
+          <Frame brand={p.brand} ratio="4/3"><BrandTile project={p} /></Frame>
         </ViewTransition>
+      </div>
+      <div className={s.top}>
+        <h3 className={s.title}>{p.title}</h3>
+        <p className={s.tags}><span>{p.company}</span><span>{p.years}</span>{tags.map((t) => <span key={t}>{tagIn(locale, t)}</span>)}</p>
+        <p className={s.sum}>{p.summary}</p>
+        <p className={s.go} aria-hidden="true">{action} <span>{external ? '↗' : '→'}</span></p>
       </div>
     </motion.li>
   );

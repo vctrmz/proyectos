@@ -1,10 +1,12 @@
-.card { position: relative; display: grid; gap: var(--sp-16); }
+.card { position: relative; display: grid; gap: var(--sp-16); align-content: start; }
 .top { display: grid; gap: 8px; }
-.title { display: flex; align-items: center; gap: 10px; font-size: var(--fs-400); font-weight: 500; letter-spacing: -0.01em; }
+.title { font-size: var(--fs-400); font-weight: 500; letter-spacing: -0.015em; line-height: 1.25; text-wrap: pretty; }
 .icon { width: 24px; height: 24px; border-radius: 6px; object-fit: contain; background: var(--surface); padding: 3px; }
 .tags { font-size: var(--fs-100); color: var(--ink-3); }
 .tags span + span::before { content: " · "; }
-.sum { font-size: var(--fs-200); color: var(--ink-2); max-width: 56ch; }
+/* Tres líneas por tarjeta: en una rejilla de tres, los resúmenes de distinto
+   largo descuadran la fila. El texto completo vive en el caso. */
+.sum { font-size: var(--fs-200); color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 .media { position: relative; }
 
 /* El enlace cubre la tarjeta entera: el destino es uno y el área de
