@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { isLocalHost, readConsent, writeConsent, startGA, startClarity, startAnalytics, CONSENT_KEY } from './consent';
+import { isLocalHost, readConsent, writeConsent, startGA, startClarity, startHotjar, startPlerdy, startHubSpot, startAnalytics, CONSENT_KEY } from './consent';
 
 beforeEach(() => { document.head.innerHTML = ''; });
 
@@ -10,7 +10,7 @@ describe('isLocalHost', () => {
     }
   });
   it('no confunde dominios públicos', () => {
-    for (const h of ['proyectos-theta-hazel.vercel.app', '172.32.0.1', '11.0.0.1', 'localhost.com']) {
+    for (const h of ['proyectos-sable.vercel.app', 'proyectos-theta-hazel.vercel.app', '172.32.0.1', '11.0.0.1', 'localhost.com']) {
       expect(isLocalHost(h), h).toBe(false);
     }
   });
@@ -43,9 +43,39 @@ describe('arranque de servicios', () => {
     expect(s?.textContent).toContain('@microsoft/clarity@1.0.2');
     expect(s?.textContent).toContain("init('yd4g6685po')");
   });
-  it('startAnalytics arranca GA4 y Clarity, y nada más', () => {
+  it('Hotjar deja la cola y la configuración antes del script', () => {
+    startHotjar();
+    const w = window as unknown as { hj: unknown; _hjSettings: { hjid: number; hjsv: number } };
+    expect(typeof w.hj).toBe('function');
+    expect(w._hjSettings).toEqual({ hjid: 6776849, hjsv: 6 });
+    expect(document.getElementById('hj-loader')?.getAttribute('src')).toContain('hotjar-6776849.js?sv=6');
+  });
+  it('Plerdy define sus globales y pide el script con la política de referente', () => {
+    startPlerdy();
+    const w = window as unknown as { _site_hash_code: string; _suid: number };
+    expect(w._site_hash_code).toBe('81690a1951e6290b7119405fec614b5d');
+    expect(w._suid).toBe(81035);
+    const s = document.getElementById('plerdy-loader') as HTMLScriptElement | null;
+    expect(s?.src).toContain('a.plerdy.com/public/js/click/main.js');
+    expect(s?.referrerPolicy).toBe('strict-origin-when-cross-origin');
+  });
+  it('HubSpot usa el centro de datos europeo y no bloquea', () => {
+    startHubSpot();
+    const s = document.getElementById('hs-script-loader') as HTMLScriptElement | null;
+    expect(s?.getAttribute('src')).toBe('https://js-eu1.hs-scripts.com/148496979.js');
+    expect(s?.defer).toBe(true);
+  });
+  /* El contrato del banner: aceptar enciende los cinco servicios y ninguno
+     más. Si mañana se añade uno sin declararlo en la página de privacidad,
+     esta lista lo delata. */
+  it('startAnalytics arranca los cinco servicios, y nada más', () => {
     startAnalytics();
-    for (const id of ['ga-gtag-loader', 'clarity-loader']) expect(document.getElementById(id), id).not.toBeNull();
-    for (const id of ['hj-loader', 'plerdy-loader', 'hs-script-loader']) expect(document.getElementById(id), id).toBeNull();
+    const esperados = ['ga-gtag-loader', 'clarity-loader', 'hj-loader', 'plerdy-loader', 'hs-script-loader'];
+    for (const id of esperados) expect(document.getElementById(id), id).not.toBeNull();
+    const cargadores = [...document.head.querySelectorAll('script[id]')].map((s) => s.id).sort();
+    expect(cargadores).toEqual([...esperados].sort());
+  });
+  it('fuera de consentimiento no se inyecta nada: startAnalytics es el único camino', () => {
+    expect(document.head.querySelectorAll('script[id]')).toHaveLength(0);
   });
 });

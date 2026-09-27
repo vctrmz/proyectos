@@ -1,5 +1,5 @@
 /* Las competencias tal como están redactadas en el portfolio anterior
-   (proyectos-theta-hazel.vercel.app/perfil): mismo texto, misma numeración.
+   (su página /perfil, ya sustituida por esta): mismo texto, misma numeración.
    Aquí solo cambia la presentación. */
 export type Competency = { id: string; title: string; body: string };
 export type CompetencyGroup = { n: string; name: string; items: Competency[] };

@@ -6,7 +6,9 @@ export default defineConfig({
   plugins: [react()],
   test: {
     environment: 'jsdom',
-    environmentOptions: { jsdom: { url: 'https://proyectos-theta-hazel.vercel.app/' } },
+    /* Host de produccion, no localhost: asi los cargadores de analitica se
+       prueban en la rama en la que de verdad se ejecutan. */
+    environmentOptions: { jsdom: { url: 'https://proyectos-sable.vercel.app/' } },
     setupFiles: ['./test/setup.ts'],
     css: false,
     /* Las páginas completas (caso y sobre mí) montan decenas de componentes y

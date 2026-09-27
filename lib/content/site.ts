@@ -8,7 +8,10 @@ export const SITE = {
   behance: 'https://behance.net/mazdesign',
   instagram: 'https://instagram.com/mazdesign',
   figma: 'https://www.figma.com/design/lEPRv8iPrIDwUBKnbWKMdu/Portfolio?node-id=8-136130&t=srL7KcBmRZtEGLME-1',
-  url: 'https://proyectos-theta-hazel.vercel.app',
+  /* El dominio del CV es el canonico. El otro alias del proyecto de Vercel
+     sigue sirviendo la web, pero apunta aqui en canonical y en el sitemap:
+     un solo enlace indexable para dos puertas. */
+  url: 'https://proyectos-sable.vercel.app',
 } as const;
 
 export const NAV = [

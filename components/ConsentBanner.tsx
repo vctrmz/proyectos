@@ -36,8 +36,10 @@ export default function ConsentBanner() {
 
   return (
     <div role="dialog" aria-label={locale === "es" ? "Consentimiento de analítica" : "Analytics consent"} className={'consent' + (shown ? ' is-in' : '')}>
+      {/* El aviso nombra las herramientas que de verdad se cargan, y sale del
+          diccionario: en inglés estaba enseñando este párrafo en español. */}
       <p>
-        Uso Google Analytics y Microsoft Clarity para ver cómo se navega esta web. Usan cookies y solo se activan si lo aceptas.{' '}
+        {ui.consent.text}{' '}
         <Link href={ROUTES[locale].privacy}>{ui.about.more}</Link>
       </p>
       <div className="consent-actions">

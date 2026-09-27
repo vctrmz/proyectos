@@ -7,7 +7,7 @@ export default function PrivacyEn() {
       <main id="contenido">
         <p className="kicker"><span>Legal</span></p>
         <h1>Privacy and cookies</h1>
-        <p className="updated">Last updated: 25 September 2026</p>
+        <p className="updated">Last updated: 27 September 2026</p>
         <p className="lead">This site is my portfolio. I collect data for two reasons: to understand how people read it, and to be able to reply if you write to me. Nothing below loads until you accept the cookie notice, apart from what the hosting strictly needs.</p>
 
         <section id="controller">
@@ -17,7 +17,7 @@ export default function PrivacyEn() {
 
         <section id="data">
           <h2>What is collected and <b>what for</b></h2>
-          <p>Two analytics tools, and only with your consent: <strong>Google Analytics 4</strong> for aggregate traffic and <strong>Microsoft Clarity</strong> for behaviour on the page. If you decline, not a single request is made to Google or Microsoft. If you write to me, I keep your email and your message to answer it, nothing else.</p>
+          <p>Five tools, all behind the same consent: <strong>Google Analytics 4</strong> for aggregate traffic, <strong>Microsoft Clarity</strong> and <strong>Hotjar</strong> for behaviour on the page, <strong>Plerdy</strong> for click maps —it identifies visitors through local storage and a browser fingerprint rather than cookies— and <strong>HubSpot</strong> for contact, which only holds your details if you write to me. If you decline, not a single request is made to Google, Microsoft, Hotjar, Plerdy or HubSpot. Hotjar hosts in the EU and HubSpot is set to its European data centre; Plerdy is based in Ukraine, a country without an EU adequacy decision, and its data is anonymous.</p>
         </section>
 
         <section id="rights">
@@ -30,7 +30,7 @@ export default function PrivacyEn() {
           <ConsentState />
         </section>
 
-        <p className="lead">The full version, with the table of tools, retention periods and legal bases, is on the <Link href="/privacidad">Spanish page</Link>, which is the one that governs.</p>
+        <p className="lead">The full version, with the table of tools, retention periods and legal bases, is on the <Link href="/es/privacy">Spanish page</Link>, which is the one that governs.</p>
       </main>
     </div>
   );

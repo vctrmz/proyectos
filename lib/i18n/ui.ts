@@ -86,7 +86,7 @@ const es: Ui = {
     socialLabel: 'Redes', more: 'Más información', close: 'Cerrar',
   },
   footer: { role: 'Product Designer · B2B SaaS e Insurtech', contact: 'Ponte en contacto', available: 'Disponible para proyectos', legal: '© 2026', privacy: 'Privacidad', cookies: 'Cookies', remote: 'Trabajo en remoto' },
-  consent: { text: 'Uso analítica para saber qué se lee y qué no. Nada de publicidad.', accept: 'Aceptar', reject: 'Rechazar', change: 'Cambiar mi decisión' },
+  consent: { text: 'Uso analítica para ver cómo se navega esta web: Google Analytics, Microsoft Clarity, Hotjar, Plerdy y HubSpot. Usan cookies o almacenamiento del navegador, nada de publicidad, y solo se activan si lo aceptas.', accept: 'Aceptar', reject: 'Rechazar', change: 'Cambiar mi decisión' },
   lang: { label: 'Idioma' },
 };
 
@@ -136,7 +136,7 @@ const en: Ui = {
     socialLabel: 'Social', more: 'More', close: 'Close',
   },
   footer: { role: 'Product Designer · B2B SaaS and Insurtech', contact: 'Get in touch', available: 'Available for projects', legal: '© 2026', privacy: 'Privacy', cookies: 'Cookies', remote: 'Working remotely' },
-  consent: { text: 'I use analytics to know what gets read and what does not. No advertising.', accept: 'Accept', reject: 'Decline', change: 'Change my choice' },
+  consent: { text: 'I use analytics to see how this site is read: Google Analytics, Microsoft Clarity, Hotjar, Plerdy and HubSpot. They use cookies or browser storage, never advertising, and load only if you accept.', accept: 'Accept', reject: 'Decline', change: 'Change my choice' },
   lang: { label: 'Language' },
 };
 

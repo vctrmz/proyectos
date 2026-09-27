@@ -15,7 +15,12 @@ describe('ConsentBanner', () => {
     act(() => { vi.advanceTimersByTime(450); });
     expect(screen.getByRole('dialog')).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Más información' })).toHaveAttribute('href', '/es/privacy');
-    expect(screen.getByRole('dialog').textContent).toMatch(/Google Analytics y Microsoft Clarity/);
+    const texto = screen.getByRole('dialog').textContent ?? '';
+    /* Lo que el aviso promete tiene que ser lo que el consentimiento enciende:
+       si se añade una herramienta sin nombrarla aquí, este test cae. */
+    for (const h of ['Google Analytics', 'Microsoft Clarity', 'Hotjar', 'Plerdy', 'HubSpot']) {
+      expect(texto, h).toContain(h);
+    }
   });
   it('aceptar guarda granted y arranca la analítica', () => {
     render(<ConsentBanner />);

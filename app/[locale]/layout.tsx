@@ -2,10 +2,14 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import RootShell from '@/components/layout/RootShell';
 import { LOCALES, type Locale } from '@/lib/i18n/config';
+import { SITE } from '@/lib/content/site';
 import '../globals.css';
 
+/* El dominio sale de SITE.url y de ningún otro sitio: contra esta base
+   resuelve Next los canonical, los hreflang y la imagen de Open Graph, así que
+   un dominio escrito dos veces es un canonical mal puesto esperando su turno. */
 export const metadata: Metadata = {
-  metadataBase: new URL('https://proyectos-theta-hazel.vercel.app'),
+  metadataBase: new URL(SITE.url),
   icons: { icon: '/favicon.svg' },
 };
 

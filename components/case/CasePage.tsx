@@ -87,7 +87,7 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
 
   return (
     <>
-      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'CreativeWork', name: c.title, description: c.tagline, author: { '@type': 'Person', name: SITE.name }, url: `${SITE.url}/casos/${c.slug}`, dateCreated: c.years.slice(0, 4) }} />
+      <JsonLd data={{ '@context': 'https://schema.org', '@type': 'CreativeWork', name: c.title, description: c.tagline, author: { '@type': 'Person', name: SITE.name }, url: `${SITE.url}/${locale}/cases/${c.slug}`, dateCreated: c.years.slice(0, 4) }} />
       <SiteHeader />
       <main id="contenido">
         <div className={`container ${s.top}`}>
