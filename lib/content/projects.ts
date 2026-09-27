@@ -3,7 +3,9 @@ export type Sector = 'insurtech' | 'erp' | 'banca' | 'ecommerce' | 'transporte' 
 export interface Project {
   slug: string; title: string; company: string; years: string;
   type: ProjectType; status: 'production'; sector: Sector;
-  brand: string; image: { src: string; alt: string } | null; logo: string;
+  brand: string; image: { src: string; alt: string } | null;
+  /* Sin logo propio todavía: la miniatura usa el monograma de la marca. */
+  logo?: string;
   summary: string; hasCase: boolean; url?: string;
 }
 
@@ -40,7 +42,7 @@ export const PROJECTS: Project[] = [
   { slug: 'design-system', title: 'Design system: 267 → 24 tokens', company: 'Atrinium', years: '2024', type: 'design-system', status: 'production', sector: 'multi', brand: '#15181f', logo: '/assets/logos/hermes.webp', hasCase: true,
     image: shot('07-seleccionar-moneda', 'Componente de selección de moneda del design system de HERMES'),
     summary: 'Auditoría del monorepo: 267 valores de color reducidos a 24 tokens con un rol cada uno, adoptados por los cuatro front. El sistema alimenta el módulo y el módulo devuelve componentes.' },
-  { slug: 'taksio', title: 'Plataforma de movilidad', company: 'Taksio', years: '2017–2019', type: 'product', status: 'production', sector: 'transporte', brand: '#1d3557', logo: '/assets/logos/hermes.webp', hasCase: false, image: null,
+  { slug: 'taksio', title: 'Plataforma de movilidad', company: 'Taksio', years: '2017–2019', type: 'product', status: 'production', sector: 'transporte', brand: '#1d3557', hasCase: false, image: null, url: 'https://www.behance.net/gallery/81635187/Taksio-website',
     summary: 'Plataforma multimodal desde cero: design system primero, flujos de conductor y pasajero después.' },
 ];
 

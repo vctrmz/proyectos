@@ -7,5 +7,15 @@
 .sum { font-size: var(--fs-200); color: var(--ink-2); max-width: 56ch; }
 .media { position: relative; }
 
-.cta { position: absolute; top: 12px; right: 12px; z-index: 2; }
-.link::after { content: ""; position: absolute; inset: 0; }
+/* El enlace cubre la tarjeta entera: el destino es uno y el área de
+   pulsación, toda. El foco se ve porque el contorno dibuja ese rectángulo. */
+.hit { position: absolute; inset: 0; z-index: 3; border-radius: var(--r-media); }
+.hit:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
+
+/* Afordancia sin botón: la señal de que se puede pulsar es el texto con su
+   flecha, que avanza al pasar por la tarjeta. */
+.go { display: inline-flex; align-items: center; gap: 6px; font-size: var(--fs-200); font-weight: 500; color: var(--ink); margin-top: 2px; }
+.go span { transition: transform .3s var(--ease); }
+.card:hover .go span, .hit:focus-visible ~ .top .go span { transform: translateX(4px); }
+.card:hover .title { text-decoration: underline; text-underline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .go span { transition: none; } }

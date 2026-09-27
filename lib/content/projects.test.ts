@@ -7,9 +7,11 @@ describe('catálogo', () => {
     expect(new Set(PROJECTS.map((p) => p.slug)).size).toBe(10);
     expect(PROJECTS.slice(0, 5).map((p) => p.slug)).toEqual(['ayax', 'hermes', 'flesip', 'montsaint', 'mercantil']);
   });
-  it('cada pieza tiene logo, resumen y o bien imagen o bien color de marca', () => {
+  it('cada pieza tiene resumen, color de marca y o bien imagen o bien logo propio', () => {
     for (const p of PROJECTS) {
-      expect(p.logo, p.slug).toMatch(/^\/assets\/logos\//);
+      /* El logo es opcional: sin él, la miniatura usa el monograma de la marca
+         en lugar de pedir prestado el logo de otro producto. */
+      if (p.logo) expect(p.logo, p.slug).toMatch(/^\/assets\/logos\//);
       expect(p.summary.length, p.slug).toBeGreaterThan(30);
       expect(p.brand, p.slug).toMatch(/^#[0-9a-f]{6}$/i);
       if (p.image) expect(p.image.alt.length, p.slug).toBeGreaterThan(10);
