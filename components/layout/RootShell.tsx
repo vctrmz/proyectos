@@ -11,13 +11,19 @@ import { SITE } from '@/lib/content/site';
 
 const geist = Geist({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-geist', display: 'swap' });
 
-/* El chasis de las dos raíces —español e inglés—. Cada idioma tiene su propio
-   layout raíz para poder declarar lang en el <html>, que es lo que leen
-   buscadores y lectores de pantalla; todo lo demás se comparte aquí. */
+/* El chasis único de los dos idiomas. Hay un solo layout raíz —el de
+   [locale]— para que cambiar de lengua sea una navegación de React y no una
+   recarga del documento; el idioma entra por prop y se declara en el <html>,
+   que es lo que leen buscadores y lectores de pantalla. */
 export default function RootShell({ locale, children }: { locale: Locale; children: React.ReactNode }) {
   return (
     <html lang={locale} className={geist.variable}>
-      <body>
+      {/* Las extensiones del navegador escriben atributos en el <body> antes de
+          que React hidrate (inmaintabuse, grammarly y compañía) y eso levanta
+          un aviso de hidratación que no es nuestro. Aquí no ponemos ningún
+          atributo dinámico en el <body>, así que silenciar este nivel no tapa
+          nada propio: el aviso sigue activo en todo lo que hay dentro. */}
+      <body suppressHydrationWarning>
         <noscript><style>{`[data-reveal],svg[role=img] g{opacity:1 !important;transform:none !important}`}</style></noscript>
         <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Person', name: SITE.name, jobTitle: 'Product Designer', url: SITE.url, email: SITE.email, address: { '@type': 'PostalAddress', addressLocality: 'Málaga', addressCountry: 'ES' }, sameAs: [SITE.linkedin, SITE.behance] }} />
         <LocaleProvider locale={locale}>
