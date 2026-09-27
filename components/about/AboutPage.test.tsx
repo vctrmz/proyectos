@@ -11,12 +11,19 @@ describe('AboutPage', () => {
     expect(h2).toEqual(expect.arrayContaining(['Personal', 'Formación', 'Ikigai', 'Empresas', 'Herramientas']));
     expect(h2.indexOf('Herramientas')).toBeGreaterThan(h2.findIndex((x) => /Diseño sistemas/.test(x!)));
     expect(screen.getByText(/Universidad de Oriente/)).toBeInTheDocument();
-    expect(screen.getByText('Málaga')).toBeInTheDocument();
+    // la acreditación cuelga en el hero con los datos públicos, sin lugar de nacimiento
+    expect(screen.getByText(/Málaga · en remoto/)).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: 'Víctor Maza' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: /Diseño sistemas, no pantallas/ })).toBeInTheDocument();
     expect(screen.queryByText(/Lugares/)).toBeNull();
     expect(document.querySelector('#contacto')).not.toBeNull();
-    expect(screen.getByText('Nací en Venezuela.')).toBeInTheDocument();
-    expect(screen.queryByText('Cumaná')).toBeNull();
+    /* Fuera del hero la información personal: ni dónde nació ni dónde ha vivido. */
+    expect(screen.queryByText('Nací en Venezuela.')).toBeNull();
+    expect(screen.queryByText('Jaén')).toBeNull();
+    expect(screen.queryByText(/Antes, en/)).toBeNull();
+    // Cumaná sigue en Formación, que es un dato académico
+    expect(screen.getByText(/Cumaná, Venezuela/)).toBeInTheDocument();
+    expect(screen.getByText(/Universidad de Oriente/).textContent).not.toMatch(/2006/);
     expect(screen.getByRole('button', { name: /ver el detalle/i })).toBeInTheDocument();
     const redes = screen.getByRole('list', { name: /redes/i });
     expect(within(redes).getAllByRole('link')).toHaveLength(3);

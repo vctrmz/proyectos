@@ -14,3 +14,18 @@ const Frag = ({ children }: { children: React.ReactNode }) => React.createElemen
 export const AnimatePresence = Frag;
 export const LayoutGroup = Frag;
 export const MotionConfig = Frag;
+
+/* Valores de movimiento: lo justo para que un componente que los usa se pueda
+   renderizar en test. No animan nada; guardan y devuelven el valor. */
+type MV<T> = { get: () => T; set: (v: T) => void; on: () => () => void };
+const mv = <T,>(initial: T): MV<T> => {
+  let v = initial;
+  return { get: () => v, set: (x: T) => { v = x; }, on: () => () => {} };
+};
+export const useMotionValue = <T,>(initial: T): MV<T> => mv(initial);
+export const useTransform = <T, R>(source: MV<T>, fn: (v: T) => R): MV<R> => mv(fn(source.get()));
+export const useSpring = <T,>(initial: T): MV<T> => mv(initial);
+export const animate = (target: MV<number> | unknown, to: number) => {
+  if (target && typeof (target as MV<number>).set === 'function') (target as MV<number>).set(to);
+  return { stop: () => {}, then: (f: () => void) => { f(); return Promise.resolve(); } };
+};

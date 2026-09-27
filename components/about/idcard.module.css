@@ -1,0 +1,38 @@
+/* Acreditación colgando. El giro sucede en el anclaje del cordón (top center),
+   así que cuerda y tarjeta se mueven como una sola pieza. */
+.wrap { display: grid; justify-items: center; gap: 10px; padding-top: 8px; }
+.pivot { position: relative; width: min(300px, 78vw); padding-top: 104px; transform-origin: top center; touch-action: none; cursor: grab; }
+.pivot:active { cursor: grabbing; }
+
+.cord { position: absolute; top: 0; left: 50%; width: 120px; height: 130px; transform: translateX(-50%); overflow: visible; }
+.rope { fill: none; stroke: var(--ink-3); stroke-width: 1.5; opacity: .55; }
+.anchor { fill: var(--ink); }
+.clip { position: absolute; top: 96px; left: 50%; transform: translateX(-50%); width: 58px; height: 20px; border-radius: 6px 6px 3px 3px; background: linear-gradient(#e9ecf3, #c8cdd9); box-shadow: inset 0 1px 0 #fff, 0 2px 4px rgba(18,19,23,.18); }
+.clip span { position: absolute; left: 50%; top: 6px; transform: translateX(-50%); width: 22px; height: 7px; border-radius: 4px; background: var(--bg); box-shadow: inset 0 1px 2px rgba(18,19,23,.25); }
+
+.card { position: relative; display: grid; gap: 8px; padding: 16px 16px 14px; border-radius: 16px; background: var(--bg); border: 1px solid var(--line); box-shadow: 0 28px 50px -26px rgba(18,19,23,.45); }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.org { font-size: var(--fs-100); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.id { font-size: var(--fs-100); letter-spacing: .06em; color: var(--focus); font-variant-numeric: tabular-nums; }
+.photo { border-radius: 12px; overflow: hidden; background: var(--surface); aspect-ratio: 1; }
+.photo img { width: 100%; height: 100%; object-fit: cover; display: block; filter: grayscale(1) contrast(1.05); }
+.name { font-size: var(--fs-500); font-weight: 500; letter-spacing: -0.02em; }
+.role { font-size: var(--fs-200); color: var(--ink-2); margin-top: -4px; }
+.data { display: grid; gap: 6px; margin: 4px 0 0; padding-top: 10px; border-top: 1px solid var(--line); }
+.data div { display: grid; grid-template-columns: 74px minmax(0, 1fr); gap: 8px; align-items: baseline; }
+.data dt { font-size: var(--fs-100); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.data dd { margin: 0; font-size: var(--fs-200); color: var(--ink); }
+.bars { display: flex; align-items: flex-end; gap: 2px; height: 26px; margin-top: 8px; }
+.bars i { display: block; height: 100%; background: var(--ink); opacity: .82; }
+.mail { font-size: var(--fs-200); color: var(--ink-2); text-decoration: underline; text-underline-offset: 2px; justify-self: start; }
+.mail:hover { color: var(--ink); }
+.hint { font-size: var(--fs-100); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+
+/* Vaivén mínimo en reposo; se detiene al tocarla. */
+@keyframes sway { 0%, 100% { rotate: -1.1deg; } 50% { rotate: 1.1deg; } }
+.sway { animation: sway 7s ease-in-out infinite; }
+.sway:hover, .sway:active { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .sway { animation: none; }
+  .pivot { cursor: default; }
+}

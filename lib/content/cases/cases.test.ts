@@ -23,8 +23,25 @@ describe('casos', () => {
       for (const m of c.result.output) expect(m.meaning.length, m.label).toBeGreaterThan(20);
     }
   });
-  it('los outcomes sin dato se declaran, no se inventan', () => {
-    for (const c of CASES) expect(c.result.outcome, c.slug).toBe('unavailable');
+  it('el outcome no inventa: cada cifra se explica y lo que no se midió se dice', () => {
+    for (const c of CASES) {
+      const o = c.result.outcome;
+      if (o === 'unavailable') continue;
+      for (const m of o) {
+        /* Toda cifra de outcome viene con su explicación: de dónde sale y por
+           qué no es una medición de campo si no lo es. */
+        expect(m.meaning.length, `${c.slug}: ${m.label}`).toBeGreaterThan(60);
+        expect(m.label.length, `${c.slug}: ${m.value}`).toBeGreaterThan(10);
+      }
+      /* Y sigue habiendo una frase sobre lo que no está instrumentado. */
+      expect(c.result.measure.length, c.slug).toBeGreaterThan(40);
+    }
+  });
+  it('no se cuelan métricas de negocio que nadie midió', () => {
+    const texto = JSON.stringify(CASES.map((c) => c.result));
+    for (const bad of ['conversión del', 'aumentó las ventas', 'ROI', 'NPS', 'ingresos', 'facturación un']) {
+      expect(texto, bad).not.toContain(bad);
+    }
   });
   it('no publica cifras del CV pendientes de confirmar', () => {
     const all = JSON.stringify(CASES);
@@ -53,7 +70,7 @@ describe('casos', () => {
       expect(c.next, slug).not.toBe(c.slug);
       expect(c.problem, slug).toHaveLength(2);
       expect(c.decisions.length, slug).toBeGreaterThanOrEqual(3);
-      expect(c.result.outcome, slug).toBe('unavailable');
+      if (c.result.outcome !== 'unavailable') for (const m of c.result.outcome) expect(m.meaning.length, slug).toBeGreaterThan(60);
       /* nada de español suelto en la versión inglesa */
       const texto = JSON.stringify({ ...c, hero: c.hero.alt, design: c.design.map((d) => d.caption) });
       for (const palabra of [' el ', ' la ', ' que ', ' para ', ' con ']) expect(texto, `${slug}: ${palabra}`).not.toContain(palabra);

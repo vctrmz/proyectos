@@ -18,7 +18,7 @@ export const ABOUT = {
   ],
   places: [] as { src: string; alt: string; caption: string }[],
   education: [
-    { degree: 'Licenciatura en Informática', school: 'Universidad de Oriente', place: 'Cumaná, Venezuela', years: '2006–2017' },
+    { degree: 'Licenciatura en Informática', school: 'Universidad de Oriente', place: 'Cumaná, Venezuela', years: '2017' },
   ],
   ikigai: {
     tech: 'Informático de formación: sé cómo se construye lo que diseño, y respeto cómo piensa el framework.',

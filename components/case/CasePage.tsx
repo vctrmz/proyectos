@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { ViewTransition } from 'react';
 import SiteHeader from '@/components/layout/SiteHeader';
 import SiteFooter from '@/components/layout/SiteFooter';
 import Diagram from '@/components/diagrams/Diagram';
@@ -13,7 +14,6 @@ import { DEFAULT_LOCALE, ROUTES, type Locale } from '@/lib/i18n/config';
 import { getUi } from '@/lib/i18n/ui';
 import { shotSize } from '@/lib/content/shots';
 import type { CaseStudy } from '@/lib/content/cases';
-import CaseHero from './CaseHero';
 import CaseNav from './CaseNav';
 import DecisionBlock from './DecisionBlock';
 import ResultBlock from './ResultBlock';
@@ -58,7 +58,7 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
     ) },
     { id: 'c-diseno', label: L('c-diseno', 'Diseño'), node: (
       <div className={s.gallery}>
-        {c.design.map((d) => { const z = shotSize(d.src); return <Figure key={d.src + d.caption} src={d.src} alt={d.alt} caption={d.caption} width={z.width} height={z.height} sizes="(max-width: 900px) 100vw, 580px" />; })}
+        {c.design.map((d) => { const z = shotSize(d.src); return <Figure key={d.src + d.caption} src={d.src} alt={d.alt} caption={d.caption} width={z.width} height={z.height} />; })}
       </div>
     ) },
     ...(c.findings ? [{ id: 'c-hallazgos', label: L('c-hallazgos', 'Hallazgos'), node: (
@@ -92,15 +92,12 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
       <main id="contenido">
         <div className={`container ${s.top}`}>
           <Link href={r.work} className={s.back}>{ui.case.back}</Link>
-          <div className={s.head}>
+          <ViewTransition name={`case-${c.slug}`}><div className={s.head}>
             <h1 className={s.title}><img src={p.logo} alt="" className={s.icon} />{c.title} · {c.company}</h1>
             <p className={s.tagline}>{c.tagline}</p>
             <p className={s.tags}>{c.tags.map((t) => <span key={t}>{tagIn(locale, t)}</span>)}<span>{c.years}</span></p>
-            {/* Si el producto está en línea, el enlace es la evidencia más corta. */}
-            {p.url && <p><a href={p.url} target="_blank" rel="noopener" className={s.live}>{ui.case.live} <span aria-hidden="true">↗</span></a></p>}
-          </div>
+          </div></ViewTransition>
         </div>
-        <CaseHero slug={c.slug} hero={c.hero} />
         <div className="container">
           <div className={s.cols}><div><h2>{ui.case.context}</h2><p>{c.context}</p></div><div><h2>{ui.case.role}</h2><p>{c.role}</p></div><div><h2>{ui.case.delivery}</h2><p>{c.delivery}</p></div></div>
           <div className={s.doc}>

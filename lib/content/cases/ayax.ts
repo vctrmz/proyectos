@@ -103,7 +103,14 @@ export const ayax: CaseStudy = {
       { value: '113', label: 'componentes de interfaz', meaning: 'Medido en el propio repositorio, junto con las rutas públicas y las cadenas traducidas de las dos lenguas.' },
       { value: '4', label: 'flujos de captación medibles', meaning: 'General, partner, taxi y evento: cada origen con su formulario, su plantilla de correo y su destino. Sin tarificador, el formulario es la conversión.' },
     ],
-    outcome: 'unavailable',
+    /* Outcome derivado: cada cifra es aritmética sobre un dato que el caso ya
+       documenta, y su explicación dice de dónde sale. Lo que no se midió sigue
+       declarado abajo, en `measure`. */
+    outcome: [
+      { value: '0', label: 'ramos que exigieron diseño a medida', meaning: 'Cinco de las seis fichas comparten plantilla y la de taxi es una excepción declarada: ningún ramo nuevo obligó a dibujar una pantalla desde cero. Es consecuencia del sistema, contada sobre los seis ramos del caso, no una medición de campo.' },
+      { value: '21', label: 'meses sobre el mismo sistema', meaning: 'De septiembre de 2024 a mayo de 2026 entraron un vertical nuevo, una segunda lengua completa y una campaña con identidad propia, y los tokens sobrevivieron incluso a la migración de repositorio.' },
+      { value: '2', label: 'lenguas con una sola base de componentes', meaning: 'Los 113 componentes sirven a español e inglés con el idioma en la URL: la segunda lengua no duplicó interfaz.' },
+    ],
     measure: 'Conversión por flujo y por ramo, y calidad del lead que llega a cada bandeja. La analítica del sitio no marcaba el envío de cada formulario como evento clave, así que citar porcentajes habría sido un artefacto: está en la primera tanda de la auditoría.',
   },
   learnings: [

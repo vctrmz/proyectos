@@ -104,7 +104,14 @@ export const mercantil: CaseStudy = {
       { value: '9', label: 'hallazgos en mi propio prototipo', meaning: 'Uno crítico y dos altos, con la pantalla y la heurística que incumplen. La auditoría es del caso, no del cliente: sirve para enseñar criterio, no para lucirlo.' },
       { value: '4 → 1', label: 'nombres para el mismo producto', meaning: 'Préstame, Tadelanto, adelanto de salario y adelanto de planilla convivían en el mismo flujo.' },
     ],
-    outcome: 'unavailable',
+    /* Outcome derivado: cada cifra es aritmética sobre un dato que el caso ya
+       documenta, y su explicación dice de dónde sale. Lo que no se midió sigue
+       declarado abajo, en `measure`. */
+    outcome: [
+      { value: '5 de 9', label: 'hallazgos resueltos en el rediseño', meaning: 'El simulador propuesto resuelve los hallazgos 01, 02, 05, 06 y 07, incluido el crítico de la cuota que no cuadraba. Los otros cuatro quedan escritos con su severidad.' },
+      { value: '−75 %', label: 'nombres para el mismo producto', meaning: 'De cuatro nombres —Préstame, Tadelanto, adelanto de salario y adelanto de planilla— a uno. Aritmética sobre el dato de arriba.' },
+      { value: '3', label: 'preguntas para elegir entre nueve soluciones', meaning: 'El selector sustituye el catálogo de nueve productos por tres preguntas sobre la situación del comercio. Sigue siendo una propuesta: no se midió en mercado.' },
+    ],
     measure: 'Altas de comercio por solución, uso de Mony en caja y solicitudes completadas de Tadelanto frente a las iniciadas. En su momento no se instrumentó, y el caso incluye las hipótesis y el test con el que lo mediría hoy.',
   },
   learnings: [

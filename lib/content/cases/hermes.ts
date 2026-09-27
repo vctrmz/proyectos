@@ -68,7 +68,14 @@ export const hermes: CaseStudy = {
       { value: '60 → 14', label: 'campos visibles por paso al emitir una póliza', meaning: 'Los campos se muestran cuando una regla los pide, en lugar de aparecer todos siempre.' },
       { value: '267 → 24', label: 'tokens de color', meaning: 'Adoptados por los cuatro desarrolladores front: la base que hace que reutilizar componentes ahorre de verdad.' },
     ],
-    outcome: 'unavailable',
+    /* Outcome derivado: cada cifra es aritmética sobre un dato que el caso ya
+       documenta, y su explicación dice de dónde sale. Lo que no se midió sigue
+       declarado abajo, en `measure`. */
+    outcome: [
+      { value: '−77 %', label: 'campos que el usuario ve por paso', meaning: 'Aritmética sobre el dato de arriba: de 60 campos visibles por paso a 14 al emitir una póliza. No es una medición de tiempo, es la reducción de lo que la pantalla pide.' },
+      { value: '−91 %', label: 'valores de color en el código', meaning: 'De 267 valores dispersos a 24 tokens con rol. La cifra sale de la auditoría del monorepo, que es donde se contaron.' },
+      { value: '4 de 4', label: 'front que adoptaron los tokens', meaning: 'Adopción completa del equipo de front: es la condición para que reutilizar componentes ahorre de verdad, y es lo único de esta lista que se puede comprobar en el repositorio.' },
+    ],
     measure: 'Instrumenté el design system pero no el producto: sabía cuántos componentes cumplían el sistema, no cuántos minutos ahorraba emitir una póliza. Hoy pediría analítica de uso desde el primer módulo migrado: tiempo de emisión, errores por paso y tickets por módulo.',
   },
   learnings: [

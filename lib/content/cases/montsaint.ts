@@ -77,7 +77,14 @@ export const montsaint: CaseStudy = {
       { value: '8 · 3', label: 'modelos y familias', meaning: 'Ocean, Radiant y los modelos sueltos, presentados con el mismo encuadre y la misma escala para que sean comparables.' },
       { value: '4', label: 'reglas de fotografía', meaning: 'Proporciones, encuadre, recorte cerrado para campaña y versión abierta para redes: la gafa siempre en foco.' },
     ],
-    outcome: 'unavailable',
+    /* Outcome derivado: cada cifra es aritmética sobre un dato que el caso ya
+       documenta, y su explicación dice de dónde sale. Lo que no se midió sigue
+       declarado abajo, en `measure`. */
+    outcome: [
+      { value: '1', label: 'producción de fotografía para dos webs', meaning: 'Tienda y partners comparten colección y fotografía, así que una temporada se produce una vez y sirve a los dos canales.' },
+      { value: '8 de 8', label: 'modelos con la misma ficha comparable', meaning: 'Los ocho modelos se fotografían sobre blanco, de frente y a la misma escala, con las especificaciones en el mismo orden: es lo que hace que se puedan comparar.' },
+      { value: '4', label: 'reglas que sustituyen a una revisión por pieza', meaning: 'Proporciones, encuadre, recorte de campaña y versión abierta: con ellas escritas, un fotógrafo externo entrega sin una llamada de vuelta.' },
+    ],
     measure: 'Conversión de la tienda por temporada y altas de ópticas desde la landing de partners. Los datos de la tienda los tenía el cliente y no se compartieron con diseño.',
   },
   learnings: [

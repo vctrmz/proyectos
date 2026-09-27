@@ -68,7 +68,14 @@ export const hermesEn: CaseStudy = {
       { value: '60 → 14', label: 'fields visible per step when issuing a policy', meaning: 'Fields appear when a rule asks for them, instead of showing all of them all the time.' },
       { value: '267 → 24', label: 'colour tokens', meaning: 'Adopted by all four front-end developers: the base that makes reusing components actually save time.' },
     ],
-    outcome: 'unavailable',
+    /* Derived outcome: every figure is arithmetic on a number this case already
+       documents, and its explanation says where it comes from. What was never
+       instrumented stays declared below, in `measure`. */
+    outcome: [
+      { value: '−77 %', label: 'fields the user sees per step', meaning: 'Arithmetic on the figure above: from 60 visible fields per step to 14 when issuing a policy. It is not a time measurement, it is the reduction in what the screen asks for.' },
+      { value: '−91 %', label: 'colour values in the codebase', meaning: 'From 267 scattered values to 24 tokens with a role. The number comes from the monorepo audit, which is where they were counted.' },
+      { value: '4 of 4', label: 'front-end developers who adopted the tokens', meaning: 'Full adoption by the front-end team: it is the condition for component reuse to actually save time, and the only item here you can verify in the repository.' },
+    ],
     measure: 'I instrumented the design system but not the product: I knew how many components followed the system, not how many minutes it saved to issue a policy. Today I would ask for usage analytics from the first migrated module: issuing time, errors per step and tickets per module.',
   },
   learnings: [

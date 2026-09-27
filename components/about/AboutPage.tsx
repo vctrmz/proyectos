@@ -8,8 +8,7 @@ import { DEFAULT_LOCALE, ROUTES, type Locale } from '@/lib/i18n/config';
 import { getUi } from '@/lib/i18n/ui';
 import { splitBold } from '@/lib/content/text';
 import { SITE } from '@/lib/content/site';
-import Polaroid from './Polaroid';
-import CityChips from './CityChips';
+import IdCard from './IdCard';
 import IkigaiDiagram from './IkigaiDiagram';
 import CompanyTabs from './CompanyTabs';
 import ToolGroups from './ToolGroups';
@@ -30,15 +29,14 @@ export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale
           <section className={s.intro} aria-labelledby="a-personal">
             <div>
               <h2 id="a-personal">{t.personal}</h2>
+              {/* Fuera dónde nací y dónde he vivido: es información personal que
+                  no aporta a quien evalúa el trabajo. */}
               <div className={s.lines}>
                 {ABOUT.intro.map((l) => <p key={l}>{l}</p>)}
-                <p>{t.live} <CityChips country="ES" only="current" locale={locale} /></p>
-                <p>{t.before} <CityChips country="ES" only="past" locale={locale} /></p>
-                <p>{t.born}</p>
               </div>
             </div>
             <div className={s.aside}>
-              <Polaroid src="/assets/victor.jpg" alt="Víctor Maza" caption="Víctor Maza · Málaga" />
+              <IdCard locale={locale} />
               <SocialLinks />
             </div>
           </section>

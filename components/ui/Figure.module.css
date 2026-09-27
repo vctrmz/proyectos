@@ -1,2 +1,10 @@
-.fig { margin: 0; } .img { border-radius: var(--r-card); border: 1px solid var(--line); width: 100%; height: auto; }
-.cap { margin-top: var(--sp-12); font-size: var(--fs-200); color: var(--ink-2); }
+/* La imagen nunca pasa de su tamaño real: `width: 100%` era lo que ampliaba
+   las capturas pequeñas y las dejaba pixeladas. */
+.fig { margin: 0; flex: 0 1 auto; min-width: 0; }
+/* El tope de ancho lo pone la figura (nunca por encima del tamaño real de la
+   captura) y la imagen la rellena: con `width: auto` el navegador no le daba
+   tamaño hasta cargarla y el lazy loading no llegaba a dispararse. */
+.img { display: block; width: 100%; height: auto; border-radius: var(--r-card); border: 1px solid var(--line); }
+.cap { margin-top: var(--sp-12); font-size: var(--fs-200); color: var(--ink-2); line-height: 1.5; }
+/* Vertical: se lee como pantalla de móvil, con su marco. */
+.phone .img { border-radius: 18px; border: 5px solid #1b1f3f; box-shadow: 0 24px 40px -28px rgba(18,19,23,.6); }

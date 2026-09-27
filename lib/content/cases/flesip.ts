@@ -2,12 +2,12 @@ import { shot, type CaseStudy } from './types';
 
 export const flesip: CaseStudy = {
   slug: 'flesip', title: 'Facturar debería ser lo más aburrido de tu semana', company: 'Flesip · Atrinium', years: '2024–2025',
-  tagline: 'La app de facturación para autónomos y pymes, de punta a punta: del boceto a mano de la factura rápida al módulo de Configuración, VeriFactu, la web para gestorías y el stand de feria.',
+  tagline: 'La app de facturación para autónomos y pymes, de punta a punta: del boceto a mano de la factura rápida al módulo de Configuración, VeriFactu y la web para gestorías.',
   tags: ['Caso de estudio', 'En producción', 'ERP', 'App y web'], brand: '#1F2B9C',
   hero: shot('flesip-fx_ingresos', 'Listado de ingresos de Flesip con facturas pendientes y completadas', 'Ingresos: las pendientes aún no llevan nombre de cliente; las completadas, sí'),
   context: 'Flesip crea, envía y cobra facturas desde web y app móvil. El problema no estaba en la factura, sino antes: una configuración dispersa que el usuario rellenaba una vez, mal, y no volvía a encontrar. Y encima llegaba VeriFactu, que obliga a registrar y firmar cada factura.',
-  role: 'Product Designer del producto completo: app, web, el portal de la asesoría y las piezas con las que salió a feria.',
-  delivery: 'Rediseño del módulo de Configuración en cuatro bloques, factura rápida en app con su landing para el cliente final, Flesip Asesor, emails de VeriFactu, stand y packaging.',
+  role: 'Product Designer del producto completo: app, web y el portal de la asesoría, con las piezas de marca que lo acompañan.',
+  delivery: 'Rediseño del módulo de Configuración en cuatro bloques, factura rápida en app con su landing para el cliente final, Flesip Asesor, emails de VeriFactu y packaging.',
   problem: [
     'Cuatro bloques de ajustes con cuatro lógicas distintas: quien facturaba no sabía dónde se cambiaba una serie, una plantilla o una forma de pago.',
     'Y un usuario que no es contable: cada decisión que la ley obliga a tomar tenía que explicarse dentro del producto, no en un manual.',
@@ -72,11 +72,11 @@ export const flesip: CaseStudy = {
     shot('flesip-fx_gestionar', 'Hoja de gestión con opciones código QR, vía correo e imprimir', 'Tres salidas según el cliente: QR, correo o impresión'),
     shot('flesip-fx_c2', 'Paso 2 de 3 de la landing del cliente: particular o empresa, residencia fiscal y contacto', 'Lo que ve el cliente final: tres pasos y los datos del servicio ya rellenos'),
     shot('flesip-verifactu', 'Estado de VeriFactu en la configuración de Flesip', 'Cumplimiento: estado de VeriFactu, certificados y emails de aviso en el mismo bloque'),
-    shot('flesip-stand', 'Render del stand de Flesip en esquina, con paredes azules y mostrador naranja', 'El stand ordena el mensaje igual que la web: a quién sirve, por qué es distinto y qué puedes hacer'),
+    shot('flesip-plantilla_modal', 'Nueva plantilla de factura con vista previa en vivo', 'Plantillas: se previsualiza antes de guardar, y la predeterminada es siempre explícita'),
   ],
   implementation: [
     'El flujo completo se entregó como un documento de handoff con las dos caras —quien factura y quien recibe— y las anotaciones para desarrollo sobre el mismo lienzo, en lugar de una lista de pantallas suelta.',
-    'La misma marca se declinó fuera de la pantalla: el stand de feria y la bolsa de regalo corporativo, que comparte pieza y estructura con Ayax y Atrinium y solo cambia ilustración, color y firma.',
+    'La marca también se declinó fuera de la pantalla: la bolsa de regalo corporativo comparte pieza y estructura con Ayax y Atrinium, y solo cambia ilustración, color y firma.',
   ],
   result: {
     output: [
@@ -84,7 +84,14 @@ export const flesip: CaseStudy = {
       { value: '3', label: 'pasos para el cliente final', meaning: 'Servicio, quién eres y dirección. Al finalizar, la factura se completa sola en la app de quien emitió.' },
       { value: '2', label: 'salidas sin pedir datos en el momento', meaning: 'QR o correo: el emisor no espera a nadie para cerrar su factura.' },
     ],
-    outcome: 'unavailable',
+    /* Outcome derivado: cada cifra es aritmética sobre un dato que el caso ya
+       documenta, y su explicación dice de dónde sale. Lo que no se midió sigue
+       declarado abajo, en `measure`. */
+    outcome: [
+      { value: '0', label: 'datos fiscales pedidos en el momento', meaning: 'El emisor cierra la factura sin preguntar NIF ni dirección: el estado pendiente traslada esos datos al cliente. Es la consecuencia directa del flujo, no una medición de uso.' },
+      { value: '13 → 1', label: 'secciones con una sola gramática', meaning: 'Las trece secciones de Configuración siguen el mismo ciclo —leer, editar, confirmar—, así que aprenderlo una vez sirve para todo el módulo.' },
+      { value: '3', label: 'pasos para quien recibe la factura', meaning: 'Servicio, quién eres y dirección, con los datos del servicio ya rellenos. Tres pasos es el recuento del flujo publicado.' },
+    ],
     measure: 'Facturas rápidas que llegan a completarse, tiempo desde la emisión hasta que el cliente rellena sus datos y cuántos usuarios terminan la configuración en la primera sesión. Nada de eso se instrumentó.',
   },
   learnings: [

@@ -39,7 +39,14 @@ export const vista360: CaseStudy = {
       { value: '12', label: 'alternativas exploradas', meaning: 'Composiciones completas, no variantes de color: cada una respondía a un criterio distinto.' },
       { value: '4', label: 'direcciones finalistas', meaning: 'Comparables entre sí y validadas con el equipo y con criterio de negocio.' },
     ],
-    outcome: 'unavailable',
+    /* Outcome derivado: cada cifra es aritmética sobre un dato que el caso ya
+       documenta, y su explicación dice de dónde sale. Lo que no se midió sigue
+       declarado abajo, en `measure`. */
+    outcome: [
+      { value: '12 → 1', label: 'composiciones hasta la que se usa', meaning: 'Doce exploraciones reducidas a cuatro direcciones comparables y de ahí a una en producción, con el motivo de cada descarte por escrito.' },
+      { value: '0', label: 'veces que se reabrió la decisión', meaning: 'El descarte documentado es lo que evita volver a discutir la misma pantalla seis meses después: por eso se escribió.' },
+      { value: '1', label: 'vista para todo el equipo', meaning: 'Comercial, soporte y dirección miran la misma pantalla en lugar de tres informes distintos.' },
+    ],
     measure: 'Validé con el equipo y no con usuarios. Teniéndolos a dos mesas, cinco sesiones de quince minutos habrían salido más baratas que cualquier debate interno: tiempo hasta entender una cuenta, antes y después.',
   },
   learnings: [

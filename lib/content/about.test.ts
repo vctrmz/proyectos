@@ -9,7 +9,7 @@ describe('sobre mí', () => {
   });
   it('no inventa años: solo Málaga y la formación tienen fecha', () => {
     expect(ABOUT.cities.filter((c) => c.years).map((c) => c.name)).toEqual(['Málaga']);
-    expect(ABOUT.education[0]).toMatchObject({ school: 'Universidad de Oriente', place: 'Cumaná, Venezuela', years: '2006–2017' });
+    expect(ABOUT.education[0]).toMatchObject({ school: 'Universidad de Oriente', place: 'Cumaná, Venezuela', years: '2017' });
   });
   it('competencias recortadas y herramientas de producto', () => {
     expect(ABOUT.skills.length).toBeLessThanOrEqual(10);

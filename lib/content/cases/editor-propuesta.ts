@@ -46,7 +46,14 @@ export const editorPropuesta: CaseStudy = {
       { value: '@ · /', label: 'dos comandos para todo el documento', meaning: 'Variables con @ y componentes con /: el usuario aprende dos gestos, no un editor.' },
       { value: '2', label: 'equipos co-diseñando', meaning: 'Legal y backend en la misma mesa desde el modelo del documento, no después.' },
     ],
-    outcome: 'unavailable',
+    /* Outcome derivado: cada cifra es aritmética sobre un dato que el caso ya
+       documenta, y su explicación dice de dónde sale. Lo que no se midió sigue
+       declarado abajo, en `measure`. */
+    outcome: [
+      { value: '0', label: 'texto libre fuera de plantilla', meaning: 'Lo bloqueado no se puede tocar y las cláusulas opcionales son bloques que se activan: la restricción vive en el dato, así que el documento no admite texto suelto. Consecuencia del modelo, no una medición.' },
+      { value: '2', label: 'comandos para todo el documento', meaning: 'Variables con @ y componentes con /: dos gestos cubren el documento completo, y eso es lo que se explica en la guía de uso.' },
+      { value: '1', label: 'sitio donde vive la conversación', meaning: 'Comentarios y documento comparten pantalla, así que la discusión queda trazada sobre el párrafo y no en un correo aparte.' },
+    ],
     measure: 'Versiones por propuesta, cambios fuera de plantilla detectados y tiempo hasta firma antes y después.',
   },
   learnings: [

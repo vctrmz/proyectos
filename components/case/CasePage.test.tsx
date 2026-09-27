@@ -14,7 +14,12 @@ describe('CasePage', () => {
     expect(h2).toEqual(expect.arrayContaining(['Problema', 'Complejidad', 'Decisiones', 'Sistema', 'Diseño', 'Implementación', 'Resultado', 'Aprendizajes']));
     expect(h2.indexOf('Problema')).toBeLessThan(h2.indexOf('Decisiones'));
     expect(h2.indexOf('Decisiones')).toBeLessThan(h2.indexOf('Resultado'));
-    expect(screen.getByText('Dato no disponible')).toBeInTheDocument();
+    /* El resultado sigue siendo honesto: las cifras de outcome traen su
+       explicación y la sección de qué mediría hoy no desaparece. */
+    expect(screen.getByRole('heading', { level: 3, name: 'Outcome' })).toBeInTheDocument();
+    expect(screen.getByText(/4 de 4/)).toBeInTheDocument();
+    expect(screen.getByText(/Adopción completa del equipo de front/)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 3, name: /Qué mediría hoy/ })).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /Siguiente caso/ })).toHaveAttribute('href', '/es/cases/flesip');
     expect(screen.getByRole('link', { name: /← Trabajo/ })).toHaveAttribute('href', '/es#trabajo');
   });

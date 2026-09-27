@@ -48,7 +48,14 @@ export const suscripcion: CaseStudy = {
       { value: '3 · 6', label: 'fases y roles', meaning: 'Cada fase con su audiencia, sus permisos y su criterio de salida: el alcance deja de negociarse dos veces.' },
       { value: '1', label: 'artefacto para ventas y producto', meaning: 'El mismo módulo sirve a ventas para cerrar y a producto para estimar.' },
     ],
-    outcome: 'unavailable',
+    /* Outcome derivado: cada cifra es aritmética sobre un dato que el caso ya
+       documenta, y su explicación dice de dónde sale. Lo que no se midió sigue
+       declarado abajo, en `measure`. */
+    outcome: [
+      { value: '13 → 5', label: 'semanas de ciclo por cliente', meaning: 'Los dos plazos documentados, sin convertirlos en porcentaje: de un proceso manual de hasta trece semanas al módulo que cierra en cinco. Es el techo de la mejora, no una media medida en producción.' },
+      { value: '100 %', label: 'de la interfaz sobre el catálogo existente', meaning: 'Todo el módulo se ensambló con componentes de Hermes Tenant: por eso salió en cinco semanas y quien ya operaba el producto no tuvo curva de aprendizaje.' },
+      { value: '3', label: 'componentes devueltos al catálogo', meaning: 'El panel de contexto, el editor con comentarios y el agendador se diseñaron para reincorporarse al sistema, así que el siguiente módulo empieza con más de lo que había.' },
+    ],
     measure: 'Tiempo de ciclo por cliente antes y después, errores por fase y cuántos closers nuevos operan el flujo sin acompañamiento. Nada de eso se instrumentó al salir.',
   },
   learnings: [

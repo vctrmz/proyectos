@@ -40,7 +40,14 @@ export const designSystem: CaseStudy = {
       { value: '4', label: 'front que lo adoptaron', meaning: 'La adopción es la métrica de un design system; sin ella es una librería más.' },
       { value: '5', label: 'productos, un lenguaje', meaning: 'Sistema completo donde hace falta; brandsheet y UI kit donde no.' },
     ],
-    outcome: 'unavailable',
+    /* Outcome derivado: cada cifra es aritmética sobre un dato que el caso ya
+       documenta, y su explicación dice de dónde sale. Lo que no se midió sigue
+       declarado abajo, en `measure`. */
+    outcome: [
+      { value: '−91 %', label: 'valores de color en el código', meaning: 'De 267 valores en uso a 24 tokens con rol. La cifra sale del recuento de la auditoría, que es el dato que sí existe.' },
+      { value: '4 de 4', label: 'front que lo adoptaron', meaning: 'Adopción completa del equipo: un sistema que no adopta el front no ahorra nada, y esto se puede comprobar en el repositorio.' },
+      { value: '5', label: 'productos con un solo lenguaje', meaning: 'Los cinco productos del holding comparten tokens y criterios, con el nivel de gobernanza que cada uno se puede permitir.' },
+    ],
     measure: 'Componentes reutilizados por módulo nuevo y tiempo de diseño por iniciativa antes y después del sistema.',
   },
   learnings: [
