@@ -1,5 +1,6 @@
 import { ViewTransition } from 'react';
 import { Geist } from 'next/font/google';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import SkipLink from '@/components/layout/SkipLink';
 import ConsentBanner from '@/components/ConsentBanner';
 import MotionProvider from '@/components/motion/MotionProvider';
@@ -32,6 +33,12 @@ export default function RootShell({ locale, children }: { locale: Locale; childr
           <SmoothScroll />
           <ConsentBanner />
         </LocaleProvider>
+        {/* Core Web Vitals de visitantes reales, medidos por ruta. Va fuera del
+            consentimiento a propósito: no pone cookies ni identificador, y
+            manda los datos al propio dominio, así que también mide a quien
+            rechaza la analítica —que es justo la mitad del tráfico que más
+            interesa cuando lo que se vigila es el rendimiento. */}
+        <SpeedInsights />
       </body>
     </html>
   );

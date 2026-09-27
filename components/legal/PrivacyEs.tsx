@@ -6,7 +6,7 @@ export default function PrivacyEs() {
       <main id="contenido">
         <p className="kicker"><span>Legal</span></p>
         <h1>Privacidad y cookies</h1>
-        <p className="updated">Última actualización: 27 de septiembre de 2026</p>
+        <p className="updated">Última actualización: 28 de septiembre de 2026</p>
         <p className="lead">Esta web es mi portafolio. Recojo datos por dos motivos: entender cómo se navega para mejorarla, y poder responder si me escribes. Aquí tienes qué recojo, con qué herramientas, y cómo cambiar de opinión cuando quieras.</p>
 
         <section id="responsable">
@@ -16,12 +16,17 @@ export default function PrivacyEs() {
 
         <section id="datos">
           <h2>Qué datos se recogen y <b>para qué</b></h2>
-          <p>Nada de lo que sigue se activa hasta que aceptas el aviso de cookies, salvo lo estrictamente técnico del alojamiento. Si lo rechazas, no se carga ni una sola petición a Google, Microsoft, Hotjar, Plerdy ni HubSpot.</p>
+          <p>Nada de lo que sigue se activa hasta que aceptas el aviso de cookies, salvo dos cosas: lo estrictamente técnico del alojamiento y la medición de rendimiento, que es anónima y no usa cookies. Si lo rechazas, no se carga ni una sola petición a Google, Microsoft, Hotjar, Plerdy ni HubSpot.</p>
           <div className="tools">
             <div className="tool">
               <span className="who">Alojamiento · Vercel Inc.</span>
               <h3>Servir la web</h3>
               <p>El servidor registra la dirección IP, el navegador y la página solicitada en registros técnicos de seguridad y rendimiento. Es necesario para que la web funcione y se basa en mi interés legítimo en mantenerla operativa y protegida.</p>
+            </div>
+            <div className="tool">
+              <span className="who">Rendimiento · Vercel Inc.</span>
+              <h3>Vercel Speed Insights</h3>
+              <p>Mide lo rápido que se carga y responde cada página en dispositivos reales: cuánto tarda en aparecer el contenido, cuánto se mueve la maquetación y cuánto tarda en reaccionar a un toque. No usa cookies, no guarda nada en tu navegador, no crea ningún identificador y los datos van a mi propio dominio, no a un tercero. Como no puede identificar a nadie, funciona sin consentimiento: se basa en mi interés legítimo en que la web no vaya lenta, y por eso también mide las visitas que rechazan la analítica. Los informes son agregados por página, nunca por persona.</p>
             </div>
             <div className="tool">
               <span className="who">Analítica · Google Ireland Ltd.</span>
