@@ -11,7 +11,7 @@ export const SITE = {
   /* El dominio del CV es el canonico. El otro alias del proyecto de Vercel
      sigue sirviendo la web, pero apunta aqui en canonical y en el sitemap:
      un solo enlace indexable para dos puertas. */
-  url: 'https://proyectos-sable.vercel.app',
+  url: 'https://victormaza.vercel.app',
 } as const;
 
 export const NAV = [

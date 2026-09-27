@@ -10,7 +10,7 @@ describe('isLocalHost', () => {
     }
   });
   it('no confunde dominios públicos', () => {
-    for (const h of ['proyectos-sable.vercel.app', 'proyectos-theta-hazel.vercel.app', '172.32.0.1', '11.0.0.1', 'localhost.com']) {
+    for (const h of ['victormaza.vercel.app', 'proyectos-sable.vercel.app', 'proyectos-theta-hazel.vercel.app', '172.32.0.1', '11.0.0.1', 'localhost.com']) {
       expect(isLocalHost(h), h).toBe(false);
     }
   });
