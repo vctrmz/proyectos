@@ -19,6 +19,15 @@ describe('portada', () => {
     expect(screen.getByText(/Insurtech/)).toBeInTheDocument();
     expect(screen.queryByText(/Disponible desde/)).toBeNull();
   });
+  it('el hero declara design systems y la implementación en React', () => {
+    render(<Hero />);
+    expect(screen.getByText(/Product Designer · Design Systems · B2B SaaS e Insurtech/)).toBeInTheDocument();
+    expect(screen.getByText(/revis\w+ la implementación en React/)).toBeInTheDocument();
+  });
+  it('el hero en inglés dice lo mismo', () => {
+    render(<Hero locale="en" />);
+    expect(screen.getByText(/Product Designer · Design Systems · B2B SaaS and Insurtech/)).toBeInTheDocument();
+  });
   it('el hero presenta a la persona y sus redes', () => {
     render(<Hero />);
     expect(screen.getByText(/Víctor Maza/)).toBeInTheDocument();

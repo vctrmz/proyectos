@@ -8,7 +8,7 @@ describe('SiteFooter', () => {
     const foot = container.querySelector('footer')!;
     expect(foot.className).toMatch(/foot/);
     expect(foot.textContent).toMatch(/Víctor Maza/);
-    expect(foot.textContent).toMatch(/Product Designer · B2B SaaS e Insurtech/);
+    expect(foot.textContent).toMatch(/Product Designer · Design Systems · B2B SaaS e Insurtech/);
     expect(foot.textContent).toMatch(/Ponte en contacto/i);
     expect(screen.getByRole('link', { name: /vctrmz47@gmail.com/ })).toHaveAttribute('href', 'mailto:vctrmz47@gmail.com');
     expect(screen.getByRole('link', { name: /LinkedIn/ })).toHaveAttribute('target', '_blank');

@@ -1,5 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { ABOUT } from './about';
+import { ABOUT_EN } from './en/about';
 
 describe('sobre mí', () => {
   it('ciudades: Málaga actual, Venezuela y España', () => {
@@ -20,5 +21,9 @@ describe('sobre mí', () => {
   });
   it('el bloque de lugares no tiene fotos todavía', () => {
     expect(ABOUT.places).toEqual([]);
+  });
+  it('la visión no niega el código que enseña el stack', () => {
+    expect(JSON.stringify(ABOUT.vision)).not.toContain('no está para escribir código');
+    expect(JSON.stringify(ABOUT_EN.vision)).not.toContain('not there to write production code');
   });
 });

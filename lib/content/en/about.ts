@@ -30,7 +30,7 @@ export const ABOUT_EN: typeof ABOUT = {
   vision: {
     title: 'I design systems, not screens.',
     paragraphs: [
-      'My computer science background is not there to write production code: it is there to *think the product in systems, in structure and in how it will actually be built*. *I model the domain before the screen*, *define states, rules and edge cases*, and close with a *handoff the team can build without interpreting anything*.',
+      'My computer science background is there to *think the product in systems, in structure and in how it will actually be built*, and to take it down to code when it is needed. *I model the domain before the screen*, *define states, rules and edge cases*, and close with a *handoff the team can build without interpreting anything*.',
       'I work with *validated patterns and usability criteria*, not inventions, and respect how things are really built in *React, Chakra UI or Tailwind*. This site is an example: the design is mine and *I directed the implementation with AI down to the detail*. Generating is the easy part; what I bring is *knowing what to ask for and recognising when what comes back is not good enough*.',
       'I care about *complete flows, not isolated screens*. *Systems that make the next design and the next build cost less than the last one.*',
     ],
