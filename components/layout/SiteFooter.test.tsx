@@ -15,6 +15,7 @@ describe('SiteFooter', () => {
     expect(screen.getByRole('link', { name: /Behance/ })).toHaveAttribute('target', '_blank');
     expect(screen.getByRole('link', { name: /GitHub/ })).toHaveAttribute('href', 'https://github.com/vctrmz');
     expect(screen.queryByRole('link', { name: /Instagram/ })).toBeNull();
+    expect(screen.getByRole('link', { name: /Descargar CV/ })).toHaveAttribute('href', '/victor-maza-cv.pdf');
     expect(screen.getByRole('link', { name: /Sobre mí/ })).toHaveAttribute('href', '/es/about');
     expect(screen.getByRole('link', { name: /Privacidad/ })).toHaveAttribute('href', '/es/privacy');
     expect(foot.textContent).toMatch(/Málaga/);

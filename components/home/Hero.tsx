@@ -2,6 +2,7 @@ import Kicker from '@/components/ui/Kicker';
 import TwoToneHeading from '@/components/ui/TwoToneHeading';
 import Button from '@/components/ui/Button';
 import StarfieldButton from '@/components/ui/StarfieldButton';
+import CvLink from '@/components/ui/CvLink';
 import { SITE } from '@/lib/content/site';
 import { SOCIAL_ICON, type SocialName } from '@/components/ui/socialIcons';
 import { getUi } from '@/lib/i18n/ui';
@@ -30,9 +31,12 @@ export default function Hero({ locale = DEFAULT_LOCALE }: { locale?: Locale }) {
           <StarfieldButton label={locale === 'es' ? 'Ver el caso HERMES' : 'Read the HERMES case'} href={r.caseOf('hermes')} size="lg" />
           <Button href="#contacto" variant="outline" size="lg">{ui.nav.contact}</Button>
         </div>
-        <ul className={s.social} aria-label={ui.about.socialLabel}>
+        <div className={s.meta}>
+          <ul className={s.social} aria-label={ui.about.socialLabel}>
           {SOCIAL.map((x) => <li key={x.name}><a href={x.href} target="_blank" rel="noopener" aria-label={`${x.name} ${locale === 'es' ? '(abre en pestaña nueva)' : '(opens in a new tab)'}`}><svg viewBox="0 0 24 24" aria-hidden="true"><path d={SOCIAL_ICON[x.name]} /></svg></a></li>)}
         </ul>
+          <CvLink locale={locale} className={s.cv} />
+        </div>
       </div>
     </section>
   );

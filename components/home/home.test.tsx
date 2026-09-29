@@ -34,6 +34,7 @@ describe('portada', () => {
     for (const n of ['LinkedIn', 'GitHub']) expect(screen.getByRole('link', { name: new RegExp(n) })).toHaveAttribute('target', '_blank');
     expect(screen.getByRole('link', { name: /GitHub/ })).toHaveAttribute('href', 'https://github.com/vctrmz');
     expect(screen.queryByRole('link', { name: /Instagram/ })).toBeNull();
+    expect(screen.getByRole('link', { name: /Descargar CV/ })).toHaveAttribute('href', '/victor-maza-cv.pdf');
   });
   it('sectores: cinco con años y enlace', () => {
     render(<Sectores />);

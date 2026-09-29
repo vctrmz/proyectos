@@ -8,6 +8,8 @@
 .sub { font-size: var(--fs-400); color: var(--ink-2); max-width: 60ch; text-wrap: pretty; }
 .meta { font-size: var(--fs-200); color: var(--ink-3); }
 .ctas { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; }
+.meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--sp-16); }
+.cv { color: var(--ink-2); }
 .social { display: flex; gap: 8px; list-style: none; margin: 0; padding: 0; }
 .social a { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--surface); color: var(--ink-2); transition: color .2s var(--ease), background .2s var(--ease); }
 .social a:hover { color: var(--ink); background: #eef0f6; }

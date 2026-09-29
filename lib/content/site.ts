@@ -8,6 +8,8 @@ export const SITE = {
   /* El repositorio de esta web: la prueba de que el diseño llega a código.
      Solo se enlaza en producción cuando es público (ver el plan del 29-09). */
   repo: 'https://github.com/vctrmz/proyectos',
+  /* kb lo comprueba un test contra el archivo: la etiqueta no puede mentir. */
+  cv: { href: '/victor-maza-cv.pdf', file: 'Victor_Maza_CV.pdf', kb: 89 },
   behance: 'https://behance.net/mazdesign',
   figma: 'https://www.figma.com/design/lEPRv8iPrIDwUBKnbWKMdu/Portfolio?node-id=8-136130&t=srL7KcBmRZtEGLME-1',
   /* El dominio del CV es el canonico. El otro alias del proyecto de Vercel

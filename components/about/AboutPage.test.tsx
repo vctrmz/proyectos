@@ -34,4 +34,9 @@ describe('AboutPage', () => {
     expect(screen.getAllByRole('tab')).toHaveLength(3);
     expect(screen.getByRole('tab', { name: /Atrinium/ })).toHaveAttribute('aria-selected', 'true');
   });
+  it('el contacto de sobre mí ofrece también el CV', () => {
+    const { container } = render(<AboutPage />);
+    const contacto = container.querySelector('#contacto') as HTMLElement;
+    expect(within(contacto).getByRole('link', { name: /Descargar CV/ })).toHaveAttribute('href', '/victor-maza-cv.pdf');
+  });
 });

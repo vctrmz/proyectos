@@ -2,6 +2,7 @@ import SiteHeader from '@/components/layout/SiteHeader';
 import SiteFooter from '@/components/layout/SiteFooter';
 import Button from '@/components/ui/Button';
 import StarfieldButton from '@/components/ui/StarfieldButton';
+import CvLink from '@/components/ui/CvLink';
 import Diagram from '@/components/diagrams/Diagram';
 import { aboutIn } from '@/lib/content/en';
 import { DEFAULT_LOCALE, ROUTES, type Locale } from '@/lib/i18n/config';
@@ -57,7 +58,7 @@ export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale
             <ToolGroups />
           </section>
           <section id="contacto" className={s.sec} aria-labelledby="a-contacto"><h2 id="a-contacto">{t.contact}</h2>
-            <div className={s.contact}><StarfieldButton label={SITE.email} href={`mailto:${SITE.email}`} /><Button href={SITE.linkedin} external variant="outline">LinkedIn</Button></div>
+            <div className={s.contact}><StarfieldButton label={SITE.email} href={`mailto:${SITE.email}`} /><Button href={SITE.linkedin} external variant="outline">LinkedIn</Button><CvLink locale={locale} /></div>
           </section>
         </div>
       </main>
