@@ -15,6 +15,7 @@ import CompanyTabs from './CompanyTabs';
 import ToolGroups from './ToolGroups';
 import BioDrawer from './BioDrawer';
 import SocialLinks from './SocialLinks';
+import Bookshelf from './Bookshelf';
 import s from './about.module.css';
 
 export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale }) {
@@ -56,6 +57,9 @@ export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale
           </section>
           <section className={s.sec} aria-labelledby="a-tools"><h2 id="a-tools">{t.tools}</h2>
             <ToolGroups />
+          </section>
+          <section className={s.sec} aria-labelledby="a-libros"><h2 id="a-libros">{t.books}</h2>
+            <Bookshelf locale={locale} />
           </section>
           <section id="contacto" className={s.sec} aria-labelledby="a-contacto"><h2 id="a-contacto">{t.contact}</h2>
             <div className={s.contact}><StarfieldButton label={SITE.email} href={`mailto:${SITE.email}`} /><Button href={SITE.linkedin} external variant="outline">LinkedIn</Button><CvLink locale={locale} /></div>

@@ -35,7 +35,7 @@ export interface Ui {
     title: string; personal: string; live: string; before: string; born: string;
     education: string; eduNote: string; drawer: string; drawerTitle: string;
     ikigai: string; companies: string; tools: string; contact: string; skills: string;
-    socialLabel: string; more: string; close: string;
+    socialLabel: string; more: string; close: string; books: string;
   };
   cv: { label: string; format: string };
   footer: { role: string; contact: string; available: string; legal: string; privacy: string; cookies: string; remote: string };
@@ -88,7 +88,7 @@ const es: Ui = {
     education: 'Formación', eduNote: 'Informático de formación, Product Designer de oficio.',
     drawer: 'Ver el detalle', drawerTitle: 'Nueve años, contados por dentro',
     ikigai: 'Ikigai', companies: 'Empresas', tools: 'Herramientas', contact: 'Contacto', skills: 'Lo que aporto',
-    socialLabel: 'Redes', more: 'Más información', close: 'Cerrar',
+    socialLabel: 'Redes', more: 'Más información', close: 'Cerrar', books: 'Libros que recomiendo',
   },
   cv: { label: 'Descargar CV', format: 'PDF' },
   footer: { role: 'Product Designer · Design Systems · B2B SaaS e Insurtech', contact: 'Ponte en contacto', available: 'Disponible ahora · Senior / Lead · remoto', legal: '© 2026', privacy: 'Privacidad', cookies: 'Cookies', remote: 'Trabajo en remoto' },
@@ -141,7 +141,7 @@ const en: Ui = {
     education: 'Education', eduNote: 'Computer scientist by training, Product Designer by trade.',
     drawer: 'See the detail', drawerTitle: 'Nine years, from the inside',
     ikigai: 'Ikigai', companies: 'Companies', tools: 'Tools', contact: 'Contact', skills: 'What I bring',
-    socialLabel: 'Social', more: 'More', close: 'Close',
+    socialLabel: 'Social', more: 'More', close: 'Close', books: 'Books I recommend',
   },
   cv: { label: 'Download CV', format: 'PDF, Spanish' },
   footer: { role: 'Product Designer · Design Systems · B2B SaaS and Insurtech', contact: 'Get in touch', available: 'Available now · Senior / Lead · remote', legal: '© 2026', privacy: 'Privacy', cookies: 'Cookies', remote: 'Working remotely' },
