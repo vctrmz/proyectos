@@ -59,4 +59,14 @@ describe('CodeDemo', () => {
     expect(screen.getByText(/ejemplo ilustrativo/i)).toBeInTheDocument();
     expect(screen.getByText('{ "a": 1 }')).toBeInTheDocument();
   });
+  it('marca el código real del repositorio y enlaza al archivo', () => {
+    render(<CodeDemo title="Tokens" lang="css" code=":root {}" source="repo" href="https://github.com/vctrmz/proyectos/blob/main/app/globals.css" />);
+    expect(screen.getByText(/extracto del repositorio/)).toBeInTheDocument();
+    expect(screen.queryByText(/ilustrativo/)).toBeNull();
+    expect(screen.getByRole('link', { name: /Ver el archivo en GitHub/ })).toHaveAttribute('target', '_blank');
+  });
+  it('en inglés la etiqueta va en inglés', () => {
+    render(<CodeDemo title="Demo" lang="json" code="{}" locale="en" />);
+    expect(screen.getByText(/illustrative example/)).toBeInTheDocument();
+  });
 });

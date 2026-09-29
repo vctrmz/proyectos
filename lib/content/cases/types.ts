@@ -15,7 +15,10 @@ export interface Flow { title: string; side?: string; steps: { n: string; t: str
 /* Un hallazgo de auditoría, con su severidad declarada. */
 export type Severity = 'crítica' | 'alta' | 'media' | 'baja';
 export interface Finding { n: string; title: string; body: string; rule: string; severity: Severity; where: string }
-export interface CodeDemo { title: string; lang: 'json' | 'ts'; code: string }
+/* `source` dice de dónde sale el extracto: 'illustrative' cuando reconstruye
+   la idea sin enseñar código de un cliente, 'repo' cuando es código real y
+   público, con `href` al archivo. Por defecto, ilustrativo. */
+export interface CodeDemo { title: string; lang: 'json' | 'ts' | 'css'; code: string; source?: 'illustrative' | 'repo'; href?: string }
 /* Piezas del kit: cada caso declara solo las que tiene de verdad, y la maqueta
    se dibuja con los tokens de ese caso. */
 export type UiKitKind = 'actions' | 'states' | 'table' | 'form' | 'phases' | 'tokens' | 'slots' | 'thread' | 'identity' | 'brands' | 'scale' | 'agenda' | 'product' | 'trust' | 'tiers';

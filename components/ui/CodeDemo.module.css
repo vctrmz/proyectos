@@ -2,3 +2,4 @@
 .head { display: flex; justify-content: space-between; gap: var(--sp-12); padding: 10px 16px; border-bottom: 1px solid var(--line); font-size: var(--fs-100); color: var(--ink-2); }
 .tag { color: var(--ink-3); text-transform: uppercase; letter-spacing: .08em; }
 .pre { margin: 0; padding: 16px; overflow-x: auto; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 13px; line-height: 1.55; color: var(--ink); }
+.open { display: flex; align-items: center; min-height: 44px; padding: 0 16px; border-top: 1px solid var(--line); font-size: var(--fs-200); color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }

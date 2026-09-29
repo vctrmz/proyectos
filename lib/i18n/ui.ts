@@ -26,6 +26,7 @@ export interface Ui {
     why: string; changed: string; tradeoff: string; wouldFix: string;
     systemToggle: string; implToggle: string; kitLabel: string;
     output: string; outcome: string; unavailable: string; measure: string;
+    codeIllustrative: string; codeRepo: string; codeOpen: string;
     findings: { n: string; finding: string; rule: string; severity: string; where: string; caption: string };
     severity: Record<string, string>;
     next: string; nextLabel: string;
@@ -77,6 +78,7 @@ const es: Ui = {
     why: 'Por qué.', changed: 'Qué cambió.', tradeoff: 'Contrapartida asumida', wouldFix: 'Lo que corregiría',
     systemToggle: 'Tokens, componentes y reglas', implToggle: 'Cómo llegó a producción', kitLabel: 'Kit del sistema',
     output: 'Output', outcome: 'Outcome', unavailable: 'Dato no disponible', measure: 'Qué mediría hoy',
+    codeIllustrative: 'ejemplo ilustrativo', codeRepo: 'extracto del repositorio', codeOpen: 'Ver el archivo en GitHub',
     findings: { n: '#', finding: 'Hallazgo', rule: 'Regla', severity: 'Severidad', where: 'Dónde', caption: 'Hallazgos ordenados por severidad, con la regla que incumplen y la pantalla donde ocurren' },
     severity: { 'crítica': 'crítica', alta: 'alta', media: 'media', baja: 'baja' },
     next: 'Siguiente caso', nextLabel: 'Siguiente caso',
@@ -129,6 +131,7 @@ const en: Ui = {
     why: 'Why.', changed: 'What changed.', tradeoff: 'Trade-off accepted', wouldFix: 'What I would fix',
     systemToggle: 'Tokens, components and rules', implToggle: 'How it reached production', kitLabel: 'System kit',
     output: 'Output', outcome: 'Outcome', unavailable: 'Data not available', measure: 'What I would measure today',
+    codeIllustrative: 'illustrative example', codeRepo: 'excerpt from the repository', codeOpen: 'See the file on GitHub',
     findings: { n: '#', finding: 'Finding', rule: 'Rule', severity: 'Severity', where: 'Where', caption: 'Findings ordered by severity, with the rule they break and the screen where they happen' },
     severity: { 'crítica': 'critical', alta: 'high', media: 'medium', baja: 'low' },
     next: 'Next case', nextLabel: 'Next case',
