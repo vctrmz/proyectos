@@ -8,9 +8,9 @@ import Catalog from './Catalog';
 beforeEach(() => { window.history.replaceState(null, '', '/'); });
 
 describe('Catalog', () => {
-  it('muestra los 10 proyectos y Todo marcado por defecto', () => {
+  it('muestra los 11 proyectos y Todo marcado por defecto', () => {
     render(<Catalog />);
-    expect(screen.getAllByRole('listitem')).toHaveLength(10);
+    expect(screen.getAllByRole('listitem')).toHaveLength(11);
     expect(screen.getByRole('radio', { name: /^Todo/ })).toHaveAttribute('aria-checked', 'true');
   });
   it('filtra al pulsar un chip, anuncia el recuento y escribe ?f=', async () => {
@@ -39,7 +39,7 @@ describe('Catalog', () => {
     unmount();
     window.history.replaceState(null, '', '/?f=nada');
     render(<Catalog />);
-    expect(screen.getAllByRole('listitem')).toHaveLength(10);
+    expect(screen.getAllByRole('listitem')).toHaveLength(11);
   });
   it('las flechas del teclado cambian el filtro dentro del radiogroup', async () => {
     render(<Catalog />);

@@ -14,6 +14,7 @@ import ValueChain from './ValueChain';
 import PendingInvoice from './PendingInvoice';
 import TwoSided from './TwoSided';
 import HandoffChain from './HandoffChain';
+import SpecToProd from './SpecToProd';
 
 const MAP: Record<DiagramId, { label: string; C: (p: { s: Record<string, string> }) => React.ReactElement; box?: string }> = {
   'clients-to-system': { label: 'Tres clientes con reglas distintas convergen en un sistema configurable', C: ClientsToSystem },
@@ -28,6 +29,7 @@ const MAP: Record<DiagramId, { label: string; C: (p: { s: Record<string, string>
   'pending-invoice': { label: 'Una factura pendiente se completa cuando el cliente final rellena sus datos desde el QR o el correo', C: PendingInvoice, box: '0 70 800 270' },
   'two-sided': { label: 'Una marca con dos negocios: tienda para el cliente final y red de ópticas para el canal profesional', C: TwoSided, box: '0 10 800 330' },
   'handoff-chain': { label: 'Del Product Owner que define la oferta al mercado, pasando por diseño y validación', C: HandoffChain, box: '0 110 800 210' },
+  'spec-to-prod': { label: 'De la spec al plan, al código con IA, a mi revisión y a los tests antes de publicar', C: SpecToProd, box: '0 110 800 210' },
 };
 
 export default function Diagram({ id, caption }: { id: DiagramId; caption?: string }) {

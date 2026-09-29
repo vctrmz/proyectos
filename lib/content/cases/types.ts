@@ -1,4 +1,4 @@
-export type DiagramId = 'clients-to-system' | 'areas-map' | 'before-after' | 'state-machine' | 'template-slots' | 'grid-12-4-1' | 'system-cycle' | 'timeline' | 'value-chain' | 'pending-invoice' | 'two-sided' | 'handoff-chain';
+export type DiagramId = 'clients-to-system' | 'areas-map' | 'before-after' | 'state-machine' | 'template-slots' | 'grid-12-4-1' | 'system-cycle' | 'timeline' | 'value-chain' | 'pending-invoice' | 'two-sided' | 'handoff-chain' | 'spec-to-prod';
 export interface Metric { value: string; label: string; meaning: string }
 export interface Shot { src: string; alt: string; caption: string }
 /* tradeoff y wouldFix son las dos honestidades del caso: lo que se pagó por la

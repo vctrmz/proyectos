@@ -542,5 +542,13 @@
   "mb-pay_20": {
     "width": 1584,
     "height": 891
+  },
+  "web-case": {
+    "width": 1600,
+    "height": 1000
+  },
+  "web-home": {
+    "width": 1600,
+    "height": 1000
   }
 }
