@@ -10,7 +10,8 @@ export const SITE = {
   repo: 'https://github.com/vctrmz/proyectos',
   /* kb lo comprueba un test contra el archivo: la etiqueta no puede mentir. */
   cv: { href: '/victor-maza-cv.pdf', file: 'Victor_Maza_CV.pdf', kb: 89 },
-  behance: 'https://behance.net/mazdesign',
+  /* mazdesignr, con r: behance.net/mazdesign es otro estudio. */
+  behance: 'https://www.behance.net/mazdesignr',
   figma: 'https://www.figma.com/design/lEPRv8iPrIDwUBKnbWKMdu/Portfolio?node-id=8-136130&t=srL7KcBmRZtEGLME-1',
   /* El dominio del CV es el canonico. El otro alias del proyecto de Vercel
      sigue sirviendo la web, pero apunta aqui en canonical y en el sitemap:

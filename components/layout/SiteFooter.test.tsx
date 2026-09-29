@@ -13,6 +13,8 @@ describe('SiteFooter', () => {
     expect(screen.getByRole('link', { name: /vctrmz47@gmail.com/ })).toHaveAttribute('href', 'mailto:vctrmz47@gmail.com');
     expect(screen.getByRole('link', { name: /LinkedIn/ })).toHaveAttribute('target', '_blank');
     expect(screen.getByRole('link', { name: /Behance/ })).toHaveAttribute('target', '_blank');
+    // el perfil de Víctor es mazdesignr; mazdesign es otro estudio
+    expect(screen.getByRole('link', { name: /Behance/ })).toHaveAttribute('href', 'https://www.behance.net/mazdesignr');
     expect(screen.getByRole('link', { name: /GitHub/ })).toHaveAttribute('href', 'https://github.com/vctrmz');
     expect(screen.queryByRole('link', { name: /Instagram/ })).toBeNull();
     expect(screen.getByRole('link', { name: /Descargar CV/ })).toHaveAttribute('href', '/victor-maza-cv.pdf');
