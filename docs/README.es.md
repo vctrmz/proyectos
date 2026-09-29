@@ -78,5 +78,5 @@ reabre el banner.
 `<title>`, description, canonical, Open Graph y `twitter:card` se definen con
 `metadata` en cada `page.tsx` (`lib/seo.ts`). JSON-LD `Person` en el layout y
 `CreativeWork` en cada caso. `robots.txt` y `sitemap.xml` se generan desde `app/`.
-La imagen de previsualización es `public/assets/og.png` (pendiente de regenerar
-con el sistema nuevo).
+La imagen de previsualización es `public/assets/og.png`, generada con
+`node scripts/og.mjs`.
