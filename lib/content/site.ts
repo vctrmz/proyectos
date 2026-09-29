@@ -9,7 +9,7 @@ export const SITE = {
      Solo se enlaza en producción cuando es público (ver el plan del 29-09). */
   repo: 'https://github.com/vctrmz/proyectos',
   /* kb lo comprueba un test contra el archivo: la etiqueta no puede mentir. */
-  cv: { href: '/victor-maza-cv.pdf', file: 'Victor_Maza_CV.pdf', kb: 89 },
+  cv: { href: '/victor-maza-cv.pdf', file: 'Victor_Maza_CV.pdf', kb: 646 },
   /* mazdesignr, con r: behance.net/mazdesign es otro estudio. */
   behance: 'https://www.behance.net/mazdesignr',
   figma: 'https://www.figma.com/design/lEPRv8iPrIDwUBKnbWKMdu/Portfolio?node-id=8-136130&t=srL7KcBmRZtEGLME-1',
