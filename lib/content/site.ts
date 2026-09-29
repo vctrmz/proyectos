@@ -3,10 +3,12 @@ export const SITE = {
   role: 'Product Designer',
   email: 'vctrmz47@gmail.com',
   city: 'Málaga',
-  available: 'Disponible desde septiembre de 2026',
   linkedin: 'https://linkedin.com/in/victor-maza47',
+  github: 'https://github.com/vctrmz',
+  /* El repositorio de esta web: la prueba de que el diseño llega a código.
+     Solo se enlaza en producción cuando es público (ver el plan del 29-09). */
+  repo: 'https://github.com/vctrmz/proyectos',
   behance: 'https://behance.net/mazdesign',
-  instagram: 'https://instagram.com/mazdesign',
   figma: 'https://www.figma.com/design/lEPRv8iPrIDwUBKnbWKMdu/Portfolio?node-id=8-136130&t=srL7KcBmRZtEGLME-1',
   /* El dominio del CV es el canonico. El otro alias del proyecto de Vercel
      sigue sirviendo la web, pero apunta aqui en canonical y en el sitemap:

@@ -28,10 +28,12 @@ describe('portada', () => {
     render(<Hero locale="en" />);
     expect(screen.getByText(/Product Designer · Design Systems · B2B SaaS and Insurtech/)).toBeInTheDocument();
   });
-  it('el hero presenta a la persona y sus redes', () => {
+  it('el hero presenta a la persona, LinkedIn y GitHub', () => {
     render(<Hero />);
     expect(screen.getByText(/Víctor Maza/)).toBeInTheDocument();
-    for (const n of ['LinkedIn', 'Behance', 'Instagram']) expect(screen.getByRole('link', { name: new RegExp(n) })).toHaveAttribute('target', '_blank');
+    for (const n of ['LinkedIn', 'GitHub']) expect(screen.getByRole('link', { name: new RegExp(n) })).toHaveAttribute('target', '_blank');
+    expect(screen.getByRole('link', { name: /GitHub/ })).toHaveAttribute('href', 'https://github.com/vctrmz');
+    expect(screen.queryByRole('link', { name: /Instagram/ })).toBeNull();
   });
   it('sectores: cinco con años y enlace', () => {
     render(<Sectores />);

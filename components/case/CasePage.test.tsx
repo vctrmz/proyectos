@@ -4,6 +4,7 @@ vi.mock('next/navigation', () => ({ usePathname: () => '/es/cases/hermes', useSe
 vi.mock('motion/react', () => import('@/test/motion-mock'));
 import CasePage from './CasePage';
 import { getCase } from '@/lib/content/cases';
+import { getCaseIn } from '@/lib/content/en';
 
 describe('CasePage', () => {
   it('sigue la plantilla: h1, secciones en orden, resultado honesto y siguiente caso', () => {
@@ -40,5 +41,9 @@ describe('CasePage', () => {
     render(<CasePage c={getCase('hermes')!} />);
     expect(screen.getByText(/ejemplo ilustrativo/i)).toBeInTheDocument();
     expect(screen.getByRole('list', { name: /kit/i })).toBeInTheDocument();
+  });
+  it('un caso en inglés lleva el footer en inglés', () => {
+    const { container } = render(<CasePage c={getCaseIn('en', 'hermes')!} locale="en" />);
+    expect(container.querySelector('footer')!.textContent).toMatch(/Get in touch/);
   });
 });

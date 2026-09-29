@@ -24,8 +24,8 @@ export default function SiteFooter({ locale = DEFAULT_LOCALE }: { locale?: Local
           </div>
         </div>
         <ul className={s.links}>
+          <li><a href={SITE.github} target="_blank" rel="noopener">GitHub <span aria-hidden="true">↗</span></a></li>
           <li><a href={SITE.behance} target="_blank" rel="noopener">Behance <span aria-hidden="true">↗</span></a></li>
-          <li><a href={SITE.instagram} target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span></a></li>
           <li><Link href={r.about}>{ui.nav.about}</Link></li>
         </ul>
       </div>

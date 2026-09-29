@@ -13,6 +13,8 @@ describe('SiteFooter', () => {
     expect(screen.getByRole('link', { name: /vctrmz47@gmail.com/ })).toHaveAttribute('href', 'mailto:vctrmz47@gmail.com');
     expect(screen.getByRole('link', { name: /LinkedIn/ })).toHaveAttribute('target', '_blank');
     expect(screen.getByRole('link', { name: /Behance/ })).toHaveAttribute('target', '_blank');
+    expect(screen.getByRole('link', { name: /GitHub/ })).toHaveAttribute('href', 'https://github.com/vctrmz');
+    expect(screen.queryByRole('link', { name: /Instagram/ })).toBeNull();
     expect(screen.getByRole('link', { name: /Sobre mí/ })).toHaveAttribute('href', '/es/about');
     expect(screen.getByRole('link', { name: /Privacidad/ })).toHaveAttribute('href', '/es/privacy');
     expect(foot.textContent).toMatch(/Málaga/);
