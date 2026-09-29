@@ -22,7 +22,7 @@ describe('SiteFooter', () => {
   });
   it('la barra inferior anuncia disponibilidad', () => {
     const { container } = render(<SiteFooter />);
-    expect(container.querySelector('footer')!.textContent).toMatch(/Disponible para proyectos/);
+    expect(container.querySelector('footer')!.textContent).toMatch(/Disponible ahora · Senior \/ Lead · remoto/);
     expect(container.querySelectorAll('canvas')).toHaveLength(0);
   });
 });

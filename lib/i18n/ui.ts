@@ -15,6 +15,7 @@ export interface Ui {
     logosLabel: string;
     closingTitle: [string, string];
     closingGrid: { k: string; v: string }[];
+    availability: string;
     competencies: string; competenciesCount: (n: number) => string; competenciesUnit: string;
   };
   catalog: { filtersLabel: string; count: (n: number) => string; seeCase: string; open: string; listLabel: string };
@@ -63,6 +64,7 @@ const es: Ui = {
       { k: 'Problema', v: 'Complejidad B2B' }, { k: 'Método', v: 'UX + sistema + UI + implementación' },
       { k: 'Evidencia', v: 'Nueve años · SaaS asegurador en producción' }, { k: 'Acción', v: 'Un correo' },
     ],
+    availability: 'Disponible ahora · roles Senior o Lead de Product Design · remoto o híbrido en Málaga',
     competencies: 'Competencias clave',
     competenciesCount: (n) => String(n).padStart(2, '0'),
     competenciesUnit: 'competencias',
@@ -87,7 +89,7 @@ const es: Ui = {
     socialLabel: 'Redes', more: 'Más información', close: 'Cerrar',
   },
   cv: { label: 'Descargar CV', format: 'PDF' },
-  footer: { role: 'Product Designer · Design Systems · B2B SaaS e Insurtech', contact: 'Ponte en contacto', available: 'Disponible para proyectos', legal: '© 2026', privacy: 'Privacidad', cookies: 'Cookies', remote: 'Trabajo en remoto' },
+  footer: { role: 'Product Designer · Design Systems · B2B SaaS e Insurtech', contact: 'Ponte en contacto', available: 'Disponible ahora · Senior / Lead · remoto', legal: '© 2026', privacy: 'Privacidad', cookies: 'Cookies', remote: 'Trabajo en remoto' },
   consent: { text: 'Uso analítica para ver cómo se navega esta web: Google Analytics, Microsoft Clarity, Hotjar, Plerdy y HubSpot. Usan cookies o almacenamiento del navegador, nada de publicidad, y solo se activan si lo aceptas.', accept: 'Aceptar', reject: 'Rechazar', change: 'Cambiar mi decisión' },
   lang: { label: 'Idioma' },
 };
@@ -114,6 +116,7 @@ const en: Ui = {
       { k: 'Problem', v: 'B2B complexity' }, { k: 'Method', v: 'UX + system + UI + implementation' },
       { k: 'Evidence', v: 'Nine years · insurance SaaS in production' }, { k: 'Action', v: 'One email' },
     ],
+    availability: 'Available now · Senior or Lead Product Design roles · remote or hybrid in Málaga',
     competencies: 'Core competencies',
     competenciesCount: (n) => String(n).padStart(2, '0'),
     competenciesUnit: 'competencies',
@@ -138,7 +141,7 @@ const en: Ui = {
     socialLabel: 'Social', more: 'More', close: 'Close',
   },
   cv: { label: 'Download CV', format: 'PDF, Spanish' },
-  footer: { role: 'Product Designer · Design Systems · B2B SaaS and Insurtech', contact: 'Get in touch', available: 'Available for projects', legal: '© 2026', privacy: 'Privacy', cookies: 'Cookies', remote: 'Working remotely' },
+  footer: { role: 'Product Designer · Design Systems · B2B SaaS and Insurtech', contact: 'Get in touch', available: 'Available now · Senior / Lead · remote', legal: '© 2026', privacy: 'Privacy', cookies: 'Cookies', remote: 'Working remotely' },
   consent: { text: 'I use analytics to see how this site is read: Google Analytics, Microsoft Clarity, Hotjar, Plerdy and HubSpot. They use cookies or browser storage, never advertising, and load only if you accept.', accept: 'Accept', reject: 'Decline', change: 'Change my choice' },
   lang: { label: 'Language' },
 };

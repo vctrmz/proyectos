@@ -4,3 +4,8 @@
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--sp-24); }
 .k { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
 .v { font-size: var(--fs-300); color: var(--inset-ink); }
+.action { display: grid; gap: var(--sp-16); justify-items: start; }
+.available { display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px; border: 1px solid rgba(139,222,95,.35); border-radius: var(--r-pill); font-size: var(--fs-200); color: var(--inset-ink); }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex: none; }
+.ctas { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-16); }
+.cv { color: var(--inset-ink); }

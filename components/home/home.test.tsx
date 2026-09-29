@@ -72,5 +72,8 @@ describe('portada', () => {
     expect(first.textContent).toMatch(/Estrategia y diseño de producto/);
     expect(first.textContent).toMatch(/06 competencias/);
     expect(screen.getByText(/Diseño de producto end-to-end/)).toBeInTheDocument();
+    expect(screen.getByText(/Disponible ahora · roles Senior o Lead de Product Design/)).toBeInTheDocument();
+    expect(screen.getByRole('link', { name: /vctrmz47@gmail.com/ })).toHaveAttribute('href', 'mailto:vctrmz47@gmail.com');
+    expect(screen.getByRole('link', { name: /Descargar CV/ })).toBeInTheDocument();
   });
 });
