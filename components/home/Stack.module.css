@@ -1,0 +1,9 @@
+.stack { display: grid; gap: var(--sp-16); padding-top: var(--sp-32); }
+.title { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
+.groups { display: grid; gap: var(--sp-16); }
+@media (min-width: 900px) { .groups { grid-template-columns: 1fr 1fr; gap: var(--sp-32); } }
+.name { font-size: var(--fs-200); color: var(--ink-2); font-weight: 500; margin-bottom: var(--sp-8); }
+.items { display: flex; flex-wrap: wrap; gap: var(--sp-8); margin: 0; padding: 0; list-style: none; }
+.items li { font-size: var(--fs-200); color: var(--ink); background: var(--surface); border: 1px solid var(--line); border-radius: var(--r-pill); padding: 6px 12px; }
+.note { font-size: var(--fs-200); color: var(--ink-2); }
+.note a { display: inline-flex; align-items: center; min-height: 44px; color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }

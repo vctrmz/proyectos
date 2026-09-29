@@ -7,6 +7,8 @@ import { EN_PROJECTS, EN_FILTERS, EN_SECTOR_LABEL, EN_TYPE_LABEL, EN_TAGS } from
 import { EN_SECTORS } from './sectors';
 import { ABOUT_EN } from './about';
 import { hermesEn } from './cases/hermes';
+import { STACK, type StackContent } from '@/lib/content/stack';
+import { EN_STACK } from './stack';
 
 /* Puente entre los dos idiomas. El español es la fuente: el inglés
    sobreescribe solo los textos, así que capturas, colores, sectores y orden
@@ -51,3 +53,6 @@ export function sectorsIn(locale: Locale): SectorItem[] {
 
 /* «Sobre mí» en el idioma pedido. */
 export const aboutIn = (locale: Locale): typeof ABOUT => (locale === 'en' ? ABOUT_EN : ABOUT);
+
+/* Stack: mismas herramientas, nombres de grupo por idioma. */
+export const stackIn = (locale: Locale): StackContent => (locale === 'en' ? EN_STACK : STACK);

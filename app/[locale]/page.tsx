@@ -5,6 +5,7 @@ import SiteHeader from '@/components/layout/SiteHeader';
 import SiteFooter from '@/components/layout/SiteFooter';
 import Hero from '@/components/home/Hero';
 import Sectores from '@/components/home/Sectores';
+import Stack from '@/components/home/Stack';
 import FactStrip from '@/components/ui/FactStrip';
 import LogoMarquee from '@/components/home/LogoMarquee';
 import Manifesto from '@/components/home/Manifesto';
@@ -39,7 +40,7 @@ export default async function Page({ params }: { params: Promise<{ locale: Local
       <SiteHeader />
       <main id="contenido">
         <Hero locale={locale} />
-        <div className="container"><FactStrip facts={ui.home.facts} /></div>
+        <div className="container"><FactStrip facts={ui.home.facts} /><Stack locale={locale} /></div>
         <Sectores locale={locale} />
         <LogoMarquee locale={locale} />
         <Manifesto />
