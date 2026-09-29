@@ -23,8 +23,8 @@ describe('seo', () => {
     expect(urls).toContain(`${U}/en`);
     expect(urls).toContain(`${U}/en/about`);
     expect(urls).toContain(`${U}/en/cases/hermes`);
-    // 12 en español + 3 páginas en inglés + un caso traducido
-    expect(urls).toHaveLength(16);
+    // 13 en español + 3 páginas en inglés + un caso traducido
+    expect(urls).toHaveLength(17);
     // ningún caso sin traducir se lista en inglés
     expect(urls).not.toContain(`${U}/en/cases/flesip`);
   });
