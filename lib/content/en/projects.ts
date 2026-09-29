@@ -62,4 +62,6 @@ export const EN_TAGS: Record<string, string> = {
   Banca: 'Banking', 'E-commerce': 'E-commerce', 'Marca y sistema': 'Brand and system', 'App y web': 'App and web',
   'Marca y arte': 'Brand and art direction', 'Research y UX': 'Research and UX', 'Multi-tenant': 'Multi-tenant',
   'SaaS multi-tenant': 'Multi-tenant SaaS', Sistema: 'System',
+  'Formularios por esquema': 'Schema-driven forms', 'Design tokens': 'Design tokens', 'Design tokens (JSON)': 'Design tokens (JSON)',
+  'Tokens multi-marca': 'Multi-brand tokens', 'Design system': 'Design system', 'Multi-producto': 'Multi-product',
 };

@@ -76,6 +76,17 @@ describe('casos', () => {
       for (const palabra of [' el ', ' la ', ' que ', ' para ', ' con ']) expect(texto, `${slug}: ${palabra}`).not.toContain(palabra);
     }
   });
+  it('HERMES enseña su decisión central como dato: el cuestionario por esquema', () => {
+    const h = getCase('hermes')!;
+    expect(h.system.code!.code).toContain('"visibleIf"');
+    expect(h.system.code!.source ?? 'illustrative').toBe('illustrative');
+    expect(h.tags).toContain('Formularios por esquema');
+    expect(getCaseIn('en', 'hermes')!.system.code!.code).toBe(h.system.code!.code);
+  });
+  it('no se afirman herramientas de Atrinium sin confirmar', () => {
+    const all = JSON.stringify(CASES);
+    for (const bad of ['Style Dictionary', 'Storybook', 'ADR']) expect(all, bad).not.toContain(bad);
+  });
   it('getCase devuelve undefined para slugs desconocidos', () => {
     expect(getCase('nada')).toBeUndefined();
   });

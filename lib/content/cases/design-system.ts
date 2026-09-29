@@ -3,7 +3,7 @@ import { shot, type CaseStudy } from './types';
 export const designSystem: CaseStudy = {
   slug: 'design-system', title: 'Design system: 267 → 24 tokens', company: 'Atrinium', years: '2024',
   tagline: 'El nivel de sistema que cada producto se puede permitir: tokens con rol, componentes con contrato y reglas de decisión, adoptados por los cuatro front.',
-  tags: ['Design system', 'En producción', 'Multi-producto'], brand: '#15181f',
+  tags: ['Design system', 'En producción', 'Multi-producto', 'Design tokens (JSON)', 'Tokens multi-marca'], brand: '#15181f',
   hero: shot('07-seleccionar-moneda', 'Selector de moneda del design system', 'Un componente, cuatro front, cinco productos'),
   context: 'Al entrar, cada módulo de HERMES se había construido con criterios distintos, y el holding tenía cinco productos con cinco lenguajes.',
   role: 'Propuse el sistema, lo construí desde cero y lo defendí ante los cuatro desarrolladores front.',
