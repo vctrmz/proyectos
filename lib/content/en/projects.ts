@@ -38,6 +38,11 @@ export const EN_PROJECTS: Record<string, { title: string; company?: string; summ
     title: 'Design system: 267 → 24 tokens',
     summary: 'Monorepo audit: 267 colour values reduced to 24 tokens, each with a role, adopted by all four front-end developers. The system feeds the module and the module gives components back.',
   },
+  'esta-web': {
+    title: 'This site, from system to code',
+    company: 'Personal project',
+    summary: 'The portfolio built as a product: tokens, components, typed content, tests and an accessibility audit, with the implementation directed with AI. The code is public.',
+  },
   taksio: {
     title: 'Multimodal mobility platform',
     summary: 'A platform from scratch: design system first, driver and passenger flows after.',
@@ -64,4 +69,5 @@ export const EN_TAGS: Record<string, string> = {
   'SaaS multi-tenant': 'Multi-tenant SaaS', Sistema: 'System',
   'Formularios por esquema': 'Schema-driven forms', 'Design tokens': 'Design tokens', 'Design tokens (JSON)': 'Design tokens (JSON)',
   'Tokens multi-marca': 'Multi-brand tokens', 'Design system': 'Design system', 'Multi-producto': 'Multi-product',
+  'Next.js': 'Next.js', Accesibilidad: 'Accessibility',
 };
