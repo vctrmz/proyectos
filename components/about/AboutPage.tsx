@@ -36,13 +36,13 @@ export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale
               <div className={s.lines}>
                 {ABOUT.intro.map((l) => <p key={l}>{l}</p>)}
               </div>
+              {/* Debajo de la presentación: quien acaba de leer quién eres es
+                  quien quiere el CV, y ahí no compite con la tarjeta. */}
+              <CvDownload locale={locale} className={s.cvPick} />
             </div>
             <div className={s.aside}>
               <IdCard locale={locale} />
               <SocialLinks />
-              {/* El CV vive aquí y en ningún otro sitio: al lado de la tarjeta
-                  con la identidad, que es donde se le busca. */}
-              <CvDownload locale={locale} className={s.cvPick} />
             </div>
           </section>
           <section className={s.sec} aria-labelledby="a-formacion"><h2 id="a-formacion">{t.education}</h2>

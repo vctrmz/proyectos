@@ -24,12 +24,11 @@
 /* Flotante sobre el contenido y no empujándolo: en el hero de Sobre mí el
    desplegable abre encima de la tarjeta, no descoloca la columna.
 
-   Anclado por la derecha porque el disparador vive en la columna derecha del
-   hero: creciendo hacia dentro cabe en cualquier ancho. Medido con un viewport
-   real: sin desbordamiento horizontal y el panel entero dentro de la página a
-   1440 px (978→1193) y a 375 px (54→268). */
+   Anclado por la izquierda, que es donde empieza el texto de la presentación
+   al que acompaña: desde ahí crece hacia el centro de la página y no hacia
+   fuera. Medido más abajo, en el CSS no se puede. */
 .list {
-  position: absolute; z-index: 20; top: calc(100% + 6px); right: 0; min-width: 100%;
+  position: absolute; z-index: 20; top: calc(100% + 6px); left: 0; min-width: 100%;
   margin: 0; padding: 6px; list-style: none;
   border: 1px solid var(--line); border-radius: 16px;
   background: var(--bg); box-shadow: 0 12px 28px rgba(18,19,23,.12);
