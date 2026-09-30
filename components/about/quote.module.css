@@ -1,0 +1,38 @@
+/* Bloque oscuro con la cita en grande, como el cierre de la portada: el mismo
+   recurso para el mismo gesto —parar la lectura y decir algo de peso— en lugar
+   de inventar una tarjeta nueva. */
+.card { margin: 0 0 var(--sp-32); padding: clamp(28px, 5vw, 56px) clamp(24px, 5vw, 56px); }
+
+.quote { margin: 0; }
+.quote p {
+  margin: 0;
+  max-width: 24ch;
+  font-size: clamp(2rem, 6vw, 3.25rem);
+  font-variation-settings: 'wght' 600;
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--inset-ink);
+  text-wrap: balance;
+}
+/* Las comillas son del CSS: el texto guardado no las lleva. */
+.quote p::before { content: '«'; }
+.quote p::after { content: '».'; }
+
+.by { display: flex; align-items: center; gap: 14px; margin-top: clamp(24px, 4vw, 40px); }
+/* Monograma en lugar de retrato. Mismo círculo que tendría una foto, así que
+   el día que haya una con derechos entra sin recolocar nada. */
+.mono {
+  flex: none; width: 44px; height: 44px; border-radius: 50%;
+  display: grid; place-items: center;
+  background: rgba(255, 255, 255, .12);
+  color: var(--inset-ink);
+  font-size: var(--fs-200); font-weight: 600; letter-spacing: .02em;
+}
+.who { display: grid; gap: 1px; min-width: 0; }
+.name { font-style: normal; font-size: var(--fs-200); font-weight: 600; color: var(--inset-ink); }
+.role { font-size: var(--fs-100); color: var(--inset-ink-2); }
+
+@media (max-width: 480px) {
+  .quote p { max-width: none; }
+}

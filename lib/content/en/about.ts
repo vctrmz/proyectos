@@ -35,6 +35,15 @@ export const ABOUT_EN: typeof ABOUT = {
       'I care about *complete flows, not isolated screens*. *Systems that make the next design and the next build cost less than the last one.*',
     ],
   },
+  /* En ingles va la formulacion documentada de Nielsen —la del articulo de
+     NN/g— y no una retraduccion del castellano: si alguien la busca, la
+     encuentra tal cual. */
+  quote: {
+    ...ABOUT.quote,
+    text: 'Pay attention to what users do, not what they say.',
+    role: 'Usability expert',
+    org: 'Co-founder of Nielsen Norman Group',
+  },
   skills: [
     'Information architecture and critical flows in regulated domains',
     'Design systems with governance and usage criteria',

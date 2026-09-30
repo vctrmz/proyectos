@@ -16,6 +16,7 @@ import ToolGroups from './ToolGroups';
 import BioDrawer from './BioDrawer';
 import SocialLinks from './SocialLinks';
 import Bookshelf from './Bookshelf';
+import Quote from './Quote';
 import s from './about.module.css';
 
 export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale }) {
@@ -61,7 +62,11 @@ export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale
           <section className={s.sec} aria-labelledby="a-tools"><h2 id="a-tools">{t.tools}</h2>
             <ToolGroups />
           </section>
-          <section className={s.sec} aria-labelledby="a-libros"><h2 id="a-libros">{t.books}</h2>
+          <section className={s.sec} aria-labelledby="a-libros">
+            {/* La cita va antes del título: enmarca por qué están estos libros
+                y no otros, y después vienen. */}
+            <Quote locale={locale} />
+            <h2 id="a-libros">{t.books}</h2>
             <Bookshelf locale={locale} />
           </section>
           <section id="contacto" className={s.sec} aria-labelledby="a-contacto"><h2 id="a-contacto">{t.contact}</h2>

@@ -42,6 +42,15 @@ export const ABOUT = {
       'Me interesan *los flujos completos, no las pantallas sueltas*. *Sistemas que hagan que el siguiente diseño y el siguiente desarrollo cuesten menos que el anterior.*',
     ],
   },
+  /* La cita que abre los libros: dice de dónde sale el criterio con el que
+     están elegidos. Sin foto de Jakob Nielsen —no tengo derechos sobre un
+     retrato suyo—, así que la ficha lleva su monograma. */
+  quote: {
+    text: 'Lo que los usuarios dicen y lo que hacen es diferente.',
+    author: 'Jakob Nielsen',
+    role: 'Experto en usabilidad',
+    org: 'Co-fundador de Nielsen Norman Group',
+  },
   skills: [
     'Arquitectura de información y flujos críticos en dominios regulados',
     'Design systems con gobernanza y criterios de uso',
