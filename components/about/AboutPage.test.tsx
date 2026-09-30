@@ -11,8 +11,16 @@ describe('AboutPage', () => {
     expect(h2).toEqual(expect.arrayContaining(['Personal', 'Formación', 'Ikigai', 'Empresas', 'Herramientas']));
     expect(h2.indexOf('Herramientas')).toBeGreaterThan(h2.findIndex((x) => /Diseño sistemas/.test(x!)));
     expect(screen.getByText(/Universidad de Oriente/)).toBeInTheDocument();
-    // la acreditación cuelga en el hero con los datos públicos, sin lugar de nacimiento
-    expect(screen.getByText(/Málaga · en remoto/)).toBeInTheDocument();
+    /* La acreditación cuelga en el hero con los datos públicos. Sin ciudad:
+       el posicionamiento es remoto, así que ni nacimiento ni provincia. */
+    expect(screen.getByText('En remoto')).toBeInTheDocument();
+    /* La tarjeta se queda con el oficio y el modo de trabajo. Ni ciudad ni
+       sector: «Insurtech» sigue en el rol del pie y la línea de tiempo sigue
+       diciendo dónde estaba cada empresa —Caracas, Panamá, Málaga—, que es un
+       dato del trabajo y lo que hace que el recorrido se lea internacional. */
+    const datos = screen.getByText('B2B SaaS').closest('dl')!;
+    expect(datos.textContent).not.toMatch(/Málaga/);
+    expect(datos.textContent).not.toMatch(/Insurtech/);
     expect(screen.getByRole('img', { name: 'Víctor Maza' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: /Diseño sistemas, no pantallas/ })).toBeInTheDocument();
     expect(screen.queryByText(/Lugares/)).toBeNull();
@@ -24,7 +32,7 @@ describe('AboutPage', () => {
     // Cumaná sigue en Formación, que es un dato académico
     expect(screen.getByText(/Cumaná, Venezuela/)).toBeInTheDocument();
     expect(screen.getByText(/Universidad de Oriente/).textContent).not.toMatch(/2006/);
-    expect(screen.getByRole('button', { name: /ver el detalle/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /mi forma de trabajar/i })).toBeInTheDocument();
     const redes = screen.getByRole('list', { name: /redes/i });
     /* Dos redes: LinkedIn y Behance. GitHub se retiró de la fila de iconos. */
     const enlaces = within(redes).getAllByRole('link');

@@ -38,17 +38,23 @@ export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale
                 {ABOUT.intro.map((l) => <p key={l}>{l}</p>)}
               </div>
               {/* Debajo de la presentación: quien acaba de leer quién eres es
-                  quien quiere el CV, y ahí no compite con la tarjeta. */}
-              <CvDownload locale={locale} className={s.cvPick} />
+                  quien quiere el CV, y ahí no compite con la tarjeta. Las redes
+                  van en la misma fila porque son la misma decisión —saber más
+                  de esta persona— y se comparan de un vistazo. */}
+              <div className={s.cvRow}>
+                <CvDownload locale={locale} />
+                <BioDrawer locale={locale} />
+              </div>
+              {/* Las redes, debajo: son el camino secundario y no compiten con
+                  los dos que sí quieres que se pulsen. */}
+              <SocialLinks />
             </div>
             <div className={s.aside}>
               <IdCard locale={locale} />
-              <SocialLinks />
             </div>
           </section>
           <section className={s.sec} aria-labelledby="a-formacion"><h2 id="a-formacion">{t.education}</h2>
             <div className={s.edu}>{ABOUT.education.map((e) => <p key={e.degree}><strong>{e.degree}</strong> · {e.school} · {e.place} · {e.years}</p>)}<p>{t.eduNote}</p></div>
-            <div className={s.eduCta}><BioDrawer locale={locale} /></div>
           </section>
           <section className={s.sec} aria-labelledby="a-ikigai"><h2 id="a-ikigai">{t.ikigai}</h2><IkigaiDiagram /></section>
           <section className={s.sec} aria-labelledby="a-empresas"><h2 id="a-empresas">{t.companies}</h2><CompanyTabs /><div className={s.timeline}><Diagram id="timeline" /></div></section>

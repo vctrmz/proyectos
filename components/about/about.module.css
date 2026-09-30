@@ -30,9 +30,11 @@
 .bio p:first-child { font-size: var(--fs-500); color: var(--ink); }
 .bio strong { color: var(--ink); font-weight: 500; }
 .social { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: var(--sp-24) 0 0; padding: 0; }
-/* El selector del CV va tras la presentación, con el aire de un párrafo. */
-.cvPick { margin-top: var(--sp-32); }
+/* Los dos caminos principales en la misma fila, tras la presentación y con el
+   aire de un párrafo: descargar el CV o leer cómo trabajo. Las redes van en su
+   propia fila debajo, más apretadas, porque son el camino secundario. */
+.cvRow { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: var(--sp-32); }
+.intro .social { margin-top: var(--sp-16); }
 .social a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: var(--r-pill); background: var(--surface); color: var(--ink); font-size: var(--fs-200); }
 .social a:hover { background: #eef0f6; }
 .social svg { width: 16px; height: 16px; fill: currentColor; }
-.eduCta { margin-top: var(--sp-24); }

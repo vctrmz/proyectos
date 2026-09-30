@@ -7,7 +7,7 @@ import BioDrawer from './BioDrawer';
 describe('BioDrawer', () => {
   it('el CTA abre un drawer accesible con el recorrido completo, Esc lo cierra y devuelve el foco', async () => {
     render(<BioDrawer />);
-    const cta = screen.getByRole('button', { name: /ver el detalle/i });
+    const cta = screen.getByRole('button', { name: /mi forma de trabajar/i });
     expect(screen.queryByRole('dialog')).toBeNull();
     await userEvent.click(cta);
     const dialog = screen.getByRole('dialog', { name: /detalle/i });
@@ -30,7 +30,7 @@ describe('BioDrawer · forma de trabajo', () => {
     const lenis = { stop: vi.fn(), start: vi.fn() };
     setLenis(lenis);
     render(<BioDrawer />);
-    await userEvent.click(screen.getByRole('button', { name: /ver el detalle/i }));
+    await userEvent.click(screen.getByRole('button', { name: /mi forma de trabajar/i }));
     expect(lenis.stop).toHaveBeenCalledOnce();
     const dialog = screen.getByRole('dialog');
     expect(dialog.querySelector('[data-lenis-prevent]')).not.toBeNull();
