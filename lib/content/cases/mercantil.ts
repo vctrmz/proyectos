@@ -1,12 +1,12 @@
 import { shot, type CaseStudy } from './types';
 
 export const mercantil: CaseStudy = {
-  slug: 'mercantil', title: 'Que un producto financiero se entienda a la primera', company: 'Mercantil Banco Panamá', years: '2020–2022',
+  slug: 'mercantil', title: 'Que un producto financiero se entienda a la primera', company: 'Mercantil Banco Panamá', years: '2021–2022',
   tagline: 'Cinco ofertas y cinco audiencias que no hablan igual: pagos digitales, Mony, Tadelanto, Next Gen e hipotecas, del deck comercial al flujo en banca en línea.',
   tags: ['Caso de estudio', 'En producción', 'Banca', 'Research y UX'], brand: '#0B3A6B',
   hero: shot('mb-pay_01', 'Portada del deck «Soluciones de pago digitales para tu negocio» de Mercantil', 'Cada oferta llegaba como una definición de negocio y salía como experiencia y piezas de venta'),
   context: 'En Mercantil Banco Panamá el Product Owner definía la oferta —producto, condiciones, tarifas y audiencia— y yo la convertía en experiencia: flujos y prototipos para la banca en línea, piezas que explicaban cada producto a comercios, estudiantes y clientes, y la validación con UX y negocio antes de salir al mercado.',
-  role: 'Product Designer en entorno regulado, entre el Product Owner que define la oferta y los canales que la venden.',
+  role: 'Product Designer de Darien Technology, la consultora del proyecto, en entorno regulado: entre el Product Owner que define la oferta y los canales que la venden.',
   delivery: 'Prototipos de banca en línea, emails transaccionales, decks y piezas de venta por audiencia, y la validación de flujos y contenido antes de lanzar.',
   problem: [
     'El banco tenía nueve soluciones de cobro y un deck que las presentaba una detrás de otra: la dueña de un comercio no sabe qué es un SDK y el desarrollador no necesita leer sobre el link de pago.',

@@ -23,7 +23,7 @@ export const ABOUT_EN: typeof ABOUT = {
     href: c.href.replace('/es', '/en'),
     body: {
       atrinium: 'Sole designer of a group with five products. The main one, HERMES: a multi-tenant SaaS ERP for insurers, reinsurers, MGAs and brokers, with the admin module that governs the whole group. Around it, electronic invoicing, a 360 policy system, user and permission management and an e-commerce line. Five products, one design language.',
-      mercantil: 'Digital banking in a regulated market. The system already existed and my job was to apply it with judgement and validate every screen before development: unmoderated tests with Maze, my own interviews and sessions with Marketing for the transactional emails. Nothing went to development untested.',
+      mercantil: 'Digital banking in a regulated market, working remotely from Spain as a designer for Darien Technology, the consultancy behind the project. The system already existed and my job was to apply it with judgement and validate every screen before development: unmoderated tests with Maze, my own interviews and sessions with Marketing for the transactional emails. Nothing went to development untested.',
       taksio: 'A multimodal mobility platform in Caracas: design system and operational flows for driver and passenger, built from scratch.',
     }[c.id] ?? c.body,
   })),

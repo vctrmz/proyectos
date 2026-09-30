@@ -14,7 +14,7 @@ const html = `<!doctype html><html><head><meta charset="utf-8">
   p { margin: 0; font-size: 32px; color: #b4b8c4; line-height: 1.3; max-width: 640px; }
   img { width: 300px; height: 300px; border-radius: 50%; object-fit: cover; border: 4px solid #4a44f2; }
 </style></head><body>
-  <div><span class="k">Product Designer · Design Systems</span><h1>Víctor Maza</h1><p>Diseño producto B2B complejo<br>y lo llevo a producción.</p></div>
+  <div><span class="k">Senior Product Designer · Design Systems</span><h1>Víctor Maza</h1><p>Diseño producto B2B complejo<br>y lo llevo a producción.</p></div>
   <img src="data:image/jpeg;base64,${photo}" alt="">
 </body></html>`;
 const browser = await chromium.launch();

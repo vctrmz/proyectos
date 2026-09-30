@@ -29,8 +29,8 @@ export const ABOUT = {
   companies: [
     { id: 'atrinium', name: 'Atrinium', years: '2022–2026', href: '/es/cases/hermes',
       body: 'Único diseñador de un holding con cinco productos. El principal, HERMES: un ERP SaaS multi-tenant para aseguradoras, reaseguradoras, MGAs y brokers, con el administrador que gobierna todo el grupo. Alrededor, facturación electrónica, un sistema de pólizas 360, gestión de usuarios y permisos y un e-commerce. Cinco productos, un solo lenguaje de diseño.' },
-    { id: 'mercantil', name: 'Mercantil Panamá', years: '2020–2022', href: '/es?f=banca#trabajo',
-      body: 'Banca digital en entorno regulado. El sistema ya existía y mi trabajo era aplicarlo con criterio y validar cada pantalla antes de desarrollo: tests no moderados con Maze, entrevistas propias y sesiones con Marketing para los emails transaccionales. Nada pasaba a desarrollo sin haberse probado.' },
+    { id: 'mercantil', name: 'Mercantil Panamá', years: '2021–2022', href: '/es?f=banca#trabajo',
+      body: 'Banca digital en entorno regulado, en remoto desde España como diseñador de Darien Technology, la consultora del proyecto. El sistema ya existía y mi trabajo era aplicarlo con criterio y validar cada pantalla antes de desarrollo: tests no moderados con Maze, entrevistas propias y sesiones con Marketing para los emails transaccionales. Nada pasaba a desarrollo sin haberse probado.' },
     { id: 'taksio', name: 'Taksio', years: '2017–2019', href: '/es?f=transporte#trabajo',
       body: 'Plataforma de movilidad multimodal en Caracas: design system y flujos operativos de conductor y pasajero levantados desde cero.' },
   ],

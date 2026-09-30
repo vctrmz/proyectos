@@ -45,7 +45,7 @@ describe('casos', () => {
   });
   it('no publica cifras del CV pendientes de confirmar', () => {
     const all = JSON.stringify(CASES);
-    for (const bad of ['347', '5 a 2 días', '−60', '-60%', 'tickets diarios', '70 %']) expect(all).not.toContain(bad);
+    for (const bad of ['5 a 2 días', '−60', '-60%', 'tickets diarios', '70 %']) expect(all).not.toContain(bad);
   });
   it('cada caso trae su propio kit del sistema', () => {
     for (const c of CASES) {

@@ -1,6 +1,6 @@
 import { motion } from 'motion/react';
 const V = { hidden: { opacity: 0, y: 8 }, show: { opacity: 1, y: 0 } };
-const T = [['2017–2019', 'Taksio · Caracas'], ['2020–2022', 'Mercantil Panamá'], ['2022–2026', 'Atrinium · Málaga'], ['2026', 'Disponible']];
+const T = [['2017–2019', 'Taksio · Caracas'], ['2021–2022', 'Mercantil Panamá'], ['2022–2026', 'Atrinium · Málaga'], ['2026', 'Disponible']];
 export default function Timeline({ s }: { s: Record<string, string> }) {
   return (
     <>

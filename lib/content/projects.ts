@@ -27,7 +27,7 @@ export const PROJECTS: Project[] = [
   { slug: 'montsaint', title: 'Una marca con dos negocios', company: 'Montsaint', years: '2023–2025', type: 'case', status: 'production', sector: 'ecommerce', brand: '#1F6F6B', logo: '/assets/logos/montsaint.webp', hasCase: true, url: 'https://montsaint.es/',
     image: shot('ms-desktop', 'Home de la tienda Montsaint en escritorio'),
     summary: 'Gafas de bio-acetato que se venden al cliente final y se distribuyen en más de 700 ópticas: dos webs, dos ritmos de decisión y una dirección de arte que sostiene las dos.' },
-  { slug: 'mercantil', title: 'Que un producto financiero se entienda a la primera', company: 'Mercantil Banco Panamá', years: '2020–2022', type: 'case', status: 'production', sector: 'banca', brand: '#0B3A6B', logo: '/assets/logos/mercantil.webp', hasCase: true,
+  { slug: 'mercantil', title: 'Que un producto financiero se entienda a la primera', company: 'Mercantil Banco Panamá', years: '2021–2022', type: 'case', status: 'production', sector: 'banca', brand: '#0B3A6B', logo: '/assets/logos/mercantil.webp', hasCase: true,
     image: shot('mb-pay_01', 'Portada del deck «Soluciones de pago digitales para tu negocio»'),
     summary: 'Cinco ofertas y cinco audiencias que no hablan igual: pagos digitales, Mony, Tadelanto y Next Gen, del deck comercial al flujo en banca en línea, con la auditoría de mi propio prototipo.' },
   { slug: 'suscripcion', title: 'Módulo de suscripción de cliente', company: 'HERMES Admin', years: '2025', type: 'case', status: 'production', sector: 'insurtech', brand: '#24346e', logo: '/assets/logos/hermes.webp', hasCase: true,

@@ -1,0 +1,61 @@
+/*
+  Maqueta común de los dos CV (cv-es.html y cv-en.html). Reproduce el CV
+  español original medido sobre su PDF: A4, Segoe UI, columna de 528 pt y
+  márgenes de 12 mm. Un solo archivo para que los dos idiomas no se separen
+  cuando se toque un margen.
+*/
+@page { size: A4; margin: 12mm; }
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body {
+  margin: 0;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-size: 9.1pt;
+  line-height: 1.42;
+  color: #1a1a1a;
+  orphans: 2;
+  widows: 2;
+}
+b, strong { font-weight: 600; color: #000; }
+a { color: inherit; text-decoration: none; }
+
+.role { margin: 0; font-size: 18.5pt; font-weight: 600; color: #101010; letter-spacing: -0.01em; }
+/* La especialidad va en la misma línea que el rol, más pequeña: es lo que un
+   ATS y un reclutador buscan junto al título. */
+.role .focus { font-size: 11pt; font-weight: 400; color: #5a5a5a; letter-spacing: 0; }
+.name { margin: 2pt 0 0; font-size: 10.5pt; font-weight: 600; color: #6a6a6a; letter-spacing: 0.22em; }
+.contact { margin: 5pt 0 0; font-size: 8.4pt; color: #4a4a4a; }
+
+h2 {
+  margin: 13pt 0 0;
+  padding-bottom: 3pt;
+  border-bottom: 0.6pt solid #d8d8d8;
+  font-size: 8.1pt;
+  font-weight: 700;
+  color: #101010;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+h2 + * { margin-top: 7pt; }
+
+.profile { margin: 0; text-align: justify; }
+
+ul { margin: 0; padding: 0; list-style: none; }
+li { margin: 0 0 2.5pt; padding-left: 8pt; text-indent: -8pt; }
+li::before { content: '· '; color: #6a6a6a; }
+li > span { text-indent: 0; }
+
+.tools p { margin: 0 0 4pt; }
+
+/* Un puesto no se parte de su subtítulo ni de su primera línea: el salto de
+   página va antes del bloque entero, no en medio de la cabecera. */
+h2, .job, .what, .prev { break-after: avoid; }
+.job { break-inside: avoid; margin-top: 9pt; display: flex; align-items: baseline; gap: 10pt; }
+.job h3 { margin: 0; font-size: 9.9pt; font-weight: 600; color: #000; }
+.job .when { margin: 0; margin-left: auto; font-size: 8.3pt; color: #555; white-space: nowrap; }
+.what { margin: 1pt 0 4pt; font-size: 8.5pt; font-style: italic; color: #4a4a4a; }
+.prev { margin: 1pt 0 4pt; font-size: 8.4pt; color: #3a3a3a; }
+
+.two { display: flex; gap: 26pt; }
+.two > section { flex: 1 1 0; min-width: 0; }
+.two h2 { margin-top: 13pt; }

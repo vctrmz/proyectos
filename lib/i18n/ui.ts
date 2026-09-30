@@ -47,9 +47,9 @@ const es: Ui = {
   nav: { work: 'Trabajo', about: 'Sobre mí', contact: 'Contactar' },
   skip: 'Saltar al contenido',
   home: {
-    kicker: 'Product Designer · Design Systems · B2B SaaS e Insurtech',
+    kicker: 'Senior Product Designer · Design Systems · B2B SaaS e Insurtech',
     heroLines: ['Diseño producto B2B complejo', 'y lo llevo a producción.'],
-    heroSub: 'Nueve años en SaaS asegurador, ERP y banca, casi siempre como único diseñador. Modelo el dominio, lo convierto en tokens, componentes y reglas que el front consume tal cual, y reviso la implementación en React hasta que el diseño llega entero.',
+    heroSub: 'Nueve años en producto digital; los cuatro últimos, como único diseñador de un holding con cinco productos, el principal un SaaS asegurador. Modelo el dominio, lo convierto en tokens, componentes y reglas que el front consume tal cual, y reviso la implementación en React hasta que el diseño llega entero.',
     facts: [
       { value: '267 → 24', label: 'valores de color a tokens' }, { value: '8', label: 'áreas de producto' },
       { value: '5', label: 'productos, un lenguaje' }, { value: '2022–2026', label: 'único diseñador del holding' },
@@ -91,7 +91,7 @@ const es: Ui = {
     socialLabel: 'Redes', more: 'Más información', close: 'Cerrar', books: 'Libros que recomiendo',
   },
   cv: { label: 'Descargar CV', format: 'PDF', download: (lang, kb) => `Descargar el CV en ${lang} (PDF, ${kb} KB)` },
-  footer: { role: 'Product Designer · Design Systems · B2B SaaS e Insurtech', contact: 'Ponte en contacto', available: 'Disponible ahora · Senior / Lead · remoto', legal: '© 2026', privacy: 'Privacidad', cookies: 'Cookies', remote: 'Trabajo en remoto' },
+  footer: { role: 'Senior Product Designer · Design Systems · B2B SaaS e Insurtech', contact: 'Ponte en contacto', available: 'Disponible ahora · Senior / Lead · remoto', legal: '© 2026', privacy: 'Privacidad', cookies: 'Cookies', remote: 'Trabajo en remoto' },
   consent: { text: 'Uso analítica para ver cómo se navega esta web: Google Analytics, Microsoft Clarity, Hotjar, Plerdy y HubSpot. Usan cookies o almacenamiento del navegador, nada de publicidad, y solo se activan si lo aceptas.', accept: 'Aceptar', reject: 'Rechazar', change: 'Cambiar mi decisión' },
   lang: { label: 'Idioma' },
 };
@@ -100,9 +100,9 @@ const en: Ui = {
   nav: { work: 'Work', about: 'About', contact: 'Get in touch' },
   skip: 'Skip to content',
   home: {
-    kicker: 'Product Designer · Design Systems · B2B SaaS and Insurtech',
+    kicker: 'Senior Product Designer · Design Systems · B2B SaaS and Insurtech',
     heroLines: ['I design complex B2B products', 'and take them to production.'],
-    heroSub: 'Nine years in insurance SaaS, ERP and banking, almost always as the only designer. I model the domain, turn it into tokens, components and rules the front end consumes as they are, and review the React implementation until the design ships whole.',
+    heroSub: 'Nine years in digital product; the last four as the only designer of a group with five products, the main one an insurance SaaS. I model the domain, turn it into tokens, components and rules the front end consumes as they are, and review the React implementation until the design ships whole.',
     facts: [
       { value: '267 → 24', label: 'colour values to tokens' }, { value: '8', label: 'product areas' },
       { value: '5', label: 'products, one language' }, { value: '2022–2026', label: 'sole designer of the group' },
@@ -144,7 +144,7 @@ const en: Ui = {
     socialLabel: 'Social', more: 'More', close: 'Close', books: 'Books I recommend',
   },
   cv: { label: 'Download CV', format: 'PDF', download: (lang, kb) => `Download the CV in ${lang} (PDF, ${kb} KB)` },
-  footer: { role: 'Product Designer · Design Systems · B2B SaaS and Insurtech', contact: 'Get in touch', available: 'Available now · Senior / Lead · remote', legal: '© 2026', privacy: 'Privacy', cookies: 'Cookies', remote: 'Working remotely' },
+  footer: { role: 'Senior Product Designer · Design Systems · B2B SaaS and Insurtech', contact: 'Get in touch', available: 'Available now · Senior / Lead · remote', legal: '© 2026', privacy: 'Privacy', cookies: 'Cookies', remote: 'Working remotely' },
   consent: { text: 'I use analytics to see how this site is read: Google Analytics, Microsoft Clarity, Hotjar, Plerdy and HubSpot. They use cookies or browser storage, never advertising, and load only if you accept.', accept: 'Accept', reject: 'Decline', change: 'Change my choice' },
   lang: { label: 'Language' },
 };

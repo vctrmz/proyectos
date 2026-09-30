@@ -30,7 +30,7 @@ Esta misma web es la prueba: está construida como un producto (tokens, componen
 ## Operating Context
 
 - Rutas: `/es` (por defecto) y `/en`. Cada caso tiene URL propia en `/[locale]/cases/[slug]`, para poder compartirla. Hay además «Sobre mí» y privacidad.
-- El CV está en `/victor-maza-cv.pdf`, en español. A 2026-09-30, `/en` enlaza ese PDF y avisa de que está en español; hay un CV en inglés en preparación (`public/victor-maza-cv-en.pdf`) que aún no se enlaza.
+- Hay un CV por idioma: `/victor-maza-cv.pdf` (es) y `/victor-maza-cv-en.pdf` (en). Los dos tienen fuente en `scripts/cv/cv-<idioma>.html` con la maqueta común en `scripts/cv/cv.css`, y se imprimen con `npm run cv`. Se descargan desde el hero de «Sobre mí», con selector de idioma.
 - En `/en` solo HERMES y «Esta web» están traducidos. El resto de casos se abre en español y el enlace lo avisa («in Spanish»).
 - La analítica (Clarity, GA, Hotjar, Plerdy, HubSpot) solo se activa si el visitante la acepta. Dato de la re-auditoría del 22-09: pocas sesiones (39) y el 27 % de scroll medio en portada, así que lo importante tiene que estar arriba.
 - Flujo de trabajo: spec → plan → código con Claude Code → revisión → tests y auditoría (`docs/superpowers/`, `docs/auditoria/`). Cada push a `main` despliega a producción; el trabajo va en ramas con preview de Vercel.
@@ -39,7 +39,8 @@ Esta misma web es la prueba: está construida como un producto (tokens, componen
 
 - Catálogo de 11 proyectos con filtros por tipo y sector. 10 tienen caso completo; Taksio enlaza a Behance.
 - Todo texto existe en español y en inglés: la interfaz `Ui` de `lib/i18n/ui.ts` lo obliga, y `lib/content/en/*` sobrescribe el español.
-- **Nada que no se pueda defender en una entrevista.** Los tests de `lib/content/cases/cases.test.ts` lo vigilan: cada cifra del outcome se explica, lo que no se midió se dice, no entran métricas de negocio que nadie midió, no se publican cifras del CV pendientes de confirmar y no se afirman herramientas de Atrinium sin confirmar.
+- **Nada que no se pueda defender en una entrevista.** Los tests de `lib/content/cases/cases.test.ts` lo vigilan: cada cifra del outcome se explica, lo que no se midió se dice, no entran métricas de negocio que nadie midió, no se publican cifras del CV pendientes de confirmar y no se afirman herramientas de Atrinium sin confirmar. El 2026-09-30 Víctor confirmó que puede explicar el 36 % de tiempo liberado, los 347 permisos y los 12 idiomas; «de 5 a 2 días» y la bajada de tickets salieron del CV y de LinkedIn.
+- **Un solo relato en web, CV y LinkedIn** (revisión de reclutador del 2026-09-30): mismo título, WCAG 2.2 AA (nunca AAA), Darien Technology de febrero de 2021 a mayo de 2022 (Mercantil 2021–2022, en remoto) y Atrinium de mayo de 2022 a agosto de 2026. Un cambio de fecha, título o cifra llega a los tres a la vez.
 - Los extractos de código que reconstruyen trabajo de cliente van marcados como «ejemplo ilustrativo». Solo el código de esta web se enseña como real y enlazado.
 - Solo se usan los tokens de `app/globals.css`, sin hex nuevos en componentes: `test/tokens.test.ts` falla si vuelven valores retirados.
 - Next.js 16 tiene cambios que rompen convenciones: antes de tocar sus APIs se lee `node_modules/next/dist/docs/` (`AGENTS.md`).
@@ -47,7 +48,7 @@ Esta misma web es la prueba: está construida como un producto (tokens, componen
 
 ## Brand Commitments
 
-- Nombre: Víctor Maza. Rol publicado: «Product Designer · Design Systems · B2B SaaS e Insurtech» (en: «… B2B SaaS and Insurtech»).
+- Nombre: Víctor Maza. Rol publicado: «Senior Product Designer · Design Systems · B2B SaaS e Insurtech» (en: «… B2B SaaS and Insurtech»), el mismo que el CV y LinkedIn desde el 2026-09-30.
 - Disponibilidad publicada: «Disponible ahora · roles Senior o Lead de Product Design · remoto o híbrido en Málaga».
 - Voz: primera persona, sobria y concreta. Cifras que se pueden comprobar, lenguaje de negocio, sin superlativos ni promesas. Informático de formación, Product Designer de oficio.
 - Redes: LinkedIn y GitHub (`vctrmz`). El Behance es `behance.net/mazdesignr`, con «r»: `mazdesign` es otro estudio. Instagram queda fuera.

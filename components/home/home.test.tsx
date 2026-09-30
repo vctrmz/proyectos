@@ -21,12 +21,12 @@ describe('portada', () => {
   });
   it('el hero declara design systems y la implementación en React', () => {
     render(<Hero />);
-    expect(screen.getByText(/Product Designer · Design Systems · B2B SaaS e Insurtech/)).toBeInTheDocument();
+    expect(screen.getByText(/Senior Product Designer · Design Systems · B2B SaaS e Insurtech/)).toBeInTheDocument();
     expect(screen.getByText(/revis\w+ la implementación en React/)).toBeInTheDocument();
   });
   it('el hero en inglés dice lo mismo', () => {
     render(<Hero locale="en" />);
-    expect(screen.getByText(/Product Designer · Design Systems · B2B SaaS and Insurtech/)).toBeInTheDocument();
+    expect(screen.getByText(/Senior Product Designer · Design Systems · B2B SaaS and Insurtech/)).toBeInTheDocument();
   });
   it('el hero presenta a la persona y LinkedIn, sin más iconos', () => {
     render(<Hero />);
@@ -74,8 +74,8 @@ describe('portada', () => {
     expect(rows.length).toBe(3);
     const first = screen.getByRole('button', { expanded: true });
     expect(first.textContent).toMatch(/Estrategia y diseño de producto/);
-    expect(first.textContent).toMatch(/06 competencias/);
-    expect(screen.getByText(/Diseño de producto end-to-end/)).toBeInTheDocument();
+    expect(first.textContent).toMatch(/03 competencias/);
+    expect(screen.getByText(/Experiencias complejas en B2B SaaS/)).toBeInTheDocument();
     expect(screen.getByText(/Disponible ahora · roles Senior o Lead de Product Design/)).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /vctrmz47@gmail.com/ })).toHaveAttribute('href', 'mailto:vctrmz47@gmail.com');
     expect(screen.queryByText(/Descargar CV/)).toBeNull();

@@ -8,13 +8,12 @@ export const SITE = {
   /* El repositorio de esta web: la prueba de que el diseño llega a código.
      Solo se enlaza en producción cuando es público (ver el plan del 29-09). */
   repo: 'https://github.com/vctrmz/proyectos',
-  /* Un CV por idioma. El inglés se escribe en `scripts/cv/cv-en.html` y se
-     imprime con `npm run cv`; el español se imprimió a mano desde el navegador
-     y no tiene fuente en el repositorio. kb lo comprueba un test contra cada
-     archivo: la etiqueta del peso no puede mentir. */
+  /* Un CV por idioma. Los dos se escriben en `scripts/cv/cv-<idioma>.html` y
+     se imprimen con `npm run cv`. kb lo comprueba un test contra cada archivo:
+     la etiqueta del peso no puede mentir. */
   cv: {
-    es: { href: '/victor-maza-cv.pdf', file: 'Victor_Maza_CV.pdf', kb: 646 },
-    en: { href: '/victor-maza-cv-en.pdf', file: 'Victor_Maza_CV_EN.pdf', kb: 69 },
+    es: { href: '/victor-maza-cv.pdf', file: 'Victor_Maza_CV.pdf', kb: 73 },
+    en: { href: '/victor-maza-cv-en.pdf', file: 'Victor_Maza_CV_EN.pdf', kb: 71 },
   },
   /* mazdesignr, con r: behance.net/mazdesign es otro estudio. */
   behance: 'https://www.behance.net/mazdesignr',
