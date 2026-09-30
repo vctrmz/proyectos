@@ -10,7 +10,7 @@ export const ABOUT_EN: typeof ABOUT = {
     'Nine years in dense B2B products: insurance SaaS, digital banking and mobility.',
   ],
   education: [
-    { degree: 'BSc in Computer Science', school: 'Universidad de Oriente', place: 'Cumaná, Venezuela', years: '2017' },
+    { degree: '5-year university degree in Computer Science', school: 'Universidad de Oriente', place: 'Cumaná, Venezuela', years: '2017' },
   ],
   ikigai: {
     tech: 'Computer scientist by training: I know how what I design gets built, and I respect how the framework thinks.',
