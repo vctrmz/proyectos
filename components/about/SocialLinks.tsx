@@ -1,7 +1,7 @@
 import { SITE } from '@/lib/content/site';
 import { SOCIAL_ICON, type SocialName } from '@/components/ui/socialIcons';
 import s from './about.module.css';
-const LINKS: [SocialName, string][] = [['LinkedIn', SITE.linkedin], ['GitHub', SITE.github], ['Behance', SITE.behance]];
+const LINKS: [SocialName, string][] = [['LinkedIn', SITE.linkedin], ['Behance', SITE.behance]];
 export default function SocialLinks() {
   return (
     <ul className={s.social} aria-label="Redes">

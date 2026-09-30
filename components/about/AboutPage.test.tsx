@@ -26,7 +26,10 @@ describe('AboutPage', () => {
     expect(screen.getByText(/Universidad de Oriente/).textContent).not.toMatch(/2006/);
     expect(screen.getByRole('button', { name: /ver el detalle/i })).toBeInTheDocument();
     const redes = screen.getByRole('list', { name: /redes/i });
-    expect(within(redes).getAllByRole('link')).toHaveLength(3);
+    /* Dos redes: LinkedIn y Behance. GitHub se retiró de la fila de iconos. */
+    const enlaces = within(redes).getAllByRole('link');
+    expect(enlaces).toHaveLength(2);
+    expect(enlaces.map((a) => a.textContent)).toEqual(['LinkedIn ↗', 'Behance ↗']);
     expect(within(redes).getByRole('link', { name: /LinkedIn/ })).toHaveAttribute('href', 'https://linkedin.com/in/victor-maza47');
   });
   it('las pestañas de empresas son tabs accesibles', () => {

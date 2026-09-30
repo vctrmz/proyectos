@@ -28,12 +28,15 @@ describe('portada', () => {
     render(<Hero locale="en" />);
     expect(screen.getByText(/Product Designer · Design Systems · B2B SaaS and Insurtech/)).toBeInTheDocument();
   });
-  it('el hero presenta a la persona, LinkedIn y GitHub', () => {
+  it('el hero presenta a la persona y LinkedIn, sin más iconos', () => {
     render(<Hero />);
     expect(screen.getByText(/Víctor Maza/)).toBeInTheDocument();
-    for (const n of ['LinkedIn', 'GitHub']) expect(screen.getByRole('link', { name: new RegExp(n) })).toHaveAttribute('target', '_blank');
-    expect(screen.getByRole('link', { name: /GitHub/ })).toHaveAttribute('href', 'https://github.com/vctrmz');
-    expect(screen.queryByRole('link', { name: /Instagram/ })).toBeNull();
+    expect(screen.getByRole('link', { name: /LinkedIn/ })).toHaveAttribute('target', '_blank');
+    /* La fila de iconos es solo LinkedIn: el código se enseña en el bloque
+       Stack y en el caso de esta web, con su enlace escrito. */
+    for (const n of ['GitHub', 'Instagram', 'Behance']) {
+      expect(screen.queryByRole('link', { name: new RegExp(n) }), n).toBeNull();
+    }
     expect(screen.getByRole('link', { name: /Descargar CV/ })).toHaveAttribute('href', '/victor-maza-cv.pdf');
   });
   it('sectores: cinco con años y enlace', () => {

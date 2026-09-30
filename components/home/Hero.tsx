@@ -12,7 +12,6 @@ import s from './Hero.module.css';
 
 const SOCIAL: { name: SocialName; href: string }[] = [
   { name: 'LinkedIn', href: SITE.linkedin },
-  { name: 'GitHub', href: SITE.github },
 ];
 
 export default function Hero({ locale = DEFAULT_LOCALE }: { locale?: Locale }) {
