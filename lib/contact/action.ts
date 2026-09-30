@@ -57,8 +57,16 @@ export async function enviarContacto(_prev: EstadoContacto, form: FormData): Pro
 
   const clave = process.env.RESEND_API_KEY;
   /* Sin clave no se finge un envío: se dice que falló y se ofrece el correo
-     directo, que es lo único que de verdad le sirve a quien está escribiendo. */
-  if (!clave) return { estado: 'error', errores: { global: t.errServicio }, valores };
+     directo, que es lo único que de verdad le sirve a quien está escribiendo.
+
+     Al visitante se le da siempre el mismo mensaje —no es asunto suyo por qué
+     falló—, pero el registro del servidor distingue los casos. Sin esto, «no
+     he podido enviarlo» puede ser una clave que falta, una clave inválida o
+     Resend rechazando, y desde fuera los tres se ven idénticos. */
+  if (!clave) {
+    console.error('[contacto] falta RESEND_API_KEY en el entorno: la variable no llegó al despliegue');
+    return { estado: 'error', errores: { global: t.errServicio }, valores };
+  }
 
   try {
     const { error } = await new Resend(clave).emails.send({
@@ -68,9 +76,13 @@ export async function enviarContacto(_prev: EstadoContacto, form: FormData): Pro
       subject: unaLinea(`Portafolio · ${nombre}`),
       text: `${nombre} <${email}>\nIdioma de la página: ${locale}\n\n${mensaje}\n`,
     });
-    if (error) return { estado: 'error', errores: { global: t.errServicio }, valores };
+    if (error) {
+      console.error('[contacto] Resend rechazó el envío:', error.name, '·', error.message);
+      return { estado: 'error', errores: { global: t.errServicio }, valores };
+    }
     return { estado: 'ok' };
-  } catch {
+  } catch (e) {
+    console.error('[contacto] el envío reventó:', e instanceof Error ? e.message : e);
     return { estado: 'error', errores: { global: t.errServicio }, valores };
   }
 }
