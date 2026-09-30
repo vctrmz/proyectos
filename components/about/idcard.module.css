@@ -36,3 +36,6 @@
   .sway { animation: none; }
   .pivot { cursor: default; }
 }
+
+/* El correo y su boton de copiar en una fila; el boton no empuja la tarjeta. */
+.mailRow { display: flex; align-items: center; justify-content: space-between; gap: 8px; }

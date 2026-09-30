@@ -1,6 +1,7 @@
 import Inset from '@/components/ui/Inset';
 import TwoToneHeading from '@/components/ui/TwoToneHeading';
 import StarfieldButton from '@/components/ui/StarfieldButton';
+import CopyEmail from '@/components/ui/CopyEmail';
 import Starfield from './Starfield';
 import Competencies from './Competencies';
 import { SITE } from '@/lib/content/site';
@@ -27,6 +28,7 @@ export default function Closing({ locale = DEFAULT_LOCALE }: { locale?: Locale }
             <p className={s.available}><span className={s.dot} aria-hidden="true" />{ui.home.availability}</p>
             <div className={s.ctas}>
               <StarfieldButton label={SITE.email} href={`mailto:${SITE.email}`} />
+              <CopyEmail />
             </div>
           </div>
           <Competencies />

@@ -40,6 +40,7 @@ export interface Ui {
   cv: { label: string; format: string; download: (lang: string, kb: number) => string };
   footer: { role: string; contact: string; available: string; legal: string; privacy: string; cookies: string; remote: string };
   consent: { text: string; accept: string; reject: string; change: string };
+  copy: { label: string; done: string; failed: string };
   lang: { label: string };
 }
 
@@ -93,6 +94,7 @@ const es: Ui = {
   cv: { label: 'Descargar CV', format: 'PDF', download: (lang, kb) => `Descargar el CV en ${lang} (PDF, ${kb} KB)` },
   footer: { role: 'Senior Product Designer · Design Systems · B2B SaaS e Insurtech', contact: 'Ponte en contacto', available: 'Disponible ahora · Senior / Lead · remoto', legal: '© 2026', privacy: 'Privacidad', cookies: 'Cookies', remote: 'Trabajo en remoto' },
   consent: { text: 'Uso analítica para ver cómo se navega esta web: Google Analytics, Microsoft Clarity, Hotjar, Plerdy y HubSpot. Usan cookies o almacenamiento del navegador, nada de publicidad, y solo se activan si lo aceptas.', accept: 'Aceptar', reject: 'Rechazar', change: 'Cambiar mi decisión' },
+  copy: { label: 'Copiar el correo', done: 'Correo copiado', failed: 'No se pudo copiar' },
   lang: { label: 'Idioma' },
 };
 
@@ -146,6 +148,7 @@ const en: Ui = {
   cv: { label: 'Download CV', format: 'PDF', download: (lang, kb) => `Download the CV in ${lang} (PDF, ${kb} KB)` },
   footer: { role: 'Senior Product Designer · Design Systems · B2B SaaS and Insurtech', contact: 'Get in touch', available: 'Available now · Senior / Lead · remote', legal: '© 2026', privacy: 'Privacy', cookies: 'Cookies', remote: 'Working remotely' },
   consent: { text: 'I use analytics to see how this site is read: Google Analytics, Microsoft Clarity, Hotjar, Plerdy and HubSpot. They use cookies or browser storage, never advertising, and load only if you accept.', accept: 'Accept', reject: 'Decline', change: 'Change my choice' },
+  copy: { label: 'Copy the email address', done: 'Email copied', failed: 'Could not copy' },
   lang: { label: 'Language' },
 };
 

@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import StarfieldButton from '@/components/ui/StarfieldButton';
+import CopyEmail from '@/components/ui/CopyEmail';
 import { SITE } from '@/lib/content/site';
 import { DEFAULT_LOCALE, ROUTES, type Locale } from '@/lib/i18n/config';
 import { getUi } from '@/lib/i18n/ui';
@@ -20,6 +21,7 @@ export default function SiteFooter({ locale = DEFAULT_LOCALE }: { locale?: Local
           <p className={s.kicker}>{ui.footer.contact}</p>
           <div className={s.ctas}>
             <StarfieldButton label={SITE.email} href={`mailto:${SITE.email}`} />
+            <CopyEmail />
             <StarfieldButton label="LinkedIn" href={SITE.linkedin} external />
           </div>
         </div>
