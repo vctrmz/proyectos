@@ -5,7 +5,7 @@ import AxeBuilder from '@axe-core/playwright';
    rendimiento en tres rutas y tres viewports. Requiere el servidor arrancado
    (BASE, por defecto http://localhost:3000). Falla si axe encuentra violaciones. */
 const BASE = process.env.BASE || 'http://localhost:3000';
-const ROUTES = ['/', '/casos/ayax', '/casos/hermes', '/sobre-mi'];
+const ROUTES = ['/', '/casos/ayax', '/casos/hermes', '/sobre-mi', '/es/cases/esta-web', '/en/about'];
 const VIEWPORTS = [[1280, 800], [768, 1024], [375, 812]];
 const browser = await chromium.launch();
 const report = [];

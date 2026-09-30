@@ -4,6 +4,8 @@
 .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 500; min-height: 44px; }
 .mark { width: 28px; height: 28px; border-radius: 50%; background: var(--ink); color: #fff; display: inline-grid; place-items: center; font-size: 11px; letter-spacing: .04em; }
 .links { display: flex; align-items: center; gap: 4px; list-style: none; margin: 0; padding: 0; }
-.link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: var(--r-pill); color: var(--ink-2); font-size: var(--fs-200); }
+.link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: var(--r-pill); color: var(--ink-2); font-size: var(--fs-200); white-space: nowrap; }
 .link:hover, .link[aria-current="page"] { color: var(--ink); background: var(--surface); }
-@media (max-width: 480px) { .brand span:last-child { display: none; } }
+/* En móvil caben marca, dos enlaces, idioma y Contactar si los enlaces
+   aprietan el relleno; si no, «Sobre mí» se partía en dos líneas. */
+@media (max-width: 480px) { .brand span:last-child { display: none; } .bar { gap: var(--sp-8); } .link { padding: 0 8px; } }
