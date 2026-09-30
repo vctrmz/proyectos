@@ -18,6 +18,7 @@ import BioDrawer from './BioDrawer';
 import SocialLinks from './SocialLinks';
 import Bookshelf from './Bookshelf';
 import Quote from './Quote';
+import ContactForm from '@/components/contact/ContactForm';
 import s from './about.module.css';
 
 export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale }) {
@@ -78,6 +79,8 @@ export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale
           </section>
           <section id="contacto" className={s.sec} aria-labelledby="a-contacto"><h2 id="a-contacto">{t.contact}</h2>
             <div className={s.contact}><StarfieldButton label={SITE.email} href={`mailto:${SITE.email}`} /><CopyEmail /><Button href={SITE.linkedin} external variant="outline">LinkedIn</Button></div>
+            {/* Aquí el fondo es claro, así que el formulario va en su tono. */}
+            <ContactForm locale={locale} tono="claro" />
           </section>
         </div>
       </main>

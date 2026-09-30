@@ -1,0 +1,107 @@
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+
+/* El SDK se sustituye por un espía: estos tests comprueban las reglas del
+   formulario, no que Resend sepa mandar correos. */
+const enviar = vi.fn();
+vi.mock('resend', () => ({ Resend: class { emails = { send: enviar }; } }));
+
+import { enviarContacto } from './action';
+import { ESTADO_INICIAL } from './estado';
+
+const datos = (extra: Record<string, string> = {}) => {
+  const f = new FormData();
+  f.set('locale', 'es');
+  f.set('nombre', 'Ana Ruiz');
+  f.set('email', 'ana@empresa.com');
+  f.set('mensaje', 'Tenemos un ERP con reglas por cliente y queremos ordenarlo.');
+  f.set('privacidad', 'on');
+  for (const [k, v] of Object.entries(extra)) f.set(k, v);
+  return f;
+};
+
+beforeEach(() => {
+  enviar.mockReset();
+  enviar.mockResolvedValue({ data: { id: 'x' }, error: null });
+  process.env.RESEND_API_KEY = 'test';
+});
+
+describe('enviarContacto', () => {
+  it('envía a mi bandeja con reply-to del visitante', async () => {
+    const r = await enviarContacto(ESTADO_INICIAL, datos());
+    expect(r.estado).toBe('ok');
+    const carga = enviar.mock.calls[0][0];
+    expect(carga.to).toBe('vctrmz47@gmail.com');
+    /* Sin reply-to habría que copiar la dirección a mano para responder. */
+    expect(carga.replyTo).toBe('ana@empresa.com');
+    expect(carga.text).toContain('Tenemos un ERP');
+  });
+
+  it('el asunto nunca lleva saltos de línea', async () => {
+    await enviarContacto(ESTADO_INICIAL, datos({ nombre: 'Ana\nBcc: otro@sitio.com' }));
+    expect(enviar.mock.calls[0][0].subject).not.toMatch(/[\r\n]/);
+  });
+
+  describe('validación', () => {
+    it('reúne todos los errores de una vez, no de uno en uno', async () => {
+      const r = await enviarContacto(ESTADO_INICIAL, datos({ nombre: '', email: 'no-es-correo', mensaje: 'corto' }));
+      expect(r.estado).toBe('error');
+      expect(Object.keys(r.errores!).sort()).toEqual(['email', 'mensaje', 'nombre']);
+      expect(enviar).not.toHaveBeenCalled();
+    });
+    it('sin aceptar la privacidad no se envía', async () => {
+      const f = datos();
+      f.delete('privacidad');
+      const r = await enviarContacto(ESTADO_INICIAL, f);
+      expect(r.errores?.privacidad).toBeTruthy();
+      expect(enviar).not.toHaveBeenCalled();
+    });
+    /* Lo escrito vuelve al formulario: nadie teclea dos veces el mismo párrafo
+       porque se equivocó en el correo. */
+    it('devuelve lo escrito para no perderlo', async () => {
+      const r = await enviarContacto(ESTADO_INICIAL, datos({ email: 'mal' }));
+      expect(r.valores?.mensaje).toContain('ERP');
+      expect(r.valores?.nombre).toBe('Ana Ruiz');
+    });
+    it('los errores salen en el idioma de la página', async () => {
+      const r = await enviarContacto(ESTADO_INICIAL, datos({ locale: 'en', email: 'mal' }));
+      expect(r.errores?.email).toMatch(/does not look valid/);
+    });
+  });
+
+  describe('robots', () => {
+    /* A un robot se le responde «enviado» sin enviar: decirle que se le ha
+       pillado sólo le enseña a evitar la trampa la próxima vez. */
+    it('el campo trampa relleno finge éxito y no envía', async () => {
+      const r = await enviarContacto(ESTADO_INICIAL, datos({ empresa: 'SEO Corp' }));
+      expect(r.estado).toBe('ok');
+      expect(enviar).not.toHaveBeenCalled();
+    });
+    /* Hubo una trampa de tiempo y se retiró: con autocompletado una persona
+       envía en menos de tres segundos, y el fallo tiraba mensajes reales
+       fingiendo que habían salido. Este test fija que enviar rápido funciona. */
+    it('enviar deprisa no se castiga: un humano con autocompletado es rápido', async () => {
+      await enviarContacto(ESTADO_INICIAL, datos());
+      expect(enviar).toHaveBeenCalled();
+    });
+  });
+
+  describe('cuando el envío falla', () => {
+    it('sin clave lo dice y ofrece el correo directo, en vez de fingir', async () => {
+      delete process.env.RESEND_API_KEY;
+      const r = await enviarContacto(ESTADO_INICIAL, datos());
+      expect(r.estado).toBe('error');
+      expect(r.errores?.global).toMatch(/vctrmz47@gmail\.com/);
+      expect(enviar).not.toHaveBeenCalled();
+    });
+    it('si el servicio devuelve error, no dice que salió', async () => {
+      enviar.mockResolvedValue({ data: null, error: { message: 'rate limited' } });
+      const r = await enviarContacto(ESTADO_INICIAL, datos());
+      expect(r.estado).toBe('error');
+      expect(r.valores?.mensaje).toContain('ERP');
+    });
+    it('si el SDK revienta, tampoco', async () => {
+      enviar.mockRejectedValue(new Error('red caída'));
+      expect((await enviarContacto(ESTADO_INICIAL, datos())).estado).toBe('error');
+    });
+  });
+});

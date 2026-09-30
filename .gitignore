@@ -7,3 +7,9 @@ _og-source.html
 out/
 *.tsbuildinfo
 next-env.d.ts
+
+# Claves. El repositorio es publico: un `git add -A` con un .env dentro las
+# publica para siempre. El ejemplo si se versiona, porque no lleva valores.
+.env
+.env.*
+!.env.example

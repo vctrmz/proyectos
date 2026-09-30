@@ -20,7 +20,8 @@
     "next": "^16.3.5",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
-    "remixicon": "^4.9.1"
+    "remixicon": "^4.9.1",
+    "resend": "^6.31.0"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",

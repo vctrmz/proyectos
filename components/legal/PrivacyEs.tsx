@@ -6,7 +6,7 @@ export default function PrivacyEs() {
       <main id="contenido">
         <p className="kicker"><span>Legal</span></p>
         <h1>Privacidad y cookies</h1>
-        <p className="updated">Última actualización: 28 de septiembre de 2026</p>
+        <p className="updated">Última actualización: 1 de octubre de 2026</p>
         <p className="lead">Esta web es mi portafolio. Recojo datos por dos motivos: entender cómo se navega para mejorarla, y poder responder si me escribes. Aquí tienes qué recojo, con qué herramientas, y cómo cambiar de opinión cuando quieras.</p>
 
         <section id="responsable">
@@ -54,6 +54,11 @@ export default function PrivacyEs() {
               <p>Si me escribes o rellenas un formulario, guarda tus datos de contacto y el recorrido que hiciste por la web para que pueda responderte con contexto. Sin escribirme, solo ve visitas anónimas. Solo se activa con tu consentimiento.</p>
             </div>
             <div className="tool">
+              <span className="who">Formulario · Resend (Resend Inc.)</span>
+              <h3>Si me escribes por el formulario</h3>
+              <p>Recojo tu nombre, tu correo y tu mensaje, y sólo para responderte. El envío lo hace <strong>Resend</strong>, que actúa como encargado del tratamiento: el mensaje viaja por su servidor hasta mi bandeja. <strong>No hay base de datos</strong>: esta web no guarda nada de lo que escribes, lo que queda del mensaje es el correo que me llega. La base legal es tu consentimiento al marcar la casilla, y después el interés legítimo en atender tu consulta.</p>
+            </div>
+            <div className="tool">
               <span className="who">Correo electrónico</span>
               <h3>Si me escribes directamente</h3>
               <p>Uso tu nombre, tu correo y lo que me cuentes exclusivamente para responderte y, si procede, para la relación profesional que surja. La base es el interés legítimo en atender tu mensaje y, después, la ejecución de lo que acordemos.</p>
@@ -95,6 +100,7 @@ export default function PrivacyEs() {
             <li><a href="https://www.hotjar.com/legal/policies/privacy/" target="_blank" rel="noopener">Política de privacidad de Hotjar ↗</a></li>
             <li><a href="https://www.plerdy.com/privacy-policy/" target="_blank" rel="noopener">Política de privacidad de Plerdy ↗</a></li>
             <li><a href="https://legal.hubspot.com/privacy-policy" target="_blank" rel="noopener">Política de privacidad de HubSpot ↗</a></li>
+            <li><a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Política de privacidad de Resend ↗</a></li>
             <li><a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Política de privacidad de Vercel ↗</a></li>
           </ul>
         </section>
@@ -107,7 +113,7 @@ export default function PrivacyEs() {
             <li><strong>Hotjar:</strong> grabaciones y mapas de calor, hasta 365 días.</li>
             <li><strong>Plerdy:</strong> no publica un plazo concreto para los datos de navegación; los borro desde su panel si dejo de usarlo.</li>
             <li><strong>HubSpot:</strong> mientras dure la conversación o la relación profesional, o hasta que pidas que lo borre.</li>
-            <li><strong>Correo:</strong> mientras dure la conversación o la relación profesional, o hasta que pidas que lo borre.</li>
+            <li><strong>Formulario y correo:</strong> mientras dure la conversación o la relación profesional, o hasta que pidas que lo borre. Resend conserva el registro de envío según su propia política.</li>
           </ul>
         </section>
 

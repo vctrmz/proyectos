@@ -4,6 +4,7 @@ import StarfieldButton from '@/components/ui/StarfieldButton';
 import CopyEmail from '@/components/ui/CopyEmail';
 import Starfield from './Starfield';
 import Competencies from './Competencies';
+import ContactForm from '@/components/contact/ContactForm';
 import { SITE } from '@/lib/content/site';
 import { DEFAULT_LOCALE, type Locale } from '@/lib/i18n/config';
 import { getUi } from '@/lib/i18n/ui';
@@ -30,6 +31,9 @@ export default function Closing({ locale = DEFAULT_LOCALE }: { locale?: Locale }
               <StarfieldButton label={SITE.email} href={`mailto:${SITE.email}`} />
               <CopyEmail />
             </div>
+            {/* El correo directo se queda para quien tiene cliente configurado;
+                el formulario es para quien no, que son mayoría. */}
+            <ContactForm locale={locale} />
           </div>
           <Competencies />
         </div>

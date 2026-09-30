@@ -41,6 +41,14 @@ export interface Ui {
   footer: { role: string; contact: string; available: string; legal: string; privacy: string; cookies: string; remote: string };
   consent: { text: string; accept: string; reject: string; change: string };
   copy: { label: string; done: string; failed: string };
+  contact: {
+    title: string; lead: string;
+    nombre: string; email: string; mensaje: string; privacidad: string; privacidadEnlace: string;
+    enviar: string; enviando: string;
+    okTitulo: string; okTexto: string; otro: string;
+    errNombre: string; errEmail: string; errMensaje: string; errPrivacidad: string; errServicio: string;
+    obligatorio: string;
+  };
   lang: { label: string };
 }
 
@@ -95,6 +103,18 @@ const es: Ui = {
   footer: { role: 'Senior Product Designer · Design Systems · B2B SaaS e Insurtech', contact: 'Ponte en contacto', available: 'Disponible ahora · Senior / Lead · remoto', legal: '© 2026', privacy: 'Privacidad', cookies: 'Cookies', remote: 'Trabajo en remoto' },
   consent: { text: 'Uso analítica para ver cómo se navega esta web: Google Analytics, Microsoft Clarity, Hotjar, Plerdy y HubSpot. Usan cookies o almacenamiento del navegador, nada de publicidad, y solo se activan si lo aceptas.', accept: 'Aceptar', reject: 'Rechazar', change: 'Cambiar mi decisión' },
   copy: { label: 'Copiar el correo', done: 'Correo copiado', failed: 'No se pudo copiar' },
+  contact: {
+    title: 'Escríbeme', lead: 'Cuéntame qué producto tienes entre manos. Respondo yo, y en un día laborable.',
+    nombre: 'Tu nombre', email: 'Tu correo', mensaje: 'Qué necesitas', privacidad: 'He leído y acepto la', privacidadEnlace: 'política de privacidad',
+    enviar: 'Enviar mensaje', enviando: 'Enviando…',
+    okTitulo: 'Mensaje enviado.', okTexto: 'Te respondo a tu correo en un día laborable.', otro: 'Escribir otro',
+    errNombre: 'Escribe tu nombre, aunque sea sólo el de pila.',
+    errEmail: 'Ese correo no parece válido, y es por donde te respondo.',
+    errMensaje: 'Cuéntame algo más: con diez caracteres no sé qué necesitas.',
+    errPrivacidad: 'Necesito que aceptes la política para poder responderte.',
+    errServicio: 'No he podido enviarlo. Escríbeme directamente a vctrmz47@gmail.com y lo vemos.',
+    obligatorio: 'obligatorio',
+  },
   lang: { label: 'Idioma' },
 };
 
@@ -149,6 +169,18 @@ const en: Ui = {
   footer: { role: 'Senior Product Designer · Design Systems · B2B SaaS and Insurtech', contact: 'Get in touch', available: 'Available now · Senior / Lead · remote', legal: '© 2026', privacy: 'Privacy', cookies: 'Cookies', remote: 'Working remotely' },
   consent: { text: 'I use analytics to see how this site is read: Google Analytics, Microsoft Clarity, Hotjar, Plerdy and HubSpot. They use cookies or browser storage, never advertising, and load only if you accept.', accept: 'Accept', reject: 'Decline', change: 'Change my choice' },
   copy: { label: 'Copy the email address', done: 'Email copied', failed: 'Could not copy' },
+  contact: {
+    title: 'Write to me', lead: 'Tell me what product you are working on. I answer personally, within one working day.',
+    nombre: 'Your name', email: 'Your email', mensaje: 'What you need', privacidad: 'I have read and accept the', privacidadEnlace: 'privacy policy',
+    enviar: 'Send message', enviando: 'Sending…',
+    okTitulo: 'Message sent.', okTexto: 'I will reply to your email within one working day.', otro: 'Write another',
+    errNombre: 'Please write your name, a first name is enough.',
+    errEmail: 'That email does not look valid, and it is how I reply.',
+    errMensaje: 'Tell me a bit more: ten characters is not enough to know what you need.',
+    errPrivacidad: 'I need you to accept the policy so that I can reply.',
+    errServicio: 'I could not send it. Write to me directly at vctrmz47@gmail.com and we will sort it out.',
+    obligatorio: 'required',
+  },
   lang: { label: 'Language' },
 };
 
