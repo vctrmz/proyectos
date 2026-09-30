@@ -26,8 +26,9 @@
 .contact { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 @media (max-width: 767px) { .two { grid-template-columns: minmax(0, 1fr); } }
 .bio { display: grid; gap: var(--sp-16); }
-.bio p { font-size: var(--fs-300); line-height: 1.7; color: var(--ink-2); }
-.bio p:first-child { font-size: var(--fs-500); color: var(--ink); }
+.bio { gap: 10px; }
+.bio p { font-size: var(--fs-200); line-height: 1.6; color: var(--ink-2); }
+.bio p:first-child { font-size: var(--fs-400); line-height: 1.45; color: var(--ink); }
 .bio strong { color: var(--ink); font-weight: 500; }
 .social { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: var(--sp-24) 0 0; padding: 0; }
 /* Los dos caminos principales en la misma fila, tras la presentación y con el

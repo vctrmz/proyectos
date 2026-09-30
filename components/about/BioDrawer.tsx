@@ -21,7 +21,7 @@ export default function BioDrawer({ locale }: { locale?: 'es' | 'en' }) {
       <span ref={(el) => { cta.current = el?.querySelector('button') ?? null; }}>
         <Button onClick={() => setOpen(true)}>{t.drawer}</Button>
       </span>
-      <Drawer open={open} onClose={() => setOpen(false)} title={lang === "en" ? "The detail" : "El detalle"} returnFocusTo={cta}>
+      <Drawer open={open} onClose={() => setOpen(false)} title={t.drawerTitle} returnFocusTo={cta}>
         <div className={s.bio}>
           {ABOUT.bio.map((para) => <p key={para.slice(0, 40)}>{splitBold(para).map((x, i) => (x.strong ? <strong key={i}>{x.text}</strong> : <span key={i}>{x.text}</span>))}</p>)}
         </div>

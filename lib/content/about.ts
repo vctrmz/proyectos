@@ -61,20 +61,28 @@ export const ABOUT = {
     'Handoff acompañado y diálogo técnico con desarrollo',
     'Research por observación indirecta cuando no hay acceso a usuarios',
   ],
+  /* El cajón se llama «Mi forma de trabajar», así que aquí va el método y no
+     el catálogo de productos —eso ya está en los casos y en la portada—. Dos
+     párrafos de entrada y el detalle en la infografía, que se lee paso a paso
+     en lugar de scrollear. En lenguaje corriente: quien decide contratar no
+     siempre es diseñador. */
   bio: [
-    'Un *holding con cinco productos y un solo diseñador*: el ERP asegurador y su administrador con *design system completo*; los productos ligeros con *brandsheet y UI kit*, lo justo para sostener la coherencia sin una gobernanza que no necesitan.',
-    'Alrededor del núcleo: *facturación electrónica* con dos audiencias opuestas (el asesor que factura a diario y necesita velocidad; el cliente que entra una vez al mes y necesita contexto), un *sistema de pólizas 360*, la *gestión de usuarios y permisos* que cruza los cinco productos y un *e-commerce* como línea alternativa. *Cinco productos, un solo lenguaje de diseño.*',
-    'El punto de partida fue una *auditoría del monorepo*: *267 valores de color reducidos a 24 tokens* con un rol asignado cada uno, *adoptados por los cuatro desarrolladores front*. Sin esa base compartida, reutilizar componentes entre productos no ahorra nada.',
-    'Es *producto B2B denso*: tablas de alta densidad, wizards de varios pasos, formularios generados por esquema, white-labeling por tenant y reglas de negocio que cambian según el contrato. *Nada de eso se resuelve pantalla a pantalla.*',
+    'Trabajo igual en un ERP asegurador que en una tienda online: *primero entender el negocio, después ordenar lo entendido y sólo al final dibujar*. Si me salto los dos primeros pasos sale algo bonito que no resuelve nada.',
+    'El método se adapta al terreno. Cuando la funcionalidad es nueva, *investigo a fondo antes de proponer*; cuando el camino ya está hecho, *prototipo rápido sobre lo que existe*. Lo que no cambia es que *cada decisión se pueda explicar en lenguaje de negocio*, porque un diseño que no se sabe defender no se aprueba.',
   ],
   process: {
-    intro: 'Mi proceso es *iterativo y se adapta a la madurez del producto*.',
+    intro: 'Cinco pasos, siempre en el mismo orden. Lo que cambia es *cuánto tiempo pasa en cada uno* según lo maduro que esté el producto.',
     steps: [
-      { id: 'discovery', name: 'Discovery', body: 'Arranco en *discovery con Product Owners y stakeholders* para separar el problema real de la solución que ya traen pensada.' },
-      { id: 'estrategia', name: 'Estrategia', body: 'Según el caso, la estrategia cambia: *benchmark e investigación a fondo* cuando la funcionalidad es nueva, *prototipado rápido sobre el design system* cuando el terreno ya está construido.' },
-      { id: 'arquitectura', name: 'Arquitectura', body: 'Diseño la *arquitectura de la solución antes de dibujar pantallas*: modelo el dominio, los estados y las reglas antes que la interfaz.' },
-      { id: 'validacion', name: 'Validación', body: '*Valido en ciclos cortos* y lo cuento en *lenguaje de negocio*, porque un diseño que no se sabe defender no se aprueba.' },
-      { id: 'handoff', name: 'Handoff', body: 'Cierro con un *handoff que el equipo puede construir sin interpretar nada*: estados, reglas, casos límite y componentes existentes.' },
+      { id: 'entender', name: 'Entender', body: 'Empiezo por el *brief con el cliente* y por separar el problema real de la solución que ya trae pensada. Casi siempre llegan con una pantalla en la cabeza; mi trabajo es averiguar qué les duele de verdad.',
+        does: ['Brief y entrevistas con cliente y responsables de producto', 'Escuchar a quien atiende soporte y a quien vende', 'Escribir en una frase qué hay que resolver y para quién'] },
+      { id: 'investigar', name: 'Investigar', body: 'Antes de inventar nada miro *qué se sabe ya*: los datos de uso que la empresa tiene sin mirar, las quejas que se repiten y lo que otros han publicado sobre el mismo problema. *Cuando no me dan acceso a los usuarios*, lo compenso observando cómo trabajan y apoyándome en estudios ya medidos.',
+        does: ['Datos de uso y comentarios que ya existen en la empresa', 'Estudios, artículos y referencias del sector', 'Observar a alguien haciendo su trabajo, sin interrumpirle'] },
+      { id: 'ordenar', name: 'Ordenar', body: 'Junto todo en *un solo lienzo* y lo reduzco a unas pocas decisiones con su motivo escrito. De ahí sale el mapa: *qué estados existen, qué reglas mandan y qué pasa en los casos raros*, antes de dibujar ninguna pantalla.',
+        does: ['Un lienzo con lo aprendido y lo que aún no sé', 'Las decisiones y los descartes, por escrito', 'El mapa de estados y reglas, antes que la interfaz'] },
+      { id: 'disenar', name: 'Diseñar', body: 'Llevo *dos o tres alternativas comparables* en vez de una sola propuesta: comparar ayuda a decidir y saca la conversación del terreno de los gustos. Todo se monta con piezas del sistema, así que *lo que se aprueba ya se puede construir*.',
+        does: ['Dos o tres alternativas, con su ventaja y su coste', 'Prototipo navegable para verlo funcionando', 'Piezas del design system, no dibujos sueltos'] },
+      { id: 'comprobar', name: 'Comprobar', body: 'Pruebo *con poca gente y pronto*: con cinco personas ya se ve dónde se atasca. Después acompaño la implementación y vuelvo a mirar los datos, porque *lo que la gente dice y lo que hace no coincide*.',
+        does: ['Prueba con cinco personas sobre el prototipo', 'Revisión de la implementación hasta que llega entera', 'Datos de uso después, no sólo opiniones antes'] },
     ],
     principles: [
       { name: 'KISS', body: 'La *solución más simple que resuelve el caso completo*: en producto denso cada elemento de más es carga cognitiva y deuda de mantenimiento.' },
