@@ -15,7 +15,7 @@
 .tiny { padding: 3px 7px; font-size: 10.5px; margin-left: auto; }
 .cPend { background: #f1f2f6; color: #6a6a71; }
 .cCurso { background: #e8eefc; color: #2f5bea; }
-.cOk { background: #e6f6ec; color: #1f9d55; }
+.cOk { background: #e6f6ec; color: #157a41; }
 .cBad { background: #fbeaea; color: #c0392b; }
 
 /* Tabla */
@@ -84,5 +84,5 @@
 .tierOn { color: #fff !important; }
 .tierRow { display: flex; align-items: center; gap: 8px; width: 100%; }
 .tierRow i { height: 7px; border-radius: 4px; background: rgba(18,19,23,.14); display: block; }
-.tierRow em { margin-left: auto; font-size: 10.5px; font-style: normal; color: #1f9d55; }
+.tierRow em { margin-left: auto; font-size: 10.5px; font-style: normal; color: #157a41; }
 .tierOpt { color: var(--ink-3) !important; }

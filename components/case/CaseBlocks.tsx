@@ -75,7 +75,7 @@ export function FindingsTable({ items, ui = ES_FINDINGS }: { items: Finding[]; u
   const t: FindingsUi = 'findings' in (ui as object) ? (ui as { findings: FindingsUi }).findings : (ui as FindingsUi);
   const sev = 'severity' in (ui as object) ? (ui as { severity: Record<string, string> }).severity : null;
   return (
-    <div className={s.tableWrap}>
+    <div className={s.tableWrap} role="region" aria-label={t.caption} tabIndex={0}>
       <table className={s.table}>
         <caption className="visually-hidden">{t.caption}</caption>
         <thead>
