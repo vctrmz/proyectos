@@ -7,9 +7,10 @@ import s from './CvLink.module.css';
    formato y el peso antes del clic; `download` le da un nombre legible. */
 export default function CvLink({ locale = DEFAULT_LOCALE, className = '' }: { locale?: Locale; className?: string }) {
   const t = getUi(locale).cv;
+  const cv = SITE.cv[locale];
   return (
-    <a href={SITE.cv.href} download={SITE.cv.file} type="application/pdf" className={`${s.cv} ${className}`}>
-      {t.label} <span className={s.meta}>({t.format}, {SITE.cv.kb} KB)</span>
+    <a href={cv.href} download={cv.file} type="application/pdf" className={`${s.cv} ${className}`}>
+      {t.label} <span className={s.meta}>({t.format}, {cv.kb} KB)</span>
     </a>
   );
 }

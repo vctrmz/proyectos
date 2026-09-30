@@ -9,7 +9,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "images": "node scripts/build-images.mjs",
-    "audit": "node scripts/audit.mjs"
+    "audit": "node scripts/audit.mjs",
+    "cv": "node scripts/build-cv.mjs"
   },
   "dependencies": {
     "@vercel/speed-insights": "^2.0.0",

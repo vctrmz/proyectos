@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Víctor Maza — Product Designer (UX/UI)</title>
+<!--
+  Fuente del CV en inglés. Se imprime con `npm run cv` (Chromium headless) a
+  public/victor-maza-cv-en.pdf, que es el archivo que enlaza la web en /en.
+
+  Reproduce la maqueta del CV español medida sobre el PDF original: A4, Segoe
+  UI, columna de 528 pt y márgenes de 12 mm. El español se imprimió a mano
+  desde el navegador; este tiene fuente en el repositorio para que la próxima
+  corrección no dependa de acordarse de qué pestaña estaba abierta.
+
+  El inglés está escrito a nivel B2 a propósito: Víctor declara B1 en
+  formación hacia B2, y un CV redactado por encima de su nivel se cae en la
+  primera entrevista. Frases cortas, vocabulario común, ni una expresión
+  idiomática. Los datos son los mismos que en español, sin añadir ni redondear.
+-->
+<style>
+  @page { size: A4; margin: 12mm; }
+  * { box-sizing: border-box; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 9.1pt;
+    line-height: 1.42;
+    color: #1a1a1a;
+    orphans: 2;
+    widows: 2;
+  }
+  b, strong { font-weight: 600; color: #000; }
+
+  .role { margin: 0; font-size: 18.5pt; font-weight: 600; color: #101010; letter-spacing: -0.01em; }
+  .name { margin: 2pt 0 0; font-size: 10.5pt; font-weight: 600; color: #6a6a6a; letter-spacing: 0.22em; }
+  .contact { margin: 5pt 0 0; font-size: 8.4pt; color: #4a4a4a; }
+
+  h2 {
+    margin: 13pt 0 0;
+    padding-bottom: 3pt;
+    border-bottom: 0.6pt solid #d8d8d8;
+    font-size: 8.1pt;
+    font-weight: 700;
+    color: #101010;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  h2 + * { margin-top: 7pt; }
+
+  .profile { margin: 0; text-align: justify; }
+
+  ul { margin: 0; padding: 0; list-style: none; }
+  li { margin: 0 0 2.5pt; padding-left: 8pt; text-indent: -8pt; }
+  li::before { content: '· '; color: #6a6a6a; }
+  li > span { text-indent: 0; }
+
+  .tools p { margin: 0 0 4pt; }
+
+  /* Un puesto no se parte de su subtítulo ni de su primera línea: el salto de
+     página va antes del bloque entero, no en medio de la cabecera. */
+  h2, .job, .what, .prev { break-after: avoid; }
+  .job { break-inside: avoid; margin-top: 9pt; display: flex; align-items: baseline; gap: 10pt; }
+  .job h3 { margin: 0; font-size: 9.9pt; font-weight: 600; color: #000; }
+  .job .when { margin: 0; margin-left: auto; font-size: 8.3pt; color: #555; white-space: nowrap; }
+  .what { margin: 1pt 0 4pt; font-size: 8.5pt; font-style: italic; color: #4a4a4a; }
+  .prev { margin: 1pt 0 4pt; font-size: 8.4pt; color: #3a3a3a; }
+
+  .two { display: flex; gap: 26pt; }
+  .two > section { flex: 1 1 0; min-width: 0; }
+  .two h2 { margin-top: 13pt; }
+</style>
+</head>
+<body>
+
+  <header>
+    <p class="role">Product Designer (UX/UI)</p>
+    <p class="name">VÍCTOR MAZA</p>
+    <p class="contact">Málaga, Spain | vctrmz47@gmail.com | linkedin.com/in/victor-maza47 | behance.net/mazdesignr | victormaza.vercel.app/en</p>
+  </header>
+
+  <h2>Professional profile</h2>
+  <p class="profile">Product Designer with <b>9 years of experience</b> turning complex business problems into solid information architecture and flows that people can actually work with: insurance ERP, digital banking, fintech and mobility. My speciality is <b>B2B products sold to many clients at the same time</b>: for four years I designed a multi-tenant SaaS platform able to support different business rules, currencies, languages and brands on a single product, without forking it per client. I build design systems with usage rules and decision criteria, not only component libraries. Hybrid profile: I have a degree in Computer Science and I work with HTML and CSS, so I can make ideas concrete and talk to developers as an equal. Four years presenting and defending proposals to the Product Owners of client companies.</p>
+
+  <h2>Skills</h2>
+  <ul>
+    <li>Multi-tenant products and <b>white-labeling</b>: theme, wording and language as per-client configuration</li>
+    <li>Design of <b>configuration layers</b>: product catalogue, decision rules, schema-defined forms and multi-step wizards</li>
+    <li>Information architecture and critical flows in dense, regulated domains</li>
+    <li>Scalable design systems with governance, usage criteria and parity with code that can be audited</li>
+    <li>Dense B2B products: tables as a workspace, long step-by-step processes and UI that changes with permissions</li>
+    <li><b>WCAG 2.2 AAA</b> accessibility as an entry requirement, not as a goal</li>
+    <li>Client discovery and defending proposals to Product Owners</li>
+    <li>Comparing real alternatives as a way to decide</li>
+    <li>Research and validation with data from real use</li>
+    <li>Design of onboarding, activation, security and authentication in a regulated environment</li>
+    <li>Interactive prototyping and handoff followed through to production</li>
+    <li>Generative AI applied to the design process</li>
+  </ul>
+
+  <h2>Tools and technology</h2>
+  <div class="tools">
+    <p><b>Design and prototyping:</b> Figma (advanced), FigJam, interactive prototypes, Adobe Photoshop, Adobe Illustrator.</p>
+    <p><b>Research and analytics:</b> Microsoft Clarity, Maze, discovery sessions with clients and stakeholders.</p>
+    <p><b>Code and CMS:</b> HTML, CSS, WordPress. Daily collaboration with React, React Native, Chakra UI, Tailwind CSS, Flutter, Symfony, Laravel, Android and iOS.</p>
+    <p><b>AI:</b> interactive prototyping, exploring alternatives, summarising research and documenting flows.</p>
+  </div>
+
+  <h2>Key achievements</h2>
+  <ul>
+    <li>I designed the product that today has <b>165 screens across 8 business areas</b>, with <b>12 languages and brand locales</b> and an interface shaped by <b>347 permissions</b>, held together by a single design system and with no separate version per client.</li>
+    <li>I found the lack of consistency between modules, proposed building the design system and built it from scratch, <b>cutting the design delivery cycle from 5 to 2 days per initiative (−60%)</b>.</li>
+    <li>I moved client customisation <b>out of the code and into configuration</b> —product catalogue, decision rules and forms defined as data—, so adding a new company no longer needs a branch of the product.</li>
+    <li>I helped bring the support load down <b>from several thousand tickets a day to single figures</b> by redesigning the critical flows and building the system that stopped the confusion coming back (a team result built up over four years, which also included a framework and a database migration).</li>
+    <li>I kept <b>weekly contact for 4 years</b> with the Product Owners of client companies, running discovery sessions and presenting <b>three alternatives per initiative</b> so that each business rule fitted without breaking the product apart.</li>
+    <li>I freed up <b>36% of my design time in 8 months</b> and put it into research —analysing real usage patterns with Microsoft Clarity—, moving from 1 proposal per initiative to 2-3 alternatives compared with the client.</li>
+  </ul>
+
+  <h2>Professional experience</h2>
+
+  <div class="job">
+    <h3>Product Designer (Senior) — Atrinium · Málaga, Spain</h3>
+    <p class="when">May 2022 – August 2026</p>
+  </div>
+  <p class="what">Multi-tenant B2B SaaS for the insurance sector — HERMES platform</p>
+  <ul>
+    <li>The only Product Designer on the team. I defined the information architecture and the critical flows of the product: underwriting, policies, claims, receipts, commissions, settlements, CRM and reporting, as well as tasks, authorisations, documents and data import.</li>
+    <li>I designed the platform as a <b>white-label product</b>: the brand, the wording and the language of each company travel through semantic tokens and language catalogues, without duplicating components or forking the design.</li>
+    <li>I designed the <b>configuration surfaces</b> that let the business side assemble insurance products, decision rules and questionnaires without custom development — the part that decides whether a multi-client SaaS scales or falls apart.</li>
+    <li>I proposed and built the <b>design system</b> from scratch: components, tokens, type hierarchy, colour rules and iconography, documenting when to use each pattern and when not to, with WCAG 2.2 AAA accessibility and an audit of parity between Figma and code.</li>
+    <li>I presented and defended every proposal to the Product Owners of client companies, with <b>1-2 hours of discovery</b> before designing each new process. I based the decisions on <b>real usage data</b> analysed with Microsoft Clarity and documented the flows as interactive prototypes, so that developers could build without guessing.</li>
+  </ul>
+
+  <div class="job">
+    <h3>UI / Product Designer — Darien Technology · Panama</h3>
+    <p class="when">March 2021 – May 2022</p>
+  </div>
+  <p class="what">Technology consultancy — digital banking project for Mercantil Banco Panamá</p>
+  <ul>
+    <li>I designed interfaces and flows for financial products for an external client: loans, mortgages, vehicle finance, credit cards and the Mony mobile app.</li>
+    <li>I solved <b>onboarding, activation, security and authentication</b> in a regulated mobile product, validating prototypes with Maze before moving to development.</li>
+    <li>I presented product proposals to the client and grew the mobile design system, unifying components across products.</li>
+  </ul>
+
+  <div class="job">
+    <h3>Earlier and freelance experience</h3>
+    <p class="when">March 2017 – December 2020</p>
+  </div>
+  <p class="prev">Taksio Technologies (UX/UI Designer, Caracas · 2017-2019) · Geekconic (Zulia · 2019) · International freelance (2019-2020) · RedBird Smart Tracker (Caracas · 2017)</p>
+  <ul>
+    <li>I built from scratch the design system and the operational flows of a <b>multimodal mobility platform</b>: passenger and driver apps plus operations dashboards.</li>
+    <li>I ran client projects from start to finish as a freelancer for fintech, banking and international logistics, and also did the information architecture and the web design system for a client in retail.</li>
+  </ul>
+
+  <div class="two">
+    <section>
+      <h2>Education</h2>
+      <p>Bachelor's degree in Computer Science — Universidad de Oriente, Cumaná, Venezuela · 2006-2017</p>
+    </section>
+    <section>
+      <h2>Languages</h2>
+      <p>Spanish (native) · English B1, actively studying towards B2</p>
+    </section>
+  </div>
+
+</body>
+</html>

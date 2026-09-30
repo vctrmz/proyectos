@@ -143,7 +143,7 @@ const en: Ui = {
     ikigai: 'Ikigai', companies: 'Companies', tools: 'Tools', contact: 'Contact', skills: 'What I bring',
     socialLabel: 'Social', more: 'More', close: 'Close', books: 'Books I recommend',
   },
-  cv: { label: 'Download CV', format: 'PDF, Spanish' },
+  cv: { label: 'Download CV', format: 'PDF' },
   footer: { role: 'Product Designer · Design Systems · B2B SaaS and Insurtech', contact: 'Get in touch', available: 'Available now · Senior / Lead · remote', legal: '© 2026', privacy: 'Privacy', cookies: 'Cookies', remote: 'Working remotely' },
   consent: { text: 'I use analytics to see how this site is read: Google Analytics, Microsoft Clarity, Hotjar, Plerdy and HubSpot. They use cookies or browser storage, never advertising, and load only if you accept.', accept: 'Accept', reject: 'Decline', change: 'Change my choice' },
   lang: { label: 'Language' },
