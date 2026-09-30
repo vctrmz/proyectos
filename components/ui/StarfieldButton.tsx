@@ -24,7 +24,9 @@ export default function StarfieldButton({ label, href, external, size = 'md', cl
         : <Link href={href} className={s.link}>{label}</Link>}
       {fx && (
         <>
-          <span className={s.fx} aria-hidden="true">
+          {/* inert: el custom element pinta su propio botón y el foco no puede
+              caer dentro de una capa aria-hidden. */}
+          <span className={s.fx} aria-hidden="true" inert>
           <starfield-button
             label={external ? `${label} ↗` : label}
             accent="#8bde5f"
