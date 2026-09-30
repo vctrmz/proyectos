@@ -32,7 +32,7 @@ export default function SiteFooter({ locale = DEFAULT_LOCALE }: { locale?: Local
       <div className={s.bar}>
         <div className={`container ${s.barInner}`}>
           <span className={s.dot}><span aria-hidden="true" />{ui.footer.available}</span>
-          <span className={s.legal}>{ui.footer.legal} {SITE.name} · {SITE.city}, {locale === 'es' ? 'España' : 'Spain'} · {ui.footer.remote} · <Link href={r.privacy}>{ui.footer.privacy}</Link> · <Link href={r.cookies}>{ui.footer.cookies}</Link></span>
+          <span className={s.legal}>{ui.footer.legal} {SITE.name} · {ui.footer.remote} · <Link href={r.privacy}>{ui.footer.privacy}</Link> · <Link href={r.cookies}>{ui.footer.cookies}</Link></span>
         </div>
       </div>
     </footer>

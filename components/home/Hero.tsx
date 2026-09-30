@@ -22,7 +22,7 @@ export default function Hero({ locale = DEFAULT_LOCALE }: { locale?: Locale }) {
       <div className={s.veil} aria-hidden="true" />
       <div className={s.inner}>
         <p className={s.name}><span className={s.mark} aria-hidden="true">VM</span>{SITE.name}</p>
-        <Kicker>{ui.home.kicker} · {SITE.city}</Kicker>
+        <Kicker>{ui.home.kicker} · {SITE.base[locale]}</Kicker>
         <TwoToneHeading as="h1" id="hero-title" size="display" lines={ui.home.heroLines} />
         <p className={s.sub}>{ui.home.heroSub}</p>
         <div className={s.ctas}>

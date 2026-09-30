@@ -21,7 +21,10 @@ describe('SiteFooter', () => {
     expect(screen.queryByText(/Descargar CV/)).toBeNull();
     expect(screen.getByRole('link', { name: /Sobre mí/ })).toHaveAttribute('href', '/es/about');
     expect(screen.getByRole('link', { name: /Privacidad/ })).toHaveAttribute('href', '/es/privacy');
-    expect(foot.textContent).toMatch(/Málaga/);
+    /* Sin ciudad en el aviso: el posicionamiento es remoto. Donde la ley
+       obliga a identificar al responsable —privacidad— sí figura. */
+    expect(foot.textContent).not.toMatch(/Málaga/);
+    expect(foot.textContent).toMatch(/remoto/i);
   });
   it('la barra inferior anuncia disponibilidad', () => {
     const { container } = render(<SiteFooter />);

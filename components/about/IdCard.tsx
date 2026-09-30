@@ -24,8 +24,8 @@ export default function IdCard({ locale = 'es' }: { locale?: Locale }) {
   const from = useRef<number | null>(null);
 
   const t = locale === 'en'
-    ? { role: 'Product Designer', place: 'Málaga · remote', field: 'B2B SaaS · Insurtech', since: 'Since 2017', hint: 'Drag the card' }
-    : { role: 'Product Designer', place: 'Málaga · en remoto', field: 'B2B SaaS · Insurtech', since: 'Desde 2017', hint: 'Arrastra la tarjeta' };
+    ? { role: 'Product Designer', place: 'Remote', field: 'B2B SaaS', since: 'Since 2017', hint: 'Drag the card' }
+    : { role: 'Product Designer', place: 'En remoto', field: 'B2B SaaS', since: 'Desde 2017', hint: 'Arrastra la tarjeta' };
 
   const grab = (e: React.PointerEvent) => {
     if (!motionAllowed()) return;

@@ -2,7 +2,11 @@ export const SITE = {
   name: 'Víctor Maza',
   role: 'Product Designer',
   email: 'vctrmz47@gmail.com',
-  city: 'Málaga',
+  /* Sin ciudad en el posicionamiento: la estrategia es buscar fuera, y un
+     nombre de provincia en la primera línea filtra antes de que nadie lea el
+     trabajo. Donde la ley obliga a identificar al responsable —la página de
+     privacidad— sí figura. */
+  base: { es: 'En remoto', en: 'Remote' },
   linkedin: 'https://linkedin.com/in/victor-maza47',
   github: 'https://github.com/vctrmz',
   /* El repositorio de esta web: la prueba de que el diseño llega a código.
