@@ -1,0 +1,49 @@
+/* El disparador copia la geometría de .btn .outline para que en la misma fila
+   que los demás botones no se note que por dentro es un <details>. */
+.wrap { position: relative; display: inline-block; }
+
+.trigger {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: 44px; padding: 0 22px;
+  border: 1px solid var(--ink); border-radius: var(--r-pill);
+  background: transparent; color: var(--ink);
+  font-size: var(--fs-200); font-weight: 500; line-height: 1;
+  cursor: pointer;
+  /* Fuera el triángulo nativo: el chevron es nuestro y gira al abrir. */
+  list-style: none;
+  transition: background .2s var(--ease), transform .2s var(--ease);
+}
+.trigger::-webkit-details-marker { display: none; }
+.trigger::marker { content: ''; }
+.trigger:hover { background: var(--surface); }
+.trigger:active { transform: scale(.98); }
+
+.chev { width: 14px; height: 14px; flex: none; transition: transform .2s var(--ease); }
+.wrap[open] .chev { transform: rotate(180deg); }
+
+/* Flotante sobre el contenido y no empujándolo: en el hero de Sobre mí el
+   desplegable abre encima de la tarjeta, no descoloca la columna.
+
+   Anclado por la derecha porque el disparador vive en la columna derecha del
+   hero: creciendo hacia dentro cabe en cualquier ancho. Medido con un viewport
+   real: sin desbordamiento horizontal y el panel entero dentro de la página a
+   1440 px (978→1193) y a 375 px (54→268). */
+.list {
+  position: absolute; z-index: 20; top: calc(100% + 6px); right: 0; min-width: 100%;
+  margin: 0; padding: 6px; list-style: none;
+  border: 1px solid var(--line); border-radius: 16px;
+  background: var(--bg); box-shadow: 0 12px 28px rgba(18,19,23,.12);
+}
+.list a {
+  display: flex; align-items: center; gap: 10px;
+  min-height: 44px; padding: 0 12px; border-radius: 10px;
+  color: var(--ink); font-size: var(--fs-200); white-space: nowrap;
+}
+.list a:hover { background: var(--surface); }
+.flag { flex: none; width: 18px; height: 12px; border-radius: 2px; display: block; }
+.name { font-weight: 500; }
+.meta { margin-left: auto; padding-left: 10px; color: var(--ink-3); font-size: var(--fs-100); }
+
+/* Dentro del bloque oscuro de cierre, el disparador va en claro. */
+:global(.inset) .trigger { color: var(--inset-ink); border-color: rgba(236,236,236,.35); }
+:global(.inset) .trigger:hover { background: rgba(255,255,255,.06); }

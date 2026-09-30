@@ -37,7 +37,7 @@ export interface Ui {
     ikigai: string; companies: string; tools: string; contact: string; skills: string;
     socialLabel: string; more: string; close: string; books: string;
   };
-  cv: { label: string; format: string };
+  cv: { label: string; format: string; download: (lang: string, kb: number) => string };
   footer: { role: string; contact: string; available: string; legal: string; privacy: string; cookies: string; remote: string };
   consent: { text: string; accept: string; reject: string; change: string };
   lang: { label: string };
@@ -90,7 +90,7 @@ const es: Ui = {
     ikigai: 'Ikigai', companies: 'Empresas', tools: 'Herramientas', contact: 'Contacto', skills: 'Lo que aporto',
     socialLabel: 'Redes', more: 'Más información', close: 'Cerrar', books: 'Libros que recomiendo',
   },
-  cv: { label: 'Descargar CV', format: 'PDF' },
+  cv: { label: 'Descargar CV', format: 'PDF', download: (lang, kb) => `Descargar el CV en ${lang} (PDF, ${kb} KB)` },
   footer: { role: 'Product Designer · Design Systems · B2B SaaS e Insurtech', contact: 'Ponte en contacto', available: 'Disponible ahora · Senior / Lead · remoto', legal: '© 2026', privacy: 'Privacidad', cookies: 'Cookies', remote: 'Trabajo en remoto' },
   consent: { text: 'Uso analítica para ver cómo se navega esta web: Google Analytics, Microsoft Clarity, Hotjar, Plerdy y HubSpot. Usan cookies o almacenamiento del navegador, nada de publicidad, y solo se activan si lo aceptas.', accept: 'Aceptar', reject: 'Rechazar', change: 'Cambiar mi decisión' },
   lang: { label: 'Idioma' },
@@ -143,7 +143,7 @@ const en: Ui = {
     ikigai: 'Ikigai', companies: 'Companies', tools: 'Tools', contact: 'Contact', skills: 'What I bring',
     socialLabel: 'Social', more: 'More', close: 'Close', books: 'Books I recommend',
   },
-  cv: { label: 'Download CV', format: 'PDF' },
+  cv: { label: 'Download CV', format: 'PDF', download: (lang, kb) => `Download the CV in ${lang} (PDF, ${kb} KB)` },
   footer: { role: 'Product Designer · Design Systems · B2B SaaS and Insurtech', contact: 'Get in touch', available: 'Available now · Senior / Lead · remote', legal: '© 2026', privacy: 'Privacy', cookies: 'Cookies', remote: 'Working remotely' },
   consent: { text: 'I use analytics to see how this site is read: Google Analytics, Microsoft Clarity, Hotjar, Plerdy and HubSpot. They use cookies or browser storage, never advertising, and load only if you accept.', accept: 'Accept', reject: 'Decline', change: 'Change my choice' },
   lang: { label: 'Language' },

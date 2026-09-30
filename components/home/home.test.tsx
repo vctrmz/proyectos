@@ -37,7 +37,8 @@ describe('portada', () => {
     for (const n of ['GitHub', 'Instagram', 'Behance']) {
       expect(screen.queryByRole('link', { name: new RegExp(n) }), n).toBeNull();
     }
-    expect(screen.getByRole('link', { name: /Descargar CV/ })).toHaveAttribute('href', '/victor-maza-cv.pdf');
+    /* El CV se movió al hero de Sobre mí: en la portada ya no se repite. */
+    expect(screen.queryByText(/Descargar CV/)).toBeNull();
   });
   it('sectores: cinco con años y enlace', () => {
     render(<Sectores />);
@@ -77,6 +78,6 @@ describe('portada', () => {
     expect(screen.getByText(/Diseño de producto end-to-end/)).toBeInTheDocument();
     expect(screen.getByText(/Disponible ahora · roles Senior o Lead de Product Design/)).toBeInTheDocument();
     expect(screen.getByRole('link', { name: /vctrmz47@gmail.com/ })).toHaveAttribute('href', 'mailto:vctrmz47@gmail.com');
-    expect(screen.getByRole('link', { name: /Descargar CV/ })).toBeInTheDocument();
+    expect(screen.queryByText(/Descargar CV/)).toBeNull();
   });
 });

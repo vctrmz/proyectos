@@ -37,9 +37,15 @@ describe('AboutPage', () => {
     expect(screen.getAllByRole('tab')).toHaveLength(3);
     expect(screen.getByRole('tab', { name: /Atrinium/ })).toHaveAttribute('aria-selected', 'true');
   });
-  it('el contacto de sobre mí ofrece también el CV', () => {
+  /* El CV se descarga desde el hero, junto a la tarjeta de identidad, y con
+     selector de idioma: es el único sitio de la web donde aparece. */
+  it('el hero ofrece el CV en los dos idiomas y el contacto ya no lo repite', () => {
     const { container } = render(<AboutPage />);
+    const intro = container.querySelector('section') as HTMLElement;
+    expect(within(intro).getByText('Descargar CV')).toBeInTheDocument();
+    expect(within(intro).getByRole('link', { name: /Descargar el CV en Español/ })).toHaveAttribute('href', '/victor-maza-cv.pdf');
+    expect(within(intro).getByRole('link', { name: /Descargar el CV en English/ })).toHaveAttribute('href', '/victor-maza-cv-en.pdf');
     const contacto = container.querySelector('#contacto') as HTMLElement;
-    expect(within(contacto).getByRole('link', { name: /Descargar CV/ })).toHaveAttribute('href', '/victor-maza-cv.pdf');
+    expect(within(contacto).queryByText(/Descargar CV/)).toBeNull();
   });
 });
