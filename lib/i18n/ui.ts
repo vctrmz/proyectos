@@ -49,7 +49,7 @@ const es: Ui = {
   home: {
     kicker: 'Senior Product Designer · Design Systems · B2B SaaS e Insurtech',
     heroLines: ['Diseño producto B2B complejo', 'y lo llevo a producción.'],
-    heroSub: 'Nueve años en producto digital; los cuatro últimos, como único diseñador de un holding con cinco productos, el principal un SaaS asegurador. Modelo el dominio, lo convierto en tokens, componentes y reglas que el front consume tal cual, y reviso la implementación en React hasta que el diseño llega entero.',
+    heroSub: 'Nueve años en producto B2B; los cuatro últimos, único diseñador de un holding de cinco productos. Modelo el dominio, lo convierto en tokens, componentes y reglas, y reviso la implementación en React hasta que el diseño llega entero.',
     facts: [
       { value: '267 → 24', label: 'valores de color a tokens' }, { value: '8', label: 'áreas de producto' },
       { value: '5', label: 'productos, un lenguaje' }, { value: '2022–2026', label: 'único diseñador del holding' },
@@ -60,12 +60,12 @@ const es: Ui = {
     workKicker: 'Trabajo',
     workTitle: ['Casos y productos', 'en producción.'],
     logosLabel: 'Empresas con las que he trabajado',
-    closingTitle: ['¿Tienes un producto complejo?', 'Reglas densas, varios clientes, un equipo que necesita diseño construible.'],
+    closingTitle: ['¿Tienes un producto complejo?', 'Lo convierto en reglas, componentes y criterios que tu equipo puede construir sin interpretar nada.'],
     closingGrid: [
       { k: 'Problema', v: 'Complejidad B2B' }, { k: 'Método', v: 'UX + sistema + UI + implementación' },
       { k: 'Evidencia', v: 'Nueve años · SaaS asegurador en producción' }, { k: 'Acción', v: 'Un correo' },
     ],
-    availability: 'Disponible ahora · roles Senior o Lead de Product Design · remoto o híbrido en Málaga',
+    availability: 'Disponible ahora · roles Senior o Lead de Product Design · en remoto',
     competencies: 'Competencias clave',
     competenciesCount: (n) => String(n).padStart(2, '0'),
     competenciesUnit: 'competencias',
@@ -86,7 +86,7 @@ const es: Ui = {
   about: {
     title: 'Sobre mí', personal: 'Personal', live: 'Vivo en', before: 'Antes, en', born: 'Nací en Venezuela.',
     education: 'Formación', eduNote: 'Informático de formación, Product Designer de oficio.',
-    drawer: 'Ver el detalle', drawerTitle: 'Nueve años, contados por dentro',
+    drawer: 'Mi forma de trabajar', drawerTitle: 'Nueve años, contados por dentro',
     ikigai: 'Ikigai', companies: 'Empresas', tools: 'Herramientas', contact: 'Contacto', skills: 'Lo que aporto',
     socialLabel: 'Redes', more: 'Más información', close: 'Cerrar', books: 'Libros que recomiendo',
   },
@@ -102,7 +102,7 @@ const en: Ui = {
   home: {
     kicker: 'Senior Product Designer · Design Systems · B2B SaaS and Insurtech',
     heroLines: ['I design complex B2B products', 'and take them to production.'],
-    heroSub: 'Nine years in digital product; the last four as the only designer of a group with five products, the main one an insurance SaaS. I model the domain, turn it into tokens, components and rules the front end consumes as they are, and review the React implementation until the design ships whole.',
+    heroSub: 'Nine years in B2B product; the last four as the only designer of a group of five products. I model the domain, turn it into tokens, components and rules, and review the React implementation until the design ships whole.',
     facts: [
       { value: '267 → 24', label: 'colour values to tokens' }, { value: '8', label: 'product areas' },
       { value: '5', label: 'products, one language' }, { value: '2022–2026', label: 'sole designer of the group' },
@@ -113,12 +113,12 @@ const en: Ui = {
     workKicker: 'Work',
     workTitle: ['Cases and products', 'in production.'],
     logosLabel: 'Companies I have worked with',
-    closingTitle: ['Do you have a complex product?', 'Dense rules, several clients, a team that needs design it can actually build.'],
+    closingTitle: ['Do you have a complex product?', 'I turn it into rules, components and criteria your team can build without guessing.'],
     closingGrid: [
       { k: 'Problem', v: 'B2B complexity' }, { k: 'Method', v: 'UX + system + UI + implementation' },
       { k: 'Evidence', v: 'Nine years · insurance SaaS in production' }, { k: 'Action', v: 'One email' },
     ],
-    availability: 'Available now · Senior or Lead Product Design roles · remote or hybrid in Málaga',
+    availability: 'Available now · Senior or Lead Product Design roles · remote',
     competencies: 'Core competencies',
     competenciesCount: (n) => String(n).padStart(2, '0'),
     competenciesUnit: 'competencies',
@@ -139,7 +139,7 @@ const en: Ui = {
   about: {
     title: 'About me', personal: 'Personal', live: 'I live in', before: 'Before that, in', born: 'I was born in Venezuela.',
     education: 'Education', eduNote: 'Computer scientist by training, Product Designer by trade.',
-    drawer: 'See the detail', drawerTitle: 'Nine years, from the inside',
+    drawer: 'How I work', drawerTitle: 'Nine years, from the inside',
     ikigai: 'Ikigai', companies: 'Companies', tools: 'Tools', contact: 'Contact', skills: 'What I bring',
     socialLabel: 'Social', more: 'More', close: 'Close', books: 'Books I recommend',
   },
