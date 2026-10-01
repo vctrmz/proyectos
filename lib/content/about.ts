@@ -63,25 +63,27 @@ export const ABOUT = {
   ],
   /* El cajón se llama «Mi forma de trabajar», así que aquí va el método y no
      el catálogo de productos —eso ya está en los casos y en la portada—. Dos
-     párrafos de entrada y el detalle en la infografía, que se lee paso a paso
-     en lugar de scrollear. En lenguaje corriente: quien decide contratar no
-     siempre es diseñador. */
+     párrafos de entrada —cómo me preparo y cómo adapto el método— y el detalle
+     en la infografía, que se lee paso a paso en lugar de scrollear. En
+     lenguaje corriente: quien decide contratar no siempre es diseñador. */
   bio: [
-    'Trabajo igual en un ERP asegurador que en una tienda online: *primero entender el negocio, después ordenar lo entendido y sólo al final dibujar*. Si me salto los dos primeros pasos sale algo bonito que no resuelve nada.',
-    'El método se adapta al terreno. Cuando la funcionalidad es nueva, *investigo a fondo antes de proponer*; cuando el camino ya está hecho, *prototipo rápido sobre lo que existe*. Lo que no cambia es que *cada decisión se pueda explicar en lenguaje de negocio*, porque un diseño que no se sabe defender no se aprueba.',
+    'Antes de dibujar nada me preparo. *Analizo los requisitos* con quien los pide hasta separar el problema real de la solución que ya trae pensada, y *reviso lo que ya tenemos*: componentes del design system, flujos parecidos y decisiones tomadas antes. *Lo que ya funciona se reutiliza*; rediseñar lo que existe cuesta tiempo y rompe la coherencia del producto.',
+    'Después sigo un proceso de *design thinking*, pero *no uso todas sus herramientas en cada proyecto*: cuánto investigo y cuántas vueltas doy *depende del plazo, de la urgencia y del riesgo*. Una funcionalidad nueva en un dominio regulado pide investigar a fondo; un ajuste urgente, un prototipo rápido sobre lo que existe. Lo que no cambia es que *cada decisión se pueda explicar en lenguaje de negocio*, porque un diseño que no se sabe defender no se aprueba.',
   ],
   process: {
-    intro: 'Cinco pasos, siempre en el mismo orden. Lo que cambia es *cuánto tiempo pasa en cada uno* según lo maduro que esté el producto.',
+    intro: 'Seis pasos: *dos de preparación y cuatro de design thinking*. El orden se mantiene; lo que cambia es *cuánto dura cada uno y qué herramientas uso*, según el plazo, la urgencia y lo maduro que esté el producto.',
     steps: [
-      { id: 'entender', name: 'Entender', body: 'Empiezo por el *brief con el cliente* y por separar el problema real de la solución que ya trae pensada. Casi siempre llegan con una pantalla en la cabeza; mi trabajo es averiguar qué les duele de verdad.',
-        does: ['Brief y entrevistas con cliente y responsables de producto', 'Escuchar a quien atiende soporte y a quien vende', 'Escribir en una frase qué hay que resolver y para quién'] },
-      { id: 'investigar', name: 'Investigar', body: 'Antes de inventar nada miro *qué se sabe ya*: los datos de uso que la empresa tiene sin mirar, las quejas que se repiten y lo que otros han publicado sobre el mismo problema. *Cuando no me dan acceso a los usuarios*, lo compenso observando cómo trabajan y apoyándome en estudios ya medidos.',
+      { id: 'analizar', name: 'Analizar', body: 'Empiezo por los *requisitos*: el brief, quién decide y qué límites hay de plazo, normativa y tecnología. Casi siempre llegan con una pantalla en la cabeza; mi trabajo es *separar el problema real de la solución que ya traen pensada*.',
+        does: ['Brief y entrevistas con cliente y Product Owners', 'Límites de plazo, normativa y tecnología', 'Escribir en una frase qué hay que resolver y para quién'] },
+      { id: 'reutilizar', name: 'Reutilizar', body: 'Antes de proponer nada nuevo *reviso lo que ya tenemos*: componentes y patrones del design system, flujos parecidos dentro del producto y decisiones que se tomaron antes. *Lo que funciona se reutiliza*, lo que se queda corto se amplía y solo se diseña de cero lo que de verdad falta.',
+        does: ['Inventario de componentes y patrones del design system', 'Flujos parecidos que el producto ya resuelve', 'Qué se reutiliza, qué se amplía y qué falta'] },
+      { id: 'investigar', name: 'Investigar', body: 'Después miro *qué se sabe ya* del problema: los datos de uso que la empresa tiene sin mirar, las quejas que se repiten y lo que otros han publicado sobre lo mismo. *Cuando no me dan acceso a los usuarios*, lo compenso observando cómo trabajan y apoyándome en estudios ya medidos.',
         does: ['Datos de uso y comentarios que ya existen en la empresa', 'Estudios, artículos y referencias del sector', 'Observar a alguien haciendo su trabajo, sin interrumpirle'] },
-      { id: 'ordenar', name: 'Ordenar', body: 'Junto todo en *un solo lienzo* y lo reduzco a unas pocas decisiones con su motivo escrito. De ahí sale el mapa: *qué estados existen, qué reglas mandan y qué pasa en los casos raros*, antes de dibujar ninguna pantalla.',
+      { id: 'definir', name: 'Definir', body: 'Junto todo en *un solo lienzo* y lo reduzco a unas pocas decisiones con su motivo escrito. De ahí sale el mapa: *qué estados existen, qué reglas mandan y qué pasa en los casos raros*, antes de dibujar ninguna pantalla.',
         does: ['Un lienzo con lo aprendido y lo que aún no sé', 'Las decisiones y los descartes, por escrito', 'El mapa de estados y reglas, antes que la interfaz'] },
       { id: 'disenar', name: 'Diseñar', body: 'Llevo *dos o tres alternativas comparables* en vez de una sola propuesta: comparar ayuda a decidir y saca la conversación del terreno de los gustos. Todo se monta con piezas del sistema, así que *lo que se aprueba ya se puede construir*.',
         does: ['Dos o tres alternativas, con su ventaja y su coste', 'Prototipo navegable para verlo funcionando', 'Piezas del design system, no dibujos sueltos'] },
-      { id: 'comprobar', name: 'Comprobar', body: 'Pruebo *con poca gente y pronto*: con cinco personas ya se ve dónde se atasca. Después acompaño la implementación y vuelvo a mirar los datos, porque *lo que la gente dice y lo que hace no coincide*.',
+      { id: 'validar', name: 'Validar', body: 'Pruebo *con poca gente y pronto*: con cinco personas ya se ve dónde se atasca. Después acompaño la implementación y vuelvo a mirar los datos, porque *lo que la gente dice y lo que hace no coincide*.',
         does: ['Prueba con cinco personas sobre el prototipo', 'Revisión de la implementación hasta que llega entera', 'Datos de uso después, no sólo opiniones antes'] },
     ],
     principles: [

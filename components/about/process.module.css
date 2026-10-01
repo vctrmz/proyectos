@@ -5,12 +5,15 @@
 /* La lista de cada paso: lo concreto, para que el panel se ojee en vez de
    leerse. Dos columnas cuando hay sitio, para que el cajón no crezca a lo
    alto y obligue a hacer scroll. */
-.doesTitle { margin: var(--sp-16) 0 6px; font-size: var(--fs-100); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+/* Con `.panel` delante: si no, `.panel p` le gana y el rótulo sale del tamaño del texto. */
+.panel .doesTitle { margin: var(--sp-16) 0 6px; font-size: var(--fs-100); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
 .does { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 4px 20px; margin: 0; padding: 0; list-style: none; }
 .does li { position: relative; padding-left: 16px; font-size: var(--fs-200); color: var(--ink-2); line-height: 1.45; }
 .does li::before { content: ''; position: absolute; left: 2px; top: .62em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
-.track { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px; padding-top: 18px; }
-.line { position: absolute; left: 10%; right: 10%; top: 36px; height: 1.5px; background: var(--line); }
+/* `--n` es el número de pasos: la línea arranca y acaba en el centro del
+   primer y del último punto, así que entra media columna por cada lado. */
+.track { position: relative; display: grid; grid-template-columns: repeat(var(--n, 5), minmax(0, 1fr)); gap: 4px; padding-top: 18px; }
+.line { position: absolute; left: calc(50% / var(--n, 5)); right: calc(50% / var(--n, 5)); top: 36px; height: 1.5px; background: var(--line); }
 .lineFill { display: block; height: 100%; background: linear-gradient(90deg, #4a44f2, #8bde5f); transition: width .45s var(--ease); }
 .step { position: relative; display: grid; justify-items: center; gap: 10px; padding: 8px 4px 10px; border-radius: var(--r-card); color: var(--ink-3); font-size: var(--fs-100); min-height: 44px; }
 .step:hover { color: var(--ink); }

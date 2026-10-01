@@ -96,7 +96,7 @@ const es: Ui = {
   about: {
     title: 'Sobre mí', personal: 'Personal', live: 'Vivo en', before: 'Antes, en', born: 'Nací en Venezuela.',
     education: 'Formación', eduNote: 'Informático de formación, Product Designer de oficio.',
-    drawer: 'Mi forma de trabajar', drawerTitle: 'Cómo trabajo, paso a paso',
+    drawer: 'Mi forma de trabajar', drawerTitle: 'Cómo trabajo, de los requisitos a producción',
     proc: { title: 'El proceso', steps: 'Pasos del proceso', prev: 'Paso anterior', next: 'Paso siguiente', principles: 'Tres criterios no negociables', does: 'Qué hago en este paso' },
     ikigai: 'Ikigai', companies: 'Empresas', tools: 'Herramientas', contact: 'Contacto', skills: 'Lo que aporto',
     socialLabel: 'Redes', more: 'Más información', close: 'Cerrar', books: 'Libros que recomiendo',
@@ -163,7 +163,7 @@ const en: Ui = {
   about: {
     title: 'About me', personal: 'Personal', live: 'I live in', before: 'Before that, in', born: 'I was born in Venezuela.',
     education: 'Education', eduNote: 'Computer scientist by training, Product Designer by trade.',
-    drawer: 'How I work', drawerTitle: 'How I work, step by step',
+    drawer: 'How I work', drawerTitle: 'How I work, from requirements to production',
     proc: { title: 'The process', steps: 'Process steps', prev: 'Previous step', next: 'Next step', principles: 'Three non-negotiables', does: 'What I do in this step' },
     ikigai: 'Ikigai', companies: 'Companies', tools: 'Tools', contact: 'Contact', skills: 'What I bring',
     socialLabel: 'Social', more: 'More', close: 'Close', books: 'Books I recommend',

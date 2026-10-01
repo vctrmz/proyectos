@@ -11,11 +11,14 @@ describe('BioDrawer', () => {
     expect(screen.queryByRole('dialog')).toBeNull();
     await userEvent.click(cta);
     /* El cajón se titula por lo que cuenta, no «El detalle». */
-    const dialog = screen.getByRole('dialog', { name: /cómo trabajo, paso a paso/i });
+    const dialog = screen.getByRole('dialog', { name: /cómo trabajo, de los requisitos a producción/i });
     expect(dialog).toHaveAttribute('aria-modal', 'true');
     /* El cajón se llama «Mi forma de trabajar»: cuenta el método, no el
        catálogo de productos —eso vive en los casos y en la portada—. */
-    expect(dialog.textContent).toMatch(/primero entender el negocio/);
+    /* Cómo me preparo —requisitos y lo que ya existe— y cómo adapto el método. */
+    expect(dialog.textContent).toMatch(/Analizo los requisitos/);
+    expect(dialog.textContent).toMatch(/reviso lo que ya tenemos/);
+    expect(dialog.textContent).toMatch(/no uso todas sus herramientas en cada proyecto/);
     expect(dialog.textContent).toMatch(/explicar en lenguaje de negocio/);
     for (const fuera of ['Cinco productos, un solo lenguaje', '267 valores de color', 'Informático de formación', 'Único diseñador de un holding']) {
       expect(dialog.textContent, fuera).not.toMatch(new RegExp(fuera, 'i'));
@@ -43,7 +46,8 @@ describe('BioDrawer · forma de trabajo', () => {
     expect(dialog.querySelector('[data-lenis-prevent]')).not.toBeNull();
     expect(screen.getByRole('heading', { name: /el proceso/i })).toBeInTheDocument();
     const tabs = screen.getAllByRole('tab');
-    expect(tabs).toHaveLength(5);
+    /* Dos pasos de preparación y cuatro de design thinking. */
+    expect(tabs.map((x) => x.textContent?.replace(/^\d+/, ''))).toEqual(['Analizar', 'Reutilizar', 'Investigar', 'Definir', 'Diseñar', 'Validar']);
     expect(tabs[0]).toHaveAttribute('aria-selected', 'true');
     await userEvent.click(screen.getByRole('tab', { name: /Investigar/ }));
     const panel = screen.getByRole('tabpanel');

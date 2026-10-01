@@ -8,7 +8,7 @@ import s from './process.module.css';
 
 const Rich = ({ text }: { text: string }) => <>{splitBold(text).map((x, i) => (x.strong ? <strong key={i}>{x.text}</strong> : <span key={i}>{x.text}</span>))}</>;
 
-/* Forma de trabajo como recorrido: cinco pasos sobre una línea con degradado,
+/* Forma de trabajo como recorrido: los pasos sobre una línea con degradado,
    uno activo cada vez; debajo, los tres criterios no negociables, con la
    regla 60·30·10 dibujada como barra. */
 export default function ProcessInfographic() {
@@ -29,7 +29,7 @@ export default function ProcessInfographic() {
     <section className={s.wrap} aria-labelledby="proc-title">
       <h3 id="proc-title" className={s.title}>{t.title}</h3>
       <p className={s.intro}><Rich text={intro} /></p>
-      <div role="tablist" aria-label={t.steps} className={s.track} onKeyDown={onKey}>
+      <div role="tablist" aria-label={t.steps} className={s.track} onKeyDown={onKey} style={{ '--n': steps.length } as React.CSSProperties}>
         <span className={s.line} aria-hidden="true"><span className={s.lineFill} style={{ width: `${(i / (steps.length - 1)) * 100}%` }} /></span>
         {steps.map((st, k) => (
           <button key={st.id} type="button" role="tab" id={`proc-tab-${st.id}`} aria-selected={i === k} aria-controls="proc-panel" tabIndex={i === k ? 0 : -1} className={`${s.step} ${k <= i ? s.done : ''} ${i === k ? s.active : ''}`} onClick={() => setI(k)}>
