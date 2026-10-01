@@ -7,6 +7,12 @@ vi.mock('resend', () => ({ Resend: class { emails = { send: enviar }; } }));
 /* BotID también: aquí se decide qué responde, no cómo clasifica Vercel. */
 const botid = vi.fn();
 vi.mock('botid/server', () => ({ checkBotId: () => botid() }));
+/* `after` solo existe dentro de una petición: aquí se apunta lo programado y
+   la copia a la hoja se sustituye por un espía. */
+const despues: (() => unknown)[] = [];
+vi.mock('next/server', () => ({ after: (fn: () => unknown) => { despues.push(fn); } }));
+const hoja = vi.fn();
+vi.mock('./hoja', () => ({ guardarEnHoja: (f: unknown) => hoja(f) }));
 
 import { enviarContacto } from './action';
 import { ESTADO_INICIAL } from './estado';
@@ -23,6 +29,8 @@ const datos = (extra: Record<string, string> = {}) => {
 };
 
 beforeEach(() => {
+  despues.length = 0;
+  hoja.mockReset();
   botid.mockReset();
   botid.mockResolvedValue({ isBot: false, isHuman: true, isVerifiedBot: false, bypassed: false });
   enviar.mockReset();
@@ -131,5 +139,31 @@ describe('enviarContacto', () => {
     expect(r.estado).toBe('ok');
     expect(botid).not.toHaveBeenCalled();
     expect(enviar).not.toHaveBeenCalled();
+  });
+
+  /* La copia en la hoja va después de responder y no depende del correo. */
+  it('programa la copia en la hoja con los datos del mensaje', async () => {
+    const r = await enviarContacto(ESTADO_INICIAL, datos());
+    expect(r.estado).toBe('ok');
+    expect(hoja).not.toHaveBeenCalled();
+    for (const fn of despues) await fn();
+    expect(hoja).toHaveBeenCalledWith({ nombre: 'Ana Ruiz', email: 'ana@empresa.com', mensaje: 'Tenemos un ERP con reglas por cliente y queremos ordenarlo.', idioma: 'es' });
+  });
+
+  it('la copia en la hoja se guarda aunque el correo falle', async () => {
+    enviar.mockResolvedValue({ data: null, error: { name: 'x', message: 'y' } });
+    const r = await enviarContacto(ESTADO_INICIAL, datos());
+    expect(r.estado).toBe('error');
+    for (const fn of despues) await fn();
+    expect(hoja).toHaveBeenCalledOnce();
+  });
+
+  it('ni robots ni datos inválidos llegan a la hoja', async () => {
+    await enviarContacto(ESTADO_INICIAL, datos({ empresa: 'Spam S.L.' }));
+    botid.mockResolvedValue({ isBot: true, isHuman: false, isVerifiedBot: false, bypassed: false });
+    await enviarContacto(ESTADO_INICIAL, datos());
+    botid.mockResolvedValue({ isBot: false, isHuman: true, isVerifiedBot: false, bypassed: false });
+    await enviarContacto(ESTADO_INICIAL, datos({ email: 'no-es-un-correo' }));
+    expect(despues).toHaveLength(0);
   });
 });

@@ -29,15 +29,23 @@ const PLERDY_TAG = 'plerdy-loader';
 type W = Window & Record<string, unknown>;
 const w = () => window as unknown as W;
 
-export function readConsent(): Consent {
+/* La decisión caduca a los 12 meses y entonces se vuelve a preguntar: la guía
+   de cookies de la AEPD pide renovar el consentimiento como mucho cada 24.
+   Se guarda con la fecha —`granted|1790870000000`— y una decisión sin fecha,
+   del formato anterior, cuenta como caducada. */
+export const VIGENCIA_CONSENT_MS = 365 * 24 * 60 * 60 * 1000;
+
+export function readConsent(ahora = Date.now()): Consent {
   try {
-    const v = localStorage.getItem(CONSENT_KEY);
-    return v === 'granted' || v === 'denied' ? v : null;
+    const [v, t] = (localStorage.getItem(CONSENT_KEY) ?? '').split('|');
+    const cuando = Number(t);
+    if ((v === 'granted' || v === 'denied') && cuando > 0 && ahora - cuando < VIGENCIA_CONSENT_MS) return v;
+    return null;
   } catch { return null; }
 }
 
-export function writeConsent(v: 'granted' | 'denied') {
-  try { localStorage.setItem(CONSENT_KEY, v); } catch {}
+export function writeConsent(v: 'granted' | 'denied', ahora = Date.now()) {
+  try { localStorage.setItem(CONSENT_KEY, `${v}|${ahora}`); } catch {}
 }
 
 /* Clarity, Hotjar y Plerdy no arrancan en local: cada sesión de desarrollo

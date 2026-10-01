@@ -17,11 +17,22 @@ describe('isLocalHost', () => {
 });
 
 describe('lectura y escritura', () => {
-  it('guarda la decisión en localStorage', () => {
+  it('guarda la decisión en localStorage, con su fecha', () => {
     expect(readConsent()).toBeNull();
-    writeConsent('granted');
-    expect(localStorage.getItem(CONSENT_KEY)).toBe('granted');
-    expect(readConsent()).toBe('granted');
+    writeConsent('granted', 1_000);
+    expect(localStorage.getItem(CONSENT_KEY)).toBe('granted|1000');
+    expect(readConsent(2_000)).toBe('granted');
+  });
+  /* La AEPD pide renovar el consentimiento como mucho cada 24 meses: aquí, a los 12. */
+  it('la decisión caduca a los 12 meses y se vuelve a preguntar', () => {
+    const hoy = Date.UTC(2026, 9, 2);
+    writeConsent('denied', hoy);
+    expect(readConsent(hoy + 364 * 864e5)).toBe('denied');
+    expect(readConsent(hoy + 366 * 864e5)).toBeNull();
+  });
+  it('una decisión sin fecha, del formato anterior, cuenta como caducada', () => {
+    localStorage.setItem(CONSENT_KEY, 'granted');
+    expect(readConsent()).toBeNull();
   });
 });
 

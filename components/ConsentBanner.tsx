@@ -44,7 +44,9 @@ export default function ConsentBanner() {
       </p>
       <div className="consent-actions">
         <button type="button" className="consent-btn" onClick={reject}>{ui.consent.reject}</button>
-        <button type="button" className="consent-btn is-primary" onClick={accept}>{ui.consent.accept}</button>
+        {/* Mismo estilo que «Rechazar»: la AEPD pide las dos opciones con el
+            mismo peso, sin un botón destacado que empuje a aceptar. */}
+        <button type="button" className="consent-btn" onClick={accept}>{ui.consent.accept}</button>
       </div>
     </div>
   );

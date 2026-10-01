@@ -11,7 +11,7 @@ describe('ConsentState', () => {
     const { unmount } = render(<ConsentState />);
     expect(screen.getByText('sin decidir')).toBeInTheDocument();
     unmount();
-    localStorage.setItem(CONSENT_KEY, 'granted');
+    localStorage.setItem(CONSENT_KEY, `granted|${Date.now()}`);
     render(<ConsentState />);
     expect(screen.getByText('aceptadas')).toBeInTheDocument();
   });

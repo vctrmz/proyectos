@@ -54,9 +54,9 @@ export default function PrivacyEs() {
               <p>Si me escribes o rellenas un formulario, guarda tus datos de contacto y el recorrido que hiciste por la web para que pueda responderte con contexto. Sin escribirme, solo ve visitas anónimas. Solo se activa con tu consentimiento.</p>
             </div>
             <div className="tool">
-              <span className="who">Formulario · Resend (Resend Inc.)</span>
+              <span className="who">Formulario · Resend Inc. y Google Ireland Ltd.</span>
               <h3>Si me escribes por el formulario</h3>
-              <p>Recojo tu nombre, tu correo y tu mensaje, y sólo para responderte. El envío lo hace <strong>Resend</strong>, que actúa como encargado del tratamiento: el mensaje viaja por su servidor hasta mi bandeja. <strong>No hay base de datos</strong>: esta web no guarda nada de lo que escribes, lo que queda del mensaje es el correo que me llega. La base legal es tu consentimiento al marcar la casilla, y después el interés legítimo en atender tu consulta.</p>
+              <p>Recojo tu nombre, tu correo y tu mensaje, y sólo para responderte. El envío lo hace <strong>Resend</strong>, que actúa como encargado del tratamiento: el mensaje viaja por su servidor hasta mi bandeja de Gmail. Además guardo una copia —nombre, correo, mensaje, idioma de la página y fecha— en una <strong>hoja de cálculo privada de Google</strong>, en mi cuenta, para llevar a quién he respondido; nadie más tiene acceso. Esta web no tiene base de datos propia. La base legal es tu consentimiento al marcar la casilla, y después el interés legítimo en atender tu consulta.</p>
             </div>
             <div className="tool">
               <span className="who">Formulario · Vercel Inc.</span>
@@ -78,7 +78,8 @@ export default function PrivacyEs() {
             <table>
               <thead><tr><th>Nombre</th><th>Proveedor</th><th>Para qué</th><th>Dura</th></tr></thead>
               <tbody>
-                <tr><td><code>vm-consent</code></td><td>Esta web</td><td>Recordar si aceptaste o rechazaste. Es técnica y no requiere consentimiento.</td><td>Hasta que la borres</td></tr>
+                <tr><td><code>vm-consent</code></td><td>Esta web</td><td>Recordar si aceptaste o rechazaste, y cuándo. Es almacenamiento local, no una cookie; es técnico y no requiere consentimiento. Al caducar te vuelvo a preguntar.</td><td>12 meses</td></tr>
+                <tr><td>Comprobación de BotID</td><td>Vercel</td><td>Al enviar el formulario, comprobar que lo envía una persona. No guarda nada en tu navegador: lee señales técnicas en ese momento. Es de seguridad para un servicio que tú pides y no requiere consentimiento.</td><td>No se guarda</td></tr>
                 <tr><td><code>_ga</code>, <code>_ga_*</code></td><td>Google Analytics</td><td>Distinguir visitantes y sesiones.</td><td>2 años</td></tr>
                 <tr><td><code>_clck</code></td><td>Microsoft Clarity</td><td>Identificador anónimo de visitante.</td><td>1 año</td></tr>
                 <tr><td><code>_clsk</code></td><td>Microsoft Clarity</td><td>Unir las páginas de una misma sesión.</td><td>1 día</td></tr>
@@ -118,14 +119,14 @@ export default function PrivacyEs() {
             <li><strong>Hotjar:</strong> grabaciones y mapas de calor, hasta 365 días.</li>
             <li><strong>Plerdy:</strong> no publica un plazo concreto para los datos de navegación; los borro desde su panel si dejo de usarlo.</li>
             <li><strong>HubSpot:</strong> mientras dure la conversación o la relación profesional, o hasta que pidas que lo borre.</li>
-            <li><strong>Formulario y correo:</strong> mientras dure la conversación o la relación profesional, o hasta que pidas que lo borre. Resend conserva el registro de envío según su propia política.</li>
+            <li><strong>Formulario, correo y hoja de contactos:</strong> mientras dure la conversación o la relación profesional, o hasta que pidas que lo borre. Resend conserva el registro de envío según su propia política.</li>
           </ul>
         </section>
 
         <section id="derechos">
           <h2>Tus <b>derechos</b></h2>
           <p>Puedes pedirme acceso a tus datos, corregirlos, borrarlos, limitar u oponerte a su uso, y llevártelos a otro sitio. Escríbeme a <a href="mailto:vctrmz47@gmail.com">vctrmz47@gmail.com</a> y te respondo en el plazo legal de un mes. Si crees que no lo he hecho bien, puedes reclamar ante la <a href="https://www.aepd.es" target="_blank" rel="noopener">Agencia Española de Protección de Datos ↗</a>.</p>
-          <p>Ten en cuenta que los datos de analítica son anónimos: no puedo saber cuáles son tuyos, y por tanto no puedo extraerlos ni borrarlos de forma individual. Sí puedo borrar todo lo que tenga tuyo en HubSpot o en el correo.</p>
+          <p>Ten en cuenta que los datos de analítica son anónimos: no puedo saber cuáles son tuyos, y por tanto no puedo extraerlos ni borrarlos de forma individual. Sí puedo borrar todo lo que tenga tuyo en HubSpot, en el correo o en la hoja de contactos.</p>
         </section>
 
         <section id="cambios">

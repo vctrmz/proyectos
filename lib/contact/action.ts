@@ -2,15 +2,17 @@
 
 import { Resend } from 'resend';
 import { checkBotId } from 'botid/server';
+import { after } from 'next/server';
 import { SITE } from '@/lib/content/site';
 import { DEFAULT_LOCALE, LOCALES, type Locale } from '@/lib/i18n/config';
 import { getUi } from '@/lib/i18n/ui';
 import type { CampoContacto, EstadoContacto } from './estado';
+import { guardarEnHoja } from './hoja';
 
-/* Enviar el mensaje del formulario a mi bandeja. No hay base de datos ni se
-   guarda nada: el correo sale y lo que queda del mensaje es el correo mismo.
-   Con `reply-to` puesto al visitante, responder es darle a «Responder» en
-   Gmail, así que la conversación sigue donde ya trabajo.
+/* Enviar el mensaje del formulario a mi bandeja y dejar una copia en mi hoja
+   de Google de contactos, donde marco a quién he respondido. No hay base de
+   datos propia. Con `reply-to` puesto al visitante, responder es darle a
+   «Responder» en Gmail, así que la conversación sigue donde ya trabajo.
 
    Es una Server Action: el formulario vive en el modal de contacto, que se
    abre con JavaScript, y React la envía por fetch. Eso es lo que permite a
@@ -68,6 +70,11 @@ export async function enviarContacto(_prev: EstadoContacto, form: FormData): Pro
   if (mensaje.length < MIN.mensaje || mensaje.length > MAX.mensaje) errores.mensaje = t.errMensaje;
   if (!privacidad) errores.privacidad = t.errPrivacidad;
   if (Object.keys(errores).length) return { estado: 'error', errores, valores };
+
+  /* La fila de la hoja se escribe cuando el visitante ya tiene su respuesta:
+     Google tarda un par de segundos y el formulario no tiene por qué esperarle.
+     Va aunque el correo falle, así el mensaje queda guardado en algún sitio. */
+  after(() => guardarEnHoja({ nombre, email, mensaje, idioma: locale }));
 
   const clave = process.env.RESEND_API_KEY;
   /* Sin clave no se finge un envío: se dice que falló y se ofrece el correo
