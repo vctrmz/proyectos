@@ -47,7 +47,7 @@ export interface Ui {
     nombre: string; email: string; mensaje: string; privacidad: string; privacidadEnlace: string;
     enviar: string; enviando: string;
     okTitulo: string; okTexto: string; otro: string; linkedin: string; separador: string;
-    errNombre: string; errEmail: string; errMensaje: string; errPrivacidad: string; errServicio: string;
+    errNombre: string; errEmail: string; errMensaje: string; errPrivacidad: string; errServicio: string; errBot: string;
     obligatorio: string;
   };
   lang: { label: string };
@@ -115,6 +115,7 @@ const es: Ui = {
     errMensaje: 'Cuéntame algo más: con diez caracteres no sé qué necesitas.',
     errPrivacidad: 'Necesito que aceptes la política para poder responderte.',
     errServicio: 'No he podido enviarlo. Escríbeme directamente a vctrmz47@gmail.com y lo vemos.',
+    errBot: 'No he podido enviarlo. Copia mi correo o escríbeme por LinkedIn, aquí arriba, y lo vemos.',
     obligatorio: 'obligatorio',
   },
   lang: { label: 'Idioma' },
@@ -182,6 +183,7 @@ const en: Ui = {
     errMensaje: 'Tell me a bit more: ten characters is not enough to know what you need.',
     errPrivacidad: 'I need you to accept the policy so that I can reply.',
     errServicio: 'I could not send it. Write to me directly at vctrmz47@gmail.com and we will sort it out.',
+    errBot: 'I could not send it. Copy my email or message me on LinkedIn, just above, and we will sort it out.',
     obligatorio: 'required',
   },
   lang: { label: 'Language' },

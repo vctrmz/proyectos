@@ -11,9 +11,9 @@ import s from './ContactForm.module.css';
    respondo y qué necesitas. Cada campo de más cuesta mensajes, y lo demás se
    pregunta respondiendo.
 
-   Va sobre una Server Action, así que el envío funciona aunque el JavaScript
-   no cargue; lo que añade el cliente son los estados —enviando, enviado, los
-   errores junto a su campo— y la trampa de tiempo.
+   Va sobre una Server Action que React envía por fetch, con la comprobación
+   de Vercel BotID adjunta; lo que añade el cliente son los estados —enviando,
+   enviado, los errores junto a su campo—.
 
    Los errores se atan al campo con aria-describedby y el resultado se anuncia
    en una región viva: quien no ve el cambio de color tiene que enterarse

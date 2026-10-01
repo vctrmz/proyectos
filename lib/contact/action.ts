@@ -1,6 +1,7 @@
 'use server';
 
 import { Resend } from 'resend';
+import { checkBotId } from 'botid/server';
 import { SITE } from '@/lib/content/site';
 import { DEFAULT_LOCALE, LOCALES, type Locale } from '@/lib/i18n/config';
 import { getUi } from '@/lib/i18n/ui';
@@ -11,10 +12,10 @@ import type { CampoContacto, EstadoContacto } from './estado';
    Con `reply-to` puesto al visitante, responder es darle a «Responder» en
    Gmail, así que la conversación sigue donde ya trabajo.
 
-   Es una Server Action y no una ruta de API a propósito: `<form action={…}>`
-   envía aunque el JavaScript no haya cargado, que es justo el caso de quien
-   entra con una conexión mala o con el navegador restringido. Sin JS se
-   pierden los estados bonitos, no el mensaje. */
+   Es una Server Action: el formulario vive en el modal de contacto, que se
+   abre con JavaScript, y React la envía por fetch. Eso es lo que permite a
+   Vercel BotID adjuntar su comprobación al envío; un envío HTML clásico, sin
+   JavaScript, llegaría sin ella y se trataría como un robot. */
 
 const MAX = { nombre: 80, email: 120, mensaje: 2000 };
 const MIN = { nombre: 2, mensaje: 10 };
@@ -47,6 +48,19 @@ export async function enviarContacto(_prev: EstadoContacto, form: FormData): Pro
      tiempo no los veía de todas formas. Perder un contacto cuesta más que
      recibir algo de spam. */
   if (texto(form.get('empresa'))) return { estado: 'ok' };
+
+  /* Vercel BotID: el reto invisible que el navegador resolvió al enviar. Para
+     los robots que se saltan la página y envían directos a la acción, que son
+     los que la trampa de arriba no ve. Si se equivoca con una persona, el
+     mensaje no se pierde en silencio: se le dice que no salió y se le manda a
+     las otras dos vías del modal, copiar el correo o LinkedIn, que no pasan por
+     aquí. Su texto se conserva para que pueda copiarlo. En local siempre deja
+     pasar. */
+  const { isBot } = await checkBotId();
+  if (isBot) {
+    console.warn('[contacto] BotID marcó el envío como robot');
+    return { estado: 'error', errores: { global: t.errBot }, valores };
+  }
 
   const errores: Partial<Record<CampoContacto, string>> = {};
   if (nombre.length < MIN.nombre || nombre.length > MAX.nombre) errores.nombre = t.errNombre;

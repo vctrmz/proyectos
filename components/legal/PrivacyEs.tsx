@@ -6,7 +6,7 @@ export default function PrivacyEs() {
       <main id="contenido">
         <p className="kicker"><span>Legal</span></p>
         <h1>Privacidad y cookies</h1>
-        <p className="updated">Última actualización: 1 de octubre de 2026</p>
+        <p className="updated">Última actualización: 2 de octubre de 2026</p>
         <p className="lead">Esta web es mi portafolio. Recojo datos por dos motivos: entender cómo se navega para mejorarla, y poder responder si me escribes. Aquí tienes qué recojo, con qué herramientas, y cómo cambiar de opinión cuando quieras.</p>
 
         <section id="responsable">
@@ -57,6 +57,11 @@ export default function PrivacyEs() {
               <span className="who">Formulario · Resend (Resend Inc.)</span>
               <h3>Si me escribes por el formulario</h3>
               <p>Recojo tu nombre, tu correo y tu mensaje, y sólo para responderte. El envío lo hace <strong>Resend</strong>, que actúa como encargado del tratamiento: el mensaje viaja por su servidor hasta mi bandeja. <strong>No hay base de datos</strong>: esta web no guarda nada de lo que escribes, lo que queda del mensaje es el correo que me llega. La base legal es tu consentimiento al marcar la casilla, y después el interés legítimo en atender tu consulta.</p>
+            </div>
+            <div className="tool">
+              <span className="who">Formulario · Vercel Inc.</span>
+              <h3>Comprobar que escribe una persona</h3>
+              <p>Al enviar el formulario, tu navegador resuelve una comprobación invisible de <strong>Vercel BotID</strong> que distingue a una persona de un programa que manda spam, a partir de señales técnicas del navegador. No te pide nada ni te enseña ningún reto, solo se hace al enviar y no la uso para medir nada. Se basa en mi interés legítimo en proteger el formulario del spam.</p>
             </div>
             <div className="tool">
               <span className="who">Correo electrónico</span>

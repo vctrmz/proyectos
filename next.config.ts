@@ -1,4 +1,5 @@
 import type { NextConfig } from 'next';
+import { withBotId } from 'botid/next/config';
 
 const nextConfig: NextConfig = {
   /* El idioma va delante en la ruta, así que las URLs anteriores redirigen a
@@ -17,4 +18,6 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+/* withBotId añade las reescrituras con las que el reto de BotID se sirve desde
+   este mismo dominio: así no lo tumban los bloqueadores de anuncios. */
+export default withBotId(nextConfig);

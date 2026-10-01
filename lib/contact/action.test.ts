@@ -4,6 +4,9 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
    formulario, no que Resend sepa mandar correos. */
 const enviar = vi.fn();
 vi.mock('resend', () => ({ Resend: class { emails = { send: enviar }; } }));
+/* BotID también: aquí se decide qué responde, no cómo clasifica Vercel. */
+const botid = vi.fn();
+vi.mock('botid/server', () => ({ checkBotId: () => botid() }));
 
 import { enviarContacto } from './action';
 import { ESTADO_INICIAL } from './estado';
@@ -20,6 +23,8 @@ const datos = (extra: Record<string, string> = {}) => {
 };
 
 beforeEach(() => {
+  botid.mockReset();
+  botid.mockResolvedValue({ isBot: false, isHuman: true, isVerifiedBot: false, bypassed: false });
   enviar.mockReset();
   enviar.mockResolvedValue({ data: { id: 'x' }, error: null });
   process.env.RESEND_API_KEY = 'test';
@@ -103,5 +108,28 @@ describe('enviarContacto', () => {
       enviar.mockRejectedValue(new Error('red caída'));
       expect((await enviarContacto(ESTADO_INICIAL, datos())).estado).toBe('error');
     });
+  });
+
+  /* Si BotID lo marca como robot no se envía nada, pero tampoco se finge que
+     salió: una persona marcada por error tiene que saber que no llegó y a qué
+     otra vía ir. Y el aviso no enseña el correo, que no está en la web. */
+  it('si BotID lo marca como robot, no envía y manda a las otras vías', async () => {
+    botid.mockResolvedValue({ isBot: true, isHuman: false, isVerifiedBot: false, bypassed: false });
+    const r = await enviarContacto(ESTADO_INICIAL, datos());
+    expect(enviar).not.toHaveBeenCalled();
+    expect(r.estado).toBe('error');
+    expect(r.errores?.global).toMatch(/LinkedIn/);
+    expect(r.errores?.global).not.toMatch(/vctrmz47/);
+    // lo escrito se conserva para poder copiarlo
+    expect(r.valores?.mensaje).toContain('Tenemos un ERP');
+  });
+
+  /* La trampa va antes que BotID: lo que ya delata el campo oculto no gasta
+     una comprobación. */
+  it('la trampa para robots responde antes de consultar a BotID', async () => {
+    const r = await enviarContacto(ESTADO_INICIAL, datos({ empresa: 'Spam S.L.' }));
+    expect(r.estado).toBe('ok');
+    expect(botid).not.toHaveBeenCalled();
+    expect(enviar).not.toHaveBeenCalled();
   });
 });
