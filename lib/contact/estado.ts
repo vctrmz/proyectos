@@ -12,8 +12,9 @@ export type EstadoContacto = {
   estado: 'inicial' | 'ok' | 'error';
   errores?: Partial<Record<CampoContacto, string>>;
   /* Lo escrito vuelve al formulario si algo falla: nadie debería teclear dos
-     veces el mismo párrafo por un correo mal puesto. */
-  valores?: { nombre: string; email: string; mensaje: string };
+     veces el mismo párrafo por un correo mal puesto. La casilla también: React
+     reinicia el formulario tras cada envío, y sin esto se desmarcaba sola. */
+  valores?: { nombre: string; email: string; mensaje: string; privacidad: boolean };
 };
 
 export const ESTADO_INICIAL: EstadoContacto = { estado: 'inicial' };

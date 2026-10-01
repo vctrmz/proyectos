@@ -166,4 +166,12 @@ describe('enviarContacto', () => {
     await enviarContacto(ESTADO_INICIAL, datos({ email: 'no-es-un-correo' }));
     expect(despues).toHaveLength(0);
   });
+
+  /* React reinicia el formulario tras cada envío: si algo falla, la casilla
+     de privacidad tiene que volver marcada, igual que vuelve lo escrito. */
+  it('tras un error, la casilla de privacidad vuelve como estaba', async () => {
+    const r = await enviarContacto(ESTADO_INICIAL, datos({ email: 'no-es-un-correo' }));
+    expect(r.estado).toBe('error');
+    expect(r.valores?.privacidad).toBe(true);
+  });
 });

@@ -96,6 +96,7 @@ export default function ContactForm() {
       <p className={s.consent}>
         <input
           id={campo('privacidad')} name="privacidad" type="checkbox" required
+          defaultChecked={estado.valores?.privacidad ?? false}
           aria-invalid={err('privacidad') ? 'true' : undefined}
           aria-describedby={err('privacidad') ? campo('e-privacidad') : undefined}
         />

@@ -36,7 +36,7 @@ export async function enviarContacto(_prev: EstadoContacto, form: FormData): Pro
   const email = texto(form.get('email'));
   const mensaje = texto(form.get('mensaje'));
   const privacidad = form.get('privacidad') === 'on';
-  const valores = { nombre, email, mensaje };
+  const valores = { nombre, email, mensaje, privacidad };
 
   /* Trampa para robots: el campo está oculto y sin tabulación, así que sólo lo
      rellena un programa. Se responde «enviado» sin enviar nada —decirle que se
