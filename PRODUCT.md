@@ -32,7 +32,7 @@ Esta misma web es la prueba: está construida como un producto (tokens, componen
 - Rutas: `/es` (por defecto) y `/en`. Cada caso tiene URL propia en `/[locale]/cases/[slug]`, para poder compartirla. Hay además «Sobre mí» y privacidad.
 - Hay un CV por idioma: `/victor-maza-cv.pdf` (es) y `/victor-maza-cv-en.pdf` (en). Los dos tienen fuente en `scripts/cv/cv-<idioma>.html` con la maqueta común en `scripts/cv/cv.css`, y se imprimen con `npm run cv`. Se descargan desde el hero de «Sobre mí», con selector de idioma.
 - En `/en` solo HERMES y «Esta web» están traducidos. El resto de casos se abre en español y el enlace lo avisa («in Spanish»).
-- La analítica (Clarity, GA, Hotjar, Plerdy, HubSpot) solo se activa si el visitante la acepta. Dato de la re-auditoría del 22-09: pocas sesiones (39) y el 27 % de scroll medio en portada, así que lo importante tiene que estar arriba.
+- La analítica (Clarity, GA, Hotjar, HubSpot) solo se activa si el visitante la acepta. Dato de la re-auditoría del 22-09: pocas sesiones (39) y el 27 % de scroll medio en portada, así que lo importante tiene que estar arriba.
 - Flujo de trabajo: spec → plan → código con Claude Code → revisión → tests y auditoría (`docs/superpowers/`, `docs/auditoria/`). Cada push a `main` despliega a producción; el trabajo va en ramas con preview de Vercel.
 
 ## Capabilities and Constraints

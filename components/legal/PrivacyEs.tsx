@@ -16,7 +16,7 @@ export default function PrivacyEs() {
 
         <section id="datos">
           <h2>Qué datos se recogen y <b>para qué</b></h2>
-          <p>Nada de lo que sigue se activa hasta que aceptas el aviso de cookies, salvo dos cosas: lo estrictamente técnico del alojamiento y la medición de rendimiento, que es anónima y no usa cookies. Si lo rechazas, no se carga ni una sola petición a Google, Microsoft, Hotjar, Plerdy ni HubSpot.</p>
+          <p>Nada de lo que sigue se activa hasta que aceptas el aviso de cookies, salvo dos cosas: lo estrictamente técnico del alojamiento y la medición de rendimiento, que es anónima y no usa cookies. Si lo rechazas, no se carga ni una sola petición a Google, Microsoft, Hotjar ni HubSpot.</p>
           <div className="tools">
             <div className="tool">
               <span className="who">Alojamiento · Vercel Inc.</span>
@@ -42,11 +42,6 @@ export default function PrivacyEs() {
               <span className="who">Comportamiento · Hotjar Ltd. (Malta, UE)</span>
               <h3>Hotjar</h3>
               <p>Como Clarity: mapas de calor y grabaciones anónimas de la navegación para ver qué funciona y qué no. Enmascara por defecto lo que se teclea en los campos. Solo se activa con tu consentimiento.</p>
-            </div>
-            <div className="tool">
-              <span className="who">Comportamiento · Plerdy (sede en Ucrania)</span>
-              <h3>Plerdy</h3>
-              <p>Mapas de clics y grabaciones anónimas de la navegación. No usa cookies: reconoce al visitante con almacenamiento local del navegador y con una <strong>huella digital del navegador</strong> (una combinación de características técnicas de tu dispositivo). Solo se activa con tu consentimiento.</p>
             </div>
             <div className="tool">
               <span className="who">Contacto · HubSpot Inc. (centro de datos en la UE)</span>
@@ -86,7 +81,6 @@ export default function PrivacyEs() {
                 <tr><td><code>CLID</code>, <code>MUID</code></td><td>Microsoft</td><td>Identificador del visitante en el dominio de Clarity.</td><td>1 año</td></tr>
                 <tr><td><code>_hjSessionUser_*</code></td><td>Hotjar</td><td>Identificador anónimo de visitante.</td><td>1 año</td></tr>
                 <tr><td><code>_hjSession_*</code></td><td>Hotjar</td><td>Unir las páginas de una misma sesión.</td><td>30 min</td></tr>
-                <tr><td>Almacenamiento local y huella digital</td><td>Plerdy</td><td>Sesión, canal de entrada y estado de la visita. No son cookies, pero cumplen la misma función y por eso piden el mismo consentimiento.</td><td>Hasta que lo borres / mientras el navegador no cambie</td></tr>
                 <tr><td><code>hubspotutk</code>, <code>__hstc</code></td><td>HubSpot</td><td>Reconocer al visitante entre visitas.</td><td>6 meses</td></tr>
                 <tr><td><code>__hssc</code>, <code>__hssrc</code></td><td>HubSpot</td><td>Contar la sesión actual.</td><td>30 min / sesión</td></tr>
               </tbody>
@@ -99,12 +93,11 @@ export default function PrivacyEs() {
 
         <section id="terceros">
           <h2>Con quién se <b>comparten</b></h2>
-          <p>Con nadie más que los proveedores citados, que actúan como encargados del tratamiento. Google y Microsoft pueden procesar datos en Estados Unidos: ambos están adheridos al <strong>Marco de Privacidad de Datos UE-EE. UU.</strong> y aplican cláusulas contractuales tipo. Hotjar es una empresa europea y aloja los datos en la UE. HubSpot está configurado para usar su centro de datos europeo. Vercel aplica cláusulas contractuales tipo. Plerdy tiene sede en Ucrania, un país sin decisión de adecuación de la UE; sus datos son anónimos y se rigen por su política de privacidad.</p>
+          <p>Con nadie más que los proveedores citados, que actúan como encargados del tratamiento. Google y Microsoft pueden procesar datos en Estados Unidos: ambos están adheridos al <strong>Marco de Privacidad de Datos UE-EE. UU.</strong> y aplican cláusulas contractuales tipo. Hotjar es una empresa europea y aloja los datos en la UE. HubSpot está configurado para usar su centro de datos europeo. Vercel aplica cláusulas contractuales tipo. Resend, que envía los mensajes del formulario, está adherida al Marco de Privacidad de Datos UE-EE. UU. y su contrato de encargo incluye cláusulas contractuales tipo.</p>
           <ul>
             <li><a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Política de privacidad de Google ↗</a></li>
             <li><a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">Declaración de privacidad de Microsoft ↗</a></li>
             <li><a href="https://www.hotjar.com/legal/policies/privacy/" target="_blank" rel="noopener">Política de privacidad de Hotjar ↗</a></li>
-            <li><a href="https://www.plerdy.com/privacy-policy/" target="_blank" rel="noopener">Política de privacidad de Plerdy ↗</a></li>
             <li><a href="https://legal.hubspot.com/privacy-policy" target="_blank" rel="noopener">Política de privacidad de HubSpot ↗</a></li>
             <li><a href="https://resend.com/legal/privacy-policy" target="_blank" rel="noopener">Política de privacidad de Resend ↗</a></li>
             <li><a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">Política de privacidad de Vercel ↗</a></li>
@@ -117,9 +110,9 @@ export default function PrivacyEs() {
             <li><strong>Google Analytics:</strong> los datos de eventos, 2 meses; los informes agregados no identifican a nadie.</li>
             <li><strong>Microsoft Clarity:</strong> las grabaciones, 30 días; los mapas de calor agregados, hasta 13 meses.</li>
             <li><strong>Hotjar:</strong> grabaciones y mapas de calor, hasta 365 días.</li>
-            <li><strong>Plerdy:</strong> no publica un plazo concreto para los datos de navegación; los borro desde su panel si dejo de usarlo.</li>
-            <li><strong>HubSpot:</strong> mientras dure la conversación o la relación profesional, o hasta que pidas que lo borre.</li>
-            <li><strong>Formulario, correo y hoja de contactos:</strong> mientras dure la conversación o la relación profesional, o hasta que pidas que lo borre. Resend conserva el registro de envío según su propia política.</li>
+            <li><strong>HubSpot:</strong> como máximo 12 meses desde que me escribes, salvo que haya un proceso de selección o una relación profesional en curso; entonces, mientras dure.</li>
+            <li><strong>Formulario, correo y hoja de contactos:</strong> como máximo 12 meses desde que me escribes, salvo que haya un proceso de selección o una relación profesional en curso; entonces, mientras dure y, al terminar, solo el tiempo que obligue la ley. La hoja borra sola las filas que cumplen el plazo. Resend conserva el registro de envío según su propia política.</li>
+            <li>En cualquier caso, puedes pedirme que lo borre antes, cuando quieras.</li>
           </ul>
         </section>
 

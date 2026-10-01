@@ -18,9 +18,11 @@ describe('ConsentBanner', () => {
     const texto = screen.getByRole('dialog').textContent ?? '';
     /* Lo que el aviso promete tiene que ser lo que el consentimiento enciende:
        si se añade una herramienta sin nombrarla aquí, este test cae. */
-    for (const h of ['Google Analytics', 'Microsoft Clarity', 'Hotjar', 'Plerdy', 'HubSpot']) {
+    for (const h of ['Google Analytics', 'Microsoft Clarity', 'Hotjar', 'HubSpot']) {
       expect(texto, h).toContain(h);
     }
+    // Plerdy salió: el aviso no puede seguir pidiendo permiso para él.
+    expect(texto).not.toMatch(/Plerdy/);
   });
   it('aceptar guarda granted y arranca la analítica', () => {
     render(<ConsentBanner />);

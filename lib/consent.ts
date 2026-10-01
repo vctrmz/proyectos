@@ -1,9 +1,11 @@
 /*
  * Arranque condicional de la analítica. Cinco servicios, los cinco detrás del
- * mismo consentimiento: GA4, Microsoft Clarity, Hotjar, Plerdy y HubSpot.
+ * mismo consentimiento: GA4, Microsoft Clarity, Hotjar y HubSpot.
  * Todos identifican al visitante, así que no se cargan hasta que acepta. Si
  * rechaza no se pide ni un solo recurso a googletagmanager.com, clarity.ms,
- * hotjar.com, plerdy.com ni hs-scripts.com.
+ * hotjar.com ni hs-scripts.com. Plerdy salió el 2026-10-02: con sede en
+ * Ucrania, sin decisión de adecuación de la UE, y con huella digital del
+ * navegador, era el riesgo legal mayor y duplicaba a Clarity y Hotjar.
  */
 export const CONSENT_KEY = 'vm-consent';
 export type Consent = 'granted' | 'denied' | null;
@@ -21,10 +23,6 @@ const HJ_ID = 6776849;
 const HJ_SV = 6;
 const HJ_SRC = 'https://static.hotjar.com/c/hotjar-' + HJ_ID + '.js?sv=' + HJ_SV;
 const HJ_TAG = 'hj-loader';
-const PLERDY_HASH = '81690a1951e6290b7119405fec614b5d';
-const PLERDY_SUID = 81035;
-const PLERDY_SRC = 'https://a.plerdy.com/public/js/click/main.js';
-const PLERDY_TAG = 'plerdy-loader';
 
 type W = Window & Record<string, unknown>;
 const w = () => window as unknown as W;
@@ -48,7 +46,7 @@ export function writeConsent(v: 'granted' | 'denied', ahora = Date.now()) {
   try { localStorage.setItem(CONSENT_KEY, `${v}|${ahora}`); } catch {}
 }
 
-/* Clarity, Hotjar y Plerdy no arrancan en local: cada sesión de desarrollo
+/* Clarity y Hotjar no arrancan en local: cada sesión de desarrollo
    entraría en el proyecto como tráfico real. */
 export function isLocalHost(h: string): boolean {
   return h === '' || h === 'localhost' || h === '127.0.0.1' || h === '::1' || h === '[::1]' ||
@@ -105,17 +103,6 @@ export function startHotjar() {
   inject(HJ_TAG, HJ_SRC);
 }
 
-/* Snippet oficial de Plerdy: las globales de configuración se definen siempre;
-   la petición a plerdy.com, solo con permiso y fuera de local. */
-export function startPlerdy() {
-  const win = w();
-  win._protocol = location.protocol === 'https:' ? 'https://' : 'http://';
-  win._site_hash_code = PLERDY_HASH;
-  win._suid = PLERDY_SUID;
-  if (isLocalHost(location.hostname)) return;
-  inject(PLERDY_TAG, PLERDY_SRC + '?v=' + Math.random(), (s) => { s.referrerPolicy = 'strict-origin-when-cross-origin'; });
-}
-
 export function startHubSpot() {
   inject(HS_TAG, HS_SRC, (s) => { s.defer = true; });
 }
@@ -124,7 +111,6 @@ export function startAnalytics() {
   startGA();
   startClarity();
   startHotjar();
-  startPlerdy();
   startHubSpot();
 }
 
