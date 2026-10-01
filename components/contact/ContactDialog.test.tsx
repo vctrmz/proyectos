@@ -35,8 +35,10 @@ describe('modal de contacto', () => {
     expect(within(d).getByLabelText('Tu nombre')).toBeInTheDocument();
     expect(within(d).getByLabelText('Tu correo')).toBeInTheDocument();
     expect(within(d).getByRole('button', { name: 'Enviar mensaje' })).toBeInTheDocument();
-    /* Primera capa de información junto al formulario, como pide la LOPDGDD. */
-    for (const x of ['Responsable:', 'Finalidad:', 'Legitimación:', 'Destinatarios:', 'Derechos:']) expect(d.textContent, x).toContain(x);
+    /* Primera capa de información junto al formulario, en el mínimo que pide
+       el art. 11.2 de la LOPDGDD: quién, para qué y que hay derechos. */
+    for (const x of ['Víctor Maza', 'solo para responderte', 'acceder', 'borrarlos']) expect(d.textContent, x).toContain(x);
+    expect(within(d).getByRole('link', { name: 'política de privacidad' })).toBeInTheDocument();
   });
 
   it('se cierra con la X y con un clic en el velo, no al soltar fuera una selección', () => {

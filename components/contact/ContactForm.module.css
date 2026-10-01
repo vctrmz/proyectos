@@ -31,7 +31,6 @@
 .consent .err { grid-column: 2; }
 
 .capa { margin: 0; font-size: var(--fs-100); line-height: 1.5; color: var(--inset-ink-2); }
-.capa strong { color: var(--inset-ink); font-weight: 500; }
 
 .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; margin-top: 4px; }
 .send {

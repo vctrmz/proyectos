@@ -117,7 +117,7 @@ const es: Ui = {
     errServicio: 'No he podido enviarlo. Escríbeme directamente a vctrmz47@gmail.com y lo vemos.',
     errBot: 'No he podido enviarlo. Copia mi correo o escríbeme por LinkedIn, aquí arriba, y lo vemos.',
     obligatorio: 'obligatorio',
-    capa: '*Responsable:* Víctor Maza. *Finalidad:* responder a tu mensaje. *Legitimación:* tu consentimiento. *Destinatarios:* Resend, que hace el envío, y Google, donde lo recibo y lo guardo; nadie más. *Derechos:* acceso, rectificación, supresión y los demás que explica la política de privacidad.',
+    capa: 'Tus datos los trato yo, Víctor Maza, solo para responderte. Puedes acceder a ellos, corregirlos o borrarlos cuando quieras.',
   },
   lang: { label: 'Idioma' },
 };
@@ -186,7 +186,7 @@ const en: Ui = {
     errServicio: 'I could not send it. Write to me directly at vctrmz47@gmail.com and we will sort it out.',
     errBot: 'I could not send it. Copy my email or message me on LinkedIn, just above, and we will sort it out.',
     obligatorio: 'required',
-    capa: '*Controller:* Víctor Maza. *Purpose:* replying to your message. *Legal basis:* your consent. *Recipients:* Resend, which delivers it, and Google, where I receive and keep it; nobody else. *Rights:* access, rectification, erasure and the rest set out in the privacy policy.',
+    capa: 'Your details are handled by me, Víctor Maza, only to reply to you. You can access, correct or delete them whenever you like.',
   },
   lang: { label: 'Language' },
 };

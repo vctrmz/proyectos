@@ -5,7 +5,6 @@ import { enviarContacto } from '@/lib/contact/action';
 import { ESTADO_INICIAL } from '@/lib/contact/estado';
 import { ROUTES } from '@/lib/i18n/config';
 import { useLocale, useUi } from '@/lib/i18n/LocaleContext';
-import { splitBold } from '@/lib/content/text';
 import s from './ContactForm.module.css';
 
 /* El formulario del modal de contacto. Tres campos: quién eres, por dónde te
@@ -106,10 +105,11 @@ export default function ContactForm() {
         {err('privacidad') && <span id={campo('e-privacidad')} className={s.err}>{err('privacidad')}</span>}
       </p>
 
-      {/* Primera capa de información (art. 11 LOPDGDD): quién, para qué, con
-          qué base, a quién llega y qué derechos hay, aquí mismo y no solo tras
-          un enlace. El detalle sigue en la política. */}
-      <p className={s.capa}>{splitBold(t.capa).map((x, i) => (x.strong ? <strong key={i}>{x.text}</strong> : <span key={i}>{x.text}</span>))}</p>
+      {/* Primera capa de información, en su mínimo legal (art. 11.2 LOPDGDD):
+          quién trata los datos, para qué y que hay derechos, aquí mismo. El
+          resto —base legal, destinatarios, plazos— está en la política que
+          enlaza la casilla de arriba. */}
+      <p className={s.capa}>{t.capa}</p>
 
       <div className={s.actions}>
         <button type="submit" className={s.send} disabled={enviando}>
