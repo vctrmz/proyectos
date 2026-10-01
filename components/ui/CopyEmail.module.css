@@ -1,34 +1,9 @@
-.wrap { display: inline-flex; align-items: center; gap: 8px; }
+.icon { width: 18px; height: 18px; flex: none; }
+/* Copiado: el icono pasa a un check verde. No depende solo del color —cambian
+   el dibujo y el texto— para quien no distingue el verde. */
+.ok { color: var(--accent); }
 
-.btn {
-  display: inline-grid; place-items: center;
-  width: 44px; height: 44px; flex: none;
-  border: 1px solid var(--line); border-radius: var(--r-pill);
-  background: transparent; color: var(--ink-2);
-  cursor: pointer;
-  transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease);
-}
-.btn:hover { background: var(--surface); color: var(--ink); }
-.btn:active { transform: scale(.94); }
-/* Copiado: el icono cambia a un check y el color lo confirma. El estado no
-   depende solo del color —cambia el dibujo— para quien no distingue verde. */
-.ok { color: #1f7a38; border-color: #1f7a38; background: rgba(31, 122, 56, .08); }
-.icon { width: 18px; height: 18px; }
-
-/* El aviso no empuja nada: ocupa su sitio desde el principio y solo aparece. */
-.flash {
-  font-size: var(--fs-100); color: var(--ink-3); white-space: nowrap;
-  opacity: 0; transform: translateX(-4px);
-  transition: opacity .18s var(--ease), transform .18s var(--ease);
-}
-.on { opacity: 1; transform: none; }
-
-/* Sobre fondo oscuro —el bloque de cierre y el pie— el botón va en claro. */
-:global(.inset) .btn, :global(.foot) .btn { border-color: rgba(236, 236, 236, .35); color: var(--inset-ink-2); }
-:global(.inset) .btn:hover, :global(.foot) .btn:hover { background: rgba(255, 255, 255, .08); color: var(--inset-ink); }
-:global(.inset) .ok, :global(.foot) .ok { color: #8bde5f; border-color: #8bde5f; background: rgba(139, 222, 95, .12); }
-:global(.inset) .flash, :global(.foot) .flash { color: var(--inset-ink-2); }
-
-@media (prefers-reduced-motion: reduce) {
-  .btn, .flash { transition: none; }
-}
+/* El fallo ocupa su propia línea, debajo de los botones, y deja la dirección
+   seleccionable para copiarla a mano. */
+.fallo { flex-basis: 100%; font-size: var(--fs-200); color: var(--inset-ink-2); }
+.dir { color: var(--inset-ink); user-select: all; }

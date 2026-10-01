@@ -10,7 +10,9 @@ describe('SiteFooter', () => {
     expect(foot.textContent).toMatch(/Víctor Maza/);
     expect(foot.textContent).toMatch(/Senior Product Designer · Design Systems · B2B SaaS e Insurtech/);
     expect(foot.textContent).toMatch(/Ponte en contacto/i);
-    expect(screen.getByRole('link', { name: /vctrmz47@gmail.com/ })).toHaveAttribute('href', 'mailto:vctrmz47@gmail.com');
+    /* El correo no se escribe en la web: se copia desde el modal de contacto. */
+    expect(foot.innerHTML).not.toMatch(/vctrmz47/);
+    expect(screen.getByRole('button', { name: 'Contactar' })).toHaveAttribute('aria-haspopup', 'dialog');
     expect(screen.getByRole('link', { name: /LinkedIn/ })).toHaveAttribute('target', '_blank');
     expect(screen.getByRole('link', { name: /Behance/ })).toHaveAttribute('target', '_blank');
     // el perfil de Víctor es mazdesignr; mazdesign es otro estudio

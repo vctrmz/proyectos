@@ -1,28 +1,30 @@
 import Link from 'next/link';
-import StarfieldButton from '@/components/ui/StarfieldButton';
-import CopyEmail from '@/components/ui/CopyEmail';
+import Button from '@/components/ui/Button';
+import ContactButton from '@/components/contact/ContactButton';
 import { SITE } from '@/lib/content/site';
 import { DEFAULT_LOCALE, ROUTES, type Locale } from '@/lib/i18n/config';
 import { getUi } from '@/lib/i18n/ui';
 import s from './SiteFooter.module.css';
 
 /* Tres bloques arriba —claim, contacto y redes— y una barra azul abajo con la
-   disponibilidad y el legal. El contacto vive aquí: es el único sitio de la
-   web con botones. */
+   disponibilidad y el legal. El contacto repite el del cierre para quien llega
+   al final: «Contactar» y LinkedIn. El correo no se escribe: se copia desde
+   el modal. */
 export default function SiteFooter({ locale = DEFAULT_LOCALE }: { locale?: Locale }) {
   const ui = getUi(locale);
   const r = ROUTES[locale];
   return (
-    <footer className={s.foot}>
+    /* `foot` también como clase global: el botón de LinkedIn la busca para
+       pintarse en claro sobre el fondo oscuro. */
+    <footer className={`foot ${s.foot}`}>
       <div className={`container ${s.inner}`}>
         {/* Firma, no discurso: el claim va una sola vez, en el manifiesto de la home. */}
         <p className={s.claim}><strong>{SITE.name}</strong>{ui.footer.role}</p>
         <div className={s.contact}>
           <p className={s.kicker}>{ui.footer.contact}</p>
           <div className={s.ctas}>
-            <StarfieldButton label={SITE.email} href={`mailto:${SITE.email}`} />
-            <CopyEmail />
-            <StarfieldButton label="LinkedIn" href={SITE.linkedin} external />
+            <ContactButton />
+            <Button href={SITE.linkedin} external variant="outline">LinkedIn</Button>
           </div>
         </div>
         <ul className={s.links}>

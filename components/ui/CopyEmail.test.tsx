@@ -19,34 +19,38 @@ describe('CopyEmail', () => {
       value: { writeText: vi.fn(async (t: string) => { copiado = t; }) }, configurable: true,
     });
     monta();
-    await userEvent.click(screen.getByRole('button', { name: /Copiar el correo/ }));
+    await userEvent.click(screen.getByRole('button', { name: 'Copiar mi correo' }));
     expect(copiado).toBe('vctrmz47@gmail.com');
-    expect(await screen.findByText('Correo copiado')).toBeInTheDocument();
+    expect(await screen.findByRole('button', { name: 'Correo copiado' })).toBeInTheDocument();
   });
   /* El aviso se anuncia solo: quien no ve el cambio de icono lo oye. */
   it('el aviso es una región viva', async () => {
     pon(async () => {});
     const { container } = monta();
-    expect(container.querySelector('[aria-live="polite"]')).not.toBeNull();
+    await userEvent.click(screen.getByRole('button', { name: 'Copiar mi correo' }));
+    expect(container.querySelector('[aria-live="polite"]')!.textContent).toBe('Correo copiado');
   });
-  /* Si el portapapeles falla —permiso denegado, contexto no seguro— se dice,
-     en lugar de enseñar «copiado» sobre algo que no se copió. */
-  it('si el portapapeles falla, lo dice', async () => {
+  /* El correo no se escribe en la página: ni a la vista ni en el HTML, que es
+     de donde lo recogen los robots de spam. */
+  it('la dirección no está en la página mientras no hace falta', () => {
+    pon(async () => {});
+    const { container } = monta();
+    expect(container.innerHTML).not.toMatch(/vctrmz47/);
+  });
+  /* Si el portapapeles falla —permiso denegado, contexto no seguro— se dice y
+     se enseña la dirección para copiarla a mano. */
+  it('si el portapapeles falla, lo dice y enseña la dirección', async () => {
     pon(async () => { throw new Error('denegado'); });
-    monta();
-    await userEvent.click(screen.getByRole('button', { name: /Copiar el correo/ }));
-    expect(await screen.findByText('No se pudo copiar')).toBeInTheDocument();
+    const { container } = monta();
+    await userEvent.click(screen.getByRole('button', { name: 'Copiar mi correo' }));
+    const aviso = container.querySelector('[aria-live="polite"]')!;
+    expect(aviso.textContent).toMatch(/No se pudo copiar/);
+    expect(aviso.textContent).toMatch(/vctrmz47@gmail\.com/);
   });
-  it('en inglés el aviso va en inglés', async () => {
+  it('en inglés va en inglés', async () => {
     pon(async () => {});
     monta('en');
-    await userEvent.click(screen.getByRole('button', { name: /Copy the email address/ }));
-    expect(await screen.findByText('Email copied')).toBeInTheDocument();
-  });
-  /* La etiqueta lleva la dirección: un icono solo no dice qué se copia. */
-  it('la etiqueta accesible nombra la dirección', () => {
-    pon(async () => {});
-    monta();
-    expect(screen.getByRole('button', { name: /vctrmz47@gmail\.com/ })).toBeInTheDocument();
+    await userEvent.click(screen.getByRole('button', { name: 'Copy my email' }));
+    expect(await screen.findByRole('button', { name: 'Email copied' })).toBeInTheDocument();
   });
 });

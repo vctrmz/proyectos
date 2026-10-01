@@ -46,7 +46,7 @@ export interface Ui {
     title: string; lead: string;
     nombre: string; email: string; mensaje: string; privacidad: string; privacidadEnlace: string;
     enviar: string; enviando: string;
-    okTitulo: string; okTexto: string; otro: string;
+    okTitulo: string; okTexto: string; otro: string; linkedin: string; separador: string;
     errNombre: string; errEmail: string; errMensaje: string; errPrivacidad: string; errServicio: string;
     obligatorio: string;
   };
@@ -104,12 +104,12 @@ const es: Ui = {
   cv: { label: 'Descargar CV', format: 'PDF', download: (lang, kb) => `Descargar el CV en ${lang} (PDF, ${kb} KB)` },
   footer: { role: 'Senior Product Designer · Design Systems · B2B SaaS e Insurtech', contact: 'Ponte en contacto', available: 'Disponible ahora · Senior / Lead · remoto', legal: '© 2026', privacy: 'Privacidad', cookies: 'Cookies', remote: 'Trabajo en remoto' },
   consent: { text: 'Uso analítica para ver cómo se navega esta web: Google Analytics, Microsoft Clarity, Hotjar, Plerdy y HubSpot. Usan cookies o almacenamiento del navegador, nada de publicidad, y solo se activan si lo aceptas.', accept: 'Aceptar', reject: 'Rechazar', change: 'Cambiar mi decisión' },
-  copy: { label: 'Copiar el correo', done: 'Correo copiado', failed: 'No se pudo copiar' },
+  copy: { label: 'Copiar mi correo', done: 'Correo copiado', failed: 'No se pudo copiar, cópialo a mano' },
   contact: {
     title: 'Escríbeme', lead: 'Cuéntame qué producto tienes entre manos. Respondo yo, y en un día laborable.',
     nombre: 'Tu nombre', email: 'Tu correo', mensaje: 'Qué necesitas', privacidad: 'He leído y acepto la', privacidadEnlace: 'política de privacidad',
     enviar: 'Enviar mensaje', enviando: 'Enviando…',
-    okTitulo: 'Mensaje enviado.', okTexto: 'Te respondo a tu correo en un día laborable.', otro: 'Escribir otro',
+    okTitulo: 'Mensaje enviado.', okTexto: 'Te respondo a tu correo en un día laborable.', otro: 'Escribir otro', linkedin: 'Escríbeme en LinkedIn', separador: 'O envíame un mensaje',
     errNombre: 'Escribe tu nombre, aunque sea sólo el de pila.',
     errEmail: 'Ese correo no parece válido, y es por donde te respondo.',
     errMensaje: 'Cuéntame algo más: con diez caracteres no sé qué necesitas.',
@@ -171,12 +171,12 @@ const en: Ui = {
   cv: { label: 'Download CV', format: 'PDF', download: (lang, kb) => `Download the CV in ${lang} (PDF, ${kb} KB)` },
   footer: { role: 'Senior Product Designer · Design Systems · B2B SaaS and Insurtech', contact: 'Get in touch', available: 'Available now · Senior / Lead · remote', legal: '© 2026', privacy: 'Privacy', cookies: 'Cookies', remote: 'Working remotely' },
   consent: { text: 'I use analytics to see how this site is read: Google Analytics, Microsoft Clarity, Hotjar, Plerdy and HubSpot. They use cookies or browser storage, never advertising, and load only if you accept.', accept: 'Accept', reject: 'Decline', change: 'Change my choice' },
-  copy: { label: 'Copy the email address', done: 'Email copied', failed: 'Could not copy' },
+  copy: { label: 'Copy my email', done: 'Email copied', failed: 'Could not copy it, copy it by hand' },
   contact: {
     title: 'Write to me', lead: 'Tell me what product you are working on. I answer personally, within one working day.',
     nombre: 'Your name', email: 'Your email', mensaje: 'What you need', privacidad: 'I have read and accept the', privacidadEnlace: 'privacy policy',
     enviar: 'Send message', enviando: 'Sending…',
-    okTitulo: 'Message sent.', okTexto: 'I will reply to your email within one working day.', otro: 'Write another',
+    okTitulo: 'Message sent.', okTexto: 'I will reply to your email within one working day.', otro: 'Write another', linkedin: 'Message me on LinkedIn', separador: 'Or send me a message',
     errNombre: 'Please write your name, a first name is enough.',
     errEmail: 'That email does not look valid, and it is how I reply.',
     errMensaje: 'Tell me a bit more: ten characters is not enough to know what you need.',

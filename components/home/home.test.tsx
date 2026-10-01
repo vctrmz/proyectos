@@ -15,7 +15,7 @@ describe('portada', () => {
     expect(h1.textContent).toMatch(/producto B2B complejo/i);
     expect(h1.textContent).toMatch(/producción/i);
     expect(screen.getByRole('link', { name: /Ver el caso HERMES/ })).toHaveAttribute('href', '/es/cases/hermes');
-    expect(screen.getByRole('link', { name: /Contactar/ })).toHaveAttribute('href', '#contacto');
+    expect(screen.getByRole('button', { name: /Contactar/ })).toHaveAttribute('aria-haspopup', 'dialog');
     expect(screen.getByText(/Insurtech/)).toBeInTheDocument();
     expect(screen.queryByText(/Disponible desde/)).toBeNull();
   });
@@ -77,7 +77,7 @@ describe('portada', () => {
     expect(first.textContent).toMatch(/03 competencias/);
     expect(screen.getByText(/Experiencias complejas en B2B SaaS/)).toBeInTheDocument();
     expect(screen.getByText(/Disponible ahora · roles Senior o Lead de Product Design/)).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /vctrmz47@gmail.com/ })).toHaveAttribute('href', 'mailto:vctrmz47@gmail.com');
+    expect(screen.getByRole('button', { name: 'Contactar' })).toHaveAttribute('aria-haspopup', 'dialog');
     expect(screen.queryByText(/Descargar CV/)).toBeNull();
   });
 });

@@ -7,6 +7,11 @@
 .outline:hover { background: var(--surface); }
 .ghost { background: transparent; color: var(--ink-2); padding-inline: 12px; }
 .ghost:hover { color: var(--ink); background: var(--surface); }
+/* El verde es solo de «Contactar»: el mismo en el fondo claro y en el oscuro,
+   para que la acción se reconozca igual en toda la web. */
+.accent { background: var(--accent); color: #12151c; border-color: var(--accent); }
+.accent:hover { transform: translateY(-1px); }
+.accent:active { transform: scale(.98); }
 :global(.inset) .solid { background: var(--accent); color: #12151c; border-color: var(--accent); }
-:global(.inset) .outline { color: var(--inset-ink); border-color: rgba(236,236,236,.35); }
-:global(.inset) .outline:hover { background: rgba(255,255,255,.06); }
+:global(.inset) .outline, :global(.foot) .outline { color: var(--inset-ink); border-color: rgba(236,236,236,.35); }
+:global(.inset) .outline:hover, :global(.foot) .outline:hover { background: rgba(255,255,255,.06); }

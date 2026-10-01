@@ -4,7 +4,7 @@ import { usePathname } from 'next/navigation';
 import { ROUTES } from '@/lib/i18n/config';
 import { useLocale, useUi } from '@/lib/i18n/LocaleContext';
 import LangSwitch from './LangSwitch';
-import StarfieldButton from '@/components/ui/StarfieldButton';
+import ContactButton from '@/components/contact/ContactButton';
 import { useScrollDirection } from '@/lib/motion/useScrollDirection';
 import s from './SiteHeader.module.css';
 
@@ -24,7 +24,7 @@ export default function SiteHeader() {
           <ul className={s.links}>
             {nav.map((n) => <li key={n.href}><Link href={n.href} className={s.link} aria-current={isActive(n.href) ? 'page' : undefined}>{n.label}</Link></li>)}
             <li><LangSwitch /></li>
-            <li><StarfieldButton label={ui.nav.contact} href={`${r.home === '/' ? '' : r.home}/#contacto`.replace('//', '/')} /></li>
+            <li><ContactButton /></li>
           </ul>
         </nav>
       </div>

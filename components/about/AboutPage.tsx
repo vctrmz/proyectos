@@ -1,9 +1,7 @@
 import SiteHeader from '@/components/layout/SiteHeader';
 import SiteFooter from '@/components/layout/SiteFooter';
 import Button from '@/components/ui/Button';
-import StarfieldButton from '@/components/ui/StarfieldButton';
 import CvDownload from '@/components/ui/CvDownload';
-import CopyEmail from '@/components/ui/CopyEmail';
 import Diagram from '@/components/diagrams/Diagram';
 import { aboutIn } from '@/lib/content/en';
 import { DEFAULT_LOCALE, ROUTES, type Locale } from '@/lib/i18n/config';
@@ -18,7 +16,7 @@ import BioDrawer from './BioDrawer';
 import SocialLinks from './SocialLinks';
 import Bookshelf from './Bookshelf';
 import Quote from './Quote';
-import ContactForm from '@/components/contact/ContactForm';
+import ContactButton from '@/components/contact/ContactButton';
 import s from './about.module.css';
 
 export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale }) {
@@ -78,9 +76,7 @@ export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale
             <Bookshelf locale={locale} />
           </section>
           <section id="contacto" className={s.sec} aria-labelledby="a-contacto"><h2 id="a-contacto">{t.contact}</h2>
-            <div className={s.contact}><StarfieldButton label={SITE.email} href={`mailto:${SITE.email}`} /><CopyEmail /><Button href={SITE.linkedin} external variant="outline">LinkedIn</Button></div>
-            {/* Aquí el fondo es claro, así que el formulario va en su tono. */}
-            <ContactForm locale={locale} tono="claro" />
+            <div className={s.contact}><ContactButton /><Button href={SITE.linkedin} external variant="outline">LinkedIn</Button></div>
           </section>
         </div>
       </main>

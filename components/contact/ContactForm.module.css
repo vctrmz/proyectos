@@ -1,5 +1,5 @@
-/* El formulario vive dentro del bloque oscuro de cierre, así que los colores
-   salen de los tokens del inset y no de los de la página. */
+/* El formulario vive en el modal, que es oscuro como el bloque de cierre: los
+   colores salen de los tokens del inset y no de los de la página. */
 .form { display: grid; gap: var(--sp-16); max-width: 46rem; margin-top: var(--sp-24); }
 
 .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-16); }
@@ -53,17 +53,3 @@
 .doneTitle { margin: 0; font-size: var(--fs-600); font-weight: 600; color: var(--inset-ink); letter-spacing: -0.01em; }
 .doneTitle:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
 .doneText { margin: 0; font-size: var(--fs-200); color: var(--inset-ink-2); }
-
-/* La clase va en el propio <form>. Fuera del inset —el contacto de Sobre mí es claro— los colores se invierten. */
-.light .field label { color: var(--ink-3); }
-.light .field input, .light .field textarea { border-color: var(--line); background: var(--bg); color: var(--ink); }
-.light .field input::placeholder, .light .field textarea::placeholder { color: var(--ink-3); }
-.light .err { color: #b3261e; }
-.light .field [aria-invalid='true'] { border-color: #b3261e; }
-.light .consent label { color: var(--ink-2); }
-.light .consent a { color: var(--ink); }
-.light .live { color: #b3261e; }
-.light .send { border-color: var(--ink); background: var(--ink); color: #fff; }
-.light .done { border-color: var(--line); background: var(--surface); }
-.light .doneTitle { color: var(--ink); }
-.light .doneText { color: var(--ink-2); }

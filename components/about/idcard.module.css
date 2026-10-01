@@ -24,8 +24,6 @@
 .data dd { margin: 0; font-size: var(--fs-200); color: var(--ink); }
 .bars { display: flex; align-items: flex-end; gap: 2px; height: 26px; margin-top: 8px; }
 .bars i { display: block; height: 100%; background: var(--ink); opacity: .82; }
-.mail { font-size: var(--fs-200); color: var(--ink-2); text-decoration: underline; text-underline-offset: 2px; justify-self: start; }
-.mail:hover { color: var(--ink); }
 .hint { font-size: var(--fs-100); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
 
 /* Vaivén mínimo en reposo; se detiene al tocarla. */
@@ -37,5 +35,3 @@
   .pivot { cursor: default; }
 }
 
-/* El correo y su boton de copiar en una fila; el boton no empuja la tarjeta. */
-.mailRow { display: flex; align-items: center; justify-content: space-between; gap: 8px; }

@@ -3,11 +3,11 @@ import Link from 'next/link';
 import { useActionState, useEffect, useId, useRef } from 'react';
 import { enviarContacto } from '@/lib/contact/action';
 import { ESTADO_INICIAL } from '@/lib/contact/estado';
-import { ROUTES, type Locale } from '@/lib/i18n/config';
+import { ROUTES } from '@/lib/i18n/config';
 import { useLocale, useUi } from '@/lib/i18n/LocaleContext';
 import s from './ContactForm.module.css';
 
-/* El formulario del bloque de contacto. Tres campos: quién eres, por dónde te
+/* El formulario del modal de contacto. Tres campos: quién eres, por dónde te
    respondo y qué necesitas. Cada campo de más cuesta mensajes, y lo demás se
    pregunta respondiendo.
 
@@ -18,18 +18,14 @@ import s from './ContactForm.module.css';
    Los errores se atan al campo con aria-describedby y el resultado se anuncia
    en una región viva: quien no ve el cambio de color tiene que enterarse
    igual de que el mensaje salió o de por qué no. */
-/* `tono` porque el mismo formulario vive en dos fondos: el bloque oscuro del
-   cierre y la sección clara de Sobre mí. */
-export default function ContactForm({ locale: prop, tono = 'inset' }: { locale?: Locale; tono?: 'inset' | 'claro' }) {
-  const ctx = useLocale();
-  const locale = prop ?? ctx;
+export default function ContactForm() {
+  const locale = useLocale();
   const ui = useUi();
   const t = ui.contact;
   const [estado, accion, enviando] = useActionState(enviarContacto, ESTADO_INICIAL);
   const id = useId();
   const campo = (n: string) => `${id}-${n}`;
   const err = (n: 'nombre' | 'email' | 'mensaje' | 'privacidad') => estado.errores?.[n];
-  const piel = tono === 'claro' ? s.light : '';
 
   /* Tras un error, el foco va al primer campo que falla; tras un envío, al
      aviso. Si no, quien navega con teclado se queda donde estaba sin saber
@@ -46,7 +42,7 @@ export default function ContactForm({ locale: prop, tono = 'inset' }: { locale?:
 
   if (estado.estado === 'ok') {
     return (
-      <div className={`${s.done} ${piel}`}>
+      <div className={s.done}>
         <p className={s.doneTitle} tabIndex={-1} ref={aviso}>{t.okTitulo}</p>
         <p className={s.doneText}>{t.okTexto}</p>
       </div>
@@ -54,7 +50,7 @@ export default function ContactForm({ locale: prop, tono = 'inset' }: { locale?:
   }
 
   return (
-    <form ref={form} action={accion} className={`${s.form} ${piel}`} noValidate>
+    <form ref={form} action={accion} className={s.form} noValidate>
       <input type="hidden" name="locale" value={locale} />
       {/* Trampa para robots: fuera de la tabulación y fuera de lectura. */}
       <div className={s.trap} aria-hidden="true">

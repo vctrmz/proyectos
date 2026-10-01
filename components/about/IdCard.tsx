@@ -3,8 +3,6 @@ import Image from 'next/image';
 import { useRef } from 'react';
 import { animate, motion, useMotionValue, useTransform } from 'motion/react';
 import { motionAllowed, isCoarsePointer } from '@/lib/motion/prefs';
-import { SITE } from '@/lib/content/site';
-import CopyEmail from '@/components/ui/CopyEmail';
 import type { Locale } from '@/lib/i18n/config';
 import s from './idcard.module.css';
 
@@ -82,10 +80,6 @@ export default function IdCard({ locale = 'es' }: { locale?: Locale }) {
             <div><dt>{locale === 'en' ? 'Practising' : 'En activo'}</dt><dd>{t.since}</dd></div>
           </dl>
           <div className={s.bars} aria-hidden="true">{Array.from({ length: 34 }, (_, i) => <i key={i} style={{ width: (i * 7) % 3 === 0 ? 3 : 1 }} />)}</div>
-          <span className={s.mailRow}>
-            <a className={s.mail} href={`mailto:${SITE.email}`}>{SITE.email}</a>
-            <CopyEmail />
-          </span>
         </div>
       </motion.div>
       {sway && <p className={s.hint} aria-hidden="true">{t.hint}</p>}

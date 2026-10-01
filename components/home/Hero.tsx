@@ -1,7 +1,7 @@
 import Kicker from '@/components/ui/Kicker';
 import TwoToneHeading from '@/components/ui/TwoToneHeading';
-import Button from '@/components/ui/Button';
 import StarfieldButton from '@/components/ui/StarfieldButton';
+import ContactButton from '@/components/contact/ContactButton';
 import { SITE } from '@/lib/content/site';
 import { SOCIAL_ICON, type SocialName } from '@/components/ui/socialIcons';
 import { getUi } from '@/lib/i18n/ui';
@@ -27,7 +27,7 @@ export default function Hero({ locale = DEFAULT_LOCALE }: { locale?: Locale }) {
         <p className={s.sub}>{ui.home.heroSub}</p>
         <div className={s.ctas}>
           <StarfieldButton label={locale === 'es' ? 'Ver el caso HERMES' : 'Read the HERMES case'} href={r.caseOf('hermes')} size="lg" />
-          <Button href="#contacto" variant="outline" size="lg">{ui.nav.contact}</Button>
+          <ContactButton size="lg" />
         </div>
         <div className={s.meta}>
           <ul className={s.social} aria-label={ui.about.socialLabel}>

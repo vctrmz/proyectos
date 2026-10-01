@@ -12,7 +12,8 @@ describe('SiteHeader', () => {
     expect(nav).toBeInTheDocument();
     expect(screen.getByRole('link', { name: 'Trabajo' })).toHaveAttribute('href', '/es#trabajo');
     expect(screen.getByRole('link', { name: 'Sobre mí' })).toHaveAttribute('aria-current', 'page');
-    expect(screen.getByRole('link', { name: 'Contactar' })).toHaveAttribute('href', '/es#contacto');
+    /* Contactar ya no lleva a otra parte: abre el modal del formulario. */
+    expect(screen.getByRole('button', { name: 'Contactar' })).toHaveAttribute('aria-haspopup', 'dialog');
     expect(screen.getByRole('link', { name: /inicio/i })).toHaveAttribute('href', '/es');
   });
 });

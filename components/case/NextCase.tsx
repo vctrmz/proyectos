@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import StarfieldButton from '@/components/ui/StarfieldButton';
+import ContactButton from '@/components/contact/ContactButton';
 import { getCase } from '@/lib/content/cases';
 import { getCaseIn } from '@/lib/content/en';
 import { DEFAULT_LOCALE, ROUTES, type Locale } from '@/lib/i18n/config';
@@ -16,7 +16,7 @@ export default function NextCase({ slug, locale = DEFAULT_LOCALE }: { slug: stri
   return (
     <div className={s.next}>
       <Link href={href} className={s.nextLink} aria-label={`${ui.case.nextLabel}: ${n.title}`}><span>{ui.case.next}{!translated && locale === 'en' ? ' (in Spanish)' : ''}</span><span>{n.title} →</span></Link>
-      <StarfieldButton label={ui.nav.contact} href={`${ROUTES[locale].home === '/' ? '' : ROUTES[locale].home}/#contacto`.replace('//', '/')} />
+      <ContactButton />
     </div>
   );
 }

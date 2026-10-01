@@ -6,6 +6,7 @@ import ConsentBanner from '@/components/ConsentBanner';
 import MotionProvider from '@/components/motion/MotionProvider';
 import SmoothScroll from '@/components/motion/SmoothScroll';
 import JsonLd from '@/components/seo/JsonLd';
+import { ContactProvider } from '@/components/contact/ContactDialog';
 import { LocaleProvider } from '@/lib/i18n/LocaleContext';
 import type { Locale } from '@/lib/i18n/config';
 import { SITE } from '@/lib/content/site';
@@ -26,10 +27,12 @@ export default function RootShell({ locale, children }: { locale: Locale; childr
           nada propio: el aviso sigue activo en todo lo que hay dentro. */}
       <body suppressHydrationWarning>
         <noscript><style>{`[data-reveal],svg[role=img] g{opacity:1 !important;transform:none !important}`}</style></noscript>
-        <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Person', name: SITE.name, jobTitle: 'Product Designer', knowsAbout: ['Product design', 'Design systems', 'Design tokens', 'B2B SaaS', 'Insurtech', 'WCAG accessibility', 'React'], url: SITE.url, email: SITE.email, sameAs: [SITE.linkedin, SITE.github, SITE.behance] }} />
+        <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Person', name: SITE.name, jobTitle: 'Product Designer', knowsAbout: ['Product design', 'Design systems', 'Design tokens', 'B2B SaaS', 'Insurtech', 'WCAG accessibility', 'React'], url: SITE.url, sameAs: [SITE.linkedin, SITE.github, SITE.behance] }} />
         <LocaleProvider locale={locale}>
           <SkipLink locale={locale} />
-          <MotionProvider><ViewTransition>{children}</ViewTransition></MotionProvider>
+          <ContactProvider>
+            <MotionProvider><ViewTransition>{children}</ViewTransition></MotionProvider>
+          </ContactProvider>
           <SmoothScroll />
           <ConsentBanner />
         </LocaleProvider>
