@@ -18,6 +18,23 @@
 .problem p:first-of-type { color: var(--ink); }
 .decision { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: var(--sp-48); align-items: center; padding-block: var(--sp-32); }
 .decision + .decision { border-top: 1px solid var(--line); }
+/* Rejilla bento de decisiones: seis columnas, tarjetas de 2, 4 o 6. Una
+   tarjeta con imagen pone el texto y la imagen lado a lado cuando hay sitio. */
+.bento { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--sp-16); }
+.card { display: grid; gap: var(--sp-16); align-content: start; padding: var(--sp-24); border-radius: var(--r-card); background: var(--surface); }
+.card h3 { font-size: var(--fs-500); line-height: 1.25; margin-bottom: var(--sp-12); }
+.card p { font-size: var(--fs-200); color: var(--ink-2); margin-bottom: var(--sp-8); }
+.card p strong { color: var(--ink); font-weight: 500; }
+.card .tradeoff, .card .wouldFix { background: var(--bg); }
+.span2 { grid-column: span 2; }
+.span4 { grid-column: span 4; }
+.span6 { grid-column: span 6; }
+.cardMedia.span4, .cardMedia.span6 { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; gap: var(--sp-24); }
+@media (max-width: 900px) {
+  .bento { grid-template-columns: minmax(0, 1fr); }
+  .span2, .span4, .span6 { grid-column: auto; }
+  .cardMedia.span4, .cardMedia.span6 { grid-template-columns: minmax(0, 1fr); }
+}
 .decision h3 { font-size: var(--fs-600); margin-bottom: var(--sp-12); }
 .decision p { font-size: var(--fs-200); color: var(--ink-2); margin-bottom: var(--sp-8); }
 .decision p strong { color: var(--ink); font-weight: 500; }

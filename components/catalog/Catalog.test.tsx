@@ -8,16 +8,16 @@ import Catalog from './Catalog';
 beforeEach(() => { window.history.replaceState(null, '', '/'); });
 
 describe('Catalog', () => {
-  it('muestra los 11 proyectos y Todo marcado por defecto', () => {
+  it('muestra los 12 proyectos y Todo marcado por defecto', () => {
     render(<Catalog />);
-    expect(screen.getAllByRole('listitem')).toHaveLength(11);
+    expect(screen.getAllByRole('listitem')).toHaveLength(12);
     expect(screen.getByRole('radio', { name: /^Todo/ })).toHaveAttribute('aria-checked', 'true');
   });
   it('filtra al pulsar un chip, anuncia el recuento y escribe ?f=', async () => {
     render(<Catalog />);
     await userEvent.click(screen.getByRole('radio', { name: /Banca/ }));
-    expect(screen.getAllByRole('listitem')).toHaveLength(1);
-    expect(screen.getByRole('status')).toHaveTextContent('1 proyecto');
+    expect(screen.getAllByRole('listitem')).toHaveLength(2);
+    expect(screen.getByRole('status')).toHaveTextContent('2 proyectos');
     expect(window.location.search).toBe('?f=banca');
     await userEvent.click(screen.getByRole('radio', { name: /^Todo/ }));
     expect(window.location.search).toBe('');
@@ -39,7 +39,7 @@ describe('Catalog', () => {
     unmount();
     window.history.replaceState(null, '', '/?f=nada');
     render(<Catalog />);
-    expect(screen.getAllByRole('listitem')).toHaveLength(11);
+    expect(screen.getAllByRole('listitem')).toHaveLength(12);
   });
   it('las flechas del teclado cambian el filtro dentro del radiogroup', async () => {
     render(<Catalog />);

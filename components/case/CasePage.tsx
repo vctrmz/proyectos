@@ -19,6 +19,7 @@ import DecisionBlock from './DecisionBlock';
 import ResultBlock from './ResultBlock';
 import NextCase from './NextCase';
 import UiKit from './UiKit';
+import CaseDemo from './demos/CaseDemo';
 import { ChallengeGrid, AudienceGrid, FlowList, FindingsTable } from './CaseBlocks';
 import s from './case.module.css';
 
@@ -27,6 +28,14 @@ import s from './case.module.css';
    lleva su número. Las secciones opcionales —reto, audiencias, flujos y
    hallazgos— solo existen si el caso las trae, así que el índice se construye
    del contenido, no de una lista fija. */
+/* Reparto de la rejilla bento en seis columnas: las parejas alternan grande y
+   pequeña —4 + 2, después 2 + 4— y, si sobra una, va a lo ancho. */
+function bentoSpan(i: number, total: number): 2 | 4 | 6 {
+  if (i === total - 1 && total % 2 === 1) return 6;
+  const grande = Math.floor(i / 2) % 2 === 0 ? i % 2 === 0 : i % 2 === 1;
+  return grande ? 4 : 2;
+}
+
 export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy; locale?: Locale }) {
   const p = getProject(c.slug)!;
   const ui = getUi(locale);
@@ -39,10 +48,20 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
         <p>{c.problem[1]}</p>
       </>
     ) },
+    /* La demo va justo después del problema: quien decide en treinta segundos
+       prueba el producto antes de leer cómo se hizo. */
+    ...(c.demo ? [{ id: 'c-demo', label: L('c-demo', 'Pruébalo'), node: (
+      <>
+        <p className={s.lead}>{c.demo.intro}</p>
+        <CaseDemo id={c.demo.id} />
+      </>
+    ) }] : []),
     ...(c.challenge ? [{ id: 'c-reto', label: L('c-reto', 'El reto'), node: <ChallengeGrid items={c.challenge.items} /> }] : []),
     { id: 'c-complejidad', label: L('c-complejidad', 'Complejidad'), node: <Diagram id={c.complexity.diagram} caption={c.complexity.caption} /> },
     ...(c.audiences ? [{ id: 'c-audiencias', label: L('c-audiencias', 'Audiencias'), node: <AudienceGrid items={c.audiences.items} /> }] : []),
-    { id: 'c-decisiones', label: L('c-decisiones', 'Decisiones'), node: <>{c.decisions.map((d) => <DecisionBlock key={d.title} d={d} brand={c.brand} locale={locale} />)}</> },
+    { id: 'c-decisiones', label: L('c-decisiones', 'Decisiones'), node: c.decisionsLayout === 'bento'
+      ? <div className={s.bento}>{c.decisions.map((d, i) => <DecisionBlock key={d.title} d={d} brand={c.brand} locale={locale} span={bentoSpan(i, c.decisions.length)} />)}</div>
+      : <>{c.decisions.map((d) => <DecisionBlock key={d.title} d={d} brand={c.brand} locale={locale} />)}</> },
     ...(c.flows ? [{ id: 'c-flujos', label: L('c-flujos', 'Flujos'), node: (
       <>
         {c.flows.caption && <p className={s.lead}>{c.flows.caption}</p>}

@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 vi.mock('motion/react', () => import('@/test/motion-mock'));
 import Diagram from './Diagram';
 
-const IDS = ['clients-to-system', 'areas-map', 'before-after', 'state-machine', 'template-slots', 'grid-12-4-1', 'system-cycle', 'timeline', 'spec-to-prod'] as const;
+const IDS = ['clients-to-system', 'areas-map', 'before-after', 'state-machine', 'template-slots', 'grid-12-4-1', 'system-cycle', 'timeline', 'spec-to-prod', 'pide-y-paga'] as const;
 
 describe('Diagram', () => {
   it.each(IDS)('%s es una figura con svg accesible', (id) => {

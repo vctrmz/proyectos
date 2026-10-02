@@ -34,6 +34,10 @@ export const EN_PROJECTS: Record<string, { title: string; company?: string; summ
     title: 'Client 360 view',
     summary: 'Twelve compositions explored and four finalists so anyone on the team understands a client in ten seconds, with the reasons for each discard written down.',
   },
+  pidemony: {
+    title: 'Asking for money with a link',
+    summary: 'Pidemony, inside the mony app: the requester asks in four steps and the payer pays by card from a link. I designed both sides and the style guide it was pitched to the business with; it was approved and shipped.',
+  },
   'design-system': {
     title: 'Design system: 267 → 24 tokens',
     summary: 'Monorepo audit: 267 colour values reduced to 24 tokens, each with a role, adopted by all four front-end developers. The system feeds the module and the module gives components back.',

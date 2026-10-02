@@ -12,14 +12,14 @@ type Props = { brand: string; pieces: UiKitPiece[]; label?: string };
 
 const V = { hidden: { opacity: 0, y: 14 }, show: { opacity: 1, y: 0 } };
 
-function Mock({ kind, brand, label, labels }: { kind: UiKitKind; brand: string; label?: string; labels?: string[] }) {
+function Mock({ kind, brand, label, labels, swatches }: { kind: UiKitKind; brand: string; label?: string; labels?: string[]; swatches?: string[] }) {
   const L = (fallback: string[]) => (labels && labels.length ? labels : fallback);
   switch (kind) {
     case 'actions': return (
       <>
         <span className={s.btnSolid} style={{ background: brand }}>{label ?? 'Confirmar'}</span>
-        <span className={s.btnOutline}>Guardar borrador</span>
-        <span className={s.btnGhost}>Cancelar</span>
+        <span className={s.btnOutline}>{labels?.[0] ?? 'Guardar borrador'}</span>
+        <span className={s.btnGhost}>{labels?.[1] ?? 'Cancelar'}</span>
       </>
     );
     case 'states': return (
@@ -41,7 +41,7 @@ function Mock({ kind, brand, label, labels }: { kind: UiKitKind; brand: string; 
       <>
         <span className={s.field}><i className={s.label} /><i className={s.input} /></span>
         <span className={s.field}><i className={s.label} /><i className={s.input} /></span>
-        <span className={`${s.field} ${s.cond}`}><i className={s.label} /><i className={s.input} /><em>condicionado por regla</em></span>
+        <span className={`${s.field} ${s.cond}`}><i className={s.label} /><i className={s.input} /><em>{label ?? 'condicionado por regla'}</em></span>
       </>
     );
     case 'phases': return (
@@ -58,8 +58,10 @@ function Mock({ kind, brand, label, labels }: { kind: UiKitKind; brand: string; 
     case 'tokens': return (
       <>
         {L(['brand', 'action', 'success', 'warning', 'danger', 'surface']).slice(0, 6).map((role, i) => {
-          const hex = [brand, '#2f5bea', '#1f9d55', '#d97706', '#c0392b', '#f6f7fb'][i];
-          return <span key={role} className={s.token}><i style={{ background: hex, borderColor: i === 5 ? '#e3e6ef' : hex }} />{role}</span>;
+          const hex = swatches?.[i] ?? [brand, '#2f5bea', '#1f9d55', '#d97706', '#c0392b', '#f6f7fb'][i];
+          // Un color casi blanco necesita borde para verse sobre la tarjeta.
+          const claro = swatches ? /^#(f|e)/i.test(hex) : i === 5;
+          return <span key={role} className={s.token}><i style={{ background: hex, borderColor: claro ? '#e3e6ef' : hex }} />{role}</span>;
         })}
       </>
     );
@@ -141,7 +143,7 @@ export default function UiKit({ brand, pieces, label = 'Kit del sistema' }: Prop
     <motion.ul className={s.grid} aria-label={label} initial="hidden" whileInView="show" viewport={{ once: true, margin: '0px 0px -10% 0px' }} transition={{ staggerChildren: 0.07 }}>
       {pieces.map((p) => (
         <motion.li key={p.title} className={`${s.card} ${p.wide ? s.wide : ''}`} variants={V}>
-          <div data-mock aria-hidden="true" className={s.mock}><Mock kind={p.kind} brand={brand} label={p.label} labels={p.labels} /></div>
+          <div data-mock aria-hidden="true" className={s.mock}><Mock kind={p.kind} brand={brand} label={p.label} labels={p.labels} swatches={p.swatches} /></div>
           <h4>{p.title}</h4>
           <p>{p.body}</p>
         </motion.li>
