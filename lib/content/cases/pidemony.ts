@@ -4,6 +4,13 @@ import { shot, type CaseStudy } from './types';
    de la app mony, y las dos caras que documenta. Las pantallas y la guía son
    mías, hechas solo; se aprobó y salió. No hay datos de uso, y se dice.
 
+   Los resultados son hitos, no métricas: aprobación y lanzamiento. Lo que
+   pasó después no lo sé, y el caso no lo inventa. Lo único verificable desde
+   fuera va en `measure`: pedir dinero sigue existiendo en el grupo, en Zinli,
+   la billetera de MFTech S.A., filial de Mercantil Panamá (Efecto Cocuyo,
+   2-5-2021; preguntas frecuentes de Zinli, «Solicitar dinero a otro
+   Zinler»). No se afirma que Pidemony acabara en Zinli.
+
    La revisión de contraste es de hoy, no de entonces: el caso la cuenta como
    lo que cambiaría, y la demo de la página ya la aplica. */
 export const pidemony: CaseStudy = {
@@ -60,8 +67,11 @@ export const pidemony: CaseStudy = {
       { value: '6', label: 'láminas en la guía de estilo', meaning: 'Una portada, colores y tipografía por cada superficie, y cada lámina con su pantalla de ejemplo al lado.' },
       { value: '4', label: 'tramos de la petición a la vista', meaning: 'De los datos al enlace compartido, con el progreso arriba de cada pantalla de la app.' },
     ],
-    outcome: 'unavailable',
-    measure: 'Se aprobó y salió, pero no tengo datos de uso. Lo mediría con tres cifras: peticiones creadas frente a pagadas, tiempo hasta el pago y enlaces que caducan sin pagarse. La última dice si la fecha de caducidad está bien elegida.',
+    outcome: [
+      { value: 'Aprobada', label: 'la propuesta que se llevó a negocio', meaning: 'Las dos caras y la guía de estilo se presentaron a negocio como propuesta y se aprobaron para construir. Era el objetivo de la entrega, y se cumplió.' },
+      { value: '2021', label: 'Pidemony sale en la app mony', meaning: 'De propuesta a función publicada dentro de mony, la billetera de Mercantil Banco Panamá, el mismo año en que se diseñó. Cuánto siguió activa y cuánto se usó no lo sé: lo digo abajo.' },
+    ],
+    measure: 'No tengo datos de uso ni sé cuánto tiempo siguió activa. Desde fuera solo se ve que la necesidad sigue: el grupo también permite pedir dinero en Zinli, la billetera de MFTech, filial de Mercantil Panamá («Solicitar dinero a otro Zinler»). No sé si heredó algo de Pidemony, y no lo afirmo. Con acceso, mediría peticiones creadas frente a pagadas, tiempo hasta el pago y enlaces que caducan sin pagarse.',
   },
   learnings: [
     'Llevar a negocio las dos caras —la de quien pide y la de quien paga— convierte la propuesta en un producto que se puede juzgar entero.',
