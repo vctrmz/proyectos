@@ -19,6 +19,7 @@ import DecisionBlock from './DecisionBlock';
 import ResultBlock from './ResultBlock';
 import NextCase from './NextCase';
 import UiKit from './UiKit';
+import CaseDemo from './demos/CaseDemo';
 import { ChallengeGrid, AudienceGrid, FlowList, FindingsTable } from './CaseBlocks';
 import s from './case.module.css';
 
@@ -39,6 +40,14 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
         <p>{c.problem[1]}</p>
       </>
     ) },
+    /* La demo va justo después del problema: quien decide en treinta segundos
+       prueba el producto antes de leer cómo se hizo. */
+    ...(c.demo ? [{ id: 'c-demo', label: L('c-demo', 'Pruébalo'), node: (
+      <>
+        <p className={s.lead}>{c.demo.intro}</p>
+        <CaseDemo id={c.demo.id} />
+      </>
+    ) }] : []),
     ...(c.challenge ? [{ id: 'c-reto', label: L('c-reto', 'El reto'), node: <ChallengeGrid items={c.challenge.items} /> }] : []),
     { id: 'c-complejidad', label: L('c-complejidad', 'Complejidad'), node: <Diagram id={c.complexity.diagram} caption={c.complexity.caption} /> },
     ...(c.audiences ? [{ id: 'c-audiencias', label: L('c-audiencias', 'Audiencias'), node: <AudienceGrid items={c.audiences.items} /> }] : []),

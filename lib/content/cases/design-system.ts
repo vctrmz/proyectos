@@ -54,5 +54,5 @@ export const designSystem: CaseStudy = {
     'El punto de partida de un sistema es el código que ya existe, no la pizarra.',
     'La gobernanza se dimensiona por producto: imponerla donde no hace falta la mata.',
   ],
-  next: 'esta-web',
+  next: 'pidemony',
 };

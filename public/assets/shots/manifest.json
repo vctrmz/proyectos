@@ -550,5 +550,29 @@
   "web-home": {
     "width": 1600,
     "height": 1000
+  },
+  "pm-guia-portada": {
+    "width": 595,
+    "height": 842
+  },
+  "pm-movil-colores": {
+    "width": 595,
+    "height": 842
+  },
+  "pm-movil-tipografia": {
+    "width": 595,
+    "height": 842
+  },
+  "pm-web-colores": {
+    "width": 595,
+    "height": 842
+  },
+  "pm-web-portada": {
+    "width": 595,
+    "height": 842
+  },
+  "pm-web-tipografia": {
+    "width": 595,
+    "height": 842
   }
 }

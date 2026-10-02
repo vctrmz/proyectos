@@ -16,6 +16,7 @@ const SOURCES = [
   { dir: '../portfolio-export/montsaint/img', prefix: 'ms-' },
   { dir: '../portfolio-export/mercantil/img', prefix: 'mb-' },
   { dir: '../portfolio-export/web/img', prefix: 'web-' },
+  { dir: '../portfolio-export/pidemony/img', prefix: 'pm-' },
 ];
 /* Fuentes que existen en portfolio-export pero no se publican: la página
    «Sobre Ayax» lleva fotos y nombres del equipo de Ayax. */

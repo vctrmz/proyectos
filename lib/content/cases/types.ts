@@ -1,4 +1,5 @@
-export type DiagramId = 'clients-to-system' | 'areas-map' | 'before-after' | 'state-machine' | 'template-slots' | 'grid-12-4-1' | 'system-cycle' | 'timeline' | 'value-chain' | 'pending-invoice' | 'two-sided' | 'handoff-chain' | 'spec-to-prod';
+export type DemoId = 'pidemony';
+export type DiagramId = 'clients-to-system' | 'areas-map' | 'before-after' | 'state-machine' | 'template-slots' | 'grid-12-4-1' | 'system-cycle' | 'timeline' | 'value-chain' | 'pending-invoice' | 'two-sided' | 'handoff-chain' | 'spec-to-prod' | 'pide-y-paga';
 export interface Metric { value: string; label: string; meaning: string }
 export interface Shot { src: string; alt: string; caption: string }
 /* tradeoff y wouldFix son las dos honestidades del caso: lo que se pagó por la
@@ -23,8 +24,10 @@ export interface CodeDemo { title: string; lang: 'json' | 'ts' | 'css'; code: st
    se dibuja con los tokens de ese caso. */
 export type UiKitKind = 'actions' | 'states' | 'table' | 'form' | 'phases' | 'tokens' | 'slots' | 'thread' | 'identity' | 'brands' | 'scale' | 'agenda' | 'product' | 'trust' | 'tiers';
 /* label y labels llevan el vocabulario real de cada producto a la maqueta:
-   sin ellos, todas las piezas hablarían el idioma de HERMES. */
-export interface UiKitPiece { kind: UiKitKind; title: string; body: string; wide?: boolean; label?: string; labels?: string[] }
+   sin ellos, todas las piezas hablarían el idioma de HERMES. `swatches` hace
+   lo mismo con el color: la paleta de verdad del producto, en el orden de
+   `labels`. */
+export interface UiKitPiece { kind: UiKitKind; title: string; body: string; wide?: boolean; label?: string; labels?: string[]; swatches?: string[] }
 export interface CaseStudy {
   slug: string; title: string; company: string; years: string; tagline: string; tags: string[]; brand: string;
   hero: Shot; context: string; role: string; delivery: string;
@@ -35,6 +38,9 @@ export interface CaseStudy {
   audiences?: { title: string; items: Audience[] };
   flows?: { title: string; caption?: string; list: Flow[] };
   findings?: { title: string; caption?: string; items: Finding[] };
+  /* Una demo interactiva del producto, construida con su propio kit, para
+     probarlo en vez de leerlo. Solo la trae el caso que la tiene. */
+  demo?: { id: DemoId; intro: string };
   design: Shot[]; implementation: string[];
   result: { output: Metric[]; outcome: Metric[] | 'unavailable'; measure: string };
   learnings: string[]; next: string;

@@ -2,9 +2,9 @@ import { describe, it, expect } from 'vitest';
 import { PROJECTS, FILTERS, parseFilter, filterProjects, filterCounts, projectTags } from './projects';
 
 describe('catálogo', () => {
-  it('tiene 11 piezas con slug único y los cinco proyectos completos delante', () => {
-    expect(PROJECTS).toHaveLength(11);
-    expect(new Set(PROJECTS.map((p) => p.slug)).size).toBe(11);
+  it('tiene 12 piezas con slug único y los cinco proyectos completos delante', () => {
+    expect(PROJECTS).toHaveLength(12);
+    expect(new Set(PROJECTS.map((p) => p.slug)).size).toBe(12);
     expect(PROJECTS.slice(0, 5).map((p) => p.slug)).toEqual(['ayax', 'hermes', 'flesip', 'montsaint', 'mercantil']);
   });
   it('cada pieza tiene resumen, color de marca y o bien imagen o bien logo propio', () => {
@@ -17,8 +17,8 @@ describe('catálogo', () => {
       if (p.image) expect(p.image.alt.length, p.slug).toBeGreaterThan(10);
     }
   });
-  it('los diez casos tienen hasCase y el resto enlaza o no', () => {
-    expect(PROJECTS.filter((p) => p.hasCase).map((p) => p.slug)).toEqual(['ayax', 'hermes', 'flesip', 'montsaint', 'mercantil', 'suscripcion', 'editor-propuesta', 'vista-360', 'design-system', 'esta-web']);
+  it('los once casos tienen hasCase y el resto enlaza o no', () => {
+    expect(PROJECTS.filter((p) => p.hasCase).map((p) => p.slug)).toEqual(['ayax', 'hermes', 'flesip', 'montsaint', 'mercantil', 'suscripcion', 'editor-propuesta', 'vista-360', 'design-system', 'pidemony', 'esta-web']);
     expect(PROJECTS.find((p) => p.slug === 'flesip')?.url).toBe('https://flesip.com/');
     expect(PROJECTS.find((p) => p.slug === 'mercantil')?.url).toBeUndefined();
     expect(PROJECTS.find((p) => p.slug === 'taksio')?.hasCase).toBe(false);
@@ -34,12 +34,13 @@ describe('filtros', () => {
   });
   it('cuenta lo que enseña', () => {
     const c = filterCounts();
-    expect(c.todo).toBe(11);
-    expect(c.casos).toBe(10);
-    expect(c.produccion).toBe(11);
+    expect(c.todo).toBe(12);
+    expect(c.casos).toBe(11);
+    expect(c.produccion).toBe(12);
     expect(c.insurtech).toBe(5);
-    expect(c['design-system']).toBe(1);
-    expect(c.erp + c.banca + c.ecommerce + c.transporte).toBe(4);
+    expect(c['design-system']).toBe(2);
+    expect(c.banca).toBe(2);
+    expect(c.erp + c.banca + c.ecommerce + c.transporte).toBe(5);
     for (const f of FILTERS) expect(filterProjects(f.id)).toHaveLength(c[f.id]);
   });
   it('mantiene el orden del catálogo al filtrar', () => {

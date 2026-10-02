@@ -37,7 +37,7 @@ Esta misma web es la prueba: está construida como un producto (tokens, componen
 
 ## Capabilities and Constraints
 
-- Catálogo de 11 proyectos con filtros por tipo y sector. 10 tienen caso completo; Taksio enlaza a Behance.
+- Catálogo de 12 proyectos con filtros por tipo y sector. 11 tienen caso completo; Taksio enlaza a Behance.
 - Todo texto existe en español y en inglés: la interfaz `Ui` de `lib/i18n/ui.ts` lo obliga, y `lib/content/en/*` sobrescribe el español.
 - **Nada que no se pueda defender en una entrevista.** Los tests de `lib/content/cases/cases.test.ts` lo vigilan: cada cifra del outcome se explica, lo que no se midió se dice, no entran métricas de negocio que nadie midió, no se publican cifras del CV pendientes de confirmar y no se afirman herramientas de Atrinium sin confirmar. El 2026-09-30 Víctor confirmó que puede explicar el 36 % de tiempo liberado, los 347 permisos y los 12 idiomas; «de 5 a 2 días» y la bajada de tickets salieron del CV y de LinkedIn.
 - **Un solo relato en web, CV y LinkedIn** (revisión de reclutador del 2026-09-30): mismo título, WCAG 2.2 AA (nunca AAA), Darien Technology de febrero de 2021 a mayo de 2022 (Mercantil 2021–2022, en remoto) y Atrinium de mayo de 2022 a agosto de 2026. Un cambio de fecha, título o cifra llega a los tres a la vez.
