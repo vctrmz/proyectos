@@ -10,7 +10,7 @@ export const pidemony: CaseStudy = {
   slug: 'pidemony', title: 'Pedir dinero con un enlace', company: 'Mercantil Banco Panamá', years: '2021',
   tagline: 'Pidemony, dentro de la app mony: quien pide lo hace en cuatro pasos y quien paga, con su tarjeta desde un enlace. Diseñé las dos caras y la guía de estilo con la que se presentó a negocio.',
   tags: ['Caso de estudio', 'En producción', 'Banca', 'UI kit', 'Móvil y web'], brand: '#004E9B',
-  hero: shot('pm-guia-portada', 'Portada de la guía de estilo de Pidemony con la app mony en un móvil', 'La guía de estilo de Pidemony: la propuesta que se llevó a negocio'),
+  hero: shot('pm-movil-colores', 'Lámina de colores de la guía móvil de Pidemony junto a la pantalla de solicitud', 'La guía de estilo de Pidemony: la propuesta que se llevó a negocio'),
   context: 'Mony es la billetera de Mercantil Banco Panamá. Pidemony le añade lo contrario de pagar: pedir. Quien pide elige a quién, cuánto y para qué desde la app; a quien le piden le llega un enlace y paga con tarjeta desde el navegador. Lo hice para el Squad Pasivos.',
   role: 'Product Designer, solo: los flujos de móvil y web, y la guía de estilo con la que se presentó a negocio.',
   delivery: 'Pantallas de móvil y web, y una guía de estilo de seis láminas. Se aprobó y salió en la app mony.',
@@ -23,6 +23,7 @@ export const pidemony: CaseStudy = {
     id: 'pidemony',
     intro: 'El flujo de Pidemony con su propio UI kit. Pide dinero desde la app y abre después el enlace como quien paga. Es una demo: no se envía ni se cobra nada, y la tarjeta es de ejemplo.',
   },
+  decisionsLayout: 'bento',
   decisions: [
     { title: 'Cuatro tramos a la vista, de los datos al enlace.', why: 'Pedir dinero no es un formulario: es decir qué, revisarlo, aceptar los términos y compartir el enlace. Si no se ve cuánto falta, se abandona a mitad.', changed: 'Un stepper de cuatro tramos arriba de cada pantalla: en verde lo hecho, en gris lo que queda.', wouldFix: 'El verde #70C972 sobre blanco da 2,0:1, por debajo del 3:1 que se pide a un elemento gráfico. Hoy lo acompañaría de texto —«Paso 2 de 4»— y no confiaría solo en el color. En la demo de arriba ya va así.' },
     { title: 'Los límites del monto se dicen antes de equivocarse.', why: 'Un error que aparece después de escribir obliga a borrar y adivinar. Si el rango está a la vista desde el principio, el error casi no hace falta.', changed: 'Bajo «¿Cuánto le vas a pedir?» va escrito el rango: más de $5 y menos de $2,000. «Siguiente» no se activa hasta que los datos son válidos.' },
@@ -44,10 +45,8 @@ export const pidemony: CaseStudy = {
     ],
   },
   design: [
-    shot('pm-guia-portada', 'Portada de la guía de estilo de Pidemony', 'Portada de la guía, versión móvil: la app mony con su inicio'),
     shot('pm-movil-colores', 'Colores de la guía móvil junto a la pantalla de solicitud', 'Móvil · colores: cada color con su rol y la pantalla de solicitud al lado'),
     shot('pm-movil-tipografia', 'Tipografía de la guía móvil junto a la pantalla de confirmación', 'Móvil · tipografía: Roboto a 16 y 12 px, con la confirmación y los términos'),
-    shot('pm-web-portada', 'Portada de la versión web de la guía de Pidemony', 'Portada de la versión web: la página que abre quien paga'),
     shot('pm-web-colores', 'Colores de la guía web junto a la página de pago', 'Web · colores: la página de pago con tarjeta y los iconos que no cambian de color'),
     shot('pm-web-tipografia', 'Tipografía de la guía web junto al modal de enlace vencido', 'Web · tipografía: 20, 24, 12 y 14 px, con el aviso de enlace vencido'),
   ],
@@ -58,7 +57,7 @@ export const pidemony: CaseStudy = {
   result: {
     output: [
       { value: '2', label: 'superficies, una guía para cada una', meaning: 'La app, donde se pide, y la web, donde se paga con tarjeta: misma paleta y tipografía, escalas distintas.' },
-      { value: '6', label: 'láminas en la guía de estilo', meaning: 'Portada, colores y tipografía de cada superficie, cada una con su pantalla de ejemplo al lado.' },
+      { value: '6', label: 'láminas en la guía de estilo', meaning: 'Una portada, colores y tipografía por cada superficie, y cada lámina con su pantalla de ejemplo al lado.' },
       { value: '4', label: 'tramos de la petición a la vista', meaning: 'De los datos al enlace compartido, con el progreso arriba de cada pantalla de la app.' },
     ],
     outcome: 'unavailable',

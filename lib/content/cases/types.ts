@@ -41,6 +41,10 @@ export interface CaseStudy {
   /* Una demo interactiva del producto, construida con su propio kit, para
      probarlo en vez de leerlo. Solo la trae el caso que la tiene. */
   demo?: { id: DemoId; intro: string };
+  /* Las decisiones en rejilla bento en lugar de en lista: tarjetas grandes y
+     pequeñas que se alternan, para casos con decisiones cortas y pocas
+     imágenes, donde la lista dejaría media pantalla vacía. */
+  decisionsLayout?: 'bento';
   design: Shot[]; implementation: string[];
   result: { output: Metric[]; outcome: Metric[] | 'unavailable'; measure: string };
   learnings: string[]; next: string;

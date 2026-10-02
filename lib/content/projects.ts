@@ -43,7 +43,7 @@ export const PROJECTS: Project[] = [
     image: shot('07-seleccionar-moneda', 'Componente de selección de moneda del design system de HERMES'),
     summary: 'Auditoría del monorepo: 267 valores de color reducidos a 24 tokens con un rol cada uno, adoptados por los cuatro front. El sistema alimenta el módulo y el módulo devuelve componentes.' },
   { slug: 'pidemony', title: 'Pedir dinero con un enlace', company: 'Mercantil Banco Panamá', years: '2021', type: 'design-system', status: 'production', sector: 'banca', brand: '#004E9B', logo: '/assets/logos/mony-wordmark.webp', hasCase: true,
-    image: shot('pm-guia-portada', 'Portada de la guía de estilo de Pidemony con la app mony en un móvil'),
+    image: shot('pm-movil-colores', 'Lámina de colores de la guía móvil de Pidemony junto a la pantalla de solicitud'),
     summary: 'Pidemony, en la app mony: quien pide lo hace en cuatro pasos y quien paga, con tarjeta desde un enlace. Diseñé las dos caras y la guía de estilo con la que se presentó a negocio; se aprobó y salió.' },
   { slug: 'esta-web', title: 'Esta web, del sistema al código', company: 'Proyecto propio', years: '2026', type: 'case', status: 'production', sector: null, brand: '#121317', logo: '/assets/logos/vm.svg', hasCase: true, url: 'https://github.com/vctrmz/proyectos',
     image: shot('web-home', 'Portada de esta web con el titular y el enlace al CV'),
