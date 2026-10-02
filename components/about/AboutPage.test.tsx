@@ -5,7 +5,7 @@ vi.mock('motion/react', () => import('@/test/motion-mock'));
 import AboutPage from './AboutPage';
 
 describe('AboutPage', () => {
-  it('sigue la estructura: personal, formación, ikigai, empresas, visión, contacto', () => {
+  it('sigue la estructura: personal, formación, ikigai, empresas y visión', () => {
     render(<AboutPage />);
     const h2 = screen.getAllByRole('heading', { level: 2 }).map((h) => h.textContent);
     expect(h2).toEqual(expect.arrayContaining(['Personal', 'Formación', 'Ikigai', 'Empresas', 'Herramientas']));
@@ -24,7 +24,8 @@ describe('AboutPage', () => {
     expect(screen.getByRole('img', { name: 'Víctor Maza' })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: /Diseño sistemas, no pantallas/ })).toBeInTheDocument();
     expect(screen.queryByText(/Lugares/)).toBeNull();
-    expect(document.querySelector('#contacto')).not.toBeNull();
+    /* El contacto no se repite al final: el pie, justo debajo, ya lo trae. */
+    expect(document.querySelector('#contacto')).toBeNull();
     /* Fuera del hero la información personal: ni dónde nació ni dónde ha vivido. */
     expect(screen.queryByText('Nací en Venezuela.')).toBeNull();
     expect(screen.queryByText('Jaén')).toBeNull();
@@ -47,13 +48,12 @@ describe('AboutPage', () => {
   });
   /* El CV se descarga desde el hero, junto a la tarjeta de identidad, y con
      selector de idioma: es el único sitio de la web donde aparece. */
-  it('el hero ofrece el CV en los dos idiomas y el contacto ya no lo repite', () => {
+  it('el hero ofrece el CV en los dos idiomas, y es el único sitio donde aparece', () => {
     const { container } = render(<AboutPage />);
     const intro = container.querySelector('section') as HTMLElement;
     expect(within(intro).getByText('Descargar CV')).toBeInTheDocument();
     expect(within(intro).getByRole('link', { name: /Descargar el CV en Español/ })).toHaveAttribute('href', '/victor-maza-cv.pdf');
     expect(within(intro).getByRole('link', { name: /Descargar el CV en English/ })).toHaveAttribute('href', '/victor-maza-cv-en.pdf');
-    const contacto = container.querySelector('#contacto') as HTMLElement;
-    expect(within(contacto).queryByText(/Descargar CV/)).toBeNull();
+    expect(within(container).getAllByText('Descargar CV')).toHaveLength(1);
   });
 });

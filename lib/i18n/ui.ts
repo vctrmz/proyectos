@@ -35,7 +35,7 @@ export interface Ui {
     title: string; personal: string; live: string; before: string; born: string;
     education: string; eduNote: string; drawer: string; drawerTitle: string;
     proc: { title: string; steps: string; prev: string; next: string; principles: string; does: string };
-    ikigai: string; companies: string; tools: string; contact: string; skills: string;
+    ikigai: string; companies: string; tools: string; skills: string;
     socialLabel: string; more: string; close: string; books: string;
   };
   cv: { label: string; format: string; download: (lang: string, kb: number) => string };
@@ -98,7 +98,7 @@ const es: Ui = {
     education: 'Formación', eduNote: 'Informático de formación, Product Designer de oficio.',
     drawer: 'Mi forma de trabajar', drawerTitle: 'Cómo trabajo, de los requisitos a producción',
     proc: { title: 'El proceso', steps: 'Pasos del proceso', prev: 'Paso anterior', next: 'Paso siguiente', principles: 'Tres criterios no negociables', does: 'Qué hago en este paso' },
-    ikigai: 'Ikigai', companies: 'Empresas', tools: 'Herramientas', contact: 'Contacto', skills: 'Lo que aporto',
+    ikigai: 'Ikigai', companies: 'Empresas', tools: 'Herramientas', skills: 'Lo que aporto',
     socialLabel: 'Redes', more: 'Más información', close: 'Cerrar', books: 'Libros que recomiendo',
   },
   cv: { label: 'Descargar CV', format: 'PDF', download: (lang, kb) => `Descargar el CV en ${lang} (PDF, ${kb} KB)` },
@@ -167,7 +167,7 @@ const en: Ui = {
     education: 'Education', eduNote: 'Computer scientist by training, Product Designer by trade.',
     drawer: 'How I work', drawerTitle: 'How I work, from requirements to production',
     proc: { title: 'The process', steps: 'Process steps', prev: 'Previous step', next: 'Next step', principles: 'Three non-negotiables', does: 'What I do in this step' },
-    ikigai: 'Ikigai', companies: 'Companies', tools: 'Tools', contact: 'Contact', skills: 'What I bring',
+    ikigai: 'Ikigai', companies: 'Companies', tools: 'Tools', skills: 'What I bring',
     socialLabel: 'Social', more: 'More', close: 'Close', books: 'Books I recommend',
   },
   cv: { label: 'Download CV', format: 'PDF', download: (lang, kb) => `Download the CV in ${lang} (PDF, ${kb} KB)` },

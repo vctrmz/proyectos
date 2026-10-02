@@ -3,6 +3,9 @@
 .aside { justify-self: end; display: grid; justify-items: center; }
 @media (max-width: 767px) { .intro { grid-template-columns: minmax(0, 1fr); } .aside { justify-self: center; order: -1; } }
 .sec { padding-block: var(--sp-64); border-top: 1px solid var(--line); }
+/* La última sección cierra la página contra el pie oscuro: más aire que entre
+   secciones, para que el final no quede pegado. */
+.sec:last-child { padding-bottom: var(--section); }
 .sec h2 { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: var(--sp-24); }
 .lines { display: grid; gap: 10px; font-size: var(--fs-600); letter-spacing: -0.02em; line-height: 1.35; max-width: 36ch; }
 .lines p { color: var(--ink-2); } .lines p:first-child { color: var(--ink); }
@@ -23,7 +26,6 @@
 .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; align-content: start; } .list li { font-size: var(--fs-200); color: var(--ink-2); padding-left: 14px; position: relative; }
 .list li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--ink); }
 .tools { display: flex; flex-wrap: wrap; gap: 8px; align-content: start; } .tools span { padding: 4px 12px; border-radius: var(--r-pill); background: var(--surface); font-size: var(--fs-200); color: var(--ink-2); }
-.contact { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
 @media (max-width: 767px) { .two { grid-template-columns: minmax(0, 1fr); } }
 .bio { display: grid; gap: var(--sp-16); }
 .bio { gap: 10px; }

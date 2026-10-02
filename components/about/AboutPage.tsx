@@ -1,13 +1,11 @@
 import SiteHeader from '@/components/layout/SiteHeader';
 import SiteFooter from '@/components/layout/SiteFooter';
-import Button from '@/components/ui/Button';
 import CvDownload from '@/components/ui/CvDownload';
 import Diagram from '@/components/diagrams/Diagram';
 import { aboutIn } from '@/lib/content/en';
 import { DEFAULT_LOCALE, ROUTES, type Locale } from '@/lib/i18n/config';
 import { getUi } from '@/lib/i18n/ui';
 import { splitBold } from '@/lib/content/text';
-import { SITE } from '@/lib/content/site';
 import IdCard from './IdCard';
 import IkigaiDiagram from './IkigaiDiagram';
 import CompanyTabs from './CompanyTabs';
@@ -16,7 +14,6 @@ import BioDrawer from './BioDrawer';
 import SocialLinks from './SocialLinks';
 import Bookshelf from './Bookshelf';
 import Quote from './Quote';
-import ContactButton from '@/components/contact/ContactButton';
 import s from './about.module.css';
 
 export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale }) {
@@ -75,9 +72,9 @@ export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale
             <h2 id="a-libros">{t.books}</h2>
             <Bookshelf locale={locale} />
           </section>
-          <section id="contacto" className={s.sec} aria-labelledby="a-contacto"><h2 id="a-contacto">{t.contact}</h2>
-            <div className={s.contact}><ContactButton /><Button href={SITE.linkedin} external variant="outline">LinkedIn</Button></div>
-          </section>
+          {/* Sin bloque de contacto al final: el pie, justo debajo, ya trae
+              «Contactar» y LinkedIn, y el menú lo tiene siempre a la vista.
+              Dos filas iguales una encima de otra solo restaban. */}
         </div>
       </main>
       <SiteFooter locale={locale} />

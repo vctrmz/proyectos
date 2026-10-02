@@ -79,8 +79,8 @@ describe('modal de contacto', () => {
     expect(screen.getByRole('button', { name: 'Contactar' })).toHaveAttribute('aria-haspopup', 'dialog');
     unmount();
     render(<AboutPage />);
-    const contacto = document.querySelector('#contacto') as HTMLElement;
-    expect(within(contacto).queryByRole('textbox')).toBeNull();
-    expect(within(contacto).getByRole('button', { name: 'Contactar' })).toBeInTheDocument();
+    expect(screen.queryByRole('textbox')).toBeNull();
+    // en Sobre mí, «Contactar» vive en el menú y en el pie
+    expect(screen.getAllByRole('button', { name: 'Contactar' })).toHaveLength(2);
   });
 });
