@@ -19,6 +19,11 @@ export interface Finding { n: string; title: string; body: string; rule: string;
 /* `source` dice de dónde sale el extracto: 'illustrative' cuando reconstruye
    la idea sin enseñar código de un cliente, 'repo' cuando es código real y
    público, con `href` al archivo. Por defecto, ilustrativo. */
+/* Los mismos valores nombrados por apariencia y por intención: la propiedad
+   del componente, el valor suelto con la pregunta que deja abierta, y el token
+   con rol que la responde. Lo pinta TokenCompare. */
+export interface TokenRow { use: string; before: string; question: string; after: string; swatch?: string }
+export interface TokenCompare { title: string; lead: string; note?: string; rows: TokenRow[] }
 export interface CodeDemo { title: string; lang: 'json' | 'ts' | 'css'; code: string; source?: 'illustrative' | 'repo'; href?: string }
 /* Piezas del kit: cada caso declara solo las que tiene de verdad, y la maqueta
    se dibuja con los tokens de ese caso. */
@@ -32,7 +37,7 @@ export interface CaseStudy {
   slug: string; title: string; company: string; years: string; tagline: string; tags: string[]; brand: string;
   hero: Shot; context: string; role: string; delivery: string;
   problem: [string, string]; complexity: { diagram: DiagramId; caption: string };
-  decisions: Decision[]; system: { body: string[]; code?: CodeDemo; uiKit?: UiKitPiece[] };
+  decisions: Decision[]; system: { body: string[]; tokens?: TokenCompare; code?: CodeDemo; uiKit?: UiKitPiece[] };
   /* Bloques opcionales: cada caso enseña solo los que tiene. */
   challenge?: { title: string; items: Challenge[] };
   audiences?: { title: string; items: Audience[] };

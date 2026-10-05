@@ -20,6 +20,19 @@ export const designSystem: CaseStudy = {
   ],
   system: {
     body: ['Tokens semánticos con marca e idioma como variables: la paleta de cada cliente se resuelve al iniciar sesión sin duplicar componentes.'],
+    /* Mismos valores que el extracto de abajo. Lo que cambia es el nombre: por
+       apariencia, cada fila deja una pregunta; por intención, la responde. */
+    tokens: {
+      title: 'Un agente de IA lee tus tokens al pie de la letra.',
+      lead: 'Mismos colores, mismos valores. Solo una de las dos versiones dice para qué sirve cada uno, y eso es lo que decide si un front nuevo —o una IA— acierta sin preguntar.',
+      note: 'Ejemplo ilustrativo con los valores del extracto de abajo: en la auditoría eran 267 valores sueltos como estos.',
+      rows: [
+        { use: 'button.bg', before: '#2f5bea', question: '¿Azul para qué?', after: 'action', swatch: '#2f5bea' },
+        { use: 'button.text', before: '#ffffff', question: '¿Siempre blanco?', after: 'action-ink', swatch: '#ffffff' },
+        { use: 'card.bg', before: '#f6f7fb', question: '¿Superficie o borde?', after: 'surface', swatch: '#f6f7fb' },
+        { use: 'card.radius', before: '10', question: '¿10 de qué?', after: 'radius.md' },
+      ],
+    },
     code: { title: "De 267 valores a 24 tokens con rol (extracto)", lang: 'json', code: "{\n  \"color\": {\n    \"bg\":         \"#ffffff\",\n    \"surface\":    \"#f6f7fb\",\n    \"line\":       \"#e3e6ef\",\n    \"ink\":        \"#121317\",\n    \"ink-muted\":  \"#6a6a71\",\n    \"action\":     \"#2f5bea\",\n    \"action-ink\": \"#ffffff\",\n    \"success\":    \"#1f9d55\",\n    \"warning\":    \"#d97706\",\n    \"danger\":     \"#c0392b\",\n    \"focus\":      \"#4a44f2\",\n    \"brand\":      \"var(--tenant-brand)\"\n  },\n  \"font\": {\n    \"family\": \"Inter\",\n    \"size\":   { \"xs\": 12, \"sm\": 14, \"md\": 16, \"lg\": 20, \"xl\": 28, \"xxl\": 40 },\n    \"line\":   { \"tight\": 1.2, \"body\": 1.5 }\n  },\n  \"radius\": { \"sm\": 6, \"md\": 10, \"lg\": 16, \"pill\": 999 },\n  \"shadow\": { \"card\": \"0 2px 8px rgba(18,19,23,.06)\" }\n}" },
     uiKit: [
       { kind: 'tokens', title: 'Tokens con rol, no con nombre de color', body: 'Cada token dice para qué sirve: acción, éxito, aviso, peligro, superficie. Así el front elige sin preguntar y el sistema puede cambiar de paleta sin tocar componentes.', wide: true },
