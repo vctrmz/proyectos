@@ -1,8 +1,11 @@
 /* Acreditación colgando. El giro sucede en el anclaje del cordón (top center),
    así que cuerda y tarjeta se mueven como una sola pieza. */
 .wrap { display: grid; justify-items: center; gap: 10px; padding-top: 8px; }
-.pivot { position: relative; width: min(300px, 78vw); padding-top: 104px; transform-origin: top center; touch-action: none; cursor: grab; }
-.pivot:active { cursor: grabbing; }
+/* Sin .drag (móvil, táctil, reduced-motion) la tarjeta no captura el dedo y
+   el scroll pasa por encima. */
+.pivot { position: relative; width: min(300px, 78vw); padding-top: 104px; transform-origin: top center; }
+.drag { touch-action: none; cursor: grab; }
+.drag:active { cursor: grabbing; }
 
 .cord { position: absolute; top: 0; left: 50%; width: 120px; height: 130px; transform: translateX(-50%); overflow: visible; }
 .rope { fill: none; stroke: var(--ink-3); stroke-width: 1.5; opacity: .55; }
@@ -26,12 +29,9 @@
 .bars i { display: block; height: 100%; background: var(--ink); opacity: .82; }
 .hint { font-size: var(--fs-100); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
 
-/* Vaivén mínimo en reposo; se detiene al tocarla. */
+/* Vaivén mínimo en reposo; se detiene al tocarla. Solo cuando se puede
+   arrastrar, que es cuando el gesto tiene sentido. */
 @keyframes sway { 0%, 100% { rotate: -1.1deg; } 50% { rotate: 1.1deg; } }
-.sway { animation: sway 7s ease-in-out infinite; }
-.sway:hover, .sway:active { animation-play-state: paused; }
-@media (prefers-reduced-motion: reduce) {
-  .sway { animation: none; }
-  .pivot { cursor: default; }
-}
+.drag { animation: sway 7s ease-in-out infinite; }
+.drag:hover, .drag:active { animation-play-state: paused; }
 

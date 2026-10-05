@@ -1,8 +1,7 @@
 'use client';
 import Image from 'next/image';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { animate, motion, useMotionValue, useTransform } from 'motion/react';
-import { motionAllowed, isCoarsePointer } from '@/lib/motion/prefs';
 import type { Locale } from '@/lib/i18n/config';
 import s from './idcard.module.css';
 
@@ -11,23 +10,42 @@ import s from './idcard.module.css';
    anclaje del cordón, así que cuerda y tarjeta se mueven juntas.
 
    El contenido es texto real —nombre, rol, ciudad— no una imagen con letras:
-   se lee, se copia y lo indexa un buscador. El arrastre es un extra; sin JS o
-   con reduced-motion la tarjeta se queda quieta y legible. */
+   se lee, se copia y lo indexa un buscador. El arrastre es un extra; sin JS,
+   con reduced-motion o en móvil la tarjeta se queda quieta y legible. */
 const MAX = 26;   // grados de giro máximo
 const RATIO = 0.14; // píxeles de arrastre por grado
+/* En pantalla táctil o estrecha la tarjeta ocupa casi todo el ancho: si
+   capturase el dedo, no habría por dónde hacer scroll. */
+const ARRASTRE = '(pointer: fine) and (min-width: 768px) and (prefers-reduced-motion: no-preference)';
+
+/* Empieza en false para que servidor y cliente pinten lo mismo; se activa
+   tras montar y sigue los cambios (girar la tablet, redimensionar). */
+function useArrastre() {
+  const [activo, setActivo] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia?.(ARRASTRE);
+    if (!mq) return;
+    const sync = () => setActivo(mq.matches);
+    sync();
+    mq.addEventListener('change', sync);
+    return () => mq.removeEventListener('change', sync);
+  }, []);
+  return activo;
+}
 
 export default function IdCard({ locale = 'es' }: { locale?: Locale }) {
   const angle = useMotionValue(0);
   const rotate = useTransform(angle, (a) => `${a}deg`);
   const host = useRef<HTMLDivElement>(null);
   const from = useRef<number | null>(null);
+  const arrastre = useArrastre();
 
   const t = locale === 'en'
     ? { role: 'Product Designer', place: 'Remote', field: 'B2B SaaS', since: 'Since 2017', hint: 'Drag the card' }
     : { role: 'Product Designer', place: 'En remoto', field: 'B2B SaaS', since: 'Desde 2017', hint: 'Arrastra la tarjeta' };
 
   const grab = (e: React.PointerEvent) => {
-    if (!motionAllowed()) return;
+    if (!arrastre) return;
     from.current = e.clientX - angle.get() / RATIO;
     host.current?.setPointerCapture(e.pointerId);
   };
@@ -45,13 +63,11 @@ export default function IdCard({ locale = 'es' }: { locale?: Locale }) {
     animate(angle, 0, { type: 'spring', stiffness: 55, damping: 5.5, mass: 1.1 });
   };
 
-  const sway = motionAllowed() && !isCoarsePointer();
-
   return (
     <div className={s.wrap}>
       <motion.div
         ref={host}
-        className={`${s.pivot} ${sway ? s.sway : ''}`}
+        className={`${s.pivot} ${arrastre ? s.drag : ''}`}
         style={{ rotate }}
         onPointerDown={grab}
         onPointerMove={move}
@@ -82,7 +98,7 @@ export default function IdCard({ locale = 'es' }: { locale?: Locale }) {
           <div className={s.bars} aria-hidden="true">{Array.from({ length: 34 }, (_, i) => <i key={i} style={{ width: (i * 7) % 3 === 0 ? 3 : 1 }} />)}</div>
         </div>
       </motion.div>
-      {sway && <p className={s.hint} aria-hidden="true">{t.hint}</p>}
+      {arrastre && <p className={s.hint} aria-hidden="true">{t.hint}</p>}
     </div>
   );
 }
