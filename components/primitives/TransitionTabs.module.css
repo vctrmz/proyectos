@@ -1,0 +1,18 @@
+.wrap { display: grid; gap: var(--sp-24); justify-items: center; }
+.list { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 2px; padding: 5px; border-radius: var(--r-pill); background: var(--surface); border: 1px solid var(--line); }
+.tab { position: relative; min-height: 44px; padding: 0 20px; border-radius: var(--r-pill); font-size: var(--fs-200); font-weight: 500; color: var(--ink-2); transition: color .25s var(--ease); }
+.tab:hover { color: var(--ink); }
+.tab:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.on, .on:hover { color: #fff; }
+/* La pastilla viaja por debajo del texto: el texto va encima, en su capa. */
+.pill { position: absolute; inset: 0; border-radius: var(--r-pill); background: var(--ink); }
+.text { position: relative; }
+/* El panel recorta lo que entra de lado, para que no asome fuera. */
+.panel { position: relative; width: 100%; overflow: hidden; border-radius: var(--r-media); }
+.panel:focus-visible { outline: 2px solid var(--focus); outline-offset: 4px; }
+
+.dark .list { background: rgba(255, 255, 255, .06); border-color: rgba(255, 255, 255, .1); }
+.dark .tab { color: var(--inset-ink-2); }
+.dark .tab:hover { color: #fff; }
+.dark .on, .dark .on:hover { color: #12151c; }
+.dark .pill { background: #fff; }
