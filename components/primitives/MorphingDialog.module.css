@@ -1,10 +1,25 @@
 /* Por encima del cajón (190) y del aviso de cookies (150). */
-.veil { position: fixed; inset: 0; z-index: 200; background: rgba(18, 19, 23, .35); backdrop-filter: blur(2px); }
+.veil { position: fixed; inset: 0; z-index: 200; background: rgba(8, 9, 12, .6); backdrop-filter: blur(6px); }
 .stage { position: fixed; inset: 0; z-index: 201; display: grid; place-items: center; padding: var(--sp-24); overflow-y: auto; }
-.trigger { display: block; width: 100%; padding: 0; text-align: left; border-radius: var(--r-card); background: var(--bg); border: 1px solid var(--line); overflow: hidden; cursor: zoom-in; }
+
+/* La tarjeta: imagen a sangre y texto debajo. Al pasar, sube un poco y la
+   imagen se acerca; el morph hace el resto. */
+.trigger { display: block; width: 100%; padding: 0; text-align: left; border-radius: var(--r-media); background: var(--bg); border: 1px solid var(--line); overflow: hidden; cursor: zoom-in; transition: transform .35s var(--ease), box-shadow .35s var(--ease), border-color .35s var(--ease); }
+.trigger:hover { transform: translateY(-4px); box-shadow: 0 24px 60px rgba(18, 19, 23, .18); }
+.trigger:hover .img { transform: scale(1.04); }
 .trigger:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
-.content { position: relative; width: min(880px, 100%); max-height: calc(100dvh - 48px); overflow-y: auto; overscroll-behavior: contain; border-radius: var(--r-card); background: var(--bg); box-shadow: 0 24px 80px rgba(18, 19, 23, .3); }
+.trigger .img { transition: transform .6s var(--ease); }
+
+.content { position: relative; width: min(960px, 100%); max-height: calc(100dvh - 48px); overflow-y: auto; overscroll-behavior: contain; border-radius: var(--r-media); background: var(--bg); color: var(--ink); box-shadow: 0 40px 120px rgba(0, 0, 0, .45); }
 .img { display: block; width: 100%; height: auto; }
-.close { position: absolute; top: var(--sp-12); right: var(--sp-12); display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(255, 255, 255, .9); color: var(--ink); box-shadow: 0 2px 8px rgba(18, 19, 23, .15); }
+
+.close { position: absolute; top: var(--sp-16); right: var(--sp-16); display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(255, 255, 255, .9); backdrop-filter: blur(8px); color: var(--ink); box-shadow: 0 4px 14px rgba(18, 19, 23, .2); }
 .close svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
 .close:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+/* Versión oscura: para escenarios sobre fondo oscuro. */
+.trigger.dark { background: #16181f; border-color: rgba(255, 255, 255, .08); color: var(--inset-ink); }
+.trigger.dark:hover { border-color: rgba(255, 255, 255, .2); box-shadow: 0 24px 60px rgba(0, 0, 0, .5); }
+.content.dark { background: #16181f; color: var(--inset-ink); box-shadow: 0 40px 120px rgba(0, 0, 0, .6), inset 0 0 0 1px rgba(255, 255, 255, .08); }
+.close.dark { background: rgba(14, 15, 19, .7); color: #fff; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .15); }
+.close.dark:focus-visible { outline-color: var(--accent); }

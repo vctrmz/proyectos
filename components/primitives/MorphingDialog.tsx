@@ -19,7 +19,7 @@ import s from './MorphingDialog.module.css';
      el de Lenis.
    Con movimiento reducido, MotionConfig de la web quita el morph: abre y
    cierra sin animar. */
-type Ctx = { abierto: boolean; setAbierto: (v: boolean) => void; id: string; disparador: React.RefObject<HTMLButtonElement | null> };
+type Ctx = { abierto: boolean; setAbierto: (v: boolean) => void; id: string; disparador: React.RefObject<HTMLButtonElement | null>; oscuro: boolean };
 const C = createContext<Ctx | null>(null);
 /* Si una pieza está dentro del diálogo y no en la tarjeta: solo ahí el título
    lleva el id que nombra al diálogo, para que no haya dos iguales. */
@@ -30,18 +30,19 @@ const usar = () => {
   return c;
 };
 
-export function MorphingDialog({ children }: { children: React.ReactNode }) {
+export function MorphingDialog({ children, tone = 'light' }: { children: React.ReactNode; tone?: 'light' | 'dark' }) {
   const [abierto, setAbierto] = useState(false);
   const id = useId();
   const disparador = useRef<HTMLButtonElement>(null);
-  const valor = useMemo(() => ({ abierto, setAbierto, id, disparador }), [abierto, id]);
+  const oscuro = tone === 'dark';
+  const valor = useMemo(() => ({ abierto, setAbierto, id, disparador, oscuro }), [abierto, id, oscuro]);
   return <C.Provider value={valor}>{children}</C.Provider>;
 }
 
 export function MorphingDialogTrigger({ children, className = '' }: { children: React.ReactNode; className?: string }) {
-  const { abierto, setAbierto, id, disparador } = usar();
+  const { abierto, setAbierto, id, disparador, oscuro } = usar();
   return (
-    <motion.button ref={disparador} type="button" layoutId={`md-${id}`} className={`${s.trigger} ${className}`}
+    <motion.button ref={disparador} type="button" layoutId={`md-${id}`} className={`${s.trigger} ${oscuro ? s.dark : ''} ${className}`}
       onClick={() => setAbierto(true)} aria-haspopup="dialog" aria-expanded={abierto}>
       {children}
     </motion.button>
@@ -70,7 +71,7 @@ export function MorphingDialogContainer({ children }: { children: React.ReactNod
 }
 
 export function MorphingDialogContent({ children, className = '' }: { children: React.ReactNode; className?: string }) {
-  const { abierto, setAbierto, id, disparador } = usar();
+  const { abierto, setAbierto, id, disparador, oscuro } = usar();
   const caja = useRef<HTMLDivElement>(null);
   const cerrar = useCallback(() => setAbierto(false), [setAbierto]);
 
@@ -101,7 +102,7 @@ export function MorphingDialogContent({ children, className = '' }: { children: 
   }, [abierto, cerrar, disparador]);
 
   return (
-    <motion.div ref={caja} layoutId={`md-${id}`} className={`${s.content} ${className}`} role="dialog" aria-modal="true"
+    <motion.div ref={caja} layoutId={`md-${id}`} className={`${s.content} ${oscuro ? s.dark : ''} ${className}`} role="dialog" aria-modal="true"
       aria-labelledby={`md-t-${id}`} data-lenis-prevent>
       <Dentro.Provider value={true}>{children}</Dentro.Provider>
     </motion.div>
@@ -132,9 +133,9 @@ export function MorphingDialogDescription({ children, className = '' }: { childr
 }
 
 export function MorphingDialogClose({ label = 'Cerrar' }: { label?: string }) {
-  const { setAbierto } = usar();
+  const { setAbierto, oscuro } = usar();
   return (
-    <motion.button type="button" className={s.close} onClick={() => setAbierto(false)} aria-label={label}
+    <motion.button type="button" className={`${s.close} ${oscuro ? s.dark : ''}`} onClick={() => setAbierto(false)} aria-label={label}
       initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { delay: 0.1 } }} exit={{ opacity: 0 }}>
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" /></svg>
     </motion.button>
