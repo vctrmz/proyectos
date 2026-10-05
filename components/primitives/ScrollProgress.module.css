@@ -1,0 +1,2 @@
+/* Por encima de la cabecera fija, que se esconde al bajar: la barra no. */
+.bar { position: fixed; inset: 0 0 auto; z-index: 110; height: 3px; background: var(--focus); transform-origin: 0 50%; pointer-events: none; }

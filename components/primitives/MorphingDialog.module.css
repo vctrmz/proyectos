@@ -1,0 +1,10 @@
+/* Por encima del cajón (190) y del aviso de cookies (150). */
+.veil { position: fixed; inset: 0; z-index: 200; background: rgba(18, 19, 23, .35); backdrop-filter: blur(2px); }
+.stage { position: fixed; inset: 0; z-index: 201; display: grid; place-items: center; padding: var(--sp-24); overflow-y: auto; }
+.trigger { display: block; width: 100%; padding: 0; text-align: left; border-radius: var(--r-card); background: var(--bg); border: 1px solid var(--line); overflow: hidden; cursor: zoom-in; }
+.trigger:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+.content { position: relative; width: min(880px, 100%); max-height: calc(100dvh - 48px); overflow-y: auto; overscroll-behavior: contain; border-radius: var(--r-card); background: var(--bg); box-shadow: 0 24px 80px rgba(18, 19, 23, .3); }
+.img { display: block; width: 100%; height: auto; }
+.close { position: absolute; top: var(--sp-12); right: var(--sp-12); display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: rgba(255, 255, 255, .9); color: var(--ink); box-shadow: 0 2px 8px rgba(18, 19, 23, .15); }
+.close svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.close:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }

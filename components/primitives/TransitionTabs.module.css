@@ -1,0 +1,8 @@
+.wrap { display: grid; gap: var(--sp-16); }
+.list { display: inline-flex; flex-wrap: wrap; gap: 4px; justify-self: start; padding: 4px; border-radius: var(--r-pill); background: var(--surface); border: 1px solid var(--line); }
+.tab { min-height: 44px; padding: 0 18px; border-radius: var(--r-pill); font-size: var(--fs-200); color: var(--ink-2); transition: background .2s var(--ease), color .2s var(--ease); }
+.tab:hover { color: var(--ink); }
+.on, .on:hover { background: var(--ink); color: #fff; }
+/* El panel recorta lo que entra de lado, para que no asome fuera. */
+.panel { position: relative; overflow: hidden; border-radius: var(--r-card); }
+.panel:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
