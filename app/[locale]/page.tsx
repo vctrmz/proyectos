@@ -11,6 +11,7 @@ import LogoMarquee from '@/components/home/LogoMarquee';
 import Manifesto from '@/components/home/Manifesto';
 import SectionHeader from '@/components/ui/SectionHeader';
 import Catalog from '@/components/catalog/Catalog';
+import band from '@/components/catalog/catalog.module.css';
 import Closing from '@/components/home/Closing';
 import { getUi } from '@/lib/i18n/ui';
 import type { Locale } from '@/lib/i18n/config';
@@ -44,9 +45,11 @@ export default async function Page({ params }: { params: Promise<{ locale: Local
         <Sectores locale={locale} />
         <LogoMarquee locale={locale} />
         <Manifesto />
-        <section id="trabajo" className="container section" aria-labelledby="trabajo-title">
-          <SectionHeader id="trabajo-title" kicker={ui.home.workKicker} title={ui.home.workTitle} />
-          <Suspense><Catalog /></Suspense>
+        <section id="trabajo" className={`section ${band.band}`} aria-labelledby="trabajo-title">
+          <div className={`container ${band.inner}`}>
+            <SectionHeader id="trabajo-title" kicker={ui.home.workKicker} title={ui.home.workTitle} />
+            <Suspense><Catalog /></Suspense>
+          </div>
         </section>
         <Closing locale={locale} />
       </main>

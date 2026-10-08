@@ -1,0 +1,51 @@
+/* Lámina clara sobre la banda oscura. El SVG se dibuja en un lienzo de
+   600 × 338 y escala entero, así que texto y trazo crecen juntos. Las clases
+   del dibujo son globales dentro de .plate: son la gramática de todas las
+   láminas, no estilos de una sola. */
+.plate { position: relative; aspect-ratio: 16 / 9; border-radius: var(--r-card); background: var(--plate); overflow: hidden; }
+.svg { width: 100%; height: 100%; overflow: hidden; font-family: var(--font-geist), system-ui, sans-serif; transition: transform .6s var(--ease); transform-origin: 50% 60%; }
+
+.plate text { fill: var(--plate-ink); font-size: 20px; }
+.plate :global(.caps) { font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; }
+.plate :global(.tiny) { font-size: 15px; }
+.plate :global(.small) { font-size: 17px; }
+.plate :global(.mid) { font-size: 21px; }
+.plate :global(.lead) { font-size: 30px; font-weight: 500; letter-spacing: -0.02em; }
+.plate :global(.big) { font-size: 40px; letter-spacing: -0.02em; }
+.plate :global(.huge) { font-size: 54px; font-weight: 500; letter-spacing: -0.03em; }
+.plate :global(.code) { font-size: 19px; }
+.plate :global(.mono) { font-family: ui-monospace, Menlo, Consolas, monospace; }
+.plate :global(.strong) { font-weight: 600; }
+.plate :global(.strike) { text-decoration: line-through; }
+.plate :global(.t-acc) { fill: var(--focus); }
+.plate :global(.t-w) { fill: #fff; }
+.plate :global(.mute) { opacity: .28; }
+.plate :global(.mute-2) { opacity: .62; }
+.plate :global(.faded) { opacity: .55; }
+
+.plate :global(.ink) { fill: var(--plate-ink); }
+.plate :global(.paper) { fill: #fff; }
+.plate :global(.tint) { fill: var(--plate-tint); }
+.plate :global(.acc) { fill: var(--focus); }
+.plate :global(.mark) { fill: var(--accent); }
+.plate :global(.box) { fill: #fff; stroke: var(--plate-ink); stroke-width: 3; stroke-linejoin: round; }
+.plate :global(.box.thin) { stroke-width: 2.5; }
+.plate :global(.soft-box) { fill: #fff; stroke: var(--plate-tint); stroke-width: 3; }
+.plate :global(.acc-box) { fill: #fff; stroke: var(--focus); stroke-width: 4; }
+.plate :global(.dashed) { fill: none; stroke: var(--plate-ink); stroke-width: 2.5; stroke-dasharray: 7 6; }
+.plate :global(.ring) { fill: none; stroke: var(--plate-ink); stroke-width: 2.5; }
+.plate :global(.ring-ink) { fill: var(--plate-tint); stroke: var(--plate-ink); stroke-width: 2.5; }
+.plate :global(.line) { fill: none; stroke: var(--plate-ink); stroke-width: 3; stroke-linecap: round; }
+.plate :global(.thin-line) { stroke-width: 2; }
+.plate :global(.hair) { fill: none; stroke: var(--plate-tint); stroke-width: 2; }
+.plate :global(.acc-line) { fill: none; stroke: var(--focus); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; }
+.plate :global(.acc-line.thin) { stroke-width: 2.5; }
+.plate :global(.acc-line.dash) { stroke-dasharray: 2 8; }
+.plate :global(.w-line) { fill: none; stroke: #fff; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.plate :global(.cursor) { fill: var(--plate-ink); stroke: #fff; stroke-width: 2; stroke-linejoin: round; }
+.plate :global(.swatch) { stroke: var(--plate-ink); stroke-opacity: .25; stroke-width: 1.5; }
+/* Los logos se pintan en la tinta de la lámina, como el resto del dibujo. */
+.plate :global(.logo) { filter: brightness(0); }
+
+/* Las flechas avanzan cuando la tarjeta se señala: el diagrama hace su gesto. */
+.plate :global(.go) { transition: transform .5s var(--ease); }

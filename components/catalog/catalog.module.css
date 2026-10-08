@@ -1,7 +1,17 @@
-.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: var(--sp-32); }
-/* Tres por fila en escritorio: las diez piezas caben en cuatro filas y el
-   catálogo se recorre sin scroll largo. Dos en tablet, una en móvil. */
-.grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-48) var(--sp-24); }
+/* Banda casi negra para el catálogo. Redefine los tokens de tinta dentro de la
+   banda, así que encabezado, filtros y texto de las tarjetas se adaptan sin
+   estilos propios; las láminas llevan su tinta fija y no cambian. */
+.band { --ink: var(--inset-ink); --ink-2: var(--inset-ink-2); --ink-3: var(--inset-ink-2); --line: rgba(255,255,255,.1); background: var(--night); color: var(--ink); border-radius: var(--r-media); margin-inline: 8px; }
+.band :focus-visible { outline-color: var(--focus-on-night); }
+.band ::selection { background: rgba(157,153,255,.32); }
+@media (max-width: 767px) { .band { margin-inline: 0; border-radius: 24px; } }
+/* Más ancho que el resto de la página: aquí manda la obra, y tres láminas
+   de 400 px se leen; de 330 px, no tanto. */
+.inner { max-width: 1440px; }
+
+.chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: var(--sp-24); }
+/* Tres por fila en escritorio, dos en tablet, una en móvil. */
+.grid { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-64) var(--sp-32); }
 @media (max-width: 999px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 639px) { .grid { grid-template-columns: minmax(0, 1fr); gap: var(--sp-32); } }
-.status { margin-bottom: var(--sp-16); font-size: var(--fs-100); color: var(--ink-3); }
+@media (max-width: 639px) { .grid { grid-template-columns: minmax(0, 1fr); gap: var(--sp-48); } }
+.status { margin-bottom: var(--sp-32); font-size: var(--fs-100); color: var(--ink-3); }
