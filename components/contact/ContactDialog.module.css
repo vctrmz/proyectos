@@ -1,10 +1,10 @@
-/* El modal es el bloque oscuro del cierre flotando sobre la página. El
-   <dialog> solo coloca y anima; el panel de dentro lleva el fondo. */
+/* El modal es una hoja clara sobre la página velada. El <dialog> solo
+   coloca y anima; el panel de dentro lleva el fondo. */
 .dialog {
   width: min(640px, calc(100vw - 32px)); max-width: none; max-height: calc(100dvh - 32px);
-  padding: 0; border: 0; border-radius: var(--r-media); background: transparent; color: var(--inset-ink);
+  padding: 0; border: 0; border-radius: var(--r-media); background: transparent; color: var(--ink);
   overflow-y: auto; overscroll-behavior: contain;
-  box-shadow: 0 24px 80px rgba(18, 19, 23, .35);
+  box-shadow: 0 24px 64px rgba(18, 19, 23, .22), 0 2px 8px rgba(18, 19, 23, .08);
   opacity: 0; transform: translateY(16px) scale(.98);
   transition: opacity .25s var(--ease), transform .4s var(--ease), overlay .4s allow-discrete, display .4s allow-discrete;
 }
@@ -18,28 +18,38 @@
 .dialog[open]::backdrop { background: rgba(18, 19, 23, .45); backdrop-filter: blur(2px); }
 @starting-style { .dialog[open]::backdrop { background: rgba(18, 19, 23, 0); backdrop-filter: blur(0); } }
 
-/* `.inset` trae margen, radio y overflow pensados para una sección de página;
-   dentro del modal sobran, de ahí la especificidad doble. */
-.dialog .panel { margin: 0; border-radius: var(--r-media); overflow: visible; padding: clamp(24px, 4vw, 40px); }
+/* Fondo claro del sistema. El formulario y el botón de copiar se pintaban
+   con los tokens del inset oscuro; aquí se redefinen con los de la página,
+   así que se adaptan sin estilos propios. Los campos van en gris sobre
+   blanco, con un borde de 3:1 para que se vean como campos. */
+.dialog .panel {
+  margin: 0; border-radius: var(--r-media); overflow: visible; padding: clamp(24px, 4vw, 40px);
+  --modal-bg: var(--bg);
+  background: var(--modal-bg);
+  --inset-ink: var(--ink); --inset-ink-2: var(--ink-2);
+  --campo-fondo: var(--surface); --campo-fondo-foco: var(--bg);
+  --campo-borde: rgba(18, 19, 23, .42); --campo-borde-hover: rgba(18, 19, 23, .7);
+  --separador: rgba(18, 19, 23, .1); --error: #b42318; --ok: #2f7a1f; --check: var(--ink); --anillo: var(--focus);
+}
 
 .head { display: flex; align-items: flex-start; justify-content: space-between; gap: var(--sp-16); }
-.title { font-size: var(--fs-800); color: var(--inset-ink); }
-.lead { margin-top: var(--sp-8); max-width: 46ch; font-size: var(--fs-300); color: var(--inset-ink-2); }
+.title { font-size: var(--fs-800); color: var(--ink); }
+.lead { margin-top: var(--sp-8); max-width: 46ch; font-size: var(--fs-300); color: var(--ink-2); }
 
 .close {
   flex: none; display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
-  background: rgba(255, 255, 255, .06); color: var(--inset-ink);
+  background: rgba(18, 19, 23, .05); color: var(--ink);
   transition: background .2s var(--ease);
 }
-.close:hover { background: rgba(255, 255, 255, .12); }
+.close:hover { background: rgba(18, 19, 23, .1); }
 
 .vias { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; margin-top: var(--sp-24); }
 .icon { width: 18px; height: 18px; flex: none; }
 
 /* «O envíame un mensaje»: una línea a cada lado del texto separa las vías
    rápidas del formulario. */
-.sep { display: flex; align-items: center; gap: var(--sp-12); margin-top: var(--sp-32); font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--inset-ink-2); }
-.sep::before, .sep::after { content: ''; flex: 1; height: 1px; background: rgba(236, 236, 236, .12); }
+.sep { display: flex; align-items: center; gap: var(--sp-12); margin-top: var(--sp-32); font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.sep::before, .sep::after { content: ''; flex: 1; height: 1px; background: var(--separador); }
 
 @media (max-width: 767px) {
   .dialog { width: calc(100vw - 16px); max-height: calc(100dvh - 16px); border-radius: 24px; }

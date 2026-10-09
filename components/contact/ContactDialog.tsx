@@ -64,9 +64,9 @@ export function ContactProvider({ children }: { children: React.ReactNode }) {
         onClick={(e) => { if (empezoEnVelo.current && esVelo(e)) dialogo.current?.close(); }}
         data-lenis-prevent
       >
-        {/* `inset` da el tono oscuro del bloque de cierre: el formulario, el
-            botón de copiar y los enlaces ya saben pintarse sobre él. */}
-        <div className={`inset ${s.panel}`}>
+        {/* Panel claro: redefine los tokens con los que se pintan el
+            formulario y el botón de copiar (ver ContactDialog.module.css). */}
+        <div className={s.panel}>
           <div className={s.head}>
             <h2 id={titulo} className={s.title}>{t.title}</h2>
             <button type="button" className={s.close} onClick={() => dialogo.current?.close()} aria-label={ui.about.close}>

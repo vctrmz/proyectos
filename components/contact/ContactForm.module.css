@@ -1,5 +1,6 @@
-/* El formulario vive en el modal, que es oscuro como el bloque de cierre: los
-   colores salen de los tokens del inset y no de los de la página. */
+/* El formulario vive en el modal. Los colores salen de variables que el
+   panel define (--campo-*, --error…); sin ellas, caen a los valores del fondo
+   oscuro, que es donde nació. */
 .form { display: grid; gap: var(--sp-16); max-width: 46rem; margin-top: var(--sp-24); }
 
 .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-16); }
@@ -10,22 +11,22 @@
 .field input,
 .field textarea {
   width: 100%; min-height: 44px; padding: 11px 14px;
-  border: 1px solid rgba(236, 236, 236, .28); border-radius: 12px;
-  background: rgba(255, 255, 255, .04); color: var(--inset-ink);
+  border: 1px solid var(--campo-borde, rgba(236, 236, 236, .28)); border-radius: 12px;
+  background: var(--campo-fondo, rgba(255, 255, 255, .04)); color: var(--inset-ink);
   font: inherit; font-size: var(--fs-200);
   transition: border-color .2s var(--ease), background .2s var(--ease);
 }
 .field textarea { resize: vertical; min-height: 118px; line-height: 1.5; }
 .field input::placeholder, .field textarea::placeholder { color: var(--inset-ink-2); }
-.field input:hover, .field textarea:hover { border-color: rgba(236, 236, 236, .45); }
-.field input:focus-visible, .field textarea:focus-visible { background: rgba(255, 255, 255, .07); }
+.field input:hover, .field textarea:hover { border-color: var(--campo-borde-hover, rgba(236, 236, 236, .45)); }
+.field input:focus-visible, .field textarea:focus-visible { background: var(--campo-fondo-foco, rgba(255, 255, 255, .07)); }
 /* El error no se marca sólo con color: el borde cambia y el texto lo explica. */
-.field [aria-invalid='true'] { border-color: #ff9a8b; border-width: 2px; }
+.field [aria-invalid='true'] { border-color: var(--error, #ff9a8b); border-width: 2px; }
 
-.err { font-size: var(--fs-100); color: #ffb4a8; }
+.err { font-size: var(--fs-100); color: var(--error, #ffb4a8); }
 
 .consent { display: grid; grid-template-columns: auto 1fr; gap: 6px 10px; align-items: start; margin: 0; }
-.consent input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--accent); }
+.consent input { width: 20px; height: 20px; margin: 2px 0 0; accent-color: var(--check, var(--accent)); }
 .consent label { font-size: var(--fs-200); color: var(--inset-ink-2); line-height: 1.5; }
 .consent a { color: var(--inset-ink); text-decoration: underline; text-underline-offset: 3px; }
 .consent .err { grid-column: 2; }
@@ -45,13 +46,13 @@
 
 /* Siempre en el flujo aunque esté vacío: si apareciera al fallar, empujaría el
    botón justo después de pulsarlo. */
-.live { margin: 0; min-height: 1.2em; font-size: var(--fs-200); color: #ffb4a8; }
+.live { margin: 0; min-height: 1.2em; font-size: var(--fs-200); color: var(--error, #ffb4a8); }
 
 /* La trampa para robots: fuera de la vista sin display:none, porque algunos
    robots ignoran lo que está oculto de esa manera. */
 .trap { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
 
-.done { display: grid; gap: 6px; max-width: 46rem; margin-top: var(--sp-24); padding: var(--sp-24); border: 1px solid rgba(236, 236, 236, .28); border-radius: 18px; background: rgba(255, 255, 255, .04); }
+.done { display: grid; gap: 6px; max-width: 46rem; margin-top: var(--sp-24); padding: var(--sp-24); border: 1px solid var(--campo-borde, rgba(236, 236, 236, .28)); border-radius: 18px; background: var(--campo-fondo, rgba(255, 255, 255, .04)); }
 .doneTitle { margin: 0; font-size: var(--fs-600); font-weight: 600; color: var(--inset-ink); letter-spacing: -0.01em; }
-.doneTitle:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
+.doneTitle:focus-visible { outline: 2px solid var(--anillo, var(--accent)); outline-offset: 4px; border-radius: 4px; }
 .doneText { margin: 0; font-size: var(--fs-200); color: var(--inset-ink-2); }

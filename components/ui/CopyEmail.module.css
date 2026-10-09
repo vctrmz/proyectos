@@ -1,7 +1,7 @@
 .icon { width: 18px; height: 18px; flex: none; }
 /* Copiado: el icono pasa a un check verde. No depende solo del color —cambian
    el dibujo y el texto— para quien no distingue el verde. */
-.ok { color: var(--accent); }
+.ok { color: var(--ok, var(--accent)); }
 
 /* El fallo ocupa su propia línea, debajo de los botones, y deja la dirección
    seleccionable para copiarla a mano. */
