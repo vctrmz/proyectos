@@ -45,9 +45,6 @@ export const PROJECTS: Project[] = [
   { slug: 'pidemony', title: 'Pedir dinero con un enlace', company: 'Mercantil Banco Panamá', years: '2021', type: 'design-system', status: 'production', sector: 'banca', brand: '#004E9B', logo: '/assets/logos/mony-wordmark.webp', hasCase: true,
     image: shot('pm-movil-colores', 'Lámina de colores de la guía móvil de Pidemony junto a la pantalla de solicitud'),
     summary: 'Pidemony, en la app mony: quien pide lo hace en cuatro pasos y quien paga, con tarjeta desde un enlace. Diseñé las dos caras y la guía de estilo con la que se presentó a negocio; se aprobó y salió.' },
-  { slug: 'esta-web', title: 'Esta web, del sistema al código', company: 'Proyecto propio', years: '2026', type: 'case', status: 'production', sector: null, brand: '#121317', logo: '/assets/logos/vm.svg', hasCase: true, url: 'https://github.com/vctrmz/proyectos',
-    image: shot('web-home', 'Portada de esta web con el titular y el enlace al CV'),
-    summary: 'El portfolio construido como un producto: tokens, componentes, contenido tipado, tests y auditoría de accesibilidad, con la implementación dirigida con IA. El código es público.' },
   { slug: 'taksio', title: 'Plataforma de movilidad', company: 'Taksio', years: '2017–2019', type: 'product', status: 'production', sector: 'transporte', brand: '#1d3557', hasCase: false, image: null, url: 'https://www.behance.net/gallery/81635187/Taksio-website',
     summary: 'Plataforma multimodal desde cero: design system primero, flujos de conductor y pasajero después.' },
 ];

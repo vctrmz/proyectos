@@ -7,9 +7,9 @@ import s from './Lamina.module.css';
    verde como rotulador— y cada una dibuja el mecanismo de su caso.
 
    Nada se inventa: las etiquetas salen del propio caso (estados de Flesip,
-   fases del módulo de suscripción, tokens del design system, el CSS real de
-   esta web). Donde el caso no da un texto, va una barra en lugar de una
-   palabra. El SVG es decorativo: la tarjeta ya se anuncia con su título. */
+   fases del módulo de suscripción, tokens del design system). Donde el caso
+   no da un texto, va una barra en lugar de una palabra. El SVG es
+   decorativo: la tarjeta ya se anuncia con su título. */
 
 type L = { es: string; en: string };
 const tr = (l: Locale, x: L) => (l === 'en' ? x.en : x.es);
@@ -31,15 +31,6 @@ function Chevrons({ x, y }: { x: number; y: number }) {
     <g className="go">
       <path className="acc-line" d={`M${x} ${y}l13 13l-13 13`} />
       <path className="acc-line" d={`M${x + 16} ${y}l13 13l-13 13`} />
-    </g>
-  );
-}
-
-function Check({ x, y }: { x: number; y: number }) {
-  return (
-    <g>
-      <circle className="acc" cx={x} cy={y} r={11} />
-      <path className="w-line" d={`M${x - 5} ${y}l3.5 3.5l6.5 -7`} />
     </g>
   );
 }
@@ -350,32 +341,6 @@ function Pidemony({ l }: { l: Locale }) {
   );
 }
 
-function EstaWeb({ l }: { l: Locale }) {
-  const lines: [string, number, boolean][] = [
-    [':root {', 58, false], ['--ink: #121317;', 84, false], ['--focus: #4a44f2;', 84, true],
-    ['--accent: #8bde5f;', 84, false], ['--r-card: 16px;', 84, false], ['}', 58, false],
-  ];
-  const checks = l === 'en' ? ['100+ tests', 'axe A/AA: 0', 'LCP 0.91 s'] : ['100+ tests', 'axe A/AA: 0', 'LCP 0,91 s'];
-  return (
-    <>
-      <rect className="tint" x={34} y={26} width={384} height={250} rx={10} />
-      {lines.map(([t, x, hi], i) => (
-        <g key={t}>
-          {hi && <rect className="mark" x={x - 8} y={52 + i * 36} width={222} height={30} rx={3} />}
-          <text className="mono code" x={x} y={73 + i * 36}>{t}</text>
-        </g>
-      ))}
-      {checks.map((t, i) => (
-        <g key={t}>
-          <Check x={452} y={62 + i * 46} />
-          <text className="small" x={472} y={68 + i * 46}>{t}</text>
-        </g>
-      ))}
-      <text className="mono tiny mute-2" x={34} y={312}>{tr(l, { es: 'spec → plan → código → revisión', en: 'spec → plan → code → review' })}</text>
-    </>
-  );
-}
-
 function Taksio({ l }: { l: Locale }) {
   const phone = (x: number, label: string, route: string) => (
     <g>
@@ -406,7 +371,7 @@ function Taksio({ l }: { l: Locale }) {
 const PLATES: Record<string, (p: { l: Locale }) => React.ReactNode> = {
   ayax: Ayax, hermes: Hermes, flesip: Flesip, montsaint: Montsaint, mercantil: Mercantil,
   suscripcion: Suscripcion, 'editor-propuesta': Editor, 'vista-360': Vista360,
-  'design-system': DesignSystem, pidemony: Pidemony, 'esta-web': EstaWeb, taksio: Taksio,
+  'design-system': DesignSystem, pidemony: Pidemony, taksio: Taksio,
 };
 
 export const hasLamina = (slug: string) => slug in PLATES;

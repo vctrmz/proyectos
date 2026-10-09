@@ -14,6 +14,9 @@ const nextConfig: NextConfig = {
       { source: '/perfil.html', destination: '/es/about', permanent: true },
       { source: '/privacidad', destination: '/es/privacy', permanent: true },
       { source: '/privacidad.html', destination: '/es/privacy', permanent: true },
+      /* El caso «Esta web» se retiró el 2026-10-09: quien llegue por un enlace
+         antiguo cae en la portada en lugar de en un 404. */
+      { source: '/:locale(es|en)/cases/esta-web', destination: '/:locale', permanent: true },
     ];
   },
 };

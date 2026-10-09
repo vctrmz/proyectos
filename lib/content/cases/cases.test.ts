@@ -87,12 +87,6 @@ describe('casos', () => {
     const all = JSON.stringify(CASES);
     for (const bad of ['Style Dictionary', 'Storybook', 'ADR']) expect(all, bad).not.toContain(bad);
   });
-  it('el caso de esta web enseña código real y enlazado', () => {
-    const c = getCase('esta-web')!;
-    expect(c.system.code!.source).toBe('repo');
-    expect(c.system.code!.href).toMatch(/^https:\/\/github\.com\/vctrmz\/proyectos\//);
-    expect(c.result.outcome).toBe('unavailable');
-  });
   it('getCase devuelve undefined para slugs desconocidos', () => {
     expect(getCase('nada')).toBeUndefined();
   });
