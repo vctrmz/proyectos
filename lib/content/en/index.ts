@@ -47,7 +47,7 @@ export function sectorsIn(locale: Locale): SectorItem[] {
   if (locale === 'es') return SECTORS;
   return SECTORS.map((x) => {
     const t = EN_SECTORS[x.n];
-    return t ? { ...x, name: t.name, company: t.company, body: t.body, cta: t.cta, href: t.href ?? x.href } : x;
+    return t ? { ...x, name: t.name, company: t.company, body: t.body, areas: t.areas, cta: t.cta, href: t.href ?? x.href } : x;
   });
 }
 
