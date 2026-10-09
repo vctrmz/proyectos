@@ -21,7 +21,9 @@ export const SITE = {
   },
   /* mazdesignr, con r: behance.net/mazdesign es otro estudio. */
   behance: 'https://www.behance.net/mazdesignr',
-  figma: 'https://www.figma.com/design/lEPRv8iPrIDwUBKnbWKMdu/Portfolio?node-id=8-136130&t=srL7KcBmRZtEGLME-1',
+  /* El archivo tiene que estar compartido como «cualquiera con el enlace puede
+     ver»: si no, quien llega desde el hero ve una petición de acceso. */
+  figma: 'https://www.figma.com/design/lEPRv8iPrIDwUBKnbWKMdu/Portfolio?node-id=8-136130&t=QaLProWL5KfltLBC-1',
   /* El dominio del CV es el canonico. El otro alias del proyecto de Vercel
      sigue sirviendo la web, pero apunta aqui en canonical y en el sitemap:
      un solo enlace indexable para dos puertas. */

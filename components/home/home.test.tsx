@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, within } from '@testing-library/react';
 vi.mock('next/navigation', () => ({ useSearchParams: () => new URLSearchParams(''), usePathname: () => '/' }));
 vi.mock('motion/react', () => import('@/test/motion-mock'));
 import Hero from './Hero';
@@ -28,13 +28,17 @@ describe('portada', () => {
     render(<Hero locale="en" />);
     expect(screen.getByText(/Senior Product Designer · Design Systems · B2B SaaS and Insurtech/)).toBeInTheDocument();
   });
-  it('el hero presenta a la persona y LinkedIn, sin más iconos', () => {
-    render(<Hero />);
-    expect(screen.getByText(/Víctor Maza/)).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /LinkedIn/ })).toHaveAttribute('target', '_blank');
-    /* La fila de iconos es solo LinkedIn: el código se enseña en el bloque
-       Stack y en el caso de esta web, con su enlace escrito. */
-    for (const n of ['GitHub', 'Instagram', 'Behance']) {
+  it('el hero pone junto al nombre LinkedIn, Behance y Figma, sin monograma', () => {
+    const { container } = render(<Hero />);
+    expect(screen.getByText('Víctor Maza')).toBeInTheDocument();
+    expect(container.textContent).not.toMatch(/\bVM\b/);
+    const redes = within(screen.getByRole('list', { name: 'Redes' })).getAllByRole('link');
+    expect(redes.map((a) => a.getAttribute('aria-label')?.split(' ')[0])).toEqual(['LinkedIn', 'Behance', 'Figma']);
+    for (const a of redes) expect(a).toHaveAttribute('target', '_blank');
+    expect(screen.getByRole('link', { name: /Behance/ })).toHaveAttribute('href', 'https://www.behance.net/mazdesignr');
+    expect(screen.getByRole('link', { name: /Figma/ }).getAttribute('href')).toMatch(/^https:\/\/www\.figma\.com\/design\/lEPRv8iPrIDwUBKnbWKMdu\//);
+    /* El código se enseña en el bloque Stack, con su enlace escrito. */
+    for (const n of ['GitHub', 'Instagram']) {
       expect(screen.queryByRole('link', { name: new RegExp(n) }), n).toBeNull();
     }
     /* El CV se movió al hero de Sobre mí: en la portada ya no se repite. */

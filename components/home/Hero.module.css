@@ -3,14 +3,18 @@
 .veil { position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse at 50% 45%, rgba(255,255,255,.92), rgba(255,255,255,.55) 55%, rgba(255,255,255,0) 100%); pointer-events: none; }
 .inner { position: relative; z-index: 2; display: grid; justify-items: center; gap: var(--sp-24); max-width: 1040px; margin-inline: auto; padding-inline: var(--gutter); animation: heroIn .6s var(--ease) both; }
 @keyframes heroIn { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-.name { display: inline-flex; align-items: center; gap: 10px; font-size: var(--fs-300); font-weight: 500; }
-.mark { width: 32px; height: 32px; border-radius: 50%; background: var(--ink); color: #fff; display: inline-grid; place-items: center; font-size: 11px; letter-spacing: .04em; }
+/* Nombre y redes en una línea, separados por un filete. Los iconos se ven a
+   20 px pero se pulsan en 44: el círculo de fondo solo aparece al señalarlos. */
+.id { display: inline-flex; align-items: center; gap: 6px; }
+.name { font-size: var(--fs-400); font-weight: 500; letter-spacing: -0.01em; padding-right: 12px; margin-right: 4px; border-right: 1px solid rgba(18, 19, 23, .14); line-height: 1.2; }
 .sub { font-size: var(--fs-400); color: var(--ink-2); max-width: 60ch; text-wrap: pretty; }
-.meta { font-size: var(--fs-200); color: var(--ink-3); }
 .ctas { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 12px; }
-.meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--sp-16); }
-.cv { color: var(--ink-2); }
-.social { display: flex; gap: 8px; list-style: none; margin: 0; padding: 0; }
-.social a { display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; background: var(--surface); color: var(--ink-2); transition: color .2s var(--ease), background .2s var(--ease); }
-.social a:hover { color: var(--ink); background: #eef0f6; }
+.social { display: flex; gap: 0; list-style: none; margin: 0; padding: 0; }
+.social a { position: relative; display: inline-grid; place-items: center; width: 44px; height: 44px; border-radius: 50%; color: var(--ink-2); transition: color .2s var(--ease), background .2s var(--ease); }
+.social a:hover, .social a:focus-visible { color: var(--ink); background: var(--surface); }
 .social svg { width: 20px; height: 20px; fill: currentColor; }
+/* El nombre de la red, debajo del icono al señalarlo: confirma el destino
+   antes de abrir otra pestaña. */
+.tip { position: absolute; top: calc(100% + 4px); left: 50%; translate: -50% -4px; padding: 3px 8px; border-radius: 6px; background: var(--ink); color: #fff; font-size: var(--fs-100); white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .18s var(--ease), translate .18s var(--ease); }
+.social a:hover .tip, .social a:focus-visible .tip { opacity: 1; translate: -50% 0; }
+@media (hover: none) { .tip { display: none; } }
