@@ -22,7 +22,7 @@ describe('Catalog', () => {
     await userEvent.click(screen.getByRole('radio', { name: /^Todo/ }));
     expect(window.location.search).toBe('');
   });
-  it('las cards con caso enlazan a /casos/<slug> y las que no tienen captura pintan un tile de marca', () => {
+  it('las cards con caso enlazan a /casos/<slug> y todas llevan su lámina, sin capturas', () => {
     render(<Catalog />);
     const items = screen.getAllByRole('listitem');
     expect(within(items[0]).getByRole('link', { name: /Ver caso/ })).toHaveAttribute('href', '/es/cases/ayax');
@@ -30,7 +30,8 @@ describe('Catalog', () => {
     expect(within(flesip).getByRole('link', { name: /Ver caso/ })).toHaveAttribute('href', '/es/cases/flesip');
     const taksio = items.find((li) => li.textContent?.includes('Taksio'))!;
     expect(within(taksio).queryByRole('img')).toBeNull();
-    expect(within(taksio).getByTestId('brand-tile')).toBeInTheDocument();
+    expect(within(taksio).getByTestId('lamina')).toBeInTheDocument();
+    expect(screen.getAllByTestId('lamina')).toHaveLength(12);
   });
   it('lee ?f= de la URL al montar y cae a todo si es desconocido', () => {
     window.history.replaceState(null, '', '/?f=erp');

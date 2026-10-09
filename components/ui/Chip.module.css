@@ -3,3 +3,12 @@
 .chip[aria-checked="true"] { background: var(--ink); color: #fff; }
 .count { font-size: var(--fs-100); padding: 1px 7px; border-radius: var(--r-pill); background: rgba(18,19,23,.06); }
 .chip[aria-checked="true"] .count { background: rgba(255,255,255,.18); }
+
+/* Variante de la banda oscura: rectángulo suave en lugar de píldora, gris
+   sobre negro y el marcado en índigo con su marca. */
+.night { border-radius: 10px; background: rgba(255,255,255,.08); color: var(--inset-ink); box-shadow: none; padding: 0 16px; }
+.night:hover { background: rgba(255,255,255,.14); color: #fff; }
+.night[aria-checked="true"] { background: var(--focus); color: #fff; padding-left: 12px; }
+.night .count { background: rgba(255,255,255,.1); color: var(--inset-ink-2); }
+.night[aria-checked="true"] .count { background: rgba(0,0,0,.24); color: #fff; }
+.check { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }

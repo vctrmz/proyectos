@@ -21,7 +21,7 @@ export default function FilterChips({ value, counts, onChange }: { value: Filter
   };
   return (
     <div ref={group} role="radiogroup" aria-label={ui.catalog.filtersLabel} className={s.chips} onKeyDown={onKey}>
-      {FILTERS.map((f) => <Chip key={f.id} checked={f.id === value} count={counts[f.id]} onSelect={() => onChange(f.id)}>{filterLabelIn(locale, f.id, f.label)}</Chip>)}
+      {FILTERS.map((f) => <Chip key={f.id} checked={f.id === value} count={counts[f.id]} onSelect={() => onChange(f.id)} tone="night">{filterLabelIn(locale, f.id, f.label)}</Chip>)}
     </div>
   );
 }

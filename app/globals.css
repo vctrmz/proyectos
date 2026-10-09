@@ -4,6 +4,10 @@
   --inset-bg: #1b1e27; --inset-ink: #ececec; --inset-ink-2: #b4b8c4; --accent: #8bde5f;
   --glow: linear-gradient(135deg, rgba(74,68,242,0.12), rgba(139,222,95,0.12), rgba(248,249,252,0.12));
   --focus: #4a44f2;
+  /* Catálogo de la portada: banda casi negra y láminas claras con diagramas.
+     Las láminas no cambian con la banda, así que llevan su propia tinta. */
+  --night: #0e0f13; --focus-on-night: #9d99ff;
+  --plate: #f4f4fe; --plate-tint: #dedcfd; --plate-ink: #121317;
   --fs-100: 0.78125rem; --fs-200: 0.90625rem; --fs-300: 1rem; --fs-400: 1.09375rem; --fs-500: 1.25rem;
   --fs-600: 1.5rem; --fs-700: 1.75rem; --fs-800: clamp(2rem, 4vw, 2.625rem); --fs-900: clamp(2.25rem, 5vw, 3.375rem);
   --fs-1000: clamp(2.75rem, 6vw, 4.5rem); --fs-1100: clamp(3.5rem, 9vw, 6.6875rem);
