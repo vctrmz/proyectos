@@ -31,13 +31,13 @@ Esta misma web es la prueba: está construida como un producto (tokens, componen
 
 - Rutas: `/es` (por defecto) y `/en`. Cada caso tiene URL propia en `/[locale]/cases/[slug]`, para poder compartirla. Hay además «Sobre mí» y privacidad.
 - Hay un CV por idioma: `/victor-maza-cv.pdf` (es) y `/victor-maza-cv-en.pdf` (en). Los dos tienen fuente en `scripts/cv/cv-<idioma>.html` con la maqueta común en `scripts/cv/cv.css`, y se imprimen con `npm run cv`. Se descargan desde el hero de «Sobre mí», con selector de idioma.
-- En `/en` solo HERMES y «Esta web» están traducidos. El resto de casos se abre en español y el enlace lo avisa («in Spanish»).
+- En `/en` solo HERMES está traducido. El resto de casos se abre en español y el enlace lo avisa («in Spanish»).
 - La analítica (Clarity, GA, Hotjar, HubSpot) solo se activa si el visitante la acepta. Dato de la re-auditoría del 22-09: pocas sesiones (39) y el 27 % de scroll medio en portada, así que lo importante tiene que estar arriba.
 - Flujo de trabajo: spec → plan → código con Claude Code → revisión → tests y auditoría (`docs/superpowers/`, `docs/auditoria/`). Cada push a `main` despliega a producción; el trabajo va en ramas con preview de Vercel.
 
 ## Capabilities and Constraints
 
-- Catálogo de 12 proyectos con filtros por tipo y sector. 11 tienen caso completo; Taksio enlaza a Behance.
+- Catálogo de 11 proyectos con filtros por tipo y sector. 10 tienen caso completo; Taksio enlaza a Behance. El caso «Esta web» se retiró el 2026-10-09 porque Víctor consideró que no decía mucho; su URL redirige a la portada y el código sigue enlazado desde el bloque Stack.
 - Todo texto existe en español y en inglés: la interfaz `Ui` de `lib/i18n/ui.ts` lo obliga, y `lib/content/en/*` sobrescribe el español.
 - **Nada que no se pueda defender en una entrevista.** Los tests de `lib/content/cases/cases.test.ts` lo vigilan: cada cifra del outcome se explica, lo que no se midió se dice, no entran métricas de negocio que nadie midió, no se publican cifras del CV pendientes de confirmar y no se afirman herramientas de Atrinium sin confirmar. El 2026-09-30 Víctor confirmó que puede explicar el 36 % de tiempo liberado, los 347 permisos y los 12 idiomas; «de 5 a 2 días» y la bajada de tickets salieron del CV y de LinkedIn.
 - **Un solo relato en web, CV y LinkedIn** (revisión de reclutador del 2026-09-30): mismo título, WCAG 2.2 AA (nunca AAA), Darien Technology de febrero de 2021 a mayo de 2022 (Mercantil 2021–2022, en remoto) y Atrinium de mayo de 2022 a agosto de 2026. Un cambio de fecha, título o cifra llega a los tres a la vez.
@@ -55,7 +55,7 @@ Esta misma web es la prueba: está construida como un producto (tokens, componen
 
 ## Evidence on Hand
 
-- Casos tipados en `lib/content/cases/`: Ayax, HERMES, Flesip, Montsaint, Mercantil, módulo de suscripción, editor de propuesta, vista 360, design system (267 → 24 tokens) y «Esta web». Los traducidos al inglés están en `lib/content/en/cases/`.
+- Casos tipados en `lib/content/cases/`: Ayax, HERMES, Flesip, Montsaint, Mercantil, módulo de suscripción, editor de propuesta, vista 360, design system (267 → 24 tokens) y Pidemony. Los traducidos al inglés están en `lib/content/en/cases/`.
 - Capturas en `public/assets/shots/` y logos en `public/assets/logos/`.
 - El CV en PDF en `public/victor-maza-cv.pdf`. El repositorio público en https://github.com/vctrmz/proyectos, con specs, planes, tests y commits.
 - Las auditorías de la propia web en `docs/auditoria/` (diagnóstico del 21-09 y re-auditoría del 22-09).

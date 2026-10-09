@@ -78,5 +78,5 @@ export const pidemony: CaseStudy = {
     'Un UI kit sin el contraste comprobado se hereda con sus fallos. Hoy lo reviso antes de entregar la paleta, no después.',
     'El color no puede ser lo único que dice en qué paso estás: el stepper necesitaba texto desde el principio.',
   ],
-  next: 'esta-web',
+  next: 'ayax',
 };

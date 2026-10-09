@@ -8,9 +8,9 @@ import Catalog from './Catalog';
 beforeEach(() => { window.history.replaceState(null, '', '/'); });
 
 describe('Catalog', () => {
-  it('muestra los 12 proyectos y Todo marcado por defecto', () => {
+  it('muestra los 11 proyectos y Todo marcado por defecto', () => {
     render(<Catalog />);
-    expect(screen.getAllByRole('listitem')).toHaveLength(12);
+    expect(screen.getAllByRole('listitem')).toHaveLength(11);
     expect(screen.getByRole('radio', { name: /^Todo/ })).toHaveAttribute('aria-checked', 'true');
   });
   it('filtra al pulsar un chip, anuncia el recuento y escribe ?f=', async () => {
@@ -31,7 +31,7 @@ describe('Catalog', () => {
     const taksio = items.find((li) => li.textContent?.includes('Taksio'))!;
     expect(within(taksio).queryByRole('img')).toBeNull();
     expect(within(taksio).getByTestId('lamina')).toBeInTheDocument();
-    expect(screen.getAllByTestId('lamina')).toHaveLength(12);
+    expect(screen.getAllByTestId('lamina')).toHaveLength(11);
   });
   it('lee ?f= de la URL al montar y cae a todo si es desconocido', () => {
     window.history.replaceState(null, '', '/?f=erp');
@@ -40,7 +40,7 @@ describe('Catalog', () => {
     unmount();
     window.history.replaceState(null, '', '/?f=nada');
     render(<Catalog />);
-    expect(screen.getAllByRole('listitem')).toHaveLength(12);
+    expect(screen.getAllByRole('listitem')).toHaveLength(11);
   });
   it('las flechas del teclado cambian el filtro dentro del radiogroup', async () => {
     render(<Catalog />);

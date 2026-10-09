@@ -7,7 +7,6 @@ import { EN_PROJECTS, EN_FILTERS, EN_SECTOR_LABEL, EN_TYPE_LABEL, EN_TAGS } from
 import { EN_SECTORS } from './sectors';
 import { ABOUT_EN } from './about';
 import { hermesEn } from './cases/hermes';
-import { estaWebEn } from './cases/esta-web';
 import { STACK, type StackContent } from '@/lib/content/stack';
 import { EN_STACK } from './stack';
 
@@ -18,7 +17,7 @@ import { EN_STACK } from './stack';
    EN_CASE_SLUGS es la lista de casos que existen en inglés. El catálogo, el
    interruptor de idioma y el sitemap la consultan para no enlazar a páginas
    que todavía no están traducidas. */
-const EN_CASES: CaseStudy[] = [hermesEn, estaWebEn];
+const EN_CASES: CaseStudy[] = [hermesEn];
 export const EN_CASE_SLUGS = EN_CASES.map((c) => c.slug);
 
 export function getCaseIn(locale: Locale, slug: string): CaseStudy | undefined {

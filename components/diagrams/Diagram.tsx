@@ -14,7 +14,6 @@ import ValueChain from './ValueChain';
 import PendingInvoice from './PendingInvoice';
 import TwoSided from './TwoSided';
 import HandoffChain from './HandoffChain';
-import SpecToProd from './SpecToProd';
 import PideYPaga from './PideYPaga';
 
 const MAP: Record<DiagramId, { label: string; C: (p: { s: Record<string, string> }) => React.ReactElement; box?: string }> = {
@@ -31,7 +30,6 @@ const MAP: Record<DiagramId, { label: string; C: (p: { s: Record<string, string>
   'two-sided': { label: 'Una marca con dos negocios: tienda para el cliente final y red de ópticas para el canal profesional', C: TwoSided, box: '0 10 800 330' },
   'handoff-chain': { label: 'Del Product Owner que define la oferta al mercado, pasando por diseño y validación', C: HandoffChain, box: '0 110 800 210' },
   'pide-y-paga': { label: 'Quien pide en la app de mony, quien paga desde el navegador, y entre los dos un enlace que caduca', C: PideYPaga, box: '0 100 800 220' },
-  'spec-to-prod': { label: 'De la spec al plan, al código con IA, a mi revisión y a los tests antes de publicar', C: SpecToProd, box: '0 110 800 210' },
 };
 
 export default function Diagram({ id, caption }: { id: DiagramId; caption?: string }) {
