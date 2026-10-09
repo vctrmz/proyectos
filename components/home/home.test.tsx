@@ -41,14 +41,30 @@ describe('portada', () => {
     expect(screen.queryByText(/Descargar CV/)).toBeNull();
   });
   it('sectores: cinco con años y enlace', () => {
-    render(<Sectores />);
-    const items = screen.getAllByRole('listitem');
+    const { container } = render(<Sectores />);
+    const items = Array.from(container.querySelectorAll<HTMLLIElement>('#sectores > ul > li'));
     expect(items).toHaveLength(5);
     expect(items[0].textContent).toMatch(/Insurtech/);
     expect(items[0].textContent).toMatch(/2022/);
     // descripciones de una línea
     for (const li of items) { const body = li.querySelector('[class*="body"]')!; expect(body.textContent!.length, body.textContent!).toBeLessThanOrEqual(95); }
     expect(screen.getByRole('link', { name: /Ver el caso/ })).toHaveAttribute('href', '/es/cases/hermes');
+  });
+  it('sectores: cada uno dice para quién diseñé, y la entradilla explica por qué importa', () => {
+    render(<Sectores />);
+    expect(screen.getByRole('heading', { level: 2 }).textContent).toMatch(/Cinco sectores/);
+    expect(screen.getByText(/comercial, operaciones, finanzas y dirección/)).toBeInTheDocument();
+    const listas = screen.getAllByRole('list', { name: 'Para quién diseñé' });
+    expect(listas).toHaveLength(5);
+    expect(listas[0].textContent).toMatch(/Siniestros/);
+    for (const l of listas) expect(l.querySelectorAll('li').length).toBeGreaterThanOrEqual(2);
+  });
+  it('sectores en inglés: título, entradilla y áreas traducidos', () => {
+    render(<Sectores locale="en" />);
+    expect(screen.getByRole('heading', { level: 2 }).textContent).toMatch(/Five sectors/);
+    const listas = screen.getAllByRole('list', { name: 'Who I designed for' });
+    expect(listas[0].textContent).toMatch(/Claims/);
+    expect(listas[0].textContent).not.toMatch(/Siniestros/);
   });
   it('el manifiesto está completo en el HTML (sin depender de JS)', () => {
     const { container } = render(<Manifesto />);

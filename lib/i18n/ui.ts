@@ -9,7 +9,7 @@ export interface Ui {
   home: {
     kicker: string; heroLines: [string, string]; heroSub: string;
     facts: { value: string; label: string }[];
-    sectorsKicker: string; sectorsTitle: [string, string];
+    sectorsKicker: string; sectorsTitle: [string, string]; sectorsLead: string; sectorsAreas: string;
     manifesto: [string, string];
     workKicker: string; workTitle: [string, string];
     logosLabel: string;
@@ -65,7 +65,9 @@ const es: Ui = {
       { value: '5', label: 'productos, un lenguaje' }, { value: '2022–2026', label: 'único diseñador del holding' },
     ],
     sectorsKicker: 'Sectores',
-    sectorsTitle: ['Dominios donde', 'un error cuesta dinero.'],
+    sectorsTitle: ['Cinco sectores', 'que conozco por dentro.'],
+    sectorsLead: 'Un CRM o un back office no se diseña para un usuario: lo usan a la vez comercial, operaciones, finanzas y dirección, cada uno con sus permisos y sus prisas. Mi trabajo es que el mismo sistema les sirva a todos, sin que ninguno pague el atajo de otro.',
+    sectorsAreas: 'Para quién diseñé',
     manifesto: ['Diseño productos B2B donde un error operativo cuesta dinero,', 'por eso creo reglas escalables en lugar de resolver casos uno a uno.'],
     workKicker: 'Trabajo',
     workTitle: ['Casos y productos', 'en producción.'],
@@ -134,7 +136,9 @@ const en: Ui = {
       { value: '5', label: 'products, one language' }, { value: '2022–2026', label: 'sole designer of the group' },
     ],
     sectorsKicker: 'Sectors',
-    sectorsTitle: ['Domains where', 'a mistake costs money.'],
+    sectorsTitle: ['Five sectors', 'I know from the inside.'],
+    sectorsLead: 'A CRM or a back office is never designed for one user: sales, operations, finance and management work in it at the same time, each with their own permissions and pressures. My job is to make one system serve all of them, without anyone paying for someone else’s shortcut.',
+    sectorsAreas: 'Who I designed for',
     manifesto: ['I design B2B products where an operational mistake costs money,', 'so I build scalable rules instead of solving cases one by one.'],
     workKicker: 'Work',
     workTitle: ['Cases and products', 'in production.'],
