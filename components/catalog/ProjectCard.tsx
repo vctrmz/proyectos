@@ -31,7 +31,7 @@ export default function ProjectCard({ project: p }: { project: Project }) {
     : `${action}: ${p.title} · ${p.company}`;
   /* La portada es un diagrama de la idea del caso: lámina clara, título
      grande y el resumen debajo, como un índice de guías. Quién y cuándo van
-     al pie, en pequeño: orientan sin competir con el título. */
+     encima del título, en pequeño: orientan antes de leer. */
   return (
     <motion.li data-reveal layout layoutId={`card-${p.slug}`} initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, scale: 0.98 }} className={s.card}>
       {external
@@ -44,8 +44,6 @@ export default function ProjectCard({ project: p }: { project: Project }) {
             : <Frame brand={p.brand} ratio="16/10"><BrandTile project={p} /></Frame>}
         </ViewTransition>
       </div>
-      <h3 className={s.title}>{p.title}</h3>
-      <p className={s.sum}>{p.summary}</p>
       <p className={s.meta}>
         <span>{p.company}</span><span>{p.years}</span>
         {enOnlyEs && <span>in Spanish</span>}
@@ -55,6 +53,8 @@ export default function ProjectCard({ project: p }: { project: Project }) {
           </span>
         )}
       </p>
+      <h3 className={s.title}>{p.title}</h3>
+      <p className={s.sum}>{p.summary}</p>
     </motion.li>
   );
 }

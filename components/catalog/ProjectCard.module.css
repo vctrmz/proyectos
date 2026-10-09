@@ -4,7 +4,7 @@
 .media { position: relative; margin-bottom: var(--sp-24); }
 .title { font-size: var(--fs-700); font-weight: 400; letter-spacing: -0.02em; line-height: 1.18; color: var(--ink); text-wrap: balance; }
 .sum { margin-top: var(--sp-16); font-size: var(--fs-300); line-height: 1.6; color: var(--ink-2); text-wrap: pretty; }
-.meta { margin-top: var(--sp-16); font-size: var(--fs-100); letter-spacing: .04em; color: var(--ink-3); }
+.meta { margin-bottom: var(--sp-8); font-size: var(--fs-100); letter-spacing: .04em; color: var(--ink-3); }
 .meta > span + span::before { content: " · "; }
 .ext { display: inline-flex; align-items: center; gap: 4px; }
 .ext svg { width: 10px; height: 10px; fill: none; stroke: currentColor; stroke-width: 1.6; stroke-linecap: round; }

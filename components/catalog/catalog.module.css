@@ -6,8 +6,9 @@
 .band ::selection { background: rgba(157,153,255,.32); }
 @media (max-width: 767px) { .band { margin-inline: 0; border-radius: 24px; } }
 /* Más ancho que el resto de la página: aquí manda la obra, y tres láminas
-   de 400 px se leen; de 330 px, no tanto. */
-.inner { max-width: 1440px; }
+   de 400 px se leen; de 330 px, no tanto. Va con .band delante para ganar
+   a la regla global de .container. */
+.band .inner { max-width: 1440px; }
 
 .chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: var(--sp-24); }
 /* Tres por fila en escritorio, dos en tablet, una en móvil. */
