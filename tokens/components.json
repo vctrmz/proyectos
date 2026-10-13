@@ -1,4 +1,3 @@
 {
-  "$description": "Tokens específicos de componente pendientes de validación.",
-  "component": {}
+  "$description": "Capa 3 · componentes: alias hacia semantic.json, solo cuando un componente necesita su propio punto de ajuste."
 }

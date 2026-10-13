@@ -1,0 +1,15 @@
+{
+  "name": "product-design-agency-starter",
+  "private": true,
+  "description": "Agencia de agentes que convierte pantallas en un sistema de diseño legible por IA",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "ds:evidence": "node scripts/merge-evidence.js",
+    "ds:build": "node scripts/validate-tokens.js && node scripts/build-tokens.js",
+    "ds:verify": "node scripts/validate-tokens.js && node scripts/validate-links.js",
+    "ds:check": "node scripts/merge-evidence.js && node scripts/validate-tokens.js && node scripts/build-tokens.js && node scripts/validate-links.js && node scripts/design-system-audit.js",
+    "ds:audit-code": "node scripts/token-audit.js src"
+  }
+}
