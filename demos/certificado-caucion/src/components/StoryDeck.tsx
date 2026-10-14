@@ -28,7 +28,7 @@ const SLIDES: Slide[] = [
           <span>sin tocar lo que firma Legal</span>
         </h1>
         <p className="lead">
-          Del ticket al paso CERTIFICADO: entrevistas, una anatomía del documento y un editor elegido con desarrollo.
+          Del ticket al paso CERTIFICADO: research desk, benchmark, reuniones con front, PO y back, y un editor elegido por cómo encaja en el diseño.
         </p>
         <dl className="meta">
           <div><dt>Plataforma</dt><dd>HERMES, SaaS asegurador multi-tenant</dd></div>
@@ -56,34 +56,29 @@ const SLIDES: Slide[] = [
           <article className="card"><strong>Fijo</strong><p>Cabecera, logotipo y pie no se editan.</p></article>
           <article className="card"><strong>Editable</strong><p>El cuerpo, con formato básico e inserción de variables.</p></article>
         </div>
+        <p className="tension">
+          <span>Flexibilidad para quien escribe</span>
+          <i className="ri-arrow-left-right-line" aria-hidden="true" />
+          <span>Control sobre lo que obliga a la aseguradora</span>
+        </p>
       </div>
     ),
   },
   {
-    id: 'empathize',
-    phase: '02 · Empatizar',
+    id: 'process',
+    phase: '02 · Investigar con el equipo',
     render: () => (
       <div className="slide">
-        <h2>Tres voces, una tensión</h2>
-        <div className="grid grid--3">
-          <article className="card card--voice">
-            <span className="who">Quien emite</span>
-            <p>Cada operación pide su cuerpo: un expediente, un contrato, una instalación. Hoy ese ajuste se hace fuera del sistema.</p>
-          </article>
-          <article className="card card--voice">
-            <span className="who">Legal</span>
-            <p>Lo que obliga a la aseguradora (cabecera, apoderamiento, firma y pie) no puede cambiar de un certificado a otro.</p>
-          </article>
-          <article className="card card--voice">
-            <span className="who">Desarrollo</span>
-            <p>Backend necesita un <code>document_model</code> estructurado, no HTML libre que luego haya que interpretar.</p>
-          </article>
-        </div>
-        <p className="tension">
-          <span>Flexibilidad para quien escribe</span>
-          <i className="ri-arrow-left-right-line" aria-hidden="true" />
-          <span>Control para quien firma</span>
-        </p>
+        <h2>Cuando no sé por dónde empezar, pido ayuda</h2>
+        <p className="lead">Nunca había diseñado un sistema de creación de documentos en HERMES. El camino fue de fuera hacia dentro: primero qué hacen otros, después el equipo.</p>
+        <ol className="timeline">
+          <li><strong>Research desk</strong><p>Benchmark de otros productos y herramientas de design thinking para ordenar lo encontrado.</p></li>
+          <li><strong>Front lead</strong><p>Le explico la idea que sale de la investigación.</p></li>
+          <li><strong>PO</strong><p>Contraste con negocio: qué necesita el paso y para quién.</p></li>
+          <li><strong>2–3 días después, juntos</strong><p>El front lead trae un par de aplicaciones. Coincidimos en dos.</p></li>
+          <li><strong>Backend</strong><p>No sabíamos cómo encajaba con la base de datos: un par de horas de investigación y reunión con back. Las dos funcionaban.</p></li>
+          <li><strong>Decisión de diseño</strong><p>Me tocó elegir cuál se adaptaba mejor al diseño: TipTap.</p></li>
+        </ol>
       </div>
     ),
   },
@@ -115,26 +110,23 @@ const SLIDES: Slide[] = [
   },
   {
     id: 'tool',
-    phase: '04 · Decidir con desarrollo',
+    phase: '04 · Elegir el editor',
     render: () => (
-      <div className="slide">
-        <h2>¿Qué editor?</h2>
-        <p className="lead">Buscamos la herramienta que se adaptara a nuestro modelo, no al revés. Lo decidimos con el front lead.</p>
-        <div className="table-wrap">
-          <table className="bench">
-            <thead>
-              <tr><th scope="col">Criterio</th><th scope="col">Desde cero</th><th scope="col">CKEditor 5</th><th scope="col" className="win">TipTap</th></tr>
-            </thead>
-            <tbody>
-              <tr><th scope="row">UI propia (headless)</th><td>Sí</td><td>Trae la suya</td><td className="win">Sí</td></tr>
-              <tr><th scope="row">Variable como nodo propio</th><td>Todo por hacer</td><td>Plugin sobre su modelo</td><td className="win"><code>Node.create</code>, atómico</td></tr>
-              <tr><th scope="row">Salida estructurada</th><td>Por diseñar</td><td>Orientada a HTML</td><td className="win">JSON nativo</td></tr>
-              <tr><th scope="row">Licencia</th><td>Propia</td><td>GPL o comercial</td><td className="win">Núcleo MIT</td></tr>
-              <tr><th scope="row">Coste de mantener</th><td>Alto: selección, pegado, deshacer…</td><td>Medio</td><td className="win">Bajo: sobre ProseMirror</td></tr>
-            </tbody>
-          </table>
+      <div className="slide slide--split">
+        <div>
+          <h2>Dos finalistas, las dos viables</h2>
+          <p className="lead">
+            Backend confirmó que cualquiera de las dos encajaba con el modelo de datos. Así que la pregunta dejó de ser técnica:
+            ¿cuál se adapta mejor al diseño?
+          </p>
+          <p className="punch">El equipo puso el filtro técnico. La última decisión fue de diseño.</p>
         </div>
-        <p className="punch">El filtro técnico cambió el diseño: dejamos de dibujar una toolbar completa y diseñamos un modelo de documento.</p>
+        <ul className="criteria" aria-label="Por qué TipTap">
+          <li><strong>Headless</strong><span>Sin UI impuesta: toolbar, menús y chips salen del design system de HERMES.</span></li>
+          <li><strong>Nodos propios</strong><span>Una variable es un componente atómico (<code>Node.create</code>), no texto entre llaves.</span></li>
+          <li><strong>Extensiones a la carta</strong><span>Solo lo que la plantilla permite: negrita, listas, alineación. Sin color ni tipografía libres.</span></li>
+          <li><strong>JSON estructurado</strong><span>El cuerpo sale como JSON, que es lo que guarda el <code>document_model</code>.</span></li>
+        </ul>
       </div>
     ),
   },

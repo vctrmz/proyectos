@@ -5,15 +5,10 @@
 
 ## Antes de presentar: confirmar
 
-Lo que está en el deck sale del ticket, del Figma y del caso del editor de propuesta del portfolio.
-Estos puntos no los he podido comprobar y conviene cerrarlos antes:
+El proceso (diapositivas 2 a 5) es el que contaste: research desk, front lead, PO, reunión
+conjunta, backend y la decisión final de diseño. La otra finalista no se nombra a propósito.
+Quedan por cerrar:
 
-- [ ] **Entrevistas:** con quién (emisión, suscripción, Legal) y cuántas. La diapositiva 3
-      («Tres voces») resume necesidades que se leen en el ticket; si tienes citas reales,
-      cámbialas por ellas: pesan más.
-- [ ] **Benchmark:** el Figma conserva un nodo `ck-editor__aria-label` en las primeras pantallas
-      (Pantalla Circunstancias), así que la exploración partió de CKEditor. ¿Se miraron otros
-      (Quill, Lexical, Slate)? Si sí, añádelos a la tabla de la diapositiva 5.
 - [ ] **Estado:** ¿el paso está en producción, en piloto o se quedó en propuesta? Ajusta el cierre.
 - [ ] **Tenant real:** la demo usa «Surety Demo». Decide si en la sala puedes nombrar al cliente.
 - [ ] **Rol:** la portada dice «research, diseño e implementación revisada en React».
@@ -24,20 +19,32 @@ Estos puntos no los he podido comprobar y conviene cerrarlos antes:
 modelos legales, en español o inglés, y adaptar el cuerpo sin tocar lo que obliga a la aseguradora.»
 
 **2 · El encargo (1 min).** Lee la cita del ticket. Señala las cuatro tarjetas: es el alcance
-completo. El ticket pedía «WYSIWYG o similar»: esa palabra, *similar*, es la que abrió la búsqueda.
+completo. Abajo, la tensión que hay que resolver: flexibilidad para quien escribe frente a
+control sobre lo que obliga a la aseguradora. El ticket pedía «WYSIWYG o similar»: esa palabra,
+*similar*, es la que abrió la búsqueda.
 
-**3 · Empatizar (1,5 min).** Tres voces y una tensión: flexibilidad para quien escribe,
-control para quien firma. Si Legal no está tranquilo, el editor no se usa; si quien emite no
-puede adaptar el cuerpo, sigue haciéndolo en Word.
+**3 · Investigar con el equipo (2 min).** La diapositiva más personal; cuéntala en primera persona.
+«Nunca había diseñado un sistema de creación de documentos en HERMES. Cuando no sé por dónde
+empezar, pido ayuda.» Recorre los seis pasos en orden:
+1. Research desk y benchmark de otros productos, con herramientas de design thinking.
+2. Le explico la idea al front lead.
+3. La contrasto con la PO.
+4. A los dos o tres días nos juntamos: el front lead había encontrado un par de aplicaciones y
+   coincidimos en dos.
+5. No conocíamos bien cómo encajaba con la base de datos: acordamos un par de horas de
+   investigación y una reunión con back. Las dos funcionaban.
+6. Con las dos viables, me tocó elegir por diseño.
 
-**4 · Anatomía (1,5 min).** La decisión que más simplifica todo: antes de pantallas, partir el
+**4 · Anatomía (1,5 min).** La pieza de diseño que fija los criterios de la elección: partir el
 A4 en regiones. Las cuatro fijas se comparten entre los cuatro modelos; solo cambia el cuerpo.
 Frase clave: *lo fijo no está dentro del editor, así que no hay permiso que saltarse.*
 
-**5 · ¿Qué editor? (2 min).** Desde cero, CKEditor 5 y TipTap. Los criterios salen de la
-anatomía: necesitábamos UI propia (design system), una variable como nodo de verdad y una
-salida JSON que backend pudiera guardar. Decidido con el front lead. Cierra con la frase de
-abajo: el filtro técnico cambió el diseño.
+**5 · Elegir el editor (1,5 min).** «Backend validó las dos. La pregunta pasó a ser cuál se
+adaptaba mejor al diseño.» Los cuatro motivos de TipTap: headless (la UI sale del design system),
+nodos propios (la variable como componente), extensiones a la carta (solo el formato que la
+plantilla permite) y salida JSON (lo que guarda el `document_model`). Cierra con: *el equipo
+puso el filtro técnico; la última decisión fue de diseño.* Si preguntan por la otra finalista,
+basta con decir que también era viable y que perdió en adaptabilidad al diseño.
 
 **6 · Decisiones (1,5 min).** No las leas todas. Elige tres: variables atómicas, `/` y `@`,
 huecos visibles. Las otras salen en la demo.
@@ -81,9 +88,13 @@ cuentan lo mismo hasta el paso 7.
 los que obligan a la aseguradora. Si se pueden editar, Legal tiene que revisar cada certificado;
 si no, solo revisa la plantilla una vez.
 
-**¿Por qué no CKEditor si ya estaba en las primeras pantallas?** Trae su propia UI y su modelo
-está orientado a HTML; necesitábamos UI de nuestro design system y un nodo de variable con
-salida JSON. TipTap es headless, el núcleo es MIT y está sobre ProseMirror.
+**¿Por qué TipTap y no la otra finalista?** Las dos pasaron el filtro de front y back. TipTap
+es headless, así que toolbar, menús y chips salen de nuestro design system, y deja definir la
+variable como un nodo propio con salida JSON. Era la que menos peleaba con el diseño.
+
+**¿Cómo empezaste algo que no habías hecho nunca?** Research desk y benchmark para ver qué
+hacen otros productos, y después pedir ayuda: front lead, PO y back, en ese orden. La decisión
+técnica salió de conversaciones, no de una imposición.
 
 **¿Qué pasa si Legal cambia una plantilla y hay borradores abiertos?** El `document_model` ya
 guarda `template` y `modified`. El siguiente paso es versionar la plantilla (`template_version`)
