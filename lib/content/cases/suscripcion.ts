@@ -35,8 +35,8 @@ export const suscripcion: CaseStudy = {
   design: [
     shot('01-datos-del-contacto', 'Datos del contacto', 'Fase 1 · Cualificación: contacto principal, perfil del cliente y resumen vivo de la empresa'),
     shot('04-preparar-producto', 'Preparar producto', 'Preparar producto: módulos, plugins e idiomas del sistema por cliente'),
-    shot('19-reservar-agenda', 'Reservar agenda', 'Reservar agenda: disponibilidad de ambos lados en la misma vista'),
-    shot('20-drawer-contrato', 'Detalle de contrato en panel lateral', 'Contrato en panel lateral: el contexto no se pierde al revisar'),
+    shot('02-contratos-firmados', 'Reservar agenda', 'Reservar agenda: disponibilidad de ambos lados en la misma vista'),
+    shot('10-logs-firmantes', 'Detalle de contrato en panel lateral', 'Contrato en panel lateral: el contexto no se pierde al revisar'),
   ],
   implementation: [
     'La agenda con transcripción y resumen automáticos no estaba en el encargo. La llevé primero a front y back para validar viabilidad, herramientas y coste, y solo después al PO y al CEO: una propuesta con la viabilidad validada deja de ser una petición y pasa a ser una opción.',

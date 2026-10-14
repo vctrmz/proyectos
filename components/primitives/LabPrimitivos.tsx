@@ -15,16 +15,16 @@ const shot = (n: string) => `/assets/shots/${n}.webp`;
 
 const PROYECTOS = [
   { slug: 'ayax', img: 'ayax-x_hero' },
-  { slug: 'hermes', img: '11-resumen-comercial' },
+  { slug: 'hermes', img: '17-agenda-reuniones' },
   { slug: 'flesip', img: 'flesip-fx_board' },
   { slug: 'mercantil', img: 'mb-pay_01' },
 ];
 
 const PANTALLAS = [
-  { id: 'resumen', label: 'Resumen', img: '11-resumen-comercial', w: 1600, h: 1064, alt: 'Resumen comercial del cliente en HERMES' },
-  { id: 'pago', label: 'Método de pago', img: '09-metodo-pago', w: 1600, h: 1047, alt: 'Método de pago en HERMES' },
-  { id: 'agenda', label: 'Agenda', img: '17-agenda-reuniones', w: 1600, h: 1186, alt: 'Agenda de reuniones del cliente en HERMES' },
-  { id: 'comentarios', label: 'Comentarios', img: '13-historial-comentarios', w: 1600, h: 1061, alt: 'Historial de comentarios en HERMES' },
+  { id: 'resumen', label: 'Resumen', img: '17-agenda-reuniones', w: 1600, h: 1186, alt: 'Resumen comercial del cliente en HERMES' },
+  { id: 'pago', label: 'Método de pago', img: '03-metodo-de-pago', w: 1000, h: 1586, alt: 'Método de pago en HERMES' },
+  { id: 'agenda', label: 'Agenda', img: '02-contratos-firmados', w: 1600, h: 1919, alt: 'Agenda de reuniones del cliente en HERMES' },
+  { id: 'comentarios', label: 'Comentarios', img: '19-reservar-agenda', w: 1600, h: 1064, alt: 'Historial de comentarios en HERMES' },
 ];
 
 function Escena({ n, nombre, para, children }: { n: string; nombre: string; para: string; children: React.ReactNode }) {

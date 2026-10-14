@@ -25,7 +25,8 @@ control sobre lo que obliga a la aseguradora. El ticket pedía «WYSIWYG o simil
 
 **3 · Investigar con el equipo (2 min).** La diapositiva más personal; cuéntala en primera persona.
 «Nunca había diseñado un sistema de creación de documentos en HERMES. Cuando no sé por dónde
-empezar, pido ayuda.» Recorre los seis pasos en orden:
+empezar, pido ayuda y organizo la decisión.» Que se oiga el liderazgo: tú convocaste, tú
+marcaste el orden y tú pusiste el criterio final. Recorre los seis pasos en orden:
 1. Research desk y benchmark de otros productos, con herramientas de design thinking.
 2. Le explico la idea al front lead.
 3. La contrasto con la PO.
@@ -33,7 +34,7 @@ empezar, pido ayuda.» Recorre los seis pasos en orden:
    coincidimos en dos.
 5. No conocíamos bien cómo encajaba con la base de datos: acordamos un par de horas de
    investigación y una reunión con back. Las dos funcionaban.
-6. Con las dos viables, me tocó elegir por diseño.
+6. Con las dos viables, el criterio final lo puse yo: cuál encajaba mejor en el diseño.
 
 **4 · Anatomía (1,5 min).** La pieza de diseño que fija los criterios de la elección: partir el
 A4 en regiones. Las cuatro fijas se comparten entre los cuatro modelos; solo cambia el cuerpo.
@@ -91,6 +92,13 @@ si no, solo revisa la plantilla una vez.
 **¿Por qué TipTap y no la otra finalista?** Las dos pasaron el filtro de front y back. TipTap
 es headless, así que toolbar, menús y chips salen de nuestro design system, y deja definir la
 variable como un nodo propio con salida JSON. Era la que menos peleaba con el diseño.
+
+**¿Lo validaste con usuarios?** No: el research fue de escritorio y con el equipo. Dilo así y
+sigue con lo que harías hoy: sumar a quien emite certificados antes de cerrar la anatomía. Es
+exactamente lo que pone el caso en «Lo que corregiría».
+
+**¿Qué harías distinto?** Validar la anatomía con quien emite antes de cerrarla, y versionar las
+plantillas desde el primer día (`template_version` en el `document_model`).
 
 **¿Cómo empezaste algo que no habías hecho nunca?** Research desk y benchmark para ver qué
 hacen otros productos, y después pedir ayuda: front lead, PO y back, en ese orden. La decisión

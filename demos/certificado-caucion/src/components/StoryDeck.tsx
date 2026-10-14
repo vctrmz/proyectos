@@ -70,14 +70,14 @@ const SLIDES: Slide[] = [
     render: () => (
       <div className="slide">
         <h2>Cuando no sé por dónde empezar, pido ayuda</h2>
-        <p className="lead">Nunca había diseñado un sistema de creación de documentos en HERMES. El camino fue de fuera hacia dentro: primero qué hacen otros, después el equipo.</p>
+        <p className="lead">Nunca había diseñado un sistema de creación de documentos en HERMES. Pedí ayuda y organicé la decisión: primero qué hacen otros, después el equipo, y el criterio final lo puse yo.</p>
         <ol className="timeline">
           <li><strong>Research desk</strong><p>Benchmark de otros productos y herramientas de design thinking para ordenar lo encontrado.</p></li>
           <li><strong>Front lead</strong><p>Le explico la idea que sale de la investigación.</p></li>
           <li><strong>PO</strong><p>Contraste con negocio: qué necesita el paso y para quién.</p></li>
           <li><strong>2–3 días después, juntos</strong><p>El front lead trae un par de aplicaciones. Coincidimos en dos.</p></li>
           <li><strong>Backend</strong><p>No sabíamos cómo encajaba con la base de datos: un par de horas de investigación y reunión con back. Las dos funcionaban.</p></li>
-          <li><strong>Decisión de diseño</strong><p>Me tocó elegir cuál se adaptaba mejor al diseño: TipTap.</p></li>
+          <li><strong>Decisión de diseño</strong><p>Con las dos viables, el criterio final lo puse yo: cuál encajaba mejor en el diseño. TipTap.</p></li>
         </ol>
       </div>
     ),

@@ -1,17 +1,18 @@
 'use client';
 import dynamic from 'next/dynamic';
 import type { DemoId } from '@/lib/content/cases/types';
+import type { Locale } from '@/lib/i18n/config';
 
 /* Las demos se cargan aparte: el código y la fuente de cada una solo llegan a
    la página del caso que la trae. Tiene que ser un componente de cliente: si
    el import dinámico lo hiciera la página, que es de servidor, Next no
    separaría el código. */
-const DEMOS: Record<DemoId, React.ComponentType> = {
+const DEMOS: Record<DemoId, React.ComponentType<{ locale?: Locale }>> = {
   pidemony: dynamic(() => import('./PidemonyDemo')),
   'paso-certificado': dynamic(() => import('./PasoCertificadoDemo')),
 };
 
-export default function CaseDemo({ id }: { id: DemoId }) {
+export default function CaseDemo({ id, locale }: { id: DemoId; locale: Locale }) {
   const Demo = DEMOS[id];
-  return <Demo />;
+  return <Demo locale={locale} />;
 }

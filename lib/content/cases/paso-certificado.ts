@@ -11,7 +11,7 @@ export const pasoCertificado: CaseStudy = {
   tags: ['Caso de estudio', 'En producción', 'Insurtech', 'Editor', 'TipTap'], brand: '#123a63',
   hero: shot('pc-paso', 'Paso Certificados: idioma, plantilla, panel de variables y el A4 con el cuerpo editable', 'Demo del paso con datos ficticios: variables a la izquierda, el certificado a la derecha'),
   context: 'Un tenant de HERMES que emite seguros de caución necesitaba un paso nuevo, CERTIFICADO, en el flujo de emisión: elegir español o inglés, elegir uno de cuatro modelos y editar el contenido de cada documento con variables de la póliza.',
-  role: 'Diseño del paso y del modelo del documento. Research desk y benchmark, y la elección del editor junto a front lead, PO y back.',
+  role: 'Product Designer del paso. Lideré la elección del editor con front lead, PO y back, y diseñé el modelo del documento y la interfaz.',
   delivery: 'Paso CERTIFICADO con el A4 partido en regiones, cuerpo editable sobre TipTap y variables de la póliza. Hoy hay además una demo pública que lo reconstruye con datos ficticios.',
   problem: [
     'Cuatro modelos (Abogacía del Estado, Privado, Almacenamiento y Público con fecha para tasas aeroportuarias) en dos idiomas. Cada operación pide su cuerpo, pero cabecera, logotipo y pie no pueden cambiar.',
@@ -28,7 +28,7 @@ export const pasoCertificado: CaseStudy = {
   },
   flows: {
     title: 'Cómo se eligió el editor',
-    caption: 'Cuando no sé por dónde empezar, pido ayuda. El orden importa: primero qué hacen otros, después el equipo.',
+    caption: 'Cuando no sé por dónde empezar, pido ayuda y organizo la decisión: primero qué hacen otros, después el equipo, y el criterio final lo pone diseño.',
     list: [{
       title: 'De la investigación a TipTap', side: 'Diseño, front lead, PO y back',
       steps: [
@@ -37,13 +37,13 @@ export const pasoCertificado: CaseStudy = {
         { n: '3', t: 'PO', d: 'La contrasto con negocio: qué necesita el paso y para quién.' },
         { n: '4', t: 'Los tres juntos', d: 'A los dos o tres días, el front lead trae un par de aplicaciones. Coincidimos en dos.' },
         { n: '5', t: 'Back', d: 'No sabíamos cómo encajaban con la base de datos: un par de horas de investigación y reunión con back. Las dos funcionaban.' },
-        { n: '6', t: 'Decisión de diseño', d: 'Con las dos viables, me tocó elegir cuál se adaptaba mejor al diseño: TipTap.' },
+        { n: '6', t: 'Decisión de diseño', d: 'Con las dos viables, el criterio final lo puse yo: cuál se adaptaba mejor al diseño. TipTap.' },
       ],
     }],
   },
   decisions: [
     { title: 'Partir el A4 en regiones antes de dibujar pantallas.', why: 'Las cuatro plantillas comparten cabecera, apoderamiento, firma y pie; solo cambia el cuerpo.', changed: 'Lo fijo se pinta desde la plantilla y no entra en el editor, así que no hay permiso que saltarse: la restricción es estructural.', figure: { shot: shot('pc-anatomia', 'Modo anatomía de la demo con las cinco regiones etiquetadas', 'Anatomía: cuatro regiones fijas y el cuerpo editable, etiquetadas sobre el A4') } },
-    { title: 'Pedir ayuda antes de elegir herramienta.', why: 'Era un terreno nuevo. El research desk dio las opciones; el equipo, el filtro técnico.', changed: 'Front lead y PO por separado y después juntos. La duda sobre la base de datos se resolvió con back en un par de horas, no con una suposición.', figure: { shot: shot('pc-figma-comandos', 'Exploración en Figma del editor de HERMES con el menú de comandos abierto', 'Exploración en Figma: comandos con / agrupados en estilo global, estilo de documento y datos de sistema') } },
+    { title: 'Organizar la decisión en lugar de imponerla.', why: 'Era un terreno nuevo: el research desk dio las opciones y el equipo, el filtro técnico.', changed: 'Me reuní con front lead y PO por separado y después juntos. La duda sobre la base de datos la resolvimos con back en un par de horas, no con una suposición.', wouldFix: 'Sumaría a quien emite certificados antes de cerrar la anatomía: el research fue de escritorio y con el equipo, no con usuarios.', figure: { shot: shot('pc-figma-comandos', 'Exploración en Figma del editor de HERMES con el menú de comandos abierto', 'Exploración en Figma: comandos con / agrupados en estilo global, estilo de documento y datos de sistema') } },
     { title: 'TipTap, elegido por cómo encaja en el diseño.', why: 'Front y back validaron las dos finalistas: la última pregunta ya no era técnica.', changed: 'TipTap es headless: toolbar, menús y chips salen del design system. La variable puede ser un nodo propio y el cuerpo sale como JSON para el document_model.', tradeoff: 'Al ser headless, toda la interfaz del editor (toolbar, menús y variables) hay que diseñarla y construirla; no viene de serie.', figure: { shot: shot('pc-variables', 'Menú de variables abierto con @ en el cuerpo del certificado', 'Variables con @ y desde el panel lateral: el dato de la póliza entra como un nodo, no como texto entre llaves') } },
     { title: 'Las variables, a la vista y con nombre de negocio.', why: 'El ticket pedía el listado de variables a la izquierda y el editor a la derecha: quien emite no tiene por qué saber qué es {{ tomador.nombre }}.', changed: 'Cada variable se lee como «Tomador · Nombre» y la clave queda para backend. En la demo se puede alternar entre la etiqueta y el dato real de la póliza.', figure: { shot: shot('pc-document-model', 'Demo con los datos de la póliza resueltos y el document_model abierto', 'Datos de la póliza resueltos y, al lado, el document_model que recibe backend') } },
   ],
@@ -86,7 +86,7 @@ export const pasoCertificado: CaseStudy = {
     measure: 'Sin instrumentar: tiempo de emisión por certificado, certificados rehechos fuera del sistema y cuerpos modificados respecto a la plantilla.',
   },
   learnings: [
-    'Cuando no sé por dónde empezar, pido ayuda: research desk primero y el equipo después.',
+    'Pedir ayuda no es delegar la decisión: el research desk da opciones, el equipo las filtra y diseño la cierra.',
     'Si front y back validan dos opciones, la última decisión puede y debe ser de diseño.',
     'Partir el documento en regiones antes de dibujar pantallas resolvió a la vez lo legal y lo técnico.',
   ],

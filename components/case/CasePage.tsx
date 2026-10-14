@@ -54,7 +54,7 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
     ...(c.demo ? [{ id: 'c-demo', label: L('c-demo', 'Pruébalo'), node: (
       <>
         <p className={s.lead}>{c.demo.intro}</p>
-        <CaseDemo id={c.demo.id} />
+        <CaseDemo id={c.demo.id} locale={locale} />
       </>
     ) }] : []),
     ...(c.challenge ? [{ id: 'c-reto', label: L('c-reto', 'El reto'), node: <ChallengeGrid items={c.challenge.items} /> }] : []),

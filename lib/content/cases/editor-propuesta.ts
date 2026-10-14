@@ -4,7 +4,7 @@ export const editorPropuesta: CaseStudy = {
   slug: 'editor-propuesta', title: 'Editor de propuesta con TipTap', company: 'HERMES Admin', years: '2025',
   tagline: 'La fase en que se arma la propuesta con el cliente: documento, variables y comentarios en un sitio, auditable mientras se escribe.',
   tags: ['Caso de estudio', 'En producción', 'Insurtech', 'Editor'], brand: '#2b3f85',
-  hero: shot('12-editor-variables', 'Editor de propuesta con variables', 'Editor: variables con @ y componentes con /'),
+  hero: shot('18-agregar-participantes', 'Editor de propuesta con variables', 'Editor: variables con @ y componentes con /'),
   context: 'Segunda fase del módulo de suscripción: se arma la propuesta, se ajustan condiciones y se recogen los comentarios de las dos partes. Todo eso vivía en documentos sueltos.',
   role: 'Diseño del editor y del modelo del documento, en pareja estable con Legal y con backend.',
   delivery: 'Editor headless sobre TipTap con plantilla, variables, bloques opcionales e historial de comentarios.',
@@ -14,9 +14,9 @@ export const editorPropuesta: CaseStudy = {
   ],
   complexity: { diagram: 'template-slots', caption: 'Plantilla con huecos: variables con @, componentes con /, cláusulas opcionales como bloques que se activan.' },
   decisions: [
-    { title: 'Frenar el editor libre y reconducirlo a plantilla con huecos.', why: 'Menos libertad, mucho menos riesgo: el texto libre es donde se pierde la trazabilidad.', changed: 'Las cláusulas opcionales son bloques que se activan; lo bloqueado no se puede tocar.', figure: { shot: shot('14-document-model', 'Modelo del documento', 'Modelo del documento: la restricción vive en el dato') } },
-    { title: 'TipTap, elegido con front, PO y back.', why: 'Research desk y benchmark primero; después front lead y PO. Coincidimos en dos aplicaciones y back confirmó que las dos encajaban con la base de datos.', changed: 'Con las dos viables, la última decisión fue de diseño: TipTap es headless y deja que la variable sea un nodo propio. El proceso completo está en el caso del paso Certificado.', figure: { shot: shot('13-historial-comentarios', 'Historial de comentarios', 'Historial de comentarios de las dos partes sobre el mismo documento') } },
-    { title: 'Las validaciones, diseñadas con quien responde de la auditoría.', why: 'Diseñarlas después de Legal es diseñarlas dos veces.', changed: 'Trabajé el modelo del documento con Legal y backend a la vez, para que la restricción viviera en el dato y no solo en la interfaz.', figure: { shot: shot('04-detalle-documento', 'Detalle del documento', 'Detalle del documento: qué falta, qué es opcional y qué no se puede tocar') } },
+    { title: 'Frenar el editor libre y reconducirlo a plantilla con huecos.', why: 'Menos libertad, mucho menos riesgo: el texto libre es donde se pierde la trazabilidad.', changed: 'Las cláusulas opcionales son bloques que se activan; lo bloqueado no se puede tocar.', figure: { shot: shot('20-drawer-contrato', 'Modelo del documento', 'Modelo del documento: la restricción vive en el dato') } },
+    { title: 'TipTap, elegido con front, PO y back.', why: 'Research desk y benchmark primero; después front lead y PO. Coincidimos en dos aplicaciones y back confirmó que las dos encajaban con la base de datos.', changed: 'Con las dos viables, la última decisión fue de diseño: TipTap es headless y deja que la variable sea un nodo propio. El proceso completo está en el caso del paso Certificado.', figure: { shot: shot('19-reservar-agenda', 'Historial de comentarios', 'Historial de comentarios de las dos partes sobre el mismo documento') } },
+    { title: 'Las validaciones, diseñadas con quien responde de la auditoría.', why: 'Diseñarlas después de Legal es diseñarlas dos veces.', changed: 'Trabajé el modelo del documento con Legal y backend a la vez, para que la restricción viviera en el dato y no solo en la interfaz.', figure: { shot: shot('18-agregar-participantes', 'Detalle del documento', 'Detalle del documento: qué falta, qué es opcional y qué no se puede tocar') } },
   ],
   system: {
     body: [
@@ -32,10 +32,9 @@ export const editorPropuesta: CaseStudy = {
     ],
   },
   design: [
-    shot('12-editor-variables', 'Editor con variables', 'Editor con variables'),
-    shot('14-document-model', 'Modelo del documento', 'Modelo del documento'),
-    shot('13-historial-comentarios', 'Historial de comentarios', 'Historial de comentarios'),
-    shot('21-notas-alternativa', 'Alternativa descartada de notas', 'Alternativa descartada: notas sueltas sin modelo'),
+    shot('18-agregar-participantes', 'Editor con variables', 'Editor con variables'),
+    shot('20-drawer-contrato', 'Modelo del documento', 'Modelo del documento'),
+    shot('19-reservar-agenda', 'Historial de comentarios', 'Historial de comentarios'),
   ],
   implementation: [
     'El editor se desbloqueó cuando front y back validaron las dos finalistas: la elección final, TipTap, fue de diseño.',
