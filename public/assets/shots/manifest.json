@@ -566,5 +566,37 @@
   "pm-web-tipografia": {
     "width": 595,
     "height": 842
+  },
+  "pc-anatomia": {
+    "width": 1600,
+    "height": 1000
+  },
+  "pc-document-model": {
+    "width": 1600,
+    "height": 1000
+  },
+  "pc-emitida": {
+    "width": 1600,
+    "height": 1000
+  },
+  "pc-figma-comandos": {
+    "width": 1280,
+    "height": 1089
+  },
+  "pc-figma-emitida": {
+    "width": 1280,
+    "height": 730
+  },
+  "pc-hueco": {
+    "width": 1600,
+    "height": 1000
+  },
+  "pc-paso": {
+    "width": 1600,
+    "height": 1000
+  },
+  "pc-variables": {
+    "width": 1600,
+    "height": 1000
   }
 }

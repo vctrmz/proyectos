@@ -17,6 +17,9 @@ const SOURCES = [
   { dir: '../portfolio-export/mercantil/img', prefix: 'mb-' },
   { dir: '../portfolio-export/web/img', prefix: 'web-' },
   { dir: '../portfolio-export/pidemony/img', prefix: 'pm-' },
+  /* Paso Certificado: capturas de la demo pública (datos ficticios) y dos
+     pantallas de HERMES del Figma sin marca de cliente ni datos personales. */
+  { dir: 'demos/certificado-caucion/shots', prefix: 'pc-' },
 ];
 /* Fuentes que existen en portfolio-export pero no se publican: la página
    «Sobre Ayax» lleva fotos y nombres del equipo de Ayax. */

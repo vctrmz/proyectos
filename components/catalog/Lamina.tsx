@@ -248,6 +248,43 @@ function Editor({ l }: { l: Locale }) {
   );
 }
 
+function Certificado({ l }: { l: Locale }) {
+  const models = l === 'en' ? ['State Attorney', 'Private', 'Storage', 'Airport charges'] : ['Abogacía del Estado', 'Privado', 'Almacenamiento', 'Tasas aeroportuarias'];
+  return (
+    <>
+      <rect className="box" x={40} y={18} width={222} height={302} rx={8} />
+      <rect className="ink" x={60} y={38} width={128} height={12} rx={3} />
+      <rect className="tint" x={60} y={62} width={182} height={8} rx={4} />
+      <rect className="tint" x={60} y={76} width={150} height={8} rx={4} />
+      <rect className="dashed" x={52} y={98} width={198} height={146} rx={8} />
+      <rect className="tint" x={66} y={114} width={168} height={9} rx={4} />
+      <rect className="ink" x={66} y={132} width={96} height={22} rx={11} />
+      <text className="mono tiny t-w" x={76} y={147}>@tomador</text>
+      <rect className="tint" x={170} y={139} width={64} height={9} rx={4} />
+      <rect className="tint" x={66} y={166} width={140} height={9} rx={4} />
+      <rect className="acc" x={66} y={184} width={132} height={22} rx={11} />
+      <text className="mono tiny t-w" x={76} y={199}>{tr(l, { es: '@vencimiento', en: '@expiry' })}</text>
+      <rect className="tint" x={66} y={218} width={120} height={9} rx={4} />
+      <rect className="tint" x={60} y={260} width={150} height={8} rx={4} />
+      <rect className="ink" x={48} y={282} width={206} height={24} rx={4} />
+
+      <path className="acc-line dash" d="M262 60H300" />
+      <rect className="soft-box" x={300} y={30} width={268} height={276} rx={14} />
+      <rect className="box thin" x={322} y={50} width={96} height={30} rx={8} />
+      <rect className="ink" x={326} y={54} width={44} height={22} rx={6} />
+      <text className="caps t-w" x={337} y={70}>ES</text>
+      <text className="caps" x={382} y={70}>EN</text>
+      {models.map((m, i) => (
+        <g key={m}>
+          <rect className={i === 3 ? 'acc' : 'box thin'} x={322} y={98 + i * 40} width={224} height={30} rx={8} />
+          <text className={`small ${i === 3 ? 't-w' : ''}`} x={338} y={118 + i * 40}>{m}</text>
+        </g>
+      ))}
+      <text className="tiny" x={322} y={290}>{tr(l, { es: '4 modelos · 1 región editable de 5', en: '4 templates · 1 editable region of 5' })}</text>
+    </>
+  );
+}
+
 function Vista360({ l }: { l: Locale }) {
   const finalists = [1, 4, 10, 7];
   return (
@@ -370,7 +407,7 @@ function Taksio({ l }: { l: Locale }) {
 
 const PLATES: Record<string, (p: { l: Locale }) => React.ReactNode> = {
   ayax: Ayax, hermes: Hermes, flesip: Flesip, montsaint: Montsaint, mercantil: Mercantil,
-  suscripcion: Suscripcion, 'editor-propuesta': Editor, 'vista-360': Vista360,
+  suscripcion: Suscripcion, 'editor-propuesta': Editor, 'paso-certificado': Certificado, 'vista-360': Vista360,
   'design-system': DesignSystem, pidemony: Pidemony, taksio: Taksio,
 };
 

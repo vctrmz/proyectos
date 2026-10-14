@@ -30,6 +30,10 @@ export const EN_PROJECTS: Record<string, { title: string; company?: string; summ
     title: 'Proposal editor built on TipTap',
     summary: 'The client proposal was being written outside the product. A template with slots, variables typed with @ and optional clauses as blocks, auditable while you write.',
   },
+  'paso-certificado': {
+    title: 'Certificate step: four legal templates, one editable body',
+    summary: 'A new step in the surety issuance flow: four legal templates in Spanish and English with a fixed header, logo and footer, and the body editable on TipTap. With a working demo.',
+  },
   'vista-360': {
     title: 'Client 360 view',
     summary: 'Twelve compositions explored and four finalists so anyone on the team understands a client in ten seconds, with the reasons for each discard written down.',

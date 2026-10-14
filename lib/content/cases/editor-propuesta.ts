@@ -15,7 +15,7 @@ export const editorPropuesta: CaseStudy = {
   complexity: { diagram: 'template-slots', caption: 'Plantilla con huecos: variables con @, componentes con /, cláusulas opcionales como bloques que se activan.' },
   decisions: [
     { title: 'Frenar el editor libre y reconducirlo a plantilla con huecos.', why: 'Menos libertad, mucho menos riesgo: el texto libre es donde se pierde la trazabilidad.', changed: 'Las cláusulas opcionales son bloques que se activan; lo bloqueado no se puede tocar.', figure: { shot: shot('14-document-model', 'Modelo del documento', 'Modelo del documento: la restricción vive en el dato') } },
-    { title: 'TipTap, decidido con el front lead.', why: 'Se ajustaba a los requerimientos del cliente y a nuestro modelo de bloques sin coste de licencia, frente a levantar un editor desde cero.', changed: 'La elección salió de una conversación, no de una imposición: pesaba lo que el cliente pedía, lo que el sistema aguantaba y lo que costaba mantener.', figure: { shot: shot('13-historial-comentarios', 'Historial de comentarios', 'Historial de comentarios de las dos partes sobre el mismo documento') } },
+    { title: 'TipTap, elegido con front, PO y back.', why: 'Research desk y benchmark primero; después front lead y PO. Coincidimos en dos aplicaciones y back confirmó que las dos encajaban con la base de datos.', changed: 'Con las dos viables, la última decisión fue de diseño: TipTap es headless y deja que la variable sea un nodo propio. El proceso completo está en el caso del paso Certificado.', figure: { shot: shot('13-historial-comentarios', 'Historial de comentarios', 'Historial de comentarios de las dos partes sobre el mismo documento') } },
     { title: 'Las validaciones, diseñadas con quien responde de la auditoría.', why: 'Diseñarlas después de Legal es diseñarlas dos veces.', changed: 'Trabajé el modelo del documento con Legal y backend a la vez, para que la restricción viviera en el dato y no solo en la interfaz.', figure: { shot: shot('04-detalle-documento', 'Detalle del documento', 'Detalle del documento: qué falta, qué es opcional y qué no se puede tocar') } },
   ],
   system: {
@@ -38,7 +38,7 @@ export const editorPropuesta: CaseStudy = {
     shot('21-notas-alternativa', 'Alternativa descartada de notas', 'Alternativa descartada: notas sueltas sin modelo'),
   ],
   implementation: [
-    'El editor se desbloqueó cuando el equipo trajo TipTap: el filtro técnico cambió el diseño.',
+    'El editor se desbloqueó cuando front y back validaron las dos finalistas: la elección final, TipTap, fue de diseño.',
     'Guía de uso y presentación al cliente antes del despliegue; el cliente se adaptó sin fricción.',
   ],
   result: {
@@ -58,7 +58,7 @@ export const editorPropuesta: CaseStudy = {
   },
   learnings: [
     'Un patrón nuevo no se entiende solo: la adopción se diseña igual que la interfaz.',
-    'Las decisiones técnicas acordadas con el front lead duran más que las impuestas.',
+    'Las decisiones técnicas acordadas con front, PO y back duran más que las impuestas.',
   ],
-  next: 'vista-360',
+  next: 'paso-certificado',
 };

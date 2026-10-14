@@ -15,6 +15,7 @@ import PendingInvoice from './PendingInvoice';
 import TwoSided from './TwoSided';
 import HandoffChain from './HandoffChain';
 import PideYPaga from './PideYPaga';
+import CertificateRegions from './CertificateRegions';
 
 const MAP: Record<DiagramId, { label: string; C: (p: { s: Record<string, string> }) => React.ReactElement; box?: string }> = {
   'clients-to-system': { label: 'Tres clientes con reglas distintas convergen en un sistema configurable', C: ClientsToSystem },
@@ -30,6 +31,7 @@ const MAP: Record<DiagramId, { label: string; C: (p: { s: Record<string, string>
   'two-sided': { label: 'Una marca con dos negocios: tienda para el cliente final y red de ópticas para el canal profesional', C: TwoSided, box: '0 10 800 330' },
   'handoff-chain': { label: 'Del Product Owner que define la oferta al mercado, pasando por diseño y validación', C: HandoffChain, box: '0 110 800 210' },
   'pide-y-paga': { label: 'Quien pide en la app de mony, quien paga desde el navegador, y entre los dos un enlace que caduca', C: PideYPaga, box: '0 100 800 220' },
+  'certificate-regions': { label: 'Certificado A4 en cinco regiones: cabecera, apoderamiento, firma y pie fijos; solo el cuerpo es editable', C: CertificateRegions },
 };
 
 export default function Diagram({ id, caption }: { id: DiagramId; caption?: string }) {

@@ -1,4 +1,6 @@
 import { describe, it, expect } from 'vitest';
+import { existsSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { CASES, getCase, CASE_SLUGS } from './index';
 import { EN_CASE_SLUGS, getCaseIn } from '../en';
 import { PROJECTS } from '../projects';
@@ -86,6 +88,15 @@ describe('casos', () => {
   it('no se afirman herramientas de Atrinium sin confirmar', () => {
     const all = JSON.stringify(CASES);
     for (const bad of ['Style Dictionary', 'Storybook', 'ADR']) expect(all, bad).not.toContain(bad);
+  });
+  it('el paso Certificado no nombra al cliente ni publica datos del Figma', () => {
+    /* El Figma trae el tenant real, la aseguradora y el DNI de una apoderada.
+       Ni el caso ni la demo servida desde public/ pueden llevarlos. */
+    const demo = join(process.cwd(), 'public/demos/paso-certificado.html');
+    expect(existsSync(demo)).toBe(true);
+    const textos = [JSON.stringify(CASES), readFileSync(demo, 'utf8')];
+    for (const t of textos) for (const bad of ['Barents', 'Euroins', '07230637', 'Esther']) expect(t, bad).not.toContain(bad);
+    expect(getCase('paso-certificado')!.demo?.id).toBe('paso-certificado');
   });
   it('getCase devuelve undefined para slugs desconocidos', () => {
     expect(getCase('nada')).toBeUndefined();

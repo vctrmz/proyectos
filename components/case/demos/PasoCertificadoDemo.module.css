@@ -1,0 +1,11 @@
+.wrap { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: var(--sp-32); align-items: start; }
+.shot { display: block; overflow: hidden; border: 1px solid var(--line); border-radius: var(--r-card); background: var(--surface); transition: transform .3s var(--ease), box-shadow .3s var(--ease); }
+.shot img { display: block; width: 100%; height: auto; }
+.shot:hover { transform: translateY(-2px); box-shadow: var(--shadow-chip); }
+.side { display: grid; gap: var(--sp-24); min-width: 0; }
+.list { display: grid; gap: var(--sp-12); margin: 0; padding-left: 1.1em; color: var(--ink-2); }
+.actions { display: flex; flex-wrap: wrap; gap: var(--sp-12); }
+.note { margin: 0; font-size: var(--fs-200); color: var(--ink-3); }
+.note a { color: var(--ink-2); }
+@media (max-width: 900px) { .wrap { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .shot { transition: none; } .shot:hover { transform: none; } }

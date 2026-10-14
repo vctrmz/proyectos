@@ -18,7 +18,12 @@ npm install
 npm run dev        # http://localhost:5173/#deck  ·  /#demo para ir directo al prototipo
 npm test           # dominio + un test por criterio de aceptación
 npm run build      # typecheck + build estático en dist/ (base relativa)
+npm run build:portfolio  # un único HTML en ../../public/demos/paso-certificado.html
 ```
+
+El portfolio sirve la demo en `/demos/paso-certificado.html` y la enlaza desde el caso
+`/es/cases/paso-certificado`. Después de cambiar la demo, vuelve a lanzar `build:portfolio`
+y commitea el HTML. Las capturas del caso salen de `shots/` (`npm run images` en la raíz).
 
 ## Del ticket al código
 
