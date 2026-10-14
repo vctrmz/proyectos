@@ -48,9 +48,12 @@ export function PreviewModal({ template, locale, body, data, missing, onClose }:
           <button type="button" aria-label="Acercar" onClick={() => setZoom((z) => Math.min(150, z + 10))}>+</button>
         </span>
         <span className="viewer__actions">
-          <button type="button" aria-label="Imprimir" title="Imprimir" onClick={() => window.print()}>
-            <i className="ri-printer-line" aria-hidden="true" />
-          </button>
+          {/* Las páginas embebidas (p. ej. la versión publicada) no pueden abrir el diálogo de impresión. */}
+          {!import.meta.env.VITE_NO_PRINT && (
+            <button type="button" aria-label="Imprimir" title="Imprimir" onClick={() => window.print()}>
+              <i className="ri-printer-line" aria-hidden="true" />
+            </button>
+          )}
           <button type="button" aria-label="Cerrar vista previa" title="Cerrar" onClick={onClose}>
             <i className="ri-close-line" aria-hidden="true" />
           </button>

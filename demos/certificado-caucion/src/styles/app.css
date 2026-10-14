@@ -409,6 +409,9 @@ kbd {
 .summary__docs li > span:nth-child(2) { flex: 1; font-weight: 500; }
 
 /* ── Responsive: la demo se presenta en desktop, pero no se rompe ── */
+@media (max-width: 1600px) {
+  .canvas__scroll { padding-inline: var(--space-3); }
+}
 @media (max-width: 1280px) {
   .workspace { grid-template-columns: 240px minmax(0, 1fr); }
   .drawer { position: fixed; right: 16px; top: 120px; bottom: 80px; z-index: 40; box-shadow: var(--shadow-2); }
