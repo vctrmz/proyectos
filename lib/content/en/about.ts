@@ -7,14 +7,14 @@ export const ABOUT_EN: typeof ABOUT = {
   ...ABOUT,
   intro: [
     'I’m Víctor, a Product Designer.',
-    'Nine years in dense B2B products: insurance SaaS, digital banking and mobility.',
+    'Eight-plus years in dense B2B products: insurance SaaS, digital banking and mobility.',
   ],
   education: [
     { degree: '5-year university degree in Computer Science', school: 'Universidad de Oriente', place: 'Cumaná, Venezuela', years: '2017' },
   ],
   ikigai: {
     tech: 'Computer scientist by training: I know how what I design gets built, and I respect how the framework thinks.',
-    design: 'Product Designer by trade: nine years in dense B2B products, from architecture to handoff.',
+    design: 'Product Designer by trade: eight-plus years in dense B2B products, from architecture to handoff.',
     business: 'Business rules, discovery with Product Owners and decisions defended in business language.',
     center: 'Product design',
   },

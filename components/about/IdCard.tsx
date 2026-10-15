@@ -41,8 +41,8 @@ export default function IdCard({ locale = 'es' }: { locale?: Locale }) {
   const arrastre = useArrastre();
 
   const t = locale === 'en'
-    ? { role: 'Product Designer', place: 'Remote', field: 'B2B SaaS', since: 'Since 2017', hint: 'Drag the card' }
-    : { role: 'Product Designer', place: 'En remoto', field: 'B2B SaaS', since: 'Desde 2017', hint: 'Arrastra la tarjeta' };
+    ? { role: 'Senior Product Designer', place: 'Remote', field: 'B2B SaaS', since: 'Since 2017', hint: 'Drag the card' }
+    : { role: 'Senior Product Designer', place: 'En remoto', field: 'B2B SaaS', since: 'Desde 2017', hint: 'Arrastra la tarjeta' };
 
   const grab = (e: React.PointerEvent) => {
     if (!arrastre) return;
