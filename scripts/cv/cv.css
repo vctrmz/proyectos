@@ -1,6 +1,6 @@
 /*
   Maqueta común de los dos CV (cv-es.html y cv-en.html). Reproduce el CV
-  español original medido sobre su PDF: A4, Segoe UI, columna de 528 pt y
+  español original medido sobre su PDF: A4, Inter (Segoe UI de respaldo), columna de 528 pt y
   márgenes de 12 mm. Un solo archivo para que los dos idiomas no se separen
   cuando se toque un margen.
 */
@@ -9,7 +9,7 @@
 html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 body {
   margin: 0;
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: Inter, 'Segoe UI', system-ui, -apple-system, sans-serif;
   font-size: 9.1pt;
   line-height: 1.42;
   color: #1a1a1a;
