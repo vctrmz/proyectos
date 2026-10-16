@@ -4,7 +4,7 @@ export const ABOUT = {
      repiten. */
   intro: [
     'Soy Víctor, Product Designer.',
-    'Nueve años en producto B2B denso: SaaS asegurador, banca digital y movilidad.',
+    'Más de ocho años en producto B2B denso: SaaS asegurador, banca digital y movilidad.',
   ],
   cities: [
     { name: 'Cumaná', country: 'VE' as const },
@@ -22,7 +22,7 @@ export const ABOUT = {
   ],
   ikigai: {
     tech: 'Informático de formación: sé cómo se construye lo que diseño, y respeto cómo piensa el framework.',
-    design: 'Product Designer de oficio: nueve años en producto B2B denso, de la arquitectura al handoff.',
+    design: 'Product Designer de oficio: más de ocho años en producto B2B denso, de la arquitectura al handoff.',
     business: 'Reglas de negocio, discovery con Product Owners y decisiones defendidas en lenguaje de negocio.',
     center: 'Product design',
   },

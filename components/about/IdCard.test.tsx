@@ -33,7 +33,7 @@ describe('tarjeta de acreditación', () => {
   it('el contenido sigue siendo texto legible', () => {
     pantalla(false);
     render(<IdCard locale="en" />);
-    expect(screen.getByText('Product Designer')).toBeInTheDocument();
+    expect(screen.getByText('Senior Product Designer')).toBeInTheDocument();
     expect(screen.getByText('Remote')).toBeInTheDocument();
   });
 });
