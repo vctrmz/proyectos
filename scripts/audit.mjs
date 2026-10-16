@@ -16,6 +16,19 @@ for (const route of ROUTES) for (const [w, h] of VIEWPORTS) {
   await page.goto(BASE + route, { waitUntil: 'networkidle' });
   await page.getByRole('button', { name: 'Rechazar' }).click({ timeout: 2000 }).catch(() => {});
   await page.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 500) { window.scrollTo(0, y); await new Promise((r) => setTimeout(r, 60)); } window.scrollTo(0, 0); await new Promise((r) => setTimeout(r, 400)); });
+  /* Las animaciones que dispara el barrido (p. ej. las fichas del colapso de
+     tokens, que entran 1,3 s después de verse) tienen que acabar antes de
+     medir: axe sacaba el contraste de un fotograma a medio fundido. Las
+     infinitas se ignoran, y el tope evita colgarse. */
+  await page.evaluate(async () => {
+    const until = Date.now() + 8000;
+    await new Promise((r) => setTimeout(r, 1500));
+    for (;;) {
+      const busy = document.getAnimations().filter((a) => a.playState === 'running' && a.effect?.getComputedTiming().endTime !== Infinity);
+      if (!busy.length || Date.now() > until) break;
+      await Promise.race([Promise.all(busy.map((a) => a.finished.catch(() => {}))), new Promise((r) => setTimeout(r, until - Date.now()))]);
+    }
+  });
   const axe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag22aa']).analyze();
   const m = await page.evaluate(() => {
     const small = [...document.querySelectorAll('a,button,[role=button],[role=radio],[role=tab]')].filter((el) => { const r = el.getBoundingClientRect(); return r.width && r.height && r.height < 44; }).map((el) => (el.textContent || el.getAttribute('aria-label') || '').trim().slice(0, 30) + ' ' + Math.round(el.getBoundingClientRect().height));

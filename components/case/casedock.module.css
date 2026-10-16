@@ -12,10 +12,11 @@
 .arrow svg { width: 22px; height: 22px; fill: currentColor; }
 .arrow:hover { background: rgba(255, 255, 255, .1); }
 
-/* Un punto por caso. El activo se estira en píldora; cada punto mide 24 px de
-   área táctil aunque se pinte de 6. */
+/* Un punto por caso. El activo se estira en píldora. Cada punto se pinta de
+   6 px pero su enlace ocupa 24 de ancho (WCAG 2.5.8: 24×24 sin solaparse con
+   el vecino) y el alto entero del dock, 44. */
 .dots { display: flex; align-items: center; list-style: none; margin: 0; padding: 0 4px; }
-.dot { position: relative; display: grid; place-items: center; width: 20px; height: 24px; }
+.dot { position: relative; display: grid; place-items: center; width: 24px; height: 44px; }
 .dot span { width: 6px; height: 6px; border-radius: var(--r-pill); background: rgba(255, 255, 255, .35); transition: width .35s var(--ease), background .2s var(--ease); }
 .dot:hover span { background: rgba(255, 255, 255, .75); }
 .dot[aria-current="page"] { width: 32px; }
