@@ -1,7 +1,5 @@
 import Button from '@/components/ui/Button';
-import { stackIn } from '@/lib/content/en';
 import type { Locale } from '@/lib/i18n/config';
-import st from '@/components/home/Stack.module.css';
 import { ROUTES } from '@/lib/i18n/config';
 import { portadaCopy } from './copy';
 import { Rise, Part } from './Rise';
@@ -14,16 +12,9 @@ import s from './AboutCv.module.css';
    en un solo color y decorativos. El CV descargable se queda en la página
    Sobre mí, a la que enlaza.
 
-   Debajo, el stack de la portada con su mismo estilo, pero más corto: sin
-   Vitest · axe, con GitHub en lugar de «Git y pull requests» y sin la nota
-   del repositorio. */
+   El stack ya no va aquí: vive en Herramientas, en la página Sobre mí. */
 export default function AboutCv({ locale }: { locale: Locale }) {
   const t = portadaCopy(locale).about;
-  const STACK = stackIn(locale);
-  const STACK_GROUPS = STACK.groups.map((g) => ({
-    name: g.name,
-    items: g.items.filter((x) => x !== 'Vitest · axe').map((x) => (x === t.gitItem ? 'GitHub' : x)),
-  }));
   return (
     <div className={s.grid}>
       <Rise className={s.copy}>
@@ -57,17 +48,6 @@ export default function AboutCv({ locale }: { locale: Locale }) {
         </Part>
       </Rise>
 
-      <section className={`${st.stack} ${s.stack}`} aria-labelledby="about-stack">
-        <h3 id="about-stack" className={st.title}>{STACK.title}</h3>
-        <div className={st.groups}>
-          {STACK_GROUPS.map((g, i) => (
-            <div key={g.name}>
-              <h4 id={`about-stack-${i}`} className={st.name}>{g.name}</h4>
-              <ul className={st.items} aria-labelledby={`about-stack-${i}`}>{g.items.map((t) => <li key={t}>{t}</li>)}</ul>
-            </div>
-          ))}
-        </div>
-      </section>
     </div>
   );
 }
