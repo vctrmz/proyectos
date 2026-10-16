@@ -16,8 +16,8 @@ export const SITE = {
      se imprimen con `npm run cv`. kb lo comprueba un test contra cada archivo:
      la etiqueta del peso no puede mentir. */
   cv: {
-    es: { href: '/victor-maza-cv.pdf', file: 'Victor_Maza_CV.pdf', kb: 190 },
-    en: { href: '/victor-maza-cv-en.pdf', file: 'Victor_Maza_CV_EN.pdf', kb: 187 },
+    es: { href: '/victor-maza-cv.pdf', file: 'Victor_Maza_CV.pdf', kb: 192 },
+    en: { href: '/victor-maza-cv-en.pdf', file: 'Victor_Maza_CV_EN.pdf', kb: 188 },
   },
   /* mazdesignr, con r: behance.net/mazdesign es otro estudio. */
   behance: 'https://www.behance.net/mazdesignr',
