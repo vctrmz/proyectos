@@ -6,7 +6,7 @@ import { aboutIn } from '@/lib/content/en';
 import { DEFAULT_LOCALE, ROUTES, type Locale } from '@/lib/i18n/config';
 import { getUi } from '@/lib/i18n/ui';
 import { splitBold } from '@/lib/content/text';
-import IdCard from './IdCard';
+import AsciiPortrait from './AsciiPortrait';
 import IkigaiDiagram from './IkigaiDiagram';
 import CompanyTabs from './CompanyTabs';
 import ToolGroups from './ToolGroups';
@@ -35,7 +35,7 @@ export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale
                 {ABOUT.intro.map((l) => <p key={l}>{l}</p>)}
               </div>
               {/* Debajo de la presentación: quien acaba de leer quién eres es
-                  quien quiere el CV, y ahí no compite con la tarjeta. Las redes
+                  quien quiere el CV, y ahí no compite con el retrato. Las redes
                   van en la misma fila porque son la misma decisión —saber más
                   de esta persona— y se comparan de un vistazo. */}
               <div className={s.cvRow}>
@@ -47,7 +47,7 @@ export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale
               <SocialLinks />
             </div>
             <div className={s.aside}>
-              <IdCard locale={locale} />
+              <AsciiPortrait locale={locale} />
             </div>
           </section>
           <section className={s.sec} aria-labelledby="a-formacion"><h2 id="a-formacion">{t.education}</h2>
