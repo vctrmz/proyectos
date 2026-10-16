@@ -72,12 +72,12 @@ const es: Ui = {
     workKicker: 'Trabajos',
     workTitle: ['Casos y productos', 'en producción.'],
     logosLabel: 'Empresas con las que he trabajado',
-    closingTitle: ['¿Tienes un producto complejo?', 'Lo convierto en reglas, componentes y criterios que tu equipo puede construir sin interpretar nada.'],
+    closingTitle: ['¿Tienes un producto complejo?', 'Lo convierto en flujos, estados y criterios claros, y los trabajo con tu equipo hasta producción.'],
     closingGrid: [
       { k: 'Problema', v: 'Complejidad B2B' }, { k: 'Método', v: 'UX + sistema + UI + implementación' },
       { k: 'Evidencia', v: 'Más de ocho años · SaaS asegurador en producción' }, { k: 'Acción', v: 'Un correo' },
     ],
-    availability: 'Disponible ahora · roles Senior o Lead de Product Design · en remoto',
+    availability: 'Disponible ahora · roles Senior o Lead de Product Design · en remoto desde España (CET)',
     competencies: 'Competencias clave',
     competenciesCount: (n) => String(n).padStart(2, '0'),
     competenciesUnit: 'competencias',
@@ -104,7 +104,7 @@ const es: Ui = {
     socialLabel: 'Redes', more: 'Más información', close: 'Cerrar', books: 'Libros que recomiendo',
   },
   cv: { label: 'Descargar CV', format: 'PDF', download: (lang, kb) => `Descargar el CV en ${lang} (PDF, ${kb} KB)` },
-  footer: { role: 'Senior Product Designer · Design Systems · B2B y B2C SaaS e Insurtech', contact: 'Ponte en contacto', available: 'Disponible ahora · Senior / Lead · remoto', legal: '© 2026', privacy: 'Privacidad', cookies: 'Cookies', remote: 'Trabajo en remoto' },
+  footer: { role: 'Senior Product Designer · Design Systems · B2B y B2C SaaS e Insurtech', contact: 'Ponte en contacto', available: 'Disponible ahora · Senior / Lead · remoto desde España (CET)', legal: '© 2026', privacy: 'Privacidad', cookies: 'Cookies', remote: 'Trabajo en remoto' },
   consent: { text: 'Uso analítica para ver cómo se navega esta web: Google Analytics, Microsoft Clarity, Hotjar y HubSpot. Usan cookies o almacenamiento del navegador, nada de publicidad, y solo se activan si lo aceptas.', accept: 'Aceptar', reject: 'Rechazar', change: 'Cambiar mi decisión' },
   copy: { label: 'Copiar mi correo', done: 'Correo copiado', failed: 'No se pudo copiar, cópialo a mano' },
   contact: {
@@ -143,7 +143,7 @@ const en: Ui = {
     workKicker: 'Works',
     workTitle: ['Cases and products', 'in production.'],
     logosLabel: 'Companies I have worked with',
-    closingTitle: ['Do you have a complex product?', 'I turn it into rules, components and criteria your team can build without guessing.'],
+    closingTitle: ['Do you have a complex product?', 'I turn it into clear flows, states and criteria, and work them through with your team until they ship.'],
     closingGrid: [
       { k: 'Problem', v: 'B2B complexity' }, { k: 'Method', v: 'UX + system + UI + implementation' },
       { k: 'Evidence', v: 'Eight-plus years · insurance SaaS in production' }, { k: 'Action', v: 'One email' },
@@ -175,7 +175,7 @@ const en: Ui = {
     socialLabel: 'Social', more: 'More', close: 'Close', books: 'Books I recommend',
   },
   cv: { label: 'Download CV', format: 'PDF', download: (lang, kb) => `Download the CV in ${lang} (PDF, ${kb} KB)` },
-  footer: { role: 'Senior Product Designer · Design Systems · B2B and B2C SaaS and Insurtech', contact: 'Get in touch', available: 'Available now · Senior / Lead · remote', legal: '© 2026', privacy: 'Privacy', cookies: 'Cookies', remote: 'Working remotely' },
+  footer: { role: 'Senior Product Designer · Design Systems · B2B and B2C SaaS and Insurtech', contact: 'Get in touch', available: 'Available now · Senior / Lead · remote from Spain (CET)', legal: '© 2026', privacy: 'Privacy', cookies: 'Cookies', remote: 'Working remotely' },
   consent: { text: 'I use analytics to see how this site is read: Google Analytics, Microsoft Clarity, Hotjar and HubSpot. They use cookies or browser storage, never advertising, and load only if you accept.', accept: 'Accept', reject: 'Decline', change: 'Change my choice' },
   copy: { label: 'Copy my email', done: 'Email copied', failed: 'Could not copy it, copy it by hand' },
   contact: {

@@ -29,7 +29,7 @@ export const PROJECTS: Project[] = [
     summary: 'Gafas de bio-acetato que se venden al cliente final y se distribuyen en más de 700 ópticas: dos webs, dos ritmos de decisión y una dirección de arte que sostiene las dos.' },
   { slug: 'mercantil', title: 'Que un producto financiero se entienda a la primera', company: 'Mercantil Banco Panamá', years: '2021–2022', type: 'case', status: 'production', sector: 'banca', brand: '#0B3A6B', logo: '/assets/logos/mercantil.webp', hasCase: true,
     image: shot('mb-pay_01', 'Portada del deck «Soluciones de pago digitales para tu negocio»'),
-    summary: 'Cinco ofertas y cinco audiencias que no hablan igual: pagos digitales, Mony, Tadelanto y Next Gen, del deck comercial al flujo en banca en línea, con la auditoría de mi propio prototipo.' },
+    summary: 'Cinco ofertas y cinco audiencias que no hablan igual: pagos digitales, Mony, Tadelanto y Next Gen, del deck comercial al flujo en banca en línea, validado con pruebas de usabilidad en Maze y con la auditoría de mi propio prototipo.' },
   { slug: 'suscripcion', title: 'Módulo de suscripción de cliente', company: 'HERMES Admin', years: '2025', type: 'case', status: 'production', sector: 'insurtech', brand: '#24346e', logo: '/assets/logos/hermes.webp', hasCase: true,
     image: shot('01-datos-del-contacto', 'Fase de cualificación: contacto principal y perfil del cliente'),
     summary: 'Tres meses de proceso manual en Excel convertidos en un módulo en producción en cinco semanas, modelado como máquina de estados de tres fases.' },

@@ -96,6 +96,7 @@ export const mercantil: CaseStudy = {
   ],
   implementation: [
     'Cada oferta se validaba con UX y negocio antes de salir: revisión de flujos y de contenido, que en banca es la mitad del diseño.',
+    'Los flujos pasaban por pruebas de usabilidad en Maze antes de llegar a desarrollo: rondas de cinco a diez participantes según el módulo y la prueba. Unas veces con una muestra equilibrada de cinco hombres y cinco mujeres; otras con personas ajenas al público objetivo, para encontrar problemas de uso sin el sesgo de quien ya conoce el banco.',
     'El rediseño del simulador está planteado con su plan de validación: tres hipótesis, un test moderado con seis a ocho colaboradores con nómina en el banco y la tarea de pedir 300 dólares a un mes. Es lo que no se midió entonces y lo que haría antes de programar.',
   ],
   result: {
@@ -109,7 +110,7 @@ export const mercantil: CaseStudy = {
        declarado abajo, en `measure`. */
     outcome: [
       { value: '5 de 9', label: 'hallazgos resueltos en el rediseño', meaning: 'El simulador propuesto resuelve los hallazgos 01, 02, 05, 06 y 07, incluido el crítico de la cuota que no cuadraba. Los otros cuatro quedan escritos con su severidad.' },
-      { value: '−75 %', label: 'nombres para el mismo producto', meaning: 'Cuatro nombres (Préstame, Tadelanto, adelanto de salario y adelanto de planilla) pasan a ser uno. Se calcula a partir del dato anterior.' },
+      { value: '4 → 1', label: 'nombres para el mismo producto', meaning: 'Préstame, Tadelanto, adelanto de salario y adelanto de planilla pasan a ser un solo nombre en todos los materiales.' },
       { value: '3', label: 'preguntas para elegir entre nueve soluciones', meaning: 'El selector sustituye el catálogo de nueve productos por tres preguntas sobre la situación del comercio. Sigue siendo una propuesta: no se midió en mercado.' },
     ],
     measure: 'Altas de comercio por solución, uso de Mony en caja y solicitudes completadas de Tadelanto frente a las iniciadas. En su momento no se instrumentó, y el caso incluye las hipótesis y el test con el que lo mediría hoy.',

@@ -3,8 +3,8 @@ export const ABOUT = {
      la home, y "informático de formación" solo en Formación: aquí no se
      repiten. */
   intro: [
-    'Soy Víctor, Product Designer.',
-    'Más de ocho años en producto B2B denso: SaaS asegurador, banca digital y movilidad.',
+    'Soy Víctor, Senior Product Designer.',
+    'Más de ocho años en producto B2B y B2C: SaaS asegurador, banca digital y movilidad.',
   ],
   cities: [
     { name: 'Cumaná', country: 'VE' as const },
@@ -37,7 +37,7 @@ export const ABOUT = {
   vision: {
     title: 'Diseño sistemas, no pantallas.',
     paragraphs: [
-      'Mi base en informática me sirve para *pensar el producto en sistemas, en estructura y en cómo se va a construir de verdad*, y para bajarlo a código cuando hace falta. *Modelo el dominio antes que la pantalla*, *defino estados, reglas y casos límite*, y cierro con un *handoff que el equipo puede construir sin interpretar nada*.',
+      'Mi base en informática me sirve para *pensar el producto en sistemas, en estructura y en cómo se va a construir de verdad*, y para bajarlo a código cuando hace falta. *Modelo el dominio antes que la pantalla*, *defino estados, reglas y casos límite*, y lo trabajo *con Producto e Ingeniería hasta la implementación*.',
       'Trabajo con *patrones validados y criterios de usabilidad*, no con invenciones, y respetando cómo se construye realmente en *React, Chakra UI o Tailwind*. Esta web es un ejemplo: el diseño es mío y *dirigí la implementación con IA hasta el detalle*. Generar es la parte fácil; lo que aporto es *saber qué hay que pedir y reconocer cuándo lo que devuelve no sirve*.',
       'Me interesan *los flujos completos, no las pantallas sueltas*. *Sistemas que hagan que el siguiente diseño y el siguiente desarrollo cuesten menos que el anterior.*',
     ],
@@ -103,12 +103,14 @@ export const ABOUT = {
     ],
     outro: 'Por encima del método, lo que busco es *crear atmósfera*: que cada pantalla, cada estado y cada palabra hagan que *la marca respire el mismo aire* de un extremo a otro del producto.',
   },
+  /* Lo que uso yo, separado de lo que solo conozco por los productos en los
+     que he trabajado: no se presenta como dominio propio. */
   toolGroups: [
-    { name: 'Diseño y multimedia', items: ['Figma (avanzado)', 'FigJam', 'Prototipos interactivos', 'Photoshop', 'Illustrator', 'Premiere', 'CapCut'] },
+    { name: 'Diseño y prototipado', items: ['Figma (avanzado)', 'FigJam', 'Prototipos interactivos', 'Photoshop', 'Illustrator'] },
     { name: 'Sistemas de diseño', items: ['Design tokens', 'Arquitectura de componentes', 'Accesibilidad WCAG 2.2'] },
-    { name: 'Desarrollo y despliegue', items: ['HTML · CSS', 'React', 'Next.js', 'TypeScript', 'Chakra UI', 'Tailwind', 'Material UI', 'GitHub', 'Vercel', 'WordPress'] },
-    { name: 'Analítica y comportamiento', items: ['Microsoft Clarity', 'Google Analytics', 'HubSpot', 'Maze', 'Mobbin'] },
+    { name: 'Investigación y validación', items: ['Maze', 'Microsoft Clarity', 'Google Analytics', 'Mobbin'] },
+    { name: 'Código', items: ['HTML · CSS', 'React', 'Next.js', 'TypeScript', 'GitHub', 'Vercel'] },
     { name: 'Inteligencia artificial', items: ['Claude', 'Gemini', 'Google Stitch', 'Perplexity'] },
-    { name: 'Mensajería y correo', items: ['SendGrid'] },
+    { name: 'Con las que he colaborado', items: ['Chakra UI', 'Tailwind', 'Material UI', 'WordPress', 'HubSpot', 'SendGrid'] },
   ],
 };

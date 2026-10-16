@@ -47,14 +47,14 @@ export default function Portada({ locale }: { locale: Locale }) {
   const ordered = projectsIn(locale).filter((p) => p.slug !== 'hermes')
     .map((p, i) => ({ p, i })).sort((x, y) => rank(x.p.company) - rank(y.p.company) || x.i - y.i).map(({ p }) => p);
   const index: IndexItem[] = ordered.map((p) => ({
-    slug: p.slug, title: p.title, meta: `${p.company} · ${p.years}`,
+    slug: p.slug, title: p.title, meta: [t.kinds[p.slug], p.company, p.years].filter(Boolean).join(' · '),
     sector: p.sector ? sectorLabelIn(locale, p.sector) : '',
     href: p.hasCase ? caseHref(p.slug) : p.url ?? '#', external: !p.hasCase,
     note: p.hasCase && !translated(p.slug) ? ` · ${t.work.inSpanish}` : '',
     image: p.image ? { src: p.image.src } : undefined,
   }));
   const areas: Area[] = t.areas.items.map((a) => ({
-    id: a.id, name: a.name, icon: a.icon, years: a.years, body: a.body, areas: a.areas,
+    id: a.id, name: a.name, icon: a.icon, years: a.years, body: a.body, users: a.users, flows: a.flows, limits: a.limits,
     href: a.slug ? caseHref(a.slug) : a.href!, external: !a.slug,
     cta: a.slug && !translated(a.slug) ? `${a.cta} (${t.work.inSpanish})` : a.cta,
   }));
@@ -86,7 +86,7 @@ export default function Portada({ locale }: { locale: Locale }) {
           <GlyphTitle text={t.areas.title} icon="cursor" at={t.areas.at} id="areas-title" />
           <p className={s.headLead}>{t.areas.lead}</p>
         </div>
-        <Areas items={areas} labels={{ group: t.areas.group, forWhom: t.areas.forWhom }} />
+        <Areas items={areas} labels={{ group: t.areas.group, users: t.areas.users, flows: t.areas.flows, limits: t.areas.limits }} />
       </section>
 
       <ContactBig t={t.contact} />

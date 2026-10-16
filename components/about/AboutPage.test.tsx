@@ -13,7 +13,7 @@ describe('AboutPage', () => {
     expect(screen.getByText(/Universidad de Oriente/)).toBeInTheDocument();
     /* El retrato del hero lleva debajo los datos públicos. Sin ciudad:
        el posicionamiento es remoto, así que ni nacimiento ni provincia. */
-    expect(screen.getByText('En remoto')).toBeInTheDocument();
+    expect(screen.getByText('España (CET) · remoto')).toBeInTheDocument();
     /* El pie del retrato se queda con el oficio y el modo de trabajo. Ni ciudad ni
        sector: «Insurtech» sigue en el rol del pie y la línea de tiempo sigue
        diciendo dónde estaba cada empresa —Caracas, Panamá, Málaga—, que es un

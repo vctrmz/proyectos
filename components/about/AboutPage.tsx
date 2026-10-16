@@ -18,8 +18,8 @@ import s from './about.module.css';
 
 /* Los datos públicos que llevaba la tarjeta: oficio y modo de trabajo. */
 const FACTS = {
-  es: [['Rol', 'Senior Product Designer'], ['Base', 'En remoto'], ['Sector', 'B2B y B2C SaaS'], ['En activo', 'Desde 2017']],
-  en: [['Role', 'Senior Product Designer'], ['Based in', 'Remote'], ['Field', 'B2B and B2C SaaS'], ['Practising', 'Since 2017']],
+  es: [['Rol', 'Senior Product Designer'], ['Base', 'España (CET) · remoto'], ['Sector', 'B2B y B2C SaaS'], ['En activo', 'Desde 2017'], ['Idiomas', 'Español nativo · Inglés B2']],
+  en: [['Role', 'Senior Product Designer'], ['Based in', 'Spain (CET) · remote'], ['Field', 'B2B and B2C SaaS'], ['Practising', 'Since 2017'], ['Languages', 'Native Spanish · English B2']],
 } as const;
 
 export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale }) {
