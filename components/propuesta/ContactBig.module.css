@@ -4,12 +4,13 @@
 
 .big { display: grid; gap: 0; text-align: left; font-size: clamp(3rem, 10vw, 9rem); font-weight: 500; letter-spacing: -0.045em; line-height: 0.98; color: #fff; }
 .big:focus-visible { outline-color: var(--focus-on-night); outline-offset: 8px; }
-.line { position: relative; display: inline-block; justify-self: start; padding-bottom: 0.3em; }
+.line { position: relative; isolation: isolate; display: inline-block; justify-self: start; padding-bottom: 0.1em; }
 .copy { display: inline-block; color: var(--accent); }
 .ok { display: inline-block; color: #fff; }
-/* El trazo vive en el hueco que deja el padding, por debajo de los
-   descendentes: nunca pisa la «¿» ni la «p». */
-.under { position: absolute; left: -0.02em; right: -0.04em; bottom: 0.04em; width: calc(100% + 0.06em); height: 0.2em; overflow: visible; }
+/* El trazo pasa por detrás de las letras, a la altura de los descendentes:
+   la «¿», la «p» y la «g» quedan por encima, como en la referencia. */
+.under { position: absolute; z-index: -1; left: -0.03em; bottom: 0.02em; width: calc(100% + 0.08em); height: 0.2em; overflow: visible; }
+.stroke { fill: none; stroke: var(--focus-on-night); stroke-linecap: round; stroke-linejoin: round; }
 .big:hover .copy { text-decoration: none; }
 .hint { font-size: var(--fs-300); color: var(--inset-ink-2); margin-top: calc(var(--sp-16) * -1); }
 

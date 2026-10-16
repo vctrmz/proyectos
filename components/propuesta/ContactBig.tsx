@@ -11,29 +11,31 @@ import s from './ContactBig.module.css';
 /* El contacto del final, adaptado de tigranz.com: el título con glifos y una
    frase enorme con subrayados de colores que se dibujan al llegar.
 
-   Los subrayados son trazos de pincel: una forma rellena que se afila en los
-   dos extremos (no una línea de grosor fijo con la punta redonda), separada
-   de los descendentes de la «¿» y la «p». Se revelan de izquierda a derecha
-   con un recorte que acelera y frena como una mano, y se vuelven a trazar al
-   pasar el ratón por la frase y al copiar. Con menos movimiento, quietos. La frase
+   Los subrayados son como los de la referencia: un trazo redondo de grosor
+   constante, con las puntas redondas y una ondulación suave, que pasa por
+   detrás de las letras (el texto queda encima). Un solo lila para las dos
+   líneas. Se dibujan con una curva que acelera y frena como una mano, y se
+   vuelven a trazar al pasar el ratón por la frase y al copiar. Con menos
+   movimiento, quietos. La frase
    es un botón: copia el correo al portapapeles. La dirección sigue sin
    escribirse en la página, como en CopyEmail; si el portapapeles falla, se
    enseña para copiarla a mano. Debajo, las otras vías. */
 type State = 'idle' | 'done' | 'error';
 
-/* Dos trazos distintos para que no parezcan copiados: el primero casi recto,
-   el segundo con un remate hacia arriba al final. */
-const STROKE_1 = 'M2 11 C 140 4, 300 3.5, 440 5 S 560 7, 598 6 C 565 14, 450 15, 300 15.5 S 120 17, 2 11 Z';
-const STROKE_2 = 'M2 9 C 150 11, 320 8.5, 470 8 S 575 6, 598 2 C 582 12, 480 17.5, 320 17.5 S 130 17, 2 9 Z';
+/* Dos trazos casi rectos y distintos, para que no parezcan copiados. El
+   grosor va en unidades del dibujo, que escala con la línea de texto. */
+const STROKE_1 = 'M6 11 C 150 7.5, 300 8.5, 450 8 S 570 6.5, 594 8.5';
+const STROKE_2 = 'M6 9.5 C 160 12, 320 10.5, 470 10 S 580 9, 594 10.5';
 
-function Underline({ color, delay, seen, d, run, fx }: { color: string; delay: number; seen: boolean; d: string; run: number; fx: boolean }) {
+function Underline({ delay, seen, d, run, fx }: { delay: number; seen: boolean; d: string; run: number; fx: boolean }) {
+  const shown = seen || !fx;
   return (
-    <motion.svg key={run} className={s.under} viewBox="0 0 600 20" preserveAspectRatio="none" aria-hidden="true" focusable="false"
-      initial={fx ? { clipPath: 'inset(0 100% 0 0)' } : false}
-      animate={seen || !fx ? { clipPath: 'inset(0 0% 0 0)' } : undefined}
-      transition={{ duration: 1.1, delay: run ? delay * 0.4 : delay, ease: [0.65, 0, 0.35, 1] }}>
-      <path d={d} fill={color} />
-    </motion.svg>
+    <svg className={s.under} viewBox="0 0 600 20" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+      <motion.path key={run} d={d} className={s.stroke} strokeWidth={7}
+        initial={fx ? { pathLength: 0, opacity: 0 } : false}
+        animate={shown ? { pathLength: 1, opacity: 1 } : undefined}
+        transition={{ pathLength: { duration: 1, delay: run ? delay * 0.4 : delay, ease: [0.65, 0, 0.35, 1] }, opacity: { duration: 0.01, delay: run ? delay * 0.4 : delay } }} />
+    </svg>
   );
 }
 
@@ -67,7 +69,7 @@ export default function ContactBig() {
         <button type="button" className={s.big} onClick={copy} onPointerEnter={redraw} aria-describedby="contact-hint">
           <span className={s.line}>
             <span>¿Hablamos?</span>
-            <Underline seen={seen} delay={0.15} color="var(--focus-on-night)" d={STROKE_1} run={run} fx={fx} />
+            <Underline seen={seen} delay={0.15} d={STROKE_1} run={run} fx={fx} />
           </span>
           <span className={s.line}>
             <AnimatePresence mode="wait" initial={false}>
@@ -76,7 +78,7 @@ export default function ContactBig() {
                 {state === 'done' ? 'Copiado.' : state === 'error' ? SITE.email : 'Copia mi correo.'}
               </motion.span>
             </AnimatePresence>
-            <Underline seen={seen} delay={0.5} color="var(--accent)" d={STROKE_2} run={run} fx={fx} />
+            <Underline seen={seen} delay={0.5} d={STROKE_2} run={run} fx={fx} />
           </span>
         </button>
         <p id="contact-hint" className={s.hint} aria-live="polite">
