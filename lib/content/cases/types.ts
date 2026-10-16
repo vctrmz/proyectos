@@ -37,7 +37,7 @@ export interface CaseStudy {
   slug: string; title: string; company: string; years: string; tagline: string; tags: string[]; brand: string;
   hero: Shot; context: string; role: string; delivery: string;
   problem: [string, string]; complexity: { diagram: DiagramId; caption: string };
-  decisions: Decision[]; system: { body: string[]; tokens?: TokenCompare; code?: CodeDemo; uiKit?: UiKitPiece[] };
+  decisions: Decision[]; system: { body: string[]; /* El colapso animado 267 → 24 de la auditoría (TokenCollapse). */ collapse?: boolean; tokens?: TokenCompare; code?: CodeDemo; uiKit?: UiKitPiece[] };
   /* Bloques opcionales: cada caso enseña solo los que tiene. */
   challenge?: { title: string; items: Challenge[] };
   audiences?: { title: string; items: Audience[] };
