@@ -2,10 +2,13 @@ import Link from 'next/link';
 import Stack from '@/components/home/Stack';
 import { ROUTES } from '@/lib/i18n/config';
 import { Rise, Part } from './Rise';
+import { Icon } from './icons';
 import s from './AboutCv.module.css';
 
 /* Sobre mí en la portada, sacado del CV (scripts/cv/cv-es.html): el perfil
-   en primera persona, la experiencia y la formación. El CV descargable se
+   en primera persona, la experiencia y la formación. Como en tigranz.com,
+   unos pocos iconos en línea marcan las ideas clave (sistema, código, IA),
+   en un solo color y decorativos. El CV descargable se
    queda en la página Sobre mí, a la que enlaza. Debajo, el stack con el
    enlace al repositorio. */
 const JOBS = [
@@ -25,7 +28,7 @@ export default function AboutCv() {
           Mi especialidad es el producto B2B que se vende a muchos clientes a la vez. Durante cuatro años fui el único diseñador de un holding cuyo núcleo es un SaaS multi-tenant que sostiene lógicas, monedas, idiomas y marcas distintas sin bifurcarse por cliente.
         </Part>
         <Part as="p">
-          Construyo design systems con reglas de uso y criterios de decisión, no solo librerías de componentes. Soy graduado en Informática: reviso la implementación en React y prototipo con IA. Esta web es un proyecto Next.js con tests y código público.
+          Construyo design systems <Icon name="stack" className={s.ico} /> con reglas de uso y criterios de decisión, no solo librerías de componentes. Soy graduado en Informática: reviso la implementación en React <Icon name="code" className={s.ico} /> y prototipo con IA <Icon name="sparkleLine" className={s.ico} />. Esta web es un proyecto Next.js con tests y código público.
         </Part>
         <Part>
           <Link href={ROUTES.es.about} className={s.more}>Más sobre mí y el CV <span aria-hidden="true">→</span></Link>

@@ -36,7 +36,7 @@ export default function ContactBig() {
   return (
     <section id="contacto" className={s.band} aria-labelledby="contact-title">
       <div ref={box} className={`container ${s.inner}`}>
-        <GlyphTitle text="contacto" id="contact-title" tone="dark" />
+        <GlyphTitle text="contacto" icon="chat" at={1} id="contact-title" tone="dark" />
 
         <button type="button" className={s.big} onClick={copy} aria-describedby="contact-hint">
           <span className={s.line}>

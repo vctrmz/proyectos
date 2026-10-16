@@ -7,10 +7,13 @@
 .slot { display: inline-block; position: relative; }
 .ch { display: inline-block; padding: 0 0.015em; border-radius: 0.16em; transition: background .3s var(--ease); }
 
-/* Los cuatro estados del proceso. */
+/* Los tres estados del proceso, en monocromo. */
 .wire .ch { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.55); outline: 1px dashed rgba(255,255,255,.28); outline-offset: -0.04em; }
 .outline .ch { color: transparent; -webkit-text-stroke: 2px #fff; }
-.token .ch { margin: 0 0.02em; padding: 0 0.06em; }
+/* La O convertida en cursor: ocupa el ancho exacto de la letra. */
+.glyph { position: relative; display: inline-block; }
+.glyph svg { position: absolute; left: 50%; top: 50%; width: 0.7em; height: 0.7em; translate: -50% -50%; color: var(--accent); -webkit-text-stroke: 0; }
+.ghostCh { visibility: hidden; }
 .solid .ch, .solid { color: #fff; }
 
 /* La selección de Figma: borde índigo, cuatro tiradores y las medidas. */

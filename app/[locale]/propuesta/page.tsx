@@ -45,20 +45,20 @@ export default async function Propuesta({ params }: { params: Promise<{ locale: 
 
         <section id="trabajo" className={`container ${s.section}`} aria-labelledby="work-title">
           <div className={s.head}>
-            <GlyphTitle text="trabajo" id="work-title" />
+            <GlyphTitle text="trabajo" icon="sparkle" at={6} id="work-title" />
             <p className={s.headLead}>Casos completos y módulos de HERMES, todos en producción.</p>
           </div>
           <CaseIndex />
         </section>
 
         <section id="sobre-mi" className={`container ${s.section}`} aria-labelledby="about-title">
-          <div className={s.head}><GlyphTitle text="sobre mí" id="about-title" /></div>
+          <div className={s.head}><GlyphTitle text="sobre mí" icon="pen" at={1} id="about-title" /></div>
           <AboutCv />
         </section>
 
         <section id="clientes" className={`container ${s.section}`} aria-labelledby="clients-title">
           <div className={s.head}>
-            <GlyphTitle text="clientes" id="clients-title" />
+            <GlyphTitle text="clientes" icon="cursor" at={2} id="clients-title" />
             <p className={s.headLead}>Cinco sectores. Elige un cliente para ver qué hice con él.</p>
           </div>
           <Clients />

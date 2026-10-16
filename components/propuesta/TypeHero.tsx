@@ -2,19 +2,21 @@
 import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion, useInView } from 'motion/react';
 import { motionAllowed } from '@/lib/motion/prefs';
+import GlitchText from '@/components/ui/GlitchText';
+import { Icon } from './icons';
 import s from './TypeHero.module.css';
 
 /* El hero tipográfico, adaptado de tigranz.com a lo que hace Víctor.
-   «PRODUCT» recorre el proceso, letra a letra: wireframe, contorno, tokens
-   de color y sólido. Sobre la palabra que señalas aparece una selección de
+   «PRODUCT» recorre el proceso, letra a letra y en monocromo: wireframe,
+   contorno y sólido; en el contorno, la O es el cursor de Figma, el único
+   acento de color. «DESIGNER» lleva el glitch de siempre (GlitchText). Sobre la palabra que señalas aparece una selección de
    Figma, con sus tiradores y sus medidas en píxeles; sin puntero descansa
    en «DESIGNER». Debajo, una banda en bucle con quién, qué y dónde.
 
    Con menos movimiento: la palabra queda en sólido, sin ciclo, y la banda se
    detiene. Sin JavaScript se lee igual: son dos palabras en un h2. */
-const MODES = ['wire', 'outline', 'token', 'solid'] as const;
+const MODES = ['wire', 'outline', 'solid'] as const;
 type Mode = (typeof MODES)[number];
-const CHIP = ['var(--accent)', 'var(--focus)', 'var(--plate-tint)', '#ffffff'];
 const BAND = ['Víctor Maza', 'Senior Product Designer', 'Design systems', 'B2B SaaS', 'Insurtech', 'En remoto'];
 
 type Box = { x: number; y: number; w: number; h: number };
@@ -58,16 +60,15 @@ export default function TypeHero() {
               <span key={i} className={s.slot}>
                 <AnimatePresence mode="popLayout" initial={false}>
                   <motion.span key={mode} className={s.ch}
-                    style={mode === 'token' ? { background: CHIP[i % CHIP.length], color: i % CHIP.length === 1 ? '#fff' : 'var(--ink)', rotate: (i % 2 ? 4 : -4) } : undefined}
                     initial={{ y: '55%', opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: '-55%', opacity: 0 }}
                     transition={{ duration: 0.4, delay: i * 0.035, ease: [0.22, 1, 0.36, 1] }}>
-                    {c}
+                    {mode === 'outline' && c === 'O' ? <span className={s.glyph}><Icon name="cursor" /><span className={s.ghostCh}>O</span></span> : c}
                   </motion.span>
                 </AnimatePresence>
               </span>
             ))}
           </span>
-          <span ref={words[1]} className={`${s.word} ${s.solid}`} onPointerEnter={() => setTarget(1)}>DESIGNER</span>
+          <span ref={words[1]} className={`${s.word} ${s.solid}`} onPointerEnter={() => setTarget(1)}><GlitchText text="DESIGNER" /></span>
         </h2>
 
         {box && (
