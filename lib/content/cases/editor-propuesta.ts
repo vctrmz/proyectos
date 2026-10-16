@@ -4,7 +4,7 @@ export const editorPropuesta: CaseStudy = {
   slug: 'editor-propuesta', title: 'Editor de propuesta con TipTap', company: 'HERMES Admin', years: '2025',
   tagline: 'La fase en que se arma la propuesta con el cliente: documento, variables y comentarios en un sitio, auditable mientras se escribe.',
   tags: ['Caso de estudio', 'En producción', 'Insurtech', 'Editor'], brand: '#2b3f85',
-  hero: shot('12-editor-variables', 'Editor de propuesta con variables', 'Editor: variables con @ y componentes con /'),
+  hero: shot('ep-comandos', 'Editor del modelo de documento con el menú de comandos abierto', 'Editor: datos del sistema y estilos con /'),
   context: 'Segunda fase del módulo de suscripción: se arma la propuesta, se ajustan condiciones y se recogen los comentarios de las dos partes. Todo eso vivía en documentos sueltos.',
   role: 'Diseño del editor y del modelo del documento, en pareja estable con Legal y con backend.',
   delivery: 'Editor headless sobre TipTap con plantilla, variables, bloques opcionales e historial de comentarios.',
@@ -14,9 +14,9 @@ export const editorPropuesta: CaseStudy = {
   ],
   complexity: { diagram: 'template-slots', caption: 'Plantilla con huecos: variables con @, componentes con /, cláusulas opcionales como bloques que se activan.' },
   decisions: [
-    { title: 'Frenar el editor libre y reconducirlo a plantilla con huecos.', why: 'Menos libertad, mucho menos riesgo: el texto libre es donde se pierde la trazabilidad.', changed: 'Las cláusulas opcionales son bloques que se activan; lo bloqueado no se puede tocar.', figure: { shot: shot('14-document-model', 'Modelo del documento', 'Modelo del documento: la restricción vive en el dato') } },
-    { title: 'TipTap, decidido con el front lead.', why: 'Se ajustaba a los requerimientos del cliente y a nuestro modelo de bloques sin coste de licencia, frente a levantar un editor desde cero.', changed: 'La elección salió de una conversación, no de una imposición: pesaba lo que el cliente pedía, lo que el sistema aguantaba y lo que costaba mantener.', figure: { shot: shot('13-historial-comentarios', 'Historial de comentarios', 'Historial de comentarios de las dos partes sobre el mismo documento') } },
-    { title: 'Las validaciones, diseñadas con quien responde de la auditoría.', why: 'Diseñarlas después de Legal es diseñarlas dos veces.', changed: 'Trabajé el modelo del documento con Legal y backend a la vez, para que la restricción viviera en el dato y no solo en la interfaz.', figure: { shot: shot('04-detalle-documento', 'Detalle del documento', 'Detalle del documento: qué falta, qué es opcional y qué no se puede tocar') } },
+    { title: 'Frenar el editor libre y reconducirlo a plantilla con huecos.', why: 'Menos libertad, mucho menos riesgo: el texto libre es donde se pierde la trazabilidad.', changed: 'Las cláusulas opcionales son bloques que se activan; lo bloqueado no se puede tocar.', figure: { shot: shot('ep-variables', 'Texto del certificado con variables del sistema en negrita', 'En producción: el texto es plantilla y los datos entran como variables ${…}') } },
+    { title: 'TipTap, decidido con el front lead.', why: 'Se ajustaba a los requerimientos del cliente y a nuestro modelo de bloques sin coste de licencia, frente a levantar un editor desde cero.', changed: 'La elección salió de una conversación, no de una imposición: pesaba lo que el cliente pedía, lo que el sistema aguantaba y lo que costaba mantener.', figure: { shot: shot('ep-comandos', 'Menú de comandos con estilo global, estilo de documento y datos de sistema', 'Comandos con /: estilo global, estilo del documento y datos del sistema') } },
+    { title: 'Las validaciones, diseñadas con quien responde de la auditoría.', why: 'Diseñarlas después de Legal es diseñarlas dos veces.', changed: 'Trabajé el modelo del documento con Legal y backend a la vez, para que la restricción viviera en el dato y no solo en la interfaz.', figure: { shot: shot('ep-plantilla-nueva', 'Certificado de seguro de caución en A4 con el nuevo estilo', 'La plantilla del certificado: la estructura legal no se toca, solo los datos') } },
   ],
   system: {
     body: [
@@ -32,10 +32,15 @@ export const editorPropuesta: CaseStudy = {
     ],
   },
   design: [
-    shot('12-editor-variables', 'Editor con variables', 'Editor con variables'),
-    shot('14-document-model', 'Modelo del documento', 'Modelo del documento'),
-    shot('13-historial-comentarios', 'Historial de comentarios', 'Historial de comentarios'),
-    shot('21-notas-alternativa', 'Alternativa descartada de notas', 'Alternativa descartada: notas sueltas sin modelo'),
+    shot('ep-editor-vacio', 'Editor del modelo de documento vacío con la plantilla de certificado elegida', 'Punto de partida: se elige la plantilla y se escribe, o se pulsa / para insertar'),
+    shot('ep-comandos', 'Menú de comandos sobre el texto del certificado', 'Comandos con /: estilo global, estilo del documento y datos del sistema —personas, brokers, aseguradora, tablas y gráficas—'),
+    shot('ep-certificados', 'Paso Certificados dentro del suplemento, con editor y vista previa', 'Certificados como un paso más del suplemento, con la vista previa a un clic'),
+    shot('ep-variables', 'Texto del certificado en producción con variables del sistema', 'En producción: el texto lleva variables del sistema (${…}) que se rellenan al emitir'),
+    shot('ep-plantilla-original', 'Plantilla original del certificado de caución en A4', 'Plantilla original del certificado de caución (datos personales ocultos)'),
+    shot('ep-plantilla-nueva', 'Plantilla del certificado con el nuevo estilo en A4', 'La misma plantilla con el nuevo estilo: cabecera de marca y enlaces reconocibles (datos personales ocultos)'),
+    shot('ep-resumen', 'Resumen de la oportunidad con el bloque Certificado entre coberturas y datos del vehículo', 'Resumen de la oportunidad: el tipo de certificado es un bloque más, editable como el resto'),
+    shot('ep-poliza', 'Póliza emitida con la lista de documentos generados', 'Póliza emitida: el certificado se genera junto a las condiciones y el resumen de coberturas'),
+    shot('ep-pdf', 'Visor PDF con el certificado de caución generado', 'Vista previa del certificado en PDF antes de descargarlo o imprimirlo (datos personales ocultos)'),
   ],
   implementation: [
     'El editor se desbloqueó cuando el equipo trajo TipTap: el filtro técnico cambió el diseño.',
