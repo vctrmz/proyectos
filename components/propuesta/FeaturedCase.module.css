@@ -4,7 +4,7 @@
 .grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
 
 .meta { font-size: var(--fs-300); color: var(--inset-ink-2); margin-bottom: var(--sp-24); }
-.title { font-size: var(--fs-900); letter-spacing: -0.03em; line-height: 1.05; margin-bottom: var(--sp-16); }
+.title { font-size: var(--fs-800); letter-spacing: -0.03em; line-height: 1.05; margin-bottom: var(--sp-16); }
 .lead { font-size: var(--fs-400); line-height: 1.55; color: var(--inset-ink); max-width: 46ch; margin-bottom: var(--sp-48); }
 
 .metrics { list-style: none; margin: 0 0 var(--sp-48); padding: 0; display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: var(--sp-32); }
