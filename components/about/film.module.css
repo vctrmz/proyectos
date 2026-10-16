@@ -1,0 +1,78 @@
+/* El film en una caja oscura: el papel del film (casi --plate) queda
+   enmarcado como una pantalla y no se funde con el blanco de la página. Los
+   controles viven en la misma caja, en la tinta clara de las superficies
+   oscuras de la web. */
+.film { margin: 0; padding: clamp(10px, 1.6vw, 20px); border-radius: var(--r-media); background: var(--inset-bg); color: var(--inset-ink); display: grid; gap: clamp(12px, 1.6vw, 20px); }
+
+.stage { position: relative; aspect-ratio: 16 / 9; border-radius: calc(var(--r-media) - 14px); overflow: hidden; background: var(--plate); isolation: isolate; }
+.video { display: block; width: 100%; height: 100%; object-fit: contain; background: var(--plate); cursor: pointer; }
+.stage[data-follow] .video { cursor: none; }
+
+/* Play grande, quieto en el centro (dedo, teclado o menos movimiento). */
+.big { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); z-index: 2; display: grid; place-items: center; width: 112px; height: 112px; border-radius: 50%; transition: opacity .25s var(--ease), transform .25s var(--ease); }
+.bigDisc, .cursorDisc { display: grid; place-items: center; width: 96px; height: 96px; border-radius: 50%; background: var(--ink); color: #fff; box-shadow: 0 14px 40px rgba(18,19,23,.28); }
+.bigDisc svg, .cursorDisc svg { width: 34px; height: 34px; fill: currentColor; }
+.big:hover .bigDisc { transform: scale(1.04); }
+.stage[data-playing] .big { opacity: 0; }
+.stage[data-playing] .big:focus-visible { opacity: 1; }
+/* Con ratón, el botón del centro se aparta y el play sigue al cursor. Sigue
+   ahí para el teclado: al recibir foco vuelve a verse. */
+.stage[data-follow] .big { opacity: 0; pointer-events: none; }
+.stage[data-follow] .big:focus-visible { opacity: 1; pointer-events: auto; }
+.stage[data-follow]:not([data-started]):not([data-hover]) .big { opacity: 1; }
+
+.cursor { position: absolute; left: 0; top: 0; z-index: 3; display: none; flex-direction: column; align-items: center; gap: 10px; pointer-events: none; will-change: transform; }
+.stage[data-follow][data-hover] .cursor { display: flex; }
+.cursorText { padding: 6px 12px; border-radius: var(--r-pill); background: var(--ink); color: #fff; font-size: var(--fs-200); font-weight: 500; white-space: nowrap; }
+/* Mientras suena, el disco se encoge para no tapar el film. */
+.stage[data-playing] .cursorDisc { width: 64px; height: 64px; background: rgba(18,19,23,.72); }
+.stage[data-playing] .cursorDisc svg { width: 24px; height: 24px; }
+.stage[data-playing] .cursorText { display: none; }
+
+/* Controles */
+.bar { display: grid; gap: var(--sp-12); }
+.row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-12) var(--sp-24); }
+.primary { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 26px 0 22px; border-radius: var(--r-pill); background: var(--focus-on-night); color: var(--night); font-size: var(--fs-400); font-weight: 500; transition: background .2s var(--ease); }
+.primary:hover { background: #b7b4ff; }
+.primary svg { width: 18px; height: 18px; fill: currentColor; }
+.tc { display: flex; align-items: baseline; gap: 4px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.now { font-size: var(--fs-700); font-weight: 500; letter-spacing: 0.01em; }
+.total { font-size: var(--fs-200); color: var(--inset-ink-2); }
+.where { display: grid; gap: 2px; min-width: 0; }
+.whereAct { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--inset-ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.whereShot { font-size: var(--fs-400); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.side { display: flex; flex-wrap: wrap; gap: 8px; margin-left: auto; }
+.ghost { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 18px; border-radius: var(--r-pill); border: 1px solid rgba(255,255,255,.16); color: var(--inset-ink); font-size: var(--fs-200); transition: background .2s var(--ease), border-color .2s var(--ease); }
+.ghost:hover { background: rgba(255,255,255,.06); border-color: rgba(255,255,255,.28); }
+.ghost[aria-pressed="false"] { color: var(--inset-ink-2); }
+.stroke { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.film :focus-visible { outline-color: var(--focus-on-night); }
+
+/* Línea de tiempo: los tramos del film a escala, con un tick por plano. */
+.track { position: relative; height: 64px; border-radius: 10px; overflow: hidden; background: rgba(255,255,255,.03); cursor: pointer; touch-action: none; }
+.act { position: absolute; top: 0; bottom: 0; border-left: 1px solid rgba(255,255,255,.12); transition: background .25s var(--ease); }
+.act:nth-child(even) { background: rgba(255,255,255,.04); }
+.act[data-on] { background: rgba(157,153,255,.16); }
+.actR { position: absolute; left: 8px; top: 8px; font-size: var(--fs-100); color: var(--inset-ink-2); font-variant-numeric: tabular-nums; }
+.act[data-on] .actR { color: var(--inset-ink); }
+.tick { position: absolute; bottom: 0; width: 1px; height: 12px; background: rgba(255,255,255,.28); }
+.head { position: absolute; top: 0; bottom: 0; width: 2px; margin-left: -1px; background: var(--focus-on-night); pointer-events: none; }
+.hint { font-size: var(--fs-200); color: var(--inset-ink-2); }
+
+/* Pantalla completa: la caja entera, con los controles abajo. */
+.film[data-fs] { border-radius: 0; height: 100vh; grid-template-rows: minmax(0, 1fr) auto; }
+.film[data-fs] .stage { aspect-ratio: auto; height: 100%; border-radius: 12px; background: #000; }
+
+@media (max-width: 767px) {
+  .film { border-radius: 24px; }
+  .stage { border-radius: 16px; }
+  .big, .bigDisc { width: 72px; height: 72px; }
+  .bigDisc svg { width: 26px; height: 26px; }
+  .primary { min-height: 48px; font-size: var(--fs-300); }
+  .now { font-size: var(--fs-600); }
+  .where { flex: 1 1 100%; order: 3; }
+  .side { margin-left: 0; order: 4; }
+  .track { height: 56px; }
+  .actR { left: 4px; }
+}
+@media (prefers-reduced-motion: reduce) { .act, .big, .primary, .ghost { transition: none; } }

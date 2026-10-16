@@ -29,10 +29,11 @@ export const ABOUT_EN: typeof ABOUT = {
   })),
   vision: {
     title: 'I design systems, not screens.',
-    paragraphs: [
-      'My computer science background is there to *think the product in systems, in structure and in how it will actually be built*, and to take it down to code when it is needed. *I model the domain before the screen*, *define states, rules and edge cases*, and work it through *with Product and Engineering until it ships*.',
-      'I work with *validated patterns and usability criteria*, not inventions, and respect how things are really built in *React, Chakra UI or Tailwind*. This site is an example: the design is mine and *I directed the implementation with AI down to the detail*. Generating is the easy part; what I bring is *knowing what to ask for and recognising when what comes back is not good enough*.',
-      'I care about *complete flows, not isolated screens*. *Systems that make the next design and the next build cost less than the last one.*',
+    lead: 'My computer science background is there to think the product in systems, in structure and in how it will actually be built.',
+    cards: [
+      { head: 'I model the domain before the screen.', proof: 'I define *states, rules and edge cases*, and work it through *with Product and Engineering until it ships*. When it is needed, I take it down to code.', tags: ['States', 'Rules', 'Edge cases'] },
+      { head: 'Validated patterns, not inventions.', proof: 'I design with *usability criteria* and respect how things are really built in *React, Chakra UI or Tailwind*. This site is the example: the design is mine and *I directed the implementation with AI down to the detail*. Generating is easy; the hard part is *knowing what to ask for and seeing when what comes back is not good enough*.', tags: ['React', 'Chakra UI', 'Tailwind', 'AI'] },
+      { head: 'Complete flows, not isolated screens.', proof: 'I look for *systems that make the next design and the next build cost less than the last one*.', tags: ['Flows', 'Systems', 'Reuse'] },
     ],
   },
   /* En ingles va la formulacion documentada de Nielsen —la del articulo de

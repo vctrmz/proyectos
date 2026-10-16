@@ -48,6 +48,10 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
   const next = resolveNext(c.next, locale);
   const sequence = caseSequence(locale);
   const L = (id: string, fallback: string) => ui.case.sections[id] ?? fallback;
+  /* El storyboard está en prueba: se ve en local y en las previews de Vercel,
+     y producción sigue con el documento hasta que se apruebe (mismo criterio
+     que el laboratorio). */
+  const storyboard = !!c.storyboard && process.env.VERCEL_ENV !== 'production';
   const sections: { id: string; label: string; node: React.ReactNode }[] = [
     { id: 'c-problema', label: L('c-problema', 'Problema'), node: (
       <>
@@ -133,7 +137,7 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
         <div className="container">
           {/* Con storyboard, el caso se cuenta por planos y sustituye al
               documento: contexto, rol y entrega viven en los actos. */}
-          {c.storyboard ? <CaseStoryboard c={c} locale={locale} /> : <>
+          {storyboard ? <CaseStoryboard c={c} locale={locale} /> : <>
           <div className={s.cols}><div><h2>{ui.case.context}</h2><p>{c.context}</p></div><div><h2>{ui.case.role}</h2><p>{c.role}</p></div><div><h2>{ui.case.delivery}</h2><p>{c.delivery}</p></div></div>
           <div className={s.doc}>
             <CaseNav items={sections.map(({ id, label }) => ({ id, label }))} label={ui.case.index} heading={ui.case.parts(sections.length)} />

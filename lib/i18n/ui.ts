@@ -37,6 +37,8 @@ export interface Ui {
     title: string; personal: string; live: string; before: string; born: string;
     education: string; eduNote: string; drawer: string; drawerTitle: string;
     proc: { title: string; steps: string; prev: string; next: string; principles: string; does: string };
+    deck: { flip: string; back: string; seen: (n: number, total: number) => string; done: string; doneLink: string; skillsCount: (n: number) => string };
+    film: { title: string; lead: string; play: string; pause: string; replay: string; music: string; fullscreen: string; exitFullscreen: string; timeline: string; hint: string; stage: string };
     ikigai: string; companies: string; tools: string; skills: string;
     socialLabel: string; more: string; close: string; books: string;
   };
@@ -103,6 +105,8 @@ const es: Ui = {
     education: 'Formación', eduNote: 'Informático de formación, Product Designer de oficio.',
     drawer: 'Mi forma de trabajar', drawerTitle: 'Cómo trabajo, de los requisitos a producción',
     proc: { title: 'El proceso', steps: 'Pasos del proceso', prev: 'Paso anterior', next: 'Paso siguiente', principles: 'Tres criterios no negociables', does: 'Qué hago en este paso' },
+    deck: { flip: 'Ver la prueba', back: 'Volver', seen: (n, total) => `${n} de ${total} vistas`, done: 'Las tres, aplicadas en un caso real.', doneLink: 'Ver HERMES', skillsCount: (n) => `${n} capacidades` },
+    film: { title: 'Página en blanco', lead: 'Un motion film sin voz, de 85 segundos, sobre cómo diseño con IA: de la página en blanco a la mesa de clientes, por las fases del design thinking.', play: 'Reproducir', pause: 'Pausa', replay: 'Volver a ver', music: 'Música', fullscreen: 'Pantalla completa', exitFullscreen: 'Salir de pantalla completa', timeline: 'Línea de tiempo del film', hint: 'Pulsa la línea de tiempo para saltar. Con las flechas ← → avanzas o retrocedes 2,5 s, un compás.', stage: 'Film «Página en blanco», 85 segundos, sin voz' },
     ikigai: 'Ikigai', companies: 'Empresas', tools: 'Herramientas', skills: 'Lo que aporto',
     socialLabel: 'Redes', more: 'Más información', close: 'Cerrar', books: 'Libros que recomiendo',
   },
@@ -175,6 +179,8 @@ const en: Ui = {
     education: 'Education', eduNote: 'Computer scientist by training, Product Designer by trade.',
     drawer: 'How I work', drawerTitle: 'How I work, from requirements to production',
     proc: { title: 'The process', steps: 'Process steps', prev: 'Previous step', next: 'Next step', principles: 'Three non-negotiables', does: 'What I do in this step' },
+    deck: { flip: 'See the proof', back: 'Back', seen: (n, total) => `${n} of ${total} seen`, done: 'All three, applied in a real case.', doneLink: 'See HERMES', skillsCount: (n) => `${n} capabilities` },
+    film: { title: 'Blank page', lead: 'An 85-second motion film with no voice-over about how I design with AI: from the blank page to the client table, through the phases of design thinking.', play: 'Play', pause: 'Pause', replay: 'Watch again', music: 'Music', fullscreen: 'Full screen', exitFullscreen: 'Exit full screen', timeline: 'Film timeline', hint: 'Select the timeline to jump. Use the ← → arrows to move 2.5 s, one bar.', stage: '“Blank page” film, 85 seconds, no voice-over' },
     ikigai: 'Ikigai', companies: 'Companies', tools: 'Tools', skills: 'What I bring',
     socialLabel: 'Social', more: 'More', close: 'Close', books: 'Books I recommend',
   },
