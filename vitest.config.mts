@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config';
+import { configDefaults, defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 import { fileURLToPath } from 'node:url';
 
@@ -15,6 +15,9 @@ export default defineConfig({
        en paralelo pasaban de los 5 s por defecto: fallaban por tiempo, no por
        contenido. */
     testTimeout: 30000,
+    /* Los skills vendorizados traen sus propios tests (node:test), que no
+       son de esta suite. */
+    exclude: [...configDefaults.exclude, '.claude/**'],
   },
   resolve: { alias: { '@': fileURLToPath(new URL('.', import.meta.url)) } },
 });
