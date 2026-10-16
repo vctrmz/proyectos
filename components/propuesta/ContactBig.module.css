@@ -2,12 +2,14 @@
 .band { background: var(--night); color: #fff; padding-block: clamp(96px, 12vw, 180px) clamp(64px, 8vw, 112px); }
 .inner { display: grid; gap: clamp(32px, 4vw, 56px); justify-items: start; }
 
-.big { display: grid; gap: 0.08em; text-align: left; font-size: clamp(3rem, 10vw, 9rem); font-weight: 500; letter-spacing: -0.045em; line-height: 0.98; color: #fff; }
+.big { display: grid; gap: 0; text-align: left; font-size: clamp(3rem, 10vw, 9rem); font-weight: 500; letter-spacing: -0.045em; line-height: 0.98; color: #fff; }
 .big:focus-visible { outline-color: var(--focus-on-night); outline-offset: 8px; }
-.line { position: relative; display: inline-block; justify-self: start; padding-bottom: 0.14em; }
+.line { position: relative; display: inline-block; justify-self: start; padding-bottom: 0.3em; }
 .copy { display: inline-block; color: var(--accent); }
 .ok { display: inline-block; color: #fff; }
-.under { position: absolute; left: 0; right: 0; bottom: -0.02em; width: 100%; height: 0.2em; overflow: visible; }
+/* El trazo vive en el hueco que deja el padding, por debajo de los
+   descendentes: nunca pisa la «¿» ni la «p». */
+.under { position: absolute; left: -0.02em; right: -0.04em; bottom: 0.04em; width: calc(100% + 0.06em); height: 0.2em; overflow: visible; }
 .big:hover .copy { text-decoration: none; }
 .hint { font-size: var(--fs-300); color: var(--inset-ink-2); margin-top: calc(var(--sp-16) * -1); }
 

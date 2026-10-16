@@ -1,15 +1,15 @@
 'use client';
 import { useState } from 'react';
 import Link from 'next/link';
-import { AnimatePresence, LayoutGroup, motion } from 'motion/react';
+import { AnimatePresence, motion } from 'motion/react';
 import { Icon, type IconName } from './icons';
 import s from './Areas.module.css';
 
 /* Algunas áreas en las que he trabajado: una ficha por sector, con su icono
    y sus años, y al lado lo que resolví en el que esté seleccionado. Sin
    nombres de cliente: el sector, el problema y para quién diseñé. Elegir un
-   área mueve la selección de Figma hasta ella (animación de layout
-   compartida) y cambia el panel. Es un grupo de botones con aria-pressed y
+   área la levanta sobre un canto índigo macizo, como una ficha extruida
+   (adaptado de la rejilla de clientes de tigranz.com), y cambia el panel. Es un grupo de botones con aria-pressed y
    el panel es una región viva: con teclado y lector de pantalla funciona
    igual. Los textos salen de los casos, de los sectores y del CV. */
 type Area = {
@@ -40,8 +40,7 @@ export default function Areas() {
   const a = AREAS.find((x) => x.id === id)!;
   return (
     <div className={s.wrap}>
-      <LayoutGroup>
-        <div className={s.grid} role="group" aria-label="Áreas">
+      <div className={s.grid} role="group" aria-label="Áreas">
           {AREAS.map((x) => {
             const on = x.id === id;
             return (
@@ -49,16 +48,10 @@ export default function Areas() {
                 <Icon name={x.icon} className={s.icon} />
                 <span className={s.name}>{x.name}</span>
                 <span className={s.years}>{x.years}</span>
-                {on && (
-                  <motion.span layoutId="area-sel" className={s.sel} aria-hidden="true" transition={{ type: 'spring', stiffness: 420, damping: 34 }}>
-                    <i className={`${s.h} ${s.tl}`} /><i className={`${s.h} ${s.tr}`} /><i className={`${s.h} ${s.bl}`} /><i className={`${s.h} ${s.br}`} />
-                  </motion.span>
-                )}
               </button>
             );
           })}
-        </div>
-      </LayoutGroup>
+      </div>
 
       <div id="area-panel" className={s.panel} aria-live="polite">
         <AnimatePresence mode="wait" initial={false}>
