@@ -11,7 +11,7 @@ import s from './Hero.module.css';
 
 /* Las tres puertas al trabajo, junto al nombre: LinkedIn para el perfil,
    Behance para los proyectos visuales y Figma para el archivo de trabajo. */
-const SOCIAL: { name: SocialName; href: string }[] = [
+export const SOCIAL: { name: SocialName; href: string }[] = [
   { name: 'LinkedIn', href: SITE.linkedin },
   { name: 'Behance', href: SITE.behance },
   { name: 'Figma', href: SITE.figma },

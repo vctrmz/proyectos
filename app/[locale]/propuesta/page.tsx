@@ -4,9 +4,13 @@ import { notFound } from 'next/navigation';
 import SiteHeader from '@/components/layout/SiteHeader';
 import SiteFooter from '@/components/layout/SiteFooter';
 import Button from '@/components/ui/Button';
-import CvDownload from '@/components/ui/CvDownload';
 import ContactButton from '@/components/contact/ContactButton';
+import LogoMarquee from '@/components/home/LogoMarquee';
+import Sectores from '@/components/home/Sectores';
+import Stack from '@/components/home/Stack';
+import Starfield from '@/components/home/Starfield';
 import { Rise, Part } from '@/components/propuesta/Rise';
+import HeroId from '@/components/propuesta/HeroId';
 import TokenCollapse from '@/components/propuesta/TokenCollapse';
 import FeaturedCase from '@/components/propuesta/FeaturedCase';
 import Thesis from '@/components/propuesta/Thesis';
@@ -15,17 +19,17 @@ import { SITE } from '@/lib/content/site';
 import { ROUTES, type Locale } from '@/lib/i18n/config';
 import s from '@/components/propuesta/propuesta.module.css';
 
-/* Propuesta de portada, a partir de la crítica con taste-skill (2026-10-16).
-   Vive aparte de la portada y no se indexa: es para compararla con /es en
-   local, no para publicarla. Usa los tokens, la tipografía y los componentes
-   del sistema; lo que cambia es la composición, la jerarquía y el copy:
+/* Propuesta de portada, v2: la mezcla de la portada actual y la propuesta de
+   la crítica con taste-skill (2026-10-16). Vive aparte y no se indexa.
 
-   - la idea sale del propio trabajo: 267 → 24 es el hero, y se puede tocar;
-   - la tesis sale una vez, no tres;
-   - HERMES, el caso del botón principal, tiene su banda con producto real;
-   - el resto, índice con captura al pasar, no once tarjetas iguales;
-   - el cierre es una acción (contactar, CV, LinkedIn), sin el acordeón. */
-export const metadata: Metadata = { title: 'Propuesta de portada — Víctor Maza', robots: { index: false, follow: false } };
+   De la propuesta: el hero a la izquierda con el colapso 267 → 24, HERMES
+   con producto real, la tesis una sola vez, el índice de casos y un cierre
+   que es una acción.
+   De la portada actual: el nombre con LinkedIn, Behance y Figma, los logos de
+   empresas, los cinco sectores por dentro, el stack con el enlace al
+   repositorio y el campo de estrellas del cierre.
+   El CV se queda en Sobre mí. */
+export const metadata: Metadata = { title: 'Propuesta de portada', robots: { index: false, follow: false } };
 
 export default async function Propuesta({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
@@ -40,17 +44,17 @@ export default async function Propuesta({ params }: { params: Promise<{ locale: 
 
         <section className={`container ${s.hero}`} aria-labelledby="hero-title">
           <Rise immediate className={s.heroCopy}>
+            <Part className={s.idRow}><HeroId locale={locale} /></Part>
             <Part as="h1" id="hero-title" className={s.h1}>
               <span>Diseño producto B2B complejo</span> <span className={s.tone}>y lo llevo a producción.</span>
             </Part>
             <Part as="p" className={s.sub}>
-              Soy Víctor Maza, Senior Product Designer. Nueve años en SaaS asegurador, ERP y banca; los cuatro últimos,
+              Senior Product Designer. Nueve años en SaaS asegurador, ERP y banca; los cuatro últimos,
               único diseñador de un holding de cinco productos.
             </Part>
             <Part className={s.ctas}>
               <Button href={ROUTES.es.caseOf('hermes')} size="lg">Ver el caso HERMES</Button>
               <ContactButton size="lg" />
-              <CvDownload locale="es" />
             </Part>
           </Rise>
           <div className={s.stage}>
@@ -58,20 +62,26 @@ export default async function Propuesta({ params }: { params: Promise<{ locale: 
           </div>
         </section>
 
+        <LogoMarquee locale={locale} />
+
         <FeaturedCase />
 
         <Thesis />
 
+        <Sectores locale={locale} />
+
         <section className={`container ${s.work}`} aria-labelledby="work-title">
           <Rise className={s.workHead}>
             <Part as="h2" id="work-title" className={s.h2}>Más trabajo en producción</Part>
-            <Part as="p" className={s.workLead}>Insurtech, ERP, banca, e-commerce y transporte: cinco sectores, el mismo método.</Part>
+            <Part as="p" className={s.workLead}>Casos completos y módulos de HERMES, todos en producción.</Part>
           </Rise>
           <CaseIndex />
+          <div className={s.stack}><Stack locale={locale} /></div>
         </section>
 
         <section className={`container ${s.closing}`} aria-labelledby="closing-title">
           <Rise className={`inset ${s.closingInner}`}>
+            <Starfield />
             <Part as="h2" id="closing-title" className={s.closingTitle}>
               <span>¿Buscas un Senior o Lead</span> <span className={s.toneDark}>de Product Design?</span>
             </Part>
