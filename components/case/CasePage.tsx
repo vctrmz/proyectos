@@ -24,6 +24,8 @@ import TokenCollapse from './TokenCollapse';
 import TokenCompare from './TokenCompare';
 import CaseDemo from './demos/CaseDemo';
 import CaseStoryboard from './storyboard/CaseStoryboard';
+import { ProcessDiscover, ProcessEvolve, ProcessHandover } from './process/CaseProcess';
+import { processIn } from '@/lib/content/en/process';
 import { ChallengeGrid, AudienceGrid, FlowList, FindingsTable } from './CaseBlocks';
 import CaseFilm from './film/CaseFilm';
 import ShotThumb from './film/ShotThumb';
@@ -50,6 +52,7 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
   const next = resolveNext(c.next, locale);
   const sequence = caseSequence(locale);
   const L = (id: string, fallback: string) => ui.case.sections[id] ?? fallback;
+  const proc = processIn(locale, c.slug);
   /* El storyboard está en prueba: se ve en local y en las previews de Vercel,
      y producción sigue con el documento hasta que se apruebe (mismo criterio
      que el laboratorio). */
@@ -69,6 +72,14 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
         <CaseDemo id={c.demo.id} />
       </>
     ) }] : []),
+    /* El proceso del caso se reparte por las fases del film: el benchmark y
+       las ideas en Discover, la pantalla del boceto al producto en Develop y
+       la entrega a desarrollo en Deliver (ver SECTION_PHASE). */
+    ...(proc ? [
+      { id: 'c-proceso', label: L('c-proceso', 'Benchmark e ideas'), node: <ProcessDiscover slug={c.slug} p={proc} locale={locale} /> },
+      { id: 'c-evolucion', label: L('c-evolucion', 'Del boceto al producto'), node: <ProcessEvolve slug={c.slug} p={proc} locale={locale} /> },
+      { id: 'c-entrega', label: L('c-entrega', 'Entrega a desarrollo'), node: <ProcessHandover slug={c.slug} p={proc} locale={locale} /> },
+    ] : []),
     ...(c.challenge ? [{ id: 'c-reto', label: L('c-reto', 'El reto'), node: <ChallengeGrid items={c.challenge.items} /> }] : []),
     { id: 'c-complejidad', label: L('c-complejidad', 'Complejidad'), node: <Diagram id={c.complexity.diagram} caption={c.complexity.caption} /> },
     ...(c.audiences ? [{ id: 'c-audiencias', label: L('c-audiencias', 'Audiencias'), node: <AudienceGrid items={c.audiences.items} /> }] : []),
