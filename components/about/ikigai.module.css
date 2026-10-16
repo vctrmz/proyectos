@@ -3,8 +3,10 @@
    más que la pantalla y el escenario se queda fijo mientras se cuenta. */
 .track { position: relative; }
 .stage { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: var(--sp-48); align-items: center; }
-.scroll { height: 280vh; }
-.scroll .stage { position: sticky; top: 60px; height: calc(100svh - 60px); }
+.scroll { height: 200vh; }
+/* El escenario no ocupa toda la pantalla: tiene el alto que pide el diagrama
+   y se fija centrado en lo que queda bajo la cabecera, sin bandas vacías. */
+.scroll .stage { position: sticky; --h: min(calc(100svh - 60px), 640px); top: calc(60px + (100svh - 60px - var(--h)) / 2); height: var(--h); }
 
 .copy { display: grid; gap: var(--sp-24); align-content: center; min-height: 260px; }
 .rail { display: flex; gap: 6px; width: 132px; }
@@ -39,8 +41,8 @@
 
 @media (max-width: 767px) {
   .stage { grid-template-columns: minmax(0, 1fr); gap: var(--sp-16); }
-  .scroll { height: 240vh; }
-  .scroll .stage { align-content: center; }
+  .scroll { height: 180vh; }
+  .scroll .stage { --h: min(calc(100svh - 60px), 600px); align-content: center; }
   .svg { max-width: 340px; order: -1; }
   .copy { min-height: 190px; align-content: start; }
   .title { font-size: var(--fs-700); }
