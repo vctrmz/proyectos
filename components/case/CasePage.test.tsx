@@ -21,7 +21,11 @@ describe('CasePage', () => {
     expect(screen.getByText(/4 de 4/)).toBeInTheDocument();
     expect(screen.getByText(/Adopción completa del equipo de front/)).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 3, name: /Qué mediría hoy/ })).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: /Siguiente caso/ })).toHaveAttribute('href', '/es/cases/flesip');
+    /* Dos salidas al siguiente caso —el botón de arriba y la tarjeta del
+       final— y las dos llevan al mismo sitio. */
+    const siguientes = screen.getAllByRole('link', { name: /Siguiente caso/ });
+    expect(siguientes).toHaveLength(2);
+    for (const a of siguientes) expect(a).toHaveAttribute('href', '/es/cases/flesip');
     expect(screen.getByRole('link', { name: /← Trabajo/ })).toHaveAttribute('href', '/es#trabajo');
   });
   it('trae el índice del caso con una entrada por sección', () => {

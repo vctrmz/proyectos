@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { ViewTransition } from 'react';
 import SiteHeader from '@/components/layout/SiteHeader';
 import SiteFooter from '@/components/layout/SiteFooter';
@@ -17,7 +16,9 @@ import type { CaseStudy } from '@/lib/content/cases';
 import CaseNav from './CaseNav';
 import DecisionBlock from './DecisionBlock';
 import ResultBlock from './ResultBlock';
-import NextCase from './NextCase';
+import NextCase, { resolveNext } from './NextCase';
+import BrandMark from './BrandMark';
+import Button from '@/components/ui/Button';
 import UiKit from './UiKit';
 import TokenCompare from './TokenCompare';
 import CaseDemo from './demos/CaseDemo';
@@ -41,6 +42,7 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
   const p = getProject(c.slug)!;
   const ui = getUi(locale);
   const r = ROUTES[locale];
+  const next = resolveNext(c.next, locale);
   const L = (id: string, fallback: string) => ui.case.sections[id] ?? fallback;
   const sections: { id: string; label: string; node: React.ReactNode }[] = [
     { id: 'c-problema', label: L('c-problema', 'Problema'), node: (
@@ -112,9 +114,14 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
       <SiteHeader />
       <main id="contenido">
         <div className={`container ${s.top}`}>
-          <Link href={r.work} className={s.back}>{ui.case.back}</Link>
+          {/* Arriba, las dos salidas del caso: volver al trabajo o pasar al
+              siguiente sin bajar hasta el final. */}
+          <nav className={s.bar} aria-label={ui.case.navLabel}>
+            <Button variant="outline" href={r.work}>{ui.case.back}</Button>
+            <Button variant="outline" href={next.href} aria-label={`${ui.case.nextLabel}: ${next.n.title}`}>{ui.case.next}{next.note} <span aria-hidden="true">→</span></Button>
+          </nav>
           <ViewTransition name={`case-${c.slug}`}><div className={s.head}>
-            <h1 className={s.title}><img src={p.logo} alt="" className={s.icon} />{c.title} · {c.company}</h1>
+            <h1 className={s.title}><BrandMark p={p} />{c.title} · {c.company}</h1>
             <p className={s.tagline}>{c.tagline}</p>
             <p className={s.tags}>{c.tags.map((t) => <span key={t}>{tagIn(locale, t)}</span>)}<span>{c.years}</span></p>
           </div></ViewTransition>
