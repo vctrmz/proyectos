@@ -30,6 +30,7 @@ export interface Ui {
     findings: { n: string; finding: string; rule: string; severity: string; where: string; caption: string };
     severity: Record<string, string>;
     next: string; nextLabel: string;
+    film: { eyebrow: string; title: string; lead: string; play: string; pause: string; replay: string; timeline: string; shot: string; stage: string; from: string; phases: string[] };
   };
   about: {
     title: string; personal: string; live: string; before: string; born: string;
@@ -94,6 +95,7 @@ const es: Ui = {
     findings: { n: '#', finding: 'Hallazgo', rule: 'Regla', severity: 'Severidad', where: 'Dónde', caption: 'Hallazgos ordenados por severidad, con la regla que incumplen y la pantalla donde ocurren' },
     severity: { 'crítica': 'crítica', alta: 'alta', media: 'media', baja: 'baja' },
     next: 'Siguiente caso', nextLabel: 'Siguiente caso',
+    film: { eyebrow: 'Film del caso', title: 'El caso, plano a plano', lead: 'El proyecto montado como un storyboard: las pantallas reales entran por fases y cada plano abre una parte del caso, que se lee debajo junto a su plano.', play: 'Reproducir', pause: 'Pausa', replay: 'Volver a ver', timeline: 'Línea de tiempo del film', shot: 'Plano', stage: 'Fotograma del film', from: 'Desde aquí', phases: ['Apertura', 'Descubrir', 'Definir', 'Desarrollar', 'Entregar', 'Cierre'] },
   },
   about: {
     title: 'Sobre mí', personal: 'Personal', live: 'Vivo en', before: 'Antes, en', born: 'Nací en Venezuela.',
@@ -165,6 +167,7 @@ const en: Ui = {
     findings: { n: '#', finding: 'Finding', rule: 'Rule', severity: 'Severity', where: 'Where', caption: 'Findings ordered by severity, with the rule they break and the screen where they happen' },
     severity: { 'crítica': 'critical', alta: 'high', media: 'medium', baja: 'low' },
     next: 'Next case', nextLabel: 'Next case',
+    film: { eyebrow: 'Case film', title: 'The case, shot by shot', lead: 'The project cut as a storyboard: the real screens come in by phase, and each shot opens a part of the case, which you can read below next to its shot.', play: 'Play', pause: 'Pause', replay: 'Watch again', timeline: 'Film timeline', shot: 'Shot', stage: 'Film frame', from: 'From here', phases: ['Opening', 'Discover', 'Define', 'Develop', 'Deliver', 'Close'] },
   },
   about: {
     title: 'About me', personal: 'Personal', live: 'I live in', before: 'Before that, in', born: 'I was born in Venezuela.',

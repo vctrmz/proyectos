@@ -22,6 +22,9 @@ import UiKit from './UiKit';
 import TokenCompare from './TokenCompare';
 import CaseDemo from './demos/CaseDemo';
 import { ChallengeGrid, AudienceGrid, FlowList, FindingsTable } from './CaseBlocks';
+import CaseFilm from './film/CaseFilm';
+import ShotThumb from './film/ShotThumb';
+import { buildFilm, tc, SECTION_ORDER, SECTION_PHASE, PHASE_ROMAN, PHASE_WORDS } from '@/lib/content/film';
 import s from './case.module.css';
 
 /* La página de caso se lee como un documento numerado: el índice de la
@@ -101,6 +104,27 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
     ) },
   ];
 
+  /* El caso se lee en el orden del film: las secciones se agrupan por fase
+     —Discover, Define, Develop, Deliver y cierre— y cada una abre con su
+     plano animado. */
+  sections.sort((a, b) => SECTION_ORDER.indexOf(a.id) - SECTION_ORDER.indexOf(b.id));
+  const film = buildFilm(c, sections.map((x) => x.id), p.logo);
+  const labelOf = (i: number) => {
+    const sh = film.shots[i];
+    if (sh.kind === 'open') return c.title;
+    if (sh.kind === 'title') return sh.word!;
+    return sections.find((x) => x.id === sh.section)?.label ?? '';
+  };
+  const labels = film.shots.map((_, i) => labelOf(i));
+  /* Una línea que resume la parte junto al plano, solo cuando no repite lo que
+     viene debajo. */
+  const leads: Record<string, React.ReactNode> = {
+    ...(c.audiences ? { 'c-audiencias': c.audiences.title } : {}),
+    ...(c.challenge ? { 'c-reto': c.challenge.title } : {}),
+    ...(c.flows ? { 'c-flujos': c.flows.title } : {}),
+    'c-decisiones': <ol className={s.shotList}>{c.decisions.map((d) => <li key={d.title}>{d.title}</li>)}</ol>,
+  };
+
   const titleOf = (id: string, label: string) => {
     const n = sections.findIndex((x) => x.id === id) + 1;
     return <h2 id={id}><span className={s.secN} aria-hidden="true">{String(n).padStart(2, '0')}</span>{label}</h2>;
@@ -121,15 +145,39 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
         </div>
         <div className="container">
           <div className={s.cols}><div><h2>{ui.case.context}</h2><p>{c.context}</p></div><div><h2>{ui.case.role}</h2><p>{c.role}</p></div><div><h2>{ui.case.delivery}</h2><p>{c.delivery}</p></div></div>
+        </div>
+        <CaseFilm film={film} labels={labels} ui={ui.case.film} />
+        <div className="container">
           <div className={s.doc}>
             <CaseNav items={sections.map(({ id, label }) => ({ id, label }))} label={ui.case.index} heading={ui.case.parts(sections.length)} />
             <div className={s.stream}>
-              {sections.map(({ id, label, node }) => (
-                <section key={id} className={`${s.sec} ${id === 'c-problema' ? s.problem : ''}`} aria-labelledby={id}>
-                  {titleOf(id, label)}
-                  {node}
-                </section>
-              ))}
+              {sections.map(({ id, label, node }, k) => {
+                const ph = SECTION_PHASE[id];
+                const first = k === 0 || SECTION_PHASE[sections[k - 1].id] !== ph;
+                const shot = film.shots.find((x) => x.section === id)!;
+                const inside = id === 'c-problema';
+                return (
+                  <div key={id}>
+                    {first && (
+                      <div className={s.phase}>
+                        <span className={s.roman} aria-hidden="true">{PHASE_ROMAN[ph]}</span>
+                        <p><span className={s.phaseLabel}>{ui.case.film.phases[ph]}</span>{PHASE_WORDS[ph]}</p>
+                      </div>
+                    )}
+                    <section className={`${s.sec} ${s.shotSec}`} aria-labelledby={id}>
+                      <div className={s.shotRow}>
+                        <ShotThumb shot={shot} brand={c.brand} from={ui.case.film.from} label={`${ui.case.film.shot} ${shot.i + 1}: ${label}`} />
+                        <div className={`${s.shotInfo} ${inside ? s.problem : ''}`}>
+                          <p className={s.shotMeta}><span>{ui.case.film.shot} {String(shot.i + 1).padStart(2, '0')}</span><span>{tc(shot.start)} → {tc(shot.start + shot.dur)}</span></p>
+                          {titleOf(id, label)}
+                          {inside ? node : leads[id] && <div className={s.shotLead}>{leads[id]}</div>}
+                        </div>
+                      </div>
+                      {!inside && <div className={s.shotBody}>{node}</div>}
+                    </section>
+                  </div>
+                );
+              })}
             </div>
           </div>
           <NextCase slug={c.next} locale={locale} />

@@ -77,3 +77,26 @@
 .wouldFix span { color: #9a5300; }
 /* Al llegar por ancla, el titular no se esconde bajo la cabecera. */
 .sec h2 { scroll-margin-top: 96px; }
+
+/* Formato film: las secciones se agrupan por fase y cada una abre con su
+   plano animado a la izquierda y su título a la derecha. Un plano debajo de
+   otro, nunca en dos columnas de planos. */
+.phase { display: flex; align-items: baseline; gap: var(--sp-16); padding-top: var(--sp-48); border-top: 2px solid var(--ink); margin-top: var(--sp-48); }
+.phase:first-child { margin-top: 0; }
+.roman { font-size: var(--fs-900); line-height: 1; color: var(--focus); font-variation-settings: 'wght' 600; min-width: 1.6em; }
+.phase p { display: grid; gap: 4px; font-size: var(--fs-700); line-height: 1.1; letter-spacing: -0.02em; font-variation-settings: 'wght' 550; }
+.phaseLabel { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-variation-settings: 'wght' 450; }
+.shotSec:last-child { border-bottom: 0; }
+.shotRow { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: var(--sp-32); align-items: start; }
+.shotInfo { display: grid; gap: var(--sp-12); align-content: start; }
+.shotInfo h2 { margin-bottom: 0; font-size: var(--fs-600); letter-spacing: -0.01em; text-transform: none; color: var(--ink); font-weight: 500; }
+.shotInfo h2 .secN { display: none; }
+.shotMeta { display: flex; flex-wrap: wrap; gap: 6px 12px; font-size: var(--fs-100); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.shotMeta span:first-child { color: var(--focus); }
+.shotLead { font-size: var(--fs-300); color: var(--ink-2); text-wrap: pretty; }
+.shotList { margin: 0; padding-left: 1.2em; display: grid; gap: var(--sp-8); }
+.shotBody { margin-top: var(--sp-48); }
+.shotInfo.problem { display: grid; grid-template-columns: minmax(0, 1fr); }
+.shotInfo.problem p { font-size: var(--fs-500); line-height: 1.4; max-width: none; }
+@media (max-width: 800px) { .shotRow { grid-template-columns: minmax(0, 1fr); gap: var(--sp-16); } .shotBody { margin-top: var(--sp-32); } }
+.shotInfo.problem .shotMeta { font-size: var(--fs-100); color: var(--ink-3); }
