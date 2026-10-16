@@ -9,16 +9,19 @@ const nextConfig: NextConfig = {
       { source: '/', destination: '/es', permanent: false },
       { source: '/index.html', destination: '/es', permanent: true },
       { source: '/casos/:slug', destination: '/es/cases/:slug', permanent: true },
-      { source: '/sobre-mi', destination: '/es/about', permanent: true },
-      { source: '/perfil', destination: '/es/about', permanent: true },
-      { source: '/perfil.html', destination: '/es/about', permanent: true },
+      { source: '/sobre-mi', destination: '/es', permanent: true },
+      { source: '/perfil', destination: '/es', permanent: true },
+      { source: '/perfil.html', destination: '/es', permanent: true },
+      /* «Sobre mí» es la portada desde el 2026-10-16: su ruta antigua lleva a
+         la raíz del idioma. Temporal, por si el orden vuelve a cambiar. */
+      { source: '/:locale(es|en)/about', destination: '/:locale', permanent: false },
       { source: '/privacidad', destination: '/es/privacy', permanent: true },
       { source: '/privacidad.html', destination: '/es/privacy', permanent: true },
       /* El caso «Esta web» se retiró el 2026-10-09: quien llegue por un enlace
          antiguo cae en la portada en lugar de en un 404. */
-      { source: '/:locale(es|en)/cases/esta-web', destination: '/:locale', permanent: true },
+      { source: '/:locale(es|en)/cases/esta-web', destination: '/:locale/work', permanent: true },
       /* La propuesta de portada (2026-10-16) es ya la portada en español. */
-      { source: '/es/propuesta', destination: '/es', permanent: false },
+      { source: '/es/propuesta', destination: '/es/work', permanent: false },
     ];
   },
 };

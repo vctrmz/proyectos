@@ -31,6 +31,6 @@ export const SITE = {
 } as const;
 
 export const NAV = [
-  { href: '/#trabajo', label: 'Trabajos' },
-  { href: '/sobre-mi', label: 'Sobre mí' },
+  { href: '/es', label: 'Sobre mí' },
+  { href: '/es/work#trabajo', label: 'Trabajos' },
 ] as const;
