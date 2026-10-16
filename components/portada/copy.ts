@@ -8,7 +8,7 @@ export type AreaCopy = { id: string; name: string; icon: IconName; years: string
 export type JobCopy = { role: string; where: string; years: string; note: string };
 
 const ES = {
-  band: ['Víctor Maza', 'Senior Product Designer', 'Design systems', 'B2B SaaS', 'Insurtech', 'En remoto'],
+  band: ['Víctor Maza', 'Senior Product Designer', 'Design systems', 'B2B y B2C SaaS', 'Insurtech', 'En remoto'],
   featured: {
     title: 'HERMES, plataforma aseguradora',
     meta: 'Caso principal · Atrinium · 2022–2026',
@@ -21,7 +21,7 @@ const ES = {
   work: { title: 'trabajos', at: 6, lead: 'Productos enteros y decisiones concretas dentro de HERMES. Todo llegó a producción.', inSpanish: '' },
   about: {
     title: 'sobre mí', at: 1,
-    lead: 'Llevo más de ocho años diseñando producto digital B2B SaaS de punta a punta, del discovery a producción, en dominios regulados como seguros y banca.',
+    lead: 'Llevo más de ocho años diseñando producto digital B2B y B2C SaaS de punta a punta, del discovery a producción, en dominios regulados como seguros y banca.',
     p2: 'Durante cuatro años lideré, como único diseñador, el diseño de un holding con cinco productos. Su núcleo es un SaaS multi-tenant en 12 idiomas y con la marca de cada cliente, sostenido por un único design system.',
     p3: ['Construyo design systems', 'con reglas de uso y criterios de decisión, no solo librerías de componentes. Uso IA a diario', 'para prototipar, sintetizar research e implementar, y como informático de formación reviso la implementación en React', '. Esta web es un proyecto Next.js con tests y código público.'],
     more: 'Más sobre mí y el CV',
@@ -63,7 +63,7 @@ const ES = {
 };
 
 const EN: typeof ES = {
-  band: ['Víctor Maza', 'Senior Product Designer', 'Design systems', 'B2B SaaS', 'Insurtech', 'Remote'],
+  band: ['Víctor Maza', 'Senior Product Designer', 'Design systems', 'B2B and B2C SaaS', 'Insurtech', 'Remote'],
   featured: {
     title: 'HERMES, an insurance platform',
     meta: 'Lead case · Atrinium · 2022–2026',
@@ -76,7 +76,7 @@ const EN: typeof ES = {
   work: { title: 'works', at: 1, lead: 'Whole products and specific decisions inside HERMES. All of it shipped to production.', inSpanish: 'in Spanish' },
   about: {
     title: 'about', at: 2,
-    lead: 'I have spent eight-plus years designing B2B SaaS products end to end, from discovery to production, in regulated domains such as insurance and banking.',
+    lead: 'I have spent eight-plus years designing B2B and B2C SaaS products end to end, from discovery to production, in regulated domains such as insurance and banking.',
     p2: 'For four years I led design, as the sole designer, for a holding company with five products. Its core is a multi-tenant SaaS in 12 languages, branded for each client and held together by a single design system.',
     p3: ['I build design systems', 'with usage rules and decision criteria, not just component libraries. I use AI every day', 'to prototype, synthesise research and implement, and as a computer scientist by training I review the React implementation', '. This site is a Next.js project with tests and public code.'],
     more: 'More about me and my CV',
