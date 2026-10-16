@@ -7,16 +7,17 @@ import s from './Areas.module.css';
 
 /* Algunas áreas en las que he trabajado: una ficha por sector, con su icono
    y sus años, y al lado lo que resolví en el que esté seleccionado. Sin
-   nombres de cliente: el sector, el problema y para quién diseñé. Elegir un
+   nombres de cliente: el sector, el problema, quién usa el producto, qué
+   flujos diseñé y qué restricciones mandaban. Elegir un
    área la rellena del índigo de los filtros del catálogo y cambia el panel. Es un grupo de botones con aria-pressed y
    el panel es una región viva: con teclado y lector de pantalla funciona
    igual. Los textos salen de los casos, de los sectores y del CV. */
 export type Area = {
   id: string; name: string; icon: IconName; years: string;
-  body: string; areas: string[]; href: string; cta: string; external?: boolean;
+  body: string; users: string[]; flows: string[]; limits: string; href: string; cta: string; external?: boolean;
 };
 
-export default function Areas({ items: AREAS, labels }: { items: Area[]; labels: { group: string; forWhom: string } }) {
+export default function Areas({ items: AREAS, labels }: { items: Area[]; labels: { group: string; users: string; flows: string; limits: string } }) {
   const [id, setId] = useState(AREAS[0].id);
   const a = AREAS.find((x) => x.id === id)!;
   return (
@@ -40,8 +41,14 @@ export default function Areas({ items: AREAS, labels }: { items: Area[]; labels:
             <p className={s.meta}>{a.years}</p>
             <h3 className={s.title}>{a.name}</h3>
             <p className={s.body}>{a.body}</p>
-            <p className={s.areasLabel}>{labels.forWhom}</p>
-            <ul className={s.areas}>{a.areas.map((x) => <li key={x}>{x}</li>)}</ul>
+            {/* Tres preguntas distintas, sin mezclar personas con temas: quién
+                hace la tarea, qué necesita hacer y qué condiciona el diseño. */}
+            <p className={s.areasLabel}>{labels.users}</p>
+            <ul className={s.areas}>{a.users.map((x) => <li key={x}>{x}</li>)}</ul>
+            <p className={s.areasLabel}>{labels.flows}</p>
+            <ul className={s.areas}>{a.flows.map((x) => <li key={x}>{x}</li>)}</ul>
+            <p className={s.areasLabel}>{labels.limits}</p>
+            <p className={s.limits}>{a.limits}</p>
             {a.external
               ? <a href={a.href} target="_blank" rel="noopener" className={s.link}>{a.cta} <span aria-hidden="true">↗</span></a>
               : <Link href={a.href} className={s.link}>{a.cta} <span aria-hidden="true">→</span></Link>}

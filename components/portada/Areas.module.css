@@ -21,7 +21,7 @@
 .title { font-size: var(--fs-800); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: var(--sp-24); }
 .body { font-size: var(--fs-400); line-height: 1.55; color: var(--ink); margin-bottom: var(--sp-24); }
 .areasLabel { font-size: var(--fs-200); color: var(--ink-3); margin-bottom: var(--sp-8); }
-.areas { list-style: none; margin: 0 0 var(--sp-32); padding: 0; display: flex; flex-wrap: wrap; gap: var(--sp-8); }
+.areas { list-style: none; margin: 0 0 var(--sp-24); padding: 0; display: flex; flex-wrap: wrap; gap: var(--sp-8); }
 .areas li { font-size: var(--fs-200); padding: 6px 12px; border-radius: var(--r-pill); background: var(--surface); color: var(--ink); }
 .link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 500; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
 .link span { transition: transform .25s var(--ease); }
@@ -34,3 +34,4 @@
 @media (max-width: 520px) {
   .grid { grid-template-columns: 1fr; gap: var(--sp-12); }
 }
+.limits { margin-bottom: var(--sp-32); font-size: var(--fs-200); color: var(--ink-2); line-height: 1.5; max-width: 52ch; }

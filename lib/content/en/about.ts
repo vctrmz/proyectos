@@ -6,8 +6,8 @@ import { ABOUT } from '@/lib/content/about';
 export const ABOUT_EN: typeof ABOUT = {
   ...ABOUT,
   intro: [
-    'I’m Víctor, a Product Designer.',
-    'Eight-plus years in dense B2B products: insurance SaaS, digital banking and mobility.',
+    'I’m Víctor, a Senior Product Designer.',
+    'Eight-plus years in B2B and B2C products: insurance SaaS, digital banking and mobility.',
   ],
   education: [
     { degree: '5-year university degree in Computer Science', school: 'Universidad de Oriente', place: 'Cumaná, Venezuela', years: '2017' },
@@ -30,7 +30,7 @@ export const ABOUT_EN: typeof ABOUT = {
   vision: {
     title: 'I design systems, not screens.',
     paragraphs: [
-      'My computer science background is there to *think the product in systems, in structure and in how it will actually be built*, and to take it down to code when it is needed. *I model the domain before the screen*, *define states, rules and edge cases*, and close with a *handoff the team can build without interpreting anything*.',
+      'My computer science background is there to *think the product in systems, in structure and in how it will actually be built*, and to take it down to code when it is needed. *I model the domain before the screen*, *define states, rules and edge cases*, and work it through *with Product and Engineering until it ships*.',
       'I work with *validated patterns and usability criteria*, not inventions, and respect how things are really built in *React, Chakra UI or Tailwind*. This site is an example: the design is mine and *I directed the implementation with AI down to the detail*. Generating is the easy part; what I bring is *knowing what to ask for and recognising when what comes back is not good enough*.',
       'I care about *complete flows, not isolated screens*. *Systems that make the next design and the next build cost less than the last one.*',
     ],
@@ -90,10 +90,11 @@ export const ABOUT_EN: typeof ABOUT = {
     outro: 'Above the method, what I look for is *to create atmosphere*: that every screen, every state and every word make *the brand breathe the same air* from one end of the product to the other.',
   },
   toolGroups: [
-    { name: 'Design and multimedia', items: ABOUT.toolGroups[0].items },
+    { name: 'Design and prototyping', items: ['Figma (advanced)', 'FigJam', 'Interactive prototypes', 'Photoshop', 'Illustrator'] },
     { name: 'Design systems', items: ['Design tokens', 'Component architecture', 'WCAG 2.2 accessibility'] },
-    { name: 'Development and deployment', items: ABOUT.toolGroups[2].items },
-    { name: 'Analytics and behaviour', items: ABOUT.toolGroups[3].items },
-    ...ABOUT.toolGroups.slice(4).map((g, i) => ({ name: ['Artificial intelligence', 'Messaging and email'][i] ?? g.name, items: g.items })),
+    { name: 'Research and validation', items: ABOUT.toolGroups[2].items },
+    { name: 'Code', items: ABOUT.toolGroups[3].items },
+    { name: 'Artificial intelligence', items: ABOUT.toolGroups[4].items },
+    { name: 'Worked alongside', items: ABOUT.toolGroups[5].items },
   ],
 };

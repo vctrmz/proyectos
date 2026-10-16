@@ -6,7 +6,7 @@ export const hermesEn: CaseStudy = {
   tags: ['Case study', 'In production', 'Insurtech', 'Multi-tenant', 'Schema-driven forms', 'Design tokens'], brand: '#1f2a5a',
   hero: shot('hx-dashboard', 'HERMES Admin CRM dashboard with lead metrics, conversion rate and the list of opportunities', 'The dashboard: sales network metrics and whatever needs action, on the first screen'),
   context: 'Atrinium’s insurance SaaS for brokers, underwriting agencies and insurers: underwriting, policies, receipts, billing and claims. A product in production with no maintenance window, while a framework and database migration was under way and two generations of interface lived side by side.',
-  role: 'Sole designer of the group, in a team of seven. Weekly discovery with the insurers’ Product Owners and defending every proposal before handing it to engineering.',
+  role: 'Sole designer of the group, in a team of seven. Weekly sessions with the insurers’ Product Owners to answer questions, clarify ideas, present proposals, validate the logic of each process and refine the copy before handing it to engineering.',
   delivery: 'Multi-tenant web application, its CRM, the full design system, the per-company configuration surfaces and the product landing page.',
   problem: [
     'Every company arrived with its own business logic, currency, language and regulator, and expected the product to behave like theirs.',
@@ -72,7 +72,7 @@ export const hermesEn: CaseStudy = {
        documents, and its explanation says where it comes from. What was never
        instrumented stays declared below, in `measure`. */
     outcome: [
-      { value: '−77 %', label: 'fields the user sees per step', meaning: 'Worked out from the figure above: from 60 visible fields per step to 14 when issuing a policy. It is not a time measurement, it is the reduction in what the screen asks for.' },
+      { value: '60 → 14', label: 'visible fields per step when issuing a policy', meaning: 'Forms and rules became data, so each step only shows the fields that belong to it. It describes how much the screen asks for, not task time or errors, which were not measured.' },
       { value: '−91 %', label: 'colour values in the codebase', meaning: 'From 267 scattered values to 24 tokens with a role. The number comes from the monorepo audit, which is where they were counted.' },
       { value: '4 of 4', label: 'front-end developers who adopted the tokens', meaning: 'Full adoption by the front-end team: it is the condition for component reuse to actually save time, and the only item here you can verify in the repository.' },
     ],

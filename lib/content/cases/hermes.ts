@@ -6,7 +6,7 @@ export const hermes: CaseStudy = {
   tags: ['Caso de estudio', 'En producción', 'Insurtech', 'Multi-tenant', 'Formularios por esquema', 'Design tokens'], brand: '#1f2a5a',
   hero: shot('hx-dashboard', 'Dashboard CRM de HERMES Admin con indicadores de leads, tasa de conversión y lista de oportunidades', 'El panel: indicadores de la red comercial y lo que requiere acción, en la primera pantalla'),
   context: 'SaaS asegurador de Atrinium para corredurías, agencias de suscripción y aseguradoras: suscripción, pólizas, recibos, facturación y siniestros. Producto en producción sin ventana de parada, con migración de framework y base de datos en marcha y dos generaciones de interfaz conviviendo.',
-  role: 'Único diseñador del holding, en un equipo de siete personas. Discovery semanal con los Product Owners de las aseguradoras y defensa de cada propuesta antes de pasarla a desarrollo.',
+  role: 'Único diseñador del holding, en un equipo de siete personas. Sesiones semanales con los Product Owners de las aseguradoras para resolver dudas, aclarar ideas, presentar propuestas, validar la lógica de cada proceso y ajustar el copy antes de pasarlo a desarrollo.',
   delivery: 'Aplicación web multi-tenant, su CRM, el design system completo, las superficies de configuración por compañía y la landing de producto.',
   problem: [
     'Cada compañía llegaba con su lógica de negocio, su moneda, su idioma y su regulador, y esperaba que el producto se comportara como el suyo.',
@@ -72,7 +72,7 @@ export const hermes: CaseStudy = {
        documenta, y su explicación dice de dónde sale. Lo que no se midió sigue
        declarado abajo, en `measure`. */
     outcome: [
-      { value: '−77 %', label: 'campos que el usuario ve por paso', meaning: 'Se calcula a partir del dato anterior: de 60 campos visibles por paso a 14 al emitir una póliza. No es una medición de tiempo, es la reducción de lo que la pantalla pide.' },
+      { value: '60 → 14', label: 'campos visibles por paso al emitir una póliza', meaning: 'Formularios y reglas pasaron a definirse como datos, así que cada paso enseña solo los campos que le corresponden. Describe cuánta información pide la pantalla, no el tiempo de la tarea ni los errores, que no se midieron.' },
       { value: '−91 %', label: 'valores de color en el código', meaning: 'De 267 valores dispersos a 24 tokens con rol. La cifra sale de la auditoría del monorepo, que es donde se contaron.' },
       { value: '4 de 4', label: 'front que adoptaron los tokens', meaning: 'Adopción completa del equipo de front: es la condición para que reutilizar componentes ahorre de verdad, y es lo único de esta lista que se puede comprobar en el repositorio.' },
     ],
