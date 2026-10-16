@@ -4,7 +4,6 @@ import { notFound } from 'next/navigation';
 import SiteHeader from '@/components/layout/SiteHeader';
 import SiteFooter from '@/components/layout/SiteFooter';
 import Hero from '@/components/home/Hero';
-import TokenCollapse from '@/components/propuesta/TokenCollapse';
 import TypeHero from '@/components/propuesta/TypeHero';
 import FeaturedCase from '@/components/propuesta/FeaturedCase';
 import Thesis from '@/components/propuesta/Thesis';
@@ -18,7 +17,8 @@ import s from '@/components/propuesta/propuesta.module.css';
 
 /* Propuesta de portada, v4. Vive aparte y no se indexa.
 
-   Arriba, el hero actual tal cual (es el que retiene) y el colapso 267 → 24.
+   Arriba, el hero actual tal cual (es el que retiene). El colapso 267 → 24
+   se guardó para el caso HERMES (components/case/TokenCollapse).
    Después, adaptado de tigranz.com: un hero tipográfico que abre la banda de
    HERMES, títulos de sección con glifos, el trabajo con barra verde al pasar,
    Sobre mí sacado del CV, algunas áreas en las que he trabajado con lo que
@@ -34,10 +34,6 @@ export default async function Propuesta({ params }: { params: Promise<{ locale: 
       <SiteHeader />
       <main id="contenido">
         <Hero locale={locale} />
-
-        <section className={`container ${s.tokens}`} aria-label="Del caos de color a 24 tokens">
-          <TokenCollapse />
-        </section>
 
         <TypeHero />
         <FeaturedCase />

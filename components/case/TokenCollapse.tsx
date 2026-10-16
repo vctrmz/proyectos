@@ -2,11 +2,16 @@
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { animate, LayoutGroup, motion, useInView, useMotionValue, useTransform } from 'motion/react';
 import { motionAllowed } from '@/lib/motion/prefs';
-import { TOKENS, TOTAL, buildSwatches } from './tokens';
+import { TOKENS, TOTAL, buildSwatches } from './tokenCollapse.data';
 import s from './TokenCollapse.module.css';
 
-/* La idea de la propuesta hecha objeto: los 267 valores de color que había en
-   el monorepo caen sobre los 24 tokens con rol que los sustituyeron. Es la
+/* Reservado para el caso HERMES / design system (decidido el 2026-10-16):
+   se probó en la portada y Víctor prefiere guardarlo para el caso, donde
+   cuenta la auditoría del monorepo. Todavía no se usa en ninguna página;
+   para montarlo basta con <TokenCollapse /> dentro de una sección del caso.
+
+   Los 267 valores de color que había en el monorepo caen sobre los 24
+   tokens con rol que los sustituyeron. Es la
    misma pieza en los dos estados —el campo desordenado y la paleta con
    nombre— y el paso de uno a otro es una animación de layout de Motion: cada
    muestra viaja desde su sitio en el campo hasta la ficha de su token.

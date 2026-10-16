@@ -1,6 +1,3 @@
-/* El colapso, donde estaba la banda de cifras: justo debajo del hero. */
-.tokens { padding-block: var(--sp-32) clamp(64px, 8vw, 112px); }
-
 /* Secciones claras: título con glifos y, a su derecha, una frase. */
 .section { padding-block: clamp(96px, 11vw, 160px) 0; }
 .head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: var(--sp-16) var(--sp-48); margin-bottom: clamp(40px, 5vw, 72px); }
