@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { tc, PHASE_WORDS, type Film } from '@/lib/content/film';
+import { tc, PHASE_WORDS, type Film } from '@/lib/content/case-film';
 import { renderShot } from './engine';
 import f from './film.module.css';
 

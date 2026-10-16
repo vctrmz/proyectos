@@ -24,7 +24,7 @@ import CaseDemo from './demos/CaseDemo';
 import { ChallengeGrid, AudienceGrid, FlowList, FindingsTable } from './CaseBlocks';
 import CaseFilm from './film/CaseFilm';
 import ShotThumb from './film/ShotThumb';
-import { buildFilm, tc, SECTION_ORDER, SECTION_PHASE, PHASE_ROMAN, PHASE_WORDS } from '@/lib/content/film';
+import { buildFilm, tc, SECTION_ORDER, SECTION_PHASE, PHASE_ROMAN, PHASE_WORDS } from '@/lib/content/case-film';
 import s from './case.module.css';
 
 /* La página de caso se lee como un documento numerado: el índice de la

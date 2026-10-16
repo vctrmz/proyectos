@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { CASES } from './cases';
-import { buildFilm, tc, SECTION_ORDER } from './film';
+import { buildFilm, tc, SECTION_ORDER } from './case-film';
 
 describe('film del caso', () => {
   it.each(CASES.map((c) => [c.slug, c] as const))('%s: un plano por sección, con pantallas y en orden', (_, c) => {

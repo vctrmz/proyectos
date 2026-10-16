@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import type { FilmShot } from '@/lib/content/film';
+import type { FilmShot } from '@/lib/content/case-film';
 import { renderShot } from './engine';
 import f from './film.module.css';
 

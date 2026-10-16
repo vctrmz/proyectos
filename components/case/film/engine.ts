@@ -1,5 +1,5 @@
-import type { FilmImg, FilmShot } from '@/lib/content/film';
-import { PHASE_ROMAN } from '@/lib/content/film';
+import type { FilmImg, FilmShot } from '@/lib/content/case-film';
+import { PHASE_ROMAN } from '@/lib/content/case-film';
 import f from './film.module.css';
 
 /* El motor del film: pinta un plano dentro de un escenario 16:9 con la Web
