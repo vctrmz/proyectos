@@ -1,26 +1,23 @@
 .wrap { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
 .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-12); }
 
-/* Cada cliente es una ficha: logo, sector debajo, y la selección encima. */
-.tile { position: relative; display: grid; place-items: center; gap: var(--sp-12); min-height: 132px; padding: var(--sp-24) var(--sp-16); border-radius: var(--r-card); background: var(--surface); transition: background .2s var(--ease); }
+/* Cada área es una ficha: icono, nombre y años, alineados a la izquierda. */
+.tile { position: relative; display: grid; align-content: start; justify-items: start; gap: var(--sp-8); min-height: 148px; padding: var(--sp-24); border-radius: var(--r-card); background: var(--surface); text-align: left; transition: background .2s var(--ease); }
 .tile:hover { background: var(--plate); }
-/* Muchos logos son blancos: el mismo tratamiento que el carrusel de la
-   portada (gris oscuro) y, seleccionado, tinta plena. */
-.logo { max-width: 128px; max-height: 36px; width: auto; height: auto; object-fit: contain; filter: grayscale(1) brightness(.45); opacity: .7; transition: filter .25s var(--ease), opacity .25s var(--ease); }
-.tile:hover .logo, .on .logo { filter: grayscale(1) brightness(0); opacity: 1; }
-.word { font-size: var(--fs-500); font-weight: 500; letter-spacing: -0.02em; color: var(--ink); }
-.sector { font-size: 13px; color: var(--ink-3); }
-.on .sector { color: var(--focus); }
+.icon { width: 28px; height: 28px; margin-bottom: var(--sp-16); color: var(--ink-2); transition: color .2s var(--ease), transform .3s var(--ease); }
+.tile:hover .icon { transform: translateY(-2px); }
+.on .icon { color: var(--focus); }
+.name { font-size: var(--fs-500); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; color: var(--ink); }
+.years { font-size: var(--fs-200); color: var(--ink-3); font-variant-numeric: tabular-nums; }
 
 .sel { position: absolute; inset: -3px; border: 1.5px solid var(--focus); border-radius: calc(var(--r-card) + 3px); pointer-events: none; }
 .h { position: absolute; width: 9px; height: 9px; background: #fff; border: 1.5px solid var(--focus); }
 .tl { left: -5px; top: -5px; } .tr { right: -5px; top: -5px; } .bl { left: -5px; bottom: -5px; } .br { right: -5px; bottom: -5px; }
 
-/* El panel: lo que hice para el cliente seleccionado, a su lado. */
-.panel { position: sticky; top: 112px; min-height: 360px; }
-.meta { font-size: var(--fs-200); color: var(--focus); margin-bottom: var(--sp-8); }
-.name { font-size: var(--fs-800); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: var(--sp-8); }
-.role { font-size: var(--fs-300); color: var(--ink-2); margin-bottom: var(--sp-24); }
+/* El panel: lo que resolví en el área seleccionada, a su lado. */
+.panel { position: sticky; top: 112px; min-height: 340px; }
+.meta { font-size: var(--fs-200); color: var(--focus); margin-bottom: var(--sp-8); font-variant-numeric: tabular-nums; }
+.title { font-size: var(--fs-800); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: var(--sp-24); }
 .body { font-size: var(--fs-400); line-height: 1.55; color: var(--ink); margin-bottom: var(--sp-24); }
 .areasLabel { font-size: var(--fs-200); color: var(--ink-3); margin-bottom: var(--sp-8); }
 .areas { list-style: none; margin: 0 0 var(--sp-32); padding: 0; display: flex; flex-wrap: wrap; gap: var(--sp-8); }
@@ -35,5 +32,5 @@
 }
 @media (max-width: 520px) {
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .tile { min-height: 108px; }
+  .tile { min-height: 124px; padding: var(--sp-16); }
 }

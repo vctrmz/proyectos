@@ -11,7 +11,7 @@ import Thesis from '@/components/propuesta/Thesis';
 import GlyphTitle from '@/components/propuesta/GlyphTitle';
 import CaseIndex from '@/components/propuesta/CaseIndex';
 import AboutCv from '@/components/propuesta/AboutCv';
-import Clients from '@/components/propuesta/Clients';
+import Areas from '@/components/propuesta/Areas';
 import ContactBig from '@/components/propuesta/ContactBig';
 import { ROUTES, type Locale } from '@/lib/i18n/config';
 import s from '@/components/propuesta/propuesta.module.css';
@@ -21,7 +21,8 @@ import s from '@/components/propuesta/propuesta.module.css';
    Arriba, el hero actual tal cual (es el que retiene) y el colapso 267 → 24.
    Después, adaptado de tigranz.com: un hero tipográfico que abre la banda de
    HERMES, títulos de sección con glifos, el trabajo con barra verde al pasar,
-   Sobre mí sacado del CV, los clientes por sector con su descripción al lado
+   Sobre mí sacado del CV, algunas áreas en las que he trabajado con lo que
+   resolví en cada una
    y un contacto a tamaño cartel. El CV descargable se queda en Sobre mí. */
 export const metadata: Metadata = { title: 'Propuesta de portada', robots: { index: false, follow: false } };
 
@@ -56,12 +57,12 @@ export default async function Propuesta({ params }: { params: Promise<{ locale: 
           <AboutCv />
         </section>
 
-        <section id="clientes" className={`container ${s.section}`} aria-labelledby="clients-title">
+        <section id="areas" className={`container ${s.section}`} aria-labelledby="areas-title">
           <div className={s.head}>
-            <GlyphTitle text="clientes" icon="cursor" at={2} id="clients-title" />
-            <p className={s.headLead}>Cinco sectores. Elige un cliente para ver qué hice con él.</p>
+            <GlyphTitle text="áreas" icon="cursor" at={2} id="areas-title" />
+            <p className={s.headLead}>Algunas de las áreas en las que he trabajado. Elige una para ver qué resolví.</p>
           </div>
-          <Clients />
+          <Areas />
           <p className={s.notice}>
             Propuesta de rediseño, no indexada. <Link href={ROUTES.es.home}>Comparar con la portada actual →</Link>
           </p>
