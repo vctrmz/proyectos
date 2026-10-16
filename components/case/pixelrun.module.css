@@ -4,8 +4,8 @@
 .lane { position: absolute; left: 14px; right: 14px; bottom: calc(100% - 3px); height: 64px; overflow: hidden; pointer-events: none; }
 .run { position: absolute; left: 0; bottom: 0; width: 100%; height: 100%; container-type: inline-size; }
 .cast { position: absolute; bottom: 0; display: flex; align-items: flex-end; gap: 14px; width: max-content; }
-.toRight .cast { left: 0; animation: runR 1.9s cubic-bezier(.45, .05, .55, .95) both; }
-.toLeft .cast { right: 0; flex-direction: row-reverse; animation: runL 1.9s cubic-bezier(.45, .05, .55, .95) both; }
+.toRight .cast { left: 0; animation: runR 2.9s cubic-bezier(.45, .05, .55, .95) both; }
+.toLeft .cast { right: 0; flex-direction: row-reverse; animation: runL 2.9s cubic-bezier(.45, .05, .55, .95) both; }
 /* De fuera por un lado a fuera por el otro: el grupo se desplaza su propio
    ancho más el del carril. */
 @keyframes runR { from { transform: translateX(-100%); } to { transform: translateX(100cqw); } }
