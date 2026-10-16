@@ -11,17 +11,17 @@ describe('AboutPage', () => {
     expect(h2).toEqual(expect.arrayContaining(['Personal', 'Formación', 'Ikigai', 'Empresas', 'Herramientas']));
     expect(h2.indexOf('Herramientas')).toBeGreaterThan(h2.findIndex((x) => /Diseño sistemas/.test(x!)));
     expect(screen.getByText(/Universidad de Oriente/)).toBeInTheDocument();
-    /* La acreditación cuelga en el hero con los datos públicos. Sin ciudad:
+    /* El retrato del hero lleva debajo los datos públicos. Sin ciudad:
        el posicionamiento es remoto, así que ni nacimiento ni provincia. */
     expect(screen.getByText('En remoto')).toBeInTheDocument();
-    /* La tarjeta se queda con el oficio y el modo de trabajo. Ni ciudad ni
+    /* El pie del retrato se queda con el oficio y el modo de trabajo. Ni ciudad ni
        sector: «Insurtech» sigue en el rol del pie y la línea de tiempo sigue
        diciendo dónde estaba cada empresa —Caracas, Panamá, Málaga—, que es un
        dato del trabajo y lo que hace que el recorrido se lea internacional. */
     const datos = screen.getByText('B2B SaaS').closest('dl')!;
     expect(datos.textContent).not.toMatch(/Málaga/);
     expect(datos.textContent).not.toMatch(/Insurtech/);
-    expect(screen.getByRole('img', { name: 'Víctor Maza' })).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: /Retrato de Víctor Maza/ })).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 2, name: /Diseño sistemas, no pantallas/ })).toBeInTheDocument();
     expect(screen.queryByText(/Lugares/)).toBeNull();
     /* El contacto no se repite al final: el pie, justo debajo, ya lo trae. */
@@ -46,7 +46,7 @@ describe('AboutPage', () => {
     expect(screen.getAllByRole('tab')).toHaveLength(3);
     expect(screen.getByRole('tab', { name: /Atrinium/ })).toHaveAttribute('aria-selected', 'true');
   });
-  /* El CV se descarga desde el hero, junto a la tarjeta de identidad, y con
+  /* El CV se descarga desde el hero, junto al retrato, y con
      selector de idioma: es el único sitio de la web donde aparece. */
   it('el hero ofrece el CV en los dos idiomas, y es el único sitio donde aparece', () => {
     const { container } = render(<AboutPage />);
