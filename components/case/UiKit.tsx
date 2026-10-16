@@ -65,16 +65,18 @@ function Mock({ kind, brand, label, labels, swatches }: { kind: UiKitKind; brand
         })}
       </>
     );
+    /* Plantilla con marco fijo: cabecera y pie bloqueados, cuerpo editable con
+       un dato del sistema y lo que se inserta con /. */
     case 'slots': return (
       <>
+        <span className={s.locked}>{labels?.[0] ?? 'cabecera · logotipo'}</span>
         <span className={s.doc}>
           <i className={s.w60} />
-          <span className={s.varPill} style={{ background: '#121317' }}>@tomador</span>
+          <span className={s.varPill} style={{ background: '#121317' }}>{labels?.[1] ?? '${tomador.nombre}'}</span>
           <i className={s.w30} />
-          <span className={s.varPill} style={{ background: 'var(--focus)' }}>/tabla-primas</span>
+          <span className={s.varPill} style={{ background: 'var(--focus)' }}>{labels?.[2] ?? '/ Tablas'}</span>
         </span>
-        <span className={s.optional}>cláusula opcional · se activa</span>
-        <span className={s.locked}>bloque bloqueado</span>
+        <span className={s.locked}>{labels?.[3] ?? 'pie de página'}</span>
       </>
     );
     case 'thread': return (

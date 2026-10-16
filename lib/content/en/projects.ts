@@ -27,8 +27,8 @@ export const EN_PROJECTS: Record<string, { title: string; company?: string; summ
     summary: 'Three months of manual work in spreadsheets turned into a module in production in five weeks, modelled as a three-phase state machine.',
   },
   'editor-propuesta': {
-    title: 'Proposal editor built on TipTap',
-    summary: 'The client proposal was being written outside the product. A template with slots, variables typed with @ and optional clauses as blocks, auditable while you write.',
+    title: 'Certificate editor built on TipTap',
+    summary: 'The Certificate step in the surety flow: four templates, a fixed header and footer, and an editable body with system data inserted with /.',
   },
   'vista-360': {
     title: 'Client 360 view',
