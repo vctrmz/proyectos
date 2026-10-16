@@ -6,7 +6,7 @@ export const SITE = {
      nombre de provincia en la primera línea filtra antes de que nadie lea el
      trabajo. Donde la ley obliga a identificar al responsable —la página de
      privacidad— sí figura. */
-  base: { es: 'En remoto', en: 'Remote' },
+  base: { es: 'España (CET) · remoto', en: 'Spain (CET) · remote' },
   linkedin: 'https://linkedin.com/in/victor-maza47',
   github: 'https://github.com/vctrmz',
   /* El repositorio de esta web: la prueba de que el diseño llega a código.
@@ -16,8 +16,8 @@ export const SITE = {
      se imprimen con `npm run cv`. kb lo comprueba un test contra cada archivo:
      la etiqueta del peso no puede mentir. */
   cv: {
-    es: { href: '/victor-maza-cv.pdf', file: 'Victor_Maza_CV.pdf', kb: 73 },
-    en: { href: '/victor-maza-cv-en.pdf', file: 'Victor_Maza_CV_EN.pdf', kb: 71 },
+    es: { href: '/victor-maza-cv.pdf', file: 'Victor_Maza_CV.pdf', kb: 192 },
+    en: { href: '/victor-maza-cv-en.pdf', file: 'Victor_Maza_CV_EN.pdf', kb: 188 },
   },
   /* mazdesignr, con r: behance.net/mazdesign es otro estudio. */
   behance: 'https://www.behance.net/mazdesignr',
@@ -31,6 +31,6 @@ export const SITE = {
 } as const;
 
 export const NAV = [
-  { href: '/#trabajo', label: 'Trabajo' },
+  { href: '/#trabajo', label: 'Trabajos' },
   { href: '/sobre-mi', label: 'Sobre mí' },
 ] as const;

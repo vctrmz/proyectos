@@ -1,7 +1,29 @@
-.intro { padding-top: calc(60px + var(--sp-64)); padding-bottom: var(--sp-64); display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--sp-48); align-items: center; }
-.intro h2 { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: var(--sp-24); }
-.aside { justify-self: end; display: grid; justify-items: center; }
-@media (max-width: 767px) { .intro { grid-template-columns: minmax(0, 1fr); } .aside { justify-self: center; order: -1; } }
+.hero { position: relative; isolation: isolate; min-height: min(100svh, 860px); display: grid; align-items: center; overflow: hidden; background: #0b0c10; color: #f2f2f4;
+  /* Tinta para oscuro dentro del hero: los botones y enlaces que leen los
+     tokens se adaptan sin tocarlos. */
+  --ink: #f2f2f4; --ink-2: #b4b8c4; --ink-3: #8b8f9a; --bg: #15171d; --surface: rgba(255,255,255,.08); --line: rgba(255,255,255,.14); }
+.field { position: absolute; inset: 0; z-index: -2; }
+.field canvas { display: block; opacity: 0; transition: opacity .8s var(--ease); }
+.field[data-ready="true"] canvas { opacity: 1; }
+/* Un velo a la izquierda para que el texto se lea sobre la trama. */
+.hero::before { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg, rgba(11,12,16,.92) 0%, rgba(11,12,16,.7) 30%, rgba(11,12,16,0) 58%); }
+.heroInner { width: 100%; padding-top: calc(60px + var(--sp-64)); padding-bottom: var(--sp-64); }
+.heroCopy { max-width: 560px; }
+.heroCopy h2 { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: var(--sp-24); }
+.hero .heroCta { background: #f2f2f4; color: #0b0c10; border-color: #f2f2f4; }
+.hero .heroCta:hover { background: #fff; }
+.hero .social a:hover { background: rgba(255,255,255,.14); }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 22px; margin: var(--sp-32) 0 0; padding-top: var(--sp-16); border-top: 1px solid var(--line); }
+.facts div { display: flex; gap: 8px; align-items: baseline; }
+.facts dt { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.facts dd { margin: 0; font-size: var(--fs-200); color: var(--ink); }
+/* En móvil la trama va arriba, como una cabecera, y el texto debajo. */
+@media (max-width: 767px) {
+  .hero { min-height: 0; align-items: start; }
+  .field { position: relative; inset: auto; height: 92vw; margin-top: 60px; }
+  .hero::before { background: linear-gradient(180deg, transparent 50%, #0b0c10 calc(60px + 92vw)); }
+  .heroInner { padding-top: 0; margin-top: -12vw; }
+}
 .sec { padding-block: var(--sp-64); border-top: 1px solid var(--line); }
 /* La última sección cierra la página contra el pie oscuro: más aire que entre
    secciones, para que el final no quede pegado. */
@@ -16,13 +38,7 @@
 .panel p { font-size: var(--fs-400); line-height: 1.7; color: var(--ink-2); max-width: var(--measure); text-wrap: pretty; margin-bottom: var(--sp-16); }
 .more { display: inline-flex; align-items: center; min-height: 44px; font-weight: 500; }
 .timeline { margin-top: var(--sp-16); }
-.vision h2 { font-size: var(--fs-900); text-transform: none; letter-spacing: -0.025em; color: var(--ink); }
-.vision p { font-size: var(--fs-400); line-height: 1.7; color: var(--ink-2); max-width: var(--measure); text-wrap: pretty; margin-bottom: var(--sp-16); }
-.skillBox { margin-top: var(--sp-32); padding: var(--sp-24); border: 1px solid var(--line); border-radius: var(--r-card); background: var(--surface); display: grid; gap: var(--sp-16); }
-.skillHead { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; }
-.skillBox .list { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px var(--sp-32); }
-@media (max-width: 900px) { .skillBox .list { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-@media (max-width: 640px) { .skillBox .list { grid-template-columns: minmax(0, 1fr); } }
+.filmLead { font-size: var(--fs-400); line-height: 1.6; color: var(--ink-2); max-width: var(--measure-mid); margin-bottom: var(--sp-24); text-wrap: pretty; }
 .list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; align-content: start; } .list li { font-size: var(--fs-200); color: var(--ink-2); padding-left: 14px; position: relative; }
 .list li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--ink); }
 .tools { display: flex; flex-wrap: wrap; gap: 8px; align-content: start; } .tools span { padding: 4px 12px; border-radius: var(--r-pill); background: var(--surface); font-size: var(--fs-200); color: var(--ink-2); }
@@ -37,7 +53,7 @@
    aire de un párrafo: descargar el CV o leer cómo trabajo. Las redes van en su
    propia fila debajo, más apretadas, porque son el camino secundario. */
 .cvRow { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: var(--sp-32); }
-.intro .social { margin-top: var(--sp-16); }
+.heroCopy .social { margin-top: var(--sp-16); }
 .social a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 16px; border-radius: var(--r-pill); background: var(--surface); color: var(--ink); font-size: var(--fs-200); }
 .social a:hover { background: #eef0f6; }
 .social svg { width: 16px; height: 16px; fill: currentColor; }

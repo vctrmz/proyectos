@@ -1,11 +1,50 @@
-.wrap { display: grid; gap: var(--sp-24); }
+/* Sin recorrido (sin JS o con movimiento reducido) todo se ve de una vez: el
+   diagrama montado y las cuatro frases en lista. Con recorrido, la pista mide
+   más que la pantalla y el escenario se queda fijo mientras se cuenta. */
+.track { position: relative; }
+.stage { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: var(--sp-48); align-items: center; }
+.scroll { height: 200vh; }
+/* El escenario no ocupa toda la pantalla: tiene el alto que pide el diagrama
+   y se fija centrado en lo que queda bajo la cabecera, sin bandas vacías. */
+.scroll .stage { position: sticky; --h: min(calc(100svh - 60px), 640px); top: calc(60px + (100svh - 60px - var(--h)) / 2); height: var(--h); }
+
+.copy { display: grid; gap: var(--sp-24); align-content: center; min-height: 260px; }
+.rail { display: flex; gap: 6px; width: 132px; }
+.rail span { flex: 1; height: 3px; border-radius: var(--r-pill); background: var(--line); overflow: hidden; }
+.rail i { display: block; height: 100%; background: linear-gradient(90deg, var(--focus), var(--accent)); transform-origin: 0 50%; }
+/* Sin recorrido la barra no tiene nada que contar. */
+.track:not(.scroll) .rail { display: none; }
+
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sp-24); }
+.step { display: grid; gap: 8px; align-content: start; }
+.n { font-size: var(--fs-100); letter-spacing: .08em; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.title { font-size: var(--fs-800); letter-spacing: -0.025em; line-height: 1.1; font-weight: 500; color: var(--ink); }
+.thesis { background: linear-gradient(90deg, var(--focus), #3fae4b); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.body { font-size: var(--fs-500); line-height: 1.45; color: var(--ink-2); max-width: 34ch; text-wrap: pretty; }
+/* Con recorrido, las frases se apilan en la misma celda y solo se ve la del
+   paso actual; las demás siguen en el DOM para el lector de pantalla. */
+.scroll .steps { grid-template-areas: "s"; }
+.scroll .step { grid-area: s; opacity: 0; transform: translateY(14px); transition: opacity .45s var(--ease), transform .45s var(--ease); }
+.scroll .step.now { opacity: 1; transform: none; }
+.hint { font-size: var(--fs-200); color: var(--ink-3); }
+
 .svg { width: 100%; max-width: 560px; height: auto; margin-inline: auto; overflow: visible; }
+.dot { fill: var(--ink-3); opacity: .22; }
+.grid { pointer-events: none; }
 .ring { cursor: pointer; transition: opacity .35s var(--ease); outline: none; }
 .ring circle[data-ring] { transition: stroke-width .25s var(--ease); }
 .ring:hover circle[data-ring], .ring:focus-visible circle[data-ring], .on circle[data-ring] { stroke-width: 2.5; }
 .ring:focus-visible circle[data-ring] { filter: drop-shadow(0 0 6px rgba(74,68,242,.45)); }
 .dim { opacity: .25; }
 .label { font-size: 14px; font-weight: 500; fill: var(--ink-2); pointer-events: none; letter-spacing: .01em; }
-.center { font-size: 13px; font-weight: 500; fill: var(--ink); pointer-events: none; }
-.tick { stroke: var(--line); }
-.status { min-height: 3.2em; font-size: var(--fs-400); color: var(--ink-2); text-align: center; max-width: 52ch; margin-inline: auto; }
+.center { font-size: 14px; font-weight: 600; fill: var(--ink); pointer-events: none; }
+
+@media (max-width: 767px) {
+  .stage { grid-template-columns: minmax(0, 1fr); gap: var(--sp-16); }
+  .scroll { height: 180vh; }
+  .scroll .stage { --h: min(calc(100svh - 60px), 600px); align-content: center; }
+  .svg { max-width: 340px; order: -1; }
+  .copy { min-height: 190px; align-content: start; }
+  .title { font-size: var(--fs-700); }
+  .body { font-size: var(--fs-400); }
+}

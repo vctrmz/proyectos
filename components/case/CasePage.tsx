@@ -1,11 +1,9 @@
-import Link from 'next/link';
 import { ViewTransition } from 'react';
 import SiteHeader from '@/components/layout/SiteHeader';
 import SiteFooter from '@/components/layout/SiteFooter';
 import Diagram from '@/components/diagrams/Diagram';
 import CodeDemo from '@/components/ui/CodeDemo';
 import Disclosure from '@/components/ui/Disclosure';
-import Figure from '@/components/ui/Figure';
 import JsonLd from '@/components/seo/JsonLd';
 import { SITE } from '@/lib/content/site';
 import { getProject } from '@/lib/content/projects';
@@ -17,10 +15,16 @@ import type { CaseStudy } from '@/lib/content/cases';
 import CaseNav from './CaseNav';
 import DecisionBlock from './DecisionBlock';
 import ResultBlock from './ResultBlock';
-import NextCase from './NextCase';
+import NextCase, { caseSequence, resolveNext } from './NextCase';
+import CaseDock from './CaseDock';
+import DesignGallery from './DesignGallery';
+import BrandMark from './BrandMark';
+import Button from '@/components/ui/Button';
 import UiKit from './UiKit';
+import TokenCollapse from './TokenCollapse';
 import TokenCompare from './TokenCompare';
 import CaseDemo from './demos/CaseDemo';
+import CaseStoryboard from './storyboard/CaseStoryboard';
 import { ChallengeGrid, AudienceGrid, FlowList, FindingsTable } from './CaseBlocks';
 import CaseFilm from './film/CaseFilm';
 import ShotThumb from './film/ShotThumb';
@@ -44,7 +48,13 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
   const p = getProject(c.slug)!;
   const ui = getUi(locale);
   const r = ROUTES[locale];
+  const next = resolveNext(c.next, locale);
+  const sequence = caseSequence(locale);
   const L = (id: string, fallback: string) => ui.case.sections[id] ?? fallback;
+  /* El storyboard está en prueba: se ve en local y en las previews de Vercel,
+     y producción sigue con el documento hasta que se apruebe (mismo criterio
+     que el laboratorio). */
+  const storyboard = !!c.storyboard && process.env.VERCEL_ENV !== 'production';
   const sections: { id: string; label: string; node: React.ReactNode }[] = [
     { id: 'c-problema', label: L('c-problema', 'Problema'), node: (
       <>
@@ -75,15 +85,14 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
     { id: 'c-sistema', label: L('c-sistema', 'Sistema'), node: (
       <Disclosure title={ui.case.systemToggle} defaultOpen>
         <div className={s.body}>{c.system.body.map((b) => <p key={b.slice(0, 30)}>{b}</p>)}</div>
+        {c.system.collapse && <TokenCollapse />}
         {c.system.tokens && <TokenCompare t={c.system.tokens} />}
         {c.system.code && <CodeDemo {...c.system.code} locale={locale} />}
         {c.system.uiKit && <UiKit brand={c.brand} pieces={c.system.uiKit} label={ui.case.kitLabel} />}
       </Disclosure>
     ) },
     { id: 'c-diseno', label: L('c-diseno', 'Diseño'), node: (
-      <div className={s.gallery}>
-        {c.design.map((d) => { const z = shotSize(d.src); return <Figure key={d.src + d.caption} src={d.src} alt={d.alt} caption={d.caption} width={z.width} height={z.height} />; })}
-      </div>
+      <DesignGallery items={c.design.map((d) => ({ ...d, ...shotSize(d.src) }))} labels={ui.case.gallery} />
     ) },
     ...(c.findings ? [{ id: 'c-hallazgos', label: L('c-hallazgos', 'Hallazgos'), node: (
       <>
@@ -105,17 +114,11 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
   ];
 
   /* El caso se lee en el orden del film: las secciones se agrupan por fase
-     —Discover, Define, Develop, Deliver y cierre— y cada una abre con su
+     (Discover, Define, Develop, Deliver y cierre) y cada una abre con su
      plano animado. */
   sections.sort((a, b) => SECTION_ORDER.indexOf(a.id) - SECTION_ORDER.indexOf(b.id));
   const film = buildFilm(c, sections.map((x) => x.id), p.logo);
-  const labelOf = (i: number) => {
-    const sh = film.shots[i];
-    if (sh.kind === 'open') return c.title;
-    if (sh.kind === 'title') return sh.word!;
-    return sections.find((x) => x.id === sh.section)?.label ?? '';
-  };
-  const labels = film.shots.map((_, i) => labelOf(i));
+  const labels = film.shots.map((sh) => sh.kind === 'open' ? c.title : sh.kind === 'title' ? sh.word! : sections.find((x) => x.id === sh.section)?.label ?? '');
   /* Una línea que resume la parte junto al plano, solo cuando no repite lo que
      viene debajo. */
   const leads: Record<string, React.ReactNode> = {
@@ -136,18 +139,29 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
       <SiteHeader />
       <main id="contenido">
         <div className={`container ${s.top}`}>
-          <Link href={r.work} className={s.back}>{ui.case.back}</Link>
+          {/* Arriba, las dos salidas del caso: volver al trabajo o pasar al
+              siguiente sin bajar hasta el final. */}
+          <nav className={s.bar} aria-label={ui.case.navLabel} data-case-top>
+            <Button variant="outline" href={r.work}>{ui.case.back}</Button>
+            <Button variant="outline" href={next.href} aria-label={`${ui.case.nextLabel}: ${next.n.title}`}>{ui.case.next}{next.note} <span aria-hidden="true">→</span></Button>
+          </nav>
           <ViewTransition name={`case-${c.slug}`}><div className={s.head}>
-            <h1 className={s.title}><img src={p.logo} alt="" className={s.icon} />{c.title} · {c.company}</h1>
+            <h1 className={s.title}><BrandMark p={p} />{c.title} · {c.company}</h1>
             <p className={s.tagline}>{c.tagline}</p>
             <p className={s.tags}>{c.tags.map((t) => <span key={t}>{tagIn(locale, t)}</span>)}<span>{c.years}</span></p>
+            {c.demoUrl && <div className={s.headCta}><Button href={c.demoUrl} external size="lg">{ui.case.demo}</Button></div>}
           </div></ViewTransition>
         </div>
         <div className="container">
+          {/* Con storyboard, el caso se cuenta por planos y sustituye al
+              documento: contexto, rol y entrega viven en los actos. */}
+          {storyboard ? <CaseStoryboard c={c} locale={locale} /> : <>
           <div className={s.cols}><div><h2>{ui.case.context}</h2><p>{c.context}</p></div><div><h2>{ui.case.role}</h2><p>{c.role}</p></div><div><h2>{ui.case.delivery}</h2><p>{c.delivery}</p></div></div>
+          </>}
         </div>
-        <CaseFilm film={film} labels={labels} ui={ui.case.film} />
+        {!storyboard && <CaseFilm film={film} labels={labels} ui={ui.case.film} />}
         <div className="container">
+          {!storyboard && <>
           <div className={s.doc}>
             <CaseNav items={sections.map(({ id, label }) => ({ id, label }))} label={ui.case.index} heading={ui.case.parts(sections.length)} />
             <div className={s.stream}>
@@ -180,8 +194,10 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
               })}
             </div>
           </div>
+          </>}
           <NextCase slug={c.next} locale={locale} />
         </div>
+        <CaseDock items={sequence} current={sequence.findIndex((x) => x.slug === c.slug)} backHref={r.work} labels={ui.case.dock} />
       </main>
       <SiteFooter locale={locale} />
     </>

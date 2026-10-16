@@ -7,9 +7,10 @@ import { useLocale } from '@/lib/i18n/LocaleContext';
 import { getUi } from '@/lib/i18n/ui';
 import { splitBold } from '@/lib/content/text';
 import ProcessInfographic from './ProcessInfographic';
+import VisionDeck from './VisionDeck';
 import s from './about.module.css';
 
-export default function BioDrawer({ locale }: { locale?: 'es' | 'en' }) {
+export default function BioDrawer({ locale, ctaClassName }: { locale?: 'es' | 'en'; ctaClassName?: string }) {
   const ctx = useLocale();
   const lang = locale ?? ctx;
   const ABOUT = aboutIn(lang);
@@ -19,9 +20,12 @@ export default function BioDrawer({ locale }: { locale?: 'es' | 'en' }) {
   return (
     <>
       <span ref={(el) => { cta.current = el?.querySelector('button') ?? null; }}>
-        <Button onClick={() => setOpen(true)}>{t.drawer}</Button>
+        <Button onClick={() => setOpen(true)} className={ctaClassName}>{t.drawer}</Button>
       </span>
       <Drawer open={open} onClose={() => setOpen(false)} title={t.drawerTitle} returnFocusTo={cta}>
+        {/* Primero lo que se entiende en segundos —tres titulares que se giran—;
+            después el método, para quien sigue leyendo. */}
+        <VisionDeck />
         <div className={s.bio}>
           {ABOUT.bio.map((para) => <p key={para.slice(0, 40)}>{splitBold(para).map((x, i) => (x.strong ? <strong key={i}>{x.text}</strong> : <span key={i}>{x.text}</span>))}</p>)}
         </div>

@@ -3,8 +3,8 @@ export const ABOUT = {
      la home, y "informático de formación" solo en Formación: aquí no se
      repiten. */
   intro: [
-    'Soy Víctor, Product Designer.',
-    'Nueve años en producto B2B denso: SaaS asegurador, banca digital y movilidad.',
+    'Soy Víctor, Senior Product Designer.',
+    'Más de ocho años en producto B2B y B2C: SaaS asegurador, banca digital y movilidad.',
   ],
   cities: [
     { name: 'Cumaná', country: 'VE' as const },
@@ -22,7 +22,7 @@ export const ABOUT = {
   ],
   ikigai: {
     tech: 'Informático de formación: sé cómo se construye lo que diseño, y respeto cómo piensa el framework.',
-    design: 'Product Designer de oficio: nueve años en producto B2B denso, de la arquitectura al handoff.',
+    design: 'Product Designer de oficio: más de ocho años en producto B2B denso, de la arquitectura al handoff.',
     business: 'Reglas de negocio, discovery con Product Owners y decisiones defendidas en lenguaje de negocio.',
     center: 'Product design',
   },
@@ -34,17 +34,32 @@ export const ABOUT = {
     { id: 'taksio', name: 'Taksio', years: '2017–2019', href: '/es?f=transporte#trabajo',
       body: 'Plataforma de movilidad multimodal en Caracas: design system y flujos operativos de conductor y pasajero levantados desde cero.' },
   ],
+  /* «Diseño sistemas, no pantallas» vive en el cajón «Mi forma de trabajar»:
+     tres cartas que se leen de un vistazo por el titular y se giran para ver
+     la prueba. Antes eran tres párrafos densos en la página; un recruiter que
+     decide en segundos lee los titulares y gira la que le interesa. */
   vision: {
     title: 'Diseño sistemas, no pantallas.',
-    paragraphs: [
-      'Mi base en informática me sirve para *pensar el producto en sistemas, en estructura y en cómo se va a construir de verdad*, y para bajarlo a código cuando hace falta. *Modelo el dominio antes que la pantalla*, *defino estados, reglas y casos límite*, y cierro con un *handoff que el equipo puede construir sin interpretar nada*.',
-      'Trabajo con *patrones validados y criterios de usabilidad*, no con invenciones, y respetando cómo se construye realmente en *React, Chakra UI o Tailwind*. Esta web es un ejemplo: el diseño es mío y *dirigí la implementación con IA hasta el detalle*. Generar es la parte fácil; lo que aporto es *saber qué hay que pedir y reconocer cuándo lo que devuelve no sirve*.',
-      'Me interesan *los flujos completos, no las pantallas sueltas*. *Sistemas que hagan que el siguiente diseño y el siguiente desarrollo cuesten menos que el anterior.*',
+    lead: 'Mi base en informática me sirve para pensar el producto en sistemas, en estructura y en cómo se va a construir de verdad.',
+    cards: [
+      { head: 'Modelo el dominio antes que la pantalla.', proof: 'Defino *estados, reglas y casos límite*, y lo trabajo *con Producto e Ingeniería hasta la implementación*. Cuando hace falta, lo bajo a código.', tags: ['Estados', 'Reglas', 'Casos límite'] },
+      { head: 'Patrones validados, no invenciones.', proof: 'Diseño con *criterios de usabilidad* y respetando cómo se construye en *React, Chakra UI o Tailwind*. Esta web es el ejemplo: el diseño es mío y *dirigí la implementación con IA hasta el detalle*. Generar es fácil; lo difícil es *saber qué pedir y ver cuándo lo que devuelve no sirve*.', tags: ['React', 'Chakra UI', 'Tailwind', 'IA'] },
+      { head: 'Flujos completos, no pantallas sueltas.', proof: 'Busco *sistemas que hagan que el siguiente diseño y el siguiente desarrollo cuesten menos que el anterior*.', tags: ['Flujos', 'Sistemas', 'Reutilización'] },
     ],
   },
   /* La cita que abre los libros: dice de dónde sale el criterio con el que
      están elegidos. Sin foto de Jakob Nielsen —no tengo derechos sobre un
      retrato suyo—, así que la ficha lleva su monograma. */
+  /* Una idea por libro de la estantería, en mis palabras: no son citas
+     literales, por eso no llevan comillas y van firmadas como «una idea de». */
+  ideas: [
+    { book: 'design-of-everyday-things', text: 'Cuando alguien no sabe usar algo, casi nunca es culpa suya. Es un problema de diseño.' },
+    { book: 'dont-make-me-think', text: 'Una buena interfaz no obliga a pensar. Cada duda que provoca es un clic de más, o un usuario de menos.' },
+    { book: 'laws-of-ux', text: 'La gente pasa casi todo su tiempo en otros productos. Lo que ya conoce pesa más que lo que inventes.' },
+    { book: 'investigacion-ux', text: 'Investigar no es preguntar qué quiere la gente. Es entender qué hace, y por qué.' },
+    { book: 'atomic-habits', text: 'No llegas al nivel de tus metas. Te quedas en el nivel de tus sistemas.' },
+    { book: 'camino-del-artista', text: 'La creatividad no espera a la inspiración. Se entrena todos los días, como un oficio.' },
+  ],
   quote: {
     text: 'Lo que los usuarios dicen y lo que hacen es diferente.',
     author: 'Jakob Nielsen',
@@ -93,11 +108,14 @@ export const ABOUT = {
     ],
     outro: 'Por encima del método, lo que busco es *crear atmósfera*: que cada pantalla, cada estado y cada palabra hagan que *la marca respire el mismo aire* de un extremo a otro del producto.',
   },
+  /* Lo que uso yo, separado de lo que solo conozco por los productos en los
+     que he trabajado: no se presenta como dominio propio. */
   toolGroups: [
-    { name: 'Diseño y multimedia', items: ['Figma (avanzado)', 'FigJam', 'Prototipos interactivos', 'Photoshop', 'Illustrator', 'Premiere', 'CapCut'] },
-    { name: 'Desarrollo y despliegue', items: ['HTML · CSS', 'React', 'Next.js', 'TypeScript', 'Chakra UI', 'Tailwind', 'Material UI', 'GitHub', 'Vercel', 'WordPress'] },
-    { name: 'Analítica y comportamiento', items: ['Microsoft Clarity', 'Google Analytics', 'HubSpot', 'Maze', 'Mobbin'] },
+    { name: 'Diseño y prototipado', items: ['Figma (avanzado)', 'FigJam', 'Prototipos interactivos', 'Photoshop', 'Illustrator'] },
+    { name: 'Sistemas de diseño', items: ['Design tokens', 'Arquitectura de componentes', 'Accesibilidad WCAG 2.2'] },
+    { name: 'Investigación y validación', items: ['Maze', 'Microsoft Clarity', 'Google Analytics', 'Mobbin'] },
+    { name: 'Código', items: ['HTML · CSS', 'React', 'Next.js', 'TypeScript', 'GitHub', 'Vercel'] },
     { name: 'Inteligencia artificial', items: ['Claude', 'Gemini', 'Google Stitch', 'Perplexity'] },
-    { name: 'Mensajería y correo', items: ['SendGrid'] },
+    { name: 'Con las que he colaborado', items: ['Chakra UI', 'Tailwind', 'Material UI', 'WordPress', 'HubSpot', 'SendGrid'] },
   ],
 };

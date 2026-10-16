@@ -1,0 +1,142 @@
+/* Storyboard del caso. Mismo mundo que el resto de la web: tinta sobre blanco,
+   las láminas claras de la portada (--plate) como papel de los fotogramas y el
+   índigo de foco como única tinta de acento. El acento solo marca decisiones,
+   lo que se elige y el plano activo. */
+.sb { display: grid; grid-template-columns: minmax(0, 1fr); padding-bottom: var(--sp-32); }
+
+/* Ficha: los datos del caso como el slate de un rodaje. */
+.slate { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); margin: 0; border-top: 2px solid var(--ink); }
+.slate div { display: grid; gap: 4px; padding: 12px 14px 14px 0; border-bottom: 1px solid var(--line); min-width: 0; }
+.slate dt { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.slate dd { margin: 0; font-size: var(--fs-500); font-weight: 500; font-variant-numeric: tabular-nums; }
+
+/* Mapa a escala */
+.map { display: grid; gap: var(--sp-24); padding-top: var(--sp-64); }
+.mapHead { display: grid; gap: var(--sp-8); }
+.mapHead h2 { font-size: var(--fs-700); letter-spacing: -0.02em; }
+.mapHead p { font-size: var(--fs-200); color: var(--ink-2); max-width: var(--measure-mid); }
+.tlWrap { overflow-x: auto; border-radius: var(--r-card); background: var(--surface); padding: var(--sp-16); scrollbar-width: thin; scrollbar-color: var(--plate-tint) transparent; }
+.tl { --rl: 92px; display: grid; min-width: 1000px; row-gap: 6px; }
+.rl { align-self: center; padding-right: 10px; font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+/* Dos líneas como mucho: un acto de un solo plano tiene una columna estrecha. */
+.actCell { padding: 8px 10px; background: var(--bg); border-left: 2px solid var(--focus); font-size: var(--fs-200); font-weight: 500; line-height: 1.25; min-width: 0; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.actCell b { color: var(--focus); font-weight: 600; margin-right: 4px; }
+.shotCell, .decCell, .kindCell { border-left: 1px solid rgba(18,19,23,.07); background: var(--bg); transition: background .25s var(--ease); min-width: 0; }
+.shotCell { display: grid; align-content: start; gap: 4px; min-height: 78px; padding: 8px 8px 10px; }
+.shotCell:hover { background: var(--plate); }
+.no { font-size: var(--fs-100); font-weight: 600; color: var(--focus); font-variant-numeric: tabular-nums; }
+.nm { font-size: var(--fs-100); line-height: 1.3; color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.decCell { display: grid; place-items: center; height: 26px; }
+.decCell i { width: 10px; height: 10px; border-radius: 50%; background: var(--focus); }
+.kindCell { display: grid; place-items: center; height: 26px; font-size: var(--fs-100); color: var(--ink-3); white-space: nowrap; }
+/* La columna del plano activo se ilumina en las cuatro filas. */
+.shotCell[data-on], .decCell[data-on], .kindCell[data-on] { background: var(--plate); }
+.shotCell[data-on] .nm { color: var(--ink); }
+
+/* Tira pegajosa: el plano activo y los planos que faltan. El fondo se
+   extiende a todo el ancho con una sombra recortada, sin desbordar la página. */
+.strip { position: sticky; top: 60px; z-index: 90; margin-top: var(--sp-48); background: var(--bg); box-shadow: 0 0 0 100vmax var(--bg); clip-path: inset(0 -100vmax); border-bottom: 1px solid var(--line); transition: top .35s var(--ease); }
+.strip[data-header="hidden"] { top: 0; }
+.stripIn { display: flex; align-items: center; gap: var(--sp-16); min-height: 52px; }
+.now { display: flex; align-items: baseline; gap: 10px; min-width: 0; flex: 1; font-size: var(--fs-200); }
+.now b { color: var(--focus); font-weight: 600; }
+.nowAct { font-weight: 500; white-space: nowrap; }
+.nowShot { color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+.segs, .segs ol { list-style: none; margin: 0; padding: 0; display: flex; }
+.segs { gap: 8px; flex-shrink: 0; }
+.segs ol { gap: 3px; }
+.seg { display: grid; align-items: center; width: clamp(24px, 2.1vw, 30px); height: 44px; }
+.seg span { display: block; height: 4px; border-radius: 2px; background: var(--plate-tint); transition: background .25s var(--ease), height .25s var(--ease); }
+.seg:hover span { background: var(--ink-3); }
+.seg[data-state="past"] span { background: var(--ink-2); }
+.seg[data-state="on"] span { background: var(--focus); height: 8px; }
+.bar { display: none; flex: 0 0 46%; gap: 2px; align-items: center; height: 44px; }
+.bar span { flex: 1; height: 4px; border-radius: 2px; background: var(--plate-tint); }
+.bar span[data-state="past"] { background: var(--ink-2); }
+.bar span[data-state="on"] { background: var(--focus); height: 8px; }
+
+/* Actos */
+.act { margin-top: var(--sp-96); padding-top: var(--sp-32); border-top: 2px solid var(--ink); scroll-margin-top: 120px; }
+.actHead { display: flex; align-items: flex-end; gap: var(--sp-24); }
+.roman { font-size: var(--fs-1000); font-weight: 500; line-height: .82; letter-spacing: -0.04em; color: var(--focus); font-variant-numeric: tabular-nums; }
+.actHead h2 { font-size: var(--fs-800); letter-spacing: -0.025em; line-height: 1.05; }
+.meta { margin-top: 6px; font-size: var(--fs-200); color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.summary { margin-top: var(--sp-24); font-size: var(--fs-400); line-height: 1.6; color: var(--ink-2); max-width: var(--measure-mid); text-wrap: pretty; }
+
+/* Paneles. Seis columnas: los planos de contexto van de tres en tres; los que
+   llevan decisión y las piezas vivas, a lo ancho. */
+.panels { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: var(--sp-64) var(--sp-24); margin-top: var(--sp-48); }
+.panel { min-width: 0; scroll-margin-top: 130px; }
+.card { grid-column: span 2; display: grid; gap: var(--sp-16); align-content: start; }
+.split { grid-column: 1 / -1; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--sp-48); align-items: start; }
+.live { grid-column: 1 / -1; display: grid; gap: var(--sp-32); }
+.liveText { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: var(--sp-48); align-items: start; }
+.liveStage { min-width: 0; }
+.text { display: grid; align-content: start; }
+
+/* El papel del fotograma */
+.framed { min-width: 0; }
+/* En un plano con decisión el texto es más largo que el fotograma: el
+   fotograma se queda a la vista mientras se lee el razonamiento. */
+@media (min-width: 901px) { .split .framed { position: sticky; top: 132px; } }
+.sheet { position: relative; aspect-ratio: 16 / 9; border-radius: var(--r-card); background: var(--plate); overflow: hidden; }
+.sheetDiagram { display: grid; place-items: center; padding: 3% 5%; }
+.sheetDiagram > figure { width: 100%; margin: 0; }
+.drawBox { position: absolute; inset: 0; }
+.draw { display: block; width: 100%; height: 100%; }
+.cam { transform-box: view-box; transform-origin: 50% 50%; }
+.draw [data-k], .draw [data-a] { fill: none; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.draw [data-k] { stroke: var(--plate-ink); }
+.draw [data-a] { stroke: var(--focus); }
+.draw [data-f] { fill: var(--focus); stroke: none; }
+.draw :global(.thin) { stroke-width: 1.1; }
+.draw :global(.thick) { stroke-width: 2.6; }
+/* La captura se mide contra la hoja con unidades de contenedor: un max-height
+   en % dentro de una fila de rejilla automática no se resuelve y la imagen se
+   salía por abajo. */
+.shotBox { position: absolute; inset: 0; overflow: hidden; container-type: size; }
+.shotCam { width: 100%; height: 100%; display: grid; place-items: center; }
+.shotCam img { max-width: 88cqw; max-height: 84cqh; width: auto; height: auto; object-fit: contain; border-radius: 10px; box-shadow: 0 14px 40px rgba(18,19,23,.16); }
+
+/* Texto del panel */
+.pTitle { font-size: var(--fs-600); line-height: 1.2; letter-spacing: -0.015em; text-wrap: balance; }
+.card .pTitle { font-size: var(--fs-500); }
+.pNo { display: inline-block; min-width: 2.2em; color: var(--focus); font-variant-numeric: tabular-nums; }
+.action { margin-top: var(--sp-8); font-size: var(--fs-300); line-height: 1.6; color: var(--ink-2); max-width: 64ch; text-wrap: pretty; }
+.split .action { font-size: var(--fs-400); }
+
+.decision { margin-top: var(--sp-24); padding: var(--sp-24); border-radius: var(--r-card); background: var(--surface); }
+.live .decision { margin-top: 0; }
+.dHead { display: flex; align-items: center; gap: 8px; font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--focus); font-weight: 500; }
+.dHead i { width: 8px; height: 8px; border-radius: 50%; background: var(--focus); }
+.dTitle { margin: var(--sp-8) 0 var(--sp-16); font-size: var(--fs-500); font-weight: 500; line-height: 1.25; letter-spacing: -0.01em; text-wrap: balance; }
+.dl { display: grid; gap: var(--sp-12); margin: 0; }
+.dl dt { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.dl dd { margin: 2px 0 0; font-size: var(--fs-200); line-height: 1.6; color: var(--ink-2); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: var(--sp-16); }
+.tags span { padding: 4px 10px; border-radius: var(--r-pill); background: var(--surface); font-size: var(--fs-100); color: var(--ink-2); }
+.tags .tagDec { background: var(--plate); color: var(--focus); }
+.bridge { display: flex; align-items: baseline; flex-wrap: wrap; gap: 4px 10px; margin-top: var(--sp-16); font-size: var(--fs-200); color: var(--ink-2); }
+.arrow { width: 22px; height: 11px; flex-shrink: 0; align-self: center; fill: none; stroke: var(--focus); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.bLabel { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); white-space: nowrap; }
+
+/* Cierre del último acto */
+.close { display: grid; gap: var(--sp-64); margin-top: var(--sp-96); }
+.closeH { font-size: var(--fs-700); letter-spacing: -0.02em; margin-bottom: var(--sp-24); }
+
+@media (max-width: 900px) {
+  .slate { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .panels { grid-template-columns: minmax(0, 1fr); gap: var(--sp-48); }
+  .card, .split, .live { grid-column: auto; }
+  .split, .liveText { grid-template-columns: minmax(0, 1fr); gap: var(--sp-24); }
+  .act { margin-top: var(--sp-64); }
+  .roman { font-size: var(--fs-900); }
+  .nowAct { display: none; }
+  .segs { display: none; }
+  .bar { display: flex; }
+}
+@media (max-width: 520px) {
+  .slate { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .slate div:last-child { grid-column: 1 / -1; }
+}

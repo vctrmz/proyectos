@@ -1,0 +1,45 @@
+/* Filas justificadas: la fila toma como proporción la suma de las de sus
+   capturas, con tope de alto; cada celda crece según su proporción. */
+.grid { display: grid; gap: var(--sp-12); }
+.row { display: flex; gap: var(--sp-12); width: 100%; max-height: 460px; }
+.tile { position: relative; flex: var(--a) 1 0; min-width: 0; height: 100%; overflow: hidden; border: 0; padding: 0; border-radius: var(--r-card); background: var(--surface); cursor: zoom-in; box-shadow: inset 0 0 0 1px var(--line); }
+.img { object-fit: cover; object-position: center top; }
+
+/* El pie aparece al pasar o al enfocar, sobre un degradado que lo hace legible
+   encima de cualquier captura. */
+.cap { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: var(--sp-16); text-align: left; background: linear-gradient(to top, rgba(12,13,17,.82), rgba(12,13,17,.35) 45%, transparent 75%); opacity: 0; transition: opacity .25s var(--ease); }
+.cap span { color: #fff; font-size: var(--fs-200); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+.tile:hover .cap, .tile:focus-visible .cap { opacity: 1; }
+.tile:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+/* Sin hover (táctil) el pie no se descubriría nunca: va siempre visible. */
+@media (hover: none) { .cap { opacity: 1; } }
+
+/* En móvil, una columna: cada captura con su proporción, sin pasar de un
+   alto razonable. */
+@media (max-width: 640px) {
+  .row { flex-direction: column; aspect-ratio: auto !important; max-height: none; }
+  .tile { flex: none; height: auto; aspect-ratio: max(var(--a), 0.8); }
+}
+
+/* Visor. */
+.viewer { position: fixed; inset: 0; z-index: 200; display: grid; place-items: center; padding: 64px 72px 120px; background: rgba(10,11,14,.88); backdrop-filter: blur(14px); }
+.stage { margin: 0; display: grid; justify-items: center; gap: var(--sp-12); width: 100%; max-height: 100%; }
+.full { width: auto; height: auto; max-width: 100%; max-height: calc(100vh - 230px); object-fit: contain; border-radius: 12px; box-shadow: 0 30px 80px rgba(0,0,0,.45); }
+.fcap { max-width: 64ch; color: rgba(255,255,255,.82); font-size: var(--fs-200); text-align: center; text-wrap: balance; }
+.close, .arrow { position: absolute; display: grid; place-items: center; width: 44px; height: 44px; border: 0; border-radius: 50%; background: rgba(255,255,255,.1); color: #fff; cursor: pointer; transition: background .2s var(--ease); }
+.close:hover, .arrow:hover { background: rgba(255,255,255,.2); }
+.close svg, .arrow svg { width: 22px; height: 22px; fill: currentColor; }
+.close { top: 16px; right: 16px; }
+.count { position: absolute; top: 28px; left: 24px; color: rgba(255,255,255,.6); font-size: var(--fs-200); font-variant-numeric: tabular-nums; }
+.arrow { top: 50%; transform: translateY(-50%); }
+.prev { left: 16px; } .next { right: 16px; }
+.dock { position: absolute; left: 50%; bottom: calc(20px + env(safe-area-inset-bottom)); transform: translateX(-50%); display: flex; align-items: center; padding: 10px 14px; border-radius: 16px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); backdrop-filter: blur(16px); }
+.thumb { position: relative; width: 44px; height: 44px; margin-left: -8px; flex-shrink: 0; overflow: hidden; border: 0; padding: 0; border-radius: 10px; background: #1b1d24; cursor: pointer; box-shadow: 0 4px 12px rgba(0,0,0,.35); }
+.thumb:first-child { margin-left: 0; }
+.thumb[aria-current="true"] { box-shadow: 0 0 0 2px rgba(255,255,255,.8), 0 8px 20px rgba(0,0,0,.4); }
+.thumb:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+@media (max-width: 640px) {
+  .viewer { padding: 64px 12px 112px; }
+  .arrow { display: none; }
+  .thumb { width: 38px; height: 38px; }
+}

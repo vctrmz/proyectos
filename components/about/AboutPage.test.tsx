@@ -5,24 +5,26 @@ vi.mock('motion/react', () => import('@/test/motion-mock'));
 import AboutPage from './AboutPage';
 
 describe('AboutPage', () => {
-  it('sigue la estructura: personal, formación, ikigai, empresas y visión', () => {
+  it('sigue la estructura: personal, formación, ikigai, empresas, film y herramientas', () => {
     render(<AboutPage />);
     const h2 = screen.getAllByRole('heading', { level: 2 }).map((h) => h.textContent);
     expect(h2).toEqual(expect.arrayContaining(['Personal', 'Formación', 'Ikigai', 'Empresas', 'Herramientas']));
-    expect(h2.indexOf('Herramientas')).toBeGreaterThan(h2.findIndex((x) => /Diseño sistemas/.test(x!)));
+    // el film va justo debajo de Empresas; la visión se fue al cajón
+    expect(h2.indexOf('Página en blanco')).toBe(h2.indexOf('Empresas') + 1);
+    expect(h2.indexOf('Herramientas')).toBeGreaterThan(h2.indexOf('Página en blanco'));
     expect(screen.getByText(/Universidad de Oriente/)).toBeInTheDocument();
-    /* La acreditación cuelga en el hero con los datos públicos. Sin ciudad:
+    /* El retrato del hero lleva debajo los datos públicos. Sin ciudad:
        el posicionamiento es remoto, así que ni nacimiento ni provincia. */
-    expect(screen.getByText('En remoto')).toBeInTheDocument();
-    /* La tarjeta se queda con el oficio y el modo de trabajo. Ni ciudad ni
+    expect(screen.getByText('España (CET) · remoto')).toBeInTheDocument();
+    /* El pie del retrato se queda con el oficio y el modo de trabajo. Ni ciudad ni
        sector: «Insurtech» sigue en el rol del pie y la línea de tiempo sigue
        diciendo dónde estaba cada empresa —Caracas, Panamá, Málaga—, que es un
        dato del trabajo y lo que hace que el recorrido se lea internacional. */
-    const datos = screen.getByText('B2B SaaS').closest('dl')!;
+    const datos = screen.getByText('B2B y B2C SaaS').closest('dl')!;
     expect(datos.textContent).not.toMatch(/Málaga/);
     expect(datos.textContent).not.toMatch(/Insurtech/);
-    expect(screen.getByRole('img', { name: 'Víctor Maza' })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 2, name: /Diseño sistemas, no pantallas/ })).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: /Retrato de Víctor Maza/ })).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: /Diseño sistemas, no pantallas/ })).toBeNull();
     expect(screen.queryByText(/Lugares/)).toBeNull();
     /* El contacto no se repite al final: el pie, justo debajo, ya lo trae. */
     expect(document.querySelector('#contacto')).toBeNull();
@@ -46,7 +48,7 @@ describe('AboutPage', () => {
     expect(screen.getAllByRole('tab')).toHaveLength(3);
     expect(screen.getByRole('tab', { name: /Atrinium/ })).toHaveAttribute('aria-selected', 'true');
   });
-  /* El CV se descarga desde el hero, junto a la tarjeta de identidad, y con
+  /* El CV se descarga desde el hero, junto al retrato, y con
      selector de idioma: es el único sitio de la web donde aparece. */
   it('el hero ofrece el CV en los dos idiomas, y es el único sitio donde aparece', () => {
     const { container } = render(<AboutPage />);

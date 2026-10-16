@@ -21,7 +21,7 @@ const MAP: Record<DiagramId, { label: string; C: (p: { s: Record<string, string>
   'areas-map': { label: 'Mapa de las ocho áreas de producto de HERMES', C: AreasMap },
   'before-after': { label: 'De 60 campos visibles por paso a 14, mostrando solo los que pide la regla', C: BeforeAfter },
   'state-machine': { label: 'Máquina de estados de tres fases con audiencias y criterios de salida', C: StateMachine },
-  'template-slots': { label: 'Plantilla con variables, componentes y cláusulas opcionales', C: TemplateSlots },
+  'template-slots': { label: 'Plantilla de certificado: cabecera y pie fijos, cuerpo editable con datos del sistema', C: TemplateSlots },
   'grid-12-4-1': { label: 'Doce composiciones, cuatro finalistas, una en producción', C: Grid12to4to1 },
   'system-cycle': { label: 'El design system alimenta el módulo y el módulo devuelve componentes', C: SystemCycle },
   'timeline': { label: 'Recorrido profesional de 2017 a 2026', C: Timeline, box: '0 130 800 140' },

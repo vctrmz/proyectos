@@ -6,15 +6,15 @@ import { ABOUT } from '@/lib/content/about';
 export const ABOUT_EN: typeof ABOUT = {
   ...ABOUT,
   intro: [
-    'I’m Víctor, a Product Designer.',
-    'Nine years in dense B2B products: insurance SaaS, digital banking and mobility.',
+    'I’m Víctor, a Senior Product Designer.',
+    'Eight-plus years in B2B and B2C products: insurance SaaS, digital banking and mobility.',
   ],
   education: [
     { degree: '5-year university degree in Computer Science', school: 'Universidad de Oriente', place: 'Cumaná, Venezuela', years: '2017' },
   ],
   ikigai: {
     tech: 'Computer scientist by training: I know how what I design gets built, and I respect how the framework thinks.',
-    design: 'Product Designer by trade: nine years in dense B2B products, from architecture to handoff.',
+    design: 'Product Designer by trade: eight-plus years in dense B2B products, from architecture to handoff.',
     business: 'Business rules, discovery with Product Owners and decisions defended in business language.',
     center: 'Product design',
   },
@@ -29,15 +29,24 @@ export const ABOUT_EN: typeof ABOUT = {
   })),
   vision: {
     title: 'I design systems, not screens.',
-    paragraphs: [
-      'My computer science background is there to *think the product in systems, in structure and in how it will actually be built*, and to take it down to code when it is needed. *I model the domain before the screen*, *define states, rules and edge cases*, and close with a *handoff the team can build without interpreting anything*.',
-      'I work with *validated patterns and usability criteria*, not inventions, and respect how things are really built in *React, Chakra UI or Tailwind*. This site is an example: the design is mine and *I directed the implementation with AI down to the detail*. Generating is the easy part; what I bring is *knowing what to ask for and recognising when what comes back is not good enough*.',
-      'I care about *complete flows, not isolated screens*. *Systems that make the next design and the next build cost less than the last one.*',
+    lead: 'My computer science background is there to think the product in systems, in structure and in how it will actually be built.',
+    cards: [
+      { head: 'I model the domain before the screen.', proof: 'I define *states, rules and edge cases*, and work it through *with Product and Engineering until it ships*. When it is needed, I take it down to code.', tags: ['States', 'Rules', 'Edge cases'] },
+      { head: 'Validated patterns, not inventions.', proof: 'I design with *usability criteria* and respect how things are really built in *React, Chakra UI or Tailwind*. This site is the example: the design is mine and *I directed the implementation with AI down to the detail*. Generating is easy; the hard part is *knowing what to ask for and seeing when what comes back is not good enough*.', tags: ['React', 'Chakra UI', 'Tailwind', 'AI'] },
+      { head: 'Complete flows, not isolated screens.', proof: 'I look for *systems that make the next design and the next build cost less than the last one*.', tags: ['Flows', 'Systems', 'Reuse'] },
     ],
   },
   /* En ingles va la formulacion documentada de Nielsen —la del articulo de
      NN/g— y no una retraduccion del castellano: si alguien la busca, la
      encuentra tal cual. */
+  ideas: [
+    { book: 'design-of-everyday-things', text: 'When someone can’t use something, it’s rarely their fault. It’s a design problem.' },
+    { book: 'dont-make-me-think', text: 'A good interface doesn’t make you think. Every doubt it raises costs a click, or a user.' },
+    { book: 'laws-of-ux', text: 'People spend most of their time in other products. What they already know weighs more than what you invent.' },
+    { book: 'investigacion-ux', text: 'Research isn’t asking people what they want. It’s understanding what they do, and why.' },
+    { book: 'atomic-habits', text: 'You don’t rise to the level of your goals. You fall to the level of your systems.' },
+    { book: 'camino-del-artista', text: 'Creativity doesn’t wait for inspiration. You train it every day, like a craft.' },
+  ],
   quote: {
     ...ABOUT.quote,
     text: 'Pay attention to what users do, not what they say.',
@@ -82,9 +91,11 @@ export const ABOUT_EN: typeof ABOUT = {
     outro: 'Above the method, what I look for is *to create atmosphere*: that every screen, every state and every word make *the brand breathe the same air* from one end of the product to the other.',
   },
   toolGroups: [
-    { name: 'Design and multimedia', items: ABOUT.toolGroups[0].items },
-    { name: 'Development and deployment', items: ABOUT.toolGroups[1].items },
-    { name: 'Analytics and behaviour', items: ABOUT.toolGroups[2].items },
-    ...ABOUT.toolGroups.slice(3).map((g, i) => ({ name: ['Artificial intelligence', 'Messaging and email'][i] ?? g.name, items: g.items })),
+    { name: 'Design and prototyping', items: ['Figma (advanced)', 'FigJam', 'Interactive prototypes', 'Photoshop', 'Illustrator'] },
+    { name: 'Design systems', items: ['Design tokens', 'Component architecture', 'WCAG 2.2 accessibility'] },
+    { name: 'Research and validation', items: ABOUT.toolGroups[2].items },
+    { name: 'Code', items: ABOUT.toolGroups[3].items },
+    { name: 'Artificial intelligence', items: ABOUT.toolGroups[4].items },
+    { name: 'Worked alongside', items: ABOUT.toolGroups[5].items },
   ],
 };

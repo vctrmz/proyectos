@@ -51,7 +51,7 @@ export default function PrivacyEs() {
             <div className="tool">
               <span className="who">Formulario · Resend Inc. y Google Ireland Ltd.</span>
               <h3>Si me escribes por el formulario</h3>
-              <p>Recojo tu nombre, tu correo y tu mensaje, y sólo para responderte. El envío lo hace <strong>Resend</strong>, que actúa como encargado del tratamiento: el mensaje viaja por su servidor hasta mi bandeja de Gmail. Además guardo una copia —nombre, correo, mensaje, idioma de la página y fecha— en una <strong>hoja de cálculo privada de Google</strong>, en mi cuenta, para llevar a quién he respondido; nadie más tiene acceso. Esta web no tiene base de datos propia. La base legal es tu consentimiento al marcar la casilla, y después el interés legítimo en atender tu consulta.</p>
+              <p>Recojo tu nombre, tu correo y tu mensaje, y sólo para responderte. El envío lo hace <strong>Resend</strong>, que actúa como encargado del tratamiento: el mensaje viaja por su servidor hasta mi bandeja de Gmail. Además guardo una copia (nombre, correo, mensaje, idioma de la página y fecha) en una <strong>hoja de cálculo privada de Google</strong>, en mi cuenta, para llevar a quién he respondido; nadie más tiene acceso. Esta web no tiene base de datos propia. La base legal es tu consentimiento al marcar la casilla, y después el interés legítimo en atender tu consulta.</p>
             </div>
             <div className="tool">
               <span className="who">Formulario · Vercel Inc.</span>

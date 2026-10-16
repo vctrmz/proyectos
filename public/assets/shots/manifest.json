@@ -566,5 +566,49 @@
   "pm-web-tipografia": {
     "width": 595,
     "height": 842
+  },
+  "ep-editor-vacio": {
+    "width": 1280,
+    "height": 740
+  },
+  "ep-comandos": {
+    "width": 1280,
+    "height": 1089
+  },
+  "ep-certificados": {
+    "width": 1440,
+    "height": 1024
+  },
+  "ep-variables": {
+    "width": 1600,
+    "height": 778
+  },
+  "ep-plantilla-original": {
+    "width": 595,
+    "height": 842
+  },
+  "ep-plantilla-nueva": {
+    "width": 595,
+    "height": 842
+  },
+  "ep-resumen": {
+    "width": 1440,
+    "height": 2325
+  },
+  "ep-poliza": {
+    "width": 1280,
+    "height": 730
+  },
+  "ep-pdf": {
+    "width": 1280,
+    "height": 730
+  },
+  "ayax-sobre": {
+    "width": 1280,
+    "height": 2097
+  },
+  "ayax-aplicaciones": {
+    "width": 1400,
+    "height": 932
   }
 }

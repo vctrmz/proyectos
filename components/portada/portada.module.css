@@ -1,0 +1,6 @@
+/* Secciones claras: título con glifos y, a su derecha, una frase. */
+.section { padding-block: clamp(96px, 11vw, 160px) 0; }
+.head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: var(--sp-16) var(--sp-48); margin-bottom: clamp(40px, 5vw, 72px); }
+.headLead { font-size: var(--fs-400); color: var(--ink-2); max-width: 36ch; }
+/* La última sección clara deja aire antes de la banda oscura del contacto. */
+.last { padding-bottom: clamp(96px, 11vw, 160px); }

@@ -21,12 +21,12 @@ describe('portada', () => {
   });
   it('el hero declara design systems y la implementación en React', () => {
     render(<Hero />);
-    expect(screen.getByText(/Senior Product Designer · Design Systems · B2B SaaS e Insurtech/)).toBeInTheDocument();
+    expect(screen.getByText(/Senior Product Designer · Design Systems · B2B y B2C SaaS e Insurtech/)).toBeInTheDocument();
     expect(screen.getByText(/revis\w+ la implementación en React/)).toBeInTheDocument();
   });
   it('el hero en inglés dice lo mismo', () => {
     render(<Hero locale="en" />);
-    expect(screen.getByText(/Senior Product Designer · Design Systems · B2B SaaS and Insurtech/)).toBeInTheDocument();
+    expect(screen.getByText(/Senior Product Designer · Design Systems · B2B and B2C SaaS and Insurtech/)).toBeInTheDocument();
   });
   it('el hero pone junto al nombre LinkedIn, Behance y Figma, sin monograma', () => {
     const { container } = render(<Hero />);

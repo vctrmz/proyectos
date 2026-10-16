@@ -20,15 +20,15 @@ export const EN_PROJECTS: Record<string, { title: string; company?: string; summ
   },
   mercantil: {
     title: 'Making a financial product clear the first time',
-    summary: 'Five offers and five audiences that do not speak alike: digital payments, Mony, Tadelanto and Next Gen, from the sales deck to the online banking flow — including the audit of my own prototype.',
+    summary: 'Five offers and five audiences that do not speak alike: digital payments, Mony, Tadelanto and Next Gen, from the sales deck to the online banking flow, including the audit of my own prototype.',
   },
   suscripcion: {
     title: 'Client onboarding module',
     summary: 'Three months of manual work in spreadsheets turned into a module in production in five weeks, modelled as a three-phase state machine.',
   },
   'editor-propuesta': {
-    title: 'Proposal editor built on TipTap',
-    summary: 'The client proposal was being written outside the product. A template with slots, variables typed with @ and optional clauses as blocks, auditable while you write.',
+    title: 'Certificate editor built on TipTap',
+    summary: 'The Certificate step in the surety flow: four templates, a fixed header and footer, and an editable body with system data inserted with /.',
   },
   'vista-360': {
     title: 'Client 360 view',

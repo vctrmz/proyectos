@@ -8,11 +8,24 @@ describe('IkigaiDiagram', () => {
   it('tres círculos enfocables con su frase, y el centro dice Product design', async () => {
     render(<IkigaiDiagram />);
     const btns = screen.getAllByRole('button');
-    expect(btns.map((b) => b.getAttribute('aria-label'))).toEqual(['design', 'tech', 'business']);
-    expect(screen.getByText('Product design')).toBeInTheDocument();
+    expect(btns.map((b) => b.getAttribute('aria-label'))).toEqual(['Design', 'Tech', 'Business']);
+    // el centro del diagrama y el último paso del relato
+    expect(screen.getAllByText('Product design').length).toBeGreaterThanOrEqual(2);
     await userEvent.click(btns[1]);
     expect(screen.getByRole('status')).toHaveTextContent(/Informático de formación/);
     expect(btns[1]).toHaveAttribute('aria-pressed', 'true');
+  });
+});
+
+describe('IkigaiDiagram · relato', () => {
+  it('cuenta las tres partes en orden y cierra con la tesis', () => {
+    render(<IkigaiDiagram />);
+    const pasos = screen.getAllByRole('listitem').map((li) => li.textContent);
+    expect(pasos).toHaveLength(4);
+    expect(pasos[0]).toMatch(/Design.*Product Designer de oficio/);
+    expect(pasos[1]).toMatch(/Tech.*Informático de formación/);
+    expect(pasos[2]).toMatch(/Business.*Reglas de negocio/);
+    expect(pasos[3]).toMatch(/Product design.*Donde se cruzan las tres/);
   });
 });
 
