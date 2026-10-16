@@ -8,8 +8,7 @@ import s from './Areas.module.css';
 /* Algunas áreas en las que he trabajado: una ficha por sector, con su icono
    y sus años, y al lado lo que resolví en el que esté seleccionado. Sin
    nombres de cliente: el sector, el problema y para quién diseñé. Elegir un
-   área la levanta sobre un canto índigo macizo, como una ficha extruida
-   (adaptado de la rejilla de clientes de tigranz.com), y cambia el panel. Es un grupo de botones con aria-pressed y
+   área la rellena del índigo de los filtros del catálogo y cambia el panel. Es un grupo de botones con aria-pressed y
    el panel es una región viva: con teclado y lector de pantalla funciona
    igual. Los textos salen de los casos, de los sectores y del CV. */
 type Area = {

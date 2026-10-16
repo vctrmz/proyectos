@@ -1,22 +1,19 @@
 .wrap { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
 .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-16); align-content: start; }
 
-/* Fichas compactas: icono a la izquierda, nombre y años a la derecha.
-   Seleccionada, la ficha se levanta sobre un canto índigo macizo (seis
-   sombras de 1 px apiladas en diagonal: una extrusión con las esquinas en
-   bisel, no una sombra difusa). Al pasar, un canto más corto y lila. */
-.tile { --lift: 0px; --edge: var(--plate-tint); position: relative; display: grid; grid-template-columns: 24px minmax(0, 1fr); align-items: center; column-gap: var(--sp-12); row-gap: 2px; min-height: 76px; padding: var(--sp-12) var(--sp-16); border-radius: 12px; background: var(--surface); text-align: left;
-  transform: translate(calc(var(--lift) * -1), calc(var(--lift) * -1));
-  box-shadow: calc(var(--lift) * .17) calc(var(--lift) * .17) 0 var(--edge), calc(var(--lift) * .34) calc(var(--lift) * .34) 0 var(--edge), calc(var(--lift) * .5) calc(var(--lift) * .5) 0 var(--edge), calc(var(--lift) * .67) calc(var(--lift) * .67) 0 var(--edge), calc(var(--lift) * .84) calc(var(--lift) * .84) 0 var(--edge), var(--lift) var(--lift) 0 var(--edge);
-  transition: transform .28s var(--ease), box-shadow .28s var(--ease), background .2s var(--ease); }
-.tile:hover { --lift: 3px; background: #fff; }
-.on, .on:hover { --lift: 6px; --edge: var(--focus); background: #fff; outline: 1.5px solid var(--ink); outline-offset: -1.5px; }
-.tile:active { --lift: 2px; }
+/* Fichas compactas: icono a la izquierda, nombre y años a la derecha. Mismo
+   lenguaje que el resto de la web: un paso de tono al pasar y, la
+   seleccionada, rellena del índigo de los filtros del catálogo, con el texto
+   en blanco. Sin sombras ni bordes. */
+.tile { position: relative; display: grid; grid-template-columns: 24px minmax(0, 1fr); align-items: center; column-gap: var(--sp-12); row-gap: 2px; min-height: 76px; padding: var(--sp-12) var(--sp-16); border-radius: 12px; background: var(--surface); text-align: left; transition: background .2s var(--ease), color .2s var(--ease); }
+.tile:hover { background: var(--plate); }
+.tile:active { transform: scale(.99); }
+.on, .on:hover { background: var(--focus); }
 .icon { grid-row: span 2; width: 22px; height: 22px; color: var(--ink-2); transition: color .2s var(--ease); }
-.on .icon { color: var(--focus); }
+.on .icon, .on .name { color: #fff; }
+.on .years { color: rgba(255,255,255,.78); }
 .name { font-size: var(--fs-300); font-weight: 500; letter-spacing: -0.01em; line-height: 1.25; color: var(--ink); }
 .years { font-size: 13px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
-@media (prefers-reduced-motion: reduce) { .tile { transition: none; } }
 
 /* El panel: lo que resolví en el área seleccionada, a su lado. */
 .panel { position: sticky; top: 112px; min-height: 340px; }
