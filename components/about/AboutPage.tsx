@@ -6,7 +6,7 @@ import { aboutIn } from '@/lib/content/en';
 import { DEFAULT_LOCALE, ROUTES, type Locale } from '@/lib/i18n/config';
 import { getUi } from '@/lib/i18n/ui';
 import { splitBold } from '@/lib/content/text';
-import AsciiPortrait from './AsciiPortrait';
+import PortraitField from './PortraitField';
 import IkigaiDiagram from './IkigaiDiagram';
 import CompanyTabs from './CompanyTabs';
 import ToolGroups from './ToolGroups';
@@ -16,6 +16,12 @@ import Bookshelf from './Bookshelf';
 import Quote from './Quote';
 import s from './about.module.css';
 
+/* Los datos públicos que llevaba la tarjeta: oficio y modo de trabajo. */
+const FACTS = {
+  es: [['Rol', 'Senior Product Designer'], ['Base', 'En remoto'], ['Sector', 'B2B SaaS'], ['En activo', 'Desde 2017']],
+  en: [['Role', 'Senior Product Designer'], ['Based in', 'Remote'], ['Field', 'B2B SaaS'], ['Practising', 'Since 2017']],
+} as const;
+
 export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale }) {
   const ABOUT = aboutIn(locale);
   const ui = getUi(locale);
@@ -24,10 +30,13 @@ export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale
     <>
       <SiteHeader />
       <main id="contenido">
-        <div className="container">
-          <h1 className="visually-hidden">{t.title}</h1>
-          <section className={s.intro} aria-labelledby="a-personal">
-            <div>
+        <h1 className="visually-hidden">{t.title}</h1>
+        {/* El hero entero es el retrato tramado: la foto entra por la derecha y
+            el texto va a la izquierda, sobre la misma trama. */}
+        <section className={s.hero} aria-labelledby="a-personal">
+          <PortraitField className={s.field} label={locale === 'en' ? 'Portrait of Víctor Maza' : 'Retrato de Víctor Maza'} />
+          <div className={`container ${s.heroInner}`}>
+            <div className={s.heroCopy}>
               <h2 id="a-personal">{t.personal}</h2>
               {/* Fuera dónde nací y dónde he vivido: es información personal que
                   no aporta a quien evalúa el trabajo. */}
@@ -35,21 +44,20 @@ export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale
                 {ABOUT.intro.map((l) => <p key={l}>{l}</p>)}
               </div>
               {/* Debajo de la presentación: quien acaba de leer quién eres es
-                  quien quiere el CV, y ahí no compite con el retrato. Las redes
-                  van en la misma fila porque son la misma decisión —saber más
-                  de esta persona— y se comparan de un vistazo. */}
+                  quien quiere el CV. Las redes van en la misma fila porque son
+                  la misma decisión —saber más de esta persona—. */}
               <div className={s.cvRow}>
                 <CvDownload locale={locale} />
-                <BioDrawer locale={locale} />
+                <BioDrawer locale={locale} ctaClassName={s.heroCta} />
               </div>
               {/* Las redes, debajo: son el camino secundario y no compiten con
                   los dos que sí quieres que se pulsen. */}
               <SocialLinks />
+              <dl className={s.facts}>{FACTS[locale].map(([k, v]) => <div key={k}><dt>{k}</dt><dd>{v}</dd></div>)}</dl>
             </div>
-            <div className={s.aside}>
-              <AsciiPortrait locale={locale} />
-            </div>
-          </section>
+          </div>
+        </section>
+        <div className="container">
           <section className={s.sec} aria-labelledby="a-formacion"><h2 id="a-formacion">{t.education}</h2>
             <div className={s.edu}>{ABOUT.education.map((e) => <p key={e.degree}><strong>{e.degree}</strong> · {e.school} · {e.place} · {e.years}</p>)}<p>{t.eduNote}</p></div>
           </section>
