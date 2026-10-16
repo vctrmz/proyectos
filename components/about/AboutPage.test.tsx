@@ -18,7 +18,7 @@ describe('AboutPage', () => {
        sector: «Insurtech» sigue en el rol del pie y la línea de tiempo sigue
        diciendo dónde estaba cada empresa —Caracas, Panamá, Málaga—, que es un
        dato del trabajo y lo que hace que el recorrido se lea internacional. */
-    const datos = screen.getByText('B2B SaaS').closest('dl')!;
+    const datos = screen.getByText('B2B y B2C SaaS').closest('dl')!;
     expect(datos.textContent).not.toMatch(/Málaga/);
     expect(datos.textContent).not.toMatch(/Insurtech/);
     expect(screen.getByRole('img', { name: /Retrato de Víctor Maza/ })).toBeInTheDocument();
