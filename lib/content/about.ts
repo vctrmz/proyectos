@@ -45,6 +45,16 @@ export const ABOUT = {
   /* La cita que abre los libros: dice de dónde sale el criterio con el que
      están elegidos. Sin foto de Jakob Nielsen —no tengo derechos sobre un
      retrato suyo—, así que la ficha lleva su monograma. */
+  /* Una idea por libro de la estantería, en mis palabras: no son citas
+     literales, por eso no llevan comillas y van firmadas como «una idea de». */
+  ideas: [
+    { book: 'design-of-everyday-things', text: 'Cuando alguien no sabe usar algo, casi nunca es culpa suya. Es un problema de diseño.' },
+    { book: 'dont-make-me-think', text: 'Una buena interfaz no obliga a pensar. Cada duda que provoca es un clic de más, o un usuario de menos.' },
+    { book: 'laws-of-ux', text: 'La gente pasa casi todo su tiempo en otros productos. Lo que ya conoce pesa más que lo que inventes.' },
+    { book: 'investigacion-ux', text: 'Investigar no es preguntar qué quiere la gente. Es entender qué hace, y por qué.' },
+    { book: 'atomic-habits', text: 'No llegas al nivel de tus metas. Te quedas en el nivel de tus sistemas.' },
+    { book: 'camino-del-artista', text: 'La creatividad no espera a la inspiración. Se entrena todos los días, como un oficio.' },
+  ],
   quote: {
     text: 'Lo que los usuarios dicen y lo que hacen es diferente.',
     author: 'Jakob Nielsen',

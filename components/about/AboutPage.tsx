@@ -13,7 +13,7 @@ import ToolGroups from './ToolGroups';
 import BioDrawer from './BioDrawer';
 import SocialLinks from './SocialLinks';
 import Bookshelf from './Bookshelf';
-import Quote from './Quote';
+import QuoteCarousel from './QuoteCarousel';
 import s from './about.module.css';
 
 /* Los datos públicos que llevaba la tarjeta: oficio y modo de trabajo. */
@@ -76,7 +76,7 @@ export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale
           <section className={s.sec} aria-labelledby="a-libros">
             {/* La cita va antes del título: enmarca por qué están estos libros
                 y no otros, y después vienen. */}
-            <Quote locale={locale} />
+            <QuoteCarousel locale={locale} />
             <h2 id="a-libros">{t.books}</h2>
             <Bookshelf locale={locale} />
           </section>
