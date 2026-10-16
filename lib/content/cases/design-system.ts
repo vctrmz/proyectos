@@ -24,7 +24,7 @@ export const designSystem: CaseStudy = {
        apariencia, cada fila deja una pregunta; por intención, la responde. */
     tokens: {
       title: 'Un agente de IA lee tus tokens al pie de la letra.',
-      lead: 'Mismos colores, mismos valores. Solo una de las dos versiones dice para qué sirve cada uno, y eso es lo que decide si un front nuevo —o una IA— acierta sin preguntar.',
+      lead: 'Mismos colores, mismos valores. Solo una de las dos versiones dice para qué sirve cada uno, y eso es lo que decide si un front nuevo, o una IA, acierta sin preguntar.',
       note: 'Ejemplo ilustrativo con los valores del extracto de abajo: en la auditoría eran 267 valores sueltos como estos.',
       rows: [
         { use: 'button.bg', before: '#2f5bea', question: '¿Azul para qué?', after: 'action', swatch: '#2f5bea' },

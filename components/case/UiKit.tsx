@@ -34,7 +34,7 @@ function Mock({ kind, brand, label, labels, swatches }: { kind: UiKitKind; brand
         <span className={s.row}><i /><i className={s.w40} /><span className={`${s.chip} ${s.cOk} ${s.tiny}`}>OK</span></span>
         <span className={s.row}><i /><i className={s.w60} /><span className={`${s.chip} ${s.cCurso} ${s.tiny}`}>···</span></span>
         <span className={s.row}><i /><i className={s.w30} /><span className={`${s.chip} ${s.cBad} ${s.tiny}`}>!</span></span>
-        <span className={s.row}><i /><i className={s.w50} /><span className={`${s.chip} ${s.cPend} ${s.tiny}`}>—</span></span>
+        <span className={s.row}><i /><i className={s.w50} /><span className={`${s.chip} ${s.cPend} ${s.tiny}`}>…</span></span>
       </>
     );
     case 'form': return (

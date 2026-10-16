@@ -19,7 +19,7 @@ export default function SiteHeader() {
   return (
     <header className={`${s.header} ${dir === 'down' ? s.hidden : ''}`}>
       <div className={`container ${s.bar}`}>
-        <Link href={r.home} className={s.brand} aria-label={`${locale === 'es' ? 'Inicio' : 'Home'} — Víctor Maza`}><span className={s.mark} aria-hidden="true">VM</span><span>Víctor Maza</span></Link>
+        <Link href={r.home} className={s.brand} aria-label={`Víctor Maza, ${locale === 'es' ? 'inicio' : 'home'}`}><span className={s.mark} aria-hidden="true">VM</span><span>Víctor Maza</span></Link>
         <nav aria-label={locale === 'es' ? 'Principal' : 'Main'}>
           <ul className={s.links}>
             {nav.map((n) => <li key={n.href}><Link href={n.href} className={s.link} aria-current={isActive(n.href) ? 'page' : undefined}>{n.label}</Link></li>)}

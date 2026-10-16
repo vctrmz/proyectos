@@ -20,7 +20,7 @@ export const EN_PROJECTS: Record<string, { title: string; company?: string; summ
   },
   mercantil: {
     title: 'Making a financial product clear the first time',
-    summary: 'Five offers and five audiences that do not speak alike: digital payments, Mony, Tadelanto and Next Gen, from the sales deck to the online banking flow — including the audit of my own prototype.',
+    summary: 'Five offers and five audiences that do not speak alike: digital payments, Mony, Tadelanto and Next Gen, from the sales deck to the online banking flow, including the audit of my own prototype.',
   },
   suscripcion: {
     title: 'Client onboarding module',

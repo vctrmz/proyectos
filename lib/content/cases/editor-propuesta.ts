@@ -5,7 +5,7 @@ export const editorPropuesta: CaseStudy = {
   tagline: 'El paso Certificado del flujo de caución: elegir el modelo, ajustar el texto con datos del sistema y emitirlo con la póliza, sin tocar lo que el documento legal fija.',
   tags: ['Caso de estudio', 'En producción', 'Insurtech', 'Editor'], brand: '#2b3f85',
   hero: shot('ep-comandos', 'Editor del modelo de documento con el menú de comandos abierto', 'Editor: datos del sistema y estilos con /'),
-  context: 'HERMES, tenant Barents, producto Caución: un paso nuevo, CERTIFICADO, dentro del flujo de emisión. Cuatro modelos —Abogacía del Estado, Privado, Almacenamiento y Público con fecha para tasas aeroportuarias—, en español o en inglés.',
+  context: 'HERMES, tenant Barents, producto Caución: un paso nuevo, CERTIFICADO, dentro del flujo de emisión. Cuatro modelos en español o en inglés: Abogacía del Estado, Privado, Almacenamiento y Público con fecha para tasas aeroportuarias.',
   role: 'Diseño del paso, del editor y de las cuatro plantillas A4, con Legal y con backend.',
   delivery: 'Paso Certificado en el flujo, editor headless sobre TipTap con comandos /, plantillas rediseñadas y el certificado generado junto a la póliza.',
   problem: [
@@ -21,7 +21,7 @@ export const editorPropuesta: CaseStudy = {
   system: {
     body: [
       'Un solo comando, /, para todo lo que se inserta: estilo global, estilo del documento y datos del sistema. Se explicó con una guía de uso y una demo en vivo antes del despliegue, porque asumir que se entiende es donde se pierden los editores.',
-      'Las cuatro plantillas A4 se rediseñaron sobre la misma anatomía —márgenes, cabecera y pie— para que el texto editable cayera siempre en el mismo sitio.',
+      'Las cuatro plantillas A4 se rediseñaron sobre la misma anatomía de márgenes, cabecera y pie para que el texto editable cayera siempre en el mismo sitio.',
       'Usé IA generativa para redactar variantes de microcopy legal y descartarlas rápido con Legal delante.',
     ],
     code: { title: 'Tokens del editor: variables, comandos y marco fijo', lang: 'json', code: "{\n  \"color\": {\n    \"variable\":  { \"ink\": \"#ffffff\", \"bg\": \"#121317\" },\n    \"comando\":   { \"ink\": \"#ffffff\", \"bg\": \"#4a44f2\" },\n    \"fijo\":      { \"ink\": \"#6a6a71\", \"bg\": \"#f1f2f6\", \"editable\": false }\n  },\n  \"font\": {\n    \"family\": { \"texto\": \"Inter\", \"codigo\": \"ui-monospace\" },\n    \"size\":   { \"variable\": 13, \"body\": 15, \"titulo\": 22 }\n  },\n  \"radius\": { \"variable\": 999, \"bloque\": 12, \"documento\": 16 },\n  \"space\":  { \"linea\": 8, \"parrafo\": 16, \"seccion\": 32 }\n}" },
@@ -33,7 +33,7 @@ export const editorPropuesta: CaseStudy = {
   },
   design: [
     shot('ep-editor-vacio', 'Editor del modelo de documento vacío con la plantilla de certificado elegida', 'Punto de partida: se elige la plantilla y se escribe, o se pulsa / para insertar'),
-    shot('ep-comandos', 'Menú de comandos sobre el texto del certificado', 'Comandos con /: estilo global, estilo del documento y datos del sistema —personas, brokers, aseguradora, tablas y gráficas—'),
+    shot('ep-comandos', 'Menú de comandos sobre el texto del certificado', 'Comandos con /: estilo global, estilo del documento y datos del sistema (personas, brokers, aseguradora, tablas y gráficas)'),
     shot('ep-certificados', 'Paso Certificados dentro del suplemento, con editor y vista previa', 'Certificados como un paso más del suplemento, con la vista previa a un clic'),
     shot('ep-variables', 'Texto del certificado en producción con variables del sistema', 'En producción: el texto lleva variables del sistema (${…}) que se rellenan al emitir'),
     shot('ep-plantilla-original', 'Plantilla original del certificado de caución en A4', 'Plantilla original del certificado de caución (datos personales ocultos)'),
@@ -55,7 +55,7 @@ export const editorPropuesta: CaseStudy = {
        documenta, y su explicación dice de dónde sale. Lo que no se midió sigue
        declarado abajo, en `measure`. */
     outcome: [
-      { value: '0', label: 'ediciones posibles en cabecera, logotipo y pie', meaning: 'El editor solo abre el cuerpo del certificado: lo que fija el documento legal no se puede tocar. Consecuencia del modelo, no una medición.' },
+      { value: '0', label: 'ediciones posibles en cabecera, logotipo y pie', meaning: 'El editor solo abre el cuerpo del certificado: lo que fija el documento legal no se puede tocar. Es una consecuencia del diseño, no una medición.' },
       { value: '1', label: 'comando para estilos y datos', meaning: 'Con / se insertan estilo global, estilo del documento y datos del sistema: un gesto, y es lo que se explica en la guía de uso.' },
       { value: '1', label: 'flujo del borrador al PDF', meaning: 'El certificado se elige, se ajusta y se previsualiza dentro del flujo, y se genera con la póliza junto a las condiciones y el resumen de coberturas.' },
     ],
