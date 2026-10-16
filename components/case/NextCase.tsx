@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import ContactButton from '@/components/contact/ContactButton';
-import { getCase } from '@/lib/content/cases';
+import { CASE_SLUGS, getCase } from '@/lib/content/cases';
 import { getCaseIn } from '@/lib/content/en';
 import { getProject } from '@/lib/content/projects';
 import { DEFAULT_LOCALE, ROUTES, type Locale } from '@/lib/i18n/config';
@@ -19,11 +19,18 @@ export function resolveNext(slug: string, locale: Locale) {
   return { n, href, note };
 }
 
+/* Todos los casos en el orden del catálogo, resueltos igual que el siguiente:
+   es la secuencia que recorre el dock. */
+export const caseSequence = (locale: Locale) => CASE_SLUGS.map((slug) => {
+  const { n, href, note } = resolveNext(slug, locale);
+  return { slug, title: n.title + note, href };
+});
+
 export default function NextCase({ slug, locale = DEFAULT_LOCALE }: { slug: string; locale?: Locale }) {
   const { n, href, note } = resolveNext(slug, locale);
   const ui = getUi(locale);
   return (
-    <div className={s.next}>
+    <div className={s.next} data-case-end>
       <Link href={href} className={s.nextCard} aria-label={`${ui.case.nextLabel}: ${n.title}`}>
         <BrandMark p={getProject(n.slug)!} size="lg" />
         <span className={s.nextText}>

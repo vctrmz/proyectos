@@ -16,7 +16,8 @@ import type { CaseStudy } from '@/lib/content/cases';
 import CaseNav from './CaseNav';
 import DecisionBlock from './DecisionBlock';
 import ResultBlock from './ResultBlock';
-import NextCase, { resolveNext } from './NextCase';
+import NextCase, { caseSequence, resolveNext } from './NextCase';
+import CaseDock from './CaseDock';
 import BrandMark from './BrandMark';
 import Button from '@/components/ui/Button';
 import UiKit from './UiKit';
@@ -43,6 +44,7 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
   const ui = getUi(locale);
   const r = ROUTES[locale];
   const next = resolveNext(c.next, locale);
+  const sequence = caseSequence(locale);
   const L = (id: string, fallback: string) => ui.case.sections[id] ?? fallback;
   const sections: { id: string; label: string; node: React.ReactNode }[] = [
     { id: 'c-problema', label: L('c-problema', 'Problema'), node: (
@@ -116,7 +118,7 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
         <div className={`container ${s.top}`}>
           {/* Arriba, las dos salidas del caso: volver al trabajo o pasar al
               siguiente sin bajar hasta el final. */}
-          <nav className={s.bar} aria-label={ui.case.navLabel}>
+          <nav className={s.bar} aria-label={ui.case.navLabel} data-case-top>
             <Button variant="outline" href={r.work}>{ui.case.back}</Button>
             <Button variant="outline" href={next.href} aria-label={`${ui.case.nextLabel}: ${next.n.title}`}>{ui.case.next}{next.note} <span aria-hidden="true">→</span></Button>
           </nav>
@@ -141,6 +143,7 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
           </div>
           <NextCase slug={c.next} locale={locale} />
         </div>
+        <CaseDock items={sequence} current={sequence.findIndex((x) => x.slug === c.slug)} backHref={r.work} labels={ui.case.dock} />
       </main>
       <SiteFooter locale={locale} />
     </>

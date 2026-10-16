@@ -21,12 +21,21 @@ describe('CasePage', () => {
     expect(screen.getByText(/4 de 4/)).toBeInTheDocument();
     expect(screen.getByText(/Adopción completa del equipo de front/)).toBeInTheDocument();
     expect(screen.getByRole('heading', { level: 3, name: /Qué mediría hoy/ })).toBeInTheDocument();
-    /* Dos salidas al siguiente caso —el botón de arriba y la tarjeta del
-       final— y las dos llevan al mismo sitio. */
+    /* Tres salidas al siguiente caso —el botón de arriba, el dock y la
+       tarjeta del final— y las tres llevan al mismo sitio. */
     const siguientes = screen.getAllByRole('link', { name: /Siguiente caso/ });
-    expect(siguientes).toHaveLength(2);
+    expect(siguientes).toHaveLength(3);
     for (const a of siguientes) expect(a).toHaveAttribute('href', '/es/cases/flesip');
     expect(screen.getByRole('link', { name: /← Trabajo/ })).toHaveAttribute('href', '/es#trabajo');
+  });
+  it('el dock recorre todos los casos en orden y marca el actual', () => {
+    render(<CasePage c={getCase('hermes')!} />);
+    const dock = screen.getByRole('navigation', { name: 'Proyectos' });
+    const puntos = within(dock).getAllByRole('link', { name: /^Caso \d+ de 10/ });
+    expect(puntos).toHaveLength(10);
+    expect(within(dock).getByRole('link', { current: 'page' })).toHaveAttribute('href', '/es/cases/hermes');
+    expect(within(dock).getByRole('link', { name: /Caso anterior/ })).toHaveAttribute('href', '/es/cases/ayax');
+    expect(within(dock).getByRole('link', { name: 'Trabajo' })).toHaveAttribute('href', '/es#trabajo');
   });
   it('trae el índice del caso con una entrada por sección', () => {
     render(<CasePage c={getCase('hermes')!} />);
