@@ -25,4 +25,10 @@ describe('QuoteCarousel', () => {
     fireEvent.click(screen.getByRole('button', { name: 'Ir a la 6' }));
     expect(screen.getByRole('button', { name: 'Ir a la 6' })).toHaveAttribute('aria-current', 'true');
   });
+  it('se puede pausar y reanudar (WCAG 2.2.2)', () => {
+    render(<QuoteCarousel />);
+    const btn = screen.getByRole('button', { name: 'Pausar' });
+    fireEvent.click(btn);
+    expect(screen.getByRole('button', { name: 'Reanudar' })).toHaveAttribute('aria-pressed', 'true');
+  });
 });

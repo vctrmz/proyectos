@@ -17,6 +17,8 @@ const C: { k: K; cx: number; cy: number; lx: number; ly: number; from: [number, 
   { k: 'business', cx: 360, cy: 300, lx: 408, ly: 360, from: [190, 90], win: [0.46, 0.7] },
 ];
 const CENTER_WIN: [number, number] = [0.72, 0.9];
+/* Nombre visible de cada círculo, con mayúscula inicial. */
+const NAME: Record<K, string> = { design: 'Design', tech: 'Tech', business: 'Business' };
 const LEN = 2 * Math.PI * R;
 
 const clamp = (v: number) => Math.min(1, Math.max(0, v));
@@ -41,14 +43,14 @@ function Ring({ c, p, active, onToggle }: { c: (typeof C)[number]; p: MotionValu
   const label = useTransform(p, (v) => clamp((v - c.win[0]) / (c.win[1] - c.win[0]) * 1.6 - 0.6));
   return (
     <motion.g style={{ x, y, opacity }}>
-      <g role="button" tabIndex={0} aria-label={c.k} aria-pressed={active === c.k}
+      <g role="button" tabIndex={0} aria-label={NAME[c.k]} aria-pressed={active === c.k}
         className={`${s.ring} ${active && active !== c.k ? s.dim : ''} ${active === c.k ? s.on : ''}`}
         onClick={() => onToggle(c.k)} onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onToggle(c.k); } }}>
         <circle cx={c.cx} cy={c.cy} r={R + 14} fill="transparent" stroke="none" />
         <motion.circle data-ring cx={c.cx} cy={c.cy} r={R} fill="none" stroke="url(#ik-line)" strokeWidth={1.5}
           strokeDasharray={LEN} style={{ strokeDashoffset: dash }} />
       </g>
-      <motion.text x={c.lx} y={c.ly} textAnchor="middle" className={s.label} style={{ opacity: label }}>{c.k}</motion.text>
+      <motion.text x={c.lx} y={c.ly} textAnchor="middle" className={s.label} style={{ opacity: label }}>{NAME[c.k]}</motion.text>
     </motion.g>
   );
 }
@@ -80,7 +82,7 @@ export default function IkigaiDiagram() {
     ? { where: 'Donde se cruzan las tres.', hint: 'Toca un círculo para ver cada parte.', tap: 'Toca un círculo.' }
     : { where: 'Where the three meet.', hint: 'Tap a circle to see each part.', tap: 'Tap a circle.' };
   const steps = [
-    ...C.map((c, i) => ({ id: c.k, n: `0${i + 1}`, title: c.k, body: ABOUT.ikigai[c.k] })),
+    ...C.map((c, i) => ({ id: c.k, n: `0${i + 1}`, title: NAME[c.k], body: ABOUT.ikigai[c.k] })),
     { id: 'center', n: '', title: ABOUT.ikigai.center, body: t.where },
   ];
   const shown = active ? C.findIndex((c) => c.k === active) : step;
