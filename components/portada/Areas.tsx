@@ -11,35 +11,17 @@ import s from './Areas.module.css';
    área la rellena del índigo de los filtros del catálogo y cambia el panel. Es un grupo de botones con aria-pressed y
    el panel es una región viva: con teclado y lector de pantalla funciona
    igual. Los textos salen de los casos, de los sectores y del CV. */
-type Area = {
+export type Area = {
   id: string; name: string; icon: IconName; years: string;
   body: string; areas: string[]; href: string; cta: string; external?: boolean;
 };
 
-const AREAS: Area[] = [
-  { id: 'insurtech', name: 'Insurtech', icon: 'shield', years: '2022 – 2026',
-    body: 'Un SaaS asegurador para compañías con lógicas incompatibles: 165 pantallas en 8 áreas, 12 idiomas y 347 permisos sobre un único núcleo y un único design system, sin una versión distinta por cliente.',
-    areas: ['Comercial', 'Suscripción', 'Pólizas y recibos', 'Siniestros', 'Facturación', 'Dirección'], href: '/es/cases/hermes', cta: 'Leer el caso' },
-  { id: 'erp', name: 'Facturación y ERP', icon: 'bill', years: '2024 – 2025',
-    body: 'Facturación electrónica para autónomos y pymes: una configuración que trabaja sola, factura rápida con estado intermedio y VeriFactu comprensible. El camino que cumple la norma, también el más corto.',
-    areas: ['Autónomos y pymes', 'Impuestos y VeriFactu', 'Bancos y cobros', 'Asesorías'], href: '/es/cases/flesip', cta: 'Leer el caso' },
-  { id: 'ecommerce', name: 'E-commerce', icon: 'bag', years: '2023 – 2025',
-    body: 'Una tienda para el cliente final y una web para más de 700 ópticas sobre la misma colección: dos ritmos de decisión y una dirección de arte que sostiene los dos.',
-    areas: ['Cliente final', 'Red de ópticas', 'Marca y fotografía'], href: '/es/cases/montsaint', cta: 'Leer el caso' },
-  { id: 'banca', name: 'Banca digital', icon: 'bank', years: '2021 – 2022',
-    body: 'Pagos digitales, adelanto de nómina, hipotecas y pedir dinero con un enlace, del deck comercial al flujo en banca en línea, con onboarding y autenticación reforzada en entorno regulado.',
-    areas: ['Producto', 'Negocio', 'Comercial', 'Comercios'], href: '/es/cases/mercantil', cta: 'Leer el caso' },
-  { id: 'movilidad', name: 'Movilidad', icon: 'steering', years: '2017 – 2019',
-    body: 'Una plataforma multimodal desde cero: primero el design system, después los flujos de pasajero y conductor y los paneles de operación.',
-    areas: ['Pasajeros', 'Conductores', 'Operación'], href: 'https://www.behance.net/gallery/81635187/Taksio-website', cta: 'Ver en Behance', external: true },
-];
-
-export default function Areas() {
+export default function Areas({ items: AREAS, labels }: { items: Area[]; labels: { group: string; forWhom: string } }) {
   const [id, setId] = useState(AREAS[0].id);
   const a = AREAS.find((x) => x.id === id)!;
   return (
     <div className={s.wrap}>
-      <div className={s.grid} role="group" aria-label="Áreas">
+      <div className={s.grid} role="group" aria-label={labels.group}>
           {AREAS.map((x) => {
             const on = x.id === id;
             return (
@@ -58,7 +40,7 @@ export default function Areas() {
             <p className={s.meta}>{a.years}</p>
             <h3 className={s.title}>{a.name}</h3>
             <p className={s.body}>{a.body}</p>
-            <p className={s.areasLabel}>Para quién diseñé</p>
+            <p className={s.areasLabel}>{labels.forWhom}</p>
             <ul className={s.areas}>{a.areas.map((x) => <li key={x}>{x}</li>)}</ul>
             {a.external
               ? <a href={a.href} target="_blank" rel="noopener" className={s.link}>{a.cta} <span aria-hidden="true">↗</span></a>

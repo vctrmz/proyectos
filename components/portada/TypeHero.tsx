@@ -17,11 +17,10 @@ import s from './TypeHero.module.css';
    detiene. Sin JavaScript se lee igual: son dos palabras en un h2. */
 const MODES = ['wire', 'outline', 'solid'] as const;
 type Mode = (typeof MODES)[number];
-const BAND = ['Víctor Maza', 'Senior Product Designer', 'Design systems', 'B2B SaaS', 'Insurtech', 'En remoto'];
 
 type Box = { x: number; y: number; w: number; h: number };
 
-export default function TypeHero() {
+export default function TypeHero({ band }: { band: string[] }) {
   const wrap = useRef<HTMLDivElement>(null);
   const words = [useRef<HTMLSpanElement>(null), useRef<HTMLSpanElement>(null)];
   const seen = useInView(wrap, { amount: 0.3 });
@@ -83,7 +82,7 @@ export default function TypeHero() {
 
       <div className={s.marquee} aria-hidden="true">
         <div className={s.track}>
-          {[0, 1].map((copy) => BAND.map((t, i) => (
+          {[0, 1].map((copy) => band.map((t, i) => (
             <span key={`${copy}-${i}`} className={`${s.item} ${s[`v${i % 3}`]}`}>{t}<i className={s.sep} /></span>
           )))}
         </div>

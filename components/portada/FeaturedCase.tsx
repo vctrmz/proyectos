@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { motion, useScroll, useTransform } from 'motion/react';
 import RollingNumber from '@/components/motion/RollingNumber';
 import { scrollEffectsAllowed } from '@/lib/motion/prefs';
-import { ROUTES } from '@/lib/i18n/config';
+import type { PortadaCopy } from './copy';
 import { Rise, Part } from './Rise';
 import s from './FeaturedCase.module.css';
 
@@ -16,13 +16,7 @@ import s from './FeaturedCase.module.css';
    Las dos capturas se mueven con el scroll a ritmos distintos (la de detrás
    más lenta), lo justo para que se lean como capas de un mismo producto. Solo
    con puntero fino y sin «menos movimiento»: en el móvil quedan quietas. */
-const METRICS = [
-  { value: '165', label: 'pantallas en producción' },
-  { value: '8', label: 'áreas sobre un núcleo' },
-  { value: '4', label: 'años como único diseñador' },
-];
-
-export default function FeaturedCase() {
+export default function FeaturedCase({ t, href }: { t: PortadaCopy['featured']; href: string }) {
   const box = useRef<HTMLElement>(null);
   const [fx, setFx] = useState(false);
   useEffect(() => { setFx(scrollEffectsAllowed()); }, []);
@@ -35,20 +29,17 @@ export default function FeaturedCase() {
     <section ref={box} className={s.band} aria-labelledby="hermes-title">
       <div className={`container ${s.grid}`}>
         <Rise className={s.copy}>
-          <Part as="h2" id="hermes-title" className={s.title}>HERMES, plataforma aseguradora</Part>
-          <Part as="p" className={s.meta}>Caso principal · Atrinium · 2022–2026</Part>
-          <Part as="p" className={s.lead}>
-            HERMES se vende a aseguradoras con lógicas incompatibles. En lugar de bifurcar el producto por cliente,
-            modelé un único núcleo configurable: la variación la absorbe la configuración, no la pantalla.
-          </Part>
+          <Part as="h2" id="hermes-title" className={s.title}>{t.title}</Part>
+          <Part as="p" className={s.meta}>{t.meta}</Part>
+          <Part as="p" className={s.lead}>{t.lead}</Part>
           <Part as="ul" className={s.metrics}>
-            {METRICS.map((m) => (
+            {t.metrics.map((m) => (
               <li key={m.label}><RollingNumber value={m.value} className={s.num} /><span className={s.metricLabel}>{m.label}</span></li>
             ))}
           </Part>
           <Part>
-            <Link href={ROUTES.es.caseOf('hermes')} className={s.cta}>
-              Leer el caso HERMES <span aria-hidden="true">→</span>
+            <Link href={href} className={s.cta}>
+              {t.cta} <span aria-hidden="true">→</span>
             </Link>
           </Part>
         </Rise>
@@ -58,7 +49,7 @@ export default function FeaturedCase() {
             <Image src="/assets/shots/20-drawer-contrato.webp" alt="" width={1600} height={1178} sizes="(max-width: 767px) 80vw, 520px" className={s.img} />
           </motion.div>
           <motion.div className={s.front} style={fx ? { y: front, scale } : undefined}>
-            <Image src="/assets/shots/08-planes-servicios.webp" alt="Listado de contratos de un cliente en HERMES Admin, con filtros por estado, firmantes y fechas" width={1600} height={1166} sizes="(max-width: 767px) 92vw, 720px" className={s.img} />
+            <Image src="/assets/shots/08-planes-servicios.webp" alt={t.alt} width={1600} height={1166} sizes="(max-width: 767px) 92vw, 720px" className={s.img} />
           </motion.div>
         </div>
       </div>

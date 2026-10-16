@@ -1,7 +1,9 @@
 import Link from 'next/link';
-import { STACK } from '@/lib/content/stack';
+import { stackIn } from '@/lib/content/en';
+import type { Locale } from '@/lib/i18n/config';
 import st from '@/components/home/Stack.module.css';
 import { ROUTES } from '@/lib/i18n/config';
+import { portadaCopy } from './copy';
 import { Rise, Part } from './Rise';
 import { Icon } from './icons';
 import s from './AboutCv.module.css';
@@ -15,36 +17,28 @@ import s from './AboutCv.module.css';
    Debajo, el stack de la portada con su mismo estilo, pero más corto: sin
    Vitest · axe, con GitHub en lugar de «Git y pull requests» y sin la nota
    del repositorio. */
-const STACK_GROUPS = STACK.groups.map((g) => ({
-  name: g.name,
-  items: g.items.filter((t) => t !== 'Vitest · axe').map((t) => (t === 'Git y pull requests' ? 'GitHub' : t)),
-}));
-const JOBS = [
-  { role: 'Senior Product Designer', where: 'Atrinium · Málaga', years: '2022 – 2026', note: 'Lideré como único diseñador los productos del holding: HERMES, la plataforma SaaS aseguradora, Flesip y Montsaint.' },
-  { role: 'UI / Product Designer', where: 'Darien Technology · Panamá, en remoto', years: '2021 – 2022', note: 'Banca digital para Mercantil Banco Panamá, con más de 100k usuarios activos: pagos, Mony, Tadelanto, hipotecas y préstamos.' },
-  { role: 'UX/UI Designer y freelance', where: 'Taksio y clientes internacionales', years: '2017 – 2020', note: 'Design system y flujos de una plataforma de movilidad; fintech, banca y logística como freelance.' },
-];
-
-export default function AboutCv() {
+export default function AboutCv({ locale }: { locale: Locale }) {
+  const t = portadaCopy(locale).about;
+  const STACK = stackIn(locale);
+  const STACK_GROUPS = STACK.groups.map((g) => ({
+    name: g.name,
+    items: g.items.filter((x) => x !== 'Vitest · axe').map((x) => (x === t.gitItem ? 'GitHub' : x)),
+  }));
   return (
     <div className={s.grid}>
       <Rise className={s.copy}>
-        <Part as="p" className={s.lead}>
-          Llevo más de ocho años diseñando producto digital B2B SaaS de punta a punta, del discovery a producción, en dominios regulados como seguros y banca.
-        </Part>
+        <Part as="p" className={s.lead}>{t.lead}</Part>
+        <Part as="p">{t.p2}</Part>
         <Part as="p">
-          Durante cuatro años lideré, como único diseñador, el diseño de un holding con cinco productos. Su núcleo es un SaaS multi-tenant en 12 idiomas y con la marca de cada cliente, sostenido por un único design system.
-        </Part>
-        <Part as="p">
-          Construyo design systems <Icon name="stack" className={s.ico} /> con reglas de uso y criterios de decisión, no solo librerías de componentes. Uso IA a diario <Icon name="sparkleLine" className={s.ico} /> para prototipar, sintetizar research e implementar, y como informático de formación reviso la implementación en React <Icon name="code" className={s.ico} />. Esta web es un proyecto Next.js con tests y código público.
+          {t.p3[0]} <Icon name="stack" className={s.ico} /> {t.p3[1]} <Icon name="sparkleLine" className={s.ico} /> {t.p3[2]} <Icon name="code" className={s.ico} />{t.p3[3]}
         </Part>
         <Part>
-          <Link href={ROUTES.es.about} className={s.more}>Más sobre mí y el CV <span aria-hidden="true">→</span></Link>
+          <Link href={ROUTES[locale].about} className={s.more}>{t.more} <span aria-hidden="true">→</span></Link>
         </Part>
       </Rise>
 
       <Rise as="ul" className={s.jobs}>
-        {JOBS.map((j) => (
+        {t.jobs.map((j) => (
           <Part as="li" key={j.role} className={s.job}>
             <p className={s.years}>{j.years}</p>
             <div>
@@ -57,8 +51,8 @@ export default function AboutCv() {
         <Part as="li" className={s.job}>
           <p className={s.years}>2017</p>
           <div>
-            <p className={s.role}>Titulación en Informática</p>
-            <p className={s.where}>Universidad de Oriente · 5 años</p>
+            <p className={s.role}>{t.degree.role}</p>
+            <p className={s.where}>{t.degree.where}</p>
           </div>
         </Part>
       </Rise>
