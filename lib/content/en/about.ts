@@ -38,6 +38,14 @@ export const ABOUT_EN: typeof ABOUT = {
   /* En ingles va la formulacion documentada de Nielsen —la del articulo de
      NN/g— y no una retraduccion del castellano: si alguien la busca, la
      encuentra tal cual. */
+  ideas: [
+    { book: 'design-of-everyday-things', text: 'When someone can’t use something, it’s rarely their fault. It’s a design problem.' },
+    { book: 'dont-make-me-think', text: 'A good interface doesn’t make you think. Every doubt it raises costs a click, or a user.' },
+    { book: 'laws-of-ux', text: 'People spend most of their time in other products. What they already know weighs more than what you invent.' },
+    { book: 'investigacion-ux', text: 'Research isn’t asking people what they want. It’s understanding what they do, and why.' },
+    { book: 'atomic-habits', text: 'You don’t rise to the level of your goals. You fall to the level of your systems.' },
+    { book: 'camino-del-artista', text: 'Creativity doesn’t wait for inspiration. You train it every day, like a craft.' },
+  ],
   quote: {
     ...ABOUT.quote,
     text: 'Pay attention to what users do, not what they say.',

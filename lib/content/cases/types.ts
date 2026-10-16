@@ -46,6 +46,9 @@ export interface CaseStudy {
   /* Una demo interactiva del producto, construida con su propio kit, para
      probarlo en vez de leerlo. Solo la trae el caso que la tiene. */
   demo?: { id: DemoId; intro: string };
+  /* Una demo externa ya publicada (otra web): se enlaza desde la cabecera
+     del caso con un botón, en lugar de incrustarla. */
+  demoUrl?: string;
   /* Las decisiones en rejilla bento en lugar de en lista: tarjetas grandes y
      pequeñas que se alternan, para casos con decisiones cortas y pocas
      imágenes, donde la lista dejaría media pantalla vacía. */

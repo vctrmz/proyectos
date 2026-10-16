@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
   const c = getCaseIn(locale, slug);
   if (!c) return {};
   const alt = EN_CASE_SLUGS.includes(slug) ? { es: `/es/cases/${slug}`, en: `/en/cases/${slug}` } : undefined;
-  return pageMetadata(`${c.title} · ${c.company} — Víctor Maza`, c.tagline, `/${locale}/cases/${slug}`, alt);
+  return pageMetadata(`${c.title} · ${c.company} | Víctor Maza`, c.tagline, `/${locale}/cases/${slug}`, alt);
 }
 
 export default async function Page({ params }: { params: Promise<{ locale: Locale; slug: string }> }) {

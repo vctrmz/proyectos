@@ -29,3 +29,8 @@ export const animate = (target: MV<number> | unknown, to: number) => {
   if (target && typeof (target as MV<number>).set === 'function') (target as MV<number>).set(to);
   return { stop: () => {}, then: (f: () => void) => { f(); return Promise.resolve(); } };
 };
+
+/* Scroll: en test el recorrido está terminado (progreso 1), así que los
+   componentes ligados al scroll se pintan en su estado final. */
+export const useScroll = () => ({ scrollYProgress: mv(1), scrollY: mv(0) });
+export const useMotionValueEvent = () => {};

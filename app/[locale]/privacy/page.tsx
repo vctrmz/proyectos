@@ -6,8 +6,8 @@ import PrivacyEn from '@/components/legal/PrivacyEn';
 import type { Locale } from '@/lib/i18n/config';
 
 const META = {
-  es: { title: 'Privacidad y cookies — Víctor Maza', description: 'Qué datos recoge esta web, con qué herramientas, para qué, y cómo cambiar tu decisión sobre las cookies.' },
-  en: { title: 'Privacy and cookies — Víctor Maza', description: 'What this site collects, with which tools, what for, and how to change your mind about cookies.' },
+  es: { title: 'Privacidad y cookies | Víctor Maza', description: 'Qué datos recoge esta web, con qué herramientas, para qué, y cómo cambiar tu decisión sobre las cookies.' },
+  en: { title: 'Privacy and cookies | Víctor Maza', description: 'What this site collects, with which tools, what for, and how to change your mind about cookies.' },
 } as const;
 
 export async function generateMetadata({ params }: { params: Promise<{ locale: Locale }> }): Promise<Metadata> {

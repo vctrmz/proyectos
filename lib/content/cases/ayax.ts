@@ -5,6 +5,7 @@ export const ayax: CaseStudy = {
   tagline: 'Una agencia de suscripción que trabaja con Lloyd’s, de folleto corporativo a plataforma de captación bilingüe: tres audiencias opuestas y ni una sola cotización online.',
   tags: ['Caso de estudio', 'En producción', 'Insurtech', 'Marca y sistema'], brand: '#000A29',
   hero: shot('ayax-x_hero', 'Cabecera de la web de Ayax: vídeo de Málaga, titular «Agencia de suscripción de seguros» y sello Coverholder at Lloyd’s', 'La portada abre con la categoría y la credencial de Lloyd’s en el mismo pliegue'),
+  demoUrl: 'https://ayax-summit-olive.vercel.app/',
   context: 'Ayax diseña y suscribe seguros por delegación de aseguradoras, entre ellas Lloyd’s. Veintiún meses de evolución continua: arquitectura, sistema de diseño, seis fichas de producto, una landing de conversión propia, segunda lengua completa y la marca que lo sostiene.',
   role: 'Product Designer único: arquitectura de información, sistema, interfaz, captación y marca, con los tokens en el mismo repositorio que consume desarrollo.',
   delivery: 'Sitio bilingüe con catálogo y fichas, landing de taxi, sección de partners, evento anual, brand book, piezas de redes y los emails de cada flujo de captación.',
@@ -24,7 +25,7 @@ export const ayax: CaseStudy = {
     body: [
       'El sistema no es una biblioteca aparte: vive como tema dentro del propio proyecto, así que el diseño no se entregó como maqueta a interpretar sino como tokens y componentes en el mismo repositorio que consume desarrollo. Cero traducción manual de valores en el handoff.',
       'La paleta es deliberadamente estrecha: un navy casi negro, un único acento oliva y una familia de azules fríos. El oliva tiene una luminancia muy alta, así que solo lleva texto navy encima y en texto pequeño se sustituye por una variante más oscura de la misma familia.',
-      'Las bandas de color —crema, blanco, azul muy claro y navy— sustituyen a los separadores: seis contenidos muy distintos se leen como un mismo sitio porque la secuencia se repite en todas las páginas.',
+      'Las bandas de color (crema, blanco, azul muy claro y navy) sustituyen a los separadores: seis contenidos muy distintos se leen como un mismo sitio porque la secuencia se repite en todas las páginas.',
     ],
     code: { title: 'Tokens de Ayax: paleta estrecha y un solo acento', lang: 'json', code: "{\n  \"color\": {\n    \"midnightBlue.500\": \"#000A29\",\n    \"olive.500\":        \"#C3D500\",\n    \"olive.text\":       \"#8B8D00\",\n    \"royalBlue.150\":    \"#376AD1\",\n    \"background.50\":    \"#F9FFE3\",\n    \"details.500\":      \"#E6F5FD\",\n    \"text.100\":         \"#141825\",\n    \"text.300\":         \"#696868\"\n  },\n  \"font\": {\n    \"family\": \"Inter\",\n    \"size\":   { \"body\": 14, \"h4\": 20, \"h3\": 24, \"h2\": 30, \"h1\": 48 },\n    \"weight\": { \"regular\": 400, \"medium\": 600, \"bold\": 700 }\n  },\n  \"radius\": { \"sm\": 4, \"md\": 8, \"lg\": 14, \"pill\": 999 },\n  \"space\":  { \"componente\": [8, 16, 24], \"seccion\": [48, 80, 120] }\n}" },
     uiKit: [
@@ -87,14 +88,15 @@ export const ayax: CaseStudy = {
     ],
   },
   design: [
-    shot('ayax-x_taxi', 'Beneficios del seguro de taxi: protección total, precios justos, gestión fácil y siempre a tu lado', 'Landing de taxi: cuatro beneficios en el lenguaje del taxista, no en el del sector'),
+    shot('ayax-sobre', 'Página Sobre Ayax: cabecera, valores en acordeón, frase de marca y sectores con los que trabaja', 'Sobre Ayax: valores, la frase de marca y los sectores con los que trabaja, en la misma secuencia de bandas que el resto del sitio'),
     shot('ayax-guidelines', 'Guías de marca de Ayax: logo, colores primarios y tipografía Inter', 'Brand book: la X se lee como firma de aprobación y como cruce entre aseguradoras y partners'),
     shot('ayax-campaign', 'Campaña «Que tu riesgo tenga siempre luz verde» y save the date de Ayax Evolution', 'Campaña de marca y evento anual, con degradado y variante de botón propios'),
     shot('ayax-merch3', 'Polo del equipo con la X cruzando la prenda', 'El trazo de la X cruza el polo del equipo como una firma'),
+    shot('ayax-aplicaciones', 'Aplicaciones de marca: cartel en el metro, tarjetas, botellas, libretas, bolígrafos, bolsa de deporte y roll-up', 'La marca fuera de la pantalla: metro, papelería, merchandising y roll-up con la misma X y los mismos tres colores'),
   ],
   implementation: [
     'Veintiún meses de evolución continua sobre el mismo sistema: un vertical nuevo (taxi), una segunda lengua completa con el idioma en la URL, una campaña con identidad propia y una migración de repositorio con los tokens intactos.',
-    'Lo que la web no resolvía lo resolvieron los emails: sin tarificador, la experiencia es lo que pasa después del formulario. Cada flujo —partner, taxi y evento— tiene su respuesta, con una sola acción principal y los plazos por escrito, frente a los cuatro «Contáctanos» idénticos del recorrido web.',
+    'Lo que la web no resolvía lo resolvieron los emails: sin tarificador, la experiencia es lo que pasa después del formulario. Cada flujo (partner, taxi y evento) tiene su respuesta, con una sola acción principal y los plazos por escrito, frente a los cuatro «Contáctanos» idénticos del recorrido web.',
     'La auditoría del sitio en producción dejó catorce hallazgos abiertos, priorizados en seis tandas: primero cumplimiento y accesibilidad, después la credibilidad de una marca que vende confianza.',
   ],
   result: {
