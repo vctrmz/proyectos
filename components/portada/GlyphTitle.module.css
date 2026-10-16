@@ -1,0 +1,9 @@
+.title { --tint: var(--focus); font-size: var(--fs-1000); letter-spacing: -0.04em; line-height: 1; font-weight: 500; color: var(--ink); text-transform: lowercase; }
+.dark { --tint: var(--accent); color: #fff; }
+.word { position: relative; display: inline-flex; align-items: baseline; padding-bottom: 0.12em; }
+/* El icono ocupa el hueco de una letra y se apoya en la línea base. */
+.icon { display: inline-grid; place-items: center; width: 0.62em; height: 0.62em; margin-inline: 0.03em; align-self: center; translate: 0 0.06em; color: var(--tint); }
+.icon svg { width: 100%; height: 100%; transition: rotate .5s var(--ease); }
+.title:hover .icon svg { rotate: 180deg; }
+.line { position: absolute; left: 0; right: 0; bottom: 0; height: 0.07em; border-radius: 1em; background: var(--tint); transform-origin: left center; }
+@media (prefers-reduced-motion: reduce) { .title:hover .icon svg { rotate: none; } }

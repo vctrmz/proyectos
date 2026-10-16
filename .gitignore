@@ -13,3 +13,10 @@ next-env.d.ts
 .env
 .env.*
 !.env.example
+
+# Taste Skill: working files of design-taste-frontend
+.taste-skill/
+
+# Magnific MCP skill: credit config and spend log, never in the repo
+budget.json
+user_config.json

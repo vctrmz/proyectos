@@ -1,0 +1,22 @@
+/* La banda oscura del final se une al pie, como en la referencia. */
+.band { background: var(--night); color: #fff; padding-block: clamp(96px, 12vw, 180px) clamp(64px, 8vw, 112px); }
+.inner { display: grid; gap: clamp(32px, 4vw, 56px); justify-items: start; }
+
+.big { display: grid; gap: 0; text-align: left; font-size: clamp(3rem, 10vw, 9rem); font-weight: 500; letter-spacing: -0.045em; line-height: 0.98; color: #fff; }
+.big:focus-visible { outline-color: var(--focus-on-night); outline-offset: 8px; }
+.line { position: relative; isolation: isolate; display: inline-block; justify-self: start; padding-bottom: 0.1em; }
+.copy { display: inline-block; color: var(--accent); }
+.ok { display: inline-block; color: #fff; }
+/* El trazo pasa por detrás de las letras, a la altura de los descendentes:
+   la «¿», la «p» y la «g» quedan por encima, como en la referencia. */
+.under { position: absolute; z-index: -1; left: -0.03em; bottom: 0.02em; width: calc(100% + 0.08em); height: 0.2em; overflow: visible; }
+.stroke { fill: none; stroke: var(--focus-on-night); stroke-linecap: round; stroke-linejoin: round; }
+.big:hover .copy { text-decoration: none; }
+.hint { font-size: var(--fs-300); color: var(--inset-ink-2); margin-top: calc(var(--sp-16) * -1); }
+
+.foot { display: grid; gap: var(--sp-24); padding-top: var(--sp-32); }
+.available { display: flex; align-items: center; gap: 10px; font-size: var(--fs-300); color: var(--inset-ink); }
+.dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); flex: none; }
+.ctas { display: flex; flex-wrap: wrap; gap: var(--sp-12); }
+.ctas :global(a[class*="outline"]) { color: var(--inset-ink); border-color: rgba(236,236,236,.35); }
+.ctas :global(a[class*="outline"]:hover) { background: rgba(255,255,255,.06); }

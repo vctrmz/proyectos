@@ -1,0 +1,36 @@
+.wrap { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--sp-16); align-content: start; }
+
+/* Fichas compactas: icono a la izquierda, nombre y años a la derecha. Mismo
+   lenguaje que el resto de la web: un paso de tono al pasar y, la
+   seleccionada, rellena del índigo de los filtros del catálogo, con el texto
+   en blanco. Sin sombras ni bordes. */
+.tile { position: relative; display: grid; grid-template-columns: 24px minmax(0, 1fr); align-items: center; column-gap: var(--sp-12); row-gap: 2px; min-height: 76px; padding: var(--sp-12) var(--sp-16); border-radius: 12px; background: var(--surface); text-align: left; transition: background .2s var(--ease), color .2s var(--ease); }
+.tile:hover { background: var(--plate); }
+.tile:active { transform: scale(.99); }
+.on, .on:hover { background: var(--focus); }
+.icon { grid-row: span 2; width: 22px; height: 22px; color: var(--ink-2); transition: color .2s var(--ease); }
+.on .icon, .on .name { color: #fff; }
+.on .years { color: rgba(255,255,255,.78); }
+.name { font-size: var(--fs-300); font-weight: 500; letter-spacing: -0.01em; line-height: 1.25; color: var(--ink); }
+.years { font-size: 13px; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+/* El panel: lo que resolví en el área seleccionada, a su lado. */
+.panel { position: sticky; top: 112px; min-height: 340px; }
+.meta { font-size: var(--fs-200); color: var(--focus); margin-bottom: var(--sp-8); font-variant-numeric: tabular-nums; }
+.title { font-size: var(--fs-800); letter-spacing: -0.03em; line-height: 1.1; margin-bottom: var(--sp-24); }
+.body { font-size: var(--fs-400); line-height: 1.55; color: var(--ink); margin-bottom: var(--sp-24); }
+.areasLabel { font-size: var(--fs-200); color: var(--ink-3); margin-bottom: var(--sp-8); }
+.areas { list-style: none; margin: 0 0 var(--sp-32); padding: 0; display: flex; flex-wrap: wrap; gap: var(--sp-8); }
+.areas li { font-size: var(--fs-200); padding: 6px 12px; border-radius: var(--r-pill); background: var(--surface); color: var(--ink); }
+.link { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 500; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+.link span { transition: transform .25s var(--ease); }
+.link:hover span { transform: translateX(4px); }
+
+@media (max-width: 899px) {
+  .wrap { grid-template-columns: 1fr; }
+  .panel { position: static; min-height: 0; }
+}
+@media (max-width: 520px) {
+  .grid { grid-template-columns: 1fr; gap: var(--sp-12); }
+}

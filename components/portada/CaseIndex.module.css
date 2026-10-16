@@ -1,0 +1,34 @@
+.wrap { position: relative; }
+.list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+
+/* Cada fila se separa por espacio y, al pasar, por un paso de tono: sin
+   líneas. Cuatro columnas que se leen en diagonal: qué, quién, dónde, ir. */
+.row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 18rem) 9rem 2rem; align-items: baseline; gap: var(--sp-24); padding: 22px var(--sp-24); margin-inline: calc(var(--sp-24) * -1); border-radius: var(--r-card); transition: background .25s var(--ease); }
+/* Al pasar, una barra verde entra desde la izquierda, como en tigranz.com:
+   el mismo verde de Contactar, detrás del texto. */
+.row { position: relative; isolation: isolate; }
+.row::before { content: ""; position: absolute; inset: 0; z-index: -1; border-radius: var(--r-card); background: var(--accent); transform: scaleX(0); transform-origin: left center; transition: transform .45s var(--ease); }
+.row:hover::before, .row:focus-visible::before { transform: scaleX(1); }
+.row:hover .meta, .row:hover .sector, .row:focus-visible .meta, .row:focus-visible .sector { color: var(--ink); }
+.title { font-size: var(--fs-600); font-weight: 500; letter-spacing: -0.02em; line-height: 1.2; transition: transform .35s var(--ease); }
+.row:hover .title { transform: translateX(6px); }
+.meta, .sector { font-size: var(--fs-200); color: var(--ink-2); }
+.arrow { justify-self: end; font-size: var(--fs-500); transition: transform .3s var(--ease); }
+.row:hover .arrow { transform: translateX(4px) rotate(-45deg); }
+.thumb { display: none; }
+
+/* La captura que sigue al cursor: fija a la ventana, nunca intercepta el
+   puntero y se ancla un poco abajo a la derecha de la flecha del ratón. */
+.preview { position: fixed; left: 0; top: 0; z-index: 40; pointer-events: none; }
+.frame { position: relative; width: 340px; aspect-ratio: 4 / 3; margin: -110px 0 0 32px; border-radius: 14px; overflow: hidden; background: var(--plate); }
+.img { object-fit: cover; object-position: top left; }
+
+@media (hover: none), (pointer: coarse), (max-width: 767px) {
+  .row { grid-template-columns: 72px minmax(0, 1fr) 1.5rem; grid-template-areas: 'thumb title arrow' 'thumb meta arrow'; align-items: center; row-gap: 4px; padding: var(--sp-16); margin-inline: calc(var(--sp-16) * -1); }
+  .thumb { display: block; grid-area: thumb; width: 72px; height: 56px; object-fit: cover; object-position: top left; border-radius: 8px; background: var(--plate); }
+  .title { grid-area: title; font-size: var(--fs-400); }
+  .meta { grid-area: meta; }
+  .sector { display: none; }
+  .arrow { grid-area: arrow; }
+  .preview { display: none; }
+}

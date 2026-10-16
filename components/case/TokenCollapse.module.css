@@ -1,0 +1,45 @@
+.wrap { margin: 0; }
+
+.bar { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: var(--sp-16) var(--sp-32); margin-bottom: var(--sp-24); }
+.count { display: flex; align-items: baseline; gap: var(--sp-12); }
+.num { font-size: var(--fs-1000); font-weight: 500; letter-spacing: -0.04em; line-height: 0.9; font-variant-numeric: tabular-nums; }
+.unit { font-size: var(--fs-400); color: var(--ink-2); }
+
+/* El interruptor: dos estados, una píldora que viaja entre ellos. Sin línea:
+   el grupo se separa del fondo con un paso de tono. */
+.switch { display: inline-flex; padding: 4px; border-radius: var(--r-pill); background: var(--surface); }
+.switch button { position: relative; min-height: 44px; padding: 0 18px; border-radius: var(--r-pill); font-size: var(--fs-200); font-weight: 500; color: var(--ink-2); transition: color .2s var(--ease); }
+.switch button:hover { color: var(--ink); }
+.switch .on { color: #fff; }
+.pill { position: absolute; inset: 0; border-radius: var(--r-pill); background: var(--ink); }
+.label { position: relative; }
+
+/* El campo. En «auditoría» es una rejilla de 27 × 10 muestras pequeñas en
+   orden revuelto; en «tokens», 12 × 2 fichas con todas sus variantes apiladas
+   en la misma celda. La caja conserva el alto para que no salte la página. */
+.field { position: relative; display: grid; gap: 4px; aspect-ratio: 27 / 10; }
+.sw { display: block; }
+.audit { grid-template-columns: repeat(27, 1fr); align-content: start; }
+/* Un anillo interior casi invisible: sin él, los blancos y los grises claros
+   se pierden contra el fondo y el campo parece tener huecos. */
+.audit .sw { aspect-ratio: 1; box-shadow: inset 0 0 0 1px rgba(18,19,23,.06); }
+.tokens { grid-template-columns: repeat(12, 1fr); grid-template-rows: repeat(2, 150px); align-content: center; column-gap: var(--sp-12); row-gap: var(--sp-24); }
+.tokens .sw { grid-column: var(--c); grid-row: var(--r); height: 72px; align-self: start; box-shadow: inset 0 0 0 1px rgba(18,19,23,.06); }
+/* Las etiquetas solo se parten por el guion («action-/hover»), nunca a mitad
+   de palabra: sin overflow-wrap agresivo y con un tamaño que encoge con la
+   ficha. */
+.name { grid-column: var(--c); grid-row: var(--r); align-self: start; padding-top: 82px; min-width: 0; display: flex; flex-direction: column; gap: 2px; font-size: clamp(12.5px, 1.05vw, 14.5px); line-height: 1.25; overflow-wrap: normal; word-break: normal; hyphens: manual; }
+.name b { font-weight: 500; color: var(--ink); }
+.name span { color: var(--ink-3); font-variant-numeric: tabular-nums; }
+
+.cap { margin-top: var(--sp-24); max-width: var(--measure-mid); font-size: var(--fs-300); color: var(--ink-2); }
+.note { color: var(--ink-3); }
+
+@media (max-width: 767px) {
+  .num { font-size: var(--fs-900); }
+  .field { aspect-ratio: 15 / 18; }
+  .audit { grid-template-columns: repeat(15, 1fr); gap: 3px; }
+  .tokens { grid-template-columns: repeat(6, 1fr); grid-template-rows: repeat(4, 112px); column-gap: 6px; row-gap: var(--sp-16); }
+  .tokens .sw { grid-column: var(--cm); grid-row: var(--rm); height: 48px; }
+  .name { grid-column: var(--cm); grid-row: var(--rm); padding-top: 56px; font-size: 12.5px; letter-spacing: -0.02em; }
+}

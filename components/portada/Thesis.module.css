@@ -1,0 +1,3 @@
+.wrap { padding-block: clamp(120px, 14vw, 220px); }
+/* Tamaño de enunciado (36 px como mucho), no de titular. */
+.text { font-size: clamp(1.5rem, 3vw, 2.25rem); line-height: 1.3; letter-spacing: -0.02em; font-weight: 500; max-width: 34ch; color: var(--ink); }
