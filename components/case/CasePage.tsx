@@ -24,6 +24,7 @@ import UiKit from './UiKit';
 import TokenCollapse from './TokenCollapse';
 import TokenCompare from './TokenCompare';
 import CaseDemo from './demos/CaseDemo';
+import CaseStoryboard from './storyboard/CaseStoryboard';
 import { ChallengeGrid, AudienceGrid, FlowList, FindingsTable } from './CaseBlocks';
 import s from './case.module.css';
 
@@ -130,6 +131,9 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
           </div></ViewTransition>
         </div>
         <div className="container">
+          {/* Con storyboard, el caso se cuenta por planos y sustituye al
+              documento: contexto, rol y entrega viven en los actos. */}
+          {c.storyboard ? <CaseStoryboard c={c} locale={locale} /> : <>
           <div className={s.cols}><div><h2>{ui.case.context}</h2><p>{c.context}</p></div><div><h2>{ui.case.role}</h2><p>{c.role}</p></div><div><h2>{ui.case.delivery}</h2><p>{c.delivery}</p></div></div>
           <div className={s.doc}>
             <CaseNav items={sections.map(({ id, label }) => ({ id, label }))} label={ui.case.index} heading={ui.case.parts(sections.length)} />
@@ -142,6 +146,7 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
               ))}
             </div>
           </div>
+          </>}
           <NextCase slug={c.next} locale={locale} />
         </div>
         <CaseDock items={sequence} current={sequence.findIndex((x) => x.slug === c.slug)} backHref={r.work} labels={ui.case.dock} />

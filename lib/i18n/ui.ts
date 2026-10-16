@@ -25,6 +25,8 @@ export interface Ui {
     sections: Record<string, string>;
     why: string; changed: string; tradeoff: string; wouldFix: string;
     systemToggle: string; implToggle: string; kitLabel: string;
+    /* El caso contado como storyboard (ver `Storyboard` en los tipos del caso). */
+    story: { slate: string; company: string; years: string; acts: string; shots: string; decisions: string; map: string; mapNote: string; rowActs: string; rowShots: string; rowDecision: string; rowFrame: string; frame: { draw: string; live: string; shot: string; diagram: string }; act: string; shot: string; decision: string; bridge: string; meta: (shots: number, decisions: number) => string; progress: string; close: string; learnings: string };
     output: string; outcome: string; unavailable: string; measure: string;
     codeIllustrative: string; codeRepo: string; codeOpen: string;
     findings: { n: string; finding: string; rule: string; severity: string; where: string; caption: string };
@@ -89,6 +91,7 @@ const es: Ui = {
     sections: { 'c-problema': 'Problema', 'c-demo': 'Pruébalo', 'c-reto': 'El reto', 'c-complejidad': 'Complejidad', 'c-audiencias': 'Audiencias', 'c-decisiones': 'Decisiones', 'c-flujos': 'Flujos', 'c-sistema': 'Sistema', 'c-diseno': 'Diseño', 'c-hallazgos': 'Hallazgos', 'c-impl': 'Implementación', 'c-resultado': 'Resultado', 'c-apr': 'Aprendizajes' },
     why: 'Por qué.', changed: 'Qué cambió.', tradeoff: 'Contrapartida asumida', wouldFix: 'Lo que corregiría',
     systemToggle: 'Tokens, componentes y reglas', implToggle: 'Cómo llegó a producción', kitLabel: 'Kit del sistema',
+    story: { slate: 'Ficha del caso', company: 'Empresa', years: 'Año', acts: 'Actos', shots: 'Planos', decisions: 'Decisiones', map: 'El caso, plano a plano', mapNote: 'Cada columna es un plano. Las marcas señalan dónde se tomó una decisión; pulsa un plano para ir a él.', rowActs: 'Actos', rowShots: 'Planos', rowDecision: 'Decisión', rowFrame: 'Fotograma', frame: { draw: 'Dibujo', live: 'Pieza viva', shot: 'Captura', diagram: 'Diagrama' }, act: 'Acto', shot: 'Plano', decision: 'Decisión', bridge: 'Lleva a', meta: (n, d) => `${n} ${n === 1 ? 'plano' : 'planos'}${d ? ` · ${d} ${d === 1 ? 'decisión' : 'decisiones'}` : ''}`, progress: 'Progreso del storyboard', close: 'Resultado', learnings: 'Aprendizajes' },
     output: 'Output', outcome: 'Outcome', unavailable: 'Dato no disponible', measure: 'Qué mediría hoy',
     codeIllustrative: 'ejemplo ilustrativo', codeRepo: 'extracto del repositorio', codeOpen: 'Ver el archivo en GitHub',
     findings: { n: '#', finding: 'Hallazgo', rule: 'Regla', severity: 'Severidad', where: 'Dónde', caption: 'Hallazgos ordenados por severidad, con la regla que incumplen y la pantalla donde ocurren' },
@@ -160,6 +163,7 @@ const en: Ui = {
     sections: { 'c-problema': 'Problem', 'c-demo': 'Try it', 'c-reto': 'The challenge', 'c-complejidad': 'Complexity', 'c-audiencias': 'Audiences', 'c-decisiones': 'Decisions', 'c-flujos': 'Flows', 'c-sistema': 'System', 'c-diseno': 'Design', 'c-hallazgos': 'Findings', 'c-impl': 'Implementation', 'c-resultado': 'Result', 'c-apr': 'Takeaways' },
     why: 'Why.', changed: 'What changed.', tradeoff: 'Trade-off accepted', wouldFix: 'What I would fix',
     systemToggle: 'Tokens, components and rules', implToggle: 'How it reached production', kitLabel: 'System kit',
+    story: { slate: 'Case slate', company: 'Company', years: 'Year', acts: 'Acts', shots: 'Shots', decisions: 'Decisions', map: 'The case, shot by shot', mapNote: 'Each column is a shot. The marks show where a decision was made; select a shot to jump to it.', rowActs: 'Acts', rowShots: 'Shots', rowDecision: 'Decision', rowFrame: 'Frame', frame: { draw: 'Drawing', live: 'Live piece', shot: 'Screenshot', diagram: 'Diagram' }, act: 'Act', shot: 'Shot', decision: 'Decision', bridge: 'Leads to', meta: (n, d) => `${n} ${n === 1 ? 'shot' : 'shots'}${d ? ` · ${d} ${d === 1 ? 'decision' : 'decisions'}` : ''}`, progress: 'Storyboard progress', close: 'Outcome', learnings: 'Learnings' },
     output: 'Output', outcome: 'Outcome', unavailable: 'Data not available', measure: 'What I would measure today',
     codeIllustrative: 'illustrative example', codeRepo: 'excerpt from the repository', codeOpen: 'See the file on GitHub',
     findings: { n: '#', finding: 'Finding', rule: 'Rule', severity: 'Severity', where: 'Where', caption: 'Findings ordered by severity, with the rule they break and the screen where they happen' },

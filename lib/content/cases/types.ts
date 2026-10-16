@@ -33,6 +33,19 @@ export type UiKitKind = 'actions' | 'states' | 'table' | 'form' | 'phases' | 'to
    lo mismo con el color: la paleta de verdad del producto, en el orden de
    `labels`. */
 export interface UiKitPiece { kind: UiKitKind; title: string; body: string; wide?: boolean; label?: string; labels?: string[]; swatches?: string[] }
+/* Storyboard del caso: el detalle contado como una película por planos. Cada
+   plano es un paso con su fotograma (dibujo, pieza viva del caso, captura real
+   o diagrama), lo que pasa en él y, si lo hay, la decisión que lo mueve. La
+   decisión es un índice en `decisions`: el texto vive en un solo sitio y los
+   tests de contenido lo siguen vigilando. Sin storyboard, el caso se lee como
+   el documento de siempre. */
+export type StoryDrawId = 'five-languages' | 'copies' | 'one-size' | 'four-fronts' | 'one-language';
+export type StoryLiveId = 'token-collapse' | 'token-compare' | 'uikit' | 'code';
+export type StoryFrame = { draw: StoryDrawId; alt: string } | { live: StoryLiveId } | { shot: Shot } | { diagram: DiagramId };
+export interface StoryShot { title: string; frame: StoryFrame; action: string; decision?: number; bridge?: string }
+export interface StoryAct { title: string; summary: string; shots: StoryShot[] }
+export interface Storyboard { acts: StoryAct[] }
+
 export interface CaseStudy {
   slug: string; title: string; company: string; years: string; tagline: string; tags: string[]; brand: string;
   hero: Shot; context: string; role: string; delivery: string;
@@ -56,5 +69,6 @@ export interface CaseStudy {
   design: Shot[]; implementation: string[];
   result: { output: Metric[]; outcome: Metric[] | 'unavailable'; measure: string };
   learnings: string[]; next: string;
+  storyboard?: Storyboard;
 }
 export const shot = (name: string, alt: string, caption: string): Shot => ({ src: `/assets/shots/${name}.webp`, alt, caption });

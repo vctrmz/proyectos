@@ -68,5 +68,56 @@ export const designSystem: CaseStudy = {
     'El punto de partida de un sistema es el código que ya existe, no la pizarra.',
     'La gobernanza se dimensiona por producto: imponerla donde no hace falta la mata.',
   ],
+  /* El caso contado por planos. Los textos salen del propio caso (contexto,
+     problema, decisiones, sistema, implementación y outcome); lo único nuevo
+     son los puentes entre planos. El primer y el último dibujo riman: cinco
+     productos con cinco lenguajes y, al final, los mismos cinco con uno. */
+  storyboard: {
+    acts: [
+      {
+        title: 'Punto de partida',
+        summary: 'Al entrar, cada módulo de HERMES se había construido con criterios distintos, y el holding tenía cinco productos con cinco lenguajes.',
+        shots: [
+          { title: 'Cinco productos, cinco lenguajes', frame: { draw: 'five-languages', alt: 'Cinco ventanas de producto, cada una con su propia cabecera y un botón de forma distinta.' }, action: 'Cada producto resuelve la cabecera, el botón y la tarjeta a su manera. Ninguno está mal; juntos no parecen de la misma empresa.', bridge: 'El mismo componente aparece una y otra vez, escrito de nuevo cada vez.' },
+          { title: 'El mismo componente, escrito cuatro veces', frame: { draw: 'copies', alt: 'Cuatro selectores casi iguales separados por signos de distinto.' }, action: 'Sin una base compartida, reutilizar componentes entre productos no ahorra nada.', bridge: 'La salida evidente era un sistema único para todos.' },
+          { title: 'La talla única', frame: { draw: 'one-size', alt: 'Un sistema pesado que cae sobre cinco productos; un círculo marca los dos más ligeros.' }, action: 'La respuesta obvia era imponer un sistema único; los productos ligeros no necesitan esa gobernanza.', bridge: 'Antes de proponer nada, había que medir lo que ya existía en el código.' },
+        ],
+      },
+      {
+        title: 'Medir antes de dibujar',
+        summary: 'Propuse el sistema, lo construí desde cero y lo defendí ante los cuatro desarrolladores front.',
+        shots: [
+          { title: 'Auditar el monorepo', frame: { live: 'token-collapse' }, decision: 0, action: 'Los valores de color que había en el código caen sobre los tokens que los sustituyen. El interruptor deja ir y volver entre la auditoría y el sistema.', bridge: 'Con el recuento en la mano, el sistema podía crecer sobre el que ya había.' },
+          { title: 'Evolucionar, no tirar', frame: { shot: shot('07-seleccionar-moneda', 'Selector de moneda del design system', 'Selector de moneda: el mismo componente en los cuatro front') }, decision: 1, action: 'El selector de moneda es el mismo componente en los cuatro front: los tokens evolucionan el design system existente en lugar de sustituirlo.', bridge: 'Faltaba decir cuándo se usa cada pieza, y cuándo no.' },
+          { title: 'Reglas de decisión', frame: { diagram: 'system-cycle' }, decision: 2, action: 'El sistema alimenta el módulo y el módulo devuelve componentes al sistema. Las reglas dicen cuándo aplicar cada patrón.', bridge: 'Con las reglas escritas, el nombre de cada token tenía que contar para qué sirve.' },
+        ],
+      },
+      {
+        title: 'Un sistema que se explica solo',
+        summary: 'Tokens semánticos, componentes con contrato, jerarquía tipográfica y reglas de uso documentadas; brandsheet y UI kit para los productos ligeros.',
+        shots: [
+          { title: 'Tokens con rol, no con nombre de color', frame: { live: 'token-compare' }, action: 'Mismos colores, mismos valores. Solo una de las dos versiones dice para qué sirve cada uno, y eso es lo que decide si un front nuevo, o una IA, acierta sin preguntar.', bridge: 'Los mismos tokens se exportan como JSON.' },
+          { title: 'Los tokens, como datos', frame: { live: 'code' }, action: 'Marca e idioma son variables: la paleta de cada cliente se resuelve al iniciar sesión sin duplicar componentes.', bridge: 'Del token a la pieza: el kit que usan los productos ligeros.' },
+          { title: 'El kit del sistema', frame: { live: 'uikit' }, action: 'Las piezas salen de los tokens: el mismo componente en cuatro marcas, una escala de esquinas con nombre y estados que significan lo mismo en los cuatro front.', bridge: 'Del kit a las pantallas en producción.' },
+        ],
+      },
+      {
+        title: 'En producción',
+        summary: 'Adoptado por los cuatro desarrolladores front. Es lo que hace que cinco negocios distintos no se sientan como cinco empresas distintas.',
+        shots: [
+          { title: 'Método de pago', frame: { shot: shot('09-metodo-pago', 'Método de pago', 'Método de pago compuesto con componentes del sistema') }, action: 'Una pantalla compuesta con componentes del sistema.', bridge: 'El mismo patrón se repite en el resto de la plataforma.' },
+          { title: 'Agregar participantes', frame: { shot: shot('18-agregar-participantes', 'Agregar participantes', 'Agregar participantes: el mismo patrón de selección en toda la plataforma') }, action: 'El mismo patrón de selección en toda la plataforma.', bridge: 'Detrás de cada pantalla, los mismos tokens en los cuatro front.' },
+          { title: 'Cuatro front, un sistema', frame: { draw: 'four-fronts', alt: 'Un bloque de tokens del que salen cuatro pantallas; cada una recibe un check.' }, action: 'La adopción es la métrica de un design system; sin ella es una librería más. Los cuatro front lo adoptaron.', bridge: 'De vuelta al primer plano.' },
+        ],
+      },
+      {
+        title: 'Cinco productos, un lenguaje',
+        summary: 'Sistema completo donde hace falta; brandsheet y UI kit donde no.',
+        shots: [
+          { title: 'Cinco productos, un lenguaje', frame: { draw: 'one-language', alt: 'Las mismas cinco ventanas del primer plano, ahora con la misma cabecera y el mismo botón.' }, action: 'Los cinco productos del holding comparten tokens y criterios, con el nivel de gobernanza que cada uno se puede permitir.' },
+        ],
+      },
+    ],
+  },
   next: 'pidemony',
 };
