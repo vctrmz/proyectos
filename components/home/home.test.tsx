@@ -16,17 +16,18 @@ describe('portada', () => {
     expect(h1.textContent).toMatch(/producción/i);
     expect(screen.getByRole('link', { name: /Ver el caso HERMES/ })).toHaveAttribute('href', '/es/cases/hermes');
     expect(screen.getByRole('button', { name: /Contactar/ })).toHaveAttribute('aria-haspopup', 'dialog');
-    expect(screen.getByText(/Insurtech/)).toBeInTheDocument();
+    expect(screen.getByText(/IA aplicada al diseño/)).toBeInTheDocument();
+    expect(screen.queryByText(/Insurtech/)).toBeNull();
     expect(screen.queryByText(/Disponible desde/)).toBeNull();
   });
   it('el hero declara design systems y la implementación en React', () => {
     render(<Hero />);
-    expect(screen.getByText(/Senior Product Designer · Design Systems · B2B SaaS e Insurtech/)).toBeInTheDocument();
+    expect(screen.getByText(/Senior Product Designer · B2B SaaS · Design Systems · IA aplicada al diseño/)).toBeInTheDocument();
     expect(screen.getByText(/revis\w+ la implementación en React/)).toBeInTheDocument();
   });
   it('el hero en inglés dice lo mismo', () => {
     render(<Hero locale="en" />);
-    expect(screen.getByText(/Senior Product Designer · Design Systems · B2B SaaS and Insurtech/)).toBeInTheDocument();
+    expect(screen.getByText(/Senior Product Designer · B2B SaaS · Design Systems · AI applied to design/)).toBeInTheDocument();
   });
   it('el hero pone junto al nombre LinkedIn, Behance y Figma, sin monograma', () => {
     const { container } = render(<Hero />);
@@ -89,12 +90,12 @@ describe('portada', () => {
   it('el cierre pregunta por el producto complejo y abre las competencias', () => {
     render(<Closing />);
     expect(screen.getByRole('heading', { level: 2 }).textContent).toMatch(/producto complejo/i);
-    // las cuatro filas son botones de acordeón: la primera abierta, el resto cerradas
+    // las cinco filas son botones de acordeón: la primera abierta, el resto cerradas
     const rows = screen.getAllByRole('button', { expanded: false });
-    expect(rows.length).toBe(3);
+    expect(rows.length).toBe(4);
     const first = screen.getByRole('button', { expanded: true });
     expect(first.textContent).toMatch(/Estrategia y diseño de producto/);
-    expect(first.textContent).toMatch(/03 competencias/);
+    expect(first.textContent).toMatch(/04 competencias/);
     expect(screen.getByText(/Experiencias complejas en B2B SaaS/)).toBeInTheDocument();
     expect(screen.getByText(/Disponible ahora · roles Senior o Lead de Product Design/)).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'Contactar' })).toHaveAttribute('aria-haspopup', 'dialog');

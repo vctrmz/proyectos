@@ -18,12 +18,12 @@ import type { Locale } from '@/lib/i18n/config';
 
 const META = {
   es: {
-    title: 'Víctor Maza — Senior Product Designer · Design Systems, B2B SaaS e Insurtech',
-    description: 'Convierto reglas de negocio en tokens, componentes y producto que llega a producción. Más de ocho años en SaaS asegurador, ERP y banca. Casos de HERMES, design systems y el código de esta web.',
+    title: 'Víctor Maza — Senior Product Designer · B2B SaaS, Design Systems e IA aplicada al diseño',
+    description: 'Convierto reglas de negocio en tokens, componentes y producto que llega a producción. Más de ocho años en SaaS multi-tenant, facturación y banca, con el impacto medido. Casos de HERMES, design systems y el código de esta web.',
   },
   en: {
-    title: 'Víctor Maza — Senior Product Designer · Design Systems, B2B SaaS and Insurtech',
-    description: 'I turn business rules into tokens, components and products that reach production. Eight-plus years in insurance SaaS, ERP and banking. Case studies on HERMES, design systems and the code behind this site.',
+    title: 'Víctor Maza — Senior Product Designer · B2B SaaS, Design Systems and AI applied to design',
+    description: 'I turn business rules into tokens, components and products that reach production. Eight-plus years in multi-tenant SaaS, invoicing and banking, with the impact measured. Case studies on HERMES, design systems and the code behind this site.',
   },
 } as const;
 

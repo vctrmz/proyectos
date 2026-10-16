@@ -6,24 +6,24 @@ import { ABOUT } from '@/lib/content/about';
 export const ABOUT_EN: typeof ABOUT = {
   ...ABOUT,
   intro: [
-    'I’m Víctor, a Product Designer.',
-    'Eight-plus years in dense B2B products: insurance SaaS, digital banking and mobility.',
+    'I’m Víctor, a Senior Product Designer.',
+    'Eight-plus years designing B2B SaaS in regulated domains: insurance, banking, invoicing and mobility.',
   ],
   education: [
     { degree: '5-year university degree in Computer Science', school: 'Universidad de Oriente', place: 'Cumaná, Venezuela', years: '2017' },
   ],
   ikigai: {
     tech: 'Computer scientist by training: I know how what I design gets built, and I respect how the framework thinks.',
-    design: 'Product Designer by trade: eight-plus years in dense B2B products, from architecture to handoff.',
-    business: 'Business rules, discovery with Product Owners and decisions defended in business language.',
+    design: 'Product Designer by trade: eight-plus years in B2B SaaS, from discovery to production.',
+    business: 'Business rules, discovery with Product Owners and impact measured with surveys and usage data.',
     center: 'Product design',
   },
   companies: ABOUT.companies.map((c) => ({
     ...c,
     href: c.href.replace('/es', '/en'),
     body: {
-      atrinium: 'Sole designer of a group with five products. The main one, HERMES: a multi-tenant SaaS ERP for insurers, reinsurers, MGAs and brokers, with the admin module that governs the whole group. Around it, electronic invoicing, a 360 policy system, user and permission management and an e-commerce line. Five products, one design language.',
-      mercantil: 'Digital banking in a regulated market, working remotely from Spain as a designer for Darien Technology, the consultancy behind the project. The system already existed and my job was to apply it with judgement and validate every screen before development: unmoderated tests with Maze, my own interviews and sessions with Marketing for the transactional emails. Nothing went to development untested.',
+      atrinium: 'I led design, as the only designer, for a group with five products, from discovery to production. The main one, HERMES: a multi-tenant, white-label SaaS platform for insurers, reinsurers, MGAs and brokers, with dashboards for the Admin module, which runs the platform, and for each company’s Tenant module. Around it, the Linikit dashboard, Flesip, Ayax Suscripción and the Montsaint e-commerce site: five products, one design system. I also designed the support system —help videos, tutorials and FAQs— and freed up 36% of my design time in eight months, measured with qualitative and quantitative surveys, to analyse real usage with Microsoft Clarity and bring two or three alternatives per initiative instead of one.',
+      mercantil: 'Web and mobile digital banking for more than 100k active users, working remotely as a designer for Darien Technology, the consultancy behind the project. I led the experience and interface design on top of the bank’s system and designed executive dashboards for real-time transaction metrics: operational efficiency improved by 28%, measured with an eight-question survey of the team. Nothing went to development untested: unmoderated tests with Maze, my own interviews and high-fidelity prototypes reviewed with the React engineers.',
       taksio: 'A multimodal mobility platform in Caracas: design system and operational flows for driver and passenger, built from scratch.',
     }[c.id] ?? c.body,
   })),
@@ -52,7 +52,9 @@ export const ABOUT_EN: typeof ABOUT = {
     'WCAG 2.2 accessibility as an entry requirement',
     'Discovery and defending proposals to Product Owners',
     'Supported handoff and technical dialogue with engineering',
-    'Research by indirect observation when there is no access to users',
+    'Impact measured with qualitative and quantitative surveys',
+    'Dashboards and data visualisation for each role',
+    'AI in the process, knowing where it helps and where it fails',
   ],
   bio: [
     'Before drawing anything I prepare. *I analyse the requirements* with whoever asks for them until the real problem is separated from the solution they already have in mind, and *I review what we already have*: design system components, similar flows and decisions taken before. *What already works gets reused*; redesigning what exists costs time and breaks the consistency of the product.',
@@ -71,8 +73,8 @@ export const ABOUT_EN: typeof ABOUT = {
         does: ['One canvas with what I learned and what I still do not know', 'The decisions and what was discarded, in writing', 'The map of states and rules, before the interface'] },
       { id: 'disenar', name: 'Design', body: 'I bring *two or three comparable alternatives* rather than a single proposal: comparing helps people decide and moves the conversation away from taste. Everything is assembled from system pieces, so *what gets approved can already be built*.',
         does: ['Two or three alternatives, each with its upside and its cost', 'A clickable prototype to see it working', 'Design system pieces, not loose drawings'] },
-      { id: 'validar', name: 'Validate', body: 'I test *with few people and early*: five are enough to see where it jams. Then I follow the implementation and go back to the data, because *what people say and what they do do not match*.',
-        does: ['A test with five people on the prototype', 'Reviewing the implementation until it ships whole', 'Usage data afterwards, not just opinions before'] },
+      { id: 'validar', name: 'Validate', body: 'I test *with few people and early*: five are enough to see where it jams. Then I follow the implementation and *measure the impact from two sources*: qualitative and quantitative surveys, and usage data, because *what people say and what they do do not match*.',
+        does: ['A test with five people on the prototype', 'Reviewing the implementation until it ships whole', 'Surveys and usage data afterwards: impact gets measured'] },
     ],
     principles: [
       { name: 'KISS', body: 'The *simplest solution that solves the whole case*: in a dense product every extra element is cognitive load and maintenance debt.' },

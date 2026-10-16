@@ -27,7 +27,7 @@ export default function RootShell({ locale, children }: { locale: Locale; childr
           nada propio: el aviso sigue activo en todo lo que hay dentro. */}
       <body suppressHydrationWarning>
         <noscript><style>{`[data-reveal],svg[role=img] g{opacity:1 !important;transform:none !important}`}</style></noscript>
-        <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Person', name: SITE.name, jobTitle: 'Senior Product Designer', knowsAbout: ['Product design', 'Design systems', 'Design tokens', 'B2B SaaS', 'Insurtech', 'WCAG accessibility', 'React'], url: SITE.url, sameAs: [SITE.linkedin, SITE.github, SITE.behance] }} />
+        <JsonLd data={{ '@context': 'https://schema.org', '@type': 'Person', name: SITE.name, jobTitle: 'Senior Product Designer', knowsAbout: ['Product design', 'Design systems', 'Design tokens', 'B2B SaaS', 'Insurtech', 'Data visualization', 'AI applied to design', 'WCAG accessibility', 'React'], url: SITE.url, sameAs: [SITE.linkedin, SITE.github, SITE.behance] }} />
         <LocaleProvider locale={locale}>
           <SkipLink locale={locale} />
           <ContactProvider>

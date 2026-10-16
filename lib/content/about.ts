@@ -3,8 +3,8 @@ export const ABOUT = {
      la home, y "informático de formación" solo en Formación: aquí no se
      repiten. */
   intro: [
-    'Soy Víctor, Product Designer.',
-    'Más de ocho años en producto B2B denso: SaaS asegurador, banca digital y movilidad.',
+    'Soy Víctor, Senior Product Designer.',
+    'Más de ocho años diseñando producto B2B SaaS en dominios regulados: seguros, banca, facturación y movilidad.',
   ],
   cities: [
     { name: 'Cumaná', country: 'VE' as const },
@@ -22,15 +22,15 @@ export const ABOUT = {
   ],
   ikigai: {
     tech: 'Informático de formación: sé cómo se construye lo que diseño, y respeto cómo piensa el framework.',
-    design: 'Product Designer de oficio: más de ocho años en producto B2B denso, de la arquitectura al handoff.',
-    business: 'Reglas de negocio, discovery con Product Owners y decisiones defendidas en lenguaje de negocio.',
+    design: 'Product Designer de oficio: más de ocho años en producto B2B SaaS, del discovery a producción.',
+    business: 'Reglas de negocio, discovery con Product Owners e impacto medido con encuestas y datos de uso.',
     center: 'Product design',
   },
   companies: [
     { id: 'atrinium', name: 'Atrinium', years: '2022–2026', href: '/es/cases/hermes',
-      body: 'Único diseñador de un holding con cinco productos. El principal, HERMES: un ERP SaaS multi-tenant para aseguradoras, reaseguradoras, MGAs y brokers, con el administrador que gobierna todo el grupo. Alrededor, facturación electrónica, un sistema de pólizas 360, gestión de usuarios y permisos y un e-commerce. Cinco productos, un solo lenguaje de diseño.' },
+      body: 'Lideré el diseño de un holding con cinco productos como único diseñador, del discovery a producción. El principal, HERMES: una plataforma SaaS multi-tenant y white-label para aseguradoras, reaseguradoras, MGAs y brokers, con dashboards para el módulo Admin, que opera la plataforma, y para el módulo Tenant de cada compañía. Alrededor, el dashboard de Linikit, Flesip, Ayax Suscripción y el e-commerce de Montsaint: cinco productos, un solo design system. También diseñé el sistema de soporte —vídeos de ayuda, tutoriales y FAQ— y liberé un 36 % de mi tiempo de diseño en ocho meses, medido con encuestas cualitativas y cuantitativas, para analizar el uso real con Microsoft Clarity y llevar dos o tres alternativas por iniciativa en lugar de una.' },
     { id: 'mercantil', name: 'Mercantil Panamá', years: '2021–2022', href: '/es?f=banca#trabajo',
-      body: 'Banca digital en entorno regulado, en remoto desde España como diseñador de Darien Technology, la consultora del proyecto. El sistema ya existía y mi trabajo era aplicarlo con criterio y validar cada pantalla antes de desarrollo: tests no moderados con Maze, entrevistas propias y sesiones con Marketing para los emails transaccionales. Nada pasaba a desarrollo sin haberse probado.' },
+      body: 'Banca digital web y móvil para más de 100k usuarios activos, en remoto como diseñador de Darien Technology, la consultora del proyecto. Lideré la experiencia y la interfaz sobre el sistema del banco y diseñé dashboards ejecutivos de métricas transaccionales en tiempo real: la eficiencia operativa mejoró un 28 %, medida con una encuesta de ocho preguntas al equipo. Nada pasaba a desarrollo sin probarse: tests no moderados con Maze, entrevistas propias y prototipos de alta fidelidad revisados con los ingenieros de React.' },
     { id: 'taksio', name: 'Taksio', years: '2017–2019', href: '/es?f=transporte#trabajo',
       body: 'Plataforma de movilidad multimodal en Caracas: design system y flujos operativos de conductor y pasajero levantados desde cero.' },
   ],
@@ -59,7 +59,9 @@ export const ABOUT = {
     'Accesibilidad WCAG 2.2 como requisito de entrada',
     'Discovery y defensa de propuestas ante Product Owners',
     'Handoff acompañado y diálogo técnico con desarrollo',
-    'Research por observación indirecta cuando no hay acceso a usuarios',
+    'Impacto medido con encuestas cualitativas y cuantitativas',
+    'Dashboards y visualización de datos para cada rol',
+    'IA en el proceso, sabiendo dónde ayuda y dónde falla',
   ],
   /* El cajón se llama «Mi forma de trabajar», así que aquí va el método y no
      el catálogo de productos —eso ya está en los casos y en la portada—. Dos
@@ -83,8 +85,8 @@ export const ABOUT = {
         does: ['Un lienzo con lo aprendido y lo que aún no sé', 'Las decisiones y los descartes, por escrito', 'El mapa de estados y reglas, antes que la interfaz'] },
       { id: 'disenar', name: 'Diseñar', body: 'Llevo *dos o tres alternativas comparables* en vez de una sola propuesta: comparar ayuda a decidir y saca la conversación del terreno de los gustos. Todo se monta con piezas del sistema, así que *lo que se aprueba ya se puede construir*.',
         does: ['Dos o tres alternativas, con su ventaja y su coste', 'Prototipo navegable para verlo funcionando', 'Piezas del design system, no dibujos sueltos'] },
-      { id: 'validar', name: 'Validar', body: 'Pruebo *con poca gente y pronto*: con cinco personas ya se ve dónde se atasca. Después acompaño la implementación y vuelvo a mirar los datos, porque *lo que la gente dice y lo que hace no coincide*.',
-        does: ['Prueba con cinco personas sobre el prototipo', 'Revisión de la implementación hasta que llega entera', 'Datos de uso después, no sólo opiniones antes'] },
+      { id: 'validar', name: 'Validar', body: 'Pruebo *con poca gente y pronto*: con cinco personas ya se ve dónde se atasca. Después acompaño la implementación y *mido el impacto cruzando dos fuentes*: encuestas cualitativas y cuantitativas, y datos de uso, porque *lo que la gente dice y lo que hace no coincide*.',
+        does: ['Prueba con cinco personas sobre el prototipo', 'Revisión de la implementación hasta que llega entera', 'Encuestas y datos de uso después: el impacto se mide'] },
     ],
     principles: [
       { name: 'KISS', body: 'La *solución más simple que resuelve el caso completo*: en producto denso cada elemento de más es carga cognitiva y deuda de mantenimiento.' },
