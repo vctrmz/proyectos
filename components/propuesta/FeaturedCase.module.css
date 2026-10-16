@@ -1,0 +1,35 @@
+/* La banda casi negra del catálogo actual, reutilizada: el caso principal se
+   separa del resto por campo de color, no por una tarjeta. */
+.band { background: var(--night); color: var(--inset-ink); padding-block: clamp(96px, 12vw, 180px); overflow: hidden; }
+.grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+
+.meta { font-size: var(--fs-300); color: var(--inset-ink-2); margin-bottom: var(--sp-24); }
+.title { font-size: var(--fs-900); letter-spacing: -0.03em; line-height: 1.05; margin-bottom: var(--sp-16); }
+.lead { font-size: var(--fs-400); line-height: 1.55; color: var(--inset-ink); max-width: 46ch; margin-bottom: var(--sp-48); }
+
+.metrics { list-style: none; margin: 0 0 var(--sp-48); padding: 0; display: grid; grid-template-columns: repeat(3, auto); justify-content: start; gap: var(--sp-32); }
+.metrics li { display: flex; flex-direction: column; gap: 6px; }
+.num { font-size: var(--fs-900); font-weight: 500; letter-spacing: -0.03em; line-height: 1; color: #fff; }
+.metricLabel { font-size: var(--fs-200); color: var(--inset-ink-2); max-width: 14ch; }
+
+.cta { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 28px; border-radius: var(--r-pill); background: #fff; color: var(--ink); font-weight: 500; transition: transform .25s var(--ease), background .2s var(--ease); }
+.cta span { transition: transform .25s var(--ease); }
+.cta:hover { background: var(--plate); }
+.cta:hover span { transform: translateX(4px); }
+.cta:active { transform: scale(.98); }
+.cta:focus-visible { outline-color: var(--focus-on-night); }
+
+/* Dos capturas reales en capas: la de detrás asoma por arriba a la derecha. */
+.media { position: relative; padding: 12% 0 0 12%; }
+.back { position: absolute; top: 0; right: -6%; width: 62%; opacity: .55; }
+.front { position: relative; }
+.img { width: 100%; height: auto; border-radius: 14px; }
+
+@media (max-width: 899px) {
+  .grid { grid-template-columns: 1fr; }
+  .media { padding: 10% 0 0 8%; }
+}
+@media (max-width: 520px) {
+  .metrics { grid-template-columns: repeat(3, 1fr); gap: var(--sp-16); }
+  .num { font-size: var(--fs-800); }
+}
