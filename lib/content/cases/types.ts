@@ -1,4 +1,4 @@
-export type DemoId = 'pidemony';
+export type DemoId = 'pidemony' | 'flesip';
 export type DiagramId = 'clients-to-system' | 'areas-map' | 'before-after' | 'state-machine' | 'template-slots' | 'grid-12-4-1' | 'system-cycle' | 'timeline' | 'value-chain' | 'pending-invoice' | 'two-sided' | 'handoff-chain' | 'pide-y-paga';
 export interface Metric { value: string; label: string; meaning: string }
 export interface Shot { src: string; alt: string; caption: string }
