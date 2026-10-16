@@ -2,7 +2,6 @@ import { ViewTransition } from 'react';
 import SiteHeader from '@/components/layout/SiteHeader';
 import SiteFooter from '@/components/layout/SiteFooter';
 import Diagram from '@/components/diagrams/Diagram';
-import CodeDemo from '@/components/ui/CodeDemo';
 import Disclosure from '@/components/ui/Disclosure';
 import JsonLd from '@/components/seo/JsonLd';
 import { SITE } from '@/lib/content/site';
@@ -20,7 +19,7 @@ import CaseDock from './CaseDock';
 import DesignGallery from './DesignGallery';
 import BrandMark from './BrandMark';
 import Button from '@/components/ui/Button';
-import UiKit from './UiKit';
+import Handoff from './Handoff';
 import TokenCollapse from './TokenCollapse';
 import TokenCompare from './TokenCompare';
 import CaseDemo from './demos/CaseDemo';
@@ -83,13 +82,14 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
       </>
     ) }] : []),
     { id: 'c-sistema', label: L('c-sistema', 'Sistema'), node: (
+      <>
       <Disclosure title={ui.case.systemToggle} defaultOpen>
         <div className={s.body}>{c.system.body.map((b) => <p key={b.slice(0, 30)}>{b}</p>)}</div>
         {c.system.collapse && <TokenCollapse />}
         {c.system.tokens && <TokenCompare t={c.system.tokens} />}
-        {c.system.code && <CodeDemo {...c.system.code} locale={locale} />}
-        {c.system.uiKit && <UiKit brand={c.brand} pieces={c.system.uiKit} label={ui.case.kitLabel} />}
       </Disclosure>
+      <Handoff ui={ui.case.handoff} />
+      </>
     ) },
     { id: 'c-diseno', label: L('c-diseno', 'Diseño'), node: (
       <DesignGallery items={c.design.map((d) => ({ ...d, ...shotSize(d.src) }))} labels={ui.case.gallery} />

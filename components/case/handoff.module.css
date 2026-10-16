@@ -1,0 +1,17 @@
+/* La entrega en banda oscura: un solo bloque por caso, los cinco pasos uno
+   debajo de otro con su número, como los planos del film, y lo que recibe el
+   equipo al final. */
+.wrap { margin-top: var(--sp-48); padding: var(--sp-48); border-radius: var(--r-card); background: var(--night); color: var(--inset-ink); display: grid; gap: var(--sp-32); }
+.head { display: grid; gap: var(--sp-12); max-width: 62ch; }
+.eyebrow { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--inset-ink-2); }
+.title { font-size: var(--fs-800); line-height: 1.1; letter-spacing: -0.02em; font-variation-settings: 'wght' 500; }
+.lead { font-size: var(--fs-400); line-height: 1.6; color: var(--inset-ink-2); text-wrap: pretty; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; }
+.steps li { display: grid; grid-template-columns: 40px minmax(0, 14rem) minmax(0, 1fr); gap: var(--sp-8) var(--sp-24); align-items: baseline; padding-block: var(--sp-16); border-top: 1px solid rgba(255,255,255,.16); }
+.n { font-size: var(--fs-100); letter-spacing: .08em; color: var(--accent); font-variant-numeric: tabular-nums; }
+.steps h4 { font-size: var(--fs-400); line-height: 1.25; font-variation-settings: 'wght' 550; }
+.steps p { font-size: var(--fs-200); line-height: 1.55; color: var(--inset-ink-2); text-wrap: pretty; }
+.out { display: grid; gap: var(--sp-12); padding-top: var(--sp-24); border-top: 1px solid rgba(255,255,255,.16); }
+.out ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--sp-8); }
+.out li { padding: 8px 16px; border-radius: var(--r-pill); background: rgba(255,255,255,.08); font-size: var(--fs-200); }
+@media (max-width: 640px) { .wrap { padding: var(--sp-24); } .steps li { grid-template-columns: 32px minmax(0, 1fr); } .steps p { grid-column: 2; } }

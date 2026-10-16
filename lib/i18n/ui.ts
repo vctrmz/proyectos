@@ -32,6 +32,7 @@ export interface Ui {
     findings: { n: string; finding: string; rule: string; severity: string; where: string; caption: string };
     severity: Record<string, string>;
     next: string; nextLabel: string;
+    handoff: { eyebrow: string; title: string; lead: string; steps: { t: string; d: string }[]; outLabel: string; out: string[] };
     film: { eyebrow: string; title: string; lead: string; play: string; pause: string; replay: string; timeline: string; shot: string; stage: string; from: string; phases: string[] };
   };
   about: {
@@ -100,6 +101,18 @@ const es: Ui = {
     findings: { n: '#', finding: 'Hallazgo', rule: 'Regla', severity: 'Severidad', where: 'Dónde', caption: 'Hallazgos ordenados por severidad, con la regla que incumplen y la pantalla donde ocurren' },
     severity: { 'crítica': 'crítica', alta: 'alta', media: 'media', baja: 'baja' },
     next: 'Siguiente caso', nextLabel: 'Siguiente caso',
+    handoff: {
+      eyebrow: 'Cómo entrego el sistema', title: 'Del Figma al código, sin traducciones',
+      lead: 'Las pantallas son la mitad del trabajo. La otra mitad es que desarrollo pueda construirlas sin adivinar, y que el producto se vea igual en el ticket número cien que en el primero.',
+      steps: [
+        { t: 'Kick-off en Figma', d: 'El proyecto arranca en un archivo compartido: objetivo, alcance, usuarios y flujos en el mismo lienzo donde después se diseña. Negocio, producto y desarrollo deciden sobre lo mismo desde el primer día.' },
+        { t: 'Pantallas dinámicas con IA', d: 'Con vibe coding convierto las pantallas clave en prototipos que funcionan en el navegador. Son ejemplos reales para probar el responsive en cualquier ancho y validar con datos antes de escribir una línea de producción.' },
+        { t: 'Micro-interacciones y motion', d: 'Hover, carga, éxito y error se definen con duración y curva, no con adjetivos. Lo que se aprueba en el prototipo es exactamente lo que se mueve en producción.' },
+        { t: 'Efectos con sus valores', d: 'Sombras, desenfoques, degradados y entradas animadas documentados con números. El acabado no depende de quién lo implemente.' },
+        { t: 'Foundations en JSON', d: 'Exporto los tokens en JSON: colores, tipografía, espaciado, radios, reglas de uso y comportamientos. Desarrollo los importa tal cual, y una IA los lee sin interpretar.' },
+      ],
+      outLabel: 'Lo que recibe el equipo', out: ['Archivo de kick-off', 'Prototipo navegable', 'Especificación de motion', 'tokens.json con reglas'],
+    },
     film: { eyebrow: 'Film del caso', title: 'El caso, plano a plano', lead: 'El proyecto montado como un storyboard: las pantallas reales entran por fases y cada plano abre una parte del caso, que se lee debajo junto a su plano.', play: 'Reproducir', pause: 'Pausa', replay: 'Volver a ver', timeline: 'Línea de tiempo del film', shot: 'Plano', stage: 'Fotograma del film', from: 'Desde aquí', phases: ['Apertura', 'Descubrir', 'Definir', 'Desarrollar', 'Entregar', 'Cierre'] },
   },
   about: {
@@ -175,6 +188,18 @@ const en: Ui = {
     findings: { n: '#', finding: 'Finding', rule: 'Rule', severity: 'Severity', where: 'Where', caption: 'Findings ordered by severity, with the rule they break and the screen where they happen' },
     severity: { 'crítica': 'critical', alta: 'high', media: 'medium', baja: 'low' },
     next: 'Next case', nextLabel: 'Next case',
+    handoff: {
+      eyebrow: 'How I hand over the system', title: 'From Figma to code, nothing lost in translation',
+      lead: 'Screens are half the job. The other half is making sure engineering can build them without guessing, and that the product looks the same on ticket one hundred as on ticket one.',
+      steps: [
+        { t: 'Kick-off in Figma', d: 'Every project starts in a shared file: goal, scope, users and flows on the same canvas where the design happens next. Business, product and engineering decide on the same thing from day one.' },
+        { t: 'Live screens with AI', d: 'With vibe coding I turn the key screens into prototypes that run in the browser. They are real examples to test responsive behaviour at any width and validate with data before a single line of production code.' },
+        { t: 'Micro-interactions and motion', d: 'Hover, loading, success and error are defined with duration and easing, not adjectives. What gets approved in the prototype is exactly what moves in production.' },
+        { t: 'Effects with their values', d: 'Shadows, blurs, gradients and entrance animations documented with numbers. The finish does not depend on who builds it.' },
+        { t: 'Foundations as JSON', d: 'I export the tokens as JSON: colour, type, spacing, radii, usage rules and behaviours. Engineering imports them as they are, and an AI reads them without interpreting.' },
+      ],
+      outLabel: 'What the team gets', out: ['Kick-off file', 'Clickable prototype', 'Motion spec', 'tokens.json with rules'],
+    },
     film: { eyebrow: 'Case film', title: 'The case, shot by shot', lead: 'The project cut as a storyboard: the real screens come in by phase, and each shot opens a part of the case, which you can read below next to its shot.', play: 'Play', pause: 'Pause', replay: 'Watch again', timeline: 'Film timeline', shot: 'Shot', stage: 'Film frame', from: 'From here', phases: ['Opening', 'Discover', 'Define', 'Develop', 'Deliver', 'Close'] },
   },
   about: {

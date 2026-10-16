@@ -50,10 +50,12 @@ describe('CasePage', () => {
     expect(screen.getByText(/Del lead a la póliza/)).toBeInTheDocument();
     expect(screen.getAllByText(/Contrapartida asumida/).length).toBeGreaterThanOrEqual(1);
   });
-  it('pinta un CodeDemo cuando el caso lo trae', () => {
+  it('cuenta la entrega del sistema en lugar del JSON y el kit', () => {
     render(<CasePage c={getCase('hermes')!} />);
-    expect(screen.getByText(/ejemplo ilustrativo/i)).toBeInTheDocument();
-    expect(screen.getByRole('list', { name: /kit/i })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 3, name: /Del Figma al código/ })).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 4, name: 'Foundations en JSON' })).toBeInTheDocument();
+    expect(screen.queryByText(/ejemplo ilustrativo/i)).not.toBeInTheDocument();
+    expect(screen.queryByRole('list', { name: /kit/i })).not.toBeInTheDocument();
   });
   it('un caso en inglés lleva el footer en inglés', () => {
     const { container } = render(<CasePage c={getCaseIn('en', 'hermes')!} locale="en" />);
