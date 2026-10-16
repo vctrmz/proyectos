@@ -1,9 +1,15 @@
 .top { padding-top: calc(60px + var(--sp-48)); }
-.back { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; color: var(--ink-2); font-size: var(--fs-200); }
-.back:hover { color: var(--ink); }
+.bar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--sp-12); }
 .head { display: grid; gap: var(--sp-16); margin-block: var(--sp-24) var(--sp-48); }
 .title { display: flex; align-items: center; gap: 14px; font-size: var(--fs-1000); letter-spacing: -0.03em; line-height: 1.05; font-variation-settings: 'wght' 450; }
-.icon { width: 44px; height: 44px; border-radius: 12px; background: var(--surface); padding: 6px; object-fit: contain; flex-shrink: 0; }
+/* La marca del proyecto: su logo sobre su color, nunca sobre el fondo de la
+   página. Ancho libre, porque la mitad de los logos son wordmarks. */
+.mark { display: inline-grid; place-items: center; height: 44px; min-width: 44px; padding-inline: 12px; border-radius: 12px; flex-shrink: 0; }
+.mark img { height: 20px; width: auto; max-width: 112px; object-fit: contain; }
+.markOnDark img { filter: brightness(0) invert(1); }
+.markOnLight img { filter: brightness(0); }
+.markLg { height: 72px; min-width: 72px; padding-inline: 16px; border-radius: var(--r-card); }
+.markLg img { height: 26px; max-width: 128px; }
 .tagline { font-size: var(--fs-500); color: var(--ink-2); max-width: var(--measure-mid); text-wrap: pretty; }
 .tags { font-size: var(--fs-200); color: var(--ink-3); } .tags span + span::before { content: " · "; }
 .cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-32); padding-block: var(--sp-64); border-bottom: 1px solid var(--line); }
@@ -52,10 +58,18 @@
 .learn li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 10px; align-items: baseline; color: var(--ink-2); line-height: 1.5; }
 .learnN { font-size: var(--fs-100); letter-spacing: .08em; color: var(--focus); }
 .next { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--sp-24); padding-block: var(--sp-64); }
-.nextLink { display: grid; gap: 4px; min-height: 44px; }
-.nextLink span:first-child { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
-.nextLink span:last-child { font-size: var(--fs-500); font-weight: 500; }
-@media (max-width: 900px) { .cols, .result { grid-template-columns: minmax(0, 1fr); } .decision, .gallery, .problem, .learn { grid-template-columns: minmax(0, 1fr); } .problem { row-gap: var(--sp-16); } .learn { row-gap: var(--sp-12); } .title { font-size: var(--fs-900); } .icon { width: 32px; height: 32px; } }
+/* Tarjeta del siguiente caso: la marca, el título y una flecha que avanza al
+   pasar por encima. Ocupa lo que haga falta y deja el «Contactar» al lado. */
+.nextCard { flex: 1 1 420px; display: flex; align-items: center; gap: var(--sp-24); padding: var(--sp-16); padding-right: var(--sp-24); border: 1px solid var(--line); border-radius: var(--r-card); background: var(--surface); transition: background .2s var(--ease), border-color .2s var(--ease); }
+.nextCard:hover { background: var(--plate); border-color: var(--plate-tint); }
+.nextText { display: grid; gap: 4px; min-width: 0; flex: 1; }
+.nextKicker { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+.nextTitle { font-size: var(--fs-500); font-weight: 500; letter-spacing: -0.01em; text-wrap: balance; }
+.nextCompany { font-size: var(--fs-200); color: var(--ink-2); }
+.nextArrow { font-size: var(--fs-600); transition: transform .3s var(--ease); }
+.nextCard:hover .nextArrow { transform: translateX(6px); }
+@media (prefers-reduced-motion: reduce) { .nextCard:hover .nextArrow { transform: none; } }
+@media (max-width: 900px) { .cols, .result { grid-template-columns: minmax(0, 1fr); } .decision, .gallery, .problem, .learn { grid-template-columns: minmax(0, 1fr); } .problem { row-gap: var(--sp-16); } .learn { row-gap: var(--sp-12); } .title { font-size: var(--fs-900); flex-wrap: wrap; row-gap: var(--sp-16); } .mark { height: 32px; min-width: 32px; padding-inline: 8px; border-radius: 9px; } .mark img { height: 14px; max-width: 84px; } .markLg { height: 56px; min-width: 56px; } .markLg img { height: 20px; } .nextCard { gap: var(--sp-16); } }
 
 /* El documento del caso: índice pegajoso a la izquierda y las secciones en
    una sola columna de lectura a la derecha. */
