@@ -57,7 +57,7 @@ const es: Ui = {
   nav: { work: 'Trabajos', about: 'Sobre mí', contact: 'Contactar' },
   skip: 'Saltar al contenido',
   home: {
-    kicker: 'Senior Product Designer · Design Systems · B2B SaaS e Insurtech',
+    kicker: 'Senior Product Designer · Design Systems · B2B y B2C SaaS e Insurtech',
     heroLines: ['Diseño producto B2B complejo', 'y lo llevo a producción.'],
     heroSub: 'Más de ocho años en producto B2B; los cuatro últimos, único diseñador de un holding de cinco productos. Modelo el dominio, lo convierto en tokens, componentes y reglas, y reviso la implementación en React hasta que el diseño llega entero.',
     facts: [
@@ -104,7 +104,7 @@ const es: Ui = {
     socialLabel: 'Redes', more: 'Más información', close: 'Cerrar', books: 'Libros que recomiendo',
   },
   cv: { label: 'Descargar CV', format: 'PDF', download: (lang, kb) => `Descargar el CV en ${lang} (PDF, ${kb} KB)` },
-  footer: { role: 'Senior Product Designer · Design Systems · B2B SaaS e Insurtech', contact: 'Ponte en contacto', available: 'Disponible ahora · Senior / Lead · remoto', legal: '© 2026', privacy: 'Privacidad', cookies: 'Cookies', remote: 'Trabajo en remoto' },
+  footer: { role: 'Senior Product Designer · Design Systems · B2B y B2C SaaS e Insurtech', contact: 'Ponte en contacto', available: 'Disponible ahora · Senior / Lead · remoto', legal: '© 2026', privacy: 'Privacidad', cookies: 'Cookies', remote: 'Trabajo en remoto' },
   consent: { text: 'Uso analítica para ver cómo se navega esta web: Google Analytics, Microsoft Clarity, Hotjar y HubSpot. Usan cookies o almacenamiento del navegador, nada de publicidad, y solo se activan si lo aceptas.', accept: 'Aceptar', reject: 'Rechazar', change: 'Cambiar mi decisión' },
   copy: { label: 'Copiar mi correo', done: 'Correo copiado', failed: 'No se pudo copiar, cópialo a mano' },
   contact: {
@@ -128,7 +128,7 @@ const en: Ui = {
   nav: { work: 'Works', about: 'About', contact: 'Get in touch' },
   skip: 'Skip to content',
   home: {
-    kicker: 'Senior Product Designer · Design Systems · B2B SaaS and Insurtech',
+    kicker: 'Senior Product Designer · Design Systems · B2B and B2C SaaS and Insurtech',
     heroLines: ['I design complex B2B products', 'and take them to production.'],
     heroSub: 'Eight-plus years in B2B product; the last four as the only designer of a group of five products. I model the domain, turn it into tokens, components and rules, and review the React implementation until the design ships whole.',
     facts: [
@@ -175,7 +175,7 @@ const en: Ui = {
     socialLabel: 'Social', more: 'More', close: 'Close', books: 'Books I recommend',
   },
   cv: { label: 'Download CV', format: 'PDF', download: (lang, kb) => `Download the CV in ${lang} (PDF, ${kb} KB)` },
-  footer: { role: 'Senior Product Designer · Design Systems · B2B SaaS and Insurtech', contact: 'Get in touch', available: 'Available now · Senior / Lead · remote', legal: '© 2026', privacy: 'Privacy', cookies: 'Cookies', remote: 'Working remotely' },
+  footer: { role: 'Senior Product Designer · Design Systems · B2B and B2C SaaS and Insurtech', contact: 'Get in touch', available: 'Available now · Senior / Lead · remote', legal: '© 2026', privacy: 'Privacy', cookies: 'Cookies', remote: 'Working remotely' },
   consent: { text: 'I use analytics to see how this site is read: Google Analytics, Microsoft Clarity, Hotjar and HubSpot. They use cookies or browser storage, never advertising, and load only if you accept.', accept: 'Accept', reject: 'Decline', change: 'Change my choice' },
   copy: { label: 'Copy my email', done: 'Email copied', failed: 'Could not copy it, copy it by hand' },
   contact: {
