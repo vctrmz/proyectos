@@ -17,11 +17,12 @@ describe('seo', () => {
   it('sitemap lista las dos lenguas: el español completo y el inglés que existe', () => {
     const urls = sitemap().map((u) => u.url);
     expect(urls).toContain(`${U}/es`);
-    expect(urls).toContain(`${U}/es/about`);
+    expect(urls).toContain(`${U}/es/work`);
+    expect(urls).not.toContain(`${U}/es/about`);
     expect(urls).toContain(`${U}/es/cases/hermes`);
     expect(urls).toContain(`${U}/es/cases/ayax`);
     expect(urls).toContain(`${U}/en`);
-    expect(urls).toContain(`${U}/en/about`);
+    expect(urls).toContain(`${U}/en/work`);
     expect(urls).toContain(`${U}/en/cases/hermes`);
     // 13 en español (3 páginas y 10 casos) + 3 páginas en inglés + un caso traducido
     expect(urls).toHaveLength(17);

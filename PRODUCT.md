@@ -29,7 +29,7 @@ Esta misma web es la prueba: está construida como un producto (tokens, componen
 
 ## Operating Context
 
-- Rutas: `/es` (por defecto) y `/en`. Cada caso tiene URL propia en `/[locale]/cases/[slug]`, para poder compartirla. Hay además «Sobre mí» y privacidad.
+- Rutas: `/es` (por defecto) y `/en`. Desde el 2026-10-16 la portada de cada idioma es «Sobre mí» y el catálogo de trabajos vive en `/[locale]/work` (Víctor quiere que se le conozca primero a él y después el trabajo); `/[locale]/about` redirige a la portada. Cada caso tiene URL propia en `/[locale]/cases/[slug]`, para poder compartirla. Hay además privacidad.
 - Hay un CV por idioma: `/victor-maza-cv.pdf` (es) y `/victor-maza-cv-en.pdf` (en). Los dos tienen fuente en `scripts/cv/cv-<idioma>.html` con la maqueta común en `scripts/cv/cv.css`, y se imprimen con `npm run cv`. Se descargan desde el hero de «Sobre mí», con selector de idioma.
 - En `/en` solo HERMES está traducido. El resto de casos se abre en español y el enlace lo avisa («in Spanish»).
 - La analítica (Clarity, GA, Hotjar, HubSpot) solo se activa si el visitante la acepta. Dato de la re-auditoría del 22-09: pocas sesiones (39) y el 27 % de scroll medio en portada, así que lo importante tiene que estar arriba.

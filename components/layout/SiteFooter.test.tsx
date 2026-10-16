@@ -21,7 +21,7 @@ describe('SiteFooter', () => {
     expect(screen.queryByRole('link', { name: /Instagram/ })).toBeNull();
     /* El CV vive en el hero de Sobre mí, no en el pie de cada página. */
     expect(screen.queryByText(/Descargar CV/)).toBeNull();
-    expect(screen.getByRole('link', { name: /Sobre mí/ })).toHaveAttribute('href', '/es/about');
+    expect(screen.getByRole('link', { name: /Sobre mí/ })).toHaveAttribute('href', '/es');
     expect(screen.getByRole('link', { name: /Privacidad/ })).toHaveAttribute('href', '/es/privacy');
     /* Sin ciudad en el aviso: el posicionamiento es remoto. Donde la ley
        obliga a identificar al responsable —privacidad— sí figura. */

@@ -1,18 +1,19 @@
 import type { Metadata } from 'next';
 import { pageMetadata } from '@/lib/seo';
-import SiteHeader from '@/components/layout/SiteHeader';
-import SiteFooter from '@/components/layout/SiteFooter';
-import Portada from '@/components/portada/Portada';
+import AboutPage from '@/components/about/AboutPage';
 import type { Locale } from '@/lib/i18n/config';
 
+/* La portada es «Sobre mí» (decidido el 2026-10-16): quien entra conoce
+   primero a la persona y, después, el trabajo. /[locale]/about redirige aquí
+   para que los enlaces ya compartidos sigan funcionando. */
 const META = {
   es: {
     title: 'Víctor Maza | Senior Product Designer · Design Systems, B2B y B2C SaaS e Insurtech',
-    description: 'Convierto reglas de negocio en tokens, componentes y producto que llega a producción. Más de ocho años en SaaS asegurador, ERP y banca. Casos de HERMES, design systems y el código de esta web.',
+    description: 'Senior Product Designer en remoto desde España. Informático de formación y más de ocho años en producto B2B y B2C: SaaS asegurador, ERP y banca. Cómo trabajo, con qué criterio decido y mi CV.',
   },
   en: {
     title: 'Víctor Maza | Senior Product Designer · Design Systems, B2B and B2C SaaS and Insurtech',
-    description: 'I turn business rules into tokens, components and products that reach production. Eight-plus years in insurance SaaS, ERP and banking. Case studies on HERMES, design systems and the code behind this site.',
+    description: 'Senior Product Designer working remotely from Spain. Computer scientist by training with eight-plus years in B2B and B2C products: insurance SaaS, ERP and banking. How I work, how I decide and my CV.',
   },
 } as const;
 
@@ -22,15 +23,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
   return pageMetadata(m.title, m.description, `/${locale}`, { es: '/es', en: '/en' });
 }
 
-/* La portada v2 (components/portada/Portada) en los dos idiomas. La v1 se
-   guardó en la rama portada-v1. */
 export default async function Page({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
-  return (
-    <>
-      <SiteHeader />
-      <main id="contenido"><Portada locale={locale} /></main>
-      <SiteFooter locale={locale} />
-    </>
-  );
+  return <AboutPage locale={locale} />;
 }

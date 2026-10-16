@@ -30,11 +30,13 @@ export function altPath(pathname: string, to: Locale, hasEnCase: (slug: string) 
 
 /* Rutas del sitio por idioma. Mismos segmentos en los dos: el idioma va
    delante y el resto del camino no cambia. */
+/* La portada es «Sobre mí»: home y about apuntan al mismo sitio, y el
+   catálogo de trabajos vive en /work. */
 const routes = (l: Locale) => ({
   home: `/${l}`,
-  work: `/${l}#trabajo`,
-  contact: `/${l}#contacto`,
-  about: `/${l}/about`,
+  work: `/${l}/work#trabajo`,
+  contact: `/${l}/work#contacto`,
+  about: `/${l}`,
   privacy: `/${l}/privacy`,
   cookies: `/${l}/privacy#cookies`,
   caseOf: (s: string) => `/${l}/cases/${s}`,

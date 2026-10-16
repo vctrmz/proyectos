@@ -3,6 +3,7 @@ import SiteFooter from '@/components/layout/SiteFooter';
 import CvDownload from '@/components/ui/CvDownload';
 import Diagram from '@/components/diagrams/Diagram';
 import { aboutIn } from '@/lib/content/en';
+import { SITE } from '@/lib/content/site';
 import { DEFAULT_LOCALE, ROUTES, type Locale } from '@/lib/i18n/config';
 import { getUi } from '@/lib/i18n/ui';
 import PortraitField from './PortraitField';
@@ -30,7 +31,8 @@ export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale
     <>
       <SiteHeader />
       <main id="contenido">
-        <h1 className="visually-hidden">{t.title}</h1>
+        {/* Es la portada: el h1 nombra a la persona y su oficio, no la sección. */}
+        <h1 className="visually-hidden">{SITE.name} · Senior Product Designer</h1>
         {/* El hero entero es el retrato tramado: la foto entra por la derecha y
             el texto va a la izquierda, sobre la misma trama. */}
         <section className={s.hero} aria-labelledby="a-personal">
