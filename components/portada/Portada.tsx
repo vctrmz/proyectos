@@ -30,7 +30,23 @@ export default function Portada({ locale }: { locale: Locale }) {
   const translated = (slug: string) => locale === 'es' || EN_CASE_SLUGS.includes(slug);
   const caseHref = (slug: string) => (translated(slug) ? ROUTES[locale] : ROUTES.es).caseOf(slug);
 
-  const index: IndexItem[] = projectsIn(locale).filter((p) => p.slug !== 'hermes').map((p) => ({
+  /* El índice va agrupado por cliente: Ayax primero, después todo lo de
+     Atrinium (Flesip y los módulos de HERMES), Montsaint, Mercantil y Taksio.
+     Dentro de cada cliente se respeta el orden del catálogo. */
+  const CLIENTS = ['ayax', 'atrinium', 'montsaint', 'mercantil', 'taksio'];
+  const clientOf = (company: string) => {
+    const c = company.toLowerCase();
+    if (c.includes('ayax')) return 'ayax';
+    if (c.includes('atrinium') || c.includes('hermes') || c.includes('flesip')) return 'atrinium';
+    if (c.includes('montsaint')) return 'montsaint';
+    if (c.includes('mercantil')) return 'mercantil';
+    if (c.includes('taksio')) return 'taksio';
+    return '';
+  };
+  const rank = (company: string) => { const i = CLIENTS.indexOf(clientOf(company)); return i < 0 ? CLIENTS.length : i; };
+  const ordered = projectsIn(locale).filter((p) => p.slug !== 'hermes')
+    .map((p, i) => ({ p, i })).sort((x, y) => rank(x.p.company) - rank(y.p.company) || x.i - y.i).map(({ p }) => p);
+  const index: IndexItem[] = ordered.map((p) => ({
     slug: p.slug, title: p.title, meta: `${p.company} · ${p.years}`,
     sector: p.sector ? sectorLabelIn(locale, p.sector) : '',
     href: p.hasCase ? caseHref(p.slug) : p.url ?? '#', external: !p.hasCase,

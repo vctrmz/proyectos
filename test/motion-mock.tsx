@@ -34,3 +34,4 @@ export const animate = (target: MV<number> | unknown, to: number) => {
    componentes ligados al scroll se pintan en su estado final. */
 export const useScroll = () => ({ scrollYProgress: mv(1), scrollY: mv(0) });
 export const useMotionValueEvent = () => {};
+export const useReducedMotion = () => false;

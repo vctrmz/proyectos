@@ -5,6 +5,7 @@ export const flesip: CaseStudy = {
   tagline: 'La app de facturación para autónomos y pymes, de punta a punta: del boceto a mano de la factura rápida al módulo de Configuración, VeriFactu y la web para gestorías.',
   tags: ['Caso de estudio', 'En producción', 'ERP', 'App y web'], brand: '#1F2B9C',
   hero: shot('flesip-fx_ingresos', 'Listado de ingresos de Flesip con facturas pendientes y completadas', 'Ingresos: las pendientes aún no llevan nombre de cliente; las completadas, sí'),
+  demo: { id: 'flesip', intro: 'La factura rápida de un taxi, de punta a punta. Pon el importe y emite: el ticket sale pendiente, con su QR. Después hazte pasar por el pasajero, completa sus datos y mira cómo la factura pasa a procesada en Ingresos. Es una demo: no se guarda ni se envía nada.' },
   context: 'Flesip crea, envía y cobra facturas desde web y app móvil. El problema no estaba en la factura, sino antes: una configuración dispersa que el usuario rellenaba una vez, mal, y no volvía a encontrar. Y encima llegaba VeriFactu, que obliga a registrar y firmar cada factura.',
   role: 'Product Designer del producto completo: app, web y el portal de la asesoría, con las piezas de marca que lo acompañan.',
   delivery: 'Rediseño del módulo de Configuración en cuatro bloques, factura rápida en app con su landing para el cliente final, Flesip Asesor, emails de VeriFactu y packaging.',

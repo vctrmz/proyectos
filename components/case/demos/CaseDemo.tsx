@@ -8,6 +8,7 @@ import type { DemoId } from '@/lib/content/cases/types';
    separaría el código. */
 const DEMOS: Record<DemoId, React.ComponentType> = {
   pidemony: dynamic(() => import('./PidemonyDemo')),
+  flesip: dynamic(() => import('./FlesipDemo')),
 };
 
 export default function CaseDemo({ id }: { id: DemoId }) {

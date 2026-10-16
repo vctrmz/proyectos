@@ -1,0 +1,42 @@
+/* La máquina: plástico oscuro con relieve, pantalla hundida y ranura. */
+.root { position: relative; isolation: isolate; display: flex; flex-direction: column; align-items: center; width: 100%; max-width: 300px; }
+.machine {
+  --r: 24px; --inset: 12px;
+  position: relative; isolation: isolate; width: 100%; overflow: hidden;
+  border-radius: var(--r); border: 1px solid #121317; padding: var(--inset); padding-bottom: 32px;
+  background: #2a2c33;
+  box-shadow: 0 20px 36px -20px rgba(18,19,23,.55), 0 6px 14px -8px rgba(18,19,23,.24), inset 0 1px 0 rgba(255,255,255,.14), inset 0 -1px 0 rgba(0,0,0,.55);
+}
+/* Grano del plástico, sin imagen externa. */
+.machine::before { content: ''; position: absolute; inset: 0; z-index: 0; border-radius: inherit; pointer-events: none; opacity: .5;
+  background-image: radial-gradient(rgba(255,255,255,.05) 1px, transparent 1.2px); background-size: 3px 3px; }
+.header { position: relative; z-index: 1; display: flex; height: 36px; align-items: flex-start; justify-content: space-between; padding: 2px 4px 0; }
+.brand { font-size: 11px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: rgba(255,255,255,.55); }
+.led { width: 8px; height: 8px; margin-top: 3px; border-radius: 50%; background: #3a3d45; box-shadow: inset 0 1px 1px rgba(0,0,0,.6); transition: background .2s, box-shadow .2s; }
+.led[data-on="true"] { background: #8bde5f; box-shadow: 0 0 8px #8bde5f; animation: blink .9s ease-in-out infinite; }
+@keyframes blink { 50% { opacity: .45; } }
+
+.screen { position: relative; z-index: 1; isolation: isolate; overflow: hidden; border-radius: calc(var(--r) - var(--inset)); border: 1px solid #0b0c10; background: #0b0c10; padding: 14px 16px; color: #f2f2f4; }
+.screen::after { content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; box-shadow: inset 0 0 24px 4px rgba(0,0,0,.52); }
+.status { position: relative; z-index: 1; display: flex; min-width: 0; align-items: center; gap: 8px; }
+.indicator { position: relative; display: grid; width: 20px; height: 20px; flex-shrink: 0; place-items: center; }
+.indicator > * { grid-area: 1 / 1; display: grid; place-items: center; }
+.indicator svg { width: 18px; height: 18px; }
+.wait { color: #8b8f9a; }
+.ok { color: #8bde5f; }
+.spin { animation: spin .9s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.labels { display: grid; min-width: 0; flex: 1; align-items: center; }
+.label { grid-area: 1 / 1; font-size: 12px; font-weight: 500; line-height: 1; color: #b4b8c4; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.slot { position: absolute; left: 24px; right: 24px; bottom: var(--inset); z-index: 40; height: 8px; border-radius: 4px; background: #0b0c10; box-shadow: inset 0 2px 3px rgba(0,0,0,.9); }
+
+/* La salida: el papel baja desde la ranura y se recorta en ella. */
+.output { position: relative; z-index: 50; margin-top: -16px; height: 30rem; width: calc(80% + 3rem); max-width: 100%; overflow: hidden; padding: 0 24px; }
+.lip { position: absolute; left: 24px; right: 24px; top: -4px; z-index: 20; height: 8px; background: rgba(18,19,23,.75); filter: blur(6px); pointer-events: none; }
+.feed { position: relative; isolation: isolate; }
+.feed::before { content: ''; position: absolute; left: 12px; right: 12px; top: 12px; bottom: 16px; z-index: 0; border-radius: 4px; box-shadow: 0 8px 24px rgba(18,19,23,.24); pointer-events: none; }
+.paper { position: relative; z-index: 1; min-height: 20rem; padding: 26px 20px 30px; background: #fbfaf6; color: #121317;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 11px; line-height: 1.55;
+  background-image: linear-gradient(180deg, rgba(0,0,0,.025), transparent 18%, transparent 82%, rgba(0,0,0,.03)); }
+
+@media (prefers-reduced-motion: reduce) { .spin, .led[data-on="true"] { animation: none; } }
