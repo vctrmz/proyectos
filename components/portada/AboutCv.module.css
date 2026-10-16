@@ -2,7 +2,7 @@
 .copy { display: grid; gap: var(--sp-24); font-size: var(--fs-400); line-height: 1.6; color: var(--ink); max-width: 60ch; }
 .ico { display: inline-block; width: 1.05em; height: 1.05em; vertical-align: -0.18em; margin-inline: 0.08em; color: var(--focus); }
 .lead { font-size: var(--fs-600); line-height: 1.4; letter-spacing: -0.015em; }
-.more { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-weight: 500; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+.more { margin-top: var(--sp-8); }
 .more span { transition: transform .25s var(--ease); }
 .more:hover span { transform: translateX(4px); }
 

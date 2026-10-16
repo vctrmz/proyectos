@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Button from '@/components/ui/Button';
 import { stackIn } from '@/lib/content/en';
 import type { Locale } from '@/lib/i18n/config';
 import st from '@/components/home/Stack.module.css';
@@ -33,7 +33,7 @@ export default function AboutCv({ locale }: { locale: Locale }) {
           {t.p3[0]} <Icon name="stack" className={s.ico} /> {t.p3[1]} <Icon name="sparkleLine" className={s.ico} /> {t.p3[2]} <Icon name="code" className={s.ico} />{t.p3[3]}
         </Part>
         <Part>
-          <Link href={ROUTES[locale].about} className={s.more}>{t.more} <span aria-hidden="true">→</span></Link>
+          <Button href={ROUTES[locale].about} variant="outline" size="lg" className={s.more}>{t.more} <span aria-hidden="true">→</span></Button>
         </Part>
       </Rise>
 
