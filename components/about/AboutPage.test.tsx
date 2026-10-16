@@ -15,7 +15,7 @@ describe('AboutPage', () => {
        el posicionamiento es remoto, así que ni nacimiento ni provincia. */
     expect(screen.getByText('En remoto')).toBeInTheDocument();
     /* La tarjeta se queda con el oficio y el modo de trabajo. Ni ciudad ni
-       sector: «Insurtech» sigue en el rol del pie y la línea de tiempo sigue
+       sector: «Insurtech» vive solo en la lista de sectores y la línea de tiempo sigue
        diciendo dónde estaba cada empresa —Caracas, Panamá, Málaga—, que es un
        dato del trabajo y lo que hace que el recorrido se lea internacional. */
     const datos = screen.getByText('B2B SaaS').closest('dl')!;

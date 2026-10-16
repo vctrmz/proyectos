@@ -8,7 +8,7 @@ describe('SiteFooter', () => {
     const foot = container.querySelector('footer')!;
     expect(foot.className).toMatch(/foot/);
     expect(foot.textContent).toMatch(/Víctor Maza/);
-    expect(foot.textContent).toMatch(/Senior Product Designer · Design Systems · B2B SaaS e Insurtech/);
+    expect(foot.textContent).toMatch(/Senior Product Designer · B2B SaaS · Design Systems · IA aplicada al diseño/);
     expect(foot.textContent).toMatch(/Ponte en contacto/i);
     /* El correo no se escribe en la web: se copia desde el modal de contacto. */
     expect(foot.innerHTML).not.toMatch(/vctrmz47/);

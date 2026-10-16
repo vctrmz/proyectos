@@ -57,9 +57,9 @@ const es: Ui = {
   nav: { work: 'Trabajo', about: 'Sobre mí', contact: 'Contactar' },
   skip: 'Saltar al contenido',
   home: {
-    kicker: 'Senior Product Designer · Design Systems · B2B SaaS e Insurtech',
+    kicker: 'Senior Product Designer · B2B SaaS · Design Systems · IA aplicada al diseño',
     heroLines: ['Diseño producto B2B complejo', 'y lo llevo a producción.'],
-    heroSub: 'Más de ocho años en producto B2B; los cuatro últimos, único diseñador de un holding de cinco productos. Modelo el dominio, lo convierto en tokens, componentes y reglas, y reviso la implementación en React hasta que el diseño llega entero.',
+    heroSub: 'Más de ocho años en producto B2B SaaS; los cuatro últimos, liderando como único diseñador un holding de cinco productos. Convierto la ambigüedad en flujos, dashboards y configuración, y reviso la implementación en React hasta que el diseño llega entero.',
     facts: [
       { value: '267 → 24', label: 'valores de color a tokens' }, { value: '8', label: 'áreas de producto' },
       { value: '5', label: 'productos, un lenguaje' }, { value: '2022–2026', label: 'único diseñador del holding' },
@@ -74,8 +74,8 @@ const es: Ui = {
     logosLabel: 'Empresas con las que he trabajado',
     closingTitle: ['¿Tienes un producto complejo?', 'Lo convierto en reglas, componentes y criterios que tu equipo puede construir sin interpretar nada.'],
     closingGrid: [
-      { k: 'Problema', v: 'Complejidad B2B' }, { k: 'Método', v: 'UX + sistema + UI + implementación' },
-      { k: 'Evidencia', v: 'Más de ocho años · SaaS asegurador en producción' }, { k: 'Acción', v: 'Un correo' },
+      { k: 'Problema', v: 'Complejidad B2B' }, { k: 'Método', v: 'UX + sistema + UI + implementación + medición' },
+      { k: 'Evidencia', v: 'Más de ocho años · SaaS multi-tenant en producción' }, { k: 'Acción', v: 'Un correo' },
     ],
     availability: 'Disponible ahora · roles Senior o Lead de Product Design · en remoto',
     competencies: 'Competencias clave',
@@ -104,7 +104,7 @@ const es: Ui = {
     socialLabel: 'Redes', more: 'Más información', close: 'Cerrar', books: 'Libros que recomiendo',
   },
   cv: { label: 'Descargar CV', format: 'PDF', download: (lang, kb) => `Descargar el CV en ${lang} (PDF, ${kb} KB)` },
-  footer: { role: 'Senior Product Designer · Design Systems · B2B SaaS e Insurtech', contact: 'Ponte en contacto', available: 'Disponible ahora · Senior / Lead · remoto', legal: '© 2026', privacy: 'Privacidad', cookies: 'Cookies', remote: 'Trabajo en remoto' },
+  footer: { role: 'Senior Product Designer · B2B SaaS · Design Systems · IA aplicada al diseño', contact: 'Ponte en contacto', available: 'Disponible ahora · Senior / Lead · remoto', legal: '© 2026', privacy: 'Privacidad', cookies: 'Cookies', remote: 'Trabajo en remoto' },
   consent: { text: 'Uso analítica para ver cómo se navega esta web: Google Analytics, Microsoft Clarity, Hotjar y HubSpot. Usan cookies o almacenamiento del navegador, nada de publicidad, y solo se activan si lo aceptas.', accept: 'Aceptar', reject: 'Rechazar', change: 'Cambiar mi decisión' },
   copy: { label: 'Copiar mi correo', done: 'Correo copiado', failed: 'No se pudo copiar, cópialo a mano' },
   contact: {
@@ -128,9 +128,9 @@ const en: Ui = {
   nav: { work: 'Work', about: 'About', contact: 'Get in touch' },
   skip: 'Skip to content',
   home: {
-    kicker: 'Senior Product Designer · Design Systems · B2B SaaS and Insurtech',
+    kicker: 'Senior Product Designer · B2B SaaS · Design Systems · AI applied to design',
     heroLines: ['I design complex B2B products', 'and take them to production.'],
-    heroSub: 'Eight-plus years in B2B product; the last four as the only designer of a group of five products. I model the domain, turn it into tokens, components and rules, and review the React implementation until the design ships whole.',
+    heroSub: 'Eight-plus years in B2B SaaS; the last four leading design, as the only designer, for a group of five products. I turn ambiguity into flows, dashboards and configuration, and I review the React implementation until the design ships whole.',
     facts: [
       { value: '267 → 24', label: 'colour values to tokens' }, { value: '8', label: 'product areas' },
       { value: '5', label: 'products, one language' }, { value: '2022–2026', label: 'sole designer of the group' },
@@ -146,7 +146,7 @@ const en: Ui = {
     closingTitle: ['Do you have a complex product?', 'I turn it into rules, components and criteria your team can build without guessing.'],
     closingGrid: [
       { k: 'Problem', v: 'B2B complexity' }, { k: 'Method', v: 'UX + system + UI + implementation' },
-      { k: 'Evidence', v: 'Eight-plus years · insurance SaaS in production' }, { k: 'Action', v: 'One email' },
+      { k: 'Evidence', v: 'Eight-plus years · multi-tenant SaaS in production' }, { k: 'Action', v: 'One email' },
     ],
     availability: 'Available now · Senior or Lead Product Design roles · remote',
     competencies: 'Core competencies',
@@ -175,7 +175,7 @@ const en: Ui = {
     socialLabel: 'Social', more: 'More', close: 'Close', books: 'Books I recommend',
   },
   cv: { label: 'Download CV', format: 'PDF', download: (lang, kb) => `Download the CV in ${lang} (PDF, ${kb} KB)` },
-  footer: { role: 'Senior Product Designer · Design Systems · B2B SaaS and Insurtech', contact: 'Get in touch', available: 'Available now · Senior / Lead · remote', legal: '© 2026', privacy: 'Privacy', cookies: 'Cookies', remote: 'Working remotely' },
+  footer: { role: 'Senior Product Designer · B2B SaaS · Design Systems · AI applied to design', contact: 'Get in touch', available: 'Available now · Senior / Lead · remote', legal: '© 2026', privacy: 'Privacy', cookies: 'Cookies', remote: 'Working remotely' },
   consent: { text: 'I use analytics to see how this site is read: Google Analytics, Microsoft Clarity, Hotjar and HubSpot. They use cookies or browser storage, never advertising, and load only if you accept.', accept: 'Accept', reject: 'Decline', change: 'Change my choice' },
   copy: { label: 'Copy my email', done: 'Email copied', failed: 'Could not copy it, copy it by hand' },
   contact: {
