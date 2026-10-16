@@ -47,7 +47,6 @@
 .body p { font-size: var(--fs-400); line-height: 1.7; color: var(--ink-2); max-width: var(--measure); text-wrap: pretty; margin-bottom: var(--sp-16); }
 /* Flujo flexible: cada figura ocupa su tamaño real, así que las capturas de
    móvil se colocan varias por fila en lugar de estirarse. */
-.gallery { display: flex; flex-wrap: wrap; gap: var(--sp-32); align-items: flex-start; }
 .result { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-32); }
 .result h3 { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); margin-bottom: var(--sp-16); }
 .metrics { display: grid; gap: var(--sp-24); }
@@ -69,7 +68,7 @@
 .nextArrow { font-size: var(--fs-600); transition: transform .3s var(--ease); }
 .nextCard:hover .nextArrow { transform: translateX(6px); }
 @media (prefers-reduced-motion: reduce) { .nextCard:hover .nextArrow { transform: none; } }
-@media (max-width: 900px) { .cols, .result { grid-template-columns: minmax(0, 1fr); } .decision, .gallery, .problem, .learn { grid-template-columns: minmax(0, 1fr); } .problem { row-gap: var(--sp-16); } .learn { row-gap: var(--sp-12); } .title { font-size: var(--fs-900); flex-wrap: wrap; row-gap: var(--sp-16); } .mark { height: 32px; min-width: 32px; padding-inline: 8px; border-radius: 9px; } .mark img { height: 14px; max-width: 84px; } .markLg { height: 56px; min-width: 56px; } .markLg img { height: 20px; } .nextCard { gap: var(--sp-16); } }
+@media (max-width: 900px) { .cols, .result { grid-template-columns: minmax(0, 1fr); } .decision, .problem, .learn { grid-template-columns: minmax(0, 1fr); } .problem { row-gap: var(--sp-16); } .learn { row-gap: var(--sp-12); } .title { font-size: var(--fs-900); flex-wrap: wrap; row-gap: var(--sp-16); } .mark { height: 32px; min-width: 32px; padding-inline: 8px; border-radius: 9px; } .mark img { height: 14px; max-width: 84px; } .markLg { height: 56px; min-width: 56px; } .markLg img { height: 20px; } .nextCard { gap: var(--sp-16); } }
 
 /* El documento del caso: índice pegajoso a la izquierda y las secciones en
    una sola columna de lectura a la derecha. */
