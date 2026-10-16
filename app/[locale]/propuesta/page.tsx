@@ -43,7 +43,7 @@ export default async function Propuesta({ params }: { params: Promise<{ locale: 
         <section id="trabajo" className={`container ${s.section}`} aria-labelledby="work-title">
           <div className={s.head}>
             <GlyphTitle text="trabajo" icon="sparkle" at={6} id="work-title" />
-            <p className={s.headLead}>Casos completos y módulos de HERMES, todos en producción.</p>
+            <p className={s.headLead}>Productos enteros y decisiones concretas dentro de HERMES. Todo llegó a producción.</p>
           </div>
           <CaseIndex />
         </section>
