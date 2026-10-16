@@ -29,7 +29,7 @@ const ES = {
     jobs: [
       { role: 'Senior Product Designer', where: 'Atrinium · Málaga', years: '2022 – 2026', note: 'Único diseñador y responsable del diseño de los productos del holding: HERMES, la plataforma SaaS aseguradora, Flesip y Montsaint.' },
       { role: 'UI / Product Designer', where: 'Darien Technology · Panamá, en remoto', years: '2021 – 2022', note: 'Banca digital para Mercantil Banco Panamá, con más de 100k usuarios activos: pagos, Mony, Tadelanto, hipotecas y préstamos, validados con pruebas de usabilidad en Maze.' },
-      { role: 'UX/UI Designer y freelance', where: 'Taksio y clientes internacionales', years: '2017 – 2020', note: 'Design system y flujos de una plataforma de movilidad; fintech, banca y logística como freelance.' },
+      { role: 'UX/UI Designer y freelance', where: 'Taksio y clientes internacionales', years: '2017 – 2021', note: 'Design system y flujos de una plataforma de movilidad; fintech, banca y logística como freelance.' },
     ] as JobCopy[],
     degree: { role: 'Titulación en Informática', where: 'Universidad de Oriente · 5 años' },
   },
@@ -85,7 +85,7 @@ const EN: typeof ES = {
     jobs: [
       { role: 'Senior Product Designer', where: 'Atrinium · Málaga', years: '2022 – 2026', note: 'Sole designer, responsible for design across the holding’s products: HERMES, the insurance SaaS platform, Flesip and Montsaint.' },
       { role: 'UI / Product Designer', where: 'Darien Technology · Panama, remote', years: '2021 – 2022', note: 'Digital banking for Mercantil Banco Panamá, with 100k+ active users: payments, Mony, Tadelanto, mortgages and loans, validated with usability tests in Maze.' },
-      { role: 'UX/UI Designer and freelance', where: 'Taksio and international clients', years: '2017 – 2020', note: 'Design system and flows for a mobility platform; fintech, banking and logistics as a freelancer.' },
+      { role: 'UX/UI Designer and freelance', where: 'Taksio and international clients', years: '2017 – 2021', note: 'Design system and flows for a mobility platform; fintech, banking and logistics as a freelancer.' },
     ],
     degree: { role: 'Degree in Computer Science', where: 'Universidad de Oriente · 5 years' },
   },

@@ -6,6 +6,10 @@ const passthrough = (tag: string) => React.forwardRef<unknown, Record<string, un
   const rest: Record<string, unknown> = {};
   for (const k of Object.keys(p)) if (!STRIP.includes(k)) rest[k] = p[k];
   if (p.style && typeof p.style === 'object' && !('transformOrigin' in (p.style as object) && Object.keys(p.style as object).length === 1)) rest.style = p.style;
+  /* Un valor de movimiento como hijo (<motion.span>{mv}</motion.span>) se pinta
+     con su valor actual, como hace motion. */
+  const kids = rest.children as { get?: () => unknown } | undefined;
+  if (kids && typeof kids === 'object' && typeof kids.get === 'function') rest.children = String(kids.get());
   return React.createElement(tag, { ...rest, ref });
 });
 const cache = new Map<string, unknown>();
@@ -35,3 +39,6 @@ export const animate = (target: MV<number> | unknown, to: number) => {
 export const useScroll = () => ({ scrollYProgress: mv(1), scrollY: mv(0) });
 export const useMotionValueEvent = () => {};
 export const useReducedMotion = () => false;
+/* En test nada entra en pantalla: lo que espera a verse se queda en su estado
+   inicial, que es el que se lee sin JS. */
+export const useInView = () => false;

@@ -5,7 +5,6 @@ import Diagram from '@/components/diagrams/Diagram';
 import { aboutIn } from '@/lib/content/en';
 import { DEFAULT_LOCALE, ROUTES, type Locale } from '@/lib/i18n/config';
 import { getUi } from '@/lib/i18n/ui';
-import { splitBold } from '@/lib/content/text';
 import PortraitField from './PortraitField';
 import IkigaiDiagram from './IkigaiDiagram';
 import CompanyTabs from './CompanyTabs';
@@ -14,6 +13,7 @@ import BioDrawer from './BioDrawer';
 import SocialLinks from './SocialLinks';
 import Bookshelf from './Bookshelf';
 import QuoteCarousel from './QuoteCarousel';
+import FilmPlayer from './FilmPlayer';
 import s from './about.module.css';
 
 /* Los datos públicos que llevaba la tarjeta: oficio y modo de trabajo. */
@@ -63,12 +63,12 @@ export default function AboutPage({ locale = DEFAULT_LOCALE }: { locale?: Locale
           </section>
           <section className={s.sec} aria-labelledby="a-ikigai"><h2 id="a-ikigai">{t.ikigai}</h2><IkigaiDiagram /></section>
           <section className={s.sec} aria-labelledby="a-empresas"><h2 id="a-empresas">{t.companies}</h2><CompanyTabs /><div className={s.timeline}><Diagram id="timeline" /></div></section>
-          <section className={`${s.sec} ${s.vision}`} aria-labelledby="a-vision"><h2 id="a-vision">{ABOUT.vision.title}</h2>
-            {ABOUT.vision.paragraphs.map((para) => <p key={para.slice(0, 30)}>{splitBold(para).map((x, i) => (x.strong ? <strong key={i}>{x.text}</strong> : <span key={i}>{x.text}</span>))}</p>)}
-            <div className={s.skillBox}>
-              <p className={s.skillHead}>{t.skills}</p>
-              <ul className={s.list}>{ABOUT.skills.map((k) => <li key={k}>{k}</li>)}</ul>
-            </div>
+          {/* El film va en su caja oscura y no arranca solo: se ve si se quiere.
+              «Diseño sistemas, no pantallas» se fue al cajón «Mi forma de
+              trabajar», donde se lee en tres titulares. */}
+          <section className={s.sec} aria-labelledby="a-film"><h2 id="a-film">{t.film.title}</h2>
+            <p className={s.filmLead}>{t.film.lead}</p>
+            <FilmPlayer locale={locale} labels={{ play: t.film.play, pause: t.film.pause, replay: t.film.replay, music: t.film.music, fullscreen: t.film.fullscreen, exitFullscreen: t.film.exitFullscreen, timeline: t.film.timeline, hint: t.film.hint, stage: t.film.stage }} />
           </section>
           <section className={s.sec} aria-labelledby="a-tools"><h2 id="a-tools">{t.tools}</h2>
             <ToolGroups />

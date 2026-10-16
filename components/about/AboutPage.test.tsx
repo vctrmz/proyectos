@@ -5,11 +5,13 @@ vi.mock('motion/react', () => import('@/test/motion-mock'));
 import AboutPage from './AboutPage';
 
 describe('AboutPage', () => {
-  it('sigue la estructura: personal, formación, ikigai, empresas y visión', () => {
+  it('sigue la estructura: personal, formación, ikigai, empresas, film y herramientas', () => {
     render(<AboutPage />);
     const h2 = screen.getAllByRole('heading', { level: 2 }).map((h) => h.textContent);
     expect(h2).toEqual(expect.arrayContaining(['Personal', 'Formación', 'Ikigai', 'Empresas', 'Herramientas']));
-    expect(h2.indexOf('Herramientas')).toBeGreaterThan(h2.findIndex((x) => /Diseño sistemas/.test(x!)));
+    // el film va justo debajo de Empresas; la visión se fue al cajón
+    expect(h2.indexOf('Página en blanco')).toBe(h2.indexOf('Empresas') + 1);
+    expect(h2.indexOf('Herramientas')).toBeGreaterThan(h2.indexOf('Página en blanco'));
     expect(screen.getByText(/Universidad de Oriente/)).toBeInTheDocument();
     /* El retrato del hero lleva debajo los datos públicos. Sin ciudad:
        el posicionamiento es remoto, así que ni nacimiento ni provincia. */
@@ -22,7 +24,7 @@ describe('AboutPage', () => {
     expect(datos.textContent).not.toMatch(/Málaga/);
     expect(datos.textContent).not.toMatch(/Insurtech/);
     expect(screen.getByRole('img', { name: /Retrato de Víctor Maza/ })).toBeInTheDocument();
-    expect(screen.getByRole('heading', { level: 2, name: /Diseño sistemas, no pantallas/ })).toBeInTheDocument();
+    expect(screen.queryByRole('heading', { name: /Diseño sistemas, no pantallas/ })).toBeNull();
     expect(screen.queryByText(/Lugares/)).toBeNull();
     /* El contacto no se repite al final: el pie, justo debajo, ya lo trae. */
     expect(document.querySelector('#contacto')).toBeNull();

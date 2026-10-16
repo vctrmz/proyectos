@@ -34,12 +34,17 @@ export const ABOUT = {
     { id: 'taksio', name: 'Taksio', years: '2017–2019', href: '/es?f=transporte#trabajo',
       body: 'Plataforma de movilidad multimodal en Caracas: design system y flujos operativos de conductor y pasajero levantados desde cero.' },
   ],
+  /* «Diseño sistemas, no pantallas» vive en el cajón «Mi forma de trabajar»:
+     tres cartas que se leen de un vistazo por el titular y se giran para ver
+     la prueba. Antes eran tres párrafos densos en la página; un recruiter que
+     decide en segundos lee los titulares y gira la que le interesa. */
   vision: {
     title: 'Diseño sistemas, no pantallas.',
-    paragraphs: [
-      'Mi base en informática me sirve para *pensar el producto en sistemas, en estructura y en cómo se va a construir de verdad*, y para bajarlo a código cuando hace falta. *Modelo el dominio antes que la pantalla*, *defino estados, reglas y casos límite*, y lo trabajo *con Producto e Ingeniería hasta la implementación*.',
-      'Trabajo con *patrones validados y criterios de usabilidad*, no con invenciones, y respetando cómo se construye realmente en *React, Chakra UI o Tailwind*. Esta web es un ejemplo: el diseño es mío y *dirigí la implementación con IA hasta el detalle*. Generar es la parte fácil; lo que aporto es *saber qué hay que pedir y reconocer cuándo lo que devuelve no sirve*.',
-      'Me interesan *los flujos completos, no las pantallas sueltas*. *Sistemas que hagan que el siguiente diseño y el siguiente desarrollo cuesten menos que el anterior.*',
+    lead: 'Mi base en informática me sirve para pensar el producto en sistemas, en estructura y en cómo se va a construir de verdad.',
+    cards: [
+      { head: 'Modelo el dominio antes que la pantalla.', proof: 'Defino *estados, reglas y casos límite*, y lo trabajo *con Producto e Ingeniería hasta la implementación*. Cuando hace falta, lo bajo a código.', tags: ['Estados', 'Reglas', 'Casos límite'] },
+      { head: 'Patrones validados, no invenciones.', proof: 'Diseño con *criterios de usabilidad* y respetando cómo se construye en *React, Chakra UI o Tailwind*. Esta web es el ejemplo: el diseño es mío y *dirigí la implementación con IA hasta el detalle*. Generar es fácil; lo difícil es *saber qué pedir y ver cuándo lo que devuelve no sirve*.', tags: ['React', 'Chakra UI', 'Tailwind', 'IA'] },
+      { head: 'Flujos completos, no pantallas sueltas.', proof: 'Busco *sistemas que hagan que el siguiente diseño y el siguiente desarrollo cuesten menos que el anterior*.', tags: ['Flujos', 'Sistemas', 'Reutilización'] },
     ],
   },
   /* La cita que abre los libros: dice de dónde sale el criterio con el que
