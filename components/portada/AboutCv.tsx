@@ -20,8 +20,8 @@ const STACK_GROUPS = STACK.groups.map((g) => ({
   items: g.items.filter((t) => t !== 'Vitest · axe').map((t) => (t === 'Git y pull requests' ? 'GitHub' : t)),
 }));
 const JOBS = [
-  { role: 'Senior Product Designer', where: 'Atrinium · Málaga', years: '2022 – 2026', note: 'Único diseñador de un holding de cinco productos: HERMES, su administrador, Flesip, pólizas 360 y un e-commerce.' },
-  { role: 'UI / Product Designer', where: 'Darien Technology · Panamá, en remoto', years: '2021 – 2022', note: 'Banca digital para Mercantil Banco Panamá: pagos, Mony, Tadelanto, Next Gen, hipotecas y préstamos.' },
+  { role: 'Senior Product Designer', where: 'Atrinium · Málaga', years: '2022 – 2026', note: 'Lideré como único diseñador los productos del holding: HERMES, la plataforma SaaS aseguradora, Flesip y Montsaint.' },
+  { role: 'UI / Product Designer', where: 'Darien Technology · Panamá, en remoto', years: '2021 – 2022', note: 'Banca digital para Mercantil Banco Panamá, con más de 100k usuarios activos: pagos, Mony, Tadelanto, hipotecas y préstamos.' },
   { role: 'UX/UI Designer y freelance', where: 'Taksio y clientes internacionales', years: '2017 – 2020', note: 'Design system y flujos de una plataforma de movilidad; fintech, banca y logística como freelance.' },
 ];
 
@@ -30,13 +30,13 @@ export default function AboutCv() {
     <div className={s.grid}>
       <Rise className={s.copy}>
         <Part as="p" className={s.lead}>
-          Llevo nueve años convirtiendo problemas de negocio complejos en arquitectura de información y flujos que se pueden operar: ERP asegurador, banca digital, fintech y movilidad.
+          Llevo más de ocho años diseñando producto digital B2B SaaS de punta a punta, del discovery a producción, en dominios regulados como seguros y banca.
         </Part>
         <Part as="p">
-          Mi especialidad es el producto B2B que se vende a muchos clientes a la vez. Durante cuatro años fui el único diseñador de un holding cuyo núcleo es un SaaS multi-tenant que sostiene lógicas, monedas, idiomas y marcas distintas sin bifurcarse por cliente.
+          Durante cuatro años lideré, como único diseñador, el diseño de un holding con cinco productos. Su núcleo es un SaaS multi-tenant en 12 idiomas y con la marca de cada cliente, sostenido por un único design system.
         </Part>
         <Part as="p">
-          Construyo design systems <Icon name="stack" className={s.ico} /> con reglas de uso y criterios de decisión, no solo librerías de componentes. Soy graduado en Informática: reviso la implementación en React <Icon name="code" className={s.ico} /> y prototipo con IA <Icon name="sparkleLine" className={s.ico} />. Esta web es un proyecto Next.js con tests y código público.
+          Construyo design systems <Icon name="stack" className={s.ico} /> con reglas de uso y criterios de decisión, no solo librerías de componentes. Uso IA a diario <Icon name="sparkleLine" className={s.ico} /> para prototipar, sintetizar research e implementar, y como informático de formación reviso la implementación en React <Icon name="code" className={s.ico} />. Esta web es un proyecto Next.js con tests y código público.
         </Part>
         <Part>
           <Link href={ROUTES.es.about} className={s.more}>Más sobre mí y el CV <span aria-hidden="true">→</span></Link>

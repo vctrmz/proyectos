@@ -13,6 +13,7 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import Catalog from '@/components/catalog/Catalog';
 import band from '@/components/catalog/catalog.module.css';
 import Closing from '@/components/home/Closing';
+import PortadaEs from '@/components/portada/PortadaEs';
 import { getUi } from '@/lib/i18n/ui';
 import type { Locale } from '@/lib/i18n/config';
 
@@ -33,8 +34,19 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: L
   return pageMetadata(m.title, m.description, `/${locale}`, { es: '/es', en: '/en' });
 }
 
+/* El español estrena la portada v2 (components/portada/PortadaEs). El inglés
+   sigue con la v1 —la de la rama portada-v1— hasta que la v2 se traduzca. */
 export default async function Page({ params }: { params: Promise<{ locale: Locale }> }) {
   const { locale } = await params;
+  if (locale === 'es') {
+    return (
+      <>
+        <SiteHeader />
+        <main id="contenido"><PortadaEs /></main>
+        <SiteFooter locale={locale} />
+      </>
+    );
+  }
   const ui = getUi(locale);
   return (
     <>

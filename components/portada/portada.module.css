@@ -2,6 +2,5 @@
 .section { padding-block: clamp(96px, 11vw, 160px) 0; }
 .head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: var(--sp-16) var(--sp-48); margin-bottom: clamp(40px, 5vw, 72px); }
 .headLead { font-size: var(--fs-400); color: var(--ink-2); max-width: 36ch; }
-
-.notice { margin-top: clamp(80px, 10vw, 140px); padding-bottom: var(--sp-32); font-size: var(--fs-200); color: var(--ink-3); }
-.notice a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
+/* La última sección clara deja aire antes de la banda oscura del contacto. */
+.last { padding-bottom: clamp(96px, 11vw, 160px); }
