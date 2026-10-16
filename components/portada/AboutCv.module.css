@@ -13,7 +13,6 @@
 .role { font-size: var(--fs-400); font-weight: 500; color: var(--ink); }
 .where { font-size: var(--fs-200); color: var(--ink-2); margin-bottom: 6px; }
 .note { font-size: var(--fs-200); color: var(--ink-2); line-height: 1.55; }
-.stack { grid-column: 1 / -1; max-width: 760px; }
 
 @media (max-width: 899px) {
   .grid { grid-template-columns: 1fr; }

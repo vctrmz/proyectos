@@ -35,7 +35,7 @@ describe('CasePage', () => {
     expect(puntos).toHaveLength(10);
     expect(within(dock).getByRole('link', { current: 'page' })).toHaveAttribute('href', '/es/cases/hermes');
     expect(within(dock).getByRole('link', { name: /Caso anterior/ })).toHaveAttribute('href', '/es/cases/ayax');
-    expect(within(dock).getByRole('link', { name: 'Trabajo' })).toHaveAttribute('href', '/es#trabajo');
+    expect(within(dock).getByRole('link', { name: 'Trabajos' })).toHaveAttribute('href', '/es#trabajo');
   });
   it('trae el índice del caso con una entrada por sección', () => {
     render(<CasePage c={getCase('hermes')!} />);

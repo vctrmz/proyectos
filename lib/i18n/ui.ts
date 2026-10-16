@@ -54,7 +54,7 @@ export interface Ui {
 }
 
 const es: Ui = {
-  nav: { work: 'Trabajo', about: 'Sobre mí', contact: 'Contactar' },
+  nav: { work: 'Trabajos', about: 'Sobre mí', contact: 'Contactar' },
   skip: 'Saltar al contenido',
   home: {
     kicker: 'Senior Product Designer · Design Systems · B2B SaaS e Insurtech',
@@ -69,7 +69,7 @@ const es: Ui = {
     sectorsLead: 'Un CRM o un back office no se diseña para un usuario: lo usan a la vez comercial, operaciones, finanzas y dirección, cada uno con sus permisos y sus prisas. Mi trabajo es que el mismo sistema les sirva a todos, sin que ninguno pague el atajo de otro.',
     sectorsAreas: 'Para quién diseñé',
     manifesto: ['Diseño productos B2B donde un error operativo cuesta dinero,', 'por eso creo reglas escalables en lugar de resolver casos uno a uno.'],
-    workKicker: 'Trabajo',
+    workKicker: 'Trabajos',
     workTitle: ['Casos y productos', 'en producción.'],
     logosLabel: 'Empresas con las que he trabajado',
     closingTitle: ['¿Tienes un producto complejo?', 'Lo convierto en reglas, componentes y criterios que tu equipo puede construir sin interpretar nada.'],
@@ -84,7 +84,7 @@ const es: Ui = {
   },
   catalog: { filtersLabel: 'Filtrar proyectos', count: (n) => `${n} ${n === 1 ? 'proyecto' : 'proyectos'}`, seeCase: 'Ver caso', open: 'Abrir', listLabel: 'Proyectos' },
   case: {
-    back: '← Trabajo', demo: 'Ver demo', navLabel: 'Navegación entre casos', gallery: { open: 'Ampliar', close: 'Cerrar', prev: 'Imagen anterior', next: 'Imagen siguiente', of: '{i} de {n}' }, dock: { label: 'Proyectos', back: 'Trabajo', prev: 'Caso anterior', next: 'Siguiente caso', of: 'Caso {i} de {n}' }, live: 'Ver en producción', index: 'Índice del caso', parts: (n) => `${String(n).padStart(2, '0')} partes`,
+    back: '← Trabajos', demo: 'Ver demo', navLabel: 'Navegación entre casos', gallery: { open: 'Ampliar', close: 'Cerrar', prev: 'Imagen anterior', next: 'Imagen siguiente', of: '{i} de {n}' }, dock: { label: 'Proyectos', back: 'Trabajos', prev: 'Caso anterior', next: 'Siguiente caso', of: 'Caso {i} de {n}' }, live: 'Ver en producción', index: 'Índice del caso', parts: (n) => `${String(n).padStart(2, '0')} partes`,
     context: 'Contexto', role: 'Rol', delivery: 'Entrega',
     sections: { 'c-problema': 'Problema', 'c-demo': 'Pruébalo', 'c-reto': 'El reto', 'c-complejidad': 'Complejidad', 'c-audiencias': 'Audiencias', 'c-decisiones': 'Decisiones', 'c-flujos': 'Flujos', 'c-sistema': 'Sistema', 'c-diseno': 'Diseño', 'c-hallazgos': 'Hallazgos', 'c-impl': 'Implementación', 'c-resultado': 'Resultado', 'c-apr': 'Aprendizajes' },
     why: 'Por qué.', changed: 'Qué cambió.', tradeoff: 'Contrapartida asumida', wouldFix: 'Lo que corregiría',
@@ -125,7 +125,7 @@ const es: Ui = {
 };
 
 const en: Ui = {
-  nav: { work: 'Work', about: 'About', contact: 'Get in touch' },
+  nav: { work: 'Works', about: 'About', contact: 'Get in touch' },
   skip: 'Skip to content',
   home: {
     kicker: 'Senior Product Designer · Design Systems · B2B SaaS and Insurtech',
@@ -140,7 +140,7 @@ const en: Ui = {
     sectorsLead: 'A CRM or a back office is never designed for one user: sales, operations, finance and management work in it at the same time, each with their own permissions and pressures. My job is to make one system serve all of them, without anyone paying for someone else’s shortcut.',
     sectorsAreas: 'Who I designed for',
     manifesto: ['I design B2B products where an operational mistake costs money,', 'so I build scalable rules instead of solving cases one by one.'],
-    workKicker: 'Work',
+    workKicker: 'Works',
     workTitle: ['Cases and products', 'in production.'],
     logosLabel: 'Companies I have worked with',
     closingTitle: ['Do you have a complex product?', 'I turn it into rules, components and criteria your team can build without guessing.'],
@@ -155,7 +155,7 @@ const en: Ui = {
   },
   catalog: { filtersLabel: 'Filter projects', count: (n) => `${n} ${n === 1 ? 'project' : 'projects'}`, seeCase: 'Read the case', open: 'Open', listLabel: 'Projects' },
   case: {
-    back: '← Work', demo: 'See the demo', navLabel: 'Case navigation', gallery: { open: 'Enlarge', close: 'Close', prev: 'Previous image', next: 'Next image', of: '{i} of {n}' }, dock: { label: 'Projects', back: 'Work', prev: 'Previous case', next: 'Next case', of: 'Case {i} of {n}' }, live: 'See it live', index: 'Case index', parts: (n) => `${String(n).padStart(2, '0')} parts`,
+    back: '← Works', demo: 'See the demo', navLabel: 'Case navigation', gallery: { open: 'Enlarge', close: 'Close', prev: 'Previous image', next: 'Next image', of: '{i} of {n}' }, dock: { label: 'Projects', back: 'Works', prev: 'Previous case', next: 'Next case', of: 'Case {i} of {n}' }, live: 'See it live', index: 'Case index', parts: (n) => `${String(n).padStart(2, '0')} parts`,
     context: 'Context', role: 'Role', delivery: 'Delivered',
     sections: { 'c-problema': 'Problem', 'c-demo': 'Try it', 'c-reto': 'The challenge', 'c-complejidad': 'Complexity', 'c-audiencias': 'Audiences', 'c-decisiones': 'Decisions', 'c-flujos': 'Flows', 'c-sistema': 'System', 'c-diseno': 'Design', 'c-hallazgos': 'Findings', 'c-impl': 'Implementation', 'c-resultado': 'Result', 'c-apr': 'Takeaways' },
     why: 'Why.', changed: 'What changed.', tradeoff: 'Trade-off accepted', wouldFix: 'What I would fix',

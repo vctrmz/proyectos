@@ -91,8 +91,9 @@ export const ABOUT_EN: typeof ABOUT = {
   },
   toolGroups: [
     { name: 'Design and multimedia', items: ABOUT.toolGroups[0].items },
-    { name: 'Development and deployment', items: ABOUT.toolGroups[1].items },
-    { name: 'Analytics and behaviour', items: ABOUT.toolGroups[2].items },
-    ...ABOUT.toolGroups.slice(3).map((g, i) => ({ name: ['Artificial intelligence', 'Messaging and email'][i] ?? g.name, items: g.items })),
+    { name: 'Design systems', items: ['Design tokens', 'Component architecture', 'WCAG 2.2 accessibility'] },
+    { name: 'Development and deployment', items: ABOUT.toolGroups[2].items },
+    { name: 'Analytics and behaviour', items: ABOUT.toolGroups[3].items },
+    ...ABOUT.toolGroups.slice(4).map((g, i) => ({ name: ['Artificial intelligence', 'Messaging and email'][i] ?? g.name, items: g.items })),
   ],
 };

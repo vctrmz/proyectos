@@ -18,7 +18,7 @@ const ES = {
     alt: 'Listado de contratos de un cliente en HERMES Admin, con filtros por estado, firmantes y fechas',
   },
   thesis: { label: 'Cómo trabajo', text: 'Diseño producto B2B donde un error operativo cuesta dinero: escribo reglas que el equipo construye sin interpretar nada.' },
-  work: { title: 'trabajo', at: 6, lead: 'Productos enteros y decisiones concretas dentro de HERMES. Todo llegó a producción.', inSpanish: '' },
+  work: { title: 'trabajos', at: 6, lead: 'Productos enteros y decisiones concretas dentro de HERMES. Todo llegó a producción.', inSpanish: '' },
   about: {
     title: 'sobre mí', at: 1,
     lead: 'Llevo más de ocho años diseñando producto digital B2B SaaS de punta a punta, del discovery a producción, en dominios regulados como seguros y banca.',
@@ -31,7 +31,6 @@ const ES = {
       { role: 'UX/UI Designer y freelance', where: 'Taksio y clientes internacionales', years: '2017 – 2020', note: 'Design system y flujos de una plataforma de movilidad; fintech, banca y logística como freelance.' },
     ] as JobCopy[],
     degree: { role: 'Titulación en Informática', where: 'Universidad de Oriente · 5 años' },
-    gitItem: 'Git y pull requests',
   },
   areas: {
     title: 'áreas', at: 2,
@@ -74,7 +73,7 @@ const EN: typeof ES = {
     alt: 'A client’s contract list in HERMES Admin, filtered by status, signers and dates',
   },
   thesis: { label: 'How I work', text: 'I design B2B products where an operational mistake costs money: I write rules the team can build without interpreting anything.' },
-  work: { title: 'work', at: 1, lead: 'Whole products and specific decisions inside HERMES. All of it shipped to production.', inSpanish: 'in Spanish' },
+  work: { title: 'works', at: 1, lead: 'Whole products and specific decisions inside HERMES. All of it shipped to production.', inSpanish: 'in Spanish' },
   about: {
     title: 'about', at: 2,
     lead: 'I have spent eight-plus years designing B2B SaaS products end to end, from discovery to production, in regulated domains such as insurance and banking.',
@@ -87,7 +86,6 @@ const EN: typeof ES = {
       { role: 'UX/UI Designer and freelance', where: 'Taksio and international clients', years: '2017 – 2020', note: 'Design system and flows for a mobility platform; fintech, banking and logistics as a freelancer.' },
     ],
     degree: { role: 'Degree in Computer Science', where: 'Universidad de Oriente · 5 years' },
-    gitItem: 'Git and pull requests',
   },
   areas: {
     title: 'areas', at: 2,
