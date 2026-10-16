@@ -602,5 +602,13 @@
   "ep-pdf": {
     "width": 1280,
     "height": 730
+  },
+  "ayax-sobre": {
+    "width": 1280,
+    "height": 2097
+  },
+  "ayax-aplicaciones": {
+    "width": 1400,
+    "height": 932
   }
 }

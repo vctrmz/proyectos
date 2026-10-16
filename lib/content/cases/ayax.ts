@@ -5,6 +5,7 @@ export const ayax: CaseStudy = {
   tagline: 'Una agencia de suscripción que trabaja con Lloyd’s, de folleto corporativo a plataforma de captación bilingüe: tres audiencias opuestas y ni una sola cotización online.',
   tags: ['Caso de estudio', 'En producción', 'Insurtech', 'Marca y sistema'], brand: '#000A29',
   hero: shot('ayax-x_hero', 'Cabecera de la web de Ayax: vídeo de Málaga, titular «Agencia de suscripción de seguros» y sello Coverholder at Lloyd’s', 'La portada abre con la categoría y la credencial de Lloyd’s en el mismo pliegue'),
+  demoUrl: 'https://ayax-summit-olive.vercel.app/',
   context: 'Ayax diseña y suscribe seguros por delegación de aseguradoras, entre ellas Lloyd’s. Veintiún meses de evolución continua: arquitectura, sistema de diseño, seis fichas de producto, una landing de conversión propia, segunda lengua completa y la marca que lo sostiene.',
   role: 'Product Designer único: arquitectura de información, sistema, interfaz, captación y marca, con los tokens en el mismo repositorio que consume desarrollo.',
   delivery: 'Sitio bilingüe con catálogo y fichas, landing de taxi, sección de partners, evento anual, brand book, piezas de redes y los emails de cada flujo de captación.',
@@ -87,10 +88,11 @@ export const ayax: CaseStudy = {
     ],
   },
   design: [
-    shot('ayax-x_taxi', 'Beneficios del seguro de taxi: protección total, precios justos, gestión fácil y siempre a tu lado', 'Landing de taxi: cuatro beneficios en el lenguaje del taxista, no en el del sector'),
+    shot('ayax-sobre', 'Página Sobre Ayax: cabecera, valores en acordeón, frase de marca y sectores con los que trabaja', 'Sobre Ayax: valores, la frase de marca y los sectores con los que trabaja, en la misma secuencia de bandas que el resto del sitio'),
     shot('ayax-guidelines', 'Guías de marca de Ayax: logo, colores primarios y tipografía Inter', 'Brand book: la X se lee como firma de aprobación y como cruce entre aseguradoras y partners'),
     shot('ayax-campaign', 'Campaña «Que tu riesgo tenga siempre luz verde» y save the date de Ayax Evolution', 'Campaña de marca y evento anual, con degradado y variante de botón propios'),
     shot('ayax-merch3', 'Polo del equipo con la X cruzando la prenda', 'El trazo de la X cruza el polo del equipo como una firma'),
+    shot('ayax-aplicaciones', 'Aplicaciones de marca: cartel en el metro, tarjetas, botellas, libretas, bolígrafos, bolsa de deporte y roll-up', 'La marca fuera de la pantalla: metro, papelería, merchandising y roll-up con la misma X y los mismos tres colores'),
   ],
   implementation: [
     'Veintiún meses de evolución continua sobre el mismo sistema: un vertical nuevo (taxi), una segunda lengua completa con el idioma en la URL, una campaña con identidad propia y una migración de repositorio con los tokens intactos.',

@@ -11,7 +11,8 @@
 .markLg { height: 72px; min-width: 72px; padding-inline: 16px; border-radius: var(--r-card); }
 .markLg img { height: 26px; max-width: 128px; }
 .tagline { font-size: var(--fs-500); color: var(--ink-2); max-width: var(--measure-mid); text-wrap: pretty; }
-.tags { font-size: var(--fs-200); color: var(--ink-3); } .tags span + span::before { content: " · "; }
+.tags { font-size: var(--fs-200); color: var(--ink-3); }
+.headCta { margin-top: var(--sp-8); } .tags span + span::before { content: " · "; }
 .cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-32); padding-block: var(--sp-64); border-bottom: 1px solid var(--line); }
 .cols h2, .sec h2 { font-size: var(--fs-100); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); font-weight: 500; margin-bottom: var(--sp-24); }
 .cols h2 { margin-bottom: var(--sp-12); }

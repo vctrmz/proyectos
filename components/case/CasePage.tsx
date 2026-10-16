@@ -124,6 +124,7 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
             <h1 className={s.title}><BrandMark p={p} />{c.title} · {c.company}</h1>
             <p className={s.tagline}>{c.tagline}</p>
             <p className={s.tags}>{c.tags.map((t) => <span key={t}>{tagIn(locale, t)}</span>)}<span>{c.years}</span></p>
+            {c.demoUrl && <div className={s.headCta}><Button href={c.demoUrl} external size="lg">{ui.case.demo}</Button></div>}
           </div></ViewTransition>
         </div>
         <div className="container">
