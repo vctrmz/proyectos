@@ -10,7 +10,7 @@ import Sectores from '@/components/home/Sectores';
 import Stack from '@/components/home/Stack';
 import Starfield from '@/components/home/Starfield';
 import { Rise, Part } from '@/components/propuesta/Rise';
-import HeroId from '@/components/propuesta/HeroId';
+import Hero from '@/components/home/Hero';
 import TokenCollapse from '@/components/propuesta/TokenCollapse';
 import FeaturedCase from '@/components/propuesta/FeaturedCase';
 import Thesis from '@/components/propuesta/Thesis';
@@ -22,12 +22,13 @@ import s from '@/components/propuesta/propuesta.module.css';
 /* Propuesta de portada, v2: la mezcla de la portada actual y la propuesta de
    la crítica con taste-skill (2026-10-16). Vive aparte y no se indexa.
 
-   De la propuesta: el hero a la izquierda con el colapso 267 → 24, HERMES
-   con producto real, la tesis una sola vez, el índice de casos y un cierre
-   que es una acción.
-   De la portada actual: el nombre con LinkedIn, Behance y Figma, los logos de
-   empresas, los cinco sectores por dentro, el stack con el enlace al
+   De la portada actual: el hero tal cual (campo de partículas, titular con
+   glitch, nombre con LinkedIn, Behance y Figma), que es el que retiene; los
+   logos de empresas, los cinco sectores por dentro, el stack con el enlace al
    repositorio y el campo de estrellas del cierre.
+   De la propuesta: el colapso 267 → 24 justo debajo del hero (en el sitio de
+   la banda de cifras), HERMES con producto real, la tesis una sola vez, el
+   índice de casos y un cierre que es una acción.
    El CV se queda en Sobre mí. */
 export const metadata: Metadata = { title: 'Propuesta de portada', robots: { index: false, follow: false } };
 
@@ -37,29 +38,11 @@ export default async function Propuesta({ params }: { params: Promise<{ locale: 
   return (
     <>
       <SiteHeader />
-      <main id="contenido" className={s.page}>
-        <p className={`container ${s.notice}`}>
-          Propuesta de rediseño, no indexada. <Link href={ROUTES.es.home}>Comparar con la portada actual →</Link>
-        </p>
+      <main id="contenido">
+        <Hero locale={locale} />
 
-        <section className={`container ${s.hero}`} aria-labelledby="hero-title">
-          <Rise immediate className={s.heroCopy}>
-            <Part className={s.idRow}><HeroId locale={locale} /></Part>
-            <Part as="h1" id="hero-title" className={s.h1}>
-              <span>Diseño producto B2B complejo</span> <span className={s.tone}>y lo llevo a producción.</span>
-            </Part>
-            <Part as="p" className={s.sub}>
-              Senior Product Designer. Nueve años en SaaS asegurador, ERP y banca; los cuatro últimos,
-              único diseñador de un holding de cinco productos.
-            </Part>
-            <Part className={s.ctas}>
-              <Button href={ROUTES.es.caseOf('hermes')} size="lg">Ver el caso HERMES</Button>
-              <ContactButton size="lg" />
-            </Part>
-          </Rise>
-          <div className={s.stage}>
-            <TokenCollapse />
-          </div>
+        <section className={`container ${s.tokens}`} aria-label="Del caos de color a 24 tokens">
+          <TokenCollapse />
         </section>
 
         <LogoMarquee locale={locale} />
@@ -92,6 +75,9 @@ export default async function Propuesta({ params }: { params: Promise<{ locale: 
             </Part>
           </Rise>
         </section>
+        <p className={`container ${s.notice}`}>
+          Propuesta de rediseño, no indexada. <Link href={ROUTES.es.home}>Comparar con la portada actual →</Link>
+        </p>
       </main>
       <SiteFooter locale={locale} />
     </>

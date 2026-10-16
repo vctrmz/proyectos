@@ -1,18 +1,9 @@
-.page { padding-top: 88px; }
-.notice { font-size: var(--fs-200); color: var(--ink-3); padding-block: var(--sp-12); }
+.notice { font-size: var(--fs-200); color: var(--ink-3); padding-block: 0 var(--sp-32); }
+/* El colapso, donde estaba la banda de cifras: justo debajo del hero. */
+.tokens { padding-block: var(--sp-32) clamp(64px, 8vw, 112px); }
 .notice a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; }
 
-/* Hero alineado a la izquierda: titular de dos líneas, una frase de apoyo y
-   las acciones; debajo, a todo el ancho, la pieza que demuestra lo que dice. */
-.hero { padding-top: clamp(32px, 6vw, 88px); padding-bottom: clamp(96px, 12vw, 160px); }
-.heroCopy { max-width: 100%; }
-.idRow { margin-bottom: var(--sp-24); }
-.h1 { font-size: clamp(2.5rem, 5.2vw, 4.5rem); letter-spacing: -0.04em; line-height: 1; margin-bottom: var(--sp-32); }
-.h1 span { display: block; }
-.tone { color: var(--ink-3); }
-.sub { font-size: var(--fs-500); line-height: 1.5; color: var(--ink); max-width: 52ch; margin-bottom: var(--sp-32); }
 .ctas { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-12); }
-.stage { margin-top: clamp(64px, 8vw, 112px); }
 
 .h2 { font-size: var(--fs-900); letter-spacing: -0.03em; line-height: 1.05; }
 
@@ -35,8 +26,5 @@
 .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
 
 @media (max-width: 767px) {
-  .page { padding-top: 72px; }
-  .h1 { font-size: clamp(2rem, 8.6vw, 2.5rem); }
-  .sub { font-size: var(--fs-400); }
   .closingTitle { font-size: var(--fs-900); }
 }
