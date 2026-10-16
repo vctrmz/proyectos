@@ -34,7 +34,7 @@ export const PROJECTS: Project[] = [
     image: shot('01-datos-del-contacto', 'Fase de cualificación: contacto principal y perfil del cliente'),
     summary: 'Tres meses de proceso manual en Excel convertidos en un módulo en producción en cinco semanas, modelado como máquina de estados de tres fases.' },
   { slug: 'editor-propuesta', title: 'Editor de propuesta con TipTap', company: 'HERMES Admin', years: '2025', type: 'case', status: 'production', sector: 'insurtech', brand: '#2b3f85', logo: '/assets/logos/hermes.webp', hasCase: true,
-    image: shot('12-editor-variables', 'Editor de propuesta con variables insertadas con @'),
+    image: shot('ep-comandos', 'Editor del modelo de documento con el menú de comandos abierto'),
     summary: 'La propuesta al cliente se preparaba fuera del producto. Plantilla con huecos, variables con @ y cláusulas opcionales como bloques, auditable mientras se escribe.' },
   { slug: 'vista-360', title: 'Vista 360 del cliente', company: 'Atrinium', years: '2026', type: 'case', status: 'production', sector: 'insurtech', brand: '#1b2a4a', logo: '/assets/logos/hermes.webp', hasCase: true,
     image: shot('11-resumen-comercial', 'Resumen comercial del cliente en una sola vista'),

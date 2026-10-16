@@ -9,7 +9,7 @@ import { splitBold } from '@/lib/content/text';
 import ProcessInfographic from './ProcessInfographic';
 import s from './about.module.css';
 
-export default function BioDrawer({ locale }: { locale?: 'es' | 'en' }) {
+export default function BioDrawer({ locale, ctaClassName }: { locale?: 'es' | 'en'; ctaClassName?: string }) {
   const ctx = useLocale();
   const lang = locale ?? ctx;
   const ABOUT = aboutIn(lang);
@@ -19,7 +19,7 @@ export default function BioDrawer({ locale }: { locale?: 'es' | 'en' }) {
   return (
     <>
       <span ref={(el) => { cta.current = el?.querySelector('button') ?? null; }}>
-        <Button onClick={() => setOpen(true)}>{t.drawer}</Button>
+        <Button onClick={() => setOpen(true)} className={ctaClassName}>{t.drawer}</Button>
       </span>
       <Drawer open={open} onClose={() => setOpen(false)} title={t.drawerTitle} returnFocusTo={cta}>
         <div className={s.bio}>
