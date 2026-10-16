@@ -1,4 +1,4 @@
-/* Datos del colapso 267 → 24 de la propuesta de portada.
+/* Datos del colapso 267 → 24 del caso del design system.
 
    Los totales son los de la auditoría (267 valores de color en uso, 24 tokens
    con rol). El reparto por token y los valores sueltos son ilustrativos: se

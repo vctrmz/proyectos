@@ -20,6 +20,7 @@ export const designSystem: CaseStudy = {
   ],
   system: {
     body: ['Tokens semánticos con marca e idioma como variables: la paleta de cada cliente se resuelve al iniciar sesión sin duplicar componentes.'],
+    collapse: true,
     /* Mismos valores que el extracto de abajo. Lo que cambia es el nombre: por
        apariencia, cada fila deja una pregunta; por intención, la responde. */
     tokens: {

@@ -5,10 +5,8 @@ import { motionAllowed } from '@/lib/motion/prefs';
 import { TOKENS, TOTAL, buildSwatches } from './tokenCollapse.data';
 import s from './TokenCollapse.module.css';
 
-/* Reservado para el caso HERMES / design system (decidido el 2026-10-16):
-   se probó en la portada y Víctor prefiere guardarlo para el caso, donde
-   cuenta la auditoría del monorepo. Todavía no se usa en ninguna página;
-   para montarlo basta con <TokenCollapse /> dentro de una sección del caso.
+/* Colapso de la auditoría en el caso del design system (sección Sistema,
+   `system.collapse`).
 
    Los 267 valores de color que había en el monorepo caen sobre los 24
    tokens con rol que los sustituyeron. Es la

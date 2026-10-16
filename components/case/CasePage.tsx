@@ -21,6 +21,7 @@ import DesignGallery from './DesignGallery';
 import BrandMark from './BrandMark';
 import Button from '@/components/ui/Button';
 import UiKit from './UiKit';
+import TokenCollapse from './TokenCollapse';
 import TokenCompare from './TokenCompare';
 import CaseDemo from './demos/CaseDemo';
 import { ChallengeGrid, AudienceGrid, FlowList, FindingsTable } from './CaseBlocks';
@@ -76,6 +77,7 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
     { id: 'c-sistema', label: L('c-sistema', 'Sistema'), node: (
       <Disclosure title={ui.case.systemToggle} defaultOpen>
         <div className={s.body}>{c.system.body.map((b) => <p key={b.slice(0, 30)}>{b}</p>)}</div>
+        {c.system.collapse && <TokenCollapse />}
         {c.system.tokens && <TokenCompare t={c.system.tokens} />}
         {c.system.code && <CodeDemo {...c.system.code} locale={locale} />}
         {c.system.uiKit && <UiKit brand={c.brand} pieces={c.system.uiKit} label={ui.case.kitLabel} />}
