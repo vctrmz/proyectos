@@ -8,7 +8,7 @@
 .ch { display: inline-block; padding: 0 0.015em; border-radius: 0.16em; transition: background .3s var(--ease); }
 
 /* Los tres estados del proceso, en monocromo. */
-.wire .ch { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.55); outline: 1px dashed rgba(255,255,255,.28); outline-offset: -0.04em; }
+.wire .ch { color: transparent; -webkit-text-stroke: 1px rgba(255,255,255,.55); }
 .outline .ch { color: transparent; -webkit-text-stroke: 2px #fff; }
 /* La O convertida en cursor: ocupa el ancho exacto de la letra. */
 .glyph { position: relative; display: inline-block; }
