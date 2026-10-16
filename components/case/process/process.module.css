@@ -1,0 +1,77 @@
+/* Proceso del caso. Los dibujos reconstruidos van en la lámina clara de la web
+   (--plate) con trazo de lápiz en tinta y el índigo de foco solo para lo que se
+   elige. El wireframe es el mismo dibujo en limpio, sobre blanco, y la
+   captura real cierra la evolución. */
+.wrap { display: grid; gap: var(--sp-24); }
+.lead { font-size: var(--fs-400); color: var(--ink-2); max-width: var(--measure-mid); }
+
+.steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--sp-48) var(--sp-24); }
+.step { display: grid; gap: var(--sp-12); align-content: start; min-width: 0; }
+.split { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: var(--sp-48); align-items: start; }
+
+.stepTitle { font-size: var(--fs-500); letter-spacing: -0.01em; line-height: 1.25; }
+.text { font-size: var(--fs-200); line-height: 1.6; color: var(--ink-2); max-width: 62ch; text-wrap: pretty; }
+
+.chip { justify-self: start; display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px; border-radius: var(--r-pill); font-size: var(--fs-100); background: var(--surface); color: var(--ink-2); }
+.chip::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--ink-3); }
+.chip[data-kind="real"], .chip[data-kind="original"] { background: var(--plate); color: var(--focus); }
+.chip[data-kind="real"]::before, .chip[data-kind="original"]::before { background: var(--focus); }
+
+/* La hoja */
+.frame { aspect-ratio: 16 / 10; border-radius: var(--r-card); background: var(--plate); overflow: hidden; }
+.frame[data-shot] { aspect-ratio: auto; background: var(--surface); padding: var(--sp-12); }
+.handoffShot { width: 100%; height: auto; border-radius: 10px; }
+.open { position: relative; display: block; border-radius: 10px; }
+.openHint { position: absolute; right: 10px; bottom: 10px; padding: 6px 12px; border-radius: var(--r-pill); background: var(--ink); color: #fff; font-size: var(--fs-100); opacity: 0; transition: opacity .2s var(--ease); }
+.open:hover .openHint, .open:focus-visible .openHint { opacity: 1; }
+.sketch, .wire { display: block; width: 100%; height: 100%; }
+.gridDot { fill: var(--ink-3); opacity: .35; }
+.hatch { stroke: var(--plate-ink); stroke-width: .35; opacity: .35; }
+.sketch [data-k], .sketch [data-a] { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.sketch [data-k] { stroke: var(--plate-ink); stroke-width: .5; }
+.sketch [data-a] { stroke: var(--focus); stroke-width: .7; }
+.sketch :global(.thin) { stroke-width: .32; }
+.sketch :global(.thick) { stroke-width: 1.1; }
+.sketch :global(.marker) { fill: var(--focus); fill-opacity: .18; stroke: none; }
+.sketch :global(.vote) { fill: var(--focus); stroke: none; }
+.sketch :global(.pin) { fill: var(--focus); font-size: 3.4px; font-weight: 600; }
+/* Wireframe: el mismo dibujo en limpio. */
+.wire { background: var(--bg); }
+.wire [data-k] { fill: none; stroke: var(--ink-3); stroke-width: .28; opacity: .7; }
+.wire [data-solid] { fill: var(--surface); }
+.wire [data-dark] { fill: var(--plate-tint); stroke: none; opacity: 1; }
+.wire [data-cta] { fill: var(--ink-2); stroke: none; opacity: 1; }
+.wire :global(.thin) { stroke-width: .22; }
+
+/* Evolución: tres capas alineadas; la activa entra con un barrido sobre la
+   anterior, que se queda debajo hasta que la nueva la tapa. */
+.evolve { display: grid; gap: var(--sp-12); }
+.seg { display: inline-flex; justify-self: start; gap: 4px; margin: 0; padding: 4px; border: 0; border-radius: var(--r-pill); background: var(--surface); }
+.segItem { position: relative; display: inline-flex; }
+.segItem input { position: absolute; inset: 0; opacity: 0; margin: 0; cursor: pointer; }
+.segItem span { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: var(--r-pill); font-size: var(--fs-200); font-weight: 500; color: var(--ink-2); transition: background .25s var(--ease), color .25s var(--ease); }
+.segItem input:hover + span { color: var(--ink); }
+.segItem input:checked + span { background: var(--ink); color: #fff; }
+.segItem input:focus-visible + span { outline: 2px solid var(--focus); outline-offset: 2px; }
+.stage { position: relative; aspect-ratio: 16 / 10; border-radius: var(--r-card); overflow: hidden; background: var(--plate); }
+.layer { position: absolute; inset: 0; clip-path: inset(0 100% 0 0); transition: clip-path 0s linear .8s; z-index: 1; }
+.lSketch { background: var(--plate); }
+.lReal { background: var(--plate); }
+.realShot { position: absolute; }
+.realShot img { display: block; width: 100%; height: 100%; object-fit: fill; border-radius: 6px; box-shadow: 0 14px 40px rgba(18,19,23,.16); }
+/* El estado lo lee el CSS del radio marcado: funciona también sin JS. */
+.evolve:has(input[value="sketch"]:checked) .lSketch,
+.evolve:has(input[value="wire"]:checked) .lWire,
+.evolve:has(input[value="real"]:checked) .lReal { clip-path: inset(0 0 0 0); transition: clip-path .75s cubic-bezier(.65, 0, .35, 1); z-index: 2; }
+.evoTag { display: flex; }
+
+.note { font-size: var(--fs-200); color: var(--ink-3); max-width: var(--measure-mid); }
+
+@media (max-width: 900px) {
+  .steps { grid-template-columns: minmax(0, 1fr); gap: var(--sp-32); }
+  .split { grid-template-columns: minmax(0, 1fr); gap: var(--sp-16); }
+  .segItem span { padding: 0 14px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .layer, .evolve:has(input:checked) .layer { transition: none; }
+}

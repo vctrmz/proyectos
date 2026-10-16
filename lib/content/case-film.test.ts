@@ -1,10 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { CASES } from './cases';
 import { buildFilm, tc, SECTION_ORDER } from './case-film';
+import { PROCESS } from './cases/process';
 
 describe('film del caso', () => {
   it.each(CASES.map((c) => [c.slug, c] as const))('%s: un plano por sección, con pantallas y en orden', (_, c) => {
-    const opt: Record<string, unknown> = { 'c-demo': c.demo, 'c-reto': c.challenge, 'c-audiencias': c.audiences, 'c-flujos': c.flows, 'c-hallazgos': c.findings };
+    const opt: Record<string, unknown> = { 'c-demo': c.demo, 'c-reto': c.challenge, 'c-audiencias': c.audiences, 'c-flujos': c.flows, 'c-hallazgos': c.findings, 'c-proceso': PROCESS[c.slug], 'c-evolucion': PROCESS[c.slug], 'c-entrega': PROCESS[c.slug] };
     const ids = SECTION_ORDER.filter((id) => !(id in opt) || opt[id]);
     const film = buildFilm(c, ids);
     for (const id of ids) expect(film.shots.filter((s) => s.section === id)).toHaveLength(1);

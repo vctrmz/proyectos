@@ -1,5 +1,6 @@
 import type { CaseStudy } from './cases';
 import { shotSize } from './shots';
+import { PROCESS } from './cases/process';
 
 /* El film del caso: el mismo guion que la página, montado como un storyboard
    de cinco fases —Discover, Define, Develop, Deliver y cierre— con las
@@ -27,10 +28,10 @@ export const PHASE_WORDS = ['Opening', 'Discover', 'Define', 'Develop', 'Deliver
 
 /* A qué fase pertenece cada sección del caso, en el orden en que se leen. */
 export const SECTION_PHASE: Record<string, number> = {
-  'c-problema': 1, 'c-demo': 1, 'c-audiencias': 1,
+  'c-problema': 1, 'c-demo': 1, 'c-proceso': 1, 'c-audiencias': 1,
   'c-reto': 2, 'c-complejidad': 2, 'c-hallazgos': 2,
-  'c-decisiones': 3, 'c-flujos': 3, 'c-sistema': 3,
-  'c-diseno': 4, 'c-impl': 4, 'c-resultado': 4,
+  'c-evolucion': 3, 'c-decisiones': 3, 'c-flujos': 3, 'c-sistema': 3,
+  'c-diseno': 4, 'c-entrega': 4, 'c-impl': 4, 'c-resultado': 4,
   'c-apr': 5,
 };
 export const SECTION_ORDER = Object.keys(SECTION_PHASE);
@@ -63,6 +64,11 @@ export function buildFilm(c: CaseStudy, sections: string[], logo?: string): Film
     switch (id) {
       case 'c-problema': add({ ...base, kind: 'scatter', dur: 5, imgs: pick(pool, 8) }); break;
       case 'c-demo': add({ ...base, kind: 'focus', dur: 5, imgs: [at(0)] }); break;
+      /* El proceso usa las pantallas del propio proceso (lib/content/cases/process.ts):
+         la idea sale de las referencias, la pantalla madura y se entrega. */
+      case 'c-proceso': add({ ...base, kind: 'split', dur: 5, imgs: [at(1), at(2)] }); break;
+      case 'c-evolucion': add({ ...base, kind: 'focus', dur: 5, imgs: [img(PROCESS[c.slug]!.evolve.shot.src)] }); break;
+      case 'c-entrega': add({ ...base, kind: 'tilt', dur: 5, imgs: [img((PROCESS[c.slug]!.handoff.shot ?? PROCESS[c.slug]!.evolve.shot).src)] }); break;
       case 'c-audiencias': add({ ...base, kind: 'split', dur: 5, imgs: [at(1), at(2)], caption: c.audiences?.items.map((a) => a.name).slice(0, 2).join(' · ') }); break;
       case 'c-reto': add({ ...base, kind: 'split', dur: 5, imgs: [at(2), at(3)], caption: c.challenge?.items.map((a) => a.title).slice(0, 2).join(' · ') }); break;
       case 'c-complejidad': add({ ...base, kind: 'tilt', dur: 5, imgs: [at(3)], caption: c.complexity.caption }); break;

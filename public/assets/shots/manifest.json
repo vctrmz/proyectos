@@ -610,5 +610,17 @@
   "ayax-aplicaciones": {
     "width": 1400,
     "height": 932
+  },
+  "pm-flujo-receptor": {
+    "width": 2600,
+    "height": 1268
+  },
+  "pm-pagar": {
+    "width": 292,
+    "height": 572
+  },
+  "ms-desktop-top": {
+    "width": 522,
+    "height": 356
   }
 }
