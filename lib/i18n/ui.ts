@@ -20,7 +20,7 @@ export interface Ui {
   };
   catalog: { filtersLabel: string; count: (n: number) => string; seeCase: string; open: string; listLabel: string };
   case: {
-    back: string; navLabel: string; demo: string; gallery: { open: string; close: string; prev: string; next: string; of: string }; dock: { label: string; back: string; prev: string; next: string; of: string }; live: string; index: string; parts: (n: number) => string;
+    back: string; navLabel: string; demo: string; gallery: { open: string; close: string; prev: string; next: string; of: string; all: string; filter: string }; dock: { label: string; back: string; prev: string; next: string; of: string }; live: string; index: string; parts: (n: number) => string;
     context: string; role: string; delivery: string;
     sections: Record<string, string>;
     why: string; changed: string; tradeoff: string; wouldFix: string;
@@ -93,7 +93,7 @@ const es: Ui = {
   },
   catalog: { filtersLabel: 'Filtrar proyectos', count: (n) => `${n} ${n === 1 ? 'proyecto' : 'proyectos'}`, seeCase: 'Ver caso', open: 'Abrir', listLabel: 'Proyectos' },
   case: {
-    back: '← Trabajos', demo: 'Ver demo', navLabel: 'Navegación entre casos', gallery: { open: 'Ampliar', close: 'Cerrar', prev: 'Imagen anterior', next: 'Imagen siguiente', of: '{i} de {n}' }, dock: { label: 'Proyectos', back: 'Trabajos', prev: 'Caso anterior', next: 'Siguiente caso', of: 'Caso {i} de {n}' }, live: 'Ver en producción', index: 'Índice del caso', parts: (n) => `${String(n).padStart(2, '0')} partes`,
+    back: '← Trabajos', demo: 'Ver demo', navLabel: 'Navegación entre casos', gallery: { open: 'Ampliar', close: 'Cerrar', prev: 'Imagen anterior', next: 'Imagen siguiente', of: '{i} de {n}', all: 'Todo', filter: 'Pantallas por módulo' }, dock: { label: 'Proyectos', back: 'Trabajos', prev: 'Caso anterior', next: 'Siguiente caso', of: 'Caso {i} de {n}' }, live: 'Ver en producción', index: 'Índice del caso', parts: (n) => `${String(n).padStart(2, '0')} partes`,
     context: 'Contexto', role: 'Rol', delivery: 'Entrega',
     sections: { 'c-problema': 'Problema', 'c-demo': 'Pruébalo', 'c-proceso': 'Benchmark e ideas', 'c-evolucion': 'Del boceto al producto', 'c-entrega': 'Entrega a desarrollo', 'c-reto': 'El reto', 'c-complejidad': 'Complejidad', 'c-audiencias': 'Audiencias', 'c-decisiones': 'Decisiones', 'c-flujos': 'Flujos', 'c-sistema': 'Sistema', 'c-diseno': 'Diseño', 'c-hallazgos': 'Hallazgos', 'c-impl': 'Implementación', 'c-resultado': 'Resultado', 'c-apr': 'Aprendizajes' },
     why: 'Por qué.', changed: 'Qué cambió.', tradeoff: 'Contrapartida asumida', wouldFix: 'Lo que corregiría',
@@ -181,7 +181,7 @@ const en: Ui = {
   },
   catalog: { filtersLabel: 'Filter projects', count: (n) => `${n} ${n === 1 ? 'project' : 'projects'}`, seeCase: 'Read the case', open: 'Open', listLabel: 'Projects' },
   case: {
-    back: '← Works', demo: 'See the demo', navLabel: 'Case navigation', gallery: { open: 'Enlarge', close: 'Close', prev: 'Previous image', next: 'Next image', of: '{i} of {n}' }, dock: { label: 'Projects', back: 'Works', prev: 'Previous case', next: 'Next case', of: 'Case {i} of {n}' }, live: 'See it live', index: 'Case index', parts: (n) => `${String(n).padStart(2, '0')} parts`,
+    back: '← Works', demo: 'See the demo', navLabel: 'Case navigation', gallery: { open: 'Enlarge', close: 'Close', prev: 'Previous image', next: 'Next image', of: '{i} of {n}', all: 'All', filter: 'Screens by module' }, dock: { label: 'Projects', back: 'Works', prev: 'Previous case', next: 'Next case', of: 'Case {i} of {n}' }, live: 'See it live', index: 'Case index', parts: (n) => `${String(n).padStart(2, '0')} parts`,
     context: 'Context', role: 'Role', delivery: 'Delivered',
     sections: { 'c-problema': 'Problem', 'c-demo': 'Try it', 'c-proceso': 'Benchmark and ideas', 'c-evolucion': 'From sketch to product', 'c-entrega': 'Handover to engineering', 'c-reto': 'The challenge', 'c-complejidad': 'Complexity', 'c-audiencias': 'Audiences', 'c-decisiones': 'Decisions', 'c-flujos': 'Flows', 'c-sistema': 'System', 'c-diseno': 'Design', 'c-hallazgos': 'Findings', 'c-impl': 'Implementation', 'c-resultado': 'Result', 'c-apr': 'Takeaways' },
     why: 'Why.', changed: 'What changed.', tradeoff: 'Trade-off accepted', wouldFix: 'What I would fix',

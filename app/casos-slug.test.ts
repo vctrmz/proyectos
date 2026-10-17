@@ -4,7 +4,7 @@ import { generateStaticParams, generateMetadata } from './[locale]/cases/[slug]/
 describe('/[locale]/cases/[slug]', () => {
   it('genera los diez casos en español y los traducidos en inglés', async () => {
     const params = generateStaticParams();
-    expect(params.filter((p) => p.locale === 'es').map((p) => p.slug)).toEqual(['ayax', 'hermes', 'flesip', 'montsaint', 'mercantil', 'suscripcion', 'editor-propuesta', 'design-system', 'pidemony']);
+    expect(params.filter((p) => p.locale === 'es').map((p) => p.slug)).toEqual(['ayax', 'hermes', 'flesip', 'montsaint', 'mercantil', 'design-system', 'pidemony']);
     expect(params.filter((p) => p.locale === 'en').map((p) => p.slug)).toEqual(['hermes']);
   });
   it('metadata por caso con canonical', async () => {

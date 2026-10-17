@@ -54,19 +54,6 @@ export const WIRES: Record<string, WireBox[]> = {
     ['frame', 82, 13, 14, 62], ['img', 83.5, 18, 11, 44],
     ['btn', 31, 5, 10, 6], ['btn', 64, 4, 14, 7], ['btn', 48, 77, 10, 6], ['btn', 84, 77, 9, 6], ['fill', 0, 92, 100, 8],
   ],
-  suscripcion: [
-    ['nav', 2, 2, 40, 1.5, 6], ['dot', 95, 1.5, 2.5, 3], ['frame', 0, 5, 17, 95], ['lines', 2, 10, 12, 5, 2], ['cta', 1, 16.5, 15, 3.5], ['lines', 2, 24, 13, 50, 14],
-    ['title', 20, 6, 20, 3], ['btn', 88, 6, 10, 3.5], ['frame', 19, 10.5, 56, 5.5],
-    ['title', 20, 20, 12, 2], ['input', 20, 24, 26, 4], ['input', 48, 24, 26, 4], ['input', 20, 31, 26, 4], ['input', 48, 31, 26, 4], ['chips', 20, 38, 54, 4, 3],
-    ['title', 20, 46, 14, 2], ['input', 20, 50, 26, 4], ['input', 48, 50, 26, 4], ['input', 20, 57, 26, 4], ['input', 48, 57, 26, 4], ['input', 20, 64, 26, 4], ['input', 48, 64, 26, 4],
-    ['fill', 76, 10.5, 22, 22], ['frame', 76, 35, 22, 12], ['lines', 78, 37, 18, 8, 3],
-  ],
-  'editor-propuesta': [
-    ['nav', 3, 1.5, 40, 1.5, 5], ['fill', 0, 4, 100, 3], ['title', 1, 8.5, 8, 2], ['list', 1, 11, 14, 26, 6],
-    ['title', 18, 8.5, 14, 2], ['input', 18, 11.5, 14, 3], ['btn', 82, 11, 15, 3], ['frame', 18, 15.5, 80, 4], ['nav', 30, 17, 55, 1.2, 10],
-    ['title', 47, 23, 8, 2], ['lines', 18, 27, 75, 14, 4], ['lines', 44, 46, 49, 40, 8],
-    ['frame', 19, 47, 22, 52], ['cta', 20, 50, 20, 2.8], ['lines', 21, 55, 18, 42, 11],
-  ],
   'design-system': [
     ['nav', 2, 2, 35, 1.5, 6], ['dot', 95, 1.5, 2.5, 3], ['frame', 0, 5, 14, 95], ['lines', 1.5, 9, 11, 8, 3], ['cta', 1, 20, 12, 3], ['lines', 1.5, 26, 11, 60, 12],
     ['title', 17, 9, 18, 3], ['btn', 73, 9, 11, 3.5], ['cta', 86, 9, 11, 3.5], ['chips', 17, 15, 27, 3, 3],
@@ -116,20 +103,6 @@ export const PROCESS: Record<string, CaseProcess> = {
     ideas: 'Ordenar quién necesita qué antes de diseñar nada, y un selector que parte de la situación del comercio, no del catálogo del banco.',
     evolve: { text: 'Mony: lo visible es un QR en caja; debajo hay cuatro fases que tienen que funcionar juntas.', shot: shot('mb-pay_20', 'Cómo pagan los clientes con Mony, en cuatro pantallas', 'Mony en cuatro pantallas'), wire: WIRES.mercantil },
     handoff: { text: 'Cada flujo pasó una revisión de UX y negocio, y pruebas de usabilidad en Maze, antes de llegar a desarrollo.' },
-  },
-  suscripcion: {
-    brief: 'No había módulo: había un proceso manual repartido en correos, sin especificación, sin alcance y sin una sola métrica.',
-    bench: 'Antes de abrir Figma, observación indirecta de cómo trabajaba el closer, y una revisión de cómo ordenan la venta consultiva otros CRM.',
-    ideas: 'La idea que ordenó todo: una máquina de estados, no un wizard, y llevar al producto lo que vivía en la experiencia del closer.',
-    evolve: { text: 'Fase 1 · Cualificación: contacto principal, perfil del cliente y resumen vivo de la empresa.', shot: shot('01-datos-del-contacto', 'Fase de cualificación del módulo de suscripción', 'Cualificación'), wire: WIRES.suscripcion },
-    handoff: { text: 'La agenda con transcripción automática se validó primero con front y back (viabilidad, herramientas y coste) y después con el PO y el CEO.' },
-  },
-  'editor-propuesta': {
-    brief: 'Un certificado de caución es un documento legal con marca: la cabecera y el pie no se tocan, pero el cuerpo tiene que ajustarse a cada operación.',
-    bench: 'Revisamos editores con comandos, bloques y variables para decidir qué se edita, qué se rellena solo y qué queda fijo.',
-    ideas: 'Lo fijo se queda fuera del editor, y los datos y los estilos se insertan con un solo gesto: /.',
-    evolve: { text: 'El editor: datos del sistema y estilos con /.', shot: shot('ep-comandos', 'Editor de certificados con el menú de comandos abierto', 'Editor de certificados'), wire: WIRES['editor-propuesta'] },
-    handoff: { text: 'TipTap se decidió con el front lead, y el editor se entregó con una guía de uso y una presentación al cliente antes del despliegue.' },
   },
   'design-system': {
     brief: 'Cada módulo de HERMES se había construido con criterios distintos, y el holding tenía cinco productos con cinco lenguajes.',
