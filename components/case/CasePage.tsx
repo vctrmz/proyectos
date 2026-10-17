@@ -147,7 +147,7 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
           {/* Arriba, las dos salidas del caso: volver al trabajo o pasar al
               siguiente sin bajar hasta el final. */}
           <nav className={s.bar} aria-label={ui.case.navLabel} data-case-top>
-            <Button variant="outline" href={r.work}>{ui.case.back}</Button>
+            <Button variant="outline" href={r.workList}>{ui.case.back}</Button>
             <Button variant="outline" href={next.href} aria-label={`${ui.case.nextLabel}: ${next.n.title}`}>{ui.case.next}{next.note} <span aria-hidden="true">→</span></Button>
           </nav>
           <ViewTransition name={`case-${c.slug}`}><div className={s.head}>
@@ -193,7 +193,7 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
           </>}
           <NextCase slug={c.next} locale={locale} />
         </div>
-        <CaseDock items={sequence} current={sequence.findIndex((x) => x.slug === c.slug)} backHref={r.work} labels={ui.case.dock} />
+        <CaseDock items={sequence} current={sequence.findIndex((x) => x.slug === c.slug)} backHref={r.workList} labels={ui.case.dock} />
       </main>
       <SiteFooter locale={locale} />
     </>

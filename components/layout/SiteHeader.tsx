@@ -17,7 +17,7 @@ export default function SiteHeader() {
   /* Primero «Sobre mí», que es la portada; después «Trabajos», que también
      queda marcado mientras se lee un caso. */
   const nav = [{ href: r.about, label: ui.nav.about }, { href: r.work, label: ui.nav.work }];
-  const workPath = r.work.split('#')[0];
+  const workPath = r.work;
   const isActive = (href: string) => (href === r.about ? path === r.home : path === workPath || path.startsWith(`/${locale}/cases/`));
   return (
     <header className={`${s.header} ${dir === 'down' ? s.hidden : ''}`}>

@@ -34,7 +34,10 @@ export function altPath(pathname: string, to: Locale, hasEnCase: (slug: string) 
    catálogo de trabajos vive en /work. */
 const routes = (l: Locale) => ({
   home: `/${l}`,
-  work: `/${l}/work#trabajo`,
+  /* El menú abre Trabajos desde arriba; volver desde un caso lleva a la
+     lista, que es lo que se estaba recorriendo. */
+  work: `/${l}/work`,
+  workList: `/${l}/work#trabajo`,
   contact: `/${l}/work#contacto`,
   about: `/${l}`,
   privacy: `/${l}/privacy`,
