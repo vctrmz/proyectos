@@ -6,6 +6,7 @@ import TransitionTabs from './TransitionTabs';
 import ImageComparison from './ImageComparison';
 import { MorphingDialog, MorphingDialogTrigger, MorphingDialogContainer, MorphingDialogContent, MorphingDialogTitle, MorphingDialogImage, MorphingDialogDescription, MorphingDialogClose } from './MorphingDialog';
 import { getProject } from '@/lib/content/projects';
+import HairlineLab from '@/components/lab/hairline/HairlineLab';
 import s from './LabPrimitivos.module.css';
 
 /* El laboratorio de primitivos, en escenario oscuro y a tamaño protagonista:
@@ -97,6 +98,10 @@ export default function LabPrimitivos() {
             id: p.id, label: p.label,
             content: <Image src={shot(p.img)} alt={p.alt} width={p.w} height={p.h} sizes="(max-width: 1100px) 100vw, 1100px" className={s.screen} />,
           }))} />
+        </Escena>
+
+        <Escena n="04" nombre="Figura de línea" para="Spike: el caso del design system en una figura isométrica que responde al puntero. Las pilas torcidas son los valores sueltos de la auditoría; al pasar por encima, cada una se cuadra sobre su token.">
+          <HairlineLab />
         </Escena>
       </div>
     </main>

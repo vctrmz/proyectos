@@ -1,0 +1,24 @@
+/* La figura en la paleta del laboratorio: la placa es el fondo del escenario
+   (#0b0c10, el mismo de .lab), el trazo vivo es el acento de la web y los
+   grises salen de la tinta del inset mezclada con ese fondo. */
+.bench { display: grid; gap: var(--sp-24); }
+.plate {
+  position: relative; border: 1px solid rgba(255, 255, 255, .1); border-radius: var(--r-media); overflow: hidden;
+  --hairline-plate: #0b0c10;
+  --hairline-hi: var(--accent);
+  --hairline-edge: var(--inset-ink-2);
+  --hairline-mid: color-mix(in srgb, var(--inset-ink) 34%, #0b0c10);
+  --hairline-lo: color-mix(in srgb, var(--inset-ink) 16%, #0b0c10);
+  --hairline-stroke: 1.1;
+}
+/* La caja 5:4 desde el servidor, antes de que el motor inyecte sus estilos. */
+.figure { display: block; aspect-ratio: 5 / 4; max-width: 960px; margin-inline: auto; }
+.read { position: absolute; top: var(--sp-24); right: var(--sp-24); z-index: 1; font: var(--fs-200)/1 ui-monospace, SFMono-Regular, Menlo, monospace; font-variant-numeric: tabular-nums; color: var(--inset-ink-2); }
+
+.controls { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-12) var(--sp-24); }
+.label { font-size: var(--fs-200); color: var(--inset-ink-2); }
+.range { flex: 1 1 200px; min-width: 0; accent-color: var(--accent); }
+.play { min-height: 44px; padding: 0 20px; border-radius: var(--r-pill); border: 1px solid rgba(255, 255, 255, .25); background: transparent; color: var(--inset-ink); font-size: var(--fs-200); font-weight: 500; }
+.play[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #12151c; }
+.play:focus-visible, .range:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.note { max-width: 70ch; font-size: var(--fs-200); color: var(--inset-ink-2); }
