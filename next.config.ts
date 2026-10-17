@@ -20,6 +20,9 @@ const nextConfig: NextConfig = {
       /* El caso «Esta web» se retiró el 2026-10-09: quien llegue por un enlace
          antiguo cae en la portada en lugar de en un 404. */
       { source: '/:locale(es|en)/cases/esta-web', destination: '/:locale/work', permanent: true },
+      /* Vista 360 se retiró el 2026-10-17: era el cuarto caso sobre el mismo
+         producto de Atrinium. Su enlace lleva al catálogo de trabajos. */
+      { source: '/:locale(es|en)/cases/vista-360', destination: '/:locale/work', permanent: true },
       /* La propuesta de portada (2026-10-16) es ya la portada en español. */
       { source: '/es/propuesta', destination: '/es/work', permanent: false },
     ];

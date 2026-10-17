@@ -27,9 +27,7 @@ import CaseStoryboard from './storyboard/CaseStoryboard';
 import { ProcessDiscover, ProcessEvolve, ProcessHandover } from './process/CaseProcess';
 import { processIn } from '@/lib/content/en/process';
 import { ChallengeGrid, AudienceGrid, FlowList, FindingsTable } from './CaseBlocks';
-import CaseFilm from './film/CaseFilm';
-import ShotThumb from './film/ShotThumb';
-import { buildFilm, tc, SECTION_ORDER, SECTION_PHASE, PHASE_ROMAN, PHASE_WORDS } from '@/lib/content/case-film';
+import { SECTION_ORDER, SECTION_PHASE, PHASE_ROMAN, PHASE_WORDS } from '@/lib/content/case-phases';
 import s from './case.module.css';
 
 /* La página de caso se lee como un documento numerado: el índice de la
@@ -72,9 +70,9 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
         <CaseDemo id={c.demo.id} />
       </>
     ) }] : []),
-    /* El proceso del caso se reparte por las fases del film: el benchmark y
+    /* El proceso del caso se reparte por las fases del caso: el benchmark y
        las ideas en Discover, la pantalla del boceto al producto en Develop y
-       la entrega a desarrollo en Deliver (ver SECTION_PHASE). */
+       la entrega a desarrollo en Deliver (ver lib/content/case-phases). */
     ...(proc ? [
       { id: 'c-proceso', label: L('c-proceso', 'Benchmark e ideas'), node: <ProcessDiscover slug={c.slug} p={proc} locale={locale} /> },
       { id: 'c-evolucion', label: L('c-evolucion', 'Del boceto al producto'), node: <ProcessEvolve slug={c.slug} p={proc} locale={locale} /> },
@@ -124,19 +122,15 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
     ) },
   ];
 
-  /* El caso se lee en el orden del film: las secciones se agrupan por fase
-     (Discover, Define, Develop, Deliver y cierre) y cada una abre con su
-     plano animado. */
+  /* El caso se lee por fases (Discover, Define, Develop, Deliver y cierre):
+     las secciones se agrupan en ese orden bajo su título de fase. */
   sections.sort((a, b) => SECTION_ORDER.indexOf(a.id) - SECTION_ORDER.indexOf(b.id));
-  const film = buildFilm(c, sections.map((x) => x.id), p.logo);
-  const labels = film.shots.map((sh) => sh.kind === 'open' ? c.title : sh.kind === 'title' ? sh.word! : sections.find((x) => x.id === sh.section)?.label ?? '');
-  /* Una línea que resume la parte junto al plano, solo cuando no repite lo que
-     viene debajo. */
-  const leads: Record<string, React.ReactNode> = {
+  /* Una línea que resume la parte, solo cuando no repite lo que viene debajo:
+     las decisiones ya llevan su título en cada bloque. */
+  const leads: Record<string, string> = {
     ...(c.audiences ? { 'c-audiencias': c.audiences.title } : {}),
     ...(c.challenge ? { 'c-reto': c.challenge.title } : {}),
     ...(c.flows ? { 'c-flujos': c.flows.title } : {}),
-    'c-decisiones': <ol className={s.shotList}>{c.decisions.map((d) => <li key={d.title}>{d.title}</li>)}</ol>,
   };
 
   const titleOf = (id: string, label: string) => {
@@ -170,7 +164,6 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
           <div className={s.cols}><div><h2>{ui.case.context}</h2><p>{c.context}</p></div><div><h2>{ui.case.role}</h2><p>{c.role}</p></div><div><h2>{ui.case.delivery}</h2><p>{c.delivery}</p></div></div>
           </>}
         </div>
-        {!storyboard && <CaseFilm film={film} labels={labels} ui={ui.case.film} />}
         <div className="container">
           {!storyboard && <>
           <div className={s.doc}>
@@ -179,26 +172,18 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
               {sections.map(({ id, label, node }, k) => {
                 const ph = SECTION_PHASE[id];
                 const first = k === 0 || SECTION_PHASE[sections[k - 1].id] !== ph;
-                const shot = film.shots.find((x) => x.section === id)!;
-                const inside = id === 'c-problema';
                 return (
                   <div key={id}>
                     {first && (
                       <div className={s.phase}>
                         <span className={s.roman} aria-hidden="true">{PHASE_ROMAN[ph]}</span>
-                        <p><span className={s.phaseLabel}>{ui.case.film.phases[ph]}</span>{PHASE_WORDS[ph]}</p>
+                        <p><span className={s.phaseLabel}>{ui.case.phases[ph]}</span>{PHASE_WORDS[ph]}</p>
                       </div>
                     )}
-                    <section className={`${s.sec} ${s.shotSec}`} aria-labelledby={id}>
-                      <div className={s.shotRow}>
-                        <ShotThumb shot={shot} brand={c.brand} from={ui.case.film.from} label={`${ui.case.film.shot} ${shot.i + 1}: ${label}`} />
-                        <div className={`${s.shotInfo} ${inside ? s.problem : ''}`}>
-                          <p className={s.shotMeta}><span>{ui.case.film.shot} {String(shot.i + 1).padStart(2, '0')}</span><span>{tc(shot.start)} → {tc(shot.start + shot.dur)}</span></p>
-                          {titleOf(id, label)}
-                          {inside ? node : leads[id] && <div className={s.shotLead}>{leads[id]}</div>}
-                        </div>
-                      </div>
-                      {!inside && <div className={s.shotBody}>{node}</div>}
+                    <section className={`${s.sec} ${id === 'c-problema' ? s.problem : ''}`} aria-labelledby={id}>
+                      {titleOf(id, label)}
+                      {leads[id] && <p className={s.lead}>{leads[id]}</p>}
+                      {node}
                     </section>
                   </div>
                 );

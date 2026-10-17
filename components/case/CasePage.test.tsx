@@ -31,8 +31,8 @@ describe('CasePage', () => {
   it('el dock recorre todos los casos en orden y marca el actual', () => {
     render(<CasePage c={getCase('hermes')!} />);
     const dock = screen.getByRole('navigation', { name: 'Proyectos' });
-    const puntos = within(dock).getAllByRole('link', { name: /^Caso \d+ de 10/ });
-    expect(puntos).toHaveLength(10);
+    const puntos = within(dock).getAllByRole('link', { name: /^Caso \d+ de 9/ });
+    expect(puntos).toHaveLength(9);
     expect(within(dock).getByRole('link', { current: 'page' })).toHaveAttribute('href', '/es/cases/hermes');
     expect(within(dock).getByRole('link', { name: /Caso anterior/ })).toHaveAttribute('href', '/es/cases/ayax');
     expect(within(dock).getByRole('link', { name: 'Trabajos' })).toHaveAttribute('href', '/es/work#trabajo');

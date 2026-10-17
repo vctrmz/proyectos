@@ -9,14 +9,16 @@ import s from './ikigai.module.css';
 type K = 'design' | 'tech' | 'business';
 const R = 130;
 /* Posición final de cada círculo (el diagrama de Venn) y de dónde llega al
-   hacer scroll: design desde arriba, tech desde la izquierda, business desde
-   la derecha. Las etiquetas van en la zona exclusiva de cada círculo. */
+   hacer scroll: tech desde la izquierda y business desde la derecha. Design ya
+   está dibujado al entrar —su ventana acaba en 0—: al llegar con el scroll se
+   ve el primer círculo y su frase, no una retícula vacía. Las etiquetas van
+   en la zona exclusiva de cada círculo. */
 const C: { k: K; cx: number; cy: number; lx: number; ly: number; from: [number, number]; win: [number, number] }[] = [
-  { k: 'design', cx: 280, cy: 170, lx: 280, ly: 105, from: [0, -150], win: [0.04, 0.3] },
-  { k: 'tech', cx: 200, cy: 300, lx: 152, ly: 360, from: [-190, 90], win: [0.26, 0.5] },
-  { k: 'business', cx: 360, cy: 300, lx: 408, ly: 360, from: [190, 90], win: [0.46, 0.7] },
+  { k: 'design', cx: 280, cy: 170, lx: 280, ly: 105, from: [0, -150], win: [-0.1, 0] },
+  { k: 'tech', cx: 200, cy: 300, lx: 152, ly: 360, from: [-190, 90], win: [0.16, 0.42] },
+  { k: 'business', cx: 360, cy: 300, lx: 408, ly: 360, from: [190, 90], win: [0.42, 0.68] },
 ];
-const CENTER_WIN: [number, number] = [0.72, 0.9];
+const CENTER_WIN: [number, number] = [0.7, 0.88];
 /* Nombre visible de cada círculo, con mayúscula inicial. */
 const NAME: Record<K, string> = { design: 'Design', tech: 'Tech', business: 'Business' };
 const LEN = 2 * Math.PI * R;

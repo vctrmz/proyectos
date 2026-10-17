@@ -18,7 +18,7 @@ const ES = {
     alt: 'Listado de contratos de un cliente en HERMES Admin, con filtros por estado, firmantes y fechas',
   },
   thesis: { label: 'Cómo trabajo', text: 'Diseño producto B2B donde un error operativo cuesta dinero: defino flujos, estados y criterios claros, y los trabajo con Producto e Ingeniería hasta la implementación.' },
-  kinds: { ayax: 'Web y marca', flesip: 'App de facturación', montsaint: 'E-commerce y web de partners', mercantil: 'Banca digital', suscripcion: 'Módulo', 'editor-propuesta': 'Módulo', 'vista-360': 'Panel interno', pidemony: 'Producto de pagos' } as Record<string, string>,
+  kinds: { ayax: 'Web y marca', flesip: 'App de facturación', montsaint: 'E-commerce y web de partners', mercantil: 'Banca digital', suscripcion: 'Módulo', 'editor-propuesta': 'Módulo', pidemony: 'Producto de pagos' } as Record<string, string>,
   work: { title: 'trabajos', at: 6, lead: 'Productos enteros y decisiones concretas dentro de HERMES. Todo llegó a producción.', inSpanish: '' },
   about: {
     title: 'sobre mí', at: 1,
@@ -74,7 +74,7 @@ const EN: typeof ES = {
     alt: 'A client’s contract list in HERMES Admin, filtered by status, signers and dates',
   },
   thesis: { label: 'How I work', text: 'I design B2B products where an operational mistake costs money: I define clear flows, states and criteria, and work them through with Product and Engineering until they ship.' },
-  kinds: { ayax: 'Website and brand', flesip: 'Invoicing app', montsaint: 'E-commerce and partner site', mercantil: 'Digital banking', suscripcion: 'Module', 'editor-propuesta': 'Module', 'vista-360': 'Internal dashboard', pidemony: 'Payments product' },
+  kinds: { ayax: 'Website and brand', flesip: 'Invoicing app', montsaint: 'E-commerce and partner site', mercantil: 'Digital banking', suscripcion: 'Module', 'editor-propuesta': 'Module', pidemony: 'Payments product' },
   work: { title: 'works', at: 1, lead: 'Whole products and specific decisions inside HERMES. All of it shipped to production.', inSpanish: 'in Spanish' },
   about: {
     title: 'about', at: 2,
