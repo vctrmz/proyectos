@@ -67,11 +67,6 @@ export const WIRES: Record<string, WireBox[]> = {
     ['title', 47, 23, 8, 2], ['lines', 18, 27, 75, 14, 4], ['lines', 44, 46, 49, 40, 8],
     ['frame', 19, 47, 22, 52], ['cta', 20, 50, 20, 2.8], ['lines', 21, 55, 18, 42, 11],
   ],
-  'vista-360': [
-    ['fill', 0, 0, 14, 100], ['fill', 14, 0, 57, 100], ['frame', 16.5, 3, 52, 90], ['title', 19, 8, 10, 2.5], ['lines', 19, 13, 46, 30, 10], ['lines', 19, 50, 46, 30, 10],
-    ['title', 73, 3, 15, 2], ['lines', 73, 7, 20, 3, 2], ['cards', 73, 13, 24, 6, 3], ['fill', 73, 22, 24, 10],
-    ['frame', 73, 35, 24, 6], ['frame', 73, 44, 24, 7], ['frame', 73, 54, 24, 7], ['cta', 73, 64, 24, 3], ['btn', 73, 68.5, 24, 3], ['list', 73, 78, 24, 18, 3],
-  ],
   'design-system': [
     ['nav', 2, 2, 35, 1.5, 6], ['dot', 95, 1.5, 2.5, 3], ['frame', 0, 5, 14, 95], ['lines', 1.5, 9, 11, 8, 3], ['cta', 1, 20, 12, 3], ['lines', 1.5, 26, 11, 60, 12],
     ['title', 17, 9, 18, 3], ['btn', 73, 9, 11, 3.5], ['cta', 86, 9, 11, 3.5], ['chips', 17, 15, 27, 3, 3],
@@ -135,13 +130,6 @@ export const PROCESS: Record<string, CaseProcess> = {
     ideas: 'Lo fijo se queda fuera del editor, y los datos y los estilos se insertan con un solo gesto: /.',
     evolve: { text: 'El editor: datos del sistema y estilos con /.', shot: shot('ep-comandos', 'Editor de certificados con el menú de comandos abierto', 'Editor de certificados'), wire: WIRES['editor-propuesta'] },
     handoff: { text: 'TipTap se decidió con el front lead, y el editor se entregó con una guía de uso y una presentación al cliente antes del despliegue.' },
-  },
-  'vista-360': {
-    brief: 'El equipo perdía minutos reconstruyendo quién era un cliente antes de hablar con él.',
-    bench: 'Mirar fuera antes de dibujar: fichas de cliente de CRM y de banca, para ver qué ponen arriba y qué dejan para el histórico.',
-    ideas: 'Doce exploraciones antes de decidir, y una regla para elegir entre ellas: jerarquía por decisión, no por gusto.',
-    evolve: { text: 'Resumen comercial: identidad persistente, riesgo y actividad antes del histórico.', shot: shot('11-resumen-comercial', 'Resumen comercial de la vista 360 del cliente', 'Resumen comercial'), wire: WIRES['vista-360'] },
-    handoff: { text: 'Una pantalla en producción y un documento de criterio: por qué se descartaron las otras once.' },
   },
   'design-system': {
     brief: 'Cada módulo de HERMES se había construido con criterios distintos, y el holding tenía cinco productos con cinco lenguajes.',

@@ -248,35 +248,6 @@ function Editor({ l }: { l: Locale }) {
   );
 }
 
-function Vista360({ l }: { l: Locale }) {
-  const finalists = [1, 4, 10, 7];
-  return (
-    <>
-      {Array.from({ length: 12 }, (_, i) => {
-        const x = 28 + (i % 4) * 62, y = 52 + Math.floor(i / 4) * 52;
-        const cls = i === 7 ? 'acc' : finalists.includes(i) ? 'acc-box' : 'tint';
-        return <rect key={i} className={cls} x={x} y={y} width={52} height={40} rx={6} />;
-      })}
-      <text className="lead" x={28} y={244}>12 → 4 → 1</text>
-      <text className="small mute-2" x={28} y={274}>{tr(l, { es: 'composiciones', en: 'compositions' })}</text>
-      <Chevrons x={286} y={130} />
-      <rect className="box" x={334} y={34} width={240} height={270} rx={12} />
-      <circle className="ring-ink" cx={372} cy={82} r={20} />
-      <rect className="ink" x={402} y={70} width={112} height={14} rx={7} />
-      <rect className="tint" x={402} y={92} width={78} height={10} rx={5} />
-      <rect className="ink" x={354} y={122} width={112} height={28} rx={14} />
-      <text className="tiny t-w strong" x={410} y={141} textAnchor="middle">{tr(l, { es: 'riesgo alto', en: 'high risk' })}</text>
-      <text className="caps" x={354} y={188}>{tr(l, { es: 'Pólizas', en: 'Policies' })}</text>
-      {[0, 1, 2].map((i) => (
-        <g key={i}>
-          <rect className="tint" x={354} y={204 + i * 28} width={[150, 120, 136][i]} height={12} rx={6} />
-          <rect className="ink" x={520} y={204 + i * 28} width={34} height={12} rx={6} />
-        </g>
-      ))}
-    </>
-  );
-}
-
 function DesignSystem() {
   const rows: [string, string, string, string | null][] = [
     ['button.bg', '#2f5bea', 'action', '#2f5bea'],
@@ -370,7 +341,7 @@ function Taksio({ l }: { l: Locale }) {
 
 const PLATES: Record<string, (p: { l: Locale }) => React.ReactNode> = {
   ayax: Ayax, hermes: Hermes, flesip: Flesip, montsaint: Montsaint, mercantil: Mercantil,
-  suscripcion: Suscripcion, 'editor-propuesta': Editor, 'vista-360': Vista360,
+  suscripcion: Suscripcion, 'editor-propuesta': Editor,
   'design-system': DesignSystem, pidemony: Pidemony, taksio: Taksio,
 };
 

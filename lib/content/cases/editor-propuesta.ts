@@ -65,5 +65,5 @@ export const editorPropuesta: CaseStudy = {
     'Un patrón nuevo no se entiende solo: la adopción se diseña igual que la interfaz.',
     'Las decisiones técnicas acordadas con el front lead duran más que las impuestas.',
   ],
-  next: 'vista-360',
+  next: 'design-system',
 };
