@@ -1,8 +1,8 @@
-import { shot, type CaseStudy } from '../../cases/types';
+import { shot, inGroup, type CaseStudy } from '../../cases/types';
 
 export const hermesEn: CaseStudy = {
   slug: 'hermes', title: 'HERMES, an insurance platform', company: 'Atrinium', years: '2022–2026',
-  tagline: 'A standard product for businesses that look nothing alike: 165 screens and 8 areas on a single core, with its CRM and the landing page that sells it, without forking the product per client.',
+  tagline: 'A standard product for businesses that look nothing alike: 165 screens and 8 areas on a single core, with its CRM, client subscription, the certificate editor and the landing page that sells it, without forking the product per client.',
   tags: ['Case study', 'In production', 'Insurtech', 'Multi-tenant', 'Schema-driven forms', 'Design tokens'], brand: '#1f2a5a',
   hero: shot('hx-dashboard', 'HERMES Admin CRM dashboard with lead metrics, conversion rate and the list of opportunities', 'The dashboard: sales network metrics and whatever needs action, on the first screen'),
   context: 'Atrinium’s insurance SaaS for brokers, underwriting agencies and insurers: underwriting, policies, receipts, billing and claims. A product in production with no maintenance window, while a framework and database migration was under way and two generations of interface lived side by side.',
@@ -15,11 +15,11 @@ export const hermesEn: CaseStudy = {
   complexity: { diagram: 'clients-to-system', caption: 'Three companies with incompatible rules on one configurable system: the difference lives in the data, not in a branch of the product.' },
   decisions: [
     { title: 'I designed rules instead of cases.', why: 'Every line of insurance has its own questionnaire; designing one screen per line and per client does not scale and leaves the criteria in the designer’s head.', changed: 'Each line’s questionnaire is declared as data and the interface renders it with its validation. Onboarding a new company no longer requires bespoke design.', tradeoff: 'The rule becomes the critical artefact: a badly declared schema breaks a screen nobody designed, so validation has to live with the data.', figure: { diagram: 'before-after' } },
-    { title: 'The level of system each product can afford.', why: 'The obvious answer was to impose a single system on the group’s five products. The lighter products do not need that governance.', changed: 'A full design system for the ERP and the admin; a brandsheet and UI kit for the lighter products. Five businesses that do not feel like five different companies.', figure: { shot: shot('07-seleccionar-moneda', 'Currency selector component', 'Components with a contract: the same selector across all four front ends') } },
     { title: 'Brand and language as variables, not as versions.', why: 'White-labelling per tenant, with five base languages and seven locales of insurance terminology.', changed: 'Each client’s palette resolves at sign-in and terminology resolves per locale, propagated through semantic tokens and language catalogues, without duplicating components.', figure: { shot: shot('04-preparar-producto', 'Product setup: modules, plugins and languages per client', 'Modules, plugins and system languages configured per client') } },
-    { title: 'The CRM follows the agent’s day, not the product’s org chart.', why: 'Leads, contacts, pipeline and tickets existed as separate modules, and an agent does not work by module: they work by the questions the day brings.', changed: 'Five chained steps (capture, know, negotiate, support and measure), where each module feeds the next: a lead becomes a contact, an opportunity and a client being served, without switching tabs.', figure: { shot: shot('hx-pipeline', 'Sales pipeline in a kanban by stage with the value of each one', 'Pipeline: value per stage and probability of closing on the card, in the same colour code as the dashboard') } },
-    { title: 'A landing page that explains the product with the product itself.', why: 'Insurance SaaS is not sold with illustrations: whoever buys wants to see the screen their team will operate.', changed: 'Every feature block comes with its real screen inside a brand frame, alternating sides to set the reading rhythm, and closes with direct contact by WhatsApp, phone or email.', figure: { shot: shot('hx-l_multi', 'Customisation and multi-language block of the landing page on a navy background', 'The block that sells the hardest thing to explain: customisation, multi-language and multi-currency') } },
     { title: 'Module by module, complete consistency over scattered improvements.', why: 'With two generations of interface side by side, improving everything a little keeps the inconsistency forever.', changed: 'Each migrated module ships whole with the new system; the criteria are written down and do not depend on me being in the room.', tradeoff: 'For months two generations of interface are visible to the user. Accepted in exchange for not leaving the inconsistency installed for good.', figure: { diagram: 'areas-map' } },
+    { title: 'Subscription: a state machine, not a wizard.', why: 'Twenty linear steps force every role down the same path.', changed: 'Three phases (qualification, negotiation, closed), each with its own audiences, permissions and exit criteria. The whole interface rests on the component system consolidated before starting.', figure: { shot: shot('03-metodo-de-pago', 'Payment method with a checklist of blockers', 'Payment method: SEPA, tax details and schedule, with a checklist of what blocks signing') } },
+    { title: 'Certificates: what is fixed stays out of the editor.', why: 'Header, logo and footer belong to the legal document and the tenant’s brand; if they can be touched, someone will touch them.', changed: 'The editor only opens the body of the certificate. The template is chosen by certificate type and the rest of the A4 arrives locked.', figure: { shot: shot('ep-plantilla-nueva', 'Surety certificate in A4 with the new style', 'The certificate template: the legal structure is untouched, only the body changes') } },
+    { title: 'Client 360: twelve explorations before deciding.', why: 'The three-alternatives method falls short when the cost of getting it wrong is a screen used a hundred times a day.', changed: 'Twelve compositions reduced to four comparable directions.', figure: { diagram: 'grid-12-4-1' } },
   ],
   system: {
     body: [
@@ -50,12 +50,36 @@ export const hermesEn: CaseStudy = {
     ],
   },
   design: [
-    shot('08-planes-servicios', 'Plans and services per company', 'Plans and services: a product catalogue composed per business, with no bespoke development'),
-    shot('hx-leads', 'Lead table with source, status and assigned agent, and the day’s calendar', 'Leads: source, status and agent, with the calendar alongside to call without losing context'),
-    shot('hx-tickets', 'Ticket inbox with saved views and priority by colour', 'Tickets: saved views (unassigned, open, the group’s) and priority visible on each row'),
-    shot('hx-login', 'Sign-in screen “Welcome to Hermes Admin” with a photograph in blue', 'The login: enterprise-grade security as the product’s first message'),
-    shot('14-document-model', 'Document model', 'Document model: the restriction lives in the data, not only in the interface'),
-    shot('hx-landing', 'Full HERMES landing page with the feature blocks', 'The landing page: every feature with its real screen, alternating sides'),
+    ...inGroup('Platform', [
+      shot('08-planes-servicios', 'Plans and services per company', 'Plans and services: a product catalogue composed per business, with no bespoke development'),
+      shot('hx-leads', 'Lead table with source, status and assigned agent, and the day’s calendar', 'Leads: source, status and agent, with the calendar alongside to call without losing context'),
+      shot('hx-tickets', 'Ticket inbox with saved views and priority by colour', 'Tickets: saved views (unassigned, open, the group’s) and priority visible on each row'),
+      shot('hx-login', 'Sign-in screen “Welcome to Hermes Admin” with a photograph in blue', 'The login: enterprise-grade security as the product’s first message'),
+      shot('14-document-model', 'Document model', 'Document model: the restriction lives in the data, not only in the interface'),
+      shot('hx-landing', 'Full HERMES landing page with the feature blocks', 'The landing page: every feature with its real screen, alternating sides'),
+    ]),
+    ...inGroup('Subscription', [
+      shot('01-datos-del-contacto', 'Contact details', 'Phase 1 · Qualification: main contact, client profile and a live company summary'),
+      shot('04-preparar-producto', 'Prepare product', 'Prepare product: modules, plugins and system languages per client'),
+      shot('19-reservar-agenda', 'Book a meeting', 'Book a meeting: both sides’ availability in the same view'),
+      shot('20-drawer-contrato', 'Contract detail in a side panel', 'Contract in a side panel: context is not lost while reviewing'),
+    ]),
+    ...inGroup('Certificates', [
+      shot('ep-editor-vacio', 'Empty document model editor with the chosen certificate template', 'Starting point: pick the template and type, or press / to insert'),
+      shot('ep-comandos', 'Command menu over the certificate text', 'Commands with /: global style, document style and system data (people, brokers, insurer, tables and charts)'),
+      shot('ep-certificados', 'Certificates step inside the endorsement, with editor and preview', 'Certificates as one more step of the endorsement, with the preview one click away'),
+      shot('ep-variables', 'Certificate text in production with system variables', 'In production: the text carries system variables (${…}) that are filled in on issue'),
+      shot('ep-plantilla-original', 'Original surety certificate template in A4', 'Original surety certificate template (personal data hidden)'),
+      shot('ep-plantilla-nueva', 'Certificate template with the new style in A4', 'The same template in the new style: brand header and recognisable links (personal data hidden)'),
+      shot('ep-resumen', 'Opportunity summary with the Certificate block between coverages and vehicle data', 'Opportunity summary: the certificate type is one more block, editable like the rest'),
+      shot('ep-poliza', 'Issued policy with the list of generated documents', 'Issued policy: the certificate is generated alongside the conditions and the coverage summary'),
+      shot('ep-pdf', 'PDF viewer with the generated surety certificate', 'Certificate PDF preview before downloading or printing (personal data hidden)'),
+    ]),
+    ...inGroup('Client 360', [
+      shot('11-resumen-comercial', 'Client commercial summary', 'Commercial summary: persistent identity, risk and activity before the history'),
+      shot('17-agenda-reuniones', 'Meeting agenda', 'The client’s meeting agenda'),
+      shot('15-notas-comite', 'Committee notes', 'Committee notes linked to the client'),
+    ]),
   ],
   implementation: [
     'Tokens and components were handed over with usage criteria; engineering stopped asking how a pattern behaves because it is defined before it reaches them.',

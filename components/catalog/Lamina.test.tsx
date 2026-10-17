@@ -24,7 +24,6 @@ describe('láminas del catálogo', () => {
   it('las cifras salen de los casos', () => {
     const t = (slug: string) => render(<Lamina slug={slug} locale="es" />).container.textContent;
     expect(t('design-system')).toMatch(/267 → 24/);
-    expect(t('suscripcion')).toMatch(/13 → 5 semanas/);
     expect(t('mercantil')).toMatch(/5 de 9 resueltos/);
     expect(t('hermes')).toMatch(/165 pantallas · 8 áreas/);
   });

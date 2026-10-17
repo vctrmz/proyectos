@@ -16,7 +16,7 @@ import DecisionBlock from './DecisionBlock';
 import ResultBlock from './ResultBlock';
 import NextCase, { caseSequence, resolveNext } from './NextCase';
 import CaseDock from './CaseDock';
-import DesignGallery from './DesignGallery';
+import GroupedGallery from './GroupedGallery';
 import BrandMark from './BrandMark';
 import Button from '@/components/ui/Button';
 import Handoff from './Handoff';
@@ -101,7 +101,7 @@ export default function CasePage({ c, locale = DEFAULT_LOCALE }: { c: CaseStudy;
       </>
     ) },
     { id: 'c-diseno', label: L('c-diseno', 'Diseño'), node: (
-      <DesignGallery items={c.design.map((d) => ({ ...d, ...shotSize(d.src) }))} labels={ui.case.gallery} />
+      <GroupedGallery items={c.design.map((d) => ({ ...d, ...shotSize(d.src) }))} labels={ui.case.gallery} />
     ) },
     ...(c.findings ? [{ id: 'c-hallazgos', label: L('c-hallazgos', 'Hallazgos'), node: (
       <>

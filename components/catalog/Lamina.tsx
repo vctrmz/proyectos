@@ -184,70 +184,6 @@ function Mercantil({ l }: { l: Locale }) {
   );
 }
 
-function Suscripcion({ l }: { l: Locale }) {
-  const fases = l === 'en' ? ['Qualification', 'Negotiation', 'Closed'] : ['Cualificación', 'Negociación', 'Cerrado'];
-  return (
-    <>
-      <text className="caps" x={24} y={84}>Excel</text>
-      <g className="faded">
-        <rect className="box" x={24} y={98} width={112} height={140} rx={6} />
-        {[126, 154, 182, 210].map((y) => <path key={y} className="hair" d={`M24 ${y}h112`} />)}
-        <path className="hair" d="M62 98v140M100 98v140" />
-      </g>
-      <Chevrons x={150} y={155} />
-      {fases.map((f, i) => {
-        const x = 196 + i * 134;
-        const cls = i === 0 ? 'ink' : i === 1 ? 'acc-box' : 'box';
-        const tcls = i === 0 ? 't-w' : i === 1 ? 't-acc strong' : 'mute-2';
-        return (
-          <g key={f}>
-            <text className="caps mute-2" x={x + 58} y={118} textAnchor="middle">{tr(l, { es: 'Fase', en: 'Phase' })} {i + 1}</text>
-            <rect className={cls} x={x} y={136} width={116} height={56} rx={10} />
-            <text className={`tiny ${tcls}`} x={x + 58} y={169} textAnchor="middle">{f}</text>
-            {i < 2 && <path className="acc-line" d={`M${x + 116} 164h18`} />}
-          </g>
-        );
-      })}
-      <path className="line" d="M388 192v24" />
-      <rect className="tint" x={310} y={216} width={156} height={56} rx={8} />
-      <text className="small mute-2" x={326} y={239}>{tr(l, { es: 'salida:', en: 'exit:' })}</text>
-      <text className="small" x={326} y={261}>{tr(l, { es: 'propuesta firmada', en: 'signed proposal' })}</text>
-      <rect className="mark" x={24} y={266} width={166} height={36} rx={18} />
-      <text className="small strong" x={107} y={290} textAnchor="middle">{tr(l, { es: '13 → 5 semanas', en: '13 → 5 weeks' })}</text>
-    </>
-  );
-}
-
-function Editor({ l }: { l: Locale }) {
-  return (
-    <>
-      <rect className="box" x={36} y={22} width={366} height={340} rx={12} />
-      <text className="caps" x={62} y={62}>{tr(l, { es: 'Propuesta', en: 'Proposal' })}</text>
-      <rect className="tint" x={62} y={84} width={120} height={14} rx={7} />
-      <rect className="ink" x={190} y={78} width={118} height={26} rx={6} />
-      <text className="mono tiny t-w" x={200} y={96}>@variable</text>
-      <rect className="tint" x={62} y={118} width={300} height={14} rx={7} />
-      <rect className="tint" x={62} y={150} width={80} height={14} rx={7} />
-      <rect className="acc" x={150} y={144} width={136} height={26} rx={6} />
-      <text className="mono tiny t-w" x={160} y={162}>{tr(l, { es: '/componente', en: '/component' })}</text>
-      <rect className="dashed" x={62} y={190} width={314} height={70} rx={8} />
-      <text className="caps" x={80} y={216}>{tr(l, { es: 'Cláusula opcional', en: 'Optional clause' })}</text>
-      <rect className="tint" x={80} y={232} width={220} height={10} rx={5} />
-      <rect className="acc" x={326} y={204} width={36} height={20} rx={10} />
-      <circle className="paper" cx={352} cy={214} r={7} />
-      <rect className="tint" x={62} y={280} width={280} height={14} rx={7} />
-      <rect className="tint" x={62} y={306} width={200} height={14} rx={7} />
-
-      <path className="acc-line dash" d="M366 125H424" />
-      <rect className="tint" x={424} y={78} width={152} height={112} rx={12} />
-      <circle className="acc" cx={448} cy={104} r={12} />
-      <rect className="paper" x={468} y={98} width={84} height={12} rx={6} />
-      <text className="tiny" x={442} y={146}>{tr(l, { es: 'sobre el párrafo,', en: 'on the paragraph,' })}</text>
-      <text className="tiny" x={442} y={168}>{tr(l, { es: 'no en un correo', en: 'not in an email' })}</text>
-    </>
-  );
-}
-
 function DesignSystem() {
   const rows: [string, string, string, string | null][] = [
     ['button.bg', '#2f5bea', 'action', '#2f5bea'],
@@ -341,7 +277,7 @@ function Taksio({ l }: { l: Locale }) {
 
 const PLATES: Record<string, (p: { l: Locale }) => React.ReactNode> = {
   ayax: Ayax, hermes: Hermes, flesip: Flesip, montsaint: Montsaint, mercantil: Mercantil,
-  suscripcion: Suscripcion, 'editor-propuesta': Editor,
+ 
   'design-system': DesignSystem, pidemony: Pidemony, taksio: Taksio,
 };
 

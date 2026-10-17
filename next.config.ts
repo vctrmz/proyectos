@@ -23,6 +23,9 @@ const nextConfig: NextConfig = {
       /* Vista 360 se retiró el 2026-10-17: era el cuarto caso sobre el mismo
          producto de Atrinium. Su enlace lleva al catálogo de trabajos. */
       { source: '/:locale(es|en)/cases/vista-360', destination: '/:locale/work', permanent: true },
+      /* Suscripción y Editor de certificados se unieron a HERMES el 2026-10-17:
+         eran módulos del mismo producto. Sus enlaces llevan al caso HERMES. */
+      { source: '/:locale(es|en)/cases/:slug(suscripcion|editor-propuesta)', destination: '/:locale/cases/hermes', permanent: true },
       /* La propuesta de portada (2026-10-16) es ya la portada en español. */
       { source: '/es/propuesta', destination: '/es/work', permanent: false },
     ];

@@ -1,7 +1,9 @@
 export type DemoId = 'pidemony' | 'flesip';
 export type DiagramId = 'clients-to-system' | 'areas-map' | 'before-after' | 'state-machine' | 'template-slots' | 'grid-12-4-1' | 'system-cycle' | 'timeline' | 'value-chain' | 'pending-invoice' | 'two-sided' | 'handoff-chain' | 'pide-y-paga';
 export interface Metric { value: string; label: string; meaning: string }
-export interface Shot { src: string; alt: string; caption: string }
+/* `group` agrupa las pantallas de la galería por módulo cuando un caso junta
+   varios (HERMES: plataforma, suscripción, certificados y cliente 360). */
+export interface Shot { src: string; alt: string; caption: string; group?: string }
 /* tradeoff y wouldFix son las dos honestidades del caso: lo que se pagó por la
    decisión y lo que hoy haría distinto. Se pintan como llamadas aparte. */
 export interface Decision { title: string; why: string; changed: string; tradeoff?: string; wouldFix?: string; figure?: { shot: Shot } | { diagram: DiagramId } }
@@ -72,3 +74,4 @@ export interface CaseStudy {
   storyboard?: Storyboard;
 }
 export const shot = (name: string, alt: string, caption: string): Shot => ({ src: `/assets/shots/${name}.webp`, alt, caption });
+export const inGroup = (group: string, list: Shot[]): Shot[] => list.map((s) => ({ ...s, group }));

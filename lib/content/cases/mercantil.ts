@@ -121,5 +121,5 @@ export const mercantil: CaseStudy = {
     'Empezar por quién decide qué, y no por el catálogo, cambia el material de venta entero.',
     'Auditar el propio trabajo años después enseña más que defenderlo, y marcar lo retrospectivo como tal es parte de la honestidad del caso.',
   ],
-  next: 'suscripcion',
+  next: 'design-system',
 };

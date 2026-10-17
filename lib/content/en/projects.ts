@@ -8,7 +8,7 @@ export const EN_PROJECTS: Record<string, { title: string; company?: string; summ
   },
   hermes: {
     title: 'HERMES, an insurance platform',
-    summary: 'Insurance SaaS sold to companies with incompatible business logic: 165 screens and 8 areas on a single core, with its CRM and the landing page that sells it.',
+    summary: 'Insurance SaaS sold to companies with incompatible business logic: 165 screens and 8 areas on a single core: CRM, client subscription, certificate editor, client 360 view and the landing page that sells it.',
   },
   flesip: {
     title: 'Invoicing should be the dullest thing in your week',
@@ -21,14 +21,6 @@ export const EN_PROJECTS: Record<string, { title: string; company?: string; summ
   mercantil: {
     title: 'Making a financial product clear the first time',
     summary: 'Five offers and five audiences that do not speak alike: digital payments, Mony, Tadelanto and Next Gen, from the sales deck to the online banking flow, including the audit of my own prototype.',
-  },
-  suscripcion: {
-    title: 'Client onboarding module',
-    summary: 'Three months of manual work in spreadsheets turned into a module in production in five weeks, modelled as a three-phase state machine.',
-  },
-  'editor-propuesta': {
-    title: 'Certificate editor built on TipTap',
-    summary: 'The Certificate step in the surety flow: four templates, a fixed header and footer, and an editable body with system data inserted with /.',
   },
   pidemony: {
     title: 'Asking for money with a link',
