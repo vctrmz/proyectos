@@ -35,7 +35,8 @@ export interface Ui {
     severity: Record<string, string>;
     next: string; nextLabel: string;
     handoff: { eyebrow: string; title: string; lead: string; steps: { t: string; d: string }[]; outLabel: string; out: string[] };
-    film: { eyebrow: string; title: string; lead: string; play: string; pause: string; replay: string; timeline: string; shot: string; stage: string; from: string; phases: string[] };
+    /* Títulos de fase del caso, en el idioma de la página (el nombre de la fase va en inglés). */
+    phases: string[];
   };
   about: {
     title: string; personal: string; live: string; before: string; born: string;
@@ -116,7 +117,7 @@ const es: Ui = {
       ],
       outLabel: 'Lo que recibe el equipo', out: ['Archivo de kick-off', 'Prototipo navegable', 'Especificación de motion', 'tokens.json con reglas'],
     },
-    film: { eyebrow: 'Film del caso', title: 'El caso, plano a plano', lead: 'El proyecto montado como un storyboard: las pantallas reales entran por fases y cada plano abre una parte del caso, que se lee debajo junto a su plano.', play: 'Reproducir', pause: 'Pausa', replay: 'Volver a ver', timeline: 'Línea de tiempo del film', shot: 'Plano', stage: 'Fotograma del film', from: 'Desde aquí', phases: ['Apertura', 'Descubrir', 'Definir', 'Desarrollar', 'Entregar', 'Cierre'] },
+    phases: ['Apertura', 'Descubrir', 'Definir', 'Desarrollar', 'Entregar', 'Cierre'],
   },
   about: {
     title: 'Sobre mí', personal: 'Personal', live: 'Vivo en', before: 'Antes, en', born: 'Nací en Venezuela.',
@@ -204,7 +205,7 @@ const en: Ui = {
       ],
       outLabel: 'What the team gets', out: ['Kick-off file', 'Clickable prototype', 'Motion spec', 'tokens.json with rules'],
     },
-    film: { eyebrow: 'Case film', title: 'The case, shot by shot', lead: 'The project cut as a storyboard: the real screens come in by phase, and each shot opens a part of the case, which you can read below next to its shot.', play: 'Play', pause: 'Pause', replay: 'Watch again', timeline: 'Film timeline', shot: 'Shot', stage: 'Film frame', from: 'From here', phases: ['Opening', 'Discover', 'Define', 'Develop', 'Deliver', 'Close'] },
+    phases: ['Opening', 'Discover', 'Define', 'Develop', 'Deliver', 'Close'],
   },
   about: {
     title: 'About me', personal: 'Personal', live: 'I live in', before: 'Before that, in', born: 'I was born in Venezuela.',
